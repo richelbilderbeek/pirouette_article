@@ -88,13 +88,13 @@
     we conclude by describing the further development of the package. \\
 \end{abstract}
 
-{\bf Keywords:} computational biology, evolution, phylogenetics, BEAST2, babette, R
+{\bf Keywords:} computational biology, evolution, phylogenetics, BEAST2, pirouette, R
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Phylogenies are commonly used to explore evolutionary hypotheses.
+Phylogenies are commonly used to explore evolutionary hypotheses.
 %Not only can phylogenies show us how species (or other
 %evolutionary units) are related to each other, 
 %but we can also estimate relevant parameters such as extinction and 
@@ -114,21 +114,26 @@
 %all from an R function call. This
 %will save time, tedious mouse clicking and 
 %reduces the chances of errors in such repetitive actions.
-%The interface of \verb;babette; mimics the tools it
+%The interface of \verb;pirouette; mimics the tools it
 %is based on. This
 %familiarity helps both beginner and experienced BEAST2 users 
-%to make the step from those tools to \verb;babette;.
-%\verb;babette; enables the creation of a single-script 
+%to make the step from those tools to \verb;pirouette;.
+%\verb;pirouette; enables the creation of a single-script 
 %pipeline from sequence alignments to posterior analysis in R. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\verb;babette; is written in the R programming language (\cite{R})
-%and enables the full BEAST2 workflow from a single R function call,
+\verb;pirouette; is written in the R programming language (\cite{R}).
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{overview.png}
+\end{figure}
+
+and enables the full BEAST2 workflow from a single R function call,
 %in a similar way to what subsequent usage of BEAUti, DensiTree and Tracer would produce.
-%\verb;babette;'s main function is \verb;bbt_run;, which
+%\verb;pirouette;'s main function is \verb;bbt_run;, which
 %configures BEAST2, runs it and parses its output. 
 %\verb;bbt_run; needs at least the name of a 
 %FASTA file containing a DNA alignment. 
@@ -138,30 +143,30 @@
 %Multiple alignments can be used, each with its own (unlinked) site model, 
 %clock model and tree prior.
 
-%\verb;babette; currently has 108 exported functions to set up  
+%\verb;pirouette; currently has 108 exported functions to set up  
 %a BEAST2 configuration file. 
-%\verb;babette; can currently handle the majority of BEAUti use cases.
+%\verb;pirouette; can currently handle the majority of BEAUti use cases.
 %Because of BEAUti's high number of plugins, 
-%\verb;babette; uses a software architecture that is designed to be extended.
-%Furthermore, \verb;babette; has 13 exported functions to run and help run BEAST2.
+%\verb;pirouette; uses a software architecture that is designed to be extended.
+%Furthermore, \verb;pirouette; has 13 exported functions to run and help run BEAST2.
 %One function is used to run BEAST2, another
 %one installs BEAST2 to a default location.
-%Finally, \verb;babette; has 21 exported function to parse the BEAST2 output
-%files and analyze the created posterior. \verb;babette; gives the
+%Finally, \verb;pirouette; has 21 exported function to parse the BEAST2 output
+%files and analyze the created posterior. \verb;pirouette; gives the
 %same ESSes and summary statistics as Tracer. The data is formatted
 %such that it can easily be visualized using \verb;ggplot2; (for a trace,
 %similar to Tracer) or \verb;phangorn; (\cite{phangorn}) (for 
 %the phylogenies in a posterior, similar to DensiTree). 
 
-%Currently, \verb;babette; does not contain all functionality 
+%Currently, \verb;pirouette; does not contain all functionality 
 %in BEAUti, BEAST2 and their many plug-ins, 
 %because these tools themselves also change in time.
-%\verb;babette; currently works only on DNA data,
+%\verb;pirouette; currently works only on DNA data,
 %because this is the most common use case. 
-%Nevertheless, \verb;babette; provides the majority of default tree priors and supports the most important command-line arguments of BEAST2, provides
+%Nevertheless, \verb;pirouette; provides the majority of default tree priors and supports the most important command-line arguments of BEAST2, provides
 %the core Tracer analysis options, and has the most basic subset of 
-%plotting options of DensiTree. Up till now, the \verb;babette; features 
-%implemented are those requested by users. Further extension of \verb;babette; 
+%plotting options of DensiTree. Up till now, the \verb;pirouette; features 
+%implemented are those requested by users. Further extension of \verb;pirouette; 
 %will be based on future user requests.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -196,11 +201,15 @@ install_beast2()
 \section{Usage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A first research question that 
+A first research question that \verb;pirouette; answers, is:
+
+What is the error BEAST2 makes from a phylogeny using the same 
+speciation model as it was generated by?
+
+Say we have an idealised
 
 \begin{lstlisting}[language=R, floatplacement=H]
 phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
-ape::plot.phylo(phylogeny, main = "The True Phylogeny")
 \end{lstlisting}
 
 
@@ -209,7 +218,7 @@ from the FASTA file with name \verb;anthus_aco.fas; (which
 is supplied with the package, from \cite{VanEls2018}), 
 using the same default settings as BEAUti, which are, 
 among others, a Jukes-Cantor site model, a strict clock, and a Yule birth tree prior.
-\verb;babette; will then execute BEAST2 using that file, and
+\verb;pirouette; will then execute BEAST2 using that file, and
 parses the output. The returned data structure, named \verb;out;, 
 is a list of parameter estimates (called \verb;estimates;), posterior 
 phylogenies (called \verb;anthus_aco_trees;, named after
@@ -248,14 +257,14 @@ out <- bbt_run(
   )
 )
 \end{lstlisting}
-\verb;babette; also uses the same default prior distributions as BEAUti 
+\verb;pirouette; also uses the same default prior distributions as BEAUti 
 for each of the site models, clock models and tree priors. 
 For example, by default, a Yule tree prior assumes that the birth rate 
 follows a uniform distribution, 
 from minus infinity to plus infinity. 
 One may prefer a different ddistribution instead. 
 Here is an example how to specify an exponential distribution for
-the birth rate in a Yule tree prior in \verb;babette;:
+the birth rate in a Yule tree prior in \verb;pirouette;:
 
 \begin{lstlisting}[language=R, floatplacement=H]
 out <- bbt_run(
@@ -286,11 +295,11 @@ out <- bbt_run(
   )
 )
 \end{lstlisting}
-\verb;babette; also supports node dating. Like BEAUti, one
+\verb;pirouette; also supports node dating. Like BEAUti, one
 can specify Most Recent Common Ancestor ('MRCA') priors.
 An MRCA prior allows to specify taxa having a common ancestor,
 including a distribution for the date of that ancestor.
-With \verb;babette;, this is achieved as follows:
+With \verb;pirouette;, this is achieved as follows:
 
 \begin{lstlisting}[language=R, floatplacement=H]
 out <- bbt_run(
@@ -308,7 +317,7 @@ out <- bbt_run(
 \end{lstlisting}
 Instead of dating the ancestor of two random taxa, any subset of taxa can be selected,
 and multiple sets are allowed.
-\verb;babette; allows for the same core functionality as Tracer to show the values of the parameter estimates sampled
+\verb;pirouette; allows for the same core functionality as Tracer to show the values of the parameter estimates sampled
 in the BEAST2 run. This is called the "trace" (hence the name).
 The start of the trace, called the "burn-in", is usually discarded, as an MCMC 
 algorithm (such as used by BEAST2) first has to converge to
@@ -316,7 +325,7 @@ its equilibrium and hence the parameter estimates are not
 representative. By default, Tracer discards the first 10\% of all 
 the parameter estimates. 
 To remove a 20\% burn-in from all parameter estimates 
-in \verb;babette;, the following code can be used:
+in \verb;pirouette;, the following code can be used:
 
 \begin{lstlisting}[language=R, floatplacement=H]
 traces <- remove_burn_ins(
@@ -328,7 +337,7 @@ Tracer shows the ESSes of each posterior's variables.
 These ESSes are important to determine the strength of the
 inference. As a rule of thumb, an ESS of 200 is acceptable 
 for any parameter estimate.
-To calculate the effective sample sizes (of all estimated variables) in \verb;babette;:
+To calculate the effective sample sizes (of all estimated variables) in \verb;pirouette;:
 
 \begin{lstlisting}[language=R, floatplacement=H]
 esses <- calc_esses(
@@ -340,7 +349,7 @@ Tracer displays multiple summary statistics for each
 estimated variable: the mean and its standard error, standard deviation,
 variance, median, mode, geometric mean, 95\% highest posterior density interval, 
 auto-correlation time and effective sample size. It displays these statistics per
-variable. In \verb;babette;, these summary statistics are collected for
+variable. In \verb;pirouette;, these summary statistics are collected for
 all estimated parameters at once: 
 
 \begin{lstlisting}[language=R, floatplacement=H]
@@ -349,7 +358,7 @@ sum_stats <- calc_summary_stats(
   sample_interval = 1000
 )
 \end{lstlisting}
-\verb;babette; allows for the same functionality as DensiTree.
+\verb;pirouette; allows for the same functionality as DensiTree.
 DensiTree displays the phylogenies in a posterior at the same
 time scale, drawn one over one another, allowing to see the uncertainty in
 topology and branch lengths. 
@@ -360,17 +369,17 @@ and can be plotted as follows:
 plot_densitree(phylos = out$anthus_aco_trees)
 \end{lstlisting}
 Instead of running the full pipeline, 
-\verb;babette; also allows to only create a BEAST2 configuration file.
+\verb;pirouette; also allows to only create a BEAST2 configuration file.
 To create a BEAST2 configuration file, with all settings to default, use:
 
 \begin{lstlisting}[language=R, floatplacement=H]
 create_beast2_input_file(
-  input_filenames = babette::get_babette_path("anthus_aco.fas"),
+  input_filenames = pirouette::get_pirouette_path("anthus_aco.fas"),
   output_filename = "beast2.xml"
 )
 \end{lstlisting}
 This file can then be loaded and edited by BEAUti, 
-run by BEAST2, or run by \verb;babette;: 
+run by BEAST2, or run by \verb;pirouette;: 
 
 \begin{lstlisting}[language=R, floatplacement=H]
 run_beast2(
@@ -394,83 +403,69 @@ obtained from \verb;temp.dir();) to keep
 the working directory clean of intermediate files. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{babette resources}
+\section{pirouette resources}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\verb;babette; is free, libre and open source software available at 
-\url{http://github.com/richelbilderbeek/babette}
+\verb;pirouette; is free, libre and open source software available at 
+\url{http://github.com/richelbilderbeek/pirouette}
 and is licensed under the GNU General Public License v3.0.
-\verb;babette; uses the Travis CI (\url{https://travis-ci.org})
+\verb;pirouette; uses the Travis CI (\url{https://travis-ci.org})
 continuous integration service, which is known to significantly 
 increase the number of bugs exposed (\cite{vasilescu2015}) and increases
 the speed at which new features are added (\cite{vasilescu2015}).
-\verb;babette; has a 100\% code coverage, which correlates with 
+\verb;pirouette; has a 100\% code coverage, which correlates with 
 code quality (\cite{horgan1994,del1995correlation}). 
-\verb;babette; follows Hadley Wickham's style guide (\cite{style_guide}), 
+\verb;pirouette; follows Hadley Wickham's style guide (\cite{style_guide}), 
 which improves software quality (\cite{fang2001}).
-\verb;babette; depends on multiple packages, which are 
+\verb;pirouette; depends on multiple packages, which are 
 \verb;ape; (\cite{APE}), 
-\verb;beautier; (\cite{beautier}),
-\verb;beastier; (\cite{beastier}),
-\verb;devtools; (\cite{devtools}),
-\verb;geiger; (\cite{GEIGER}),
+\verb;babette; (\cite{babette}),
 \verb;ggplot2; (\cite{ggplot2}),
 \verb;knitr; (\cite{knitr}),
+\verb;mcbette; (\cite{mcbette}),
 \verb;phangorn; (\cite{phangorn}),
 \verb;rmarkdown; (\cite{rmarkdown}),
-\verb;seqinr; (\cite{seqinr}),
 \verb;stringr; (\cite{stringr}),
 \verb;testit; (\cite{testit}) and 
-\verb;tracerer; (\cite{tracerer}).
-We tested \verb;babette; to give a clean 
-error message for incorrect input, by
-calling \verb;babette; one million times
-with random or random sensible inputs, 
-using a high performance computer cluster. 
-The test scripts are supplied with \verb;babette;.
+\verb;usethis; (\cite{usethis}).
 
-\verb;babette;'s development takes place on GitHub,
-\url{https://github.com/richelbilderbeek/babette}, 
+\verb;pirouette;'s development takes place on GitHub,
+\url{https://github.com/richelbilderbeek/pirouette}, 
 which accommodates collaboration (\cite{perez2016ten}) 
 and improves transparency (\cite{gorgolewski2016practical}).
-\verb;babette;'s GitHub facilitates feature requests and 
+\verb;pirouette;'s GitHub facilitates feature requests and 
 has guidelines how to do so.
 
-\verb;babette;'s documentation is extensive. All functions are documented
+\verb;pirouette;'s documentation is extensive. All functions are documented
 in the package's internal documentation. For quick use, 
 each exported function shows a minimal example. 
 For easy exploration, each exported function's documentation links to related functions.
-Additionally, \verb;babette; has a vignette that demonstrates extensively how
+Additionally, \verb;pirouette; has a vignette that demonstrates extensively how
 to use it. There is documentation on the GitHub to get started, 
-with a dozen examples of BEAUti screenshots with equivalent \verb;babette; code.
-Finally, \verb;babette; has tutorial videos that can 
+with a dozen examples of BEAUti screenshots with equivalent \verb;pirouette; code.
+Finally, \verb;pirouette; has tutorial videos that can 
 be downloaded or viewed on YouTube, \url{https://goo.gl/weKaaU}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Citation of babette}
+\section{Citation of pirouette}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Scientists using \verb;babette; in a published paper can cite this
-article, and/or cite the \verb;babette; package 
+Scientists using \verb;pirouette; in a published paper can cite this
+article, and/or cite the \verb;pirouette; package 
 directly. To obtain this citation from within an R script, use:
 
 \begin{lstlisting}[language=R]
-> citation("babette")
+> citation("pirouette")
 \end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgements}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Thanks to Yacine Ben Chehida and Paul van Els for supplying their 
-BEAST2 use cases. Thanks again to Paul van Els for sharing his FASTA files 
-for use by this package. Thanks to Leonel Herrera-Alsina, Raphael Scherrer 
-and Giovanni Laudanno for their comments on this package and article.
-Thanks to Huw Ogilvie, Michael Matschiner and one anonymous reviewer for reviewing this article.
-Thanks to rOpenSci, and especially Noam Ross and Guangchuang Yu for reviewing the package's source code.
 We would like to thank the Center for Information Technology of the University 
 of Groningen for their support and for providing access to the Peregrine 
-high performance computing cluster. We thank the Netherlands 
+high performance computing cluster. 
+We thank the Netherlands 
 Organization for Scientific Research (NWO) for financial support 
 through a VICI grant awarded to RSE.
 
@@ -478,14 +473,17 @@ through a VICI grant awarded to RSE.
 \section{Data Accessibility}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-All code is archived at \url{http://github.com/richelbilderbeek/babette_article},
-with DOI \url{https://doi.org/10.5281/zenodo.1251203}.
+All code is archived at \url{http://github.com/richelbilderbeek/pirouette_article},
+with DOI \url{https://doi.org/12.3456/zenodo.1234567}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Authors' contributions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-RJCB and RSE conceived the idea for the package. RJCB created and tested the package, and wrote the first draft of the manuscript. RSE contributed substantially to revisions.
+RJCB, GL and RSE conceived the idea for the package. 
+RJCB created and tested the package, and wrote the first draft of the manuscript.
+GL tested the package and contributed substantially to revisions.
+RSE contributed to revisions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
@@ -495,47 +493,4 @@ RJCB and RSE conceived the idea for the package. RJCB created and tested the pac
 \bibliography{article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h]
-\centering
-\begin{tabular}{ | l | l | }
-\hline
-\textbf{Name} & \textbf{Description} \\
-\hline
-\verb;bbt_run; & Run BEAST2 \\
-\hline
-\verb;create_gtr_site_model; & Create a GTR site model \\
-\verb;create_hky_site_model; & Create an HKY site model \\
-\verb;create_jc69_site_model; & Create a Jukes-Cantor site model \\
-\verb;create_tn93_site_model; & Create a TN93 site model \\
-\hline
-\verb;create_rln_clock_model; & Create a relaxed log-normal clock model \\
-\verb;create_strict_clock_model; & Create a strict clock model \\
-\hline
-\verb;create_bd_tree_prior; & Create a birth-death tree prior \\
-\verb;create_cbs_tree_prior; & Create a coalescent Bayesian skyline tree prior \\
-\verb;create_ccp_tree_prior; & Create a coalescent constant-population tree prior \\
-\verb;create_cep_tree_prior; & Create a coalescent exponential-population tree prior \\
-\verb;create_yule_tree_prior; & Create a Yule tree prior \\
-\hline
-\verb;create_beta_distr; & Create a beta distribution \\
-\verb;create_exp_distr; & Create an exponential distribution \\
-\verb;create_gamma_distr; & Create a gamma distribution \\
-\verb;create_inv_gamma_distr; & Create an inverse gamma distribution \\
-\verb;create_laplace_distr; & Create a Laplace distribution \\
-\verb;create_log_normal_distr; & Create a log-normal distribution \\
-\verb;create_normal_distr; & Create a normal distribution \\
-\verb;create_one_div_x_distr; & Create a 1/X distribution \\
-\verb;create_poisson_distr; & Create a Poisson distribution \\
-\verb;create_uniform_distr; & Create a uniform distribution \\
-\hline
-\end{tabular}
-\caption{babette's main functions}
-\label{tab:functions}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \end{document}
-\grid
-\grid
-\grid
