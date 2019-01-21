@@ -143,6 +143,45 @@ Phylogenies are commonly used to explore evolutionary hypotheses.
   \label{fig:pipeline}
 \end{sidewaysfigure}
 
+The goal of \verb;pirouette; is to measure the inference error BEAST2
+makes from a given/known/true phylogeny. This involves multiple steps,
+described in detail below. 
+In brief: from a given phylogeny, an alignment is simulated, from which a BEAST2
+posterior is inferred, of which its phylogenies are compared with the given
+phylogeny. The more the posterior phylogenies match the given phylogeny,
+the lower the error. The is also the option to generate a 'twin tree',
+that goes through the same pipeline.
+
+The first step simulates a DNA alignment from the given phylogeny.
+One can specify a DNA sequence
+of any length at the root of the phylogeny, a DNA mutation rate, a
+site (also: nucleotide substitution) model, 
+a clock model, a random number generator (RNG) seed and a location
+where the alignment is saved to. This step is relatively fast, but longer
+DNA alignments will noticably slow down the inference step.
+
+The second step selects an inference model, using the alignment.
+The user can specify to use the generative model or select a best model
+from a set of inference models. When selecting the generative model,
+the site and clock model used in the alignment simulation are used
+in inference. Because the given phylogeny (on which the alignment is based)
+may have followed any tree prior (also: speciation model), the user needs
+to specify which tree prior is used in inference. When selecting a best
+model, the alignment is used to find the inference model that has the
+highest evidence (also: marginal likelihood)
+
+
+
+The third step infers a Bayesian posterior from the simulated alignment.
+From the
+DNA alignment a Bayesian posterior is generated, using a user-specified
+inference setup. The given tree is compared with all posterior trees, using
+a user-specified error measurement setup.
+
+
+A first and optional step is to generate a 'twin tree', that will be
+analyzed in the same way as the true tree.
+
 and enables the full BEAST2 workflow from a single R function call,
 %in a similar way to what subsequent usage of BEAUti, DensiTree and Tracer would produce.
 %\verb;pirouette;'s main function is \verb;bbt_run;, which
