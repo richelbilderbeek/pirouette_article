@@ -26,6 +26,9 @@
 \usepackage{pgf}
 \usepackage{bm}
 
+% sidewaysfigure
+\usepackage{rotating}
+
 % Style of listings
 % From http://r.789695.n4.nabble.com/How-to-nicely-display-R-code-with-the-LaTeX-package-listings-tp4648110.html
 \usepackage{fancyvrb} 
@@ -90,11 +93,16 @@
 
 {\bf Keywords:} computational biology, evolution, phylogenetics, BEAST2, pirouette, R
 
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Phylogenies are commonly used to explore evolutionary hypotheses.
+
 %Not only can phylogenies show us how species (or other
 %evolutionary units) are related to each other, 
 %but we can also estimate relevant parameters such as extinction and 
@@ -121,15 +129,19 @@ Phylogenies are commonly used to explore evolutionary hypotheses.
 %\verb;pirouette; enables the creation of a single-script 
 %pipeline from sequence alignments to posterior analysis in R. 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; is written in the R programming language (\cite{R}).
 
-\begin{figure}[h]
+\begin{sidewaysfigure}
+  \centering
   \includegraphics[width=\textwidth]{overview.png}
-\end{figure}
+  \caption{pirouette pipeline}
+  \label{fig:pipeline}
+\end{sidewaysfigure}
 
 and enables the full BEAST2 workflow from a single R function call,
 %in a similar way to what subsequent usage of BEAUti, DensiTree and Tracer would produce.
@@ -169,11 +181,15 @@ and enables the full BEAST2 workflow from a single R function call,
 %implemented are those requested by users. Further extension of \verb;pirouette; 
 %will be based on future user requests.
 
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\verb;piouette; can be installed easily from CRAN:
+\verb;pirouette; can be installed easily from CRAN:
 
 \begin{lstlisting}[language=R, floatplacement=H]
 install.packages("piouette")
@@ -197,6 +213,7 @@ This can be done from within R, using:
 install_beast2()
 \end{lstlisting}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,194 +230,6 @@ phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
 \end{lstlisting}
 
 
-This code will create a (temporary) BEAST2 configuration file,
-from the FASTA file with name \verb;anthus_aco.fas; (which
-is supplied with the package, from \cite{VanEls2018}), 
-using the same default settings as BEAUti, which are, 
-among others, a Jukes-Cantor site model, a strict clock, and a Yule birth tree prior.
-\verb;pirouette; will then execute BEAST2 using that file, and
-parses the output. The returned data structure, named \verb;out;, 
-is a list of parameter estimates (called \verb;estimates;), posterior 
-phylogenies (called \verb;anthus_aco_trees;, named after
-the alignment's name) and MCMC operator performance (\verb;operators;).
-An example of using a different site model, clock model 
-and tree prior is:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-out <- bbt_run(
-  fasta_filenames = "anthus_aco.fas",
-  site_models = create_hky_site_model(),
-  clock_models = create_rln_clock_model(),
-  tree_priors = create_bd_tree_prior()
-)
-\end{lstlisting}
-This code uses an HKY site model, a relaxed log-normal clock model and a 
-birth-death tree prior, each with their default settings in BEAUti.
-Table \ref{tab:functions} shows an overview of all functions to 
-create site models, clock models and tree priors.
-Note that the arguments' names \verb;site_models;, \verb;clock_models; 
-and \verb;tree_priors; are plural, as each of these
-can be (a list of) one or more elements. Each of these arguments must 
-have the same number of elements, so that each alignment has its
-own site model, clock model and tree prior. 
-An example of two alignments, each with its own site model, is:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-out <- bbt_run(
-  fasta_filenames = c(
-    "anthus_aco.fas", 
-    "anthus_nd2.fas"
-  ),
-  site_models = list(
-    create_tn93_site_model(), 
-    create_gtr_site_model()
-  )
-)
-\end{lstlisting}
-\verb;pirouette; also uses the same default prior distributions as BEAUti 
-for each of the site models, clock models and tree priors. 
-For example, by default, a Yule tree prior assumes that the birth rate 
-follows a uniform distribution, 
-from minus infinity to plus infinity. 
-One may prefer a different ddistribution instead. 
-Here is an example how to specify an exponential distribution for
-the birth rate in a Yule tree prior in \verb;pirouette;:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-out <- bbt_run(
-  fasta_filenames = "anthus_aco.fas",
-  tree_priors = create_yule_tree_prior(
-    birth_rate_distr = create_exp_distr()    
-  )
-)
-\end{lstlisting}
-In this same example, one may specify
-the initial shape parameters of the exponential distribution.
-In BEAST2's implementation, an exponential distribution 
-has one shape parameter: its mean, which can be set to any
-value with \verb;BEAUti;. To set the 
-mean value of the exponential distribution to a 
-fixed (non-estimated) value, do: 
-
-\begin{lstlisting}[language=R, floatplacement=H]
-out <- bbt_run(
-  fasta_filenames = "anthus_aco.fas",
-  tree_priors = create_yule_tree_prior(
-    birth_rate_distr = create_exp_distr(
-      mean = create_mean_param(
-        value = 1.0, 
-        estimate = FALSE
-      )
-    )    
-  )
-)
-\end{lstlisting}
-\verb;pirouette; also supports node dating. Like BEAUti, one
-can specify Most Recent Common Ancestor ('MRCA') priors.
-An MRCA prior allows to specify taxa having a common ancestor,
-including a distribution for the date of that ancestor.
-With \verb;pirouette;, this is achieved as follows:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-out <- bbt_run(
-  fasta_filenames = "anthus_aco.fas",
-  mrca_priors = create_mrca_prior(
-    taxa_names = sample(get_taxa_names("anthus_aco.fas"), size = 2),
-    alignment_id = get_alignment_id("anthus_aco.fas"),
-    is_monophyletic = TRUE,
-    mrca_distr = create_normal_distr(
-      mean = create_mean_param(value = 15.0, estimate = FALSE),
-      sigma = create_sigma_param(value = 0.025, estimate = FALSE)
-    )
-  )
-)
-\end{lstlisting}
-Instead of dating the ancestor of two random taxa, any subset of taxa can be selected,
-and multiple sets are allowed.
-\verb;pirouette; allows for the same core functionality as Tracer to show the values of the parameter estimates sampled
-in the BEAST2 run. This is called the "trace" (hence the name).
-The start of the trace, called the "burn-in", is usually discarded, as an MCMC 
-algorithm (such as used by BEAST2) first has to converge to
-its equilibrium and hence the parameter estimates are not 
-representative. By default, Tracer discards the first 10\% of all 
-the parameter estimates. 
-To remove a 20\% burn-in from all parameter estimates 
-in \verb;pirouette;, the following code can be used:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-traces <- remove_burn_ins(
-  traces = out$estimates, 
-  burn_in_fraction = 0.2
-)
-\end{lstlisting}
-Tracer shows the ESSes of each posterior's variables.
-These ESSes are important to determine the strength of the
-inference. As a rule of thumb, an ESS of 200 is acceptable 
-for any parameter estimate.
-To calculate the effective sample sizes (of all estimated variables) in \verb;pirouette;:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-esses <- calc_esses(
-  traces = traces, 
-  sample_interval = 1000
-)
-\end{lstlisting}
-Tracer displays multiple summary statistics for each
-estimated variable: the mean and its standard error, standard deviation,
-variance, median, mode, geometric mean, 95\% highest posterior density interval, 
-auto-correlation time and effective sample size. It displays these statistics per
-variable. In \verb;pirouette;, these summary statistics are collected for
-all estimated parameters at once: 
-
-\begin{lstlisting}[language=R, floatplacement=H]
-sum_stats <- calc_summary_stats(
-  traces = traces, 
-  sample_interval = 1000
-)
-\end{lstlisting}
-\verb;pirouette; allows for the same functionality as DensiTree.
-DensiTree displays the phylogenies in a posterior at the same
-time scale, drawn one over one another, allowing to see the uncertainty in
-topology and branch lengths. 
-The posterior phylogenies are stored as \verb;anthus_aco_trees; in the object \verb;out;,
-and can be plotted as follows:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-plot_densitree(phylos = out$anthus_aco_trees)
-\end{lstlisting}
-Instead of running the full pipeline, 
-\verb;pirouette; also allows to only create a BEAST2 configuration file.
-To create a BEAST2 configuration file, with all settings to default, use:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-create_beast2_input_file(
-  input_filenames = pirouette::get_pirouette_path("anthus_aco.fas"),
-  output_filename = "beast2.xml"
-)
-\end{lstlisting}
-This file can then be loaded and edited by BEAUti, 
-run by BEAST2, or run by \verb;pirouette;: 
-
-\begin{lstlisting}[language=R, floatplacement=H]
-run_beast2(
-  input_filename = "beast2.xml",
-  output_log_filename = "run.log",
-  output_trees_filenames = "posterior.trees",
-  output_state_filename = "final.xml.state"
-)
-\end{lstlisting}
-\verb;run_beast2; is a function that only runs BEAST2, 
-and does not parse the output files (unlike \verb;bbt_run;). 
-In the example above, 
-we specify the names of the desired BEAST2 
-output files explicitly, and these will be created in the
-R working directory, after which they can be inspected 
-with other tools, or used to continue a BEAST2 run.
-When the names of these files are not specified, 
-both \verb;bbt_run; and \verb;run_beast2;
-put these files in the default temporary folder (as
-obtained from \verb;temp.dir();) to keep
-the working directory clean of intermediate files. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
@@ -419,7 +248,7 @@ code quality (\cite{horgan1994,del1995correlation}).
 which improves software quality (\cite{fang2001}).
 \verb;pirouette; depends on multiple packages, which are 
 \verb;ape; (\cite{APE}), 
-\verb;babette; (\cite{babette}),
+\verb;babette; (\cite{bilderbeek2018babette}),
 \verb;ggplot2; (\cite{ggplot2}),
 \verb;knitr; (\cite{knitr}),
 \verb;mcbette; (\cite{mcbette}),
