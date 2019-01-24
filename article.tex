@@ -125,12 +125,27 @@ concealed state [?MUSSE] or a combination of all [secSSE model, Leonel].
 
 Diversification models are getting more complex over time. There are many
 reasons for this. One reason is the increase in computing power,
-allowing this heightened complexity to be possible.
+which allows this heightened complexity possible.
 Another reason is to explore a process that is not
 yet captured by the other diversification models. An example of this
 is the multiple-birth model [Laudanno, Bilderbeek & Etienne, in preparation], 
 that is the first model to allow speciation to co-occur.
 
+An open question for each new diversification model is if the increased
+complexity is worth the extra computational resources. There are many
+ways to answer this question. One possible experiment 
+is to use a phylogeny of the new diversification model,
+simulate its alignment and see how well our
+current inference models are at retrieving the phylogeny.
+If this difference is small enough, current models apparently
+suffice.
+
+\verb;pirouette; is an R package that performs such an experiment,
+and is built on \verb;babette; [Bilderbeek & Etienne, 2018], 
+which calls the popular Bayesian inference tool 
+BEAST2 [X and Bouckaert et al., ????]. With \verb;pirouette;, one
+can easily measure the error made by Bayesian inference in recovering
+any given phylogeny, helping us to valorize new diversification models.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
