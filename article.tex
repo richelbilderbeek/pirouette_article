@@ -67,6 +67,7 @@
 
 %comments
 \newcommand{\giovanni}[1]{\textcolor{blue}{\textbf{[GL: #1]}}}
+\newcommand{\richel}[1]{\textcolor{orange}{\textbf{[RB: #1]}}}
 
 \begin{document}
 
@@ -78,9 +79,9 @@
     BEAST2 is a popular Bayesian phylogenetics software tool,
     that takes an alignment and inference model to create a
     posterior of jointly-estimated phylogenies and model parameter estimates.
-    When a new macro-evolutionary speciation \giovanni{maybe "diversification" is a better word} model is developed,
+    When a new macro-evolutionary diversification model is developed,
     a good first step is to measure the error BEAST2 makes on a known
-    phylogeny derived from the new speciation process \giovanni{I'd use "diversification mechanisms" in place of "speciation process"}, 
+    phylogeny derived from a new diversification mechanism, 
     with its current set of inference models. \\
   \textbf{2. }
     Here, we present a free, libre and open-source R package, \verb;pirouette;
@@ -120,13 +121,8 @@ Phylogenies are commonly used to explore evolutionary hypotheses.
 \end{sidewaysfigure}
 
 The goal of \verb;pirouette; is to measure the inference error BEAST2
-makes from a given/known/true phylogeny \giovanni{I'd use: "given phylogeny of which full information is provided"}. This involves multiple steps,
-described in detail below.
-
-
-\giovanni{suggestion: expressing the same concepts of the "in brief" section in points could be an easier experience for the reader}
-\giovanni{start example}
-
+makes from a given phylogeny of which full information is provided.
+This involves multiple steps, described in detail below.
 
 The pipeline is summarized by the following steps:
 \begin{enumerate}
@@ -136,38 +132,31 @@ The pipeline is summarized by the following steps:
 \end{enumerate}
 There is also the option to generate a 'twin tree',
 that goes through the same pipeline.
-\giovanni{end example}
-
-
-In brief: from a given phylogeny, an alignment is simulated, from which a BEAST2
-posterior is inferred, of which its phylogenies are compared with the given
-phylogeny. The more the posterior phylogenies match the given phylogeny,
-the lower the error. There is also the option to generate a 'twin tree',
-that goes through the same pipeline.
 
 The first step simulates a DNA alignment from the given phylogeny.
 One can specify a DNA sequence
 of any length at the root of the phylogeny, a DNA mutation rate, a
-site (also: \giovanni{I'd use "i.e."} nucleotide substitution) model, 
+site (i.e. nucleotide substitution) model, 
 a clock model, a random number generator (RNG) seed and a location
 where the alignment is saved to. This step is relatively fast, but longer
 DNA alignments will noticeably slow down the inference step.
 
 The second step selects an inference model, using the alignment.
-The user can specify \giovanni{whether} to use the generative model or select a best model
+The user can specify whether to use the generative model or select a best model
 from a set of inference models. 
 When selecting the generative model,
 the site and clock model used in the alignment simulation are used
-in \giovanni{the} inference. Because the given phylogeny (on which the alignment is based)
-may have followed any tree prior (also: \giovanni{I'd use "i.e."} speciation model), the user needs
-to specify which tree prior is used in \giovanni{the} inference. 
-When selecting a \giovanni{I'd use "the"} best
+in the inference. Because the given phylogeny (on which the alignment is based)
+may have followed any tree prior (i.e. speciation model), the user needs
+to specify which tree prior is used in the inference. 
+When selecting for the best
 model, the alignment is used to find the inference model that has the
-highest evidence (also: \giovanni{I'd use "i.e."} marginal likelihood) from a set of inference models.
+highest evidence (i.e. marginal likelihood) from a set of inference models.
 The evidence of an inference model is estimated using a nested sampling (NS)
 approach, as described in \cite{maturana2018model}. The nested sampling is
 performed by \verb;babette;, that call the 'NS' BEAST2 package. 
-Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac; inference model selection is not available on Windows.
+Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac; 
+inference model selection is not available on Windows.
 
 The third step infers a Bayesian posterior from the simulated alignment,
 using the inference model(s) selected in the previous step. The user
@@ -180,13 +169,23 @@ An MRCA prior allows the inferred phylogeny to have a dated crown age.
 The fourth step measures the inference error, using the phylogenies in the
 Bayesian posterior. These phylogenies are compared to the given
 phylogeny using an error statistic, which is the nLTT 
-statistic \cite{janzen2015approximate}. Additionally, the user can specify the
-proportion of posterior phylogenies to discard (also called: the burn-in \giovanni{as far as I know the burn-in is to discard the start of a chain because it's still too far from the convergence, see http://www.beast2.org/glossary/}).
+statistic \cite{janzen2015approximate} by default,
+but also an custom error statistic is supplied, based
+on the absolute difference in the gamma statistic [Pybus & Harvy]. 
+Additionally, the user can specify the
+proportion of posterior phylogenies to 
+discard (i.e. the burn-in), throwing away the first 10%
+of all phylogenies by default. This burn-in is used to discard
+the part of the MCMC chain that has not yet converged to a
+representative part of state space.
 
 An optional step is to generate a 'twin tree', that will be
 analyzed in the same way as the true tree. The twin tree has the same
 topology as the given phylogeny, yet its branch lengths follow the same
 distribution as a Yule (pure-birth) or (constant rate) birth-death tree prior.
+The use of such a twin tree, is to assess the minimum level of noise (i.e. 
+error) BEAST2 makes when the input (the twin phylogeny) has an ideal branch
+length distribution.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
@@ -202,9 +201,10 @@ For the most up-to-date version,
 one can download and install the package from \verb;pirouette;'s GitHub repository:
 
 \begin{lstlisting}[language=R, floatplacement=H]
-usthis::install_github("richelbilderbeek/pirouette")
+usethis::install_github("richelbilderbeek/pirouette")
 \end{lstlisting}
-\giovanni{is "usthis" supposed to be "devtools"?}
+\giovanni{is "usethis" supposed to be "devtools"?}
+\richel{"usethis" is the next "devtools", "devtools" will be deprecated in the future}
 To start using \verb;pirouette;, load its functions in the global namespace first:
 
 \begin{lstlisting}[language=R, floatplacement=H]
@@ -216,7 +216,13 @@ This can be done from within R, using:
 \begin{lstlisting}[language=R, floatplacement=H]
 install_beast2()
 \end{lstlisting}
+For the option to select inference models,
+\verb;pirouette; uses the "NS" BEAST2 package [Maturana et al.].
+It can be installed from within R, using:
 
+\begin{lstlisting}[language=R, floatplacement=H]
+install_beast2_pkg("NS")
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: first research question}
@@ -224,7 +230,7 @@ install_beast2()
 
 A first research question that \verb;pirouette; answers is:
 What is the error BEAST2 makes from a phylogeny using the same 
-speciation \giovanni{I'd use: "diversification"} model as it was generated by?
+diversification model as it was generated by?
 
 We start with an idealised birth-death tree of five taxa and a crown age of 10:
 
@@ -239,7 +245,7 @@ The first step in \verb;pirouette; is to simulate a DNA alignment from the
 given phylogeny. To do so, we must specify the DNA root sequence
 and a mutation rate. In this example, the DNA root sequence consists
 out of four block of 250 nucleotides each, where the per-nucleotide
-mutation rate is on average \giovanni{I don't think it's correct to say that's "on average". Usually when you have a rate $\lambda$ you suppose to use a Poisson process generated by this rate: $\frac{\lambda^k e^\lambda}{k!}$. $\lambda$ turns out to be also the expected number of occurrences} 0.1 mutations per unit time:
+mutation rate is 0.1 mutations per unit time.
 
 \begin{lstlisting}[language=R, floatplacement=H]
 alignment_params <- create_alignment_params(
@@ -249,12 +255,11 @@ alignment_params <- create_alignment_params(
 \end{lstlisting}
 
 The second step is to select how an inference model is picked.
-We just select the generative model, which consists in a collection of three elements: a site model, a clock
+We just select the generative model, which consists in a collection of 
+three elements: a site model, a clock
 model of the alignment and a birth-death tree prior
 to be the generative tree prior.
 
-% Note that this syntax does not work yet, see
-% https://github.com/richelbilderbeek/pirouette/issues/36
 \begin{lstlisting}[language=R, floatplacement=H]
 model_select_param <- create_gen_model_select_param(
   alignment_params = alignment_params,
@@ -292,8 +297,8 @@ A second research question that \verb;pirouette; answers, is:
 What is the error BEAST2 makes from a phylogeny when
 picking the best inference model?
 
-Here we start with a tree \giovanni{generated} from an unknown speciation \giovanni{I'd use: "diversification"} model,
-that has four taxa and a crown age of 5:
+Here we start with a tree generated from an unknown 
+diversification model, that has four taxa and a crown age of 5:
 
 % Need idealised birth-death tree
 % From https://github.com/richelbilderbeek/pirouette_article/issues/1
@@ -303,22 +308,13 @@ phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
 \end{lstlisting}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the 
-given phylogeny. We'll use the same parameters here:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-alignment_params <- create_alignment_params(
-  root_sequence = create_blocked_dna(length = 1000),
-  mutation_rate = 0.1
-)
-\end{lstlisting}
+given phylogeny. We'll re-use the alignment parameters of the previous example.
 
 The second step is to select how an inference model is picked.
 We will let the inference model that has the highest evidence be used
 in the Bayesian inference. By default, \verb;pirouette; will try
 all combinations of site models, clock models and tree priors.
 
-% Note that this syntax does not work yet, see
-% https://github.com/richelbilderbeek/pirouette/issues/36
 \begin{lstlisting}[language=R, floatplacement=H]
 model_select_param <- create_best_model_select_param()
 \end{lstlisting}
@@ -349,54 +345,22 @@ The resulting figure is shown in figure 3.
 \section{Usage: third research question}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\giovanni{I noticed that "phylogeny", "alignment params" and "model select param" are needed for all the three research questions. Some times, though, you repeat yourself. In an article you want to be as concise as possible so I'd suggest to avoid repetitions. One solution could be to summarize all the parameter settings in a summary scheme}
-
 A third research question that \verb;pirouette; answers is:
 What is the error BEAST2 makes from a phylogeny 
 picking the best inference model, compared to the background noise?
 
-Here we start again with a tree from an unknown speciation \giovanni{I'd use: "diversification"} model,
-that has four taxa and a crown age of 5:
-
-% Need idealised birth-death tree
-% From https://github.com/richelbilderbeek/pirouette_article/issues/1
-% and https://github.com/richelbilderbeek/pirouette/issues/35
-\begin{lstlisting}[language=R, floatplacement=H]
-phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
-\end{lstlisting}
-
-The first step in \verb;pirouette; is to simulate a DNA alignment from the 
-given phylogeny. We'll use the same parameters here:
-
-\begin{lstlisting}[language=R, floatplacement=H]
-alignment_params <- create_alignment_params(
-  root_sequence = create_blocked_dna(length = 1000),
-  mutation_rate = 0.1
-)
-\end{lstlisting}
-
-The second step is to select how an inference model is picked.
-We will let the inference model that has the highest evidence be used
-in the Bayesian inference. By default, \verb;pirouette; will try
-all combinations of site models, clock models and tree priors.
-
-% Note that this syntax does not work yet, see
-% https://github.com/richelbilderbeek/pirouette/issues/36
-\begin{lstlisting}[language=R, floatplacement=H]
-model_select_param <- create_best_model_select_param()
-\end{lstlisting}
-
-Also here, the third and fourth step have sensible defaults. 
+We use all the same settings as the previous model:
+phylogeny, alignment parameters, inference model selection,
+shared inference parameters and error measuring parameters.  
 
 This time, we are interested in creating a twin tree. A twin tree
 has the same topology as the given tree, yet its branch lengths follow
-a birth-death distribution. Creating a twinning parameter is easy,
+an idealized birth-death distribution. Creating a twinning parameter is easy,
 as it has sensible default settings:
 
 \begin{lstlisting}[language=R, floatplacement=H]
 twinning_params <- create_twinning_params()
 \end{lstlisting}
-
 
 We can now measure the errors BEAST2
 makes when inferring the given phylogeny, compared
