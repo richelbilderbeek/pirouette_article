@@ -105,31 +105,42 @@
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The development of new powerful inference tools, 
+such as BEAST [\cite{drummond2007beast}] or MrBayes [\cite{huelsenbeck2001mrbayes}], 
+provides us the possibility to build phylogenetic trees 
+from genetic material extracted from extant organisms.
+This has constituted a big step forward 
+in doing experiments to elucidate on how species 
+evolve.
+Having access to this new kind of tools has given rise 
+to a high interest in understanding what are the main drivers 
+and modes for diversification processes. 
 
-Phylogenies are commonly used to explore evolutionary hypotheses.
-The mode of diversification is one such hypothesis.
-Phylogenies constructed from DNA alignments are commonly fit to
-diversification models, or the other way around. For example,
-[Etienne \& Rosindell 2012] fit four bird phylogenies to the protracted
-diversification model.
-\giovanni{ALTERNATIVE VERSION: The development of new powerful inference tools, such as BEAST [\cite{drummond2007beast}] or MrBayes [\cite{huelsenbeck2001mrbayes}], provided us the possibility to build phylogenetic trees from genetic material extracted from extant organisms. This has constituted a big step forward in the general understanding on how species evolved (this can be improved). Having access to this new kind of data has given rise to a high interest in understanding what are the main drivers and modes for diversification processes. }
-
-There are plenty of diversification models: constant-birth [Yule, 19..],
-birth-death [\cite{nee1994reconstructed}], time-dependent [?], diversity 
-dependent [\cite{etienne2011diversity}], protracted 
-birth-death [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}],
+There are plenty of diversification models: 
+constant-birth [Yule, 19..],
+birth-death [\cite{nee1994reconstructed}], 
+time-dependent [Rabosky D., LASER package?], 
+diversity dependent [\cite{etienne2011diversity}], 
+protracted birth-death [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}],
 multiple-birth death [Laudanno, Bilderbeek, Haegeman \& Etienne, in preparation],
 a rate shifting birth-death model [the SLS model. Laudanno, Haegeman \& Etienne, in preparation]
 punctuated equilibrium aka early burst [?Harmon],
 dependent on a binary trait [\cite{maddison2007estimating}], 
 multiple state trait [\cite{fitzjohn2012diversitree}],
-concealed state [\cite{beaulieu2016detecting}] or even a combination of multiple concealed and observable states [\cite{herrera2018detecting}].
-\giovanni{
-@Richel: I am wondering if it might be worth to give a brief explanation on the philosophy of the aforementioned models, to explain why we want to simulate the processes. In case, this could be a stub for it:
-Such models usually rely on the assumption that a particular diversification process can be explained mainly by specific mechanisms.
-Such mechanisms are built into likelihood functions, which provide the likelihood of the parameters, given the data.
-By maximizing the likelihood is possible to give the best inference of such parameters. It is therefore a standard practice, to validate such models, to test them versus simulated processes generated according to the hypothesised mechanisms.
-}
+concealed state [\cite{beaulieu2016detecting}] 
+or even a combination of multiple concealed and observable states [\cite{herrera2018detecting}].
+
+Such models usually rely on the assumption 
+that a particular diversification process 
+can be explained mainly by a specific mechanism.
+Such a mechanism is built into a likelihood function, 
+which provides the likelihood of the parameters, given the data.
+By maximizing the likelihood, it is possible 
+to estimate the most likely model parameters. 
+It is a standard practice in assessing such models,
+how well they estimate their own parameters
+on simulated phylogenies in which the parameters are known.
+
 Diversification models are getting more complex over time. There are many
 reasons for this. One reason is the increase in computing power,
 which allows this heightened complexity possible.
