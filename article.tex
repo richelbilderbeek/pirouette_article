@@ -110,7 +110,7 @@ Phylogenies are commonly used to explore evolutionary hypotheses.
 The mode of diversification is one such hypothesis.
 Phylogenies constructed from DNA alignments are commonly fit to
 diversification models, or the other way around. For example,
-[Etienne $\&$ Rosindell 2012] fit four bird phylogenies to the protracted
+[Etienne \& Rosindell 2012] fit four bird phylogenies to the protracted
 diversification model.
 \giovanni{ALTERNATIVE VERSION: The development of new powerful inference tools, such as BEAST [\cite{drummond2007beast}] or MrBayes [\cite{huelsenbeck2001mrbayes}], provided us the possibility to build phylogenetic trees from genetic material extracted from extant organisms. This has constituted a big step forward in the general understanding on how species evolved (this can be improved). Having access to this new kind of data has given rise to a high interest in understanding what are the main drivers and modes for diversification processes. }
 
@@ -118,8 +118,8 @@ There are plenty of diversification models: constant-birth [Yule, 19..],
 birth-death [\cite{nee1994reconstructed}], time-dependent [?], diversity 
 dependent [\cite{etienne2011diversity}], protracted 
 birth-death [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}],
-multiple-birth death [Laudanno, Bilderbeek, Haegeman $\&$ Etienne, in preparation],
-a rate shifting birth-death model [the SLS model. Laudanno, Haegeman $\&$ Etienne, in preparation]
+multiple-birth death [Laudanno, Bilderbeek, Haegeman \& Etienne, in preparation],
+a rate shifting birth-death model [the SLS model. Laudanno, Haegeman \& Etienne, in preparation]
 punctuated equilibrium aka early burst [?Harmon],
 dependent on a binary trait [\cite{maddison2007estimating}], 
 multiple state trait [\cite{fitzjohn2012diversitree}],
@@ -135,7 +135,7 @@ reasons for this. One reason is the increase in computing power,
 which allows this heightened complexity possible.
 Another reason is to explore a process that is not
 yet captured by the other diversification models. An example of this
-is the multiple-birth model [Laudanno, Bilderbeek, Haegeman $\&$ Etienne, in preparation], 
+is the multiple-birth model [Laudanno, Bilderbeek, Haegeman \& Etienne, in preparation], 
 that is the first model to allow speciation to co-occur.
 
 An open question for each new diversification model is whether the increased
@@ -148,7 +148,7 @@ If this difference is small enough, current models apparently
 suffice.
 
 \verb;pirouette; is an R package that performs such an experiment,
-and is built on \verb;babette; [Bilderbeek $\&$ Etienne, 2018], 
+and is built on \verb;babette; [Bilderbeek \& Etienne, 2018], 
 which calls the popular Bayesian inference tool 
 BEAST2 [\cite{bouckaert2014beast}]. With \verb;pirouette;, one
 can easily measure the error made by Bayesian inference in recovering
@@ -218,7 +218,7 @@ Bayesian posterior. These phylogenies are compared to the given
 phylogeny using an error statistic, which is the nLTT 
 statistic (\cite{janzen2015approximate}) by default,
 but also a custom error statistic is supplied, based
-on the absolute difference in the gamma statistic [Pybus $\&$ Harvy]. 
+on the absolute difference in the gamma statistic [Pybus \& Harvy]. 
 Additionally, the user can specify the
 proportion of posterior phylogenies to 
 discard (i.e. the burn-in), throwing away the first $10\%$
