@@ -105,34 +105,41 @@
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 Phylogenies are commonly used to explore evolutionary hypotheses.
 The mode of diversification is one such hypothesis.
 Phylogenies constructed from DNA alignments are commonly fit to
 diversification models, or the other way around. For example,
-[Etienne \& Rosindell 2012] fit four bird phylogenies to the protracted
+[Etienne $\&$ Rosindell 2012] fit four bird phylogenies to the protracted
 diversification model.
+\giovanni{ALTERNATIVE VERSION: The development of new powerful inference tools, such as BEAST [\cite{drummond2007beast}] or MrBayes [\cite{huelsenbeck2001mrbayes}], provided us the possibility to build phylogenetic trees from genetic material extracted from extant organisms. This has constituted a big step forward in the general understanding on how species evolved (this can be improved). Having access to this new kind of data has given rise to a high interest in understanding what are the main drivers and modes for diversification processes. }
 
 There are plenty of diversification models: constant-birth [Yule, 19..],
-birth-death [Nee et al., 19..], time-dependent [?], diversity 
-dependent [Etienne \& ?, approx 2012], protracted 
-birth-death [Rosindell \& Etienne, 2011][Etienne \& Rosindell, 2012],
-multiple-birth death [Laudanno, Bilderbeek \& Etienne, in preparation],
-a rate shifting birth-death model [the SLS model. Laudanno \& Etienne, in preparation]
+birth-death [\cite{nee1994reconstructed}], time-dependent [?], diversity 
+dependent [\cite{etienne2011diversity}], protracted 
+birth-death [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}],
+multiple-birth death [Laudanno, Bilderbeek, Haegeman $\&$ Etienne, in preparation],
+a rate shifting birth-death model [the SLS model. Laudanno, Haegeman $\&$ Etienne, in preparation]
 punctuated equilibrium aka early burst [?Harmon],
-dependent on a binary trait [BISSE model, ?Maddison], 
-continuous trait [HISSE model],
-concealed state [?MUSSE] or a combination of all [secSSE model, Leonel].
-
+dependent on a binary trait [\cite{maddison2007estimating}], 
+multiple state trait [\cite{fitzjohn2012diversitree}],
+concealed state [\cite{beaulieu2016detecting}] or even a combination of multiple concealed and observable states [\cite{herrera2018detecting}].
+\giovanni{
+@Richel: I am wondering if it might be worth to give a brief explanation on the philosophy of the aforementioned models, to explain why we want to simulate the processes. In case, this could be a stub for it:
+Such models usually rely on the assumption that a particular diversification process can be explained mainly by specific mechanisms.
+Such mechanisms are built into likelihood functions, which provide the likelihood of the parameters, given the data.
+By maximizing the likelihood is possible to give the best inference of such parameters. It is therefore a standard practice, to validate such models, to test them versus simulated processes generated according to the hypothesised mechanisms.
+}
 Diversification models are getting more complex over time. There are many
 reasons for this. One reason is the increase in computing power,
 which allows this heightened complexity possible.
 Another reason is to explore a process that is not
 yet captured by the other diversification models. An example of this
-is the multiple-birth model [Laudanno, Bilderbeek \& Etienne, in preparation], 
+is the multiple-birth model [Laudanno, Bilderbeek, Haegeman $\&$ Etienne, in preparation], 
 that is the first model to allow speciation to co-occur.
 
-An open question for each new diversification model is if the increased
-complexity is worth the extra computational resources. There are many
+An open question for each new diversification model is whether the increased
+complexity is worth the extra computational resources \giovanni{I think here it is not only a matter of computational resources. I believe there two more factors: 1) developing a likelihood model takes time, human resources and therefore fundings; 2) in principle you can elaborate any model to be as complex as possibly requested, however there is a diminishing return on this. In fact the purpose of modelling for complex systems such as biology is to hypothesize the main driving factors of a process and trying to prove that they are indeed able to explain the main features of the phenomenon you want to explain. In my opinion the job of a modeller is to try to disentangle the intrinsic complexity of a system highlighting the main reasons of its behaviour. In such a light you don't want your model to be unnecessary complex.}. There are many
 ways to answer this question. One possible experiment 
 is to use a phylogeny of the new diversification model,
 simulate its alignment and see how well our
@@ -141,9 +148,9 @@ If this difference is small enough, current models apparently
 suffice.
 
 \verb;pirouette; is an R package that performs such an experiment,
-and is built on \verb;babette; [Bilderbeek \& Etienne, 2018], 
+and is built on \verb;babette; [Bilderbeek $\&$ Etienne, 2018], 
 which calls the popular Bayesian inference tool 
-BEAST2 [X and Bouckaert et al., ????]. With \verb;pirouette;, one
+BEAST2 [\cite{bouckaert2014beast}]. With \verb;pirouette;, one
 can easily measure the error made by Bayesian inference in recovering
 any given phylogeny, helping us to valorize new diversification models.
 
@@ -161,12 +168,12 @@ any given phylogeny, helping us to valorize new diversification models.
 \end{sidewaysfigure}
 
 The goal of \verb;pirouette; is to measure the inference error BEAST2
-makes from a given phylogeny of which full information is provided.
-This involves multiple steps, described in detail below.
+makes from a given phylogeny of which full information is provided \giovanni{is this true? do we also provide information about extinct species or we just use reconstructed tree (which always lack a lot of information)?}.
 
-The pipeline is summarized by the following steps:
+The pipeline is summarized by the following steps, which will be described in detail below:
 \begin{enumerate}
     \item from a given phylogeny an alignment is simulated;
+    \item from the alignment an inference model is chosen;
     \item the alignment is used as BEAST2 input to infer a posterior distribution of phylogenies;
     \item posterior phylogenies are compared with the given phylogenies to estimate the error we make. The bigger the match, the lower the error;
 \end{enumerate}
@@ -209,12 +216,12 @@ An MRCA prior allows the inferred phylogeny to have a dated crown age.
 The fourth step measures the inference error, using the phylogenies in the
 Bayesian posterior. These phylogenies are compared to the given
 phylogeny using an error statistic, which is the nLTT 
-statistic \cite{janzen2015approximate} by default,
-but also an custom error statistic is supplied, based
-on the absolute difference in the gamma statistic [Pybus \& Harvy]. 
+statistic (\cite{janzen2015approximate}) by default,
+but also a custom error statistic is supplied, based
+on the absolute difference in the gamma statistic [Pybus $\&$ Harvy]. 
 Additionally, the user can specify the
 proportion of posterior phylogenies to 
-discard (i.e. the burn-in), throwing away the first 10%
+discard (i.e. the burn-in), throwing away the first $10\%$
 of all phylogenies by default. This burn-in is used to discard
 the part of the MCMC chain that has not yet converged to a
 representative part of state space.
@@ -243,8 +250,7 @@ one can download and install the package from \verb;pirouette;'s GitHub reposito
 \begin{lstlisting}[language=R, floatplacement=H]
 usethis::install_github("richelbilderbeek/pirouette")
 \end{lstlisting}
-\giovanni{is "usethis" supposed to be "devtools"?}
-\richel{"usethis" is the next "devtools", "devtools" will be deprecated in the future}
+
 To start using \verb;pirouette;, load its functions in the global namespace first:
 
 \begin{lstlisting}[language=R, floatplacement=H]
@@ -296,9 +302,9 @@ alignment_params <- create_alignment_params(
 
 The second step is to select how an inference model is picked.
 We just select the generative model, which consists in a collection of 
-three elements: a site model, a clock
+three elements: a site model \giovanni{do we have to explain what a site model is or what are the options?}, a clock
 model of the alignment and a birth-death tree prior
-to be the generative tree prior.
+to be the generative tree prior. \giovanni{would it be helpful to the reader to explicit that site and clock models are automatically taken from the generative model?}
 
 \begin{lstlisting}[language=R, floatplacement=H]
 model_select_param <- create_gen_model_select_param(
@@ -356,7 +362,7 @@ phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
 \end{lstlisting}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the 
-given phylogeny. We'll re-use the alignment parameters of the previous example.
+given phylogeny. We'll re-use the alignment parameters of the previous example \giovanni{it might be nice to add an explicit ref to the alignmentparams code}.
 
 The second step is to select how an inference model is picked.
 We will let the inference model that has the highest evidence be used
@@ -405,7 +411,7 @@ picking the best inference model, compared to the background noise?
 
 We use all the same settings as the previous model:
 phylogeny, alignment parameters, inference model selection,
-shared inference parameters and error measuring parameters.  
+shared inference parameters and error measuring parameters \giovanni{it might be nice to add an explicit ref to the lines of code we are referring to}.  
 
 This time, we are interested in creating a twin tree. A twin tree
 has the same topology as the given tree, yet its branch lengths follow
