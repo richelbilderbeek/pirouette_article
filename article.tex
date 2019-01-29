@@ -109,15 +109,15 @@ Phylogenies are commonly used to explore evolutionary hypotheses.
 The mode of diversification is one such hypothesis.
 Phylogenies constructed from DNA alignments are commonly fit to
 diversification models, or the other way around. For example,
-[Etienne & Rosindell 2012] fit four bird phylogenies to the protracted
+[Etienne \& Rosindell 2012] fit four bird phylogenies to the protracted
 diversification model.
 
 There are plenty of diversification models: constant-birth [Yule, 19..],
 birth-death [Nee et al., 19..], time-dependent [?], diversity 
-dependent [Etienne & ?, approx 2012], protracted 
-birth-death [Rosindell & Etienne, 2011][Etienne & Rosindell, 2012],
-multiple-birth death [Laudanno, Bilderbeek & Etienne, in preparation],
-a rate shifting birth-death model [the SLS model. Laudanno & Etienne, in preparation]
+dependent [Etienne \& ?, approx 2012], protracted 
+birth-death [Rosindell \& Etienne, 2011][Etienne \& Rosindell, 2012],
+multiple-birth death [Laudanno, Bilderbeek \& Etienne, in preparation],
+a rate shifting birth-death model [the SLS model. Laudanno \& Etienne, in preparation]
 punctuated equilibrium aka early burst [?Harmon],
 dependent on a binary trait [BISSE model, ?Maddison], 
 continuous trait [HISSE model],
@@ -128,7 +128,7 @@ reasons for this. One reason is the increase in computing power,
 which allows this heightened complexity possible.
 Another reason is to explore a process that is not
 yet captured by the other diversification models. An example of this
-is the multiple-birth model [Laudanno, Bilderbeek & Etienne, in preparation], 
+is the multiple-birth model [Laudanno, Bilderbeek \& Etienne, in preparation], 
 that is the first model to allow speciation to co-occur.
 
 An open question for each new diversification model is if the increased
@@ -141,7 +141,7 @@ If this difference is small enough, current models apparently
 suffice.
 
 \verb;pirouette; is an R package that performs such an experiment,
-and is built on \verb;babette; [Bilderbeek & Etienne, 2018], 
+and is built on \verb;babette; [Bilderbeek \& Etienne, 2018], 
 which calls the popular Bayesian inference tool 
 BEAST2 [X and Bouckaert et al., ????]. With \verb;pirouette;, one
 can easily measure the error made by Bayesian inference in recovering
@@ -211,7 +211,7 @@ Bayesian posterior. These phylogenies are compared to the given
 phylogeny using an error statistic, which is the nLTT 
 statistic \cite{janzen2015approximate} by default,
 but also an custom error statistic is supplied, based
-on the absolute difference in the gamma statistic [Pybus & Harvy]. 
+on the absolute difference in the gamma statistic [Pybus \& Harvy]. 
 Additionally, the user can specify the
 proportion of posterior phylogenies to 
 discard (i.e. the burn-in), throwing away the first 10%
@@ -328,6 +328,10 @@ pir_plot(errors)
 % TODO: write script to create figure 2, see
 % https://github.com/richelbilderbeek/pirouette/issues/37
 The resulting figure is shown in figure 2.
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{figure_2.png}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: second research question}
