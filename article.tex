@@ -194,7 +194,7 @@ any given phylogeny, helping us to valorize new diversification models.
 \end{sidewaysfigure}
 
 The goal of \verb;pirouette; is to measure the inference error BEAST2
-makes from a given phylogeny of which full information is provided \giovanni{is this true? do we also provide information about extinct species or we just use reconstructed tree (which always lack a lot of information)?}.
+makes from a given reconstructed phylogeny.
 
 The pipeline is summarized by the following steps, which will be described in detail below:
 \begin{enumerate}
@@ -266,33 +266,33 @@ length distribution.
 
 \verb;pirouette; can be installed easily from CRAN:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 install.packages("pirouette")
 \end{lstlisting}
 
 For the most up-to-date version, 
 one can download and install the package from \verb;pirouette;'s GitHub repository:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 usethis::install_github("richelbilderbeek/pirouette")
 \end{lstlisting}
 
 To start using \verb;pirouette;, load its functions in the global namespace first:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 library(pirouette)
 \end{lstlisting}
 Because \verb;pirouette; calls BEAST2, BEAST2 must be installed. 
 This can be done from within R, using:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 install_beast2()
 \end{lstlisting}
 For the option to select inference models,
 \verb;pirouette; uses the "NS" BEAST2 package [Maturana et al.].
 It can be installed from within R, using:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 install_beast2_pkg("NS")
 \end{lstlisting}
 
@@ -309,7 +309,7 @@ We start with an idealised birth-death tree of five taxa and a crown age of 10:
 % Need idealised birth-death tree
 % From https://github.com/richelbilderbeek/pirouette_article/issues/1
 % and https://github.com/richelbilderbeek/pirouette/issues/35
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
 \end{lstlisting}
 
@@ -319,20 +319,30 @@ and a mutation rate. In this example, the DNA root sequence consists
 out of four block of 250 nucleotides each, where the per-nucleotide
 mutation rate is 0.1 mutations per unit time.
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
   mutation_rate = 0.1
 )
 \end{lstlisting}
 
+By default, an alignment is created using a Jukes-Cantor (JC) site model
+and a strict clock model. A JC site model assumes that mutations
+between all nucloetides are constant at an equal rate. 
+A strict clock model assumes that
+the mutation rate of all species is equal and constant.
+Due to this, we state that the generative model for the alignment is
+a JC site model and a strict clock model.
+
 The second step is to select how an inference model is picked.
 We just select the generative model, which consists in a collection of 
-three elements: a site model \giovanni{do we have to explain what a site model is or what are the options?}, a clock
-model of the alignment and a birth-death tree prior
-to be the generative tree prior. \giovanni{would it be helpful to the reader to explicit that site and clock models are automatically taken from the generative model?}
+three elements: a site model, clock model and tree prior.
+If we know how the generative model of the alignment, as we did above,
+we can re-use that information. We do still need to specify 
+a generative tree prior, which is the tree prior underlying the phylogeny.
+In this case, we'll pick a (constant-rate) birth-death model:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 model_select_param <- create_gen_model_select_param(
   alignment_params = alignment_params,
   tree_prior = create_bd_tree_prior()
@@ -343,7 +353,7 @@ The third and fourth step have sensible defaults, and we are not
 interested in using a twin tree. We can now measure the errors BEAST2
 makes when inferring the given phylogeny in this way:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 errors <- pir_run(
   phylogeny,
   alignment_params = alignment_params,
@@ -353,7 +363,7 @@ errors <- pir_run(
 
 \verb;pirouette; has a nice plotting function:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 pir_plot(errors)
 \end{lstlisting}
 
@@ -383,19 +393,20 @@ diversification model, that has four taxa and a crown age of 5:
 % Need idealised birth-death tree
 % From https://github.com/richelbilderbeek/pirouette_article/issues/1
 % and https://github.com/richelbilderbeek/pirouette/issues/35
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
 \end{lstlisting}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the 
-given phylogeny. We'll re-use the alignment parameters of the previous example \giovanni{it might be nice to add an explicit ref to the alignmentparams code}.
-
+given phylogeny. We'll re-use the alignment parameters of the previous example 
+\richel{TODO: add ref to code}
+ 
 The second step is to select how an inference model is picked.
 We will let the inference model that has the highest evidence be used
 in the Bayesian inference. By default, \verb;pirouette; will try
 all combinations of site models, clock models and tree priors.
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 model_select_param <- create_best_model_select_param()
 \end{lstlisting}
 
@@ -403,7 +414,7 @@ Also here, the third and fourth step have sensible defaults, and we are not
 interested in using a twin tree. We can now measure the errors BEAST2
 makes when inferring the given phylogeny like this:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 errors <- pir_run(
   phylogeny,
   alignment_params = alignment_params,
@@ -413,7 +424,7 @@ errors <- pir_run(
 
 Again, showing the results:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 pir_plot(errors)
 \end{lstlisting}
 
@@ -437,14 +448,15 @@ picking the best inference model, compared to the background noise?
 
 We use all the same settings as the previous model:
 phylogeny, alignment parameters, inference model selection,
-shared inference parameters and error measuring parameters \giovanni{it might be nice to add an explicit ref to the lines of code we are referring to}.  
+shared inference parameters and error measuring parameters 
+\richel{TODO: add ref to code}
 
 This time, we are interested in creating a twin tree. A twin tree
 has the same topology as the given tree, yet its branch lengths follow
 an idealized birth-death distribution. Creating a twinning parameter is easy,
 as it has sensible default settings:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 twinning_params <- create_twinning_params()
 \end{lstlisting}
 
@@ -452,7 +464,7 @@ We can now measure the errors BEAST2
 makes when inferring the given phylogeny, compared
 to the background noise, like this:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 errors <- pir_run(
   phylogeny,
   twinning_params = twinning_params,
@@ -463,7 +475,7 @@ errors <- pir_run(
 
 Again, showing the results:
 
-\begin{lstlisting}[language=R, floatplacement=H]
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
 pir_plot(errors)
 \end{lstlisting}
 
