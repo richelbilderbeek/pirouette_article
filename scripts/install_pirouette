@@ -29,6 +29,8 @@ module load XZ/5.2.2-foss-2016a
 module load R
 module load ImageMagick
 
+Rscript -e 'install.packages("DDD")'
+Rscript -e 'install.packages("subplex")'
 Rscript -e 'devtools::install_bioc("ggtree")'
 Rscript -e 'devtools::install_github("KlausVigo/phangorn")'
 Rscript -e 'devtools::install_github("richelbilderbeek/nLTT")'
