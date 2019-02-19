@@ -32,7 +32,8 @@ calc_likelihood <- function(
 
 #' Create figure bd for pirouette article
 #' @inheritParams default_params_doc
-#' @return a ggplot2 plot
+#' @return a list containing a tree in phylo format, the same tree in
+#' newick format and the plot of the tree
 #' @author Giovanni Laudanno
 #' @export
 create_fig_bd <- function(
@@ -61,7 +62,18 @@ create_fig_bd <- function(
   figure_bd <- ggtree::ggtree(tree) +
     ggtree::theme_tree2() +
     ggtree::geom_tiplab()
-  figure_bd
+  newick_tree <- ape::write.tree(
+    tree,
+    file = "",
+    append = FALSE,
+    digits = 10,
+    tree.names = FALSE
+  )
+  list(
+    figure_bd = figure_bd,
+    newick_tree = newick_tree,
+    tree = tree
+  )
 }
 
 #' Create figure bd file
@@ -73,7 +85,8 @@ create_fig_bd_file <- function(
   fig_bd_filename = "figure_bd.png"
 ) {
   # create figure
-  fig_bd <- create_fig_bd() # nolint internal function
+  bd_tree <- create_fig_bd() # nolint internal function
+  fig_bd <- bd_tree$figure_bd
 
   # save output
   ggplot2::ggsave(
