@@ -206,8 +206,9 @@ used to simulate alignments. An inference model is a combination of
 site model, clock model, tree prior, an optional node calibration prior
 and setup of the Markov chain Monte Carlo (MCMC) algorithm, 
 used to produce a posterior. Node calibration priors, called 'most
-recent common ancestor' (MRCA) priors within BEAST2 allow, among others,
-to specify a crown age.
+recent common ancestor' (MRCA) priors within BEAST2 allow to create a 
+time-calibrated phylogeny, by specifying a normal distribution around
+an expected time when two or more taxa's ancestors diversified. 
 
 The pipeline is summarized by the following steps, which will be described in detail below:
 \begin{enumerate}
