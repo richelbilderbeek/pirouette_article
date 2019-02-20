@@ -200,11 +200,14 @@ any given phylogeny, helping us to validate new diversification models.
 
 The goal of \verb;pirouette; is to measure the inference error BEAST2
 makes from a given reconstructed phylogeny. For this measurement,
-two models need to be specified. Both models are defined as a combination of 
-site model, clock model and a tree prior. The two kind of models are a 
-generative and inference model. The generative model is used to simulate 
-alignments, the inference model is used to produce a posterior. 
-Generative models always use a (constant-rate) birth-death tree prior.
+two models need to be specified: a generative and an inference model.
+A generative model is a combination of site model, clock model and tree prior,
+used to simulate alignments. An inference model is a combination of 
+site model, clock model, tree prior, an optional node calibration prior
+and setup of the Markov chain Monte Carlo (MCMC) algorithm, 
+used to produce a posterior. Node calibration priors, called 'most
+recent common ancestor' (MRCA) priors within BEAST2 allow, among others,
+to specify a crown age.
 
 The pipeline is summarized by the following steps, which will be described in detail below:
 \begin{enumerate}
