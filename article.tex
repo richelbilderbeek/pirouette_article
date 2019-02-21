@@ -393,7 +393,16 @@ JC site model, strict clock model and Yule tree prior).
 Due to sensible defaults, specifying this
 results in:
 
-\begin{lstlisting}[language=R, floatplacement=H, frame=single]
+\begin{lstlisting}[
+  language=R, 
+  floatplacement=H, frame=single,
+  label = {lst:create_generative_experiment},
+  caption = {
+    Create a default experiment. This default experiment is
+    for a generative model, that is always run, without its evidence measured,
+    assuming a JC, strict, Yule inference model
+  }
+]
 experiments <- list(create_experiment())
 \end{lstlisting}
 
@@ -538,29 +547,21 @@ The resulting figure is shown in figure 3.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 A third research question that \verb;pirouette; answers is:
-What is the error BEAST2 makes from a phylogeny 
-picking the best inference model, compared to the background noise?
+What is the error BEAST2 makes from a phylogeny, 
+when hand-picking an inference model, compared to the background noise?
 
 The following settings are the same as in the previous section:
-phylogeny (listing \ref{lst:unknown_phylogeny}), alignment parameters, inference model selection,
-shared inference parameters and error measuring parameters 
-\richel{TODO: add ref to code}
+phylogeny (listing \ref{lst:unknown_phylogeny}), 
+alignment parameters (listing \ref{lst:create_alignment}), 
+experiments (listing \ref{lst:create_generative_experiment})
+BEAST2 inference and error measuring parameters.
 
 This time, we are interested in creating a twin tree. A twin tree
 has the same topology as the given tree, yet its branch lengths follow
-an idealized 
-\giovanni{
-  I don't think this is true. A twin tree is generated randomly. 
-  If we use the method "maxlikelihood" (see the function "createbdtree") 
-  the tree will be chosen in such a way it will maximizing the likelihood 
-  given the parameters we estimated from the original tree, 
-  but I would not call it "idealized". Furthermore I think it's not obvious to 
-  use the "maxlikelihood" method, as in general the "ideal" scenario should be 
-  established using a distribution of trees. A single tree is always the result 
-  of a stochastic process.
-}
-\richel{we'll discuss this today} 
-birth-death distribution. Creating a twinning parameter is easy,
+a distribution as such that the BEAST2 error will be 
+close to \richel{'close to' is a bit weasly, but currently it is true}
+its minimal error.
+Creating a twinning parameter is easy,
 as it has sensible default settings:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
@@ -571,12 +572,23 @@ We can now measure the errors BEAST2
 makes when inferring the given phylogeny, compared
 to the background noise, like this:
 
+All the \verb;pirouette; arguments are bundled
+and checked by \verb;create_pir_params;:
+
+\begin{lstlisting}[language=R, floatplacement=H, frame=single]
+pir_params <- create_pir_params(
+  alignment_params = alignment_params,
+  experiments = experiments,
+  twinning_params = twinning_params
+)
+\end{lstlisting}
+
+Running:
+
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 errors <- pir_run(
   phylogeny,
-  twinning_params = twinning_params,
-  alignment_params = alignment_params,
-  model_select_params = model_select_param
+  pir_params = pir_params
 )
 \end{lstlisting}
 
@@ -595,11 +607,15 @@ The resulting figure is shown in figure 4
     picking the best inference model, compared to the background noise?
     Here, the twin column shows the error BEAST2 makes on an idealized
     tree, to measure the noise, which is the minimal error. 
-    \giovanni{again, I don't believe that using an "idealized" tree is the best 
-      thing to do. I would rather use more "true trees".}
-    \richel{we'll discuss this today}
   }
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Other examples}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+There are many other examples that can be found in the \verb;pirouette; 
+documentation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
