@@ -357,9 +357,21 @@ the mutation rate of all species is equal and constant.
 Due to this, we state that the generative model for the alignment is
 a JC site model and a strict clock model.
 
-The second step is to select how an inference model is picked.
-We just select the generative model, which consists in a collection of 
-three elements: a site model, clock model and tree prior. 
+In the second step we state our experiments. In this context, we
+define an experiment as a combination of an inference model
+and the conditions under which a Bayesian inference is created.
+
+\begin{table}
+  \begin{tabular}{ | c | c | c | l | }
+    \hline
+    \textbf{model type} & \textbf{run if} & \textbf{measure evidence} & \textbf{inference model} \\ 
+    \hline
+    generative & always & no & generative model \\
+    \hline
+  \end{tabular}
+  \caption{Experimental setup to answer the first research question}
+\end{table}
+
 If we know how the generative model of the alignment, as we did above,
 we can re-use that information. We do still need to specify 
 a generative tree prior, which is the tree prior underlying the phylogeny.
