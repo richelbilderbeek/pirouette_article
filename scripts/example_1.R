@@ -3,9 +3,7 @@
 # Works under Windows
 library(pirouette)
 
-#phylogeny <- create_ideal_tree(n_taxa = 5, crown_age = 10)
-# STUB
-phylogeny <- create_stunning_tree(n_taxa = 5, t_0 = 10)
+phylogeny <- create_ideal_tree(n_taxa = 5, crown_age = 10)
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
