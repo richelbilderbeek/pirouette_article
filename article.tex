@@ -126,7 +126,9 @@ punctuated equilibrium (as known as "early burst") [\cite{harmon2010early}],
 dependent on a binary trait [\cite{maddison2007estimating}], 
 multiple state trait [\cite{fitzjohn2012diversitree}],
 concealed state [\cite{beaulieu2016detecting}] 
-or even a combination of multiple concealed and observable states [\cite{herrera2018detecting}]. \giovanni{we might need to polish this list a little bit}
+or even a combination of multiple concealed and 
+observable states [\cite{herrera2018detecting}]. 
+\giovanni{we might need to polish this list a little bit}
 
 Such models usually rely on the assumption 
 that a particular diversification process 
@@ -176,10 +178,15 @@ suffice.
 \verb;pirouette; is an R package that performs such an experiment,
 and is built on \verb;babette; [Bilderbeek \& Etienne, 2018], 
 which calls the popular Bayesian inference tool 
-BEAST2 [\cite{bouckaert2014beast}]. With \verb;pirouette;, one
+BEAST2 [\cite{bouckaert2014beast}]. 
+With \verb;pirouette;, one
 can easily measure the error made by Bayesian inference in recovering
 any given phylogeny, helping us to validate new diversification models.
-\giovanni{I think we should mention the fact that BEAST2 allows to implement customized tree priors more complicated than the simple yule and bd. These tree priors, in the end, are what we call likelihood in our models, so it's pivotal in proposing our argument, I think.}
+Such a new diversification model can then be added to BEAST2,
+which already supplies multiple speciation models (among others, 
+Yule and birth-death) and also allows to add 
+new diversification models via the BEAST2 package system.
+\richel{rework}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
@@ -195,15 +202,26 @@ any given phylogeny, helping us to validate new diversification models.
 \end{sidewaysfigure}
 
 The goal of \verb;pirouette; is to measure the inference error BEAST2
-makes from a given reconstructed phylogeny \giovanni{We should mention here that the phylogenies that are meant to be submitted to pirouette are simulated phylogenies generated according to the model we want to test}. For this measurement, two models need to be specified: a generative and an inference model. 
-A generative model is a combination of site model, clock model and tree prior,
+makes from a given reconstructed phylogeny 
+\giovanni{
+  We should mention here that the phylogenies that are meant to be 
+  submitted to pirouette are simulated phylogenies generated according 
+  to the model we want to test
+}. 
+To be able to explain how we do this, we first give definitions
+for generative model and inference model: 
+a generative model is a combination of site model, clock model and tree prior,
 used to simulate alignments. An inference model is a combination of 
 site model, clock model, tree prior, an optional node calibration prior
 and setup of the Markov chain Monte Carlo (MCMC) algorithm, 
 used to produce a posterior. Node calibration priors, called 'most
 recent common ancestor' (MRCA) priors within BEAST2 allow to create a 
 time-calibrated phylogeny, by specifying a normal distribution around
-an expected time when two or more taxa's \giovanni{I have the feeling that taxa should be plural here. Should we mention that the group must be monophyletic?} ancestors diversified. 
+an expected time when two or more taxa's 
+\giovanni{
+  I have the feeling that taxa should be plural here. 
+  Should we mention that the group must be monophyletic?
+} ancestors diversified. 
 
 \subsection{pirouette's pipeline}
 The pipeline is summarized by the following steps, which will be described in detail below:
@@ -607,7 +625,27 @@ The resulting figure is shown in figure 4
 
 There are many other examples that can be found in the \verb;pirouette; 
 documentation.
-\giovanni{it could be nice to add a listing with simple commands that refer to the most useful examples}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h]
+\centering
+\begin{tabular}{ | l | l | }
+\hline
+\textbf{Name} & \textbf{Description} \\
+\hline
+\verb;pir_run; & Run \verb;pirouette; \\
+\verb;create_pir_params; & Create the \verb;pirouette; parameters \\
+\hline
+\verb;create_alignment_params; & Create the alignment parameters \\
+\verb;create_twinning_params; & Create the twinning parameters \\
+\verb;create_experiment; & Create one experiment \\
+\verb;create_error_measure_params; & Create the error measurement parameters \\
+\hline
+\end{tabular}
+\caption{pirouette's main functions}
+\label{tab:functions}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
