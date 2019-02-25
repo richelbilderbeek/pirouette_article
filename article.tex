@@ -107,13 +107,12 @@
 
 The development of new powerful inference tools, 
 such as BEAST [\cite{drummond2007beast}] or MrBayes [\cite{huelsenbeck2001mrbayes}], 
-provides us the possibility to build phylogenetic trees 
+allowed to build phylogenetic trees 
 from genetic material extracted from extant organisms.
 This has constituted an important step forward 
 in our understanding on how species 
 evolve.
-Such tools have been increasingly exploited to hypothesize and test what are the main drivers
-and modes for diversification processes. 
+Such tools have been increasingly exploited to hypothesize and test what are the main drivers and modes for diversification processes. 
 
 There are plenty of diversification models: 
 constant-birth [Yule, 19..],
@@ -127,29 +126,26 @@ punctuated equilibrium (as known as "early burst") [\cite{harmon2010early}],
 dependent on a binary trait [\cite{maddison2007estimating}], 
 multiple state trait [\cite{fitzjohn2012diversitree}],
 concealed state [\cite{beaulieu2016detecting}] 
-or even a combination of multiple concealed and observable states [\cite{herrera2018detecting}].
+or even a combination of multiple concealed and observable states [\cite{herrera2018detecting}]. \giovanni{we might need to polish this list a little bit}
 
 Such models usually rely on the assumption 
 that a particular diversification process 
 can be explained mainly by a specific mechanism.
 Such a mechanism is built into a likelihood function, 
-which provides the likelihood of the parameters, given the data.
+which provides the probability to realize a process given the parameters.
 By maximizing it, it is possible 
-to estimate the what are the best values for model parameters. 
+to estimate what are the best values for model parameters. 
 It is a standard practice in assessing such models,
 to verify the level of accuracy they can achieve
 on simulated phylogenies, of which full knowledge is given.
 
-Diversification models are getting more complex over time. There are many
-reasons for this. One reason is the increase in computing power,
-which allows this heightened complexity possible.
-Another reason is to explore a process that are not yet considered by currently existing diversification models. An example of this
-is the multiple-birth model [Laudanno et al., in preparation], 
+Diversification models are getting more complex over time. This is facilitated by the increase in computing power due to the advancement of technology.
+Increased complexity made possible the exploration of new models encompassing mechanisms that are not yet considered by previous diversification models. An example of this is the multiple-birth model [Laudanno et al., in preparation],
 that is the first model to allow simultaneous speciations to co-occur.
 
 However, whenever a new model is proposed there is always a trade-off between the cost of increased complexity versus the benefits that it can provide.
-Therefore desirable models have to be able to disentangle the intrinsic complexity of a system, 
-highlight the main reasons of its behaviour and avoid unnecessary complexity. Furthermore developing models can cost time, human and computational resources.
+In fact developing models can cost time, human and computational resources.
+Therefore desirable models have to be able to disentangle the intrinsic complexity of a system, highlight the main reasons of its behaviour and avoid unnecessary complexity. 
 
 \iffalse
 One of the purposes of modelling a complex systems
@@ -165,7 +161,7 @@ Additionally, developing a likelihood model takes time,
 human resources, fundings and can strain computational resources.
 \fi
 
-For this reason we believe it is important to have techniques to quantitatively assess the advancement provided by new models, in comparison to the existing ones.
+For this reason we believe it is important to have techniques to quantitatively assess the advancement provided by the introduction of new models, in comparison to the existing ones.
 
 \iffalse
 When assuming that a new diversification model is worth the
@@ -173,8 +169,7 @@ When assuming that a new diversification model is worth the
 if the new model indeed gives a better explanation. 
 \fi
 
-To achieve this, one possible experiment
-is to simulate a phylogeny according to the mechanisms proposed by the new diversification model, then simulate its alignment and measure how well current inference models perform at retrieving the original phylogeny.
+To achieve this, one possible experiment is to simulate a phylogeny according to the mechanisms proposed by the new diversification model, then simulate its alignment and measure how well current inference models perform at retrieving the original phylogeny.
 If this difference is small enough, current models apparently
 suffice.
 
@@ -184,6 +179,7 @@ which calls the popular Bayesian inference tool
 BEAST2 [\cite{bouckaert2014beast}]. With \verb;pirouette;, one
 can easily measure the error made by Bayesian inference in recovering
 any given phylogeny, helping us to validate new diversification models.
+\giovanni{I think we should mention the fact that BEAST2 allows to implement customized tree priors more complicated than the simple yule and bd. These tree priors, in the end, are what we call likelihood in our models, so it's pivotal in proposing our argument, I think.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
@@ -199,8 +195,7 @@ any given phylogeny, helping us to validate new diversification models.
 \end{sidewaysfigure}
 
 The goal of \verb;pirouette; is to measure the inference error BEAST2
-makes from a given reconstructed phylogeny. For this measurement,
-two models need to be specified: a generative and an inference model.
+makes from a given reconstructed phylogeny \giovanni{We should mention here that the phylogenies that are meant to be submitted to pirouette are simulated phylogenies generated according to the model we want to test}. For this measurement, two models need to be specified: a generative and an inference model. 
 A generative model is a combination of site model, clock model and tree prior,
 used to simulate alignments. An inference model is a combination of 
 site model, clock model, tree prior, an optional node calibration prior
@@ -208,14 +203,15 @@ and setup of the Markov chain Monte Carlo (MCMC) algorithm,
 used to produce a posterior. Node calibration priors, called 'most
 recent common ancestor' (MRCA) priors within BEAST2 allow to create a 
 time-calibrated phylogeny, by specifying a normal distribution around
-an expected time when two or more taxa's ancestors diversified. 
+an expected time when two or more taxa's \giovanni{I have the feeling that taxa should be plural here. Should we mention that the group must be monophyletic?} ancestors diversified. 
 
+\subsection{pirouette's pipeline}
 The pipeline is summarized by the following steps, which will be described in detail below:
 \begin{enumerate}
     \item from a given phylogeny an alignment is simulated;
     \item from the alignment an inference model is chosen;
     \item the alignment is used as BEAST2 input to infer a posterior distribution of phylogenies;
-    \item posterior phylogenies are compared with the given original phylogeny to estimate the error we make. The bigger the match, the lower the error;
+    \item posterior phylogenies are compared with the given original phylogeny to estimate the error we make. The higher the match, the lower the error;
 \end{enumerate}
 \richel{figure to pipeline here}
 There is also the option to generate a 'twin tree',
@@ -230,7 +226,7 @@ where the alignment is saved to. This step is relatively fast, but longer
 DNA alignments will noticeably slow down the inference step.
 
 The second step selects an inference model, using the alignment.
-The user can specify whether to use the generative model or select a best model
+The user can specify whether to use the generative model or select the best model
 from a set of inference models. 
 When selecting the generative model,
 the site and clock model used in the alignment simulation are used
@@ -242,7 +238,7 @@ model, the alignment is used to find the inference model that has the
 highest evidence (i.e. marginal likelihood) from a set of candidate inference models.
 The evidence of an inference model is estimated using a nested sampling (NS)
 approach, as described in \cite{maturana2018model}. The nested sampling is
-performed by \verb;mcbette; \cite{mcbette}, that calls the 'NS' BEAST2 package. 
+performed by \verb;mcbette; [\cite{mcbette}], that calls the 'NS' BEAST2 package. 
 Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac; 
 inference model selection is not available on Windows.
 
@@ -259,7 +255,7 @@ Bayesian posterior. These phylogenies are compared to the given
 original phylogeny using an error statistic, which is the nLTT 
 statistic (\cite{janzen2015approximate}) by default,
 but also a custom error statistic is supplied, based
-on the absolute difference in the gamma statistic [Pybus \& Harvy]. 
+on the absolute difference in the gamma statistic [\cite{pybus2000testing}]. 
 Additionally, the user can specify the
 proportion of posterior phylogenies to 
 discard (i.e. the burn-in), throwing away the first $10\%$
@@ -347,8 +343,8 @@ out of four block of 250 nucleotides each, where the per-nucleotide
 mutation rate is 0.1 mutations per unit time.
 
 \begin{lstlisting}[
-    language=R, floatplacement=H, 
-    frame=single
+    language=R,
+    floatplacement=H, frame=single,
     label = {lst:create_alignment}, 
     caption = {Create an alignment}
   ]
@@ -359,10 +355,7 @@ alignment_params <- create_alignment_params(
 \end{lstlisting}
 
 By default, an alignment is created using a Jukes-Cantor (JC) site model
-and a strict clock model. A JC site model assumes that mutations
-between all nucleotides are constant at an equal rate. 
-A strict clock model assumes that
-the mutation rate of all species is equal and constant.
+and a strict clock model. A JC site model assumes that mutation rates from any nucleotide to any other are equal and constant. A strict clock model assumes that the mutation rates of all species are equal and constant.
 Due to this, we state that the generative model for the alignment is
 a JC site model and a strict clock model.
 
@@ -386,7 +379,7 @@ JC site model, strict clock model and Yule tree prior).
     Experimental setup to answer the first research question.
     JC: Jukes-Cantor site model.
     strict: strict clock model.
-    Yule: Yule (pure-birth) tree prior
+    Yule: Yule (pure-birth) tree prior.
   }
 \end{table}
 
@@ -400,7 +393,7 @@ results in:
   caption = {
     Create a default experiment. This default experiment is
     for a generative model, that is always run, without its evidence measured,
-    assuming a JC, strict, Yule inference model
+    assuming a JC site model, strict clock model, Yule inference model.
   }
 ]
 experiments <- list(create_experiment())
@@ -437,7 +430,7 @@ The resulting figure is shown in figure \ref{fig:example_1}.
   \includegraphics[width=\textwidth]{figure_2.png}
   \caption{
     The error BEAST2 makes from a phylogeny 
-    when the generative and inference model are the same
+    when the generative and inference model are the same.
   }
   \label{fig:example_1}
 \end{figure}
@@ -462,8 +455,6 @@ diversification model, that has four taxa and a crown age of five:
 ]
 phylogeny <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4):1);")
 \end{lstlisting}
-
-
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the 
 given phylogeny. We'll re-use the alignment parameters of the previous example
@@ -502,11 +493,11 @@ this will give a helpful error) and we use the full arsenal of
 models, 2 clock models and 5 tree priors.
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
-experiment <- create_all_experiments()
+experiments <- create_all_experiments()
 \end{lstlisting}
 
 Also here, the third (the BEAST2 inference) and fourth (measuring the error)
-step have sensible defaults, and we are not
+steps have sensible defaults, and we are not
 interested in using a twin tree. We can create the complete
 \verb;pirouette; parameter set (again) like this:
 
@@ -553,7 +544,7 @@ when hand-picking an inference model, compared to the background noise?
 The following settings are the same as in the previous section:
 phylogeny (listing \ref{lst:unknown_phylogeny}), 
 alignment parameters (listing \ref{lst:create_alignment}), 
-experiments (listing \ref{lst:create_generative_experiment})
+experiments (listing \ref{lst:create_generative_experiment}),
 BEAST2 inference and error measuring parameters.
 
 This time, we are interested in creating a twin tree. A twin tree
@@ -604,7 +595,7 @@ The resulting figure is shown in figure 4
   \includegraphics[width=\textwidth]{figure_4.png}
   \caption{
     The error BEAST2 makes from a phylogeny 
-    picking the best inference model, compared to the background noise?
+    picking the best inference model, compared to the background noise.
     Here, the twin column shows the error BEAST2 makes on an idealized
     tree, to measure the noise, which is the minimal error. 
   }
@@ -616,13 +607,14 @@ The resulting figure is shown in figure 4
 
 There are many other examples that can be found in the \verb;pirouette; 
 documentation.
+\giovanni{it could be nice to add a listing with simple commands that refer to the most useful examples}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \giovanni{We need to discuss the results we got from the 3 experiments.}
-\richel{Only iff the journal requires this}
+\richel{Only if the journal requires this}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
