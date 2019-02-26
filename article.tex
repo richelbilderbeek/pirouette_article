@@ -115,20 +115,18 @@ evolve.
 Such tools have been increasingly exploited to hypothesize and test what are the main drivers and modes for diversification processes. 
 
 There are plenty of diversification models: 
-constant-birth [Yule, 19..],
-birth-death [\cite{nee1994reconstructed}], 
-time-dependent [Rabosky D., LASER package?], 
-diversity dependent [\cite{etienne2011diversity}], 
-protracted birth-death [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}],
-multiple-birth death [Laudanno, Bilderbeek, Haegeman \& Etienne, in preparation],
-a rate shifting birth-death model [the SLS model. Laudanno, Haegeman \& Etienne, in preparation]
-punctuated equilibrium (as known as "early burst") [\cite{harmon2010early}],
-dependent on a binary trait [\cite{maddison2007estimating}], 
-multiple state trait [\cite{fitzjohn2012diversitree}],
-concealed state [\cite{beaulieu2016detecting}] 
-or even a combination of multiple concealed and 
-observable states [\cite{herrera2018detecting}]. 
-\giovanni{we might need to polish this list a little bit}
+birth-death models that have rates that are 
+constant [\cite{nee1994reconstructed}], 
+time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
+diversity-dependent [\cite{etienne2011diversity}],
+or can shift [the SLS model. Laudanno, Haegeman \& Etienne, in preparation].
+There are birth death models in which speciation is a process that 
+takes time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}],
+can co-occur [Laudanno, Bilderbeek, Haegeman \& Etienne, in preparation],
+dependent on a trait that is binary [\cite{maddison2007estimating}], 
+has multiple states [\cite{fitzjohn2012diversitree}],
+has a concealed state [\cite{beaulieu2016detecting}] 
+or has multiple observed and concealed states [\cite{herrera2018detecting}]. 
 
 Such models usually rely on the assumption 
 that a particular diversification process 
@@ -141,37 +139,28 @@ It is a standard practice in assessing such models,
 to verify the level of accuracy they can achieve
 on simulated phylogenies, of which full knowledge is given.
 
-Diversification models are getting more complex over time. This is facilitated by the increase in computing power due to the advancement of technology.
-Increased complexity made possible the exploration of new models encompassing mechanisms that are not yet considered by previous diversification models. An example of this is the multiple-birth model [Laudanno et al., in preparation],
+Diversification models are getting more complex over time. 
+This is facilitated by the increase in computing power due to the advancement of technology.
+Increased complexity made possible the exploration of new models 
+encompassing mechanisms that are not yet considered by previous diversification models. 
+An example of this is the multiple-birth model [Laudanno et al., in preparation],
 that is the first model to allow simultaneous speciations to co-occur.
 
-However, whenever a new model is proposed there is always a trade-off between the cost of increased complexity versus the benefits that it can provide.
+However, whenever a new model is proposed there is always a trade-off 
+between the cost of increased complexity versus the benefits that it can provide.
 In fact developing models can cost time, human and computational resources.
-Therefore desirable models have to be able to disentangle the intrinsic complexity of a system, highlight the main reasons of its behaviour and avoid unnecessary complexity. 
+Therefore desirable models have to be able to disentangle 
+the intrinsic complexity of a system, 
+highlight the main reasons of its behaviour and avoid unnecessary complexity. 
 
-\iffalse
-One of the purposes of modelling a complex systems
-is to hypothesize the main driving factors of a process 
-and trying to prove that they are indeed able 
-to explain the main features of the phenomenon you want to explain.
-Due to this, there are diminishing returns on adding complexity
-to a model: the job of a modeller is to try to
-disentangle the intrinsic complexity of a system 
-highlighting the main reasons of its behaviour. 
-In such a light you don't want your model to be unnecessary complex.
-Additionally, developing a likelihood model takes time, 
-human resources, fundings and can strain computational resources.
-\fi
+For this reason we believe it is important to have techniques 
+to quantitatively assess the advancement provided by the introduction of new models, 
+in comparison to the existing ones.
 
-For this reason we believe it is important to have techniques to quantitatively assess the advancement provided by the introduction of new models, in comparison to the existing ones.
-
-\iffalse
-When assuming that a new diversification model is worth the
-(philosophical) effort, there are many ways to measure
-if the new model indeed gives a better explanation. 
-\fi
-
-To achieve this, one possible experiment is to simulate a phylogeny according to the mechanisms proposed by the new diversification model, then simulate its alignment and measure how well current inference models perform at retrieving the original phylogeny.
+To achieve this, one possible experiment is to simulate a phylogeny 
+according to the mechanisms proposed by the new diversification model, 
+then simulate its alignment and measure how well current inference models perform 
+at retrieving the original phylogeny.
 If this difference is small enough, current models apparently
 suffice.
 
@@ -181,12 +170,11 @@ which calls the popular Bayesian inference tool
 BEAST2 [\cite{bouckaert2014beast}]. 
 With \verb;pirouette;, one
 can easily measure the error made by Bayesian inference in recovering
-any given phylogeny, helping us to validate new diversification models.
-Such a new diversification model can then be added to BEAST2,
-which already supplies multiple speciation models (among others, 
-Yule and birth-death) and also allows to add 
-new diversification models via the BEAST2 package system.
-\richel{rework}
+any given phylogeny, helping us to judge the necessity of a diversification 
+model.
+Upon finding a diversification model is warranted, 
+it can then be added to BEAST2's existing set of (birth-death and 
+coalescent) models via the BEAST2 package system.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
@@ -196,20 +184,22 @@ new diversification models via the BEAST2 package system.
 
 \begin{sidewaysfigure}
   \centering
-  \includegraphics[width=\textwidth]{overview.png}
+  \includegraphics[width=\textwidth]{workflow.png}
   \caption{pirouette pipeline}
   \label{fig:pipeline}
 \end{sidewaysfigure}
 
 The goal of \verb;pirouette; is to measure the inference error BEAST2
-makes from a given reconstructed phylogeny 
-\giovanni{
-  We should mention here that the phylogenies that are meant to be 
-  submitted to pirouette are simulated phylogenies generated according 
-  to the model we want to test
-}. 
-To be able to explain how we do this, we first give definitions
-for generative model and inference model: 
+makes from a given reconstructed phylogeny, within the context of
+a simulation study on a (possibly new) diversification model. Such
+a study will typically construct phylogenies for different combinations of
+the diversification model's parameters, to assess under which scenario's
+the error BEAST2 makes cannot be ignored anymore. Within such a study,
+there need be many replicates.
+
+To be able to explain how \verb;pirouette; measures the inference error
+BEAST2 makes, we first give two definitions of what
+we mean by a generative model and by an inference model: 
 a generative model is a combination of site model, clock model and tree prior,
 used to simulate alignments. An inference model is a combination of 
 site model, clock model, tree prior, an optional node calibration prior
@@ -217,21 +207,18 @@ and setup of the Markov chain Monte Carlo (MCMC) algorithm,
 used to produce a posterior. Node calibration priors, called 'most
 recent common ancestor' (MRCA) priors within BEAST2 allow to create a 
 time-calibrated phylogeny, by specifying a normal distribution around
-an expected time when two or more taxa's 
-\giovanni{
-  I have the feeling that taxa should be plural here. 
-  Should we mention that the group must be monophyletic?
-} ancestors diversified. 
+an expected time when the ancestors of two or more taxa diversified. 
 
 \subsection{pirouette's pipeline}
-The pipeline is summarized by the following steps, which will be described in detail below:
+The pipeline is summarized by the following steps,
+which will be described in detail below:
 \begin{enumerate}
     \item from a given phylogeny an alignment is simulated;
     \item from the alignment an inference model is chosen;
     \item the alignment is used as BEAST2 input to infer a posterior distribution of phylogenies;
     \item posterior phylogenies are compared with the given original phylogeny to estimate the error we make. The higher the match, the lower the error;
 \end{enumerate}
-\richel{figure to pipeline here}
+The pipeline is visualized in \ref{fig:pipeline}.
 There is also the option to generate a 'twin tree',
 that goes through the same pipeline.
 
@@ -651,8 +638,7 @@ documentation.
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\giovanni{We need to discuss the results we got from the 3 experiments.}
-\richel{Only if the journal requires this}
+In figure ...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
