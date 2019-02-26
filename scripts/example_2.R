@@ -2,6 +2,8 @@
 #
 # Works under Linux and MacOS only
 library(pirouette)
+library(ggplot2)
+library(ggthemes)
 
 phylogeny  <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4) :1);")
 
@@ -22,9 +24,6 @@ errors <- pir_run(
   pir_params = pir_params
 )
 
-
-library(ggplot2)
-
 pir_plot(errors) + theme(
   panel.background = element_rect(
     fill = "white",
@@ -35,13 +34,4 @@ pir_plot(errors) + theme(
 
 )
 
-library(ggthemes)
 pir_plot(errors) + theme_wsj() + ggsave("figure_example_2.png")
-
-pir_plot(errors) + theme_tufte()
-pir_plot(errors) + theme_economist()
-pir_plot(errors) + theme_economist_white()
-pir_plot(errors) + theme_excel() # The irony!
-pir_plot(errors) + theme_few() # Like
-pir_plot(errors) + theme_fivethirtyeight()
-

@@ -2,6 +2,8 @@
 #
 # Works under Windows
 library(pirouette)
+library(ggplot2)
+library(ggthemes)
 
 #phylogeny <- create_ideal_tree(n_taxa = 5, crown_age = 10)
 # STUB
@@ -28,14 +30,4 @@ errors <- pir_run(
 )
 
 
-library(ggplot2)
-library(ggthemes)
 pir_plot(errors) + theme_wsj() + ggsave("figure_example_3")
-
-pir_plot(errors) + theme_tufte()
-pir_plot(errors) + theme_economist()
-pir_plot(errors) + theme_economist_white()
-pir_plot(errors) + theme_excel() # The irony!
-pir_plot(errors) + theme_few() # Like
-pir_plot(errors) + theme_fivethirtyeight()
-
