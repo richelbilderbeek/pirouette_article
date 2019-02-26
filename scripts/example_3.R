@@ -30,7 +30,7 @@ errors <- pir_run(
 
 library(ggplot2)
 library(ggthemes)
-pir_plot(errors) + theme_wsj() + ggsave("/home/richel/GitHubs/pirouette_article/figure_4.png")
+pir_plot(errors) + theme_wsj() + ggsave("figure_example_3")
 
 pir_plot(errors) + theme_tufte()
 pir_plot(errors) + theme_economist()

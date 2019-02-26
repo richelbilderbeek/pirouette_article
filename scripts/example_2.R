@@ -36,7 +36,7 @@ pir_plot(errors) + theme(
 )
 
 library(ggthemes)
-pir_plot(errors) + theme_wsj() + ggsave("/home/richel/GitHubs/pirouette_article/figure_3.png")
+pir_plot(errors) + theme_wsj() + ggsave("figure_example_2.png")
 
 pir_plot(errors) + theme_tufte()
 pir_plot(errors) + theme_economist()
