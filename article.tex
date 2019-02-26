@@ -103,12 +103,12 @@
 The development of new powerful inference tools, 
 such as BEAST [\cite{drummond2007beast}], MrBayes [\cite{huelsenbeck2001mrbayes}]
 or RevBayes [\cite{hohna2016revbayes}], 
-allowed to build phylogenetic trees 
+allows to build phylogenetic trees 
 from genetic material extracted from extant organisms.
 This has constituted an important step forward 
-in our understanding on how species 
-evolve.
-Such tools have been increasingly exploited to hypothesize and test what are the main drivers and modes for diversification processes. 
+in our understanding on how species evolve.
+Such tools have been increasingly exploited to hypothesize 
+and test what the main drivers and modes for diversification processes are.
 
 There are plenty of diversification models: 
 birth-death models that have rates that are 
@@ -128,12 +128,20 @@ Such models usually rely on the assumption
 that a particular diversification process 
 can be explained mainly by a specific mechanism.
 Such a mechanism is built into a likelihood function, 
-which provides the probability to realize a process given the parameters.
-By maximizing it, it is possible 
-to estimate what are the best values for model parameters. 
-It is a standard practice in assessing such models,
-to verify the level of accuracy they can achieve
-on simulated phylogenies, of which full knowledge is given.
+which provides the probability that a phylogeny is realized 
+from a given set of parameters.
+Starting from a phylogeny, this likelihood is maximized
+to find the parameters that are most likely.
+For such diversification models, it is a standard practice 
+to measure how well parameters can be recovered in this way,
+by simulating 'true' phylogenies from known parameters, then
+measuring the parameters deduced by maximum likelihood. 
+It is a sign of quality of a diversification model 
+if its parameters can be recovered well by this method.
+\richel{
+  We should bridge this method with how pirouette does things differently;
+  why the maximum likelihood does not apply in this context  
+}
 
 Diversification models are getting more complex over time. 
 This is facilitated by the increase in computing power due to the advancement of technology.
@@ -428,7 +436,7 @@ pir_plot(errors)
 The resulting figure is shown in figure \ref{fig:example_1}.
 
 \begin{figure}[h]
-  \includegraphics[width=\textwidth]{figure_2.png}
+  \includegraphics[width=\textwidth]{figure_example_1.png}
   \caption{
     The error BEAST2 makes from a phylogeny 
     when the generative and inference model are the same.
@@ -524,14 +532,15 @@ Again, showing the results:
 pir_plot(errors)
 \end{lstlisting}
 
-The resulting figure is shown in figure 3.
+The resulting figure is shown in figure \ref{fig:example_2}.
 
 \begin{figure}[h]
-  \includegraphics[width=\textwidth]{figure_3.png}
+  \includegraphics[width=\textwidth]{figure_example_2.png}
   \caption{
     The error BEAST2 makes from a phylogeny when
     picking the best inference model
   }
+  \label{fig:example_2}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -590,16 +599,17 @@ Again, showing the results:
 pir_plot(errors)
 \end{lstlisting}
 
-The resulting figure is shown in figure 4
+The resulting figure is shown in figure \ref{fig:example_3}
 
 \begin{figure}[h]
-  \includegraphics[width=\textwidth]{figure_4.png}
+  \includegraphics[width=\textwidth]{figure_example_3.png}
   \caption{
     The error BEAST2 makes from a phylogeny 
     picking the best inference model, compared to the background noise.
     Here, the twin column shows the error BEAST2 makes on an idealized
     tree, to measure the noise, which is the minimal error. 
   }
+  \label{fig:example_3}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -634,7 +644,38 @@ documentation.
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In figure ...
+Here we discuss how to interpret the results of \verb;pirouette;.
+Figure \ref{fig:example_1} shows that the generative model 
+gives an error distribution with a highest density at 0.02,
+where the range of errors (in this case, the nLTT statistic) is from 0.0 to 1.0.
+The range of errors goes from 0.0 to 0.27. As we know the generative model,
+this error distribution is the minimum noise that BEAST2 produces for this
+generative model.
+\richel{Show effective sample size}
+
+Figure \ref{fig:example_2} shows that the best candidate model 
+gives an error distribution with a highest density at 0.02,
+where the range of errors (in this case, the nLTT statistic) is from 0.0 to 1.0.
+The range of errors goes from 0.0 to 0.08. 
+\richel{Describe and show evidences for the candidate model}
+\richel{Describe and show the best candidate model}
+This means that it is rational to use this inference model to 
+infer a posterior phylogeny distribution, 
+as is done by \verb;pirouette;.
+\richel{Show effective sample size}
+\richel{Show posterior phylogenies as densitree}
+
+Figure \ref{fig:example_3} shows that the hand-picked model 
+gives an error distribution with a highest density at 0.018,
+with a range from 0.0 to 0.1.
+The twin tree has an error distribution with a highest density at 0.019,
+with a range from 0.0 to 0.11, which is the noise caused by the tree prior.
+As there is little difference between the true and twin tree,
+the (unknown) diversification model has little impact on the error
+BEAST2 makes, hinting that the constant-rate birth-death model is
+sufficiently good enough to explain the true phylogeny. 
+The diversification model apparently has minor impact and need not to be
+added to BEAST2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
@@ -643,14 +684,9 @@ In figure ...
 \verb;pirouette; is free, libre and open source software available at 
 \url{http://github.com/richelbilderbeek/pirouette}
 and is licensed under the GNU General Public License v3.0.
-\verb;pirouette; uses the Travis CI (\url{https://travis-ci.org})
-continuous integration service, which is known to significantly 
-increase the number of bugs exposed (\cite{vasilescu2015}) and increases
-the speed at which new features are added (\cite{vasilescu2015}).
-\verb;pirouette; has a 100\% code coverage, which correlates with 
-code quality (\cite{horgan1994,del1995correlation}). 
-\verb;pirouette; follows Hadley Wickham's style guide (\cite{style_guide}), 
-which improves software quality (\cite{fang2001}).
+\verb;pirouette; follows all practices as recommended by the
+literature: continuous integration, a code coverage of 100\%
+and a style guide (\cite{style_guide}).
 \verb;pirouette; depends on multiple packages, which are 
 \verb;ape; (\cite{APE}), 
 \verb;babette; (\cite{bilderbeek2018babette}),
@@ -665,9 +701,7 @@ which improves software quality (\cite{fang2001}).
 
 \verb;pirouette;'s development takes place on GitHub,
 \url{https://github.com/richelbilderbeek/pirouette}, 
-which accommodates collaboration (\cite{perez2016ten}) 
-and improves transparency (\cite{gorgolewski2016practical}).
-\verb;pirouette;'s GitHub facilitates feature requests and 
+which facilitates feature requests and 
 has guidelines on how to do so.
 
 \verb;pirouette;'s documentation is extensive. All functions are documented

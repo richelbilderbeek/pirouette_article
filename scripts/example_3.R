@@ -29,5 +29,7 @@ errors <- pir_run(
   pir_params = pir_params
 )
 
-
-pir_plot(errors) + theme_wsj() + ggsave("figure_example_3")
+pir_plot(errors) +
+  scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
+  theme_wsj() +
+  ggsave("/home/richel/GitHubs/pirouette_article/figure_example_3.png")

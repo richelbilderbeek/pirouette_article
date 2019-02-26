@@ -24,14 +24,7 @@ errors <- pir_run(
   pir_params = pir_params
 )
 
-pir_plot(errors) + theme(
-  panel.background = element_rect(
-    fill = "white",
-    colour = "black"
-  ),
-  panel.grid.major = element_line(colour = "black"),
-  panel.grid.minor = element_line(color = "black")
-
-)
-
-pir_plot(errors) + theme_wsj() + ggsave("figure_example_2.png")
+pir_plot(errors) +
+  scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
+  theme_wsj() +
+  ggsave("/home/richel/GitHubs/pirouette_article/figure_example_2.png")
