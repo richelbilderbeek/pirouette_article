@@ -2,8 +2,7 @@
 
 Filename|Description
 ---|---
-`install_pirouette`|Installs `pirouette` and all dependencies
-`create_fig_2`|Creates figure 2
-`create_fig_3`|Creates figure 3
-`create_fig_4`|Creates figure 4
+`example_1`|Creates figure for example 1
+`example_2`|Creates figure for example 2
+`example_3`|Creates figure for example 3
 
