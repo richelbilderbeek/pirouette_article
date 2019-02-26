@@ -1,5 +1,10 @@
 #!/bin/bash
-# Script to run an R script
+# Bash script to run an R script with sbatch
+#
+# Usage:
+#
+# sbatch run_r_script create_example_1.R
+#
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
