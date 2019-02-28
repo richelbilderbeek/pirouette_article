@@ -31,14 +31,7 @@ pir_plot(errors) +
   theme_wsj() +
   ggsave("/home/richel/GitHubs/pirouette_article/figure_example_1.png")
 
-pir_plot(errors) +
-  scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
-  theme_excel()
-
-
 testit::assert(pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1)
-
-
 esses <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
@@ -46,7 +39,3 @@ esses <- tracerer::calc_esses(
 sink("/home/richel/GitHubs/pirouette_article/example_1_esses.latex")
 xtable::xtable(esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0)
 sink()
-
-
-
-#  geom_text(stat='count', aes(label=..count..), vjust=-1)
