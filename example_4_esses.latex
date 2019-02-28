@@ -1,0 +1,14 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Thu Feb 28 15:26:15 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrr}
+  \hline
+ & posterior & likelihood & prior & treeLikelihood & TreeHeight & YuleModel & birthRate \\ 
+  \hline
+1 & 9867 & 9888 & 8773 & 9888 & 10001 & 8773 & 10001 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes of example 4} 
+\label{tab:esses_example_4}
+\end{table}

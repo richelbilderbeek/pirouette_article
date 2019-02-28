@@ -833,17 +833,18 @@ The resulting figure is shown in figure \ref{fig:example_4}.
 \multirow{2}{*}{\textbf{Example}} & \multicolumn{2}{c|}{\textbf{True tree}} 
                                   & \multicolumn{2}{c|}{\textbf{Twin tree}} \\
 \cline{2-5}
-                                  & \textbf{HPD} & \textbf{range} & \textbf{HPD} & \textbf{range} \\
+                                  & \textbf{median} & \textbf{range} & \textbf{median} & \textbf{range} \\
 \hline
-1  & $0.20$  & $0.0 - 0.27$  &         &               \\
+1  & $0.02$  & $0.0 - 0.27$  &         &               \\
 2  & $0.02$  & $0.0 - 0.08$  &         &               \\
 3  & $0.018$ & $0.0 - 0.1$   & $0.019$ & $0.0 - 0.11$  \\
 4C & $0.22$  & $0.0 - 0.088$ & $0.009$ & $0.0 - 0.056$ \\
 4G & $0.020$ & $0.0 - 0.075$ & $0.013$ & $0.0 - 0.052$ \\
 \hline
 \end{tabular}
-\caption{Results of the examples. For the true and twin tree,
-  the highest posterior density (HPC) and range of the errors 
+\caption{Results of the examples. 
+  For the true and twin tree,
+  the median and range of the errors 
   is shown. Experiment 4 is split in two rows
   by either the candidate ('C') or generative model ('G') 
 }
@@ -851,13 +852,12 @@ The resulting figure is shown in figure \ref{fig:example_4}.
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\richel{check numbers}
+
 Here we discuss how to interpret the results of \verb;pirouette;.
 Figure \ref{fig:example_1} shows that the generative model 
-gives an error distribution with a highest posterior density (HPD) 
-\giovanni{probably "median" is a better word}
-\richel{HPC is a valid Bayesian term I learned from the BEAST book}
-at 0.015
-The range of errors goes from 0.0 to 0.097 
+gives an error distribution with a median of \richel{?}
+The range of errors goes from \richel{?} to \richel{?}.
 As we know the generative model, 
 this error distribution is the minimum noise that BEAST2 produces 
 for that generative model.
@@ -867,7 +867,8 @@ the recommended value of 200 \cite{drummond2015bayesian},
 as shown in table \ref{tab:esses_example_1}.
 
 Figure \ref{fig:example_2} shows that the best candidate model gives an error distribution 
-with an HPD at 0.02. The range of errors goes from 0.0 to 0.08. 
+with a median of \richel{?}. 
+The range of errors goes from \richel{?} to \richel{?}. 
 The inference model with the highest evidence follows a JC site model, 
 RLN clock model and BD tree prior, with a weight of $0.675$. 
 This is (unexpectedly) better than the generative
@@ -880,10 +881,9 @@ Also here, the ESSes are well above 200,
 as shown in table \ref{tab:esses_example_2}.
 
 Figure \ref{fig:example_3} shows that the hand-picked model 
-gives an error distribution with an HPD at 0.018, 
-with a range from 0.0 to 0.1.
-The twin tree has an error distribution with a highest density at 0.019,
-with a range from 0.0 to 0.11, which is an indication of the
+gives an error distribution with a median of \richel{?}, 
+The twin tree has an error distribution with a median of \richel{?},
+with a range from 0.0 to \richel{?}, which is an indication of the
 error made by BEAST on that tree prior.
 As there is little difference between the true and twin tree,
 the (unknown) diversification model has little impact on the error
@@ -891,6 +891,26 @@ BEAST2 makes, hinting that the constant-rate birth-death model is
 sufficiently good enough to explain the true phylogeny. 
 The diversification model apparently has minor impact and need not to be
 added to BEAST2.
+We can draw this conclusion with confidence, as the ESSes are well above 200, 
+as shown in table \ref{tab:esses_example_3}.
+
+Figure \ref{fig:example_4} shows that \richel{?}
+and 
+gives an error distribution with a median of \richel{?}, 
+The twin tree has an error distribution with a median of \richel{?},
+with a range from 0.0 to \richel{?}, which is an indication of the
+error made by BEAST on that tree prior.
+The inference model with the highest evidence follows a JC site model, 
+RLN clock model and BD tree prior, with a weight of ?. 
+The complete list of all evidences is shown in table \ref{tab:evidences_example_4}.
+As there is little difference between the true and twin tree,
+the (unknown) diversification model has little impact on the error
+BEAST2 makes, hinting that the constant-rate birth-death model is
+sufficiently good enough to explain the true phylogeny. 
+The diversification model apparently has minor impact and need not to be
+added to BEAST2.
+We can draw this conclusion with confidence, as the ESSes are well above 200, 
+as shown in table \ref{tab:esses_example_4}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
@@ -977,6 +997,11 @@ RSE contributed to revisions.
 \section{Results in detail}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\richel{
+  I'd enjoy to put all intermediate output here: alignments, twin trees,
+  posteriors, nLTTs, errors. Now we only show the ones relevant in the text
+}
+
 \input{example_1_esses.latex}
 % has label tab:esses_example_1
 
@@ -985,5 +1010,14 @@ RSE contributed to revisions.
 
 \input{example_2_evidences.latex}
 % has label tab:evidences_example_2
+
+\input{example_3_esses.latex}
+% has label tab:esses_example_3
+
+\input{example_4_esses.latex}
+% has label tab:esses_example_4
+
+\input{example_4_evidences.latex}
+% has label tab:evidences_example_4
 
 \end{document}
