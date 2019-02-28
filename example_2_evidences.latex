@@ -1,0 +1,45 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Thu Feb 28 13:59:11 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllrr}
+  \hline
+ & Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
+  \hline
+1 & GTR & RLN & BD & -5127.268 & 0.000 \\ 
+  2 & GTR & RLN & CCP & -5125.376 & 0.000 \\ 
+  3 & GTR & RLN & CEP & -5111.500 & 0.001 \\ 
+  4 & GTR & RLN & Yule & -5165.825 & 0.000 \\ 
+  5 & GTR & Strict & BD & -5124.904 & 0.000 \\ 
+  6 & GTR & Strict & CCP & -5125.628 & 0.000 \\ 
+  7 & GTR & Strict & CEP & -5120.089 & 0.000 \\ 
+  8 & GTR & Strict & Yule & -5137.002 & 0.000 \\ 
+  9 & HKY & RLN & BD & -5123.436 & 0.000 \\ 
+  10 & HKY & RLN & CCP & -5114.767 & 0.000 \\ 
+  11 & HKY & RLN & CEP & -5115.841 & 0.000 \\ 
+  12 & HKY & RLN & Yule & -5113.817 & 0.000 \\ 
+  13 & HKY & Strict & BD & -5113.722 & 0.000 \\ 
+  14 & HKY & Strict & CCP & -5109.799 & 0.005 \\ 
+  15 & HKY & Strict & CEP & -5111.899 & 0.001 \\ 
+  16 & HKY & Strict & Yule & -5120.982 & 0.000 \\ 
+  17 & JC & RLN & BD & -5104.904 & 0.675 \\ 
+  18 & JC & RLN & CCP & -5107.482 & 0.051 \\ 
+  19 & JC & RLN & CEP & -5111.774 & 0.001 \\ 
+  20 & JC & RLN & Yule & -5107.175 & 0.070 \\ 
+  21 & JC & Strict & BD & -5116.417 & 0.000 \\ 
+  22 & JC & Strict & CCP & -5113.019 & 0.000 \\ 
+  23 & JC & Strict & CEP & -5108.020 & 0.030 \\ 
+  24 & JC & Strict & Yule & -5106.307 & 0.166 \\ 
+  25 & TN & RLN & BD & -5126.652 & 0.000 \\ 
+  26 & TN & RLN & CCP & -5114.034 & 0.000 \\ 
+  27 & TN & RLN & CEP & -5124.543 & 0.000 \\ 
+  28 & TN & RLN & Yule & -5128.590 & 0.000 \\ 
+  29 & TN & Strict & BD & -5132.943 & 0.000 \\ 
+  30 & TN & Strict & CCP & -5127.058 & 0.000 \\ 
+  31 & TN & Strict & CEP & -5111.434 & 0.001 \\ 
+  32 & TN & Strict & Yule & -5123.621 & 0.000 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences of example 2} 
+\label{tab:evidences_example_2}
+\end{table}

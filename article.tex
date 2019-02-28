@@ -868,13 +868,16 @@ as shown in table \ref{tab:esses_example_1}.
 
 Figure \ref{fig:example_2} shows that the best candidate model gives an error distribution 
 with an HPD at 0.02. The range of errors goes from 0.0 to 0.08. 
-\richel{Describe and show evidences for the candidate model}
-\richel{Describe and show the best candidate model}
+The inference model with the highest evidence follows a JC site model, 
+RLN clock model and BD tree prior, with a weight of $0.675$. 
+This is (unexpectedly) better than the generative
+model with a weight of $0.166$. 
+The complete list of all evidences is shown in table \ref{tab:evidences_example_2}.
 This means that it is rational to use this inference model to 
 infer a posterior phylogeny distribution, 
 as is done by \verb;pirouette;.
-\richel{Show effective sample size}
-\richel{Show posterior phylogenies as densitree}
+Also here, the ESSes are well above 200, 
+as shown in table \ref{tab:esses_example_2}.
 
 Figure \ref{fig:example_3} shows that the hand-picked model 
 gives an error distribution with an HPD at 0.018, 
@@ -977,5 +980,10 @@ RSE contributed to revisions.
 \input{example_1_esses.latex}
 % has label tab:esses_example_1
 
+\input{example_2_esses.latex}
+% has label tab:esses_example_2
+
+\input{example_2_evidences.latex}
+% has label tab:evidences_example_2
 
 \end{document}

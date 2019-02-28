@@ -5,6 +5,8 @@ library(pirouette)
 library(ggplot2)
 library(ggthemes)
 
+set.seed(314)
+
 phylogeny  <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4) :1);")
 
 alignment_params <- create_alignment_params(
@@ -12,7 +14,14 @@ alignment_params <- create_alignment_params(
   mutation_rate = 0.1
 )
 
-experiments <- create_all_experiments()
+experiments <- create_all_experiments(
+  tree_priors = list(
+    create_bd_tree_prior(),
+    create_ccp_tree_prior(),
+    create_cep_tree_prior(),
+    create_yule_tree_prior()
+  )
+)
 
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
@@ -28,3 +37,36 @@ pir_plot(errors) +
   scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
   theme_wsj() +
   ggsave("/home/richel/GitHubs/pirouette_article/figure_example_2.png")
+
+
+testit::assert(pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1)
+esses <- tracerer::calc_esses(
+  traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
+  sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
+)
+sink("/home/richel/GitHubs/pirouette_article/example_2_esses.latex")
+xtable::xtable(esses, caption = "ESSes of example 2", label = "tab:esses_example_2", digits = 0)
+sink()
+
+
+df_evidences <- utils::read.csv(pir_params$evidence_filename)[, c(-1, -6)]
+df_evidences$site_model_name <- plyr::revalue(df_evidences$site_model_name, c("JC69" = "JC", "TN93" = "TN"))
+df_evidences$clock_model_name <- plyr::revalue(
+  df_evidences$clock_model_name,
+  c("strict" = "Strict", "relaxed_log_normal" = "RLN")
+)
+df_evidences$tree_prior_name <- plyr::revalue(
+  df_evidences$tree_prior_name,
+  c("yule" = "Yule", "birth_death" = "BD", "coalescent_constant_population" = "CCP", "coalescent_exp_population" = "CEP")
+)
+names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
+
+
+sink("/home/richel/GitHubs/pirouette_article/example_2_evidences.latex")
+xtable::xtable(
+  df_evidences,
+  caption = "Evidences of example 2", label = "tab:evidences_example_2", digits = 3
+)
+sink()
+
+
