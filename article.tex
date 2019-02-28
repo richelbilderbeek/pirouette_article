@@ -366,6 +366,31 @@ It can be installed from within R, using:
 install_beast2_pkg("NS")
 \end{lstlisting}
 
+An overview of \verb;pirouette;'s main functions is shown in 
+table \ref{tab:functions}, which are all demonstrated in the examples
+below.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h]
+\centering
+\begin{tabular}{ | l | l | }
+\hline
+\textbf{Name} & \textbf{Description} \\
+\hline
+\verb;pir_run; & Run \verb;pirouette; \\
+\verb;create_pir_params; & Create the \verb;pirouette; parameters \\
+\hline
+\verb;create_alignment_params; & Create the alignment parameters \\
+\verb;create_twinning_params; & Create the twinning parameters \\
+\verb;create_experiment; & Create one experiment \\
+\verb;create_error_measure_params; & Create the error measurement parameters \\
+\hline
+\end{tabular}
+\caption{pirouette's main functions}
+\label{tab:functions}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: first research question}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -797,34 +822,6 @@ The resulting figure is shown in figure \ref{fig:example_4}.
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Other examples}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-There are many other examples that can be found in the \verb;pirouette; 
-documentation.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h]
-\centering
-\begin{tabular}{ | l | l | }
-\hline
-\textbf{Name} & \textbf{Description} \\
-\hline
-\verb;pir_run; & Run \verb;pirouette; \\
-\verb;create_pir_params; & Create the \verb;pirouette; parameters \\
-\hline
-\verb;create_alignment_params; & Create the alignment parameters \\
-\verb;create_twinning_params; & Create the twinning parameters \\
-\verb;create_experiment; & Create one experiment \\
-\verb;create_error_measure_params; & Create the error measurement parameters \\
-\hline
-\end{tabular}
-\caption{pirouette's main functions}
-\label{tab:functions}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -845,9 +842,9 @@ documentation.
 4G & $0.020$ & $0.0 - 0.075$ & $0.013$ & $0.0 - 0.052$ \\
 \hline
 \end{tabular}
-\caption{Results of the examples. Errors are shows with the 
-  highest posterior density first, and the range of the errors in
-  round brackets second. Experiment 4 is split in two rows
+\caption{Results of the examples. For the true and twin tree,
+  the highest posterior density (HPC) and range of the errors 
+  is shown. Experiment 4 is split in two rows
   by either the candidate ('C') or generative model ('G') 
 }
 \label{tab:results}
@@ -859,13 +856,17 @@ Figure \ref{fig:example_1} shows that the generative model
 gives an error distribution with a highest posterior density (HPD) 
 \giovanni{probably "median" is a better word}
 \richel{HPC is a valid Bayesian term I learned from the BEAST book}
-at 0.02
-\giovanni{I would increase the precision to the second significative digit, e.g. 0.017},
-The range of errors goes from 0.0 to 0.27 
+at 0.015
+The range of errors goes from 0.0 to 0.097 
 As we know the generative model, 
 this error distribution is the minimum noise that BEAST2 produces 
 for that generative model.
-\richel{Show effective sample size}
+We measure the effective samples as well, and all are well above
+the recommended value of 200 \ref{drummond2015bayesian}, 
+as shown in table \ref{tab:esses_example_1}.
+
+\input{example_1_esses.latex}
+% has label tab:esses_example_1
 
 Figure \ref{fig:example_2} shows that the best candidate model gives an error distribution 
 with an HPD at 0.02. The range of errors goes from 0.0 to 0.08. 
@@ -889,11 +890,6 @@ BEAST2 makes, hinting that the constant-rate birth-death model is
 sufficiently good enough to explain the true phylogeny. 
 The diversification model apparently has minor impact and need not to be
 added to BEAST2.
-
-\giovanni{
-  since you refer, for every RQ, to the same values, 
-  it could be better to show them as a table
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
