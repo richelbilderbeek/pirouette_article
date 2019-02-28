@@ -861,12 +861,10 @@ The range of errors goes from 0.0 to 0.097
 As we know the generative model, 
 this error distribution is the minimum noise that BEAST2 produces 
 for that generative model.
-We measure the effective samples as well, and all are well above
-the recommended value of 200 \ref{drummond2015bayesian}, 
+We can measure the effective samples as well (not shown), 
+and all ESSes are above
+the recommended value of 200 \cite{drummond2015bayesian}, 
 as shown in table \ref{tab:esses_example_1}.
-
-\input{example_1_esses.latex}
-% has label tab:esses_example_1
 
 Figure \ref{fig:example_2} shows that the best candidate model gives an error distribution 
 with an HPD at 0.02. The range of errors goes from 0.0 to 0.08. 
@@ -969,5 +967,15 @@ RSE contributed to revisions.
 \bibliographystyle{mee}
 \bibliography{article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results in detail}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{example_1_esses.latex}
+% has label tab:esses_example_1
+
 
 \end{document}
