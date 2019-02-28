@@ -227,7 +227,12 @@ recent common ancestor' (MRCA) priors within BEAST2, allow to create a time-cali
     that is converted to an alignment (2a), which is used
     to create a BEAST2 posterior of phylogenies (3a),
     which is compared to the true phylogeny (1a) using
-    the nLTT statistic (4a), resulting in an error distribution (5a).
+    the nLTT statistic. (4a) shows the nLTT of the true tree in red,
+    the nLTT of all individual posterior trees in grey, and the average
+    nLTT statistic of all posterior trees in black.
+    Taking the differences between the true tree's nLTT and each posterior's
+    nLTT results in an error distribution, here displayed as a histogram
+    of error values (5a).
     Optionally, a twin phylogeny (1b) can be generated from a true
     phylogeny (1a), which then results in an error distribution (5b) with
     the similar intermediate steps 
