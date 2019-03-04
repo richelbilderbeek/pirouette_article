@@ -178,9 +178,14 @@ recent common ancestor' (MRCA) priors within BEAST2, allow to create a time-cali
   \caption{
     \texttt{pirouette} pipeline. 
     The pipeline starts from a true phylogeny (1a), 
-    that is converted to an alignment (2a). \rampal{this is unclear; the reader does not know what an experiment is, why there are more, what filtering means, etc}
-    The experiments are filtered (3a), possibly based on the
-    alignment (2a), to determine which experiments are actually run.
+    that is converted to an alignment (2a).
+    \rampal{this is unclear; the reader does not know what an experiment is, why there are more, what filtering means, etc}
+    The use supplies one or more experiments, which are a combination of 
+    an inference model and the conditions in which it is actually used in
+    inference.
+    It is determined which experiments will be actually run (3a), 
+    possibly based on the
+    alignment (2a).
     The experiment that are actually performed, use the 
     alignment (2a) to create a BEAST2 posterior of phylogenies (4a),
     which is compared to the true phylogeny (1a) 
@@ -227,8 +232,12 @@ highest evidence (i.e. marginal likelihood) from a set of candidate inference mo
 The evidence of an inference model is estimated using a nested sampling (NS)
 approach, as described in \cite{maturana2018model}. The nested sampling is
 performed by \verb;mcbette; [\cite{mcbette}], that calls the 'NS' BEAST2 package. 
-Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac; 
-inference model selection is not available on Windows.\rampal{clarify this. One can use mcbette on a browser, right?}
+Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac,
+therefore inference model selection is not available on Windows. Note that
+there is the option to do model selection from the browser, 
+using \verb;mcbette;. The computation for this model selection is 
+performed on the servers of the Travis CI continuous integration service,
+that restricts computation time to one hour for free users.
 
 The third step infers the actual Bayesian posterior from the simulated 
 alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a $\rightarrow$ 4a),
@@ -260,9 +269,7 @@ that will be analyzed in the same way as the true tree.
 The twin tree has the same topology as the given phylogeny, 
 yet its branching times are simulated according to 
 the tree prior used by BEAST2 to produce a posterior 
-\giovanni{is it true? is it Yule or BD? Please check}
-\richel{It is Yule}.
-\rampal{I think it's better to use BD for more generality. Yule is too limited in the trees it can produce.}
+\richel{Should be switched to BD, pirouette Issue 161}.
 The goal of this procedure is to generate a tree 
 to use as a control for the main experiment.
 We produce the twin tree according to the following procedure.
@@ -280,6 +287,7 @@ topology to obtain the twin tree.
 
 \verb;pirouette; can be installed easily from CRAN:
 \rampal{be careful here; it is not on CRAN yet. Better to say it can be installed from GitHub and will be made available on CRAN)}
+\richel{We adopted this policy (to say it's on CRAN in advance) with babette as well. Is this a hint to get pirouette on CRAN before the publication of this article :-) ?}
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 install.packages("pirouette")
 \end{lstlisting}
