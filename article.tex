@@ -690,6 +690,7 @@ pir_plot(errors)
 The resulting figure is shown in figure \ref{fig:example_2}.
 
 \giovanni{describe winner}
+\richel{agreed, after the figures also show it :-) }
 
 \begin{figure}[h]
   \includegraphics[width=\textwidth]{figure_example_2.png}
@@ -889,7 +890,7 @@ pir_plot(errors)
 The resulting figure is shown in figure \ref{fig:example_4}.
 
 \giovanni{describe winner}
-\richel{indeed, after the figures also show it :-) }
+\richel{agreed, after the figures also show it :-) }
 
 \begin{figure}[h]
   \includegraphics[width=\textwidth]{figure_example_4.png}
@@ -907,38 +908,14 @@ The resulting figure is shown in figure \ref{fig:example_4}.
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h]
-\centering
-\begin{tabular}{ | r | l | l | l | l | }
-\hline
-\multirow{2}{*}{\textbf{Example}} & \multicolumn{2}{c|}{\textbf{True tree}} 
-                                  & \multicolumn{2}{c|}{\textbf{Twin tree}} \\
-\cline{2-5}
-                                  & \textbf{median} & \textbf{range} & \textbf{median} & \textbf{range} \\
-\hline
-1  & $0.02$  & $0.0 - 0.27$  &         &               \\
-2  & $0.02$  & $0.0 - 0.08$  &         &               \\
-3  & $0.018$ & $0.0 - 0.1$   & $0.019$ & $0.0 - 0.11$  \\
-4C & $0.22$  & $0.0 - 0.088$ & $0.009$ & $0.0 - 0.056$ \\
-4G & $0.020$ & $0.0 - 0.075$ & $0.013$ & $0.0 - 0.052$ \\
-\hline
-\end{tabular}
-\caption{Results of the examples. 
-  For the true and twin tree,
-  the median and range (from minimum to maximum value) of the errors 
-  is shown. Experiment 4 is split in two rows
-  by either the candidate ('C') or generative model ('G')
-}
-\label{tab:results}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \richel{check numbers}
 \giovanni{
   I think that the current version of the discussion is too didascalic. 
   Most of what is said can be effectively summarized by table 5. 
   We can even add ESSes in it. 
+}
+\richel{
+  Agreed, I disliked it as well
 }
 \giovanni{
   Another point is that we should understand what is 
@@ -953,71 +930,70 @@ The resulting figure is shown in figure \ref{fig:example_4}.
   I am also interested in hearing Rampal's opinion on this.
 }
 
-\iffalse
-Here we discuss how to interpret the results of \verb;pirouette;.
-Figure \ref{fig:example_1} shows that the generative model 
-gives an error distribution with a median of \richel{?}
-The range of errors goes from \richel{?} to \richel{?}.
-As we know the generative model, this error distribution is the minimum noise that BEAST2 produces for that generative model.
-We can measure the effective samples as well (not shown), 
-and all the Estimated Sample Sizes (ESSes) are above
-the recommended value of 200 [\cite{drummond2015bayesian}], 
-as shown in table \ref{tab:esses_example_1}.
-
-Figure \ref{fig:example_2} shows that the best candidate model gives an error distribution with a median of \richel{?}. 
-The range of errors goes from \richel{?} to \richel{?}. 
-The inference model with the highest evidence follows a JC site model, RLN clock model and BD tree prior, with a weight of $0.675$. 
-This is (unexpectedly) \giovanni{We are not using distributions, so we are totally subject to stochasticity. Nothing can be expected from just one tree.} better than the generative
-model with a weight of $0.166$. 
-The complete list of all evidences is shown in table \ref{tab:evidences_example_2}.
-This means that it is rational to use this inference model to 
-infer a posterior phylogeny distribution, as is done by \verb;pirouette;.
-Also here, the ESSes are well above 200, 
-as shown in table \ref{tab:esses_example_2}.
-
-Figure \ref{fig:example_3} shows that the hand-picked model 
-gives an error distribution with a median of \richel{?}, 
-The twin tree has an error distribution with a median of \richel{?},
-with a range from 0.0 to \richel{?}, which is an indication of the
-error made by BEAST on that tree prior.
-As there is little difference between the true and twin tree,
-the (unknown) diversification model has little impact on the error
-BEAST2 makes, hinting that the constant-rate birth-death model is
-sufficiently good enough to explain the true phylogeny. 
-The diversification model apparently has minor impact and need not to be
-added to BEAST2.
-We can draw this conclusion with confidence, as the ESSes are well above 200, 
-as shown in table \ref{tab:esses_example_3}.
-
-Figure \ref{fig:example_4} shows that \richel{?}
-and 
-gives an error distribution with a median of \richel{?}, 
-The twin tree has an error distribution with a median of \richel{?},
-with a range from 0.0 to \richel{?}, which is an indication of the
-error made by BEAST on that tree prior.
-The inference model with the highest evidence follows a JC site model, 
-RLN clock model and BD tree prior, with a weight of ?. 
-The complete list of all evidences is shown in table \ref{tab:evidences_example_4}.
-As there is little difference between the true and twin tree,
-the (unknown) diversification model has little impact on the error
-BEAST2 makes, hinting that the constant-rate birth-death model is
-sufficiently good enough to explain the true phylogeny. 
-The diversification model apparently has minor impact and need not to be
-added to BEAST2.
-We can draw this conclusion with confidence \giovanni{no, we cannot: one tree is not enough}, as the ESSes are well above 200, 
-as shown in table \ref{tab:esses_example_4}.
-\fi
-
 \giovanni{
   This is a first draft on how I think the discussion should be setup. 
   In this context there is no much need for the results in the table. 
   Let me know what you think about it.
 }
+\richel{
+  I think that was the right way forward. 
+  I do think the reader would like help interpreting the
+  results of the example research questions as if these were
+  proper experiments. I added that
+}
 
-In the four example research questions we showed how to use \verb;pirouette; to assess if BEAST2 is able, with a birth-death prior, to recover the original tree simulated by a Yule process. In principle any other, possibly much more complex, generative prior can be tested.
-All tests were performed on a single original tree, hence not providing us enough statistical power to evaluate the level of accuracy of the inference. However if the same procedure were repeated and performed on a distribution with a sufficient number of generative trees, it could actually constitute a quantitative assessment of the quality of the inference, as shown in figures \ref{fig:example_1}, \ref{fig:example_2}, \ref{fig:example_3}, \ref{fig:example_4}. Importantly, \verb;pirouette; can directly show the comparison between the results obtained on a new generative prior as compared to the error BEAST2 would make when operating on a tree generated under the right tree prior (the twin tree).
-From such results an user can estimate whether or not a new tree prior, tailored on the generative process, is needed. If this would indeed be the case, one could implement their own tree prior as a new module in BEAST2.
-\giovanni{Maybe we can add a bit more on the nested sampling.}
+In the four example research questions we showed how to use \verb;pirouette; 
+to assess if BEAST2 is able, with a birth-death prior, 
+to recover the original tree simulated by a Yule process. 
+In principle any other, possibly much more complex, 
+generative prior can be tested.
+All tests were performed on a single original tree, 
+hence not providing us enough statistical power to 
+evaluate the level of accuracy of the inference. 
+
+However if the same procedure were repeated and performed on a distribution 
+with a sufficient number of generative trees, 
+it could actually constitute a quantitative assessment 
+of the quality of the inference.
+To give an idea of the insights \verb;pirouette; can give,
+we pretend the results of the example research questions
+to be obtained from thousands of replicates.
+In that case, figure \ref{fig:example_1} shows 
+the minimum error BEAST2 when the
+generative model is known, which can serve as 
+a minimum noise level assessment in a bigger experiment.  
+Figure \ref{fig:example_2} shows that 
+\richel{
+  reword after new results with 6 taxa tree
+} 
+the best candidate model gives an error distribution similar to the unknown tree prior,
+hinting that the candidate model would be just as good in inference.
+Figure \ref{fig:example_3} shows that 
+\richel{
+  reword after new results with 6 taxa tree
+} 
+the twin model gives an error distribution similar to the unknown tree prior,
+hinting that the shape of the phylogeny with unknown tree prior
+does not effect the error made by BEAST2.
+Figure \ref{fig:example_4} shows that 
+\richel{
+  reword after new results with 6 taxa tree
+} 
+the twin model and best candidate model give 
+an error distribution similar to the unknown tree prior,
+hinting that the shape of the phylogeny with unknown tree prior
+does not effect the error made by BEAST2, 
+and that the candidate model would be just as good in inference.
+
+In conclusion, \verb;pirouette; can directly show 
+the comparison between the results obtained 
+on a new generative prior as compared to the error BEAST2 
+would make when operating on a tree generated 
+under a known, right and existing tree prior (the twin tree).
+From such results an user can estimate whether or not a new tree prior, 
+tailored on the generative process, is needed. 
+If this would indeed be the case, 
+one could implement their own tree prior as a new module in BEAST2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
@@ -1046,7 +1022,9 @@ and a style guide (\cite{style_guide}).
 which facilitates feature requests and 
 has guidelines on how to do so.
 
-\verb;pirouette;'s documentation is extensive. All functions are documented in the package's internal documentation. For quick use, 
+\verb;pirouette;'s documentation is extensive. 
+All functions are documented in the package's internal documentation. 
+For quick use, 
 each exported function shows a minimal example. 
 For easy exploration, each exported function's documentation links to related functions.
 Additionally, \verb;pirouette; has a vignette that demonstrates extensively how to use it. 
@@ -1102,6 +1080,35 @@ RSE contributed to revisions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results in detail}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h]
+\centering
+\begin{tabular}{ | r | l | l | l | l | }
+\hline
+\multirow{2}{*}{\textbf{Example}} & \multicolumn{2}{c|}{\textbf{True tree}} 
+                                  & \multicolumn{2}{c|}{\textbf{Twin tree}} \\
+\cline{2-5}
+                                  & \textbf{median} & \textbf{range} & \textbf{median} & \textbf{range} \\
+\hline
+1  & $0.02$  & $0.0 - 0.27$  &         &               \\
+2  & $0.02$  & $0.0 - 0.08$  &         &               \\
+3  & $0.018$ & $0.0 - 0.1$   & $0.019$ & $0.0 - 0.11$  \\
+4C & $0.22$  & $0.0 - 0.088$ & $0.009$ & $0.0 - 0.056$ \\
+4G & $0.020$ & $0.0 - 0.075$ & $0.013$ & $0.0 - 0.052$ \\
+\hline
+\end{tabular}
+\caption{
+  \richel{redo}
+  Results of the examples. 
+  For the true and twin tree,
+  the median and range (1st and 3rd quartile) of the errors 
+  is shown. Experiment 4 is split in two rows
+  by either the candidate ('C') or generative model ('G')
+}
+\label{tab:results}
+\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \richel{
