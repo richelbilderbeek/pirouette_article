@@ -26,6 +26,13 @@
 \usepackage{pgf}
 \usepackage{bm}
 \usepackage{multirow}
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{array}
+\usepackage{booktabs}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{longtable}
 
 % sidewaysfigure
 \usepackage{rotating}
@@ -189,55 +196,95 @@ any given phylogeny, helping us to evaluate the necessity of a new diversificati
 \section{Description}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\verb;pirouette; is written in the R programming language (\cite{R}).
+The goal of \verb;pirouette; is to measure the inference error BEAST2
+makes for a given reconstructed phylogeny, simulated under the mechanisms of a (possibly new) diversification model, which we will refer to as the 'generative prior'. Such a study will typically construct phylogenies for different combinations of the diversification model's parameters, to assess under which scenarios the error made by BEAST2 cannot be neglected. Although a well-conducted theoretical study uses many replicates, this article only shows examples with one replicate, for the sake of clarity.
+
+\verb;pirouette; is very flexible and allows the user to specify a big variety of custom settings. These settings can be grouped in macro-sections, according to how they operate in the pipeline. We summarize them in Table~\ref{tab:definitions}.
+
+Although many possible tests can be performed, we present here only four example research questions (ERQ) that \verb;pirouette; can answer. For these ERQs we will estimate the error made by BEAST2 when using birth-death tree prior, in recovering an original tree generated under a Yule generative prior.
+
 \begin{table}
-  \begin{tabular}{ | l | l | }
+\centering
+  \begin{tabular}{|@{}c|@{}l|p{6cm}@{}|}
     \hline
-    \textbf{Term} & \textbf{Definition} \\ 
+    \textbf{Name} & \textbf{Meaning} & \textbf{Definition} \\ 
     \hline
-    Clock model & Model for the DNA mutation rates \\
-    Experiment & Combination of an inference model and the conditions to actually use it in inference \\
-    Generative model & Combination of site model, clock model and tree prior, used to simulate a DNA alignment \\
-    Inference model & Combination of site model, clock model, tree prior, MRCA prior and MCMC, used to infer a BEAST2 posterior \\
+    $\mathit{t}$ & tree prior & Used to simulate a DNA alignment\\
+    $\mathit{c}$ & clock model & Specifies the clock for the DNA mutation rates\\
+    $\mathit{s}$ & site model & Specifies the nucleotide substitution model\\
+    $\mathit{\mu}$ & mutation rate & Defines the pace at which mutation occurs\\
+    $\mathit{r}$ & root sequence & Specifies DNA sequence at the root of the tree\\
+    $\mathit{m}$ & MRCA prior & Prior knowledge of a most recent common ancestor\\
+    $\mathit{v}$ & MCMC settings & Setup of the Markov Chain Monte Carlo algorithm\\
+    \hline
+    $\mathit{P}$ & Generative prior & Specifies the diversification model according to which the 'true' tree is simulated\\
+    $\mathit{A}$ & Alignment model & Model for the alignment simulation. It's a choice of
+    $(\mathit{r},\mathit{\mu},\mathit{c},\mathit{s})$\\
+    $\mathit{G}$ & Generative model & A combination of the chosen $(\mathit{P},\mathit{A})$\\
+    $\mathit{I}$ & Inference model & Specifies how to execute the inference. It's a choice of
+    $(\mathit{c},\mathit{s},\mathit{t},\mathit{m},\mathit{v})$\\
+    $\mathit{C}$ & Inference conditions & Specifies under which conditions an inference model is used\\
+    $\mathit{X}$ & Experiment & A combination of the chosen $(\mathit{I},\mathit{C})$\\
+    $\mathit{E}$ & Error parameters & Sets how to measure errors\\
+    $\mathit{T}$ & Twinning parameters & Specifies how to twin the 'true' tree\\
+    \hline
+  \end{tabular}
+  \caption{
+    Definitions of terms and relative symbols used in this article.
+  }
+  \label{tab:definitions}
+  \giovanni{It would be nice to specify (in the first part of the table) the basic elements composing all the elements of the second part of the table. This could be probably done for "Alignment parameters", "Inference conditions" and "Twinning parameters".}
+  \giovanni{Shall we add another column with the possible option for each lower case setting? e.g. "clock model" = c("strict", "rln"); "tree prior" = c("yule", "bd")}
+  \giovanni{How do we specify what constitutes 'twinning parameters'?}
+\end{table}
+
+\iffalse
+Experiment & Combination of an inference model and the \\ 
+    & conditions to actually use it in inference \\
+    Generative model & Combination of site model, clock model and \\
+    & tree prior, used to simulate a DNA alignment \\
+    Inference model & Combination of site model, clock model, tree prior,\\
+    & MRCA prior and MCMC, used to infer \\
+    & a BEAST2 posterior \\
     MCMC & Setup of the Markov Chain Monte Carlo algorithm \\
     MRCA prior & Prior knowledge of a most recent common ancestor \\
     Site model & Model for the DNA nucleotide substitions \\
     Tree prior & Model for the macroevolutionary speciation process \\
-    \hline
-  \end{tabular}
-  \caption{
-    Definitions of the terms used in this article
-  }
-  \label{tab:definitions}
-\end{table}
+\fi
 
-\verb;pirouette; is written in the R programming language (\cite{R}).
-The goal of \verb;pirouette; is to measure the inference error BEAST2
-makes for a given reconstructed phylogeny, within the context of
-a simulation study on a (possibly new) diversification model. Such
-a study will typically construct phylogenies for different 
-combinations of the diversification model's parameters, 
-to assess under which scenarios the error made by BEAST2 cannot be neglected.
-Although a well-conducted theoretical study uses many replicates,
-this article only shows examples with one replicate, 
-for the sake of readability.
+\iffalse
+$\mathit{t}$ & tree prior & Used to simulate a DNA alignment\\
+    $\mathit{c}$ & clock model & Specifies the clock for the DNA \\
+    & & mutation rates\\
+    $\mathit{s}$ & site model & Specifies how nucleotides change\\
+    & & in one another\\
+    $\mathit{m}$ & MRCA prior & Prior knowledge of a most recent\\
+    & & common ancestor\\
+    $\mathit{v}$ & MCMC settings & Setup of the Markov Chain\\
+    & &  Monte Carlo algorithm\\
+    
+    $\mathit{G}$ & Generative model & Specifies how to create the 'true'\\
+    & &  tree. It's a choice of $(\mathit{c},\mathit{s},\mathit{t})$\\
+    $\mathit{T}$ & Twinning parameters & Specifies how to twin the 'true' tree\\
+    $\mathit{A}$ & Alignment parameters & Parameters for the alignment\\
+    & & simulation\\
+    $\mathit{I}$ & Inference model & Specifies how to execute the inference. \\
+    & & It's a choice of
+    $(\mathit{c},\mathit{s},\mathit{t},\mathit{m},\mathit{v})$\\
+    $\mathit{C}$ & Inference conditions & Specifies under which conditions an\\
+    & & inference model is used\\
+    $\mathit{X}$ & Experiment & A combination of the chosen $(\mathit{I},\mathit{C})$\\
+    $\mathit{E}$ & Error parameters & Sets how to measure errors\\
+\fi
 
+\iffalse
 \richel{
-  I do think this is a clumsy paragraph. I hope you can merge it
-  in the text
+  I do think this is a clumsy paragraph. I hope you can merge it in the text
 }
-To explain how \verb;pirouette; measures the inference error
-BEAST2 makes, we first give two 
-definitions (see table \ref{tab:definitions} for an overview of definitions):
-(1) a generative model is a combination of a known tree prior (that generated
-a given phylogeny) and a site and clock model (that generate an alignment 
-from the given tree), (2) an inference model is a combination of 
-site model, clock model, tree prior, an optional most recent 
-common-ancestor (MRCA) prior (to create a time-calibrated phylogeny)
-and a Markov chain Monte Carlo (MCMC) setup.
-A generative model is a known/true model underlying a phylogeny 
-and is used to simulate DNA alignments.
-An inference model
-is used to produce a posterior distribution of trees and model parameters.
+To explain how \verb;pirouette; measures the inference error BEAST2 makes, we first give two definitions (see Table~\ref{tab:definitions} for an overview of definitions): (1) a generative model is a combination of a known tree prior (that generated a given phylogeny) and a site and clock model (that generate an alignment from the given tree), (2) an inference model is a combination of site model, clock model, tree prior, an optional most recent common-ancestor (MRCA) prior (to create a time-calibrated phylogeny) and a Markov chain Monte Carlo (MCMC) setup.
+A generative model is a known/true model underlying a phylogeny and is used to simulate DNA alignments. An inference model is used to produce a posterior distribution of trees and model parameters.
+\fi
 
 \subsection{pirouette's pipeline}
 
@@ -246,71 +293,61 @@ is used to produce a posterior distribution of trees and model parameters.
   \includegraphics[width=\textwidth]{workflow.png}
   \caption{
     \texttt{pirouette} pipeline. 
-    The pipeline starts from a true phylogeny (1a), 
-    that is converted to an alignment (2a).
-    The use supplies one or more experiments, in which an experiment is
-    defined as a combination of 
-    an inference model and the conditions in which it is actually used in
-    inference.
-    Based on the experiments and possibly the alignment (2a),
-    experiments are selected to be actually used used in the next step (3a).
-    Those experiments that are selected, use the   
-    alignment (2a) and their inference model 
-    to create a BEAST2 posterior of (parameter estimates and) phylogenies (4a).
-    The posterior trees are compared to the true phylogeny (1a) 
-    using the nLTT statistic [\cite{janzen2015approximate}]. 
-    (5a) shows the nLTT of the true tree in red,
-    the nLTT of all individual posterior trees in grey, and the average
-    nLTT statistic of all posterior trees in black.
-    Taking the differences between the true tree's nLTT and each posterior's
-    nLTT results in an error distribution, here displayed as a histogram
-    of error values (6a).
-    Optionally, a twin phylogeny (1b) can be generated from a true
-    phylogeny (1a), which then results in an error distribution (6b) with
-    similar intermediate steps 
+    The pipeline starts from a true phylogeny (1a), that is converted to an alignment (2a). The user supplies one or more experiments. Every experiment is
+    defined as a combination of an inference model and the conditions in which it is actually used in the inference. Based on the experiments and possibly the alignment (2a), experiments are selected to be actually used used in the next step (3a).
+    Selected experiments use the alignment (2a) and their inference model 
+    to create a BEAST2 posterior of (parameter estimates and) phylogenies (4a). The posterior trees are compared to the true phylogeny (1a) using the nLTT statistic [\cite{janzen2015approximate}]. (5a) shows the nLTT of the true tree in red,
+    the nLTT of all individual posterior trees in grey, and the average nLTT statistic of all posterior trees in black. Taking the differences between the true tree's nLTT and each posterior's nLTT results in an error distribution, here displayed as a histogram
+    of error values (6a). Optionally, a twin phylogeny (1b) can be generated from a true
+    phylogeny (1a), which then results in an error distribution (6b) with similar intermediate steps.
   }
   \label{fig:pipeline}
+    \giovanni{The black line for the average of all posterior trees is barely visible. Please, make it thicker.}
+    \giovanni{Modify the figure to include elements in table~\ref{tab:definitions}. It should be specified clearly where elements corresponding to capital symbols play their roles in the pipeline. Then we should include also these elements in the caption.}
 \end{figure}
+
+\iffalse
+\caption{
+    \texttt{pirouette} pipeline. 
+    The pipeline starts from a true phylogeny (1a), that is converted to an alignment (2a). The user supplies one or more experiments. Every experiment is
+    defined as a combination of an inference model and the conditions in which it is actually used in the inference. Based on the experiments and possibly the alignment (2a), experiments are selected to be actually used used in the next step (3a).
+    Selected experiments use the alignment (2a) and their inference model 
+    to create a BEAST2 posterior of (parameter estimates and) phylogenies (4a). The posterior trees are compared to the true phylogeny (1a) using the nLTT statistic [\cite{janzen2015approximate}]. (5a) shows the nLTT of the true tree in red,
+    the nLTT of all individual posterior trees in grey, and the average nLTT statistic of all posterior trees in black. Taking the differences between the true tree's nLTT and each posterior's nLTT results in an error distribution, here displayed as a histogram
+    of error values (6a). Optionally, a twin phylogeny (1b) can be generated from a true
+    phylogeny (1a), which then results in an error distribution (6b) with similar intermediate steps.
+  }
+\fi
 
 The pipeline is summarized by the following steps, which will be described in detail below:
 \begin{enumerate}
-    \item for a given phylogeny an alignment is simulated for a known 'alignment' model;
-    \item for this alignment, model selection is performed to choose the best-fitting alignment model in inference (which may be different from the generative alignment model);
+    \item for a given phylogeny an alignment is simulated under a known alignment model;
+    \item for this alignment, according to the specified inference conditions, an inference model is picked (which may be different from the generative alignment model);
     \item the alignment is then used as BEAST2 input to infer a posterior distribution of phylogenies;
-    \item posterior phylogenies are compared with the given original phylogeny to estimate the error made;
+    \item posterior phylogenies are compared with the given original phylogeny to estimate the error made, according to the error parameters specified by the user;
 \end{enumerate}
-The pipeline is visualized in Fig.~\ref{fig:pipeline}.
-There is also the option to generate a 'twin tree',
-that goes through the same pipeline. 
+The pipeline is visualized in Fig.~\ref{fig:pipeline}. There is also the option to generate a 'twin tree', that goes through the same pipeline. 
 The utility of this twin tree will be explained below.
 
 The first step simulates a DNA alignment from a given 
 phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a).
-One can specify, most importantly, a root DNA sequence, 
-a DNA mutation rate, a site model, and a clock model
-\richel{
-  as the DNA mutation rate is the same over all branches, 
-  only the strict clock model makes sense. I suggest to
-  remove the option to specify a clock model
-}.
-This step is relatively fast, but longer
-DNA alignments will noticeably slow down the inference step.
+This operation is performed according to the alignment model specified by the user, which consists in a root DNA sequence, a DNA mutation rate, a site model and a clock model. Since all the branches must evolve at the same pace, the clock model is always set to strict for this step. \giovanni{I think we need to specify the clock model, even though the user cannot change it. This is necessary because we refer to it when specifying what it means to set the inference model equal to the generative model. Please check if my description of why the clock can only be strict is accurate.}
+This step is relatively fast, but longer DNA alignments will noticeably slow down the inference step.
 
 The second step (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a)
 starts from experiments as set up by the user. 
 We define an experiment as the combination of an inference model 
-and the conditions to actually use it in inference.
-There a two types of inference models, which are
-generative and candidate inference models.
-An experiment uses a generative model if the inference model is known.
-An experiment uses a candidate model if either the inference model is unknown,
+and the conditions to actually use it in the inference step.
+The inference model can be selected in two ways, either using the
+generative model or selecting one or more candidates out of a list of candidate inference models.
+An experiment can use the generative model as the inference model, if the generative model is known.
+An experiment uses a candidate model if either the generative model is unknown,
 or there is an interest in seeing how well non-generative models compete with
 the generative model.
-Typically, a generative model and/or a best candidate model are used 
-in the actual inference.
+Typically, a generative model and/or a best candidate model are used in the actual inference.
 When using an experiment with a generative model,
 it must use the same site and clock model used in the alignment simulation,
-as well as the tree prior that underlied the creation of the given phylogeny. 
+as well as the tree prior that underlied the creation of the given phylogeny \giovanni{the tree prior appears not to be part of the alignment model. This means that should be part of the generative prior. Is it true? In case we can refer explicitly to it, according to our definitions in table \ref{tab:definitions}}. 
 When using experiments with candidate models,
 \verb;pirouette; selects the best candidate based
 on the evidence (i.e. marginal likelihood) for the model given the alignment.
@@ -318,30 +355,23 @@ The evidence of an inference model is estimated using a nested sampling (NS)
 approach, as described in \cite{maturana2018model}. The nested sampling is
 performed by \verb;mcbette; [\cite{mcbette}], that calls the 'NS' BEAST2 package. 
 Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac,
-therefore using the selection of candidate models is not available on Windows. 
-Note that there is the option to do just the model selection on Windows 
-from the browser using \verb;mcbette;, yet the computation for this model selection is
+therefore the selection of candidate models is not available directly on Windows. 
+However, even on Windows systems there is the option to perform the model selection from browser, using \verb;mcbette;, yet the computation for this model selection is
 restricted to one hour for free users of the host (Travis CI) continuous
 integration service.
 
 The third step infers the actual Bayesian posteriors from the simulated 
 alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a $\rightarrow$ 4a),
-using the inference models from the experiments 
-selected in the previous step. Per selected experiment, 
-one BEAST2 posterior is inferred, 
-using the \verb;babette; [\cite{bilderbeek2018babette}] R package.
+using the inference models from the experiments selected in the previous step. For each selected experiment, one BEAST2 posterior is inferred, using the \verb;babette; [\cite{bilderbeek2018babette}] R package.
 
-The fourth step compares the true tree to each posterior tree
+The fourth step compares the true tree to each posterior tree, calculating the
 error using the nLTT statistic (\cite{janzen2015approximate}) 
 (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a), resulting
 in an error distribution (Fig.~\ref{fig:pipeline}, 5a $\rightarrow$ 6a).
-The nLTT statistic is used by default, 
-but also a user-defined error statistic can be used. 
-As an example,
-\verb;pirouette; supplies one custom error statistic,
+The nLTT statistic is used by default, but also a user-defined error statistic can be used. 
+As an example, \verb;pirouette; supplies one custom error statistic,
 that uses an absolute difference in the gamma statistic [\cite{pybus2000testing}].
-Additionally, the user can specify the
-proportion of posterior phylogenies to 
+Additionally, the user can specify the proportion of posterior phylogenies to 
 discard (i.e. the burn-in), throwing away the first $10\%$
 of all phylogenies by default. This burn-in is used to discard
 the part of the MCMC chain that has not yet converged to a
@@ -357,17 +387,10 @@ yet its branching times are simulated according to
 a birth-death tree model.
 \richel{Should be switched to BD, pirouette Issue 161}.
 The goal of this procedure is to generate a tree
-with a tree prior present in BEAST2, 
+accordingly to the tree prior used in the generative model, 
 that is used as a control for the main experiment.
-To produce such a birth-death tree, we maximize a birth-death 
-likelihood [\cite{nee1994reconstructed}], 
-conditioned on having the same number of tips as the original tree,
-to infer its parameters.
-We use these parameters,  
-which are a speciation rate and extinction rate,
-to simulate the branching times for the 
-twin tree, which we combinate with the original tree's 
-topology. 
+To produce such a birth-death tree, we maximize a birth-death likelihood [\cite{nee1994reconstructed}], conditioned on having the same number of tips as the original tree, to infer its parameters.
+We use these parameters, which are the per-species speciation and extinction rates, to simulate the branching times for the twin tree, which we combine with the original tree's topology. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
@@ -437,15 +460,15 @@ which we will refer to in the next sections,
 can be accessed from the documentation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Usage: First research question}
+\section{Usage: Example Research Question 1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A first research question that \verb;pirouette; answers is:
+A first research question that \verb;pirouette; can answer is:
 
 "What is the error made by BEAST2 from a phylogeny using the same diversification model as it was generated by?"
 
-\richel{Suggest: use BD tree (again)}
-We start with a Yule (pure-birth) tree with five taxa and a crown age of ten.
+\richel{Suggest: use BD tree (again)} \giovanni{I think in this case we should indeed use a Yule tree prior, as we want to use a generative prior that is not birth-death (which is what BEAST2 is using for the inference). What do you think?}
+We start from a tree simulated under a Yule (pure-birth) generative prior. We choose to use a tree with five taxa and a crown age of ten.
 
 \begin{lstlisting}[
     language=R, floatplacement=H, frame=single, 
@@ -566,10 +589,10 @@ The resulting figure is shown in figure \ref{fig:example_1}.
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Usage: Second research question}
+\section{Usage: Example Research Question 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A second research question that \verb;pirouette; answers, is:
+A second research question that \verb;pirouette; can answer, is:
 
 "What is the error made by BEAST2 from a phylogeny when
 picking the best inference model?"
@@ -672,10 +695,10 @@ The resulting figure is shown in figure \ref{fig:example_2}.
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Usage: Third research question}
+\section{Usage: Example Research Question 3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A third research question that \verb;pirouette; answers is:
+A third research question that \verb;pirouette; can answer is:
 
 "What is the error made by BEAST2 from a phylogeny, 
 when hand-picking an inference model, compared to the background noise?"
@@ -690,7 +713,7 @@ This time, we are interested in creating a twin tree. A twin tree
 has the same topology as the given tree, 
 yet its branching times are simulated according 
 to the tree prior used by BEAST2 to produce a posterior. 
-Since there is coherence between the inference model and the generative model \giovanni{Do we need to specify what is a generative model? Are we using BD or Yule? In case we are using Yule are we sure there is actually coherence when inference model is bd?}, we expect BEAST2 to produce a posterior of phylogenies clearly more similar to the original one. 
+Since there is coherence between the inference model and the generative model, we expect BEAST2 to produce a posterior of phylogenies clearly more similar to the original one. 
 We intend to use this as a control experiment.
 
 Creating a twinning parameter is easy, as it has sensible default settings:
@@ -750,13 +773,12 @@ tree, to measure the noise, which is the minimal error.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Usage: Fourth research question}
+\section{Usage: Example Research Question 4}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A fourth research question that \verb;pirouette; answers, is:
+A fourth research question that \verb;pirouette; can answer, is:
 
 "What is the error made by BEAST2 from a phylogeny, when the generative model is known, compared to candidates with similar inference models, in relationship to the background error?"
-\giovanni{Did we define already the "generative" model? If not we can maybe refer to it when we define alignment and inference model}
 
 Here, same as example 2, we start with a tree generated by the Yule process, by using the code shown in listing \ref{lst:create_yule_tree}.
 The first step in \verb;pirouette; is to simulate a DNA alignment 
@@ -892,6 +914,7 @@ The resulting figure is shown in figure \ref{fig:example_4}.
 \richel{check numbers}
 \giovanni{I think that the current version of the discussion is too didascalic. Most of what is said can be effectively summarized by table 5. We can even add ESSes in it. Another point is that we should understand what is the message we want to deliver in this discussion. Since we are only using one tree we are not in the position to claim anything, because a single tree is not an effective sample. I saw that in some occasions you refer to the RQ as examples. This might be the right way to proceed, as our purpose is just to illustrate how to run all the possible experiments on a full tree distribution. I think we should make it clearer throughout the entire manuscript. I am also interested in hearing Rampal's opinion on this.}
 
+\iffalse
 Here we discuss how to interpret the results of \verb;pirouette;.
 Figure \ref{fig:example_1} shows that the generative model 
 gives an error distribution with a median of \richel{?}
@@ -944,6 +967,14 @@ The diversification model apparently has minor impact and need not to be
 added to BEAST2.
 We can draw this conclusion with confidence \giovanni{no, we cannot: one tree is not enough}, as the ESSes are well above 200, 
 as shown in table \ref{tab:esses_example_4}.
+\fi
+
+\giovanni{This is a first draft on how I think the discussion should be setup. In this context there is no much need for the results in the table. Let me know what you think about it.}
+
+In the four example research questions we showed how to use \verb;pirouette; to assess if BEAST2 is able, with a birth-death prior, to recover the original tree simulated by a Yule process. In principle any other, possibly much more complex, generative prior can be tested.
+All tests were performed on a single original tree, hence not providing us enough statistical power to evaluate the level of accuracy of the inference. However if the same procedure were repeated and performed on a distribution with a sufficient number of generative trees, it could actually constitute a quantitative assessment of the quality of the inference, as shown in figures \ref{fig:example_1}, \ref{fig:example_2}, \ref{fig:example_3}, \ref{fig:example_4}. Importantly, \verb;pirouette; can directly show the comparison between the results obtained on a new generative prior as compared to the error BEAST2 would make when operating on a tree generated under the right tree prior (the twin tree).
+From such results an user can estimate whether or not a new tree prior, tailored on the generative process, is needed. If this would indeed be the case, one could implement their own tree prior as a new module in BEAST2.
+\giovanni{Maybe we can add a bit more on the nested sampling.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
