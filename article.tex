@@ -973,7 +973,7 @@ as shown in table \ref{tab:esses_example_4}.
 
 In the four example research questions we showed how to use \verb;pirouette; to assess if BEAST2 is able, with a birth-death prior, to recover the original tree simulated by a Yule process. In principle any other, possibly much more complex, generative prior can be tested.
 All tests were performed on a single original tree, hence not providing us enough statistical power to evaluate the level of accuracy of the inference. However if the same procedure were repeated and performed on a distribution with a sufficient number of generative trees, it could actually constitute a quantitative assessment of the quality of the inference, as shown in figures \ref{fig:example_1}, \ref{fig:example_2}, \ref{fig:example_3}, \ref{fig:example_4}. Importantly, \verb;pirouette; can directly show the comparison between the results obtained on a new generative prior as compared to the error BEAST2 would make when operating on a tree generated under the right tree prior (the twin tree).
-From such results an user can estimate whether or not a new tree prior, tailored on the generative process, is needed. If this would indeed be the case, one could implement their own tree prior as a new module in BEAST2.
+From such results an user can estimate whether or not the development of a new tree prior (i.e. a new likelihood model), tailored on the generative process, is needed. If this would indeed be the case, one could implement their own tree prior as a new module in BEAST2.
 \giovanni{Maybe we can add a bit more on the nested sampling.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
