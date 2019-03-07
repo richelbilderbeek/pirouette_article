@@ -493,14 +493,28 @@ representative part of the state space.
 An optional step is to generate a 'twin tree' 
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
 that will be analyzed in the same way as the true tree.
-The twin tree has the same topology as the given phylogeny, 
+The twin tree will be the true tree 
+converted to follow the tree prior of the generative model. 
+We do so, by finding the parameters 
+(e.g. speciation and extinction rate for a birth-death model) 
+with the maximum likelihood, 
+conditioned on having the same number of tips as the original tree.
+We use these parameters to simulate the branching times of the twin tree, 
+which we combine with the original tree's topology.
+
+Using a twin tree serves as a control: both the given/true tree
+and twin tree will produce an error distribution.
+For the true tree, this error distribution is caused by
+the shape of the phylogeny (which is different from the tree priors used), 
+the stochastic alignment simulation and stochastic Bayesian inference.  
+The twin tree is created from the given phylogeny,
+as it has the same topology, 
 yet its branching times are simulated according to 
-a birth-death tree model.
-The goal of this procedure is to generate a tree
-accordingly to the tree prior used in the generative model, 
-that is used as a control for the main experiment.
-To produce such a birth-death tree, we maximize a birth-death likelihood [\cite{nee1994reconstructed}], conditioned on having the same number of tips as the original tree, to infer its parameters.
-We use these parameters, which are the per-species speciation and extinction rates, to simulate the branching times for the twin tree, which we combine with the original tree's topology. 
+the (implemented) generative tree prior.
+Due to this, this error distribution for the twin tree is caused 
+only by the stochastic alignment simulation and stochastic Bayesian inference.
+The difference between these two error distribution is the error caused
+by the new/unimplemented tree prior.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
