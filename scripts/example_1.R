@@ -4,10 +4,16 @@
 library(pirouette)
 library(ggplot2)
 library(ggthemes)
+library(ggtree)
 
 set.seed(314)
 
-phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
+# Should run one day, https://github.com/richelbilderbeek/pirouette/issues/192
+#phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
+phylogeny  <- ape::read.tree(
+  text = "(((((A:2, B:2):2, C:4):2, D:6):2, E:8):2, F:10);"
+)
+
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
@@ -26,9 +32,9 @@ errors <- pir_run(
   pir_params = pir_params
 )
 
+
 pir_plot(errors) +
   scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
-  theme_wsj() +
   ggsave("/home/richel/GitHubs/pirouette_article/figure_example_1.png")
 
 testit::assert(pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1)
@@ -39,3 +45,6 @@ esses <- tracerer::calc_esses(
 sink("/home/richel/GitHubs/pirouette_article/example_1_esses.latex")
 xtable::xtable(esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0)
 sink()
+
+ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() + ggtitle("Faked Yule tree, #192") +
+  ggsave("/home/richel/GitHubs/pirouette_article/tree_yule.png")
