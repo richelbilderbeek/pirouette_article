@@ -34,6 +34,11 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \usepackage{longtable}
 
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+
 % sidewaysfigure
 \usepackage{rotating}
 
@@ -706,11 +711,6 @@ The resulting figure is shown in figure \ref{fig:example_1}.
   \caption{
     Example 1: the error BEAST2 makes from a phylogeny 
     when the generative and inference model are the same.
-    The x-axis specifies the tree type (which can be 'true' or 'twin'), 
-    the y-axis shows the error. 
-    The boxplot shows the minimum, first quartile, median, third 
-    quartile and maximum error, of which the values are displayed 
-    in the adjacent label
   }
   \label{fig:example_1}
 \end{figure}
@@ -1278,6 +1278,10 @@ RSE contributed to revisions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Errors}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h]
 \centering
 \begin{tabular}{ | r | l | l | l | l | }
@@ -1306,13 +1310,42 @@ RSE contributed to revisions.
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\richel{
-  I'd enjoy to put all intermediate output here: alignments, twin trees,
-  posteriors, nLTTs, errors. Now we only show the ones relevant in the text
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example 1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+  \centering
+  \resizebox {0.8\columnwidth} {!} {
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm, semithick]   
+    \tikzstyle{every state}=[]
+    \node[state] (A) [rectangle] {
+      \includegraphics[width=0.2\textwidth]{tree_yule.png}
+    };   
+    \node[state] (B) [below of = A, rectangle] {
+      \includegraphics[width=0.2\textwidth]{tree_yule.png}
+    };   
+    \node[state] (C) [below of = B, rectangle] {
+      \includegraphics[width=0.2\textwidth]{tree_yule.png}
+    };   
+    \path 
+      (A) edge [anchor = south] node {} (B)
+      (B) edge [anchor = south] node {} (C)
+    ; 
+    \end{tikzpicture}
+  }
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_1_esses.latex}
 % has label tab:esses_example_1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example 2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_2_esses.latex}
 % has label tab:esses_example_2
@@ -1320,8 +1353,16 @@ RSE contributed to revisions.
 \input{example_2_evidences.latex}
 % has label tab:evidences_example_2
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example 3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \input{example_3_esses.latex}
 % has label tab:esses_example_3
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example 4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_4_esses.latex}
 % has label tab:esses_example_4
