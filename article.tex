@@ -600,7 +600,7 @@ We choose to use a tree with six taxa and a crown age of ten.
 phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \includegraphics[width=\textwidth]{figure_bd.png}
   \caption{The Yule tree, as created by listing \ref{lst:create_yule_tree}}
 \end{figure}
@@ -696,7 +696,7 @@ pir_plot(errors)
 
 The resulting figure is shown in figure \ref{fig:example_1}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \includegraphics[width=\textwidth]{figure_example_1.png}
   \caption{
     Example 1: the error BEAST2 makes from a phylogeny 
@@ -733,6 +733,12 @@ phylogeny  <- ape::read.tree(
   text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);"
 )
 \end{lstlisting}
+\begin{figure}[ht]
+  \includegraphics[width=\textwidth]{figure_unknown.png}
+  \caption{The tree derived from an unknown diversification process, 
+    as created by listing \ref{lst:unknown_phylogeny}
+  }
+\end{figure}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the given phylogeny. 
 We will re-use the alignment parameters of the previous example 
@@ -806,7 +812,7 @@ The resulting figure is shown in figure \ref{fig:example_2}.
 \giovanni{describe winner}
 \richel{agreed, after the figures also show it :-) }
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \includegraphics[width=\textwidth]{figure_example_2.png}
   \caption{
     Example 2: the error BEAST2 makes from a phylogeny when
@@ -886,7 +892,7 @@ pir_plot(errors)
 
 The resulting figure is shown in figure \ref{fig:example_3}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \includegraphics[width=\textwidth]{figure_example_3.png}
   \caption{
     Example 3: the error made by BEAST2 from a phylogeny, picking the best inference model versus the control.
@@ -1017,7 +1023,7 @@ The resulting figure is shown in figure \ref{fig:example_4}.
 \giovanni{describe winner}
 \richel{agreed, after the figures also show it :-) }
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \includegraphics[width=\textwidth]{figure_example_4.png}
   \caption{
     Example 4: the error made by BEAST2 from a phylogeny, when the generative model is known, compared to candidates with similar inference models, in relationship to the background error.
