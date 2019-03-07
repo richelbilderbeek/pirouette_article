@@ -28,6 +28,15 @@ pir_params <- create_pir_params(
   experiments = experiments
 )
 
+################################################################################
+# Settings to run on Peregrine cluster
+################################################################################
+pir_params$alignment_params$fasta_filename <- file.path(root_folder, paste0("example_", example_no, "_true.fasta"))
+pir_params$experiments[[1]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input.xml"))
+pir_params$experiments[[1]]$beast2_options$output_log_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.log"))
+pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.trees"))
+pir_params$experiments[[1]]$beast2_options$output_state_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.xml.state"))
+
 errors <- pir_run(
   phylogeny,
   pir_params = pir_params
