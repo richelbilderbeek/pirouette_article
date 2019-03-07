@@ -36,6 +36,7 @@ pir_params$experiments[[1]]$beast2_options$input_filename <- file.path(root_fold
 pir_params$experiments[[1]]$beast2_options$output_log_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.log"))
 pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.trees"))
 pir_params$experiments[[1]]$beast2_options$output_state_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.xml.state"))
+pir_params$experiments[[1]]$errors_filename <- file.path(root_folder, paste0("example_", example_no, "_error.csv"))
 
 errors <- pir_run(
   phylogeny,

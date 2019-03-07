@@ -1346,6 +1346,8 @@ RSE contributed to revisions.
     ; 
     \end{tikzpicture}
   }
+  \label{fig:example_1_full_pipeline}
+  \caption{Example 1: full pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1357,6 +1359,43 @@ RSE contributed to revisions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+  \centering
+  \resizebox {0.8\columnwidth} {!} {
+    \begin{tikzpicture}[
+      ->,>=stealth',shorten >=1pt,auto,
+      node distance=0.25\textheight, 
+      semithick
+    ]   
+    \tikzstyle{every state}=[]
+    \node[state, draw=none] (O) [] {
+    };   
+    \node[state] (A) [right of = O, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_2_true_tree.png}
+    };   
+    \node[state] (B) [below of = A, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_2_true_alignment.png}
+    };   
+    \node[state] (C) [below of = B, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_2_true_posterior_gen.png}
+    };   
+    \node[state] (D) [below of = C, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_2_error_violin.png}
+    };   
+    \path 
+      (O) edge [anchor = south] node {} (A)
+      (A) edge [anchor = south] node {} (B)
+      (B) edge [anchor = south] node {} (C)
+      (C) edge [anchor = south] node {} (D)
+    ; 
+    \end{tikzpicture}
+  }
+  \label{fig:example_2_full_pipeline}
+  \caption{Example 2: full pipeline}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_2_esses.latex}
 % has label tab:esses_example_2

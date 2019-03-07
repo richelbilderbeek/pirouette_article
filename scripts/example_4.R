@@ -50,7 +50,7 @@ errors <- pir_run(
 
 pir_plot(errors) +
   scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
-  ggsave("/home/richel/GitHubs/pirouette_article/figure_example_4.png")
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_errors.png")))
 
 
 
