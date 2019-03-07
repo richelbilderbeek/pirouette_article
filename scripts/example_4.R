@@ -7,7 +7,7 @@ library(ggthemes)
 library(ggtree)
 
 root_folder <- path.expand("~/GitHubs/pirouette_article/")
-example_no <- 1
+example_no <- 4
 set.seed(314)
 
 phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);")
