@@ -1318,20 +1318,31 @@ RSE contributed to revisions.
 \begin{figure}[h]
   \centering
   \resizebox {0.8\columnwidth} {!} {
-    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm, semithick]   
+    \begin{tikzpicture}[
+      ->,>=stealth',shorten >=1pt,auto,
+      node distance=0.25\textheight, 
+      semithick
+    ]   
     \tikzstyle{every state}=[]
-    \node[state] (A) [rectangle] {
-      \includegraphics[width=0.2\textwidth]{tree_yule.png}
+    \node[state, draw=none] (O) [] {
+    };   
+    \node[state] (A) [right of = O, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_1_true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[width=0.2\textwidth]{tree_yule.png}
+      \includegraphics[height=0.2\textheight]{example_1_true_alignment.png}
     };   
     \node[state] (C) [below of = B, rectangle] {
-      \includegraphics[width=0.2\textwidth]{tree_yule.png}
+      \includegraphics[height=0.2\textheight]{example_1_true_posterior_gen.png}
+    };   
+    \node[state] (D) [below of = C, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_1_error_violin.png}
     };   
     \path 
+      (O) edge [anchor = south] node {} (A)
       (A) edge [anchor = south] node {} (B)
       (B) edge [anchor = south] node {} (C)
+      (C) edge [anchor = south] node {} (D)
     ; 
     \end{tikzpicture}
   }

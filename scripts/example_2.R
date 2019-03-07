@@ -6,6 +6,8 @@ library(ggplot2)
 library(ggthemes)
 library(ggtree)
 
+root_folder <- path.expand("~/GitHubs/pirouette_article/")
+example_no <- 2
 set.seed(314)
 
 phylogeny  <- ape::read.tree(
