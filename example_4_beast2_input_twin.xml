@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.4">
+
+
+    <data
+id="alignment_twin_493b50a6d140"
+name="alignment">
+                    <sequence id="seq_A" taxon="A" totalcount="4" value="tatcgtggcaaaatacaacgagtgataatgatagataataacagaagaaaaataaagtcaaggtactataaattaccaccgagaattataagaagaacgaataacgtagagatacctacaatagaaaaatagacgtagttggtgataaatgcaaagataaccgcagatgaatagtcgctacactattaatcctagtgtgaaatagtataaatcccaatgcatcaatactgaaatccatataaatgaaacccttcgcctgttcggctccggacctcacagccccgccccactggaggcccctccgacacggcctgcccaccacacgttaattggtagagtgatcgggcctcctcccagagcacagatcaccctatgtatcccaacaacattacctctcccgcgctgacacctaacccccctgcctcggttagggcggcccctcggattcatacatacctacctcggattcccttgcggtacctcaacgcagtgtacaaggcatgatttatgtccgtgtggggtaaatcacttcgtcggtcctatatactcgacgtcgttgggctcagcggcgcaacggggaggcacggagtgttgggatgggcaggctgacgtgtcggaggagcagagcaaatggtgggttccaaggtggaagggggtgggtgggagcaagggggtgggggttgacgtaaagagatgtgtcgaggcgggggcgggttgagaggggatgggataaggtagcgggcacggggaaacctagttgttttttttggtacactgctgactcatgagtttaatagttatgcccttagtagatatcggttttgtctgttgaattcagcgtaatttttattgacattttttccaaactatctaataacacaatccgttgtaggttgtgtttcctatgttttacgggcgtttacatattctcggttttcacttgtgttgaatctggtgccttcctacatgctcgtacttggctatacgttaattagtcttt"/>
+                    <sequence id="seq_B" taxon="B" totalcount="4" value="tatacacttatcaaacgcctatttattctagtagagcaaaacaaaataaaaaataaatcaatatagaacagctaagcaccgaaaaatagaacaaggtataactacgccaatgaatccgagtctgagatagagtaggatactgagcacaatgagtaaatacaggaatatccgaagtcacactaagagaaaacacagaatcgcataccctgatgattataatagtactaccgagcagaatgtaactctgaaccatgtgagaggccggaccccgtcactaattccctgcaagcttgagctccctcccgcaagcccacgcaccatcgtactgcctacctcaccgatccttctggccggagtttacgcccccccccgttgtaccaccccaccggttccgcagctaggcctactcctagtccgtccacattgcttcgagtccctcagcacaacctcattccggtatccctcttccatcgccgcccctgcattccaggttcaacggtgatagttgtgtaggcgccgggggggtctggccggcggtggtaattagattgctttatcaggatgagctgtagaatgccgcggctcagggtaaggtaatggggcgggtagagcttcgtttacgctgaagaaacgggaggggattaggtgtcgttgagacgtggagagaagtgaggtaggggtgaacgtatgggtttatagcatggtggaaacgaggtattttcgcagggcctagggacttatgtgcgtgggatccttgtactcttttgttcaacggtttttatgctttggtatgatgagtatggctttagtggcagtccggtttttgtgtagaatcttcaatgttgtttagtgctattttattccgtagatctaatactttatgggtttctgatttgtatgatatttttcttatggtgattcccacatttcctgatgtgatttgtatttaatctttatcccggatacatcagagcactcgtgtgcatgttaggttgtcgtt"/>
+                    <sequence id="seq_C" taxon="C" totalcount="4" value="gtaggagcgcattaatagcgatgaaaaaagagttacttccataagacgagaaacgtctaaacaataataatcataagaactacccaaaatcaaaggaacaaaacccaactcttgttccaaaccaaaaaaagattacgacctaaaaaaatgaagtaactgctagcagcaaaactaatgcgtacggaagatgtaagctgaaaaaaagataggccaacaaattaaccagaaccataaatcacggcacccgatatcaatcccactgccccccctaagcttcaactccggccccatcgaaagccgtcccccacctcaccccaggaacttaccccacagtaagccgccaccatgccattcccccgttacccagttcccgcccccgataccaaccgctaattagcggactgggctaccatctccaactcgcccccacatccgcctacgctcgcccggaagaccaccaacgtcatccaccacggtgcccggccatcggtcgcgcctccttgtagctgcagactcgcgatggaggaggggggcgggggggttgtactttgtcaccagagccctatagggcccgggcaagatcggcggctccggtccgtgctagatttcacgggggagagaattcttccgaggaggatcggtgaggggagggggccacttggttcgatgtggggccgaggggaaatggagaggaaccgctgacaataagaatgtggagtgggccggaccgtgcaagtgttggcctcgaagcagtgaagtcttattatccgaggtcctaaggttgacgtcttttttcccagagttaggtgtctgacttgaagtttatttttttagttctcccttactctgttcatacagaatgggctaagtacgtaaagttgtcactgattcaggctttttcctttagcggctgacattatttacgcttttttccttagactgttcattcataaacctctatatgaataagaagtatagtcattcagtgaaatgttctttt"/>
+                    <sequence id="seq_D" taxon="D" totalcount="4" value="aaaagaactagcaaagaagacagcagcaatttaataaccagcgaaaagacgcaaggtattaccaagagataaagcaaactcatcaaattgtattactaaagttaggggaaagggggatataaagtggattgtgaaccataaccaaaggaaaaaacctttaccatgtgatatcccaaaatgctcaacaagaaagtacataaaattgagaaccctaaacaaatacagtatagtttttacaacaggtgcggagcaccagcctctccactgctgtacaactccaggcttttccccgcatcttaataccgccagggggaatgtccactaacccctctaaacctgcgggcccgacctacttgcccactccccttgtcctcaggcgcatccgctcactgcccttaccacaatttagcacatggccgcgcgcgataatatccgcgagctattaacaagggacatgacctgcccaacccatacgatctggagctagcccgcctcgtcgcagatcggtgctggtgggatcgaggtattgacgagacggcgtgggtgtgggggtcattctgcctcaagacgtctcgtcacgagagtaacgccgttaagcggcgggattccaaggcaggtaagtcagtgggggcagcgataaggttgttcgaataatgtcatctcccttcgtttgcggggtgcgtgagagtatcccccgtctttctcttagggaagggcgagcgtccagagtgacctggggatagaggttgcgttttctggtactatgatgtttttatcagcgtactggaccgtcgctcgcaacctgtcctctgtgttgacctcctcatctcatgtaagtcatttttcaatgtctttggattttgttacgtgtctgcttactcctgtcttgatttttttttactttcttattcgtatcattattcttagggtttatttcttttaagattagtcctattttattagtcagacgaaacatttgctactttgctcttctaagtgt"/>
+                    <sequence id="seq_E" taxon="E" totalcount="4" value="aaaagaacaaagaaaaaaacgactcacattttgataaatagcgaaaagcagtaaagtgttcacacgacataaaacatatacatcaaattgtatatctaaagttagggtaaaggaggacaaaaagtgttttttgaccaataaataaagaacaaaatttgcatcctgtgatatctcaacatgatcaacaataaagtacataaattgggcaaccaggaagaactacattgtgctttttacatccgggactaagaaccagcccaccccctgctcttcacactccgcctgtaccgcgcatcttattaccgcctggcgtactgctcactagcccctctaactccccgggccggccccacttgtcccctgcccttgccctcgaacgtatccgcttagtcaccttaccccgaggtcccacgtcgcagcgcgcgaagatggccgagaccccttcccagggagcctgaccttaggacctcacacactcgcgcgttacccctcctcataaaagatcggcgtaggtaggttgaaggtatgaagtaaaccgcgcccgtttgggggtgtagatgcctcgagacctctaggcaagtgcgtaaggccggtaaacgaggaaatgcctagacaggggaggtagtgggcggagcgaggagctggtgcgtatagtttcaaatctaatagcgtggggggtgcgggagagcatccccacgctcttagttacgacacgccgcgcgtcgagtgtgacctgggaatacaggttgcgtgttgtggtaatattatgttattacggttgttctgcatggttgatcgcgacgtgtcgtctgtatgaatctcttcatctcatggaattcgtttttcaatttcgttggattttcgtatctttctgcatatcgttgtactgatttcttattagattattatacggaggatgagtctcattgtttatttccttcaagattaatactattttaatagtcatgcgaaacatctctcactgtgctcttccaagttt"/>
+                    <sequence id="seq_F" taxon="F" totalcount="4" value="accacaacaaccaaaaacgactaaaaaaatttaatgtacagacaagagtgaaaatttactaacacaagataaaataaactccttaaatggtataacaaaagttcggctaaaggaggaactagagtgtatgtaaaacaataatggaagaagagagctctcaccatgcaagatgccaaattgtactataacagactgcacatatttcacaacaaggaacaaattcagcctaatttataatttcgggacagagcaccagcccttcccccgctctccatccccgtccagtgccgcgcttcttcatacagccaggcggacggttctctatcccacccagtcccgcggggccgccatacgcgctccctagccctgccataaaactcctacgcttagtgccctgatcccgaggtagaacgtccgcgtgtacgatcatcgcctagcctcgttcaccaagaagctgtactcagcaatcttcccgctctcgagcaacctagcctcacgaaagatcggagctggtgagatcgaggagtggacgatcccaggtgagtatggggcaccagacggcttgactcgcctacgcaagagcgggactgcgatgagtgggggaatgcctaggcaggagagtgagggggtggcgaaatgagcaggtgaggatagtttcacatcacttagcgtggagggtgggggagggcatcccccggaaaactattaggggggggtggggtttgagagtgccgtgatgatcggtgttgctatatgtagtaattcgatgtgttcatgggagctgtgcatcgatagtcgtgaagtgtatacattgtgcatctcttcatttactgttgtacacttttggttgtctttgggtgttattatccgcttgctgattcttgtactgatttttattgactgttttcttcctgttattacgtgttgtgggtatatttgttatctctagtcctattttattatgtcttcaccatatgtgtgatttatcaccgctaatttt"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="10000000" storeEvery="1000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:alignment_twin_493b50a6d140" name="stateNode">
+            <taxonset id="TaxonSet.alignment_twin_493b50a6d140" spec="TaxonSet">
+                <alignment idref="alignment_twin_493b50a6d140"/>
+            </taxonset>
+        </tree>
+        <parameter id="popSize.t:alignment_twin_493b50a6d140" name="stateNode">0.3</parameter>
+    </state>
+
+    <init id="RandomTree.t:alignment_twin_493b50a6d140" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:alignment_twin_493b50a6d140" taxa="@alignment_twin_493b50a6d140">
+        <populationModel id="ConstantPopulation0.t:alignment_twin_493b50a6d140" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:alignment_twin_493b50a6d140" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="CoalescentConstant.t:alignment_twin_493b50a6d140" spec="Coalescent">
+                <populationModel id="ConstantPopulation.t:alignment_twin_493b50a6d140" spec="ConstantPopulation" popSize="@popSize.t:alignment_twin_493b50a6d140"/>
+                <treeIntervals id="TreeIntervals.t:alignment_twin_493b50a6d140" spec="TreeIntervals" tree="@Tree.t:alignment_twin_493b50a6d140"/>
+            </distribution>
+            <prior id="PopSizePrior.t:alignment_twin_493b50a6d140" name="distribution" x="@popSize.t:alignment_twin_493b50a6d140">
+                <OneOnX id="OneOnX.100" name="distr"/>
+            </prior>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.alignment_twin_493b50a6d140" spec="ThreadedTreeLikelihood" data="@alignment_twin_493b50a6d140" tree="@Tree.t:alignment_twin_493b50a6d140">
+                <siteModel id="SiteModel.s:alignment_twin_493b50a6d140" spec="SiteModel">
+                    <parameter id="mutationRate.s:alignment_twin_493b50a6d140" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:alignment_twin_493b50a6d140" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:alignment_twin_493b50a6d140" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:alignment_twin_493b50a6d140" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:alignment_twin_493b50a6d140" spec="beast.evolution.branchratemodel.StrictClockModel">
+                    <parameter id="clockRate.c:alignment_twin_493b50a6d140" estimate="false" name="clock.rate">1.0</parameter>
+                </branchRateModel>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="PopSizeScaler.t:alignment_twin_493b50a6d140" spec="ScaleOperator" parameter="@popSize.t:alignment_twin_493b50a6d140" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="CoalescentConstantTreeScaler.t:alignment_twin_493b50a6d140" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:alignment_twin_493b50a6d140" weight="3.0"/>
+
+    <operator id="CoalescentConstantTreeRootScaler.t:alignment_twin_493b50a6d140" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:alignment_twin_493b50a6d140" weight="3.0"/>
+
+    <operator id="CoalescentConstantUniformOperator.t:alignment_twin_493b50a6d140" spec="Uniform" tree="@Tree.t:alignment_twin_493b50a6d140" weight="30.0"/>
+
+    <operator id="CoalescentConstantSubtreeSlide.t:alignment_twin_493b50a6d140" spec="SubtreeSlide" tree="@Tree.t:alignment_twin_493b50a6d140" weight="15.0"/>
+
+    <operator id="CoalescentConstantNarrow.t:alignment_twin_493b50a6d140" spec="Exchange" tree="@Tree.t:alignment_twin_493b50a6d140" weight="15.0"/>
+
+    <operator id="CoalescentConstantWide.t:alignment_twin_493b50a6d140" spec="Exchange" isNarrow="false" tree="@Tree.t:alignment_twin_493b50a6d140" weight="3.0"/>
+
+    <operator id="CoalescentConstantWilsonBalding.t:alignment_twin_493b50a6d140" spec="WilsonBalding" tree="@Tree.t:alignment_twin_493b50a6d140" weight="3.0"/>
+
+    <logger id="tracelog" fileName="alignment_twin_493b50a6d140.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.alignment_twin_493b50a6d140"/>
+        <log id="TreeHeight.t:alignment_twin_493b50a6d140" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:alignment_twin_493b50a6d140"/>
+        <log idref="popSize.t:alignment_twin_493b50a6d140"/>
+        <log idref="CoalescentConstant.t:alignment_twin_493b50a6d140"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:alignment_twin_493b50a6d140" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:alignment_twin_493b50a6d140" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:alignment_twin_493b50a6d140"/>
+    </logger>
+
+</run>
+
+</beast>

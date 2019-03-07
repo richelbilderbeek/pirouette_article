@@ -1,15 +1,15 @@
 % latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Thu Feb 28 15:32:16 2019
+% Thu Mar  7 16:10:27 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllrr}
   \hline
  & Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
   \hline
-1 & JC & Strict & Yule & -6384.632 & 0.987 \\ 
-  2 & JC & Strict & BD & -6390.210 & 0.004 \\ 
-  3 & JC & Strict & CCP & -6389.356 & 0.009 \\ 
-  4 & JC & Strict & CEP & -6396.727 & 0.000 \\ 
+1 & JC & Strict & Yule & -8201.109 & 0.002 \\ 
+  2 & JC & Strict & BD & -8203.346 & 0.000 \\ 
+  3 & JC & Strict & CCP & -8195.927 & 0.278 \\ 
+  4 & JC & Strict & CEP & -8194.976 & 0.720 \\ 
    \hline
 \end{tabular}
 \caption{Evidences of example 4} 
