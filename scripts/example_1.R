@@ -7,7 +7,7 @@ library(ggthemes)
 
 set.seed(314)
 
-phylogeny <- create_ideal_tree(n_taxa = 5, crown_age = 10)
+phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),

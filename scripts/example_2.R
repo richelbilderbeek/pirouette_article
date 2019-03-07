@@ -4,24 +4,20 @@
 library(pirouette)
 library(ggplot2)
 library(ggthemes)
+library(ggtree)
 
 set.seed(314)
 
-phylogeny  <- ape::read.tree(text = "((A:4, B:4):1, (C:4, D:4) :1);")
+phylogeny  <- ape::read.tree(
+  text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);"
+)
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
   mutation_rate = 0.1
 )
 
-experiments <- create_all_experiments(
-  tree_priors = list(
-    create_bd_tree_prior(),
-    create_ccp_tree_prior(),
-    create_cep_tree_prior(),
-    create_yule_tree_prior()
-  )
-)
+experiments <- create_all_experiments()
 
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
@@ -69,4 +65,5 @@ xtable::xtable(
 )
 sink()
 
-
+ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() +
+  ggsave("/home/richel/GitHubs/pirouette_article/tree_unknown.png")
