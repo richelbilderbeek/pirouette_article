@@ -73,13 +73,11 @@ sink()
 
 # True tree
 ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() +
-  ggtitle(paste0("Example ", example_no, "'s faked Yule tree, #192")) +
   ggsave(file.path(root_folder, paste0("example_", example_no, "_true_tree.png")))
 
 # Twin tree
 if (!is_one_na(pir_params$twinning_params)) {
   ggtree::ggtree(ape::read.tree(pir_params$twinning_params$twin_tree_filename)) + theme_tree2() + geom_tiplab() +
-    ggtitle(paste0("Example ", example_no, "'s faked Yule tree, #192")) +
     ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_tree.png")))
 }
 
