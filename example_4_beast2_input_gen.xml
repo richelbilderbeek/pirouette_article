@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.4">
+
+
+    <data
+id="example_4_true"
+name="alignment">
+                    <sequence id="seq_A" taxon="A" totalcount="4" value="accctgacaagagtaacgttggaaaacaataaataagataaataaagcaaatattatagcattaatggaattaatgacagtagttatcactacaaatggaacagccggtggctagatcaggcgggaaccattaacgtaacccacaacacgaaatatataaacgataacaaagacgagtagaaataaatcgaagtggagacaacgaaatggttgctttattatcaagaaaccccaatatgagcaggcaaagctttactcctttgctatgctcttcaccgcgcgacctctcgaccgagtcactcgcccgcccgcaaggccgtctccaatccacaccgaaccctatattatatactacactctctccccacgaatgtgccggttccatacactgtctcccggcccggcgccacggcctacgcaacatgccgcgcgcaatgcatgaggctgtgtctaatccgttagatccctcgacatacgactcctagccccacggcctccactgttaggtgagttcggtgtgcaaaccggggacgagtatgcggttgcgattttcgtcgcaataatgaggggccgaaggaccgtacgagctgctggcggggacgcgtttgctgccggcgtggtggggttagggaggtggcgggtgcgcggggcggagggtgagctcatgtcaggacgcggggagaaagtcggctcgggaggagatgcaccggatgggggcgccctgggaagggttggatagcggggaagaggccttactttctgttcattttttatcctggaccttttcctacaagaagatctataaggaacctatgtcacacttaactttgtaccgtgtcgataatttatattcgatacttgctttgcttccaatattctcccccttcgccttctaagtacttgagattctcaagtttgttttaatgttatctcttggggtccgactgttgttatgtccactgtgtagcgacaatgtgtcttgtactacacgcttcatttt"/>
+                    <sequence id="seq_B" taxon="B" totalcount="4" value="gtaagtaatcaatacacatttcctaatcaaaaaagaaataaaataaacaaagacaaaaacagagaaaaaacgagttcgaagcaaccaaatctgtcttaatatatcaagaatcgcagtaatctaagacagatctacaacacataggaaaaatcatacctgaccacggaccggtcaaaatctttgaagaaaccgaataatcgcaaattggaatgtactaattggacggaaacccataattaagcagcaagacgttacttgctggcccacggaggaaatctaccattaaccccctcagtagtactcgcttcaaagactccgcacccagcgcccaagattccctggcccctccgacctcattatgcataagacgggctcccgctgggcgcccctgtcccccaacccgatggctatttccgcatcctcggggttcctccgccttctcatttgcatgactcgtgaccccccttactcgatcgctttaacaatctccccagacatcgggtcaatgggacgtagcggaggcagttgagcccgggcgcggaaaggggcccggggaggggtgggtcttgcgcgtgtcggacacggatgggtggactcggcggttgctggtttatcgttcgctgtggcgcggtgaatgtgctccctggagttggaggggtagtgtaatatgtcagggttgtcggaataatagtaagacggaataggttaggaggtgcgggagggaggtggataggtaggaattgttcgggggccatacacgtgtgttggtttacttgtttcgcgcatatctttggttagtttctgagttgccccttacctgcttagttactagtttttgcgagtgtatgtatcttacattccgttttttctgtgcttgttcatggtgtcttttacgtaaatttcttcggcttagattaattaacgcttgtttgcttgtggttggatttgagtgatttctattttgtatataagtgggatgtgggaatttgatttattcatt"/>
+                    <sequence id="seq_C" taxon="C" totalcount="4" value="tagaggcgattgataggatgataaaaaagttacttccataagacgagaaacgtctaaaaatgaataacataaaacacccacaaatcgaagaacaaaaccagcctctttcgccaaacaaaaaaaagattagactaagaaacaatgaagtaactgctacacgaaactaatcgtcgagattgagtgaaaaaagagatgaggcaaaaaaaccaaagccgatatcagtcaacggcaccgataaaaaacgccataagatcccctacacctcgcccccccattgcaacttcaccgcccctcacgttgtccgccacccccactccccttggtccgaagcactcgattgagccgtcctagcctaaaccccgatccctaaacctcggcccatatacctccggcgttatacggtgctacatggcacaccttcacgccccgcctccgccatcccacgccgtgtcgtcctctttcgactgggtgcacggagcccggcgtacgacctgccaccggaagatagagcttcacccgtaggtggaggcaggcgggggggaggatcaaagctctgtgcccattgcggccagggcttgtaggtcggcccaggaccgagaagttaccccgcgaggtgtgttaacaaccgggttggttagggggccgtggggacctaatggaacgtgagcgggccgtggggtttaggtgggtgtccgcgttgagttgtagagggtgagggcggtccgagcttgagaaggccacgttgaggtacgcctgtttctgatcaactttatttatggacacctgtaactcacgctgtttttcgggaccactagccatttgtcattactttcatttttatccttgtgtagctgatcttatgacaatcccgtgaactagtgagcaacttttcattgaccgtgtttggtttacgccgtcagataatattcttgatttgcttaatgtctgacttgtaaagttatatcaatacagctgtactgattaactcaaatcttgtttt"/>
+                    <sequence id="seq_D" taxon="D" totalcount="4" value="ataggacacggtattgtccgtaaatatgtccagataacacatacaatcgagaaaacggagagcaatcacaaaaagacgcaccagtaatctacaaagcgtactacgagatcacaaaagactagaatatttaataagcacattggcacagtgaaccggtgaaggagtaatcacaaaacacttgtaaatgggaactaagaaacaatcatgaatcctaaaaaaaccggaatccacagaaataatataaataaacgtgcgcttccgccccgggccctcaccaggccttaatcccccatagggctcgctgcctgatgcttctcgtttcccgcccaccttttcgcgccgtttgactcaggactaggtcgtcctgcctgtaacggaaccaactgcccggtcttcgttccgcaatgctggtattttgctagctaacgagctgtcgttctccacctccgcaccacgtaatgctcctgtcctctccacaactctccgccctgtcaagggttcggcggggagagggttaagtgtagtaaggactttagcaacgtgcgcgggcgaattttcagagatcgaaggcagtggagcacgaggggcggggcggggggcgcggcggccgcgtacggcgcctgcttggagatcaggggttagagttgtagacccggtggttctatggctctctgtgagcaggctgcggtatgggtcggcggatccacgcggacgctagagttagctgttggcttggtggagacgtcgaactgattgctttaatgctctgcggctaacgtgatatgtttttctcgtttttttgtttatctcctcatctcgcatctcgtgctttcttttttgcttttctgttttttcattgtgtccctatagatgactaccgtattttttactcgtctgttccttaggttagtttgacgccagtcttacctttcttttgctccattggtactcttggtttcctatactttggattgctcttgccagtagttgatgtcgatat"/>
+                    <sequence id="seq_E" taxon="E" totalcount="4" value="taatataaaaggtgaacccaggactctaaaaatagggagcataaccaaacgaagaaacataagagggccaaaaaagggcactagtaaccacgaagtggtaaacgaatgacccaaatcacggaataaaaagcactgcataagatgccaattaaggtattgagatacgcaaaaaaagccatgaagtatggttcatgcccgtatttgtcaagtaatgcaatgaatgcaacacgactaagtaaaaaaaacgagctcatactcgcgctcgcggtttatcctactcctttacccgcccctatcacacagtcccgcccggttatccggacccccccccatacgacggcccgcatcgccggctcggcccttccacgccagaccggatgtaccgtgctcccacgcgtcatgcatgcctcgccgatgccaccttttctctcagcggcctaccgacgctgtgctttaaccttatcggaacgtcctaccgcatccacgtctcccctaaccggtcagggagtgcagggggttcaaggttcggggatggggagtgctaggacgacaggctgaggcaggcgtagggttgcgaagtaggaggggtcgtggttttggttagcggagcgggatcggccgagcggtgttcgcggtttgtctggaagtagtgggtcaaggaggagaaaaatgagcgagggcgaggcgtctctatttctaaggggcggggttggagggggagatagattggaccgctctcatgatatgacgttctgtttctccggtcggttgtttatttgcataacttttgtgcgaattttaatcttttgtttgtatgcatttagcgttcatttctatacgctgctccatttctttgttgattgctcttgtagcagtattgttttggtacttcgtttttaattgatgtccgtgatcatttagttgatttattatctgtaaaaatagtgtgcttcctactaccagactgctcacatctctagtctatctagcgcgtatgtgt"/>
+                    <sequence id="seq_F" taxon="F" totalcount="4" value="accaaatatagattctcaggtaataacaaaaatttagaccgcgggcaaggagtaagcagaaatgaaagcagaaatccattaataagataaactgatattatgtcagaaatgatctcttggcatagcagtaaaaaccgtactgtaaacataatgggctcgtgtatacgactagtagagatcaacagaacaatctcaggaattaaaactattcgtagaccaagacagcgaagacggcgaagctagtctcaacttcggcccgaccctcttgtgatcaaccggacctcctcgagcccctcagcagaactcgcgccggttcgcgaagccggccgtcctcgtgaccatcctatggcctaacactcttcgcccctcgccttcggactccacgctccaatatccacgtttgctccacgtagactactcagtatacgcgccctcgccttgccattcgtctcaaatcgtccccagagcgatcccctcgcaaggcgtcctgtatcgatgctcgaccggagtgggcgagagggtggctggcgaggggggggctgggggggggtagactgtggtgggcgggaacgctctgttgagagtagacgggcgcggtcacaggggattgcgtgggcgatgagatgcgagttccgttactcgcatggaggttcgaaggggtgctgatatagagggctaaagggtccgcgagggggatagcggcaaggtgggggttaggtcgtgggtgtcgcaagtcagctccaacgcgtgatttctctctcagagagtatctttatcgtacgcactctgttgttatctcttctatagactttttactcaatttttataatatagggtttgtaaatgcttctgttatattgtcttagttctacttagggttaatttagtttttttgtactgtttgttttctatgttctgactttttatttgtgattacatgtattttggcaggatgattagttggctgttcatgtattactagcgattttagaaattcggg"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="10000000" storeEvery="1000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:example_4_true" name="stateNode">
+            <taxonset id="TaxonSet.example_4_true" spec="TaxonSet">
+                <alignment idref="example_4_true"/>
+            </taxonset>
+        </tree>
+        <parameter id="birthRate.t:example_4_true" name="stateNode">1.0</parameter>
+    </state>
+
+    <init id="RandomTree.t:example_4_true" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:example_4_true" taxa="@example_4_true">
+        <populationModel id="ConstantPopulation0.t:example_4_true" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:example_4_true" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="YuleModel.t:example_4_true" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:example_4_true" tree="@Tree.t:example_4_true"/>
+            <prior id="YuleBirthRatePrior.t:example_4_true" name="distribution" x="@birthRate.t:example_4_true">
+                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+            </prior>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.example_4_true" spec="ThreadedTreeLikelihood" data="@example_4_true" tree="@Tree.t:example_4_true">
+                <siteModel id="SiteModel.s:example_4_true" spec="SiteModel">
+                    <parameter id="mutationRate.s:example_4_true" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:example_4_true" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:example_4_true" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:example_4_true" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:example_4_true" spec="beast.evolution.branchratemodel.StrictClockModel">
+                    <parameter id="clockRate.c:example_4_true" estimate="false" name="clock.rate">1.0</parameter>
+                </branchRateModel>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="YuleBirthRateScaler.t:example_4_true" spec="ScaleOperator" parameter="@birthRate.t:example_4_true" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="YuleModelTreeScaler.t:example_4_true" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:example_4_true" weight="3.0"/>
+
+    <operator id="YuleModelTreeRootScaler.t:example_4_true" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:example_4_true" weight="3.0"/>
+
+    <operator id="YuleModelUniformOperator.t:example_4_true" spec="Uniform" tree="@Tree.t:example_4_true" weight="30.0"/>
+
+    <operator id="YuleModelSubtreeSlide.t:example_4_true" spec="SubtreeSlide" tree="@Tree.t:example_4_true" weight="15.0"/>
+
+    <operator id="YuleModelNarrow.t:example_4_true" spec="Exchange" tree="@Tree.t:example_4_true" weight="15.0"/>
+
+    <operator id="YuleModelWide.t:example_4_true" spec="Exchange" isNarrow="false" tree="@Tree.t:example_4_true" weight="3.0"/>
+
+    <operator id="YuleModelWilsonBalding.t:example_4_true" spec="WilsonBalding" tree="@Tree.t:example_4_true" weight="3.0"/>
+
+    <logger id="tracelog" fileName="example_4_true.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.example_4_true"/>
+        <log id="TreeHeight.t:example_4_true" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:example_4_true"/>
+        <log idref="YuleModel.t:example_4_true"/>
+        <log idref="birthRate.t:example_4_true"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:example_4_true" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:example_4_true" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:example_4_true"/>
+    </logger>
+
+</run>
+
+</beast>
