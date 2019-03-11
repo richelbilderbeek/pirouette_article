@@ -86,7 +86,7 @@ esses <- tracerer::calc_esses(
 )
 
 df_evidences <- utils::read.csv(pir_params$evidence_filename)[, c(-1, -6)]
-#df_evidences$site_model_name <- plyr::revalue(df_evidences$site_model_name, c("JC69" = "JC", "TN93" = "TN"))
+df_evidences$site_model_name <- plyr::revalue(df_evidences$site_model_name, c("JC69" = "JC", "TN93" = "TN"))
 df_evidences$clock_model_name <- plyr::revalue(
   df_evidences$clock_model_name,
   c("strict" = "Strict", "relaxed_log_normal" = "RLN")
