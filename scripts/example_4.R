@@ -20,9 +20,11 @@ alignment_params <- create_alignment_params(
 
 # JC69, strict, Yule
 generative_experiment <- create_experiment(
-  model_type = "generative",
-  run_if = "always",
-  do_measure_evidence = TRUE
+  inference_conditions = create_inference_conditions(
+    model_type = "generative",
+    run_if = "always",
+    do_measure_evidence = TRUE
+  )
 )
 check_experiment(generative_experiment)
 
@@ -48,12 +50,17 @@ pir_params <- create_pir_params(
 ################################################################################
 pir_params$alignment_params$fasta_filename <- file.path(root_folder, paste0("example_", example_no, "_true.fasta"))
 for (i in seq_along(pir_params$experiments)) {
-  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input.xml"))
-  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.log"))
-  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.trees"))
-  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.xml.state"))
-  pir_params$experiments[[i]]$errors_filename <- file.path(root_folder, paste0("example_", example_no, "_error.csv"))
+  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input_best.xml"))
+  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_best.log"))
+  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_best.trees"))
+  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_best.xml.state"))
+  pir_params$experiments[[i]]$errors_filename <- file.path(root_folder, paste0("example_", example_no, "_error_best.csv"))
 }
+pir_params$experiments[[1]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input_gen.xml"))
+pir_params$experiments[[1]]$beast2_options$output_log_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_gen.log"))
+pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_gen.trees"))
+pir_params$experiments[[1]]$beast2_options$output_state_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_gen.xml.state"))
+pir_params$experiments[[1]]$errors_filename <- file.path(root_folder, paste0("example_", example_no, "_error_gen.csv"))
 pir_params$evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_true.csv"))
 if (!is_one_na(pir_params$twinning_params)) {
   twinning_params$twin_tree_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.tree"))
@@ -76,10 +83,6 @@ esses <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
-sink("/home/richel/GitHubs/pirouette_article/example_4_esses.latex")
-xtable::xtable(esses, caption = "ESSes of example 4", label = "tab:esses_example_4", digits = 0)
-sink()
-
 
 df_evidences <- utils::read.csv(pir_params$evidence_filename)[, c(-1, -6)]
 df_evidences$site_model_name <- plyr::revalue(df_evidences$site_model_name, c("JC69" = "JC", "TN93" = "TN"))
@@ -93,16 +96,16 @@ df_evidences$tree_prior_name <- plyr::revalue(
 )
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
-sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex"))
+sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
 xtable::xtable(
-  esses, 
-  caption = paste0("ESSes of example ", example_no), 
-  label = paste0("tab:esses_example_", example_no), 
+  esses,
+  caption = paste0("ESSes of example ", example_no),
+  label = paste0("tab:esses_example_", example_no),
   digits = 0
 )
 sink()
 
-sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex"))
+sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
 xtable::xtable(
   df_evidences,
   caption = "Evidences of example 4", label = "tab:evidences_example_4", digits = 3
