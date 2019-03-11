@@ -1,14 +1,17 @@
 % latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Mon Mar 11 12:16:36 2019
+% Mon Mar 11 15:58:16 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrrr}
+\begin{tabular}{rlllrr}
   \hline
- & posterior & likelihood & prior & treeLikelihood & TreeHeight & YuleModel & birthRate \\ 
+ & Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
   \hline
-1 & 10001 & 10001 & 9826 & 10001 & 10001 & 9826 & 9382 \\ 
+1 & JC & Strict & Yule & -8193.780 & 0.003 \\ 
+  2 & JC & Strict & BD & -8192.336 & 0.014 \\ 
+  3 & JC & Strict & CCP & -8206.325 & 0.000 \\ 
+  4 & JC & Strict & CEP & -8188.117 & 0.982 \\ 
    \hline
 \end{tabular}
-\caption{ESSes of example 4} 
-\label{tab:esses_example_4}
+\caption{Evidences of example 4} 
+\label{tab:evidences_example_4}
 \end{table}

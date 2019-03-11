@@ -74,6 +74,7 @@ errors <- pir_run(
   pir_params = pir_params
 )
 
+
 pir_plot(errors) +
   scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
   ggsave(file.path(root_folder, paste0("example_", example_no, "_errors.png")))
@@ -85,7 +86,7 @@ esses <- tracerer::calc_esses(
 )
 
 df_evidences <- utils::read.csv(pir_params$evidence_filename)[, c(-1, -6)]
-df_evidences$site_model_name <- plyr::revalue(df_evidences$site_model_name, c("JC69" = "JC", "TN93" = "TN"))
+#df_evidences$site_model_name <- plyr::revalue(df_evidences$site_model_name, c("JC69" = "JC", "TN93" = "TN"))
 df_evidences$clock_model_name <- plyr::revalue(
   df_evidences$clock_model_name,
   c("strict" = "Strict", "relaxed_log_normal" = "RLN")
