@@ -93,8 +93,16 @@ df_evidences$tree_prior_name <- plyr::revalue(
 )
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
+sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex"))
+xtable::xtable(
+  esses, 
+  caption = paste0("ESSes of example ", example_no), 
+  label = paste0("tab:esses_example_", example_no), 
+  digits = 0
+)
+sink()
 
-sink("/home/richel/GitHubs/pirouette_article/example_4_evidences.latex")
+sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex"))
 xtable::xtable(
   df_evidences,
   caption = "Evidences of example 4", label = "tab:evidences_example_4", digits = 3
