@@ -63,9 +63,9 @@ pir_params$experiments[[1]]$beast2_options$output_state_filename <- file.path(ro
 pir_params$experiments[[1]]$errors_filename <- file.path(root_folder, paste0("example_", example_no, "_error_gen.csv"))
 pir_params$evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_true.csv"))
 if (!is_one_na(pir_params$twinning_params)) {
-  twinning_params$twin_tree_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.tree"))
-  twinning_params$twin_alignment_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.fasta"))
-  twinning_params$twin_evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_twin.csv"))
+  pir_params$twinning_params$twin_tree_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.tree"))
+  pir_params$twinning_params$twin_alignment_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.fasta"))
+  pir_params$twinning_params$twin_evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_twin.csv"))
 }
 ################################################################################
 
