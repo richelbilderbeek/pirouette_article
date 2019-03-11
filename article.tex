@@ -400,18 +400,6 @@ generated under a Yule generative prior.
     of error values (5a). Optionally, a twin phylogeny (1b) can be generated from the true phylogeny (1a), which then results in an error distribution (5b) with similar intermediate steps.
   }
   \label{fig:pipeline}
-  \giovanni{
-    add reference to the generative prior P (or G) in the figure
-  }
-  \giovanni{
-    I think that a list of possible models should replace the "experiment" 
-    cake in the middle, then C should be drawn on the arrow 
-    connecting the figure in the middle to 3a. 
-    "I" should replace the circled x of passage 3a. 
-    An additional C can be drawn alongside the arrow 2a -> 3a. 
-    After that a rectangle can be drawn around the whole middle section 
-    (including 3a, 3b and the middle C) to denote that this is phase "X".}
-  \giovanni{We might also need an arrow going from the central figure to the top arrow (the one with "T") to specify that the twin is generated according to the chosen inference model.}
 \end{figure}
 
 The pipeline is summarized by the following steps, which will be described in detail below:
@@ -522,7 +510,12 @@ Using a twin tree serves as a control: both the given/true tree and twin tree wi
 Potential differences in shapes of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{G}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
 \fi
 
-\giovanni{This is a slightly more formal version. I personally find it clearer. If you don't like it we can use version 2 (see above in the source). In case you really like it, instead, I can try to make the rest a bit more similar to this.}
+\giovanni{
+  This is a slightly more formal version. 
+  I personally find it clearer. 
+  If you don't like it we can use version 2 (see above in the source). 
+  In case you really like it, instead, I can try to make the rest a bit more similar to this.
+}
 
 %version 3, more formal
 An optional step is to generate a 'twin tree' $\tau_{I}$
@@ -1144,11 +1137,10 @@ The resulting figure is shown in figure \ref{fig:example_5}.
 \begin{figure}[h]
   \includegraphics[width=\textwidth]{example_5_errors.png}
   \caption{
-    Example 5: the error made by BEAST2 from a phylogeny, when the generative model is known, compared to candidates with similar inference models, in relationship to the background error.
-    The x-axis specifies the tree type, the y-axis shows the error.
-    The boxplot shows the minimum, first quartile, median, third 
-    quartile and maximum error, of which the values are displayed 
-    in the adjacent label
+    Example 5: the error made by BEAST2 from a phylogeny, 
+    when the generative model is known, 
+    compared to candidates with similar inference models, 
+    in relationship to the background error.
   }
   \label{fig:example_5}
 \end{figure}
