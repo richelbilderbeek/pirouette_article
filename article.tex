@@ -1,3 +1,4 @@
+\RequirePackage{rotating}
 \documentclass{article}
 
 % Bibliography
@@ -33,6 +34,8 @@
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \usepackage{longtable}
+\usepackage{rotating}
+\usepackage{mathtools}
 
 \usepackage{tkz-graph}
 \usetikzlibrary{arrows,automata}
@@ -101,7 +104,7 @@
     macroevolutionary processes underlying the species tree. 
     However, only models that allow for fast computation of 
     the prior probability are possible in practice. 
-    This begs the question how accurate the tree estimation is 
+    This begs the question of how accurate the tree estimation is 
     when the real macroevolutionary processes are different 
     from those assumed in BEAST2. \\
   \textbf{2. }
@@ -158,7 +161,7 @@ depends on a trait that has two [\cite{maddison2007estimating}],
 or more [\cite{fitzjohn2012diversitree}] states,
 or even allows concealed states [\cite{beaulieu2016detecting}] 
 or a combination of all these [\cite{herrera2018detecting}].
-Note all of these diversification models are available in BEAST2, 
+Not all of these diversification models are available in BEAST2, 
 but the option is available.
 
 For a given phylogeny, the parameter values of the diversification model 
@@ -216,68 +219,65 @@ this article only shows examples with one replicate, for the sake of clarity.
 to specify a big variety of custom settings. 
 These settings can be grouped in macro-sections, 
 according to how they operate in the pipeline. 
-We summarize them in Tables~\ref{tab:definitions} and \ref{tab:options}.
+We summarize them in Tables~\ref{tab:options} and \ref{tab:definitions}.
 
 Although many possible tests can be performed, 
-we present here only four example research questions (ERQ) that \verb;pirouette; can answer. 
+we present here only four \giovanni{five?} example research questions (ERQ) that \verb;pirouette; can answer. 
 For these ERQs we will estimate the error made by BEAST2 when 
 using a birth-death tree prior, in recovering an original tree 
 generated under a Yule generative prior.
 
+
+
 \begin{sidewaystable}
-%\begin{table}
 \centering
-  %\begin{tabular}{| c | c | l | l |}
-  \begin{tabular}{|@{}c|p{5.5cm}|p{2.85cm}@{}|}
+  \begin{tabular}{|@{}c|p{2.5cm}|p{9cm}|p{4.5cm}@{}|}
     \hline
-    \textbf{Symbol} & \textbf{Sub-argument} & \textbf{Possible values} \\ 
+    \centering
+    \textbf{Symbol} & \textbf{Sub-argument} & \textbf{Description} & \textbf{Possible values} \\ 
     \hline
-    $\mathit{tp}$ & 'tree prior', i.e a macroevolutionary speciation model & Yule, BD, CBS, CCP, CEP \\
-    $\mathit{cm}$ & 'clock model' for the DNA mutation rates & strict, relaxed log-normal \\
-    $\mathit{sm}$ & 'site model' for nucleotide substitution & JC, HKY, TN, GTR \\
-    $\mathit{mr}$ & 'mutation rate' & \\
-    $\mathit{rs}$ & 'root sequence' of nucleotides at the root of the tree & \\
-    $\mathit{mp}$ & 'MRCA prior' knowledge of a most recent common ancestor & \\
-    $\mathit{ms}$ & 'MCMC settings' i.e. Markov Chain Monte Carlo algorithm setup & \\
-    $\mathit{et}$ & 'experiment type' & Generative, candidate \\
-    $\mathit{ri}$ & 'run if' & Always, Best candidate\\
-    $\mathit{ef}$ & 'error function' that specifies how to measure the error & nLTT, $|\gamma|$ \\
-    $\mathit{tm}$ & 'twin model' & Yule, BD \\
+    $\mathit{t_{p}}$ & tree prior & Macroevolutionary speciation model & Yule, BD, CBS, CCP, CEP \\
+    $\mathit{c_{m}}$ & clock model & Clock for the DNA mutation rates & strict, relaxed log-normal \\
+    $\mathit{s_{m}}$ & site model & Nucleotide substitution model & JC, HKY, TN93, GTR \\
+    $\mathit{m_{r}}$ & mutation rate & Pace at which mutation occurs & $m_{r} \in \mathbb{R}_{>0}$\\
+    $\mathit{r_{s}}$ & root sequence & DNA sequence at the root of the tree & any combination of a, c, g, t \\
+    $\mathit{m_{p}}$ & MRCA prior & Prior knowledge of a most recent common ancestor & see documentation \\
+    $\mathit{m_{s}}$ & MCMC settings & Markov Chain Monte Carlo algorithm setup & see documentation \\
+    $\mathit{m_{t}}$ & model type & Criterion to select an inference model & Generative, Candidate \\
+    $\mathit{r_{i}}$ & run if & Condition under which an inference model is used & Always, Best candidate\\
+    $\mathit{e_{f}}$ & error function & Specifies how to measure the error & nLTT, $|\gamma|$ \\
+    $\mathit{t_{m}}$ & twin model & Sets the tree prior for the twin tree & Yule, BD \\
     \hline
   \end{tabular}
   \caption{
     Most important parameter options. BD = birth death, CBS = coalescent
     Bayesian Skyline, CCP = coalescent constant-population, CEP = coalescent
-    exponential-population, JC = Jukes-Cantor 1969, HKY = Hasegawa, Kishino and 
-    Yano 1985, TN = Tamura 1992, GTR = Generalised time-reversible 
-    model (Tavaré 1986)
+    exponential-population, JC = Jukes-Cantor 1969 (\cite{jukes1969evolution}), HKY = Hasegawa, Kishino and 
+    Yano (\cite{hasegawa1985dating}), TN93 = \cite{tamura1993estimation}, GTR = Generalised time-reversible 
+    model (\cite{tavare1986some}).
   }
   \label{tab:options}
-%\end{table}
-\end{sidewaystable}
+\bigskip
 
-\begin{sidewaystable}
-%\begin{table}
-\centering
-  \begin{tabular}{|@{}c|p{6cm}|p{2.85cm}@{}|}
+  \begin{tabular}{|@{}c|p{4cm}|p{9cm}|p{3cm}@{}|}
     \hline
-    \textbf{Symbol} & \textbf{Macro-argument} & \textbf{Composed by}\\ 
+    \centering
+    \textbf{Symbol} & \textbf{Macro-argument} & \textbf{Description} & \textbf{Includes} \\
     \hline
-    $\mathit{P}$ & 'Generative prior' under which the 'true' tree is simulated & $\mathit{tp}$ \\
-    $\mathit{A}$ & 'Alignment model' used for simulation & $\mathit{cm}, \mathit{sm}, \mathit{mr}, \mathit{rs}$ \\
-    $\mathit{G}$ & 'Generative model' & $\mathit{P},\mathit{A}$ \\
-    $\mathit{I}$ & 'Inference model' to run BEAST2 & $\mathit{cm},\mathit{sm},\mathit{tp},\mathit{mp},\mathit{ms}$ \\
-    $\mathit{C}$ & 'Inference conditions' under which $\mathit{I}$ is used in the inference & $\mathit{et}, \mathit{ri}$\\
-    $\mathit{X}$ & 'Experiment' & $\mathit{I},\mathit{C}$ \\
-    $\mathit{E}$ & 'Error measurement parameters' & $\mathit{ef}$\\
-    $\mathit{T}$ & 'Twinning parameters' to set the twin creation procedure & $\mathit{tm}$\\
+    $\mathit{G}$ & Generative prior & Diversification model to generate the 'true' tree & $\mathit{t_{p}}$ \\
+    $\mathit{A}$ & Alignment model & Model used to simulate the alignment ($\mathit{c_{m}}$ must be strict) & $\mathit{c_{m}}, \mathit{s_{m}}, \mathit{m_{r}}, \mathit{r_{s}}$ \\
+    $\mathit{I}$ & Inference model & Phylogenetic inference model to run BEAST2 & $\mathit{c_{m}},\mathit{s_{m}},\mathit{t_{p}},\mathit{m_{p}},\mathit{m_{s}}$ \\
+    $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ is used in the inference & $\mathit{m_{t}}, \mathit{r_{i}}$\\
+    $\mathit{X}$ & Experiment & Full setting for the BEAST2 run & $\mathit{I},\mathit{C}$ \\
+    $\mathit{E}$ & Error measure parameters & Errors measurement setup & $\mathit{e_{f}}$\\
+    $\mathit{T}$ & Twinning parameters & Twin tree creation procedure & $\mathit{t_{m}}$\\
     \hline 
   \end{tabular}
   \caption{
-    Definitions of terms and relative symbols used in this article.
+    Definitions of terms and relative symbols used in the main text and in Fig~\ref{fig:pipeline}.
   }
   \label{tab:definitions}
-%\end{table}
+  \giovanni{Should we rename "Twinning Parameters" to "Twinning model" and "twin model" to "twin prior"?}
 \end{sidewaystable}
 
 \iffalse
@@ -300,7 +300,7 @@ generated under a Yule generative prior.
     $\mathit{G}$ & Generative model & Combination of a known $\mathit{P}$ and chosen (thus known) $\mathit{A}$ \\
     $\mathit{I}$ & Inference model & Bayesian phylogenetic inference model, a combination of
     $(\mathit{c},\mathit{s},\mathit{t},\mathit{m},\mathit{v})$\\
-    $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ is used in inference \\
+    $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ is used in the inference \\
     $\mathit{X}$ & Experiment & Combination of $(\mathit{I},\mathit{C})$\\
     $\mathit{E}$ & Error measurement parameters & Errors measurement setup \\
     $\mathit{T}$ & Twinning parameters & Twin tree creation procedure \\
@@ -343,7 +343,7 @@ generated under a Yule generative prior.
     $\mathit{m}$ & MRCA prior & Prior knowledge of a most recent common ancestor\\
     $\mathit{v}$ & MCMC settings & Markov Chain Monte Carlo algorithm setup \\
     \hline
-    $\mathit{P}$ & Generative prior & Diversification model the 'true' tree is simulated with \\
+    $\mathit{G}$ & Generative prior & Diversification model the 'true' tree is simulated with \\
     $\mathit{A}$ & Alignment model & Alignment simulation model, $\mathit{A} \ni \{ \mathit{r}, \mathit{\mu}, \mathit{c}, \mathit{s} \}$, in which $\mathit{c}$ = strict \\
     $\mathit{G}$ & Generative model & Combination of a known $\mathit{P}$ and chosen (thus known) $\mathit{A}$ \\
     $\mathit{I}$ & Inference model & Bayesian phylogenetic inference model, a combination of
@@ -415,7 +415,9 @@ generated under a Yule generative prior.
     of error values (5a). Optionally, a twin phylogeny (1b) can be generated from the true phylogeny (1a), which then results in an error distribution (5b) with similar intermediate steps.
   }
   \label{fig:pipeline}
-  \giovanni{add reference to the generative prior in the figure}
+  \giovanni{add reference to the generative prior P (or G) in the figure}
+  \giovanni{I think that a list of possible models should replace the "experiment" cake in the middle, then C should be drawn on the arrow connecting the figure in the middle to 3a. "I" should replace the circled x of passage 3a. An additional C can be drawn alongside the arrow 2a -> 3a. After that a rectangle can be drawn around the whole middle section (including 3a, 3b and the middle C) to denote that this is phase "X".}
+  \giovanni{We might also need an arrow going from the central figure to the top arrow (the one with "T") to specify that the twin is generated according to the chosen inference model.}
 \end{figure}
 
 The pipeline is summarized by the following steps, which will be described in detail below:
@@ -454,19 +456,7 @@ the generative model.
 Typically, a generative model and/or a best candidate model are used in the actual inference.
 When using an experiment with a generative model,
 it must use the same site and clock model used in the alignment simulation,
-as well as the tree prior that underlied the creation of the given phylogeny 
-\giovanni{
-  the tree prior appears not to be part of the alignment model. 
-  This means that should be part of the generative prior. 
-  Is it true? In case we can refer explicitly to it, 
-  according to our definitions in table \ref{tab:definitions}
-}
-\richel{
-  Indeed, a tree prior is not part of the alignment model.
-  Go ahead and show how you'd like to refer explicitly to the
-  table!
-}
-. 
+as well as the tree prior that underlied the creation of the given phylogeny. 
 When using experiments with candidate models,
 \verb;pirouette; selects the best candidate based
 on the evidence (i.e. marginal likelihood) for the model given the alignment.
@@ -495,15 +485,16 @@ representative part of the state space.
 
 \subsection{Twin tree}
 
+\iffalse
+%version 1
 An optional step is to generate a 'twin tree' 
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
 that will be analyzed in the same way as the true tree.
 The twin tree will be the true tree 
-converted to follow the tree prior of the generative model. 
-We do so, by finding the parameters 
-(e.g. speciation and extinction rate for a birth-death model) 
-with the maximum likelihood, 
-conditioned on having the same number of tips as the original tree.
+converted to follow the tree prior of the chosen inference model.
+
+To do so we exploit the likelihood function associated with the chosen inference model. We find the parameters (e.g. speciation and extinction rate for a birth-death model) that maximize such likelihood applied to the true tree, conditioned on its number of tips.
+
 We use these parameters to simulate the branching times of the twin tree, 
 which we combine with the original tree's topology.
 
@@ -520,7 +511,45 @@ Due to this, this error distribution for the twin tree is caused
 only by the stochastic alignment simulation and stochastic Bayesian inference.
 The difference between these two error distribution is the error caused
 by the new/unimplemented tree prior.
+\fi
 
+\iffalse
+%version 2 with no formulae
+An optional step is to generate a 'twin tree' 
+(Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
+that will be analyzed in the same way as the true tree. We want to produce such tree 'converting' the original tree, created according to the generative prior $\mathit{G}$, into the chosen inference model $\mathit{I}$.
+
+To do so we exploit the likelihood function associated with the chosen inference model $\mathit{I}$. We find the parameters (e.g. speciation and extinction rate for a birth-death model) that maximize such likelihood applied to the true tree, conditioned on its number of tips.
+
+We use these parameters to simulate an equal amount of branching times for the twin tree simulated under the chosen inference model's process. We then combine these branching times with the original tree's topology.
+
+Using a twin tree serves as a control: both the given/true tree and twin tree will produce an error distribution. We assume that these errors are a natural product of the input tree and the intermediate steps of the pipeline. All the factors that can cause such errors are: the branching times of the tree (as a consequence of the tree prior), the topology of the tree, the stochasticity induced by simulating the alignment (step 1a $\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). By imposing the same topology and replicating the pipeline a sufficient number of times we can sort out all the possible causes that are not a direct consequence of the choice of the tree prior.
+
+Potential differences in shapes of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{G}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
+\fi
+
+\giovanni{This is a slightly more formal version. I personally find it clearer. If you don't like it we can use version 2 (see above in the source). In case you really like it, instead, I can try to make the rest a bit more similar to this.}
+
+%version 3, more formal
+An optional step is to generate a 'twin tree' $\tau_{I}$
+(Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
+that will be analyzed in the same way as the true tree, following a parallel pipeline. We want to produce such tree 'converting' the original tree $\tau_{G}$, created according to the generative prior $\mathit{G}$, to be in accordance with the chosen inference model $\mathit{I}$:
+\begin{align}
+    \tau_{G} = (\Vec{t}_{G}, \psi_{G}) \xrightarrow[]{\mathit{T}} \tau_{I} = (\Vec{t}_{I}, \psi_{I}),
+\end{align}
+where $\Vec{t}$ are the tree branching times and $\psi$ is tree topology, which provides information on where new lineages branch out at each branching time.
+
+To execute the twinning process we exploit the likelihood function $L_{I}$ associated with the chosen inference model $\mathit{I}$. We find the parameters $\theta^{*}_{I}$ (e.g. speciation and extinction rates, in case of a birth-death model) that maximize $L_{I}$ applied to the true tree, conditioned on its number of tips $n_{G}$,
+\begin{align}
+    max[L_{I}(\theta_{I}|\tau_{G}, n_{G})] \rightarrow \theta^{*}_{I}.
+\end{align}
+We use $\theta^{*}_{I}$ to simulate an equal amount $n_{I} = n_{G}$ of branching times $\Vec{t}_{I}$ for the twin tree $\tau_{I}$, under the process $I$. We then impose that $\tau_{G}$ and $\tau_{I}$ must respect the same topology
+\begin{align}
+    \psi_{I} = \psi_{G}.
+\end{align}
+Using a twin tree serves as a control: both $\tau_{G}$ and $\tau_{I}$ will produce an error distribution. We assume that these errors are a natural product of the input tree and the intermediate steps of the pipeline. All the factors that can cause such errors are: the branching times $\vec{t}$ of the tree (as a consequence of the tree prior), its topology $\psi$, the stochasticity induced by simulating the alignment (step 1a $\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). By imposing the same topology and replicating the pipelines a sufficient number of times we can sort out all the possible causes that are not a direct consequence of the choice of the tree prior.
+
+Potential differences in shape of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{G}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -576,7 +605,7 @@ We will exploit these functions to answer our research questions in the next sec
 \verb;create_error_measure_params; & Create the error measurement parameters \\
 \hline
 \end{tabular}
-\caption{pirouette's main functions}
+\caption{pirouette's main functions.}
 \label{tab:functions}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -611,20 +640,22 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{tree_yule.png}
-  \caption{The Yule tree, as created by listing \ref{lst:create_yule_tree}}
-  \label{fig:yule_tree} 
+  \caption{The Yule tree, as created by listing \ref{lst:create_yule_tree}.}
+  \label{fig:yule_tree}
+  \giovanni{Remove the text in top-left corner.}
+  \giovanni{I'd use a sexier topology, purely for esthetical reasons.}
 \end{figure}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the given phylogeny. 
 To do so, we must specify the DNA root sequence and a mutation rate. 
-In this example, the DNA root sequence consists out of four block of 250 nucleotides each, 
+In this example, the DNA root sequence consists in four blocks of 250 nucleotides each, 
 where the per-nucleotide mutation rate is 0.1 mutations per unit time.
 
 \begin{lstlisting}[
     language=R,
     floatplacement=ht, frame=single,
     label = {lst:create_alignment}, 
-    caption = {Create an alignment}
+    caption = {Create an alignment.}
   ]
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
@@ -632,7 +663,7 @@ alignment_params <- create_alignment_params(
 )
 \end{lstlisting}
 
-By default, an alignment is created using a Jukes-Cantor (JC) site model
+By default, an alignment is created using a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
 and a strict clock model. 
 A JC site model assumes that mutation rates from any nucleotide to any other 
 are equal and constant. 
@@ -646,7 +677,7 @@ and the conditions under which a Bayesian inference is executed.
 Within this example, we specify that our experiment uses the
 generative model (which means that the inference model will be 
 a combination of JC site model, strict clock model and Yule tree prior), 
-will always be run and we skip to measure the evidence for our model.
+it will always be run and we skip the evidence measurement for our model.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
@@ -667,6 +698,9 @@ will always be run and we skip to measure the evidence for our model.
 
 Due to sensible defaults, specifying this
 results in:
+\giovanni{Would it be clearer not to use sensible defaults where we call the functions with arguments we refer to in the main text? For example here it could be clearer for the reader to see:
+create\_experiment(site\_model = create\_jc69\_site\_model(), clock\_model = create\_strict\_clock\_model(), tree\_prior = create\_yule\_tree\_prior())
+}
 
 \begin{lstlisting}[
   language=R, 
@@ -742,7 +776,7 @@ diversification model, that has six taxa and a crown age of ten:
   floatplacement=ht, 
   frame=single, 
   label = {lst:unknown_phylogeny},
-  caption = A phylogeny generated by an unknown diversification model
+  caption = A phylogeny generated by an unknown diversification model.
 ]
 phylogeny  <- ape::read.tree(
   text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);"
@@ -751,7 +785,7 @@ phylogeny  <- ape::read.tree(
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{tree_unknown.png}
   \caption{The tree derived from an unknown diversification process, 
-    as created by listing \ref{lst:unknown_phylogeny}
+    as created by listing \ref{lst:unknown_phylogeny}.
   }
 \end{figure}
 
@@ -927,9 +961,10 @@ The resulting figure is shown in figure \ref{fig:example_3}
     The x-axis specifies the tree type (which can be 'true' or 'twin'), the y-axis shows the error.
     The boxplot shows the minimum, first quartile, median, third 
     quartile and maximum error, of which the values are displayed 
-    in the adjacent label
+    in the adjacent label.
   }
   \label{fig:example_3}
+  \giovanni{remove boxplots}
 \end{figure}
 
 \iffalse
@@ -1011,9 +1046,10 @@ The resulting figure is shown in figure \ref{fig:example_4}.
     The x-axis specifies the tree type, the y-axis shows the error.
     The boxplot shows the minimum, first quartile, median, third 
     quartile and maximum error, of which the values are displayed 
-    in the adjacent label
+    in the adjacent label.
   }
   \label{fig:example_4}
+  \giovanni{Remove boxplots.}
 \end{figure}
 
 
