@@ -323,20 +323,6 @@ generated under a Yule generative prior.
     Definitions of terms and relative symbols used in this article.
   }
   \label{tab:definitions}
-  \richel{I've some set notations in some spots, as I am unsure if you like it}
-  \giovanni{It would be nice to specify (in the first part of the table) 
-    the basic elements composing all the elements of the second part of the table. 
-    This could be probably done for "Alignment parameters", "Inference conditions" 
-    and "Twinning parameters".
-  }
-  \richel{
-    I feel the next table (which was also your suggestion), does so
-    at the right amount of detail
-  }
-  \giovanni{
-    How do we specify what constitutes 'twinning parameters'?
-  }
-  \richel{Perhaps you'd enjoy my definition?}
 \end{table}
 \fi
 
@@ -371,20 +357,6 @@ generated under a Yule generative prior.
     Definitions of terms and relative symbols used in this article.
   }
   \label{tab:definitions}
-  \richel{I've some set notations in some spots, as I am unsure if you like it}
-  \giovanni{It would be nice to specify (in the first part of the table) 
-    the basic elements composing all the elements of the second part of the table. 
-    This could be probably done for "Alignment parameters", "Inference conditions" 
-    and "Twinning parameters".
-  }
-  \richel{
-    I feel the next table (which was also your suggestion), does so
-    at the right amount of detail
-  }
-  \giovanni{
-    How do we specify what constitutes 'twinning parameters'?
-  }
-  \richel{Perhaps you'd enjoy my definition?}
 \end{table}
 \fi
 
@@ -428,8 +400,17 @@ generated under a Yule generative prior.
     of error values (5a). Optionally, a twin phylogeny (1b) can be generated from the true phylogeny (1a), which then results in an error distribution (5b) with similar intermediate steps.
   }
   \label{fig:pipeline}
-  \giovanni{add reference to the generative prior P (or G) in the figure}
-  \giovanni{I think that a list of possible models should replace the "experiment" cake in the middle, then C should be drawn on the arrow connecting the figure in the middle to 3a. "I" should replace the circled x of passage 3a. An additional C can be drawn alongside the arrow 2a -> 3a. After that a rectangle can be drawn around the whole middle section (including 3a, 3b and the middle C) to denote that this is phase "X".}
+  \giovanni{
+    add reference to the generative prior P (or G) in the figure
+  }
+  \giovanni{
+    I think that a list of possible models should replace the "experiment" 
+    cake in the middle, then C should be drawn on the arrow 
+    connecting the figure in the middle to 3a. 
+    "I" should replace the circled x of passage 3a. 
+    An additional C can be drawn alongside the arrow 2a -> 3a. 
+    After that a rectangle can be drawn around the whole middle section 
+    (including 3a, 3b and the middle C) to denote that this is phase "X".}
   \giovanni{We might also need an arrow going from the central figure to the top arrow (the one with "T") to specify that the twin is generated according to the chosen inference model.}
 \end{figure}
 
@@ -1321,35 +1302,6 @@ RSE contributed to revisions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h]
-\centering
-\begin{tabular}{ | r | l | l | l | l | }
-\hline
-\multirow{2}{*}{\textbf{Example}} & \multicolumn{2}{c|}{\textbf{True tree}} 
-                                  & \multicolumn{2}{c|}{\textbf{Twin tree}} \\
-\cline{2-5}
-                                  & \textbf{median} & \textbf{range} & \textbf{median} & \textbf{range} \\
-\hline
-1  & $0.02$  & $0.0 - 0.27$  &         &               \\
-2  & $0.02$  & $0.0 - 0.08$  &         &               \\
-3  & $0.018$ & $0.0 - 0.1$   & $0.019$ & $0.0 - 0.11$  \\
-4C & $0.22$  & $0.0 - 0.088$ & $0.009$ & $0.0 - 0.056$ \\
-4G & $0.020$ & $0.0 - 0.075$ & $0.013$ & $0.0 - 0.052$ \\
-\hline
-\end{tabular}
-\caption{
-  \richel{redo}
-  Results of the examples. 
-  For the true and twin tree,
-  the median and range (1st and 3rd quartile) of the errors 
-  is shown. Experiment 4 is split in two rows
-  by either the candidate ('C') or generative model ('G')
-}
-\label{tab:results}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1505,6 +1457,77 @@ RSE contributed to revisions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 4}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iffalse
+\begin{figure}[h]
+  \centering
+  \resizebox {0.8\columnwidth} {!} {
+    \begin{tikzpicture}[
+      ->,>=stealth',shorten >=1pt,auto,
+      node distance=0.4\textheight, 
+      semithick
+    ]   
+    \tikzstyle{every state}=[]
+    \node[state, draw=none] (O) [] {
+    };   
+    \node[state] (A) [right of = O, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_true_tree.png}
+    };   
+    \node[state] (B) [below of = A, rectangle] {
+      \includegraphics[height=0.13\textheight]{example_4_true_alignment.png}
+    };   
+    \node[state] (CG) [below of = B, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_true_posterior_gen.png}
+    };   
+    \node[state] (DG) [below of = CG, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_error_violin_gen.png}
+    };   
+    \node[state] (CB) [below right of = B, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_true_posterior_best.png}
+    };   
+    \node[state] (DB) [below of = CB, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_error_violin_best.png}
+    };   
+    \node[state] (AT) [right of = A, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_twin_tree.png}
+    };   
+    \node[state] (BT) [below of = AT, rectangle] {
+      \includegraphics[height=0.13\textheight]{example_4_twin_alignment.png}
+    };   
+    \node[state] (CTG) [below of = BT, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_twin_posterior_gen.png}
+    };   
+    \node[state] (DTG) [below of = CTG, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_twin_error_violin_gen.png}
+    };   
+    \node[state] (CTB) [below right of = BT, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_twin_posterior_best.png}
+    };   
+    \node[state] (DTB) [below of = CTB, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_4_twin_error_violin_best.png}
+    };   
+    \path 
+      (O) edge [anchor = south] node {} (A)
+      (A) edge [anchor = south] node {} (B)
+      (B) edge [anchor = south] node {} (CG)
+      (CG) edge [anchor = south] node {} (DG)
+      (B) edge [anchor = southeast] node {} (CB)
+      (CB) edge [anchor = south] node {} (DB)
+      (A) edge [anchor = east] node {} (AT)
+      (AT) edge [anchor = south] node {} (BT)
+      (BT) edge [anchor = southeast] node {} (CTG)
+      (CTG) edge [anchor = south] node {} (DTG)
+      (BT) edge [anchor = south] node {} (CTB)
+      (CTB) edge [anchor = south] node {} (DTB)
+    ; 
+    \end{tikzpicture}
+  }
+  \label{fig:example_4_full_pipeline}
+  \caption{Example 4: full pipeline}
+\end{figure}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_4_esses.latex}
 % has label tab:esses_example_4
