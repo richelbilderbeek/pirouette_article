@@ -222,7 +222,7 @@ according to how they operate in the pipeline.
 We summarize them in Tables~\ref{tab:options} and \ref{tab:definitions}.
 
 Although many possible tests can be performed, 
-we present here only four \giovanni{five?} example research questions (ERQ) that \verb;pirouette; can answer. 
+we present here only five example research questions (ERQ) that \verb;pirouette; can answer. 
 For these ERQs we will estimate the error made by BEAST2 when 
 using a birth-death tree prior, in recovering an original tree 
 generated under a Yule generative prior.
@@ -277,7 +277,20 @@ generated under a Yule generative prior.
     Definitions of terms and relative symbols used in the main text and in Fig~\ref{fig:pipeline}.
   }
   \label{tab:definitions}
-  \giovanni{Should we rename "Twinning Parameters" to "Twinning model" and "twin model" to "twin prior"?}
+  \giovanni{
+    Should we rename "Twinning Parameters" to "Twinning model"?
+  }
+  \richel{
+    As the twinning parameters contain more than only the twin model's tree prior,
+    I suggest to keep it 'twinning parameters'
+  }
+  \giovanni{
+    Should we rename "twin model" to "twin prior"?
+  }
+  \richel{
+    I think that's a great idea! I would prefer the name 'twin tree prior' even
+    better
+  }
 \end{sidewaystable}
 
 \iffalse
@@ -1432,6 +1445,43 @@ RSE contributed to revisions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+  \centering
+  \resizebox {0.8\columnwidth} {!} {
+    \begin{tikzpicture}[
+      ->,>=stealth',shorten >=1pt,auto,
+      node distance=0.25\textheight, 
+      semithick
+    ]   
+    \tikzstyle{every state}=[]
+    \node[state, draw=none] (O) [] {
+    };   
+    \node[state] (A) [right of = O, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_3_true_tree.png}
+    };   
+    \node[state] (B) [below of = A, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_3_true_alignment.png}
+    };   
+    \node[state] (C) [below of = B, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_3_true_posterior_gen.png}
+    };   
+    \node[state] (D) [below of = C, rectangle] {
+      \includegraphics[height=0.2\textheight]{example_3_error_violin.png}
+    };   
+    \path 
+      (O) edge [anchor = south] node {} (A)
+      (A) edge [anchor = south] node {} (B)
+      (B) edge [anchor = south] node {} (C)
+      (C) edge [anchor = south] node {} (D)
+    ; 
+    \end{tikzpicture}
+  }
+  \label{fig:example_3_full_pipeline}
+  \caption{Example 3: full pipeline}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_3_esses.latex}
 % has label tab:esses_example_3

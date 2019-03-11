@@ -39,8 +39,7 @@ name="alignment">
                 <alignment idref="example_4_true"/>
             </taxonset>
         </tree>
-        <parameter id="ePopSize.t:example_4_true" name="stateNode">0.3</parameter>
-        <parameter id="growthRate.t:example_4_true" name="stateNode">3.0E-4</parameter>
+        <parameter id="birthRate.t:example_4_true" name="stateNode">1.0</parameter>
     </state>
 
     <init id="RandomTree.t:example_4_true" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:example_4_true" taxa="@example_4_true">
@@ -51,18 +50,9 @@ name="alignment">
 
     <distribution id="posterior" spec="util.CompoundDistribution">
         <distribution id="prior" spec="util.CompoundDistribution">
-            <distribution id="CoalescentExponential.t:example_4_true" spec="Coalescent">
-                <populationModel id="ExponentialGrowth.t:example_4_true" spec="ExponentialGrowth" growthRate="@growthRate.t:example_4_true" popSize="@ePopSize.t:example_4_true"/>
-                <treeIntervals id="TreeIntervals.t:example_4_true" spec="TreeIntervals" tree="@Tree.t:example_4_true"/>
-            </distribution>
-            <prior id="ePopSizePrior.t:example_4_true" name="distribution" x="@ePopSize.t:example_4_true">
-                <OneOnX id="OneOnX.100" name="distr"/>
-            </prior>
-            <prior id="GrowthRatePrior.t:example_4_true" name="distribution" x="@growthRate.t:example_4_true">
-                <LaplaceDistribution id="LaplaceDistribution.101" name="distr">
-                    <parameter id="RealParameter.200" estimate="false" name="mu">0</parameter>
-                    <parameter id="RealParameter.201" estimate="false" name="scale">1</parameter>
-                </LaplaceDistribution>
+            <distribution id="YuleModel.t:example_4_true" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:example_4_true" tree="@Tree.t:example_4_true"/>
+            <prior id="YuleBirthRatePrior.t:example_4_true" name="distribution" x="@birthRate.t:example_4_true">
+                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
             </prior>
         </distribution>
         <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
@@ -80,23 +70,21 @@ name="alignment">
         </distribution>
     </distribution>
 
-    <operator id="ePopSizeScaler.t:example_4_true" spec="ScaleOperator" parameter="@ePopSize.t:example_4_true" scaleFactor="0.75" weight="3.0"/>
+    <operator id="YuleBirthRateScaler.t:example_4_true" spec="ScaleOperator" parameter="@birthRate.t:example_4_true" scaleFactor="0.75" weight="3.0"/>
 
-    <operator id="GrowthRateRandomWalk.t:example_4_true" spec="RealRandomWalkOperator" parameter="@growthRate.t:example_4_true" weight="3.0" windowSize="1.0"/>
+    <operator id="YuleModelTreeScaler.t:example_4_true" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:example_4_true" weight="3.0"/>
 
-    <operator id="CoalescentExponentialTreeScaler.t:example_4_true" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:example_4_true" weight="3.0"/>
+    <operator id="YuleModelTreeRootScaler.t:example_4_true" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:example_4_true" weight="3.0"/>
 
-    <operator id="CoalescentExponentialTreeRootScaler.t:example_4_true" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:example_4_true" weight="3.0"/>
+    <operator id="YuleModelUniformOperator.t:example_4_true" spec="Uniform" tree="@Tree.t:example_4_true" weight="30.0"/>
 
-    <operator id="CoalescentExponentialUniformOperator.t:example_4_true" spec="Uniform" tree="@Tree.t:example_4_true" weight="30.0"/>
+    <operator id="YuleModelSubtreeSlide.t:example_4_true" spec="SubtreeSlide" tree="@Tree.t:example_4_true" weight="15.0"/>
 
-    <operator id="CoalescentExponentialSubtreeSlide.t:example_4_true" spec="SubtreeSlide" tree="@Tree.t:example_4_true" weight="15.0"/>
+    <operator id="YuleModelNarrow.t:example_4_true" spec="Exchange" tree="@Tree.t:example_4_true" weight="15.0"/>
 
-    <operator id="CoalescentExponentialNarrow.t:example_4_true" spec="Exchange" tree="@Tree.t:example_4_true" weight="15.0"/>
+    <operator id="YuleModelWide.t:example_4_true" spec="Exchange" isNarrow="false" tree="@Tree.t:example_4_true" weight="3.0"/>
 
-    <operator id="CoalescentExponentialWide.t:example_4_true" spec="Exchange" isNarrow="false" tree="@Tree.t:example_4_true" weight="3.0"/>
-
-    <operator id="CoalescentExponentialWilsonBalding.t:example_4_true" spec="WilsonBalding" tree="@Tree.t:example_4_true" weight="3.0"/>
+    <operator id="YuleModelWilsonBalding.t:example_4_true" spec="WilsonBalding" tree="@Tree.t:example_4_true" weight="3.0"/>
 
     <logger id="tracelog" fileName="example_4_true.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
         <log idref="posterior"/>
@@ -104,9 +92,8 @@ name="alignment">
         <log idref="prior"/>
         <log idref="treeLikelihood.example_4_true"/>
         <log id="TreeHeight.t:example_4_true" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:example_4_true"/>
-        <log idref="CoalescentExponential.t:example_4_true"/>
-        <log idref="ePopSize.t:example_4_true"/>
-        <log idref="growthRate.t:example_4_true"/>
+        <log idref="YuleModel.t:example_4_true"/>
+        <log idref="birthRate.t:example_4_true"/>
     </logger>
 
     <logger id="screenlog" logEvery="1000">

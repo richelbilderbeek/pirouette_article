@@ -2,7 +2,7 @@
 
 
     <data
-id="alignment_twin_488b7e0c90fa"
+id="alignment_twin_50122c7eb3a"
 name="alignment">
                     <sequence id="seq_A" taxon="A" totalcount="4" value="tatcgtggcaaaatacaacgagtgataatgatagataataacagaagaaaaataaagtcaaggtactataaattaccaccgagaattataagaagaacgaataacgtagagatacctacaatagaaaaatagacgtagttggtgataaatgcaaagataaccgcagatgaatagtcgctacactattaatcctagtgtgaaatagtataaatcccaatgcatcaatactgaaatccatataaatgaaacccttcgcctgttcggctccggacctcacagccccgccccactggaggcccctccgacacggcctgcccaccacacgttaattggtagagtgatcgggcctcctcccagagcacagatcaccctatgtatcccaacaacattacctctcccgcgctgacacctaacccccctgcctcggttagggcggcccctcggattcatacatacctacctcggattcccttgcggtacctcaacgcagtgtacaaggcatgatttatgtccgtgtggggtaaatcacttcgtcggtcctatatactcgacgtcgttgggctcagcggcgcaacggggaggcacggagtgttgggatgggcaggctgacgtgtcggaggagcagagcaaatggtgggttccaaggtggaagggggtgggtgggagcaagggggtgggggttgacgtaaagagatgtgtcgaggcgggggcgggttgagaggggatgggataaggtagcgggcacggggaaacctagttgttttttttggtacactgctgactcatgagtttaatagttatgcccttagtagatatcggttttgtctgttgaattcagcgtaatttttattgacattttttccaaactatctaataacacaatccgttgtaggttgtgtttcctatgttttacgggcgtttacatattctcggttttcacttgtgttgaatctggtgccttcctacatgctcgtacttggctatacgttaattagtcttt"/>
                     <sequence id="seq_B" taxon="B" totalcount="4" value="tatacacttatcaaacgcctatttattctagtagagcaaaacaaaataaaaaataaatcaatatagaacagctaagcaccgaaaaatagaacaaggtataactacgccaatgaatccgagtctgagatagagtaggatactgagcacaatgagtaaatacaggaatatccgaagtcacactaagagaaaacacagaatcgcataccctgatgattataatagtactaccgagcagaatgtaactctgaaccatgtgagaggccggaccccgtcactaattccctgcaagcttgagctccctcccgcaagcccacgcaccatcgtactgcctacctcaccgatccttctggccggagtttacgcccccccccgttgtaccaccccaccggttccgcagctaggcctactcctagtccgtccacattgcttcgagtccctcagcacaacctcattccggtatccctcttccatcgccgcccctgcattccaggttcaacggtgatagttgtgtaggcgccgggggggtctggccggcggtggtaattagattgctttatcaggatgagctgtagaatgccgcggctcagggtaaggtaatggggcgggtagagcttcgtttacgctgaagaaacgggaggggattaggtgtcgttgagacgtggagagaagtgaggtaggggtgaacgtatgggtttatagcatggtggaaacgaggtattttcgcagggcctagggacttatgtgcgtgggatccttgtactcttttgttcaacggtttttatgctttggtatgatgagtatggctttagtggcagtccggtttttgtgtagaatcttcaatgttgtttagtgctattttattccgtagatctaatactttatgggtttctgatttgtatgatatttttcttatggtgattcccacatttcctgatgtgatttgtatttaatctttatcccggatacatcagagcactcgtgtgcatgttaggttgtcgtt"/>
@@ -34,66 +34,66 @@ name="alignment">
 
 <run id="mcmc" spec="MCMC" chainLength="10000000" storeEvery="1000">
     <state id="state" storeEvery="5000">
-        <tree id="Tree.t:alignment_twin_488b7e0c90fa" name="stateNode">
-            <taxonset id="TaxonSet.alignment_twin_488b7e0c90fa" spec="TaxonSet">
-                <alignment idref="alignment_twin_488b7e0c90fa"/>
+        <tree id="Tree.t:alignment_twin_50122c7eb3a" name="stateNode">
+            <taxonset id="TaxonSet.alignment_twin_50122c7eb3a" spec="TaxonSet">
+                <alignment idref="alignment_twin_50122c7eb3a"/>
             </taxonset>
         </tree>
-        <parameter id="birthRate.t:alignment_twin_488b7e0c90fa" name="stateNode">1.0</parameter>
+        <parameter id="birthRate.t:alignment_twin_50122c7eb3a" name="stateNode">1.0</parameter>
     </state>
 
-    <init id="RandomTree.t:alignment_twin_488b7e0c90fa" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:alignment_twin_488b7e0c90fa" taxa="@alignment_twin_488b7e0c90fa">
-        <populationModel id="ConstantPopulation0.t:alignment_twin_488b7e0c90fa" spec="ConstantPopulation">
-            <parameter id="randomPopSize.t:alignment_twin_488b7e0c90fa" name="popSize">1.0</parameter>
+    <init id="RandomTree.t:alignment_twin_50122c7eb3a" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:alignment_twin_50122c7eb3a" taxa="@alignment_twin_50122c7eb3a">
+        <populationModel id="ConstantPopulation0.t:alignment_twin_50122c7eb3a" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:alignment_twin_50122c7eb3a" name="popSize">1.0</parameter>
         </populationModel>
     </init>
 
     <distribution id="posterior" spec="util.CompoundDistribution">
         <distribution id="prior" spec="util.CompoundDistribution">
-            <distribution id="YuleModel.t:alignment_twin_488b7e0c90fa" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:alignment_twin_488b7e0c90fa" tree="@Tree.t:alignment_twin_488b7e0c90fa"/>
-            <prior id="YuleBirthRatePrior.t:alignment_twin_488b7e0c90fa" name="distribution" x="@birthRate.t:alignment_twin_488b7e0c90fa">
+            <distribution id="YuleModel.t:alignment_twin_50122c7eb3a" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:alignment_twin_50122c7eb3a" tree="@Tree.t:alignment_twin_50122c7eb3a"/>
+            <prior id="YuleBirthRatePrior.t:alignment_twin_50122c7eb3a" name="distribution" x="@birthRate.t:alignment_twin_50122c7eb3a">
                 <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
             </prior>
         </distribution>
         <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
-            <distribution id="treeLikelihood.alignment_twin_488b7e0c90fa" spec="ThreadedTreeLikelihood" data="@alignment_twin_488b7e0c90fa" tree="@Tree.t:alignment_twin_488b7e0c90fa">
-                <siteModel id="SiteModel.s:alignment_twin_488b7e0c90fa" spec="SiteModel">
-                    <parameter id="mutationRate.s:alignment_twin_488b7e0c90fa" estimate="false" name="mutationRate">1.0</parameter>
-                    <parameter id="gammaShape.s:alignment_twin_488b7e0c90fa" estimate="false" name="shape">1.0</parameter>
-                    <parameter id="proportionInvariant.s:alignment_twin_488b7e0c90fa" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
-                    <substModel id="JC69.s:alignment_twin_488b7e0c90fa" spec="JukesCantor"/>
+            <distribution id="treeLikelihood.alignment_twin_50122c7eb3a" spec="ThreadedTreeLikelihood" data="@alignment_twin_50122c7eb3a" tree="@Tree.t:alignment_twin_50122c7eb3a">
+                <siteModel id="SiteModel.s:alignment_twin_50122c7eb3a" spec="SiteModel">
+                    <parameter id="mutationRate.s:alignment_twin_50122c7eb3a" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:alignment_twin_50122c7eb3a" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:alignment_twin_50122c7eb3a" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:alignment_twin_50122c7eb3a" spec="JukesCantor"/>
                 </siteModel>
-                <branchRateModel id="StrictClock.c:alignment_twin_488b7e0c90fa" spec="beast.evolution.branchratemodel.StrictClockModel">
-                    <parameter id="clockRate.c:alignment_twin_488b7e0c90fa" estimate="false" name="clock.rate">1.0</parameter>
+                <branchRateModel id="StrictClock.c:alignment_twin_50122c7eb3a" spec="beast.evolution.branchratemodel.StrictClockModel">
+                    <parameter id="clockRate.c:alignment_twin_50122c7eb3a" estimate="false" name="clock.rate">1.0</parameter>
                 </branchRateModel>
             </distribution>
         </distribution>
     </distribution>
 
-    <operator id="YuleBirthRateScaler.t:alignment_twin_488b7e0c90fa" spec="ScaleOperator" parameter="@birthRate.t:alignment_twin_488b7e0c90fa" scaleFactor="0.75" weight="3.0"/>
+    <operator id="YuleBirthRateScaler.t:alignment_twin_50122c7eb3a" spec="ScaleOperator" parameter="@birthRate.t:alignment_twin_50122c7eb3a" scaleFactor="0.75" weight="3.0"/>
 
-    <operator id="YuleModelTreeScaler.t:alignment_twin_488b7e0c90fa" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:alignment_twin_488b7e0c90fa" weight="3.0"/>
+    <operator id="YuleModelTreeScaler.t:alignment_twin_50122c7eb3a" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:alignment_twin_50122c7eb3a" weight="3.0"/>
 
-    <operator id="YuleModelTreeRootScaler.t:alignment_twin_488b7e0c90fa" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:alignment_twin_488b7e0c90fa" weight="3.0"/>
+    <operator id="YuleModelTreeRootScaler.t:alignment_twin_50122c7eb3a" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:alignment_twin_50122c7eb3a" weight="3.0"/>
 
-    <operator id="YuleModelUniformOperator.t:alignment_twin_488b7e0c90fa" spec="Uniform" tree="@Tree.t:alignment_twin_488b7e0c90fa" weight="30.0"/>
+    <operator id="YuleModelUniformOperator.t:alignment_twin_50122c7eb3a" spec="Uniform" tree="@Tree.t:alignment_twin_50122c7eb3a" weight="30.0"/>
 
-    <operator id="YuleModelSubtreeSlide.t:alignment_twin_488b7e0c90fa" spec="SubtreeSlide" tree="@Tree.t:alignment_twin_488b7e0c90fa" weight="15.0"/>
+    <operator id="YuleModelSubtreeSlide.t:alignment_twin_50122c7eb3a" spec="SubtreeSlide" tree="@Tree.t:alignment_twin_50122c7eb3a" weight="15.0"/>
 
-    <operator id="YuleModelNarrow.t:alignment_twin_488b7e0c90fa" spec="Exchange" tree="@Tree.t:alignment_twin_488b7e0c90fa" weight="15.0"/>
+    <operator id="YuleModelNarrow.t:alignment_twin_50122c7eb3a" spec="Exchange" tree="@Tree.t:alignment_twin_50122c7eb3a" weight="15.0"/>
 
-    <operator id="YuleModelWide.t:alignment_twin_488b7e0c90fa" spec="Exchange" isNarrow="false" tree="@Tree.t:alignment_twin_488b7e0c90fa" weight="3.0"/>
+    <operator id="YuleModelWide.t:alignment_twin_50122c7eb3a" spec="Exchange" isNarrow="false" tree="@Tree.t:alignment_twin_50122c7eb3a" weight="3.0"/>
 
-    <operator id="YuleModelWilsonBalding.t:alignment_twin_488b7e0c90fa" spec="WilsonBalding" tree="@Tree.t:alignment_twin_488b7e0c90fa" weight="3.0"/>
+    <operator id="YuleModelWilsonBalding.t:alignment_twin_50122c7eb3a" spec="WilsonBalding" tree="@Tree.t:alignment_twin_50122c7eb3a" weight="3.0"/>
 
-    <logger id="tracelog" fileName="alignment_twin_488b7e0c90fa.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+    <logger id="tracelog" fileName="alignment_twin_50122c7eb3a.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
         <log idref="posterior"/>
         <log idref="likelihood"/>
         <log idref="prior"/>
-        <log idref="treeLikelihood.alignment_twin_488b7e0c90fa"/>
-        <log id="TreeHeight.t:alignment_twin_488b7e0c90fa" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:alignment_twin_488b7e0c90fa"/>
-        <log idref="YuleModel.t:alignment_twin_488b7e0c90fa"/>
-        <log idref="birthRate.t:alignment_twin_488b7e0c90fa"/>
+        <log idref="treeLikelihood.alignment_twin_50122c7eb3a"/>
+        <log id="TreeHeight.t:alignment_twin_50122c7eb3a" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:alignment_twin_50122c7eb3a"/>
+        <log idref="YuleModel.t:alignment_twin_50122c7eb3a"/>
+        <log idref="birthRate.t:alignment_twin_50122c7eb3a"/>
     </logger>
 
     <logger id="screenlog" logEvery="1000">
@@ -103,8 +103,8 @@ name="alignment">
         <log idref="prior"/>
     </logger>
 
-    <logger id="treelog.t:alignment_twin_488b7e0c90fa" fileName="$(tree).trees" logEvery="1000" mode="tree">
-        <log id="TreeWithMetaDataLogger.t:alignment_twin_488b7e0c90fa" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:alignment_twin_488b7e0c90fa"/>
+    <logger id="treelog.t:alignment_twin_50122c7eb3a" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:alignment_twin_50122c7eb3a" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:alignment_twin_50122c7eb3a"/>
     </logger>
 
 </run>
