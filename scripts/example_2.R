@@ -60,11 +60,11 @@ esses <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
-sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex"))
+sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
 xtable::xtable(
-  esses, 
-  caption = paste0("ESSes of example ", example_no), 
-  label = paste0("tab:esses_example_", example_no), 
+  esses,
+  caption = paste0("ESSes of example ", example_no),
+  label = paste0("tab:esses_example_", example_no),
   digits = 0
 )
 sink()
@@ -78,7 +78,13 @@ df_evidences$clock_model_name <- plyr::revalue(
 )
 df_evidences$tree_prior_name <- plyr::revalue(
   df_evidences$tree_prior_name,
-  c("yule" = "Yule", "birth_death" = "BD", "coalescent_constant_population" = "CCP", "coalescent_exp_population" = "CEP")
+  c(
+    "yule" = "Yule",
+    "birth_death" = "BD",
+    "coalescent_bayesian_skyline" = "CBS",
+    "coalescent_constant_population" = "CCP",
+    "coalescent_exp_population" = "CEP"
+  )
 )
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 

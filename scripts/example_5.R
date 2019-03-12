@@ -10,8 +10,8 @@ root_folder <- path.expand("~/GitHubs/pirouette_article/")
 example_no <- 5
 set.seed(314)
 
+# An infintely rare Yule tree
 phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);")
-# phylogeny <- create_ideal_tree(n_taxa = 5, crown_age = 10)
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
