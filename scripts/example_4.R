@@ -182,6 +182,20 @@ babette::plot_densitree(
 )
 dev.off()
 
+png(
+  filename = file.path(root_folder, paste0("example_", example_no, "_true_posterior_best.png")),
+  width = 1000, height = 800
+)
+babette::plot_densitree(
+  phylos = tracerer::parse_beast_trees(pir_params$experiments[[2]]$beast2_options$output_trees_filenames),
+  alpha = 0.01,
+  consensus = rev(LETTERS[1:6]),
+  cex = 2.0,
+  scaleX = TRUE,
+  scale.bar = FALSE
+)
+dev.off()
+
 if (!is_one_na(pir_params$twinning_params)) {
   png(
     filename = file.path(root_folder, paste0("example_", example_no, "_twin_posterior_gen.png")),
@@ -196,43 +210,94 @@ if (!is_one_na(pir_params$twinning_params)) {
     scale.bar = FALSE
   )
   dev.off()
+
+  png(
+    filename = file.path(root_folder, paste0("example_", example_no, "_twin_posterior_best.png")),
+    width = 1000, height = 800
+  )
+  babette::plot_densitree(
+    phylos = tracerer::parse_beast_trees(to_twin_filename(pir_params$experiments[[2]]$beast2_options$output_trees_filenames)),
+    alpha = 0.01,
+    consensus = rev(LETTERS[1:6]),
+    cex = 2.0,
+    scaleX = TRUE,
+    scale.bar = FALSE
+  )
+  dev.off()
 }
 
 ################################################################################
 # histogram of errors
 ################################################################################
 
-df_errors <- data.frame(error = read.csv(pir_params$experiments[[1]]$errors_filename)$x)
+# True, gen
+df_errors_gen <- data.frame(error = read.csv(pir_params$experiments[[1]]$errors_filename)$x)
 
 ggplot2::ggplot(
-  df_errors,
+  df_errors_gen,
   aes(x = error)
 ) + geom_histogram(binwidth = 0.01) +
-  ggsave(file.path(root_folder, paste0("example_", example_no, "_error_histogram.png")))
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_error_histogram_gen.png")))
 
 ggplot2::ggplot(
-  df_errors,
+  df_errors_gen,
   aes(x = "", y = error)
 ) + geom_violin() +
   xlab("") +
   scale_y_continuous(breaks = seq(0.0, 1.0, by = 0.02)) +
-  ggsave(file.path(root_folder, paste0("example_", example_no, "_error_violin.png")))
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_error_violin_gen.png")))
+
+# True, best
+df_errors_best <- data.frame(error = read.csv(pir_params$experiments[[2]]$errors_filename)$x)
+
+ggplot2::ggplot(
+  df_errors_best,
+  aes(x = error)
+) + geom_histogram(binwidth = 0.01) +
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_error_histogram_best.png")))
+
+ggplot2::ggplot(
+  df_errors_best,
+  aes(x = "", y = error)
+) + geom_violin() +
+  xlab("") +
+  scale_y_continuous(breaks = seq(0.0, 1.0, by = 0.02)) +
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_error_violin_best.png")))
+
 
 if (!is_one_na(pir_params$twinning_params)) {
-  df_errors_twin <- data.frame(error = read.csv(to_twin_filename(pir_params$experiments[[1]]$errors_filename))$x)
+  df_errors_twin_gen <- data.frame(error = read.csv(to_twin_filename(pir_params$experiments[[1]]$errors_filename))$x)
 
   ggplot2::ggplot(
-    df_errors_twin,
+    df_errors_twin_gen,
     aes(x = error)
   ) + geom_histogram(binwidth = 0.01) +
-  ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_error_histogram.png")))
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_error_histogram_gen.png")))
 
   ggplot2::ggplot(
-    df_errors_twin,
+    df_errors_twin_gen,
     aes(x = "", y = error)
   ) + geom_violin() +
     xlab("") +
     scale_y_continuous(breaks = seq(0.0, 1.0, by = 0.02)) +
-    ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_error_violin.png")))
+    ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_error_violin_gen.png")))
+
+
+  df_errors_twin_best <- data.frame(error = read.csv(to_twin_filename(pir_params$experiments[[2]]$errors_filename))$x)
+
+  ggplot2::ggplot(
+    df_errors_twin_best,
+    aes(x = error)
+  ) + geom_histogram(binwidth = 0.01) +
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_error_histogram_best.png")))
+
+  ggplot2::ggplot(
+    df_errors_twin_best,
+    aes(x = "", y = error)
+  ) + geom_violin() +
+    xlab("") +
+    scale_y_continuous(breaks = seq(0.0, 1.0, by = 0.02)) +
+    ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_error_violin_best.png")))
+
 }
 

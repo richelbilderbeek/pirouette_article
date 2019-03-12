@@ -1451,7 +1451,6 @@ RSE contributed to revisions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffalse
 \begin{figure}[h]
   \centering
   \resizebox {0.8\columnwidth} {!} {
@@ -1475,13 +1474,13 @@ RSE contributed to revisions.
     \node[state] (DG) [below of = CG, rectangle] {
       \includegraphics[height=0.2\textheight]{example_4_error_violin_gen.png}
     };   
-    \node[state] (CB) [below right of = B, rectangle] {
+    \node[state] (CB) [right of = C, rectangle] {
       \includegraphics[height=0.2\textheight]{example_4_true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle] {
       \includegraphics[height=0.2\textheight]{example_4_error_violin_best.png}
     };   
-    \node[state] (AT) [right of = A, rectangle] {
+    \node[state] (AT) [right of = A, rectangle, node distance=0.8\textheight] {
       \includegraphics[height=0.2\textheight]{example_4_twin_tree.png}
     };   
     \node[state] (BT) [below of = AT, rectangle] {
@@ -1493,7 +1492,7 @@ RSE contributed to revisions.
     \node[state] (DTG) [below of = CTG, rectangle] {
       \includegraphics[height=0.2\textheight]{example_4_twin_error_violin_gen.png}
     };   
-    \node[state] (CTB) [below right of = BT, rectangle] {
+    \node[state] (CTB) [right of = CTG, rectangle] {
       \includegraphics[height=0.2\textheight]{example_4_twin_posterior_best.png}
     };   
     \node[state] (DTB) [below of = CTB, rectangle] {
@@ -1504,11 +1503,11 @@ RSE contributed to revisions.
       (A) edge [anchor = south] node {} (B)
       (B) edge [anchor = south] node {} (CG)
       (CG) edge [anchor = south] node {} (DG)
-      (B) edge [anchor = southeast] node {} (CB)
+      (B) edge [anchor = south east] node {} (CB)
       (CB) edge [anchor = south] node {} (DB)
       (A) edge [anchor = east] node {} (AT)
       (AT) edge [anchor = south] node {} (BT)
-      (BT) edge [anchor = southeast] node {} (CTG)
+      (BT) edge [anchor = south east] node {} (CTG)
       (CTG) edge [anchor = south] node {} (DTG)
       (BT) edge [anchor = south] node {} (CTB)
       (CTB) edge [anchor = south] node {} (DTB)
@@ -1518,7 +1517,6 @@ RSE contributed to revisions.
   \label{fig:example_4_full_pipeline}
   \caption{Example 4: full pipeline}
 \end{figure}
-\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_4_esses.latex}
