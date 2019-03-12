@@ -1450,6 +1450,17 @@ RSE contributed to revisions.
 \subsection{Example 4}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%\input{example_4_esses.latex}
+% has label tab:esses_example_4
+
+%\input{example_4_evidences.latex}
+% has label tab:evidences_example_4
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example 5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[h]
   \centering
@@ -1463,40 +1474,40 @@ RSE contributed to revisions.
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_true_tree.png}
+      \includegraphics[height=0.2\textheight]{example_5_true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_4_true_alignment.png}
+      \includegraphics[height=0.13\textheight]{example_5_true_alignment.png}
     };   
     \node[state] (CG) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_true_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_5_true_posterior_gen.png}
     };   
     \node[state] (DG) [below of = CG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_error_violin_gen.png}
+      \includegraphics[height=0.2\textheight]{example_5_error_violin_gen.png}
     };   
     \node[state] (CB) [right of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_true_posterior_best.png}
+      \includegraphics[height=0.2\textheight]{example_5_true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_error_violin_best.png}
+      \includegraphics[height=0.2\textheight]{example_5_error_violin_best.png}
     };   
     \node[state] (AT) [right of = A, rectangle, node distance=0.8\textheight] {
-      \includegraphics[height=0.2\textheight]{example_4_twin_tree.png}
+      \includegraphics[height=0.2\textheight]{example_5_twin_tree.png}
     };   
     \node[state] (BT) [below of = AT, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_4_twin_alignment.png}
+      \includegraphics[height=0.13\textheight]{example_5_twin_alignment.png}
     };   
     \node[state] (CTG) [below of = BT, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_twin_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_5_twin_posterior_gen.png}
     };   
     \node[state] (DTG) [below of = CTG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_twin_error_violin_gen.png}
+      \includegraphics[height=0.2\textheight]{example_5_twin_error_violin_gen.png}
     };   
     \node[state] (CTB) [right of = CTG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_twin_posterior_best.png}
+      \includegraphics[height=0.2\textheight]{example_5_twin_posterior_best.png}
     };   
     \node[state] (DTB) [below of = CTB, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_4_twin_error_violin_best.png}
+      \includegraphics[height=0.2\textheight]{example_5_twin_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -1514,15 +1525,27 @@ RSE contributed to revisions.
     ; 
     \end{tikzpicture}
   }
-  \label{fig:example_4_full_pipeline}
-  \caption{Example 4: full pipeline}
+  \label{fig:example_5_full_pipeline}
+  \caption{Example 5: full pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{example_4_esses.latex}
-% has label tab:esses_example_4
+\input{example_5_esses_gen.latex}
+% has label tab:esses_example_5_gen
 
-\input{example_4_evidences.latex}
-% has label tab:evidences_example_4
+\input{example_5_esses_best.latex}
+% has label tab:esses_example_5_best
+
+\input{example_5_esses_twin_gen.latex}
+% has label tab:esses_example_5_twin_gen
+
+\input{example_5_esses_twin_best.latex}
+% has label tab:esses_example_5_twin_best
+
+\input{example_5_evidence_true.latex}
+% has label tab:evidences_example_5
+
+\input{example_5_evidence_twin.latex}
+% has label tab:evidences_example_5
 
 \end{document}

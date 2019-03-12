@@ -1,0 +1,17 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Tue Mar 12 09:24:58 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllrr}
+  \hline
+ & Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
+  \hline
+1 & JC & Strict & Yule & -7392.284 & 0.765 \\ 
+  2 & JC & Strict & BD & -7393.468 & 0.234 \\ 
+  3 & JC & Strict & CCP & -7406.349 & 0.000 \\ 
+  4 & JC & Strict & CEP & -7398.807 & 0.001 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences of example 5, twin tree} 
+\label{tab:evidences_example_5_twin}
+\end{table}

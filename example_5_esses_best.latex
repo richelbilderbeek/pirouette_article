@@ -1,0 +1,14 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Tue Mar 12 09:20:54 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & posterior & likelihood & prior & treeLikelihood & TreeHeight & CoalescentExponential & ePopSize & growthRate \\ 
+  \hline
+1 & 8087 & 10001 & 1623 & 10001 & 9673 & 2274 & 2607 & 1595 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes of example 5 for best candidate model} 
+\label{tab:esses_example_5_best}
+\end{table}
