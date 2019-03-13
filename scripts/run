@@ -23,4 +23,6 @@ jobid=$(sbatch install | cut -d ' ' -f 4)
 sbatch --dependency=afterok:$jobid run_r_script example_1.R
 sbatch --dependency=afterok:$jobid run_r_script example_2.R
 sbatch --dependency=afterok:$jobid run_r_script example_3.R
+sbatch --dependency=afterok:$jobid run_r_script example_4.R
+sbatch --dependency=afterok:$jobid run_r_script example_5.R
 
