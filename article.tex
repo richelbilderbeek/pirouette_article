@@ -99,8 +99,8 @@
     and an inference model to create a
     posterior of jointly-estimated phylogenies and model parameter 
     estimates. An important ingredient of BEAST2 is 
-    the model for the species tree prior, 
-    and the tool can in principle be used for inference of 
+    the species tree prior, 
+    due to which the tool can be used for inference of 
     macroevolutionary processes underlying the species tree. 
     However, only models that allow for fast computation of 
     the prior probability are possible in practice. 
@@ -143,9 +143,9 @@ it does not only need character data but also tree priors,
 describing how the diversification occurs, to return posterior phylogenies.
 BEAST uses standard tree priors such as Yule or 
 constant-rate birth-death [\cite{nee1994reconstructed}] models.
-These models are most commonly picked in biological research,
-as these are of a desired minimum biological complexity, 
-yet computationally fast enough.
+These models are the most commonly picked in biological research,
+as these embody a reasonable level of biological complexity, 
+yet are computationally fast enough.
 The recent development of BEAST2 [\cite{bouckaert2014beast}] provides, 
 unlike its predecessor, the possibility for third-party users 
 to use their own new or preferred diversification model, 
@@ -155,8 +155,12 @@ There have been plenty of these models (and their associated probability algorit
 developed, among others, those in which diversification is 
 time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
 or diversity-dependent [\cite{etienne2011diversity}],
-or that can shift [\cite{etienne2012conceptual}, \cite{rabosky2014automatic}, \cite{alfaro2009nine}, the SLS model. Laudanno et al., in preparation].
-Other birth-death models treat speciation as a process that takes time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}], or that happens in bursts of simultaneous events [Laudanno et al., in preparation], or that
+or that can shift [\cite{etienne2012conceptual}, 
+\cite{rabosky2014automatic}, \cite{alfaro2009nine}, \cite{laudanno2018sls}].
+Other birth-death models treat speciation as a process that takes 
+time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}], 
+or that happens in bursts of simultaneous 
+events [\cite{laudanno2018mbd}], or that
 depends on a trait that has two [\cite{maddison2007estimating}], 
 or more [\cite{fitzjohn2012diversitree}] states,
 or even allows concealed states [\cite{beaulieu2016detecting}] 
@@ -164,15 +168,17 @@ or a combination of all these [\cite{herrera2018detecting}].
 Not all of these diversification models are available in BEAST2, 
 but the option is available.
 
-For a given phylogeny, the parameter values of the diversification model 
-are usually estimated using maximum likelihood.
-For such  models, 
-it is a standard practice to assess their performance 
-on a controlled environment: 
-phylogenies are simulated with known parameters, 
-and then the estimated parameters are compared with the original parameters.
-If the likelihood proves to be effective to describe the process, 
-it can potentially be implemented into BEAST2 as a new prior. 
+When investigating a diversification process,
+starting from a given phylogeny, 
+the parameter values of the diversification model 
+are commonly estimated using maximum likelihood.
+To test the effectiveness of the diversification model,
+it is standard practice to simulate new phylogenies
+from the (maximum likely) parameters and use maximum
+likelihood to again estimate the parameters.
+An effective diversification model has an
+initial parameter estimate that is similar to the control parameter estimates.
+
 However, in many cases the computation of this likelihood (the tree prior) 
 is computationally demanding and it is unfeasible to use it 
 in a Bayesian inference framework where it needs to be 
