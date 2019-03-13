@@ -214,10 +214,11 @@ of a novel diversification model.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; is written in the R programming language (\cite{R}).
-The goal of \verb;pirouette; is to measure the inference error BEAST2
+The goal of \verb;pirouette; is to quantify the importance of a tree
+prior. It does so by measuring the inference error BEAST2
 makes for a given reconstructed phylogeny, 
-simulated under the mechanisms of a (possibly new) diversification model, 
-which we will refer to as the 'generative prior'. 
+simulated under the mechanisms of a (usually novel) diversification model, 
+which we will refer to as the 'generative tree prior', $\mathit{P}$. 
 Such a study will typically construct phylogenies 
 for different combinations of the diversification model's parameters, 
 to assess under which scenarios the error made by BEAST2 cannot be neglected. 
@@ -228,7 +229,7 @@ this article only shows examples with one replicate, for the sake of clarity.
 to specify a big variety of custom settings. 
 These settings can be grouped in macro-sections, 
 according to how they operate in the pipeline. 
-We summarize them in Tables~\ref{tab:options} and \ref{tab:definitions}.
+We summarize them in tables~\ref{tab:options} and~\ref{tab:definitions}.
 
 Although many possible tests can be performed, 
 we present here only five example research questions (ERQ) that \verb;pirouette; can answer. 
@@ -583,7 +584,7 @@ install_beast2_pkg("NS")
 \end{lstlisting}
 
 An overview of \verb;pirouette;'s main functions is shown in 
-table \ref{tab:functions}. 
+table~\ref{tab:functions}. 
 We will exploit these functions to answer our research questions in the next sections.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -629,7 +630,7 @@ We choose to use a tree with six taxa and a crown age of ten.
     label = {lst:create_yule_tree}, 
     caption = {
       Create a Yule tree. 
-      The resulting tree is shown in figure \ref{fig:yule_tree}
+      The resulting tree is shown in figure~\ref{fig:yule_tree}
     }
   ]
 phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
@@ -637,7 +638,7 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{tree_yule.png}
-  \caption{The Yule tree, as created by listing \ref{lst:create_yule_tree}.}
+  \caption{The Yule tree, as created by listing~\ref{lst:create_yule_tree}.}
   \label{fig:yule_tree}
   \giovanni{Remove the text in top-left corner.}
   \giovanni{I'd use a sexier topology, purely for esthetical reasons.}
@@ -735,7 +736,7 @@ errors <- pir_run(
 pir_plot(errors)
 \end{lstlisting}
 
-The resulting figure is shown in figure \ref{fig:example_1}.
+The resulting figure is shown in figure~\ref{fig:example_1}.
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_1_errors.png}
@@ -782,13 +783,13 @@ phylogeny  <- ape::read.tree(
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{tree_unknown.png}
   \caption{The tree derived from an unknown diversification process, 
-    as created by listing \ref{lst:unknown_phylogeny}.
+    as created by listing~\ref{lst:unknown_phylogeny}.
   }
 \end{figure}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the given phylogeny. 
 We will re-use the alignment parameters of the previous example 
-as shown in listing \ref{lst:create_alignment}.
+as shown in listing~\ref{lst:create_alignment}.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
@@ -859,7 +860,7 @@ Again, showing the results:
 pir_plot(errors)
 \end{lstlisting}
 
-The resulting figure is shown in figure \ref{fig:example_2}.
+The resulting figure is shown in figure~\ref{fig:example_2}.
 
 \giovanni{describe winner}
 \richel{agreed, after the figures also show it :-) }
@@ -884,9 +885,9 @@ when hand-picking an inference model, compared to the background noise?"
 
 Most of the settings for this example research question are
 the same as in the previous section, which are
-the phylogeny from an unknown speciation model (listing \ref{lst:unknown_phylogeny}), 
-the alignment parameters (listing \ref{lst:create_alignment}) 
-and the list of experiments (listing \ref{lst:create_generative_experiment}).
+the phylogeny from an unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
+the alignment parameters (listing~\ref{lst:create_alignment}) 
+and the list of experiments (listing~\ref{lst:create_generative_experiment}).
 
 This time, however, we are interested in creating a twin tree,
 as such a twin tree allows us to measure a baseline error produced
@@ -946,7 +947,7 @@ Again, showing the results:
 pir_plot(errors)
 \end{lstlisting}
 
-The resulting figure is shown in figure \ref{fig:example_3}
+The resulting figure is shown in figure~\ref{fig:example_3}
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_3_errors.png}
@@ -983,15 +984,15 @@ in relationship to the background error?"
 }
 
 Here, same as example 2 and 3, we start with the phylogeny 
-from an unknown speciation model (listing \ref{lst:unknown_phylogeny}), 
+from an unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
 The first step in \verb;pirouette; is to simulate a DNA alignment 
 from the given phylogeny, for which we will use the same code 
-as shown in listing \ref{lst:create_alignment}.
+as shown in listing~\ref{lst:create_alignment}.
 
 In the second step we specify we want all 
 40 inference models to compete, by 
 calling \verb;create_all_experiments;,
-as done in listing \ref{lst:create_all_experiments}.
+as done in listing~\ref{lst:create_all_experiments}.
 
 We choose again to use sensible defaults for the third (the BEAST2 inference) 
 and fourth (measuring the error) steps, 
@@ -1000,7 +1001,7 @@ as we previously did to answer the second research question.
 To get an idea of a baseline error made by BEAST2, 
 we also make use of the twinning option by using the
 default created twinning parameters, as shown in 
-listing \ref{lst:create_twinning_params}.
+listing~\ref{lst:create_twinning_params}.
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 pir_params <- create_pir_params(
@@ -1025,7 +1026,7 @@ Again, showing the results:
 pir_plot(errors)
 \end{lstlisting}
 
-The resulting figure is shown in figure \ref{fig:example_4}.
+The resulting figure is shown in figure~\ref{fig:example_4}.
 
 \giovanni{describe winner}
 \richel{agreed, after the figures also show it :-) }
@@ -1055,10 +1056,10 @@ In this example, we use a tree generated by the Yule process.
 Instead of using the common Yule tree as in example 1, we'll use
 a Yule tree of low (actually: zero) likelihood: 
 the one as used in examples 2-4.
-by using the code shown in listing \ref{lst:unknown_phylogeny}.
+by using the code shown in listing~\ref{lst:unknown_phylogeny}.
 The first step in \verb;pirouette; is to simulate a DNA alignment 
 from the given phylogeny, for which we will use the same code 
-as shown in listing \ref{lst:create_alignment}.
+as shown in listing~\ref{lst:create_alignment}.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
@@ -1139,7 +1140,7 @@ Again, showing the results:
 pir_plot(errors)
 \end{lstlisting}
 
-The resulting figure is shown in figure \ref{fig:example_5}.
+The resulting figure is shown in figure~\ref{fig:example_5}.
 
 \giovanni{describe winner}
 \richel{agreed, after the figures also show it :-) }
@@ -1175,24 +1176,24 @@ of the quality of the inference.
 To give an idea of the insights \verb;pirouette; can give,
 we pretend the results of the example research questions
 to be obtained from thousands of replicates.
-In that case, figure \ref{fig:example_1} shows 
+In that case, figure~\ref{fig:example_1} shows 
 the minimum error BEAST2 when the
 generative model is known, which can serve as 
 a minimum noise level assessment in a bigger experiment.  
-Figure \ref{fig:example_2} shows that 
+Figure~\ref{fig:example_2} shows that 
 \richel{
   reword after new results with 6 taxa tree
 } 
 the best candidate model gives an error distribution similar to the unknown tree prior,
 hinting that the candidate model would be just as good in inference.
-Figure \ref{fig:example_3} shows that 
+Figure~\ref{fig:example_3} shows that 
 \richel{
   reword after new results with 6 taxa tree
 } 
 the twin model gives an error distribution similar to the unknown tree prior,
 hinting that the shape of the phylogeny with unknown tree prior
 does not effect the error made by BEAST2.
-Figure \ref{fig:example_4} shows that 
+Figure~\ref{fig:example_4} shows that 
 \richel{
   reword after new results with 6 taxa tree
 } 
