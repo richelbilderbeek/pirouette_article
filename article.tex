@@ -10,7 +10,13 @@
 
 % Affiliations
 \usepackage{authblk}
-\title{pirouette: Determining the error BEAST2 makes in inferring a phylogeny}
+
+% RJCB: I think this title is better: 
+% (1) tree prior importantance is the goal, the error is just the means
+% (2) no need to specify BEAST2, it's also just a means
+\title{pirouette: Quantifying the importance of a tree prior in Bayesian phylogenetics}
+% \title{pirouette: Determining the error BEAST2 makes in inferring a phylogeny}
+
 \author[1]{Rich\`el J.C. Bilderbeek}
 \author[1]{Giovanni Laudanno}
 \author[1]{Rampal S. Etienne}
@@ -232,12 +238,9 @@ according to how they operate in the pipeline.
 We summarize them in tables~\ref{tab:options} and~\ref{tab:definitions}.
 
 Although many possible tests can be performed, 
-we present here only five example research questions (ERQ) that \verb;pirouette; can answer. 
-For these ERQs we will estimate the error made by BEAST2 when 
-using a birth-death tree prior, in recovering an original tree 
-generated under a Yule generative prior.
-
-
+we present here what we think are the five most important 
+example research questions (ERQ) that \verb;pirouette; can answer. 
+For these ERQs we will quantify the importance of a tree prior.
 
 \begin{sidewaystable}
 \centering
@@ -260,11 +263,15 @@ generated under a Yule generative prior.
     \hline
   \end{tabular}
   \caption{
-    Most important parameter options. BD = birth death, CBS = coalescent
-    Bayesian Skyline, CCP = coalescent constant-population, CEP = coalescent
-    exponential-population, JC = Jukes-Cantor 1969 (\cite{jukes1969evolution}), HKY = Hasegawa, Kishino and 
-    Yano (\cite{hasegawa1985dating}), TN93 = \cite{tamura1993estimation}, GTR = Generalised time-reversible 
-    model (\cite{tavare1986some}).
+    Most important parameter options. 
+    BD = birth death (\cite{nee1994reconstructed}), 
+    CBS = coalescent Bayesian Skyline (\cite{drummond2005bayesian}), 
+    CCP = coalescent constant-population, 
+    CEP = coalescent exponential-population,
+    JC = Jukes-Cantor 1969 (\cite{jukes1969evolution}), 
+    HKY = Hasegawa, Kishino and  Yano (\cite{hasegawa1985dating}), 
+    TN93 = \cite{tamura1993estimation}, 
+    GTR = Generalised time-reversible model (\cite{tavare1986some}).
   }
   \label{tab:options}
 \bigskip
@@ -406,14 +413,26 @@ generated under a Yule generative prior.
   \includegraphics[width=\textwidth]{workflow.png}
   \caption{
     \texttt{pirouette} pipeline. 
-    The pipeline starts from a true phylogeny (1a) simulated under the selected generative prior $\mathit{P}$, that is converted to an alignment (2a) according to the alignment model $\mathit{A}$. The user supplies one or more experiments. Every experiment $\mathit{X}$ is defined as a combination of an inference model $\mathit{I}$ and the conditions $\mathit{C}$ under which it is actually used in the inference. Based on the experiments and possibly the alignment (2a), experiments are selected to be actually used in the next step (3a).
-    Selected experiments use the alignment (2a) and their inference model $\mathit{I}$ to create a BEAST2 posterior of (parameter estimates and) phylogenies (4a). The posterior trees are compared to the true phylogeny (1a) using the selected error measure $\mathit{E}$, in our case the nLTT statistic [\cite{janzen2015approximate}]. Taking the differences between the true tree's nLTT and each posterior's nLTT results in an error distribution, here displayed as a histogram
-    of error values (5a). Optionally, a twin phylogeny (1b) can be generated from the true phylogeny (1a), which then results in an error distribution (5b) with similar intermediate steps.
+    The pipeline starts from a phylogeny (1a) simulated by generative prior $\mathit{P}$.
+    The phylogeny is converted to an alignment (2a) using alignment model $\mathit{A}$. 
+    The user supplies one or more experiments.
+    For each experiment $\mathit{X}$ (a tuple of inference model $\mathit{I}$ and condition $\mathit{C}$),
+    the inference model $\mathit{I}$ is used in the next step (3a),
+    if the condition $\mathit{C}$ are satisfied.
+    The condition $\mathit{C}$ can depend on the alignment (2a).
+    The allowed inference models use the alignment (2a) 
+    to create a BEAST2 posterior of (parameter estimates and) phylogenies (4a). 
+    Each of the posteriors' trees is compared to the true phylogeny (1a) 
+    using error measure $\mathit{E}$, 
+    resulting in an error distribution (5a). 
+    Optionally, a twin phylogeny (1b) can be generated from the original 
+    phylogeny (1a), which then results in an error distribution (5b) 
+    with similar intermediate steps.
   }
   \label{fig:pipeline}
 \end{figure}
 
-The pipeline is summarized by the following steps, which will be described in detail below:
+The pipeline is summarized by the following steps:
 \begin{enumerate}
     \item for a given phylogeny an alignment is simulated under a known alignment model;
     \item for this alignment, according to the specified inference conditions, an inference model is picked (which may be different from the generative alignment model);
