@@ -738,8 +738,8 @@ We specify C that the experiment will always be run.
   \label{tbl:RQ1}
 \end{table}
 
-Due to sensible defaults, specifying this
-results in:
+Listing~\ref{lst:create_generative_experiment_explicit} shows how to
+set up this experiment:
 
 \begin{lstlisting}[
   language=R, 
@@ -854,9 +854,26 @@ We call it twinning and we use it in example research question 3.
 \section{Usage: Example Research Question 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+There are more ways to pick a standard inference model. In the
+previous example, we picked the known generative inference model.
+A novel tree prior, by definition, is non-standard, thus cannot be
+part of a standard inference model. 
+One option is to choose to hand-pick a related 
+standard tree prior, as done in ERCs 3 and 5, and combine it with 
+a known generative alignment model.
+An alternative is to let multiple candidate inference models compete 
+and pick the best one, based on the highest evidence (aka marginal likelihood):
+when an alignment is simulated from the given tree, one can estimate the
+evidence for each inference model given that 
+alignment \richel{or the other way around?}.
+The benefit of this approach is that this is a commonly used procedure,
+which picks an inference model that is
+best at explaining the alignment, where more complex inference models are
+penalized for having more parameters. 
+
 A second research question that \verb;pirouette; can answer, is:
 
-"What is the error made by BEAST2 from a phylogeny when
+"What is the inference error made on a novel phylogeny when
 picking the best inference model?"
 
 Here we start with a tree generated from an unknown 
@@ -909,11 +926,16 @@ as shown in listing~\ref{lst:create_alignment}.
   }
 \end{table}
 
-In the second step we state our experiments. 
-Within this example, all our experiments are candidates,
-run only if it is the best candidate, the evidence is measured (ignoring
-this will give a helpful error) and we use the full set of 
-40 inference models, which are all combinations of 4 site 
+In the second step we set up our experiments. 
+Within this ERQ, each of our experiments contain a different
+inference model $I$, but has condition $C$ that will only let $I$
+be run in inference if that inference model $I$ is the 
+best candidate inference model, that is, 
+it is the inference model with the highest evidence.
+Setting up experiments like this is thought to be so common,
+that \verb;pirouette; has a simple function to do:
+\verb;create_all_experiments; will create 40 experiments,
+containing inference models of all combinations of 4 site 
 models, 2 clock models and 5 tree priors.
 
 \begin{lstlisting}[
@@ -926,10 +948,9 @@ models, 2 clock models and 5 tree priors.
 experiments <- create_all_experiments()
 \end{lstlisting}
 
-Also here, the third (the BEAST2 inference) and fourth (measuring the error)
-steps have sensible defaults, and we are not
-interested in using a twin tree. We can create the complete
-\verb;pirouette; parameter set (again) like this:
+For all other steps we use the default setups. 
+We can create the complete
+\verb;pirouette; parameter set like this:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 pir_params <- create_pir_params(
@@ -942,7 +963,7 @@ Running the experiment:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 errors <- pir_run(
-  phylogeny,
+  phylogeny = phylogeny,
   pir_params = pir_params
 )
 \end{lstlisting}
