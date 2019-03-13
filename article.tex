@@ -179,16 +179,20 @@ likelihood to again estimate the parameters.
 An effective diversification model has an
 initial parameter estimate that is similar to the control parameter estimates.
 
-However, in many cases the computation of this likelihood (the tree prior) 
-is computationally demanding and it is unfeasible to use it 
-in a Bayesian inference framework where it needs to be 
-computed millions to billions of times.
-However, if the data are very informative, the influence of the prior 
-is often relatively small, and hence under this assumption 
-it has become common practice to use already existing BEAST2 priors. 
-However, it is unclear whether this assumption holds.
-Here we introduce a pipeline to assess this assumption 
-for any given diversification model. 
+Not all diversification models that pass the procedure described above
+are used in Bayesian inference.
+In Bayesian inference, the likelihood of a diversification 
+model, also called tree prior, is computed millions of time.
+Due to this, effective but computationally expensive tree priors 
+are unused in Bayesian inference.
+Also, there may be no need to add such a tree prior to a Bayesian
+inference framework: the more informative the data, 
+the lower the influence of the tree prior.
+Due to this, existing and easy to compute tree priors are most commonly used.
+However, it is unknown if it is valid to assume that tree prior choice is 
+of low importance.
+Here we introduce a pipeline to assess this assumption and quantify the
+effect of the tree prior of any given diversification model. 
 Briefly, it consists of the following steps: 
 first simulate a phylogeny 
 according to the mechanisms proposed by the new diversification model, 
