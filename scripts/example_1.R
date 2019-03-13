@@ -63,7 +63,7 @@ esses <- tracerer::calc_esses(
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
 
-sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex"))
+sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
 xtable::xtable(esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0)
 sink()
 
