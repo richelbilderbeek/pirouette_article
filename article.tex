@@ -792,7 +792,11 @@ here yet.
 All these arguments are bundled
 and checked by \verb;create_pir_params;:
 
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+\begin{lstlisting}[
+  language=R, floatplacement=ht, frame=single,
+  label = {lst:create_pir_params},
+  caption = Calling \texttt{create\_pir\_params}
+]
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments,
@@ -805,7 +809,11 @@ Now we can use our Yule tree and \verb;pir_params; to measure
 the inference error made on phylogenies
 created by a standard diversification model:
 
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+\begin{lstlisting}[
+  language=R, floatplacement=ht, frame=single,
+  label = {lst:pir_run},
+  caption = Calling \texttt{pir\_run}
+]
 errors <- pir_run(
   phylogeny = phylogeny,
   pir_params = pir_params
@@ -818,7 +826,11 @@ This error distribution is a data frame in the non-tidy short form.
 Instead of converting it to tidy data and plotting it,
 \verb;pirouette; has a plotting function that does exactly that:
 
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+\begin{lstlisting}[
+  language=R, floatplacement=ht, frame=single,
+  label = {lst:pir_plot},
+  caption = Calling \texttt{pir\_plot}
+]
 pir_plot(errors)
 \end{lstlisting}
 
@@ -938,7 +950,7 @@ it is the inference model with the highest evidence.
 Setting up experiments like this is thought to be so common,
 that \verb;pirouette; has a simple function to do:
 \verb;create_all_experiments; will create 40 experiments,
-containing inference models of all combinations of 4 site 
+containing the inference models of all combinations of 4 site 
 models, 2 clock models and 5 tree priors.
 
 \begin{lstlisting}[
@@ -953,30 +965,22 @@ experiments <- create_all_experiments()
 
 For all other steps we use the default setups. 
 We can create the complete
-\verb;pirouette; parameter set like this:
+\verb;pirouette; parameter set like this (which is the
+same as listing~\ref{lst:create_pir_params}, but using the defaults):
 
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+\begin{lstlisting}[
+  language=R, floatplacement=ht, frame=single,
+  label = {lts:create_pir_params_defaults},
+  caption = Create a \texttt{pir\_params} with many defaults
+]
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments
 )
 \end{lstlisting}
 
-Running the experiment:
-
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-errors <- pir_run(
-  phylogeny = phylogeny,
-  pir_params = pir_params
-)
-\end{lstlisting}
-
-Again, showing the results:
-
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-pir_plot(errors)
-\end{lstlisting}
-
+We can run the \verb;pirouette; method with listing~\ref{lst:pir_run}
+and plot the results with listing~\ref{lst:pir_plot}.
 The resulting figure is shown in figure~\ref{fig:example_2}.
 
 \giovanni{describe winner}
