@@ -416,18 +416,21 @@ For these ERQs we will quantify the importance of a tree prior.
     The pipeline starts from a phylogeny (1a) simulated by generative prior $\mathit{P}$.
     The phylogeny is converted to an alignment (2a) using alignment model $\mathit{A}$. 
     The user supplies one or more experiments.
-    For each experiment $\mathit{X}$ (a tuple of inference model $\mathit{I}$ and condition $\mathit{C}$),
-    the inference model $\mathit{I}$ is used in the next step (3a),
-    if the condition $\mathit{C}$ are satisfied.
-    The condition $\mathit{C}$ can depend on the alignment (2a).
+    For each experiment $\mathit{X}$ 
+    (a tuple of inference model $\mathit{I}$ and condition $\mathit{C}$),
+    if its condition $\mathit{C}$ is 
+    satisfied (which can depend on the alignment), 
+    its inference model $\mathit{I}$ is used in the next step (3a).
     The allowed inference models use the alignment (2a) 
     to create a BEAST2 posterior of (parameter estimates and) phylogenies (4a). 
     Each of the posteriors' trees is compared to the true phylogeny (1a) 
     using error measure $\mathit{E}$, 
     resulting in an error distribution (5a). 
     Optionally, a twin phylogeny (1b) can be generated from the original 
-    phylogeny (1a), which then results in an error distribution (5b) 
-    with similar intermediate steps.
+    phylogeny (1a) using twinning parameters $T$, where $T$ may depend on
+    the experiments \richel{improve}.
+    From a twin phylogeny, the same intermediate steps are taken,
+    resulting in a twin error distribution (5b)
   }
   \label{fig:pipeline}
 \end{figure}
