@@ -448,12 +448,8 @@ Using a twin tree serves as a control: both the given/true tree and twin tree wi
 Potential differences in shapes of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{G}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
 \fi
 
-\giovanni{
-  This is a slightly more formal version. 
-  I personally find it clearer. 
-  If you don't like it we can use version 2 (see above in the source). 
-  In case you really like it, instead, I can try to make the rest a bit more similar to this.
-}
+\giovanni{This is a slightly more formal version}
+\richel{As agreed, go ahead and expend this formalization}
 
 %version 3, more formal
 An optional step is to generate a 'twin tree' $\tau_{I}$
@@ -588,11 +584,6 @@ To do so, we must specify an alignment model $\mathit{A}$ which consists of: a D
 site model $\mathit{s_{m}}$ (in this context: a nucleotide substitution model) and a clock model $\mathit{c_{m}}$. 
 In this example, the DNA root sequence consists in four blocks of 250 nucleotides each, 
 where the per-nucleotide mutation rate is 0.1 mutations per unit time.
-\iffalse
-\giovanni{this looks unnecessary to me}
-Because the crown age of the phylogeny is 10 time units, each nucleotide will
-have one (possibly-silent) mutation on average.
-\fi
 We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
 and a strict clock model as these are the simplest.
 A Jukes-Cantor site model,
@@ -718,14 +709,8 @@ errors <- pir_run(
 )
 \end{lstlisting}
 
-\iffalse
-\giovanni{I think we are providing too many information. Let's try to keep the main text as dry as possible.}
-One the hardware we used, it will take approximately 10 minutes
-to obtain the error distribution returned by \verb;pir_run;.
-This error distribution is a data frame in the non-tidy short form.
-Instead of converting it to tidy data and plotting it,
-\verb;pirouette; has a plotting function that does exactly that:
-\fi
+\giovanni{I think we are providing too many information}
+\richel{agreed, thanks for pushing back}
 
 The error distribution returned by \verb;pir_run; is stored as a data frame. It can be directly plotted using \verb;pir_plot;:
 
@@ -749,36 +734,11 @@ pir_plot(errors)
 The error distribution obtained is shown as a violin plot
 in figure~\ref{fig:example_1}. 
 
-\iffalse
-This error distribution has little relevance on its own.
-\giovanni{maybe it's better to explain later the multiple tree argument}
-It only gives a baseline error made by
-the Bayesian inference. We use 'a', because we have used only one Yule
-tree. To obtain the baseline error, one should simulate multiple Yule
-trees and merge their error distributions.
-\fi
-
-\iffalse
-For this error distribution to have more relevance it needs to be compared
-to an error distribution derived from a phylogeny 
-derived from a non-standard speciation process.
-\fi
-
-This error distribution has little relevance on its own, as we constructed the experiment in such a way $\mathit{I}$ matches with the generative model given by $\mathit{A}$ and $\mathit{P_{0}}$.
+This error distribution has little relevance on its own, 
+as we constructed the experiment in such a way $\mathit{I}$ 
+matches with the generative model given by $\mathit{A}$ and $\mathit{P_{0}}$.
 However it will become clear when compared to the errors obtained from a phylogeny 
 derived from a non-standard diversification process $\mathit{P}$.
-
-\iffalse
-By doing so, this error distribution can serve as a control,
-as it can be seen as the baseline error caused by stochasticity.
-In this example, that non-standard speciation process must 
-be closest related to a Yule process for the comparison to make sense \giovanni{why?}.
-Would the two error distributions be similar, the non-standard speciation 
-process is of little influence.
-Because measuring the baseline error is so important,
-we made it an inherent part of \verb;pirouette;. 
-We call it twinning and we use it in example research question 3.
-\fi
 
 By doing so, this error distribution will serve as a control,
 as it can be seen as the baseline error caused by stochasticity.
@@ -791,10 +751,6 @@ We call it 'twinning' and we use it in ERQ 3.
 \section{Usage: Example Research Question 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\iffalse
-There are more ways to pick a standard inference model. In the
-previous example, we picked the known generative inference model.
-\fi
 In the previous example, we used a known generative tree prior to match with the inference model.
 However, a novel tree prior, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior). 
 One option is to choose to hand-pick a related 
@@ -1001,7 +957,6 @@ The resulting figure is shown in figure~\ref{fig:example_3}
     Here, the twin column shows the error BEAST2 makes starting from the original tree versus the twin. 
   }
   \label{fig:example_3}
-  \giovanni{remove boxplots}
 \end{figure}
 
 \iffalse
@@ -1082,7 +1037,6 @@ The resulting figure is shown in figure~\ref{fig:example_4}.
     Example 4: the error made by BEAST2 from a phylogeny, when the generative model is known, compared to candidates with similar inference models, in relationship to the background error.
   }
   \label{fig:example_4}
-  \giovanni{Remove boxplots.}
 \end{figure}
 
 
