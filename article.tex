@@ -403,7 +403,7 @@ of all phylogenies by default. This burn-in is used to discard
 the part of the MCMC chain that has not yet converged to a
 representative part of the state space.
 
-\subsection{Twin tree}
+\subsection{Twin tree}\label{subsec:twinning}
 
 \iffalse
 %version 1
@@ -879,35 +879,33 @@ The resulting figure is shown in figure~\ref{fig:example_2}.
 \section{Usage: Example Research Question 3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+In ERQ 1 we measured the baseline error of the \verb;pirouette; method, 
+by using a standard tree prior in both the generation of the tree 
+and in our inference.
+The goal of \verb;pirouette; is to quantify the 
+influence of a new (non-standard) tree prior.
+To do so, we need to compare the inference error 
+from the new tree prior to a baseline error,
+by use of a twin tree (see subsection~\ref{subsec:twinning}).
+In this ERQ, we assume the new tree prior so closely related to
+a standard tree prior, that we hand-pick a standard tree prior to
+serve as a stand-in generative tree prior.
+
 A third research question that \verb;pirouette; can answer is:
 
 "What is the error made by BEAST2 from a phylogeny, 
-when hand-picking an inference model, compared to the background noise?"
+when hand-picking a tree prior, compared to the background noise?"
 
 Most of the settings for this example research question are
 the same as in the previous section, which are
 the phylogeny from an unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
-the alignment parameters (listing~\ref{lst:create_alignment}) 
-and the list of experiments (listing~\ref{lst:create_generative_experiment}).
+the alignment parameters (listing~\ref{lst:create_alignment})
+and the list of experiments (listing~\ref{lst:create_generative_experiment}),
+the latter stating that the generative tree prior is a Yule tree prior.
 
-This time, however, we are interested in creating a twin tree,
-as such a twin tree allows us to measure a baseline error produced
-by the BEAST2 run.
-A twin tree
-has the same topology as the given tree, 
-yet its branching times are simulated according 
-to a tree prior already implemented by BEAST2 to produce a posterior. 
-Because for a twin tree we know the tree prior 
-and because we use that tree prior in inference, 
-we expect BEAST2 to produce a posterior of phylogenies
-that is close to the twin tree.
-As the inference model for the twin tree is (more) completely
-specified than the true tree, 
-we expect that a twin tree and its posterior trees are more similar
-than a true tree and its posterior trees.
-Due to this, the twinning is used a control for the experiment.
-
-Creating a twinning parameter is easy, as it has sensible default settings:
+This time, however, we are interested measuring both the inference error
+and a baseline error, which is achieved by creating a twinning parameter
+set. Doing so is easy, as it has sensible default settings:
 
 \begin{lstlisting}[
   language=R, 
@@ -919,11 +917,7 @@ Creating a twinning parameter is easy, as it has sensible default settings:
 twinning_params <- create_twinning_params()
 \end{lstlisting}
 
-We can now measure the errors made by BEAST2 
-when inferring the given phylogeny 
-versus the error it makes when the same procedure is applied to the twin tree.
-
-All the \verb;pirouette; arguments are bundled and checked by \verb;create_pir_params;:
+Bundling all the \verb;pirouette; arguments by \verb;create_pir_params;:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 pir_params <- create_pir_params(
@@ -933,18 +927,13 @@ pir_params <- create_pir_params(
 )
 \end{lstlisting}
 
-Running:
+Running and plotting the results:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 errors <- pir_run(
   phylogeny,
   pir_params = pir_params
 )
-\end{lstlisting}
-
-Again, showing the results:
-
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 pir_plot(errors)
 \end{lstlisting}
 
@@ -953,19 +942,13 @@ The resulting figure is shown in figure~\ref{fig:example_3}
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_3_errors.png}
   \caption{
-    Example 3: the error made by BEAST2 from a phylogeny, picking the best inference model versus the control.
-    Here, the twin column shows the error BEAST2 makes starting from the original tree versus the twin. 
+    Example 3: the error made by BEAST2 from a phylogeny, 
+    when hand-picking a generative tree prior versus the control.
+    Here, the 'twin' column shows the baseline inference error,
+    as measured on the twin tree
   }
   \label{fig:example_3}
 \end{figure}
-
-\iffalse
-The error BEAST2 makes from a phylogeny 
-picking the best inference model, compared to the background noise.
-Here, the twin column shows the error BEAST2 makes on an idealized
-tree, to measure the noise, which is the minimal error. 
-\fi
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 4}
