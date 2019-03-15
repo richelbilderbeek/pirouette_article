@@ -311,101 +311,6 @@ For these ERQs we will quantify the importance of a tree prior.
   }
 \end{sidewaystable}
 
-\iffalse
-\begin{table}
-\centering
-  \begin{tabular}{|@{}c|p{2.8cm}|p{6cm}@{}|}
-    \hline
-    \textbf{Symbol} & \textbf{Name} & \textbf{Definition} \\ 
-    \hline
-    $\mathit{t}$ & Tree prior & Macroevolutionary speciation model \\
-    $\mathit{c}$ & Clock model & Clock for the DNA mutation rates\\
-    $\mathit{s}$ & Site model & Nucleotide substitution model\\
-    $\mathit{\mu}$ & Mutation rate & Pace at which mutation occurs, $\mu \in \mathit{s}$ \\
-    $\mathit{r}$ & Root sequence & DNA sequence at the root of the tree\\
-    $\mathit{m}$ & MRCA prior & Prior knowledge of a most recent common ancestor \\
-    $\mathit{v}$ & MCMC settings & Markov Chain Monte Carlo algorithm setup \\
-    \hline
-    $\mathit{P}$ & Generative prior & Diversification model under which the 'true' tree is simulated \\
-    $\mathit{A}$ & Alignment model & Alignment simulation model. It is a combination of $(\mathit{r}, \mathit{\mu}, \mathit{c}, \mathit{s})$, where $\mathit{c}$ = strict \\
-    $\mathit{G}$ & Generative model & Combination of a known $\mathit{P}$ and chosen (thus known) $\mathit{A}$ \\
-    $\mathit{I}$ & Inference model & Bayesian phylogenetic inference model, a combination of
-    $(\mathit{c},\mathit{s},\mathit{t},\mathit{m},\mathit{v})$\\
-    $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ is used in the inference \\
-    $\mathit{X}$ & Experiment & Combination of $(\mathit{I},\mathit{C})$\\
-    $\mathit{E}$ & Error measurement parameters & Errors measurement setup \\
-    $\mathit{T}$ & Twinning parameters & Twin tree creation procedure \\
-    \hline 
-  \end{tabular}
-  \caption{
-    Definitions of terms and relative symbols used in this article.
-  }
-  \label{tab:definitions}
-\end{table}
-\fi
-
-\iffalse
-% previous version
-\begin{table}
-\centering
-  \begin{tabular}{|@{}c|p{2.8cm}|@{}l|p{5.5cm}@{}|}
-    \hline
-    \textbf{Symbol} & \textbf{Name} & \textbf{Definition} \\ 
-    \hline
-    $\mathit{t}$ & Tree prior & Macroevolutionary speciation model \\
-    $\mathit{c}$ & Clock model & Clock for the DNA mutation rates\\
-    $\mathit{s}$ & Site model & Nucleotide substitution model\\
-    $\mathit{\mu}$ & Mutation rate & Pace at which mutation occurs, $\mu \in \mathit{s}$ \\
-    $\mathit{r}$ & Root sequence & DNA sequence at the root of the tree\\
-    $\mathit{m}$ & MRCA prior & Prior knowledge of a most recent common ancestor\\
-    $\mathit{v}$ & MCMC settings & Markov Chain Monte Carlo algorithm setup \\
-    \hline
-    $\mathit{G}$ & Generative prior & Diversification model the 'true' tree is simulated with \\
-    $\mathit{A}$ & Alignment model & Alignment simulation model, $\mathit{A} \ni \{ \mathit{r}, \mathit{\mu}, \mathit{c}, \mathit{s} \}$, in which $\mathit{c}$ = strict \\
-    $\mathit{G}$ & Generative model & Combination of a known $\mathit{P}$ and chosen (thus known) $\mathit{A}$ \\
-    $\mathit{I}$ & Inference model & Bayesian phylogenetic inference model, a combination of
-    $(\mathit{c},\mathit{s},\mathit{t},\mathit{m},\mathit{v})$\\
-    $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ is used in inference \\
-    $\mathit{X}$ & Experiment & Combination of $(\mathit{I},\mathit{C})$\\
-    $\mathit{E}$ & Error measurement parameters & Errors measurement setup \\
-    $\mathit{T}$ & Twinning parameters & Twin tree creation procedure \\
-    \hline 
-  \end{tabular}
-  \caption{
-    Definitions of terms and relative symbols used in this article.
-  }
-  \label{tab:definitions}
-\end{table}
-\fi
-
-\iffalse
-% previous version
-\begin{table}
-\centering
-  \begin{tabular}{| c | c | l |}
-    \hline
-    \textbf{Symbol} & \textbf{Subparameter} & \textbf{Possible values} \\ 
-    \hline
-    $\mathit{t}$ & name & Yule, BD, CBS, CCP, CEP \\
-    $\mathit{c}$ & clock model & strict, relaxed log-normal \\
-    $\mathit{s}$ & site model & JC, HKY, TN, GTR \\
-    $\mathit{C}$ & model type & Generative, candidate \\
-    $\mathit{C}$ & run if & Always, best candidate \\
-    $\mathit{E}$ & function & nLTT, $|\gamma|$ \\
-    $\mathit{T}$ & model & Yule, BD \\
-    \hline
-  \end{tabular}
-  \caption{
-    Most important parameter options. BD = birth death, CBS = coalescent
-    Bayesian Skyline, CCP = coalescent constant-population, CEP = coalescent
-    exponential-population, JC = Jukes-Cantor 1969, HKY = Hasegawa, Kishino and 
-    Yano 1985, TN = Tamura 1992, GTR = Generalised time-reversible 
-    model (Tavaré 1986)
-  }
-  \label{tab:options}
-\end{table}
-\fi
-
 \subsection{pirouette's pipeline}
 
 \begin{figure}
@@ -553,23 +458,23 @@ Potential differences in shapes of error distributions will therefore be consequ
 %version 3, more formal
 An optional step is to generate a 'twin tree' $\tau_{I}$
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
-that will be analyzed in the same way as the true tree, following a parallel pipeline. We want to produce such tree 'converting' the original tree $\tau_{G}$, created according to the generative prior $\mathit{G}$, to be in accordance with the chosen inference model $\mathit{I}$:
+that will be analyzed in the same way as the true tree, following a parallel pipeline. We want to produce such tree 'converting' the original tree $\tau_{\mathit{P}}$, created according to the generative prior $\mathit{P}$, to be in accordance with the chosen inference model $\mathit{I}$:
 \begin{align}
-    \tau_{G} = (\Vec{t}_{G}, \psi_{G}) \xrightarrow[]{\mathit{T}} \tau_{I} = (\Vec{t}_{I}, \psi_{I}),
+    \tau_{\mathit{P}} = (\Vec{t}_{\mathit{P}}, \psi_{\mathit{P}}) \xrightarrow[]{\mathit{T}} \tau_{\mathit{I}} = (\Vec{t}_{\mathit{I}}, \psi_{\mathit{I}}),
 \end{align}
 where $\Vec{t}$ are the tree branching times and $\psi$ is tree topology, which provides information on where new lineages branch out at each branching time.
 
-To execute the twinning process we exploit the likelihood function $L_{I}$ associated with the chosen inference model $\mathit{I}$. We find the parameters $\theta^{*}_{I}$ (e.g. speciation and extinction rates, in case of a birth-death model) that maximize $L_{I}$ applied to the true tree, conditioned on its number of tips $n_{G}$,
+To execute the twinning process we exploit the likelihood function $L_{\mathit{I}}$ associated with the chosen inference model $\mathit{I}$. We find the parameters $\theta^{*}_{\mathit{I}}$ (e.g. speciation and extinction rates, in case of a birth-death model) that maximize $L_{\mathit{I}}$ applied to the true tree, conditioned on its number of tips $n_{\mathit{P}}$,
 \begin{align}
-    max[L_{I}(\theta_{I}|\tau_{G}, n_{G})] \rightarrow \theta^{*}_{I}.
+    max[L_{\mathit{I}}(\theta_{\mathit{I}}|\tau_{\mathit{P}}, n_{\mathit{P}})] \rightarrow \theta^{*}_{\mathit{I}}.
 \end{align}
-We use $\theta^{*}_{I}$ to simulate an equal amount $n_{I} = n_{G}$ of branching times $\Vec{t}_{I}$ for the twin tree $\tau_{I}$, under the process $I$. We then impose that $\tau_{G}$ and $\tau_{I}$ must respect the same topology
+We use $\theta^{*}_{\mathit{I}}$ to simulate an equal amount $n_{\mathit{I}} = n_{\mathit{P}}$ of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree $\tau_{\mathit{I}}$, under the process $\mathit{I}$. We then impose that $\tau_{\mathit{P}}$ and $\tau_{\mathit{I}}$ must respect the same topology
 \begin{align}
-    \psi_{I} = \psi_{G}.
+    \psi_{\mathit{I}} = \psi_{\mathit{P}}.
 \end{align}
-Using a twin tree serves as a control: both $\tau_{G}$ and $\tau_{I}$ will produce an error distribution. We assume that these errors are a natural product of the input tree and the intermediate steps of the pipeline. All the factors that can cause such errors are: the branching times $\vec{t}$ of the tree (as a consequence of the tree prior), its topology $\psi$, the stochasticity induced by simulating the alignment (step 1a $\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). By imposing the same topology and replicating the pipelines a sufficient number of times we can sort out all the possible causes that are not a direct consequence of the choice of the tree prior.
+Using a twin tree serves as a control: both $\tau_{\mathit{P}}$ and $\tau_{\mathit{I}}$ will produce an error distribution. We assume that these errors are a natural product of the input tree and the intermediate steps of the pipeline. All the factors that can cause such errors are: the branching times $\vec{t}$ of the tree (as a consequence of the tree prior), its topology $\psi$, the stochasticity induced by simulating the alignment (step 1a $\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). By imposing the same topology and replicating the pipelines a sufficient number of times we can sort out all the possible causes that are not a direct consequence of the choice of the tree prior.
 
-Potential differences in shape of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{G}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
+Potential differences in shape of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{P}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -636,28 +541,21 @@ have a useful example, and have sensible defaults.
 \section{Usage: Example Research Question 1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\verb;pirouette; quantifies the influence of a tree prior,
+\verb;pirouette; quantifies the influence of a new tree prior on BEAST2's inference,
 by measuring the difference between a given tree and 
 phylogenies in a posterior. Due to stochasticity, all posterior trees
 will differ from the given phylogeny, even when the generative tree
-prior G and alignment model A are the same as 
-those in the inference model.
-Measuring this difference results allows us to know the baseline error
-of the \verb;pirouette; pipeline.
-Because only standard tree priors are used in inference, 
-and G must be used such a tree prior, it follows that
-G must also be a standard tree prior.
+prior $\mathit{P}$ and alignment model $\mathit{A}$ are the same as 
+those in the inference model $\mathit{I}$.
+Measuring this difference allows us to know the baseline error
+of the \verb;pirouette; pipeline. We therefore define as 'standard tree priors' all the tree priors that are available to be used within an inference model (see Table~\ref{tab:options}).
 
-A first research question that \verb;pirouette; can answer is:
+Now we can formulate the first example research question that \verb;pirouette; can answer:
 
 "What is the inference error made on phylogenies
 created by a standard diversification model?"
 
-In this example we use the Yule (pure-birth) tree prior 
-as the generative tree prior G,
-because it is the simplest standard tree prior. 
-Table~\ref{tab:options} shows an overview of the standard
-tree priors.
+In this example we use a standard generative tree prior $\mathit{P_{0}}$, namely the Yule (pure-birth) tree prior. 
 We choose to use a small tree with six taxa to keep
 the calculations short and the figure more readable.
 We pick a crown age of ten time units. This value is 
@@ -686,15 +584,18 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 \end{figure}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the given phylogeny. 
-To do so, we must specify the DNA root sequence, DNA mutation rate,
-site model (in this context: a nucleotide substitution model) and a clock model. 
+To do so, we must specify an alignment model $\mathit{A}$ which consists of: a DNA root sequence $\mathit{r_{s}}$, the DNA mutation rate $\mathit{m_{r}}$, a
+site model $\mathit{s_{m}}$ (in this context: a nucleotide substitution model) and a clock model $\mathit{c_{m}}$. 
 In this example, the DNA root sequence consists in four blocks of 250 nucleotides each, 
 where the per-nucleotide mutation rate is 0.1 mutations per unit time.
+\iffalse
+\giovanni{this looks unnecessary to me}
 Because the crown age of the phylogeny is 10 time units, each nucleotide will
 have one (possibly-silent) mutation on average.
+\fi
 We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
 and a strict clock model as these are the simplest.
-A Jukes-Cantor (JC, \cite{jukes1969evolution}) site model,
+A Jukes-Cantor site model,
 assumes that mutation rates between nucleotides are equal and constant. 
 A strict clock model assumes that the mutation rates 
 of all species are equal and constant.
@@ -713,16 +614,16 @@ alignment_params <- create_alignment_params(
 )
 \end{lstlisting}
 
-As the site and clock model used here are also the defaults, 
+As the site and clock models used here are also the defaults, 
 these function arguments can be safely omitted: we just show these
 explicitly for clarity.
 
-In the second step we state our experiments, which will be just one.
-We define an experiment X as a combination of an inference model I
-and conditions, C.
-In this example we pick I to be the same inference model as the generative one,
-which is Yule tree prior, JC site model and strict clock model.
-We specify C that the experiment will always be run.
+In the second step we state our experiment.
+We define an experiment $\mathit{X}$ as a combination of an inference model $\mathit{I}$
+and conditions $\mathit{C}$.
+In this example we pick $\mathit{I}$ to be the same inference model as the generative one,
+which is the chosen Yule tree prior $\mathit{P_{0}}$, as well as site and clock models defined in $\mathit{A}$, respectively JC and strict.
+We specify in $\mathit{C}$ that the experiment will always be run.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
@@ -753,39 +654,36 @@ set up this experiment:
     using explicit arguments
   }
 ]
-experiments <- list(
-  create_experiment(
-    inference_conditions = create_inference_conditions(
-      model_type = "generative", 
-      run_if = "always"
-    ), 
-   inference_model = create_inference_model(
-     site_model = create_jc69_site_model(), 
-     clock_model = create_strict_clock_model(), 
-     tree_prior = create_yule_tree_prior()
-    )
+experiment <- create_experiment(
+  inference_conditions = create_inference_conditions(
+    model_type = "generative", 
+    run_if = "always"
+  ), 
+  inference_model = create_inference_model(
+   site_model = create_jc69_site_model(), 
+   clock_model = create_strict_clock_model(), 
+   tree_prior = create_yule_tree_prior()
   )
 )
 \end{lstlisting}
 
-Due to sensible defaults, the same can be achieved by:
+Experiments must be bundled in a list to work, even if only one is provided, as in this case:
 
 \begin{lstlisting}[
   language=R, 
   floatplacement=ht, frame=single,
   label = {lst:create_generative_experiment},
   caption = {
-    Create the experiments to answer research question 1, 
-    using the default arguments
+    Create the experiments to answer research question 1.
   }
 ]
-experiments <- list(create_experiment())
+experiments <- list(experiment)
 \end{lstlisting}
 
 The objects we just created need to be bundled
 in a \verb;pirouette; parameters structure,
-together with error measurement parameters E and
-twinning parameters T. We use the default error measurement
+together with error measurement parameters $\mathit{E}$ and
+twinning parameters $\mathit{T}$. We use the default error measurement
 parameters, which uses a burn-in of 10\% and the nLTT statistic to
 measure the difference between phylogenies. We will not use twinning
 here yet.  
@@ -820,11 +718,16 @@ errors <- pir_run(
 )
 \end{lstlisting}
 
+\iffalse
+\giovanni{I think we are providing too many information. Let's try to keep the main text as dry as possible.}
 One the hardware we used, it will take approximately 10 minutes
 to obtain the error distribution returned by \verb;pir_run;.
 This error distribution is a data frame in the non-tidy short form.
 Instead of converting it to tidy data and plotting it,
 \verb;pirouette; has a plotting function that does exactly that:
+\fi
+
+The error distribution returned by \verb;pir_run; is stored as a data frame. It can be directly plotted using \verb;pir_plot;:
 
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
@@ -846,33 +749,54 @@ pir_plot(errors)
 The error distribution obtained is shown as a violin plot
 in figure~\ref{fig:example_1}. 
 
-This error distribution has little relevance on its own. 
+\iffalse
+This error distribution has little relevance on its own.
+\giovanni{maybe it's better to explain later the multiple tree argument}
 It only gives a baseline error made by
 the Bayesian inference. We use 'a', because we have used only one Yule
 tree. To obtain the baseline error, one should simulate multiple Yule
 trees and merge their error distributions.
+\fi
 
+\iffalse
 For this error distribution to have more relevance it needs to be compared
 to an error distribution derived from a phylogeny 
 derived from a non-standard speciation process.
-In that way, the error distribution we have now serves as a control,
-as it is the baseline error caused by stochasticity.
+\fi
+
+This error distribution has little relevance on its own, as we constructed the experiment in such a way $\mathit{I}$ matches with the generative model given by $\mathit{A}$ and $\mathit{P_{0}}$.
+However it will become clear when compared to the errors obtained from a phylogeny 
+derived from a non-standard diversification process $\mathit{P}$.
+
+\iffalse
+By doing so, this error distribution can serve as a control,
+as it can be seen as the baseline error caused by stochasticity.
 In this example, that non-standard speciation process must 
-be closest related to a Yule process for the comparison to make sense.
+be closest related to a Yule process for the comparison to make sense \giovanni{why?}.
 Would the two error distributions be similar, the non-standard speciation 
 process is of little influence.
 Because measuring the baseline error is so important,
 we made it an inherent part of \verb;pirouette;. 
 We call it twinning and we use it in example research question 3.
+\fi
+
+By doing so, this error distribution will serve as a control,
+as it can be seen as the baseline error caused by stochasticity.
+If the two error distributions obtained from $\mathit{P_{0}}$ and $\mathit{P}$ will appear similar, the error induced by the choice of a non-standard speciation process will be of little influence.
+Given the necessity of such comparison,
+we made it an inherent part of \verb;pirouette;. 
+We call it 'twinning' and we use it in ERQ 3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\iffalse
 There are more ways to pick a standard inference model. In the
 previous example, we picked the known generative inference model.
-A novel tree prior, by definition, is non-standard, thus cannot be
-part of a standard inference model. 
+\fi
+In the previous example, we used a known generative tree prior to match with the inference model.
+However, a novel tree prior, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior). 
 One option is to choose to hand-pick a related 
 standard tree prior, as done in ERCs 3 and 5, and combine it with 
 a known generative alignment model.
