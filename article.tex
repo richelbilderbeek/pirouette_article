@@ -14,13 +14,15 @@
 % RJCB: I think this title is better: 
 % (1) tree prior importantance is the goal, the error is just the means
 % (2) no need to specify BEAST2, it's also just a means
-\title{pirouette: Quantifying the importance of a tree prior in Bayesian phylogenetics}
+\title{pirouette: Quantifying the importance of a tree prior in Bayesian 
+phylogenetics}
 % \title{pirouette: Determining the error BEAST2 makes in inferring a phylogeny}
 
 \author[1]{Rich\`el J.C. Bilderbeek}
 \author[1]{Giovanni Laudanno}
 \author[1]{Rampal S. Etienne}
-\affil[1]{Groningen Institute for Evolutionary Life Sciences, University of Groningen, Groningen, The Netherlands}
+\affil[1]{Groningen Institute for Evolutionary Life Sciences, University of 
+Groningen, Groningen, The Netherlands}
 
 % Use double spacing
 \usepackage{setspace}
@@ -52,7 +54,8 @@
 \usepackage{rotating}
 
 % Style of listings
-% From http://r.789695.n4.nabble.com/How-to-nicely-display-R-code-with-the-LaTeX-package-listings-tp4648110.html
+% From http://r.789695.n4.nabble.com/
+%   How-to-nicely-display-R-code-with-the-LaTeX-package-listings-tp4648110.html
 \usepackage{fancyvrb} 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -66,7 +69,7 @@
   numberstyle=\scriptsize,% use small line numbers
   numbersep=10pt,% space between line numbers and code
   tabsize=2,% sizes of tabs
-  showstringspaces=false,% do not replace spaces in strings by a certain character
+  showstringspaces=false,
   captionpos=b,% positioning of the caption below
   breaklines=true,% automatic line breaking
   escapeinside={(*}{*)},% escaping to LaTeX
@@ -126,11 +129,12 @@
     Last, we discuss the results obtained by the examples. \\
 \end{abstract}
 
-{\bf Keywords:} computational biology, evolution, phylogenetics, BEAST2, pirouette, R
+{\bf Keywords:} computational biology, evolution, phylogenetics, BEAST2, 
+pirouette, R
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The development of new powerful inference tools, 
 such as BEAST [\cite{drummond2007beast}], 
@@ -157,7 +161,8 @@ unlike its predecessor, the possibility for third-party users
 to use their own new or preferred diversification model, 
 if an algorithm is provided to calculate the probability 
 of a tree given such a diversification model.
-There have been plenty of these models (and their associated probability algorithms) 
+There have been plenty of these models (and their associated probability 
+algorithms) 
 developed, among others, those in which diversification is 
 time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
 or diversity-dependent [\cite{etienne2011diversity}],
@@ -215,9 +220,9 @@ which calls BEAST2 [\cite{bouckaert2014beast}].
 With \verb;pirouette;, one has a method to quantify the importance 
 of a novel diversification model.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; is written in the R programming language (\cite{R}).
 The goal of \verb;pirouette; is to quantify the importance of a tree
@@ -247,19 +252,44 @@ For these ERQs we will quantify the importance of a tree prior.
   \begin{tabular}{|@{}c|p{2.5cm}|p{9cm}|p{4.5cm}@{}|}
     \hline
     \centering
-    \textbf{Symbol} & \textbf{Sub-argument} & \textbf{Description} & \textbf{Possible values} \\ 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{Symbol} & \textbf{Sub-argument} & \textbf{Description} & 
+\textbf{Possible values} \\ 
     \hline
-    $\mathit{t_{p}}$ & tree prior & Macroevolutionary speciation model & Yule, BD, CBS, CCP, CEP \\
-    $\mathit{c_{m}}$ & clock model & Clock for the DNA mutation rates & strict, relaxed log-normal \\
-    $\mathit{s_{m}}$ & site model & Nucleotide substitution model & JC, HKY, TN93, GTR \\
-    $\mathit{m_{r}}$ & mutation rate & Pace at which mutation occurs & $m_{r} \in \mathbb{R}_{>0}$\\
-    $\mathit{r_{s}}$ & root sequence & DNA sequence at the root of the tree & any combination of a, c, g, t \\
-    $\mathit{m_{p}}$ & MRCA prior & Prior knowledge of a most recent common ancestor & see documentation \\
-    $\mathit{m_{s}}$ & MCMC settings & Markov Chain Monte Carlo algorithm setup & see documentation \\
-    $\mathit{m_{t}}$ & model type & Criterion to select an inference model & Generative, Candidate \\
-    $\mathit{r_{i}}$ & run if & Condition under which an inference model is used & Always, Best candidate\\
-    $\mathit{e_{f}}$ & error function & Specifies how to measure the error & nLTT, $|\gamma|$ \\
-    $\mathit{t_{m}}$ & twin tree prior & Sets the tree prior for the twin tree & Yule, BD \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{t_{p}}$ & tree prior & Macroevolutionary speciation model 
+      & Yule, BD, CBS, CCP, CEP \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{c_{m}}$ & clock model & Clock for the DNA mutation rates 
+      & strict, relaxed log-normal \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{s_{m}}$ & site model & Nucleotide substitution model 
+      & JC, HKY, TN93, GTR \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{m_{r}}$ & mutation rate & Pace at which mutation occurs 
+      & $m_{r} \in \mathbb{R}_{>0}$\\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{r_{s}}$ & root sequence & DNA sequence at the root of the tree 
+      & any combination of a, c, g, t \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{m_{p}}$ & MRCA prior & Prior knowledge of a most recent common 
+      ancestor & see documentation \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{m_{s}}$ & MCMC settings & Markov Chain Monte Carlo algorithm setup 
+      & see documentation \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{m_{t}}$ & model type & Criterion to select an inference model 
+      & Generative, Candidate \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{r_{i}}$ & run if & Condition under which an inference model is 
+      used & Always, Best candidate\\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{e_{f}}$ & error function & Specifies how to measure the error 
+      & nLTT, $|\gamma|$ \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{t_{m}}$ & twin tree prior & Sets the tree prior for the twin tree 
+      & Yule, BD \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline
   \end{tabular}
   \caption{
@@ -279,28 +309,50 @@ For these ERQs we will quantify the importance of a tree prior.
   \begin{tabular}{|@{}c|p{4cm}|p{9cm}|p{3cm}@{}|}
     \hline
     \centering
-    \textbf{Symbol} & \textbf{Macro-argument} & \textbf{Description} & \textbf{Includes} \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{Symbol} & \textbf{Macro-argument} & \textbf{Description} 
+      & \textbf{Includes} \\
     \hline
-    $\mathit{P}$ & Generative tree prior & Diversification model to generate the 'true' tree & $\mathit{t_{p}}$ \\
-    $\mathit{A}$ & Alignment model & Model used to simulate the alignment ($\mathit{c_{m}}$ must be strict) & $\mathit{c_{m}}, \mathit{s_{m}}, \mathit{m_{r}}, \mathit{r_{s}}$ \\
-    $\mathit{G}$ & Generative model & The full setting to produce BEAST2 input data & $\mathit{P}$, $\mathit{A}$ \\
-    $\mathit{I}$ & Inference model & Phylogenetic inference model to run BEAST2 & $\mathit{c_{m}},\mathit{s_{m}},\mathit{t_{p}},\mathit{m_{p}},\mathit{m_{s}}$ \\
-    $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ is used in the inference & $\mathit{m_{t}}, \mathit{r_{i}}$\\
-    $\mathit{X}$ & Experiment & Full setting for the BEAST2 run & $\mathit{I},\mathit{C}$ \\
-    $\mathit{E}$ & Error measure parameters & Errors measurement setup & $\mathit{e_{f}}$\\
-    $\mathit{T}$ & Twinning parameters & Twin tree creation procedure & $\mathit{t_{m}}$\\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{P}$ & Generative tree prior & Diversification model to generate 
+      the 'true' tree & $\mathit{t_{p}}$ \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{A}$ & Alignment model & Model used to simulate the 
+      alignment ($\mathit{c_{m}}$ must be strict) 
+      & $\mathit{c_{m}}, \mathit{s_{m}}, \mathit{m_{r}}, \mathit{r_{s}}$ \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{G}$ & Generative model & The full setting to produce BEAST2 input 
+      data & $\mathit{P}$, $\mathit{A}$ \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{I}$ & Inference model & Phylogenetic inference model to run BEAST2 
+      & $\mathit{c_{m}}, \mathit{s_{m}}, \mathit{t_{p}}, 
+      \mathit{m_{p}}, \mathit{m_{s}}$ \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ 
+      is used in the inference & $\mathit{m_{t}}, \mathit{r_{i}}$\\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{X}$ & Experiment & Full setting for the BEAST2 run & 
+      $\mathit{I},\mathit{C}$ \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{E}$ & Error measure parameters & Errors measurement setup & 
+      $\mathit{e_{f}}$\\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{T}$ & Twinning parameters & Twin tree creation procedure & 
+      $\mathit{t_{m}}$\\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline 
   \end{tabular}
   \caption{
-    Definitions of terms and relative symbols used in the main text and in Fig~\ref{fig:pipeline}.
+    Definitions of terms and relative symbols used in the main text and in 
+    Fig~\ref{fig:pipeline}.
   }
   \label{tab:definitions}
   \giovanni{
     Should we rename "Twinning Parameters" to "Twinning model"?
   }
   \richel{
-    As the twinning parameters contain more than only the twin model's tree prior,
-    I suggest to keep it 'twinning parameters'
+    As the twinning parameters contain more than only the twin model's tree 
+    prior, I suggest to keep it 'twinning parameters'
   }
   \giovanni{
     Should we rename "twin model" to "twin prior"?
@@ -318,8 +370,10 @@ For these ERQs we will quantify the importance of a tree prior.
   \includegraphics[width=\textwidth]{workflow.png}
   \caption{
     \texttt{pirouette} pipeline. 
-    The pipeline starts from a phylogeny (1a) simulated by generative prior $\mathit{P}$.
-    The phylogeny is converted to an alignment (2a) using alignment model $\mathit{A}$. 
+    The pipeline starts from a phylogeny (1a) simulated by generative prior 
+$\mathit{P}$.
+    The phylogeny is converted to an alignment (2a) using alignment model 
+$\mathit{A}$. 
     The user supplies one or more experiments.
     For each experiment $\mathit{X}$ 
     (a tuple of inference model $\mathit{I}$ and condition $\mathit{C}$),
@@ -342,10 +396,16 @@ For these ERQs we will quantify the importance of a tree prior.
 
 The pipeline is summarized by the following steps:
 \begin{enumerate}
-    \item for a given phylogeny an alignment is simulated under a known alignment model;
-    \item for this alignment, according to the specified inference conditions, an inference model is picked (which may be different from the generative alignment model);
-    \item the alignment is then used as BEAST2 input to infer a posterior distribution of phylogenies;
-    \item posterior phylogenies are compared with the given original phylogeny to estimate the error made, according to the error measure specified by the user;
+    \item for a given phylogeny an alignment is simulated under a known 
+alignment model;
+    \item for this alignment, according to the specified inference conditions, 
+an inference model is picked (which may be different from the generative 
+alignment model);
+    \item the alignment is then used as BEAST2 input to infer a posterior 
+distribution of phylogenies;
+    \item posterior phylogenies are compared with the given original phylogeny 
+to estimate the error made, according to the error measure specified by the 
+user;
 \end{enumerate}
 The pipeline is visualized in Fig.~\ref{fig:pipeline}. 
 There is also the option to generate a 'twin tree', 
@@ -368,12 +428,15 @@ starts from experiments as set up by the user.
 We define an experiment as the combination of an inference model 
 and the conditions to actually use it in the inference step.
 The inference model can be selected in two ways, either using the
-generative model or selecting one or more candidates out of a list of candidate inference models.
-An experiment can use the generative model as the inference model, if the generative model is known.
+generative model or selecting one or more candidates out of a list of candidate 
+inference models.
+An experiment can use the generative model as the inference model, if the 
+generative model is known.
 An experiment uses a candidate model if either the generative model is unknown,
 or there is an interest in seeing how well non-generative models compete with
 the generative model.
-Typically, a generative model and/or a best candidate model are used in the actual inference.
+Typically, a generative model and/or a best candidate model are used in the 
+actual inference.
 When using an experiment with a generative model,
 it must use the same site and clock model used in the alignment simulation,
 as well as the tree prior that underlied the creation of the given phylogeny. 
@@ -382,21 +445,30 @@ When using experiments with candidate models,
 on the evidence (i.e. marginal likelihood) for the model given the alignment.
 The evidence of an inference model is estimated using a nested sampling (NS)
 approach, as described in \cite{maturana2018model}. The nested sampling is
-performed by \verb;mcbette; [\cite{mcbette}], that calls the 'NS' BEAST2 package. 
+performed by \verb;mcbette; [\cite{mcbette}], that calls the 'NS' BEAST2 
+package. 
 Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac,
-therefore the selection of candidate models is not available directly on Windows. 
-However, even on Windows systems there is the option to perform the model selection from browser, using \verb;mcbette;, yet the computation for this model selection is
+therefore the selection of candidate models is not available directly on 
+Windows. 
+However, even on Windows systems there is the option to perform the model 
+selection from browser, using \verb;mcbette;, yet the computation for this 
+model selection is
 restricted to one hour for free users of the host (Travis CI) continuous
 integration service.
 
 The third step infers the actual Bayesian posteriors from the simulated 
 alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a $\rightarrow$ 4a),
-using the inference models from the experiments selected in the previous step. For each selected experiment, one BEAST2 posterior is inferred, using the \verb;babette; [\cite{bilderbeek2018babette}] R package.
+using the inference models from the experiments selected in the previous step. 
+For each selected experiment, one BEAST2 posterior is inferred, using the 
+\verb;babette; [\cite{bilderbeek2018babette}] R package.
 
-The fourth step compares the true tree to each posterior tree, resulting in an error distribution (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
-The nLTT statistic (\cite{janzen2015approximate}) is used by default, but also a user-defined error statistic can be used. 
+The fourth step compares the true tree to each posterior tree, resulting in an 
+error distribution (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
+The nLTT statistic (\cite{janzen2015approximate}) is used by default, but also 
+a user-defined error statistic can be used. 
 As an example, \verb;pirouette; supplies one custom error statistic,
-that uses an absolute difference in the gamma statistic [\cite{pybus2000testing}].
+that uses an absolute difference in the gamma statistic 
+[\cite{pybus2000testing}].
 Additionally, the user can specify the proportion of posterior phylogenies to 
 discard (i.e. the burn-in), throwing away the first $10\%$
 of all phylogenies by default. This burn-in is used to discard
@@ -407,26 +479,55 @@ representative part of the state space.
 
 An optional step is to generate a 'twin tree' $\tau_{I}$
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
-that will be analyzed in the same way as the true tree, following a parallel pipeline. We want to produce such tree 'converting' the original tree $\tau_{\mathit{P}}$, created according to the generative prior $\mathit{P}$, to be in accordance with the chosen inference model $\mathit{I}$:
+that will be analyzed in the same way as the true tree, following a parallel 
+pipeline. We want to produce such tree 'converting' the original tree 
+$\tau_{\mathit{P}}$, created according to the generative prior $\mathit{P}$, to 
+be in accordance with the chosen inference model $\mathit{I}$:
 \begin{align}
-    \tau_{\mathit{P}} = (\Vec{t}_{\mathit{P}}, \psi_{\mathit{P}}) \xrightarrow[]{\mathit{T}} \tau_{\mathit{I}} = (\Vec{t}_{\mathit{I}}, \psi_{\mathit{I}}),
+    \tau_{\mathit{P}} = (\Vec{t}_{\mathit{P}}, \psi_{\mathit{P}}) 
+\xrightarrow[]{\mathit{T}} \tau_{\mathit{I}} = (\Vec{t}_{\mathit{I}}, 
+\psi_{\mathit{I}}),
 \end{align}
-where $\Vec{t}$ are the tree branching times and $\psi$ is tree topology, which provides information on where new lineages branch out at each branching time.
+where $\Vec{t}$ are the tree branching times and $\psi$ is tree topology, which 
+provides information on where new lineages branch out at each branching time.
 
-To execute the twinning process we exploit the likelihood function $L_{\mathit{I}}$ associated with the chosen inference model $\mathit{I}$. We find the parameters $\theta^{*}_{\mathit{I}}$ (e.g. speciation and extinction rates, in case of a birth-death model) that maximize $L_{\mathit{I}}$ applied to the true tree, conditioned on its number of tips $n_{\mathit{P}}$,
+To execute the twinning process we exploit the likelihood function 
+$L_{\mathit{I}}$ associated with the chosen inference model $\mathit{I}$. We 
+find the parameters $\theta^{*}_{\mathit{I}}$ (e.g. speciation and extinction 
+rates, in case of a birth-death model) that maximize $L_{\mathit{I}}$ applied 
+to the true tree, conditioned on its number of tips $n_{\mathit{P}}$,
 \begin{align}
-    max[L_{\mathit{I}}(\theta_{\mathit{I}}|\tau_{\mathit{P}}, n_{\mathit{P}})] \rightarrow \theta^{*}_{\mathit{I}}.
+    max[L_{\mathit{I}}(\theta_{\mathit{I}}|\tau_{\mathit{P}}, n_{\mathit{P}})] 
+\rightarrow \theta^{*}_{\mathit{I}}.
 \end{align}
-We use $\theta^{*}_{\mathit{I}}$ to simulate an equal amount $n_{\mathit{I}} = n_{\mathit{P}}$ of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree $\tau_{\mathit{I}}$, under the process $\mathit{I}$. We then impose that $\tau_{\mathit{P}}$ and $\tau_{\mathit{I}}$ must respect the same topology
+We use $\theta^{*}_{\mathit{I}}$ to simulate an equal amount $n_{\mathit{I}} = 
+n_{\mathit{P}}$ of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree 
+$\tau_{\mathit{I}}$, under the process $\mathit{I}$. We then impose that 
+$\tau_{\mathit{P}}$ and $\tau_{\mathit{I}}$ must respect the same topology
 \begin{align}
     \psi_{\mathit{I}} = \psi_{\mathit{P}}.
 \end{align}
-Using a twin tree serves as a control: both $\tau_{\mathit{P}}$ and $\tau_{\mathit{I}}$ will produce an error distribution. We assume that these errors are a natural product of the input tree and the intermediate steps of the pipeline. All the factors that can cause such errors are: the branching times $\vec{t}$ of the tree (as a consequence of the tree prior), its topology $\psi$, the stochasticity induced by simulating the alignment (step 1a $\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). By imposing the same topology and replicating the pipelines a sufficient number of times we can sort out all the possible causes that are not a direct consequence of the choice of the tree prior.
+Using a twin tree serves as a control: both $\tau_{\mathit{P}}$ and 
+$\tau_{\mathit{I}}$ will produce an error distribution. We assume that these 
+errors are a natural product of the input tree and the intermediate steps of 
+the pipeline. All the factors that can cause such errors are: the branching 
+times $\vec{t}$ of the tree (as a consequence of the tree prior), its topology 
+$\psi$, the stochasticity induced by simulating the alignment (step 1a 
+$\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by 
+the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). 
+By imposing the same topology and replicating the pipelines a sufficient number 
+of times we can sort out all the possible causes that are not a direct 
+consequence of the choice of the tree prior.
 
-Potential differences in shape of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{P}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Potential differences in shape of error distributions will therefore be 
+consequences of different tree priors for the two parallel pipelines: the use 
+of prior $\mathit{P}$ for the original pipeline and of prior $\mathit{I}$ for 
+the twin pipeline. In the second case, though, such error distribution is not 
+influenced by the mismatch between how the tree is generated and how it is 
+analyzed by BEAST2.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; can be installed easily from CRAN:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
@@ -434,13 +535,15 @@ install.packages("pirouette")
 \end{lstlisting}
 
 For the most up-to-date version, 
-one can download and install the package from \verb;pirouette;'s GitHub repository:
+one can download and install the package from \verb;pirouette;'s GitHub 
+repository:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 usethis::install_github("richelbilderbeek/pirouette")
 \end{lstlisting}
 
-To start using \verb;pirouette;, load its functions in the global namespace first:
+To start using \verb;pirouette;, load its functions in the global namespace 
+first:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 library(pirouette)
@@ -465,7 +568,7 @@ These functions are demonstrated when in the example code below.
 All \verb;pirouette;'s functions are documented,
 have a useful example, and have sensible defaults.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h]
 \centering
 \begin{tabular}{ | l | l | }
@@ -484,31 +587,36 @@ have a useful example, and have sensible defaults.
 \caption{pirouette's main functions.}
 \label{tab:functions}
 \end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Question}
 
-\verb;pirouette; quantifies the influence of a new tree prior on BEAST2's inference,
+\verb;pirouette; quantifies the influence of a new tree prior on BEAST2's 
+inference,
 by measuring the difference between a given tree and 
 phylogenies in a posterior. Due to stochasticity, all posterior trees
 will differ from the given phylogeny, even when the generative tree
 prior $\mathit{P}$ and alignment model $\mathit{A}$ are the same as 
 those in the inference model $\mathit{I}$.
 Measuring this difference allows us to know the baseline error
-of the \verb;pirouette; pipeline. We therefore define as 'standard tree priors' all the tree priors that are available to be used within an inference model (see Table~\ref{tab:options}).
+of the \verb;pirouette; pipeline. We therefore define as 'standard tree priors' 
+all the tree priors that are available to be used within an inference model 
+(see Table~\ref{tab:options}).
 
-Now we can formulate the first example research question that \verb;pirouette; can answer:
+Now we can formulate the first example research question that \verb;pirouette; 
+can answer:
 
 "What is the inference error made on phylogenies
 created by a standard diversification model?"
 
 \subsection{Answer}
 
-In this example we use a standard generative tree prior $\mathit{P_{0}}$, namely the Yule (pure-birth) tree prior. 
+In this example we use a standard generative tree prior $\mathit{P_{0}}$, 
+namely the Yule (pure-birth) tree prior. 
 We choose to use a small tree with six taxa to keep
 the calculations short and the figure more readable.
 We pick a crown age of ten time units. This value is 
@@ -536,10 +644,14 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
   \richel{Agreed, will pick a sexy RNG seed after create\_yule\_tree is there}
 \end{figure}
 
-The first step in \verb;pirouette; is to simulate a DNA alignment from the given phylogeny. 
-To do so, we must specify an alignment model $\mathit{A}$ which consists of: a DNA root sequence $\mathit{r_{s}}$, the DNA mutation rate $\mathit{m_{r}}$, a
-site model $\mathit{s_{m}}$ (in this context: a nucleotide substitution model) and a clock model $\mathit{c_{m}}$. 
-In this example, the DNA root sequence consists in four blocks of 250 nucleotides each, 
+The first step in \verb;pirouette; is to simulate a DNA alignment from the 
+given phylogeny. 
+To do so, we must specify an alignment model $\mathit{A}$ which consists of: a 
+DNA root sequence $\mathit{r_{s}}$, the DNA mutation rate $\mathit{m_{r}}$, a
+site model $\mathit{s_{m}}$ (in this context: a nucleotide substitution model) 
+and a clock model $\mathit{c_{m}}$. 
+In this example, the DNA root sequence consists in four blocks of 250 
+nucleotides each, 
 where the per-nucleotide mutation rate is 0.1 mutations per unit time.
 We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
 and a strict clock model as these are the simplest.
@@ -567,16 +679,20 @@ these function arguments can be safely omitted: we just show these
 explicitly for clarity.
 
 In the second step we state our experiment.
-We define an experiment $\mathit{X}$ as a combination of an inference model $\mathit{I}$
+We define an experiment $\mathit{X}$ as a combination of an inference model 
+$\mathit{I}$
 and conditions $\mathit{C}$.
-In this example we pick $\mathit{I}$ to be the same inference model as the generative one,
-which is the chosen Yule tree prior $\mathit{P_{0}}$, as well as site and clock models defined in $\mathit{A}$, respectively JC and strict.
+In this example we pick $\mathit{I}$ to be the same inference model as the 
+generative one,
+which is the chosen Yule tree prior $\mathit{P_{0}}$, as well as site and clock 
+models defined in $\mathit{A}$, respectively JC and strict.
 We specify in $\mathit{C}$ that the experiment will always be run.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
     \hline
-    \textbf{model type} & \textbf{run if} & \textbf{measure evidence} & \textbf{inference model} \\ 
+    \textbf{model type} & \textbf{run if} & \textbf{measure evidence} & 
+\textbf{inference model} \\ 
     \hline
     generative & always & no & JC, strict, Yule \\
     \hline
@@ -615,7 +731,8 @@ experiment <- create_experiment(
 )
 \end{lstlisting}
 
-Experiments must be bundled in a list to work, even if only one is provided, as in this case:
+Experiments must be bundled in a list to work, even if only one is provided, as 
+in this case:
 
 \begin{lstlisting}[
   language=R, 
@@ -669,7 +786,8 @@ errors <- pir_run(
 \giovanni{I think we are providing too many information}
 \richel{agreed, thanks for pushing back}
 
-The error distribution returned by \verb;pir_run; is stored as a data frame. It can be directly plotted using \verb;pir_plot;:
+The error distribution returned by \verb;pir_run; is stored as a data frame. It 
+can be directly plotted using \verb;pir_plot;:
 
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
@@ -694,32 +812,53 @@ in figure~\ref{fig:example_1}.
 This error distribution has little relevance on its own, 
 as we constructed the experiment in such a way $\mathit{I}$ 
 matches with the generative model given by $\mathit{A}$ and $\mathit{P_{0}}$.
-However it will become clear when compared to the errors obtained from a phylogeny 
+However it will become clear when compared to the errors obtained from a 
+phylogeny 
 derived from a non-standard diversification process $\mathit{P}$.
 
 By doing so, this error distribution will serve as a control,
 as it can be seen as the baseline error caused by stochasticity.
-If the two error distributions obtained from $\mathit{P_{0}}$ and $\mathit{P}$ will appear similar, the error induced by the choice of a non-standard speciation process will be of little influence.
+If the two error distributions obtained from $\mathit{P_{0}}$ and $\mathit{P}$ 
+will appear similar, the error induced by the choice of a non-standard 
+speciation process will be of little influence.
 Given the necessity of such comparison,
 we made it an inherent part of \verb;pirouette;. 
 We call it 'twinning' and we use it in ERQ 3.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 2}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Question}
 
-In the previous example we selected the inference model $\mathit{I}$ to match with a known generative tree prior $\mathit{P_{0}}$.
-However, a novel tree prior $\mathit{P}$, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior).
-In this case the user has to specify the the tree prior $\mathit{t_{p}}$ to be used in the inference from a list of standard tree priors. In general, having no information on $\mathit{P}$, this choice is arbitrary.
-\verb;pirouette; provides two ways to deal with this problem. The choice can be made specifying the inference conditions $\mathit{C}$ to be used.
+In the previous example we selected the inference model $\mathit{I}$ to match 
+with a known generative tree prior $\mathit{P_{0}}$.
+However, a novel tree prior $\mathit{P}$, by definition, is non-standard, thus 
+cannot be part of a standard inference model (i.e. an inference model using a 
+standard tree prior).
+In this case the user has to specify the the tree prior $\mathit{t_{p}}$ to be 
+used in the inference from a list of standard tree priors. In general, having 
+no information on $\mathit{P}$, this choice is arbitrary.
+\verb;pirouette; provides two ways to deal with this problem. The choice can be 
+made specifying the inference conditions $\mathit{C}$ to be used.
 
-If the user has sufficient reasons to believe that one standard tree prior could be more suitable than others for the inference, they can set it as part of the inference model and to adopt site and clock models used to simulate the alignment. This option can be specified selecting "model\_type" to be "generative" as part of the inference conditions (as seen in ERQ 1, table~\ref{tab:RQ1}).
+If the user has sufficient reasons to believe that one standard tree prior 
+could be more suitable than others for the inference, they can set it as part 
+of the inference model and to adopt site and clock models used to simulate the 
+alignment. This option can be specified selecting "model\_type" to be 
+"generative" as part of the inference conditions (as seen in ERQ 1, 
+table~\ref{tab:RQ1}).
 
-If, instead, there is no preference for a specific tree prior, the user can let \verb;pirouette; select the best inference model from a list of candidate models. The model selection is performed automatically based on the criterion of the highest evidence (aka marginal likelihood). This option can be specified providing any number of experiments, selecting "model\_type" to be "candidate" for each of them, and "run\_if" to be "best\_candidate" (table~\ref{tab:RQ2} will summarize this for ERQ 2).
+If, instead, there is no preference for a specific tree prior, the user can let 
+\verb;pirouette; select the best inference model from a list of candidate 
+models. The model selection is performed automatically based on the criterion 
+of the highest evidence (aka marginal likelihood). This option can be specified 
+providing any number of experiments, selecting "model\_type" to be "candidate" 
+for each of them, and "run\_if" to be "best\_candidate" (table~\ref{tab:RQ2} 
+will summarize this for ERQ 2).
 
-We show the procedure using \verb;pirouette; to answer the second research question:
+We show the procedure using \verb;pirouette; to answer the second research 
+question:
 
 "What is the inference error made on a novel phylogeny when
 picking the best inference model?"
@@ -747,14 +886,16 @@ phylogeny  <- ape::read.tree(
   }
 \end{figure}
 
-The first step in \verb;pirouette; is to simulate a DNA alignment from the given phylogeny. 
+The first step in \verb;pirouette; is to simulate a DNA alignment from the 
+given phylogeny. 
 We will re-use the alignment parameters of the previous example 
 as shown in listing~\ref{lst:create_alignment}.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
     \hline
-    \textbf{model type} & \textbf{run if} & \textbf{measure evidence} & \textbf{inference model} \\ 
+    \textbf{model type} & \textbf{run if} & \textbf{measure evidence} & 
+\textbf{inference model} \\ 
     \hline
     candidate & best candidate & yes & JC, strict, Yule \\
     candidate & best candidate & yes & JC, strict, BD   \\
@@ -777,7 +918,13 @@ as shown in listing~\ref{lst:create_alignment}.
   \label{tab:RQ2}
 \end{table}
 
-In the second step we set up our experiments. Unlike ERQ 1, here we provide a set of experiments $\{\mathit{X_{i}}\}_{i=1}^{40}$. All the experiments have the same inference conditions $\mathit{C_{i}} = \mathit{C}$ but different candidate inference models $\mathit{I_{i}}$. Yet, only one of them will be used to run the actual inference. According to the specified $\mathit{C}$, \verb;pirouette; will measure the evidence for each of them and select  only the one with the highest evidence as the best candidate.
+In the second step we set up our experiments. Unlike ERQ 1, here we provide a 
+set of experiments $\{\mathit{X_{i}}\}_{i=1}^{40}$. All the experiments have 
+the same inference conditions $\mathit{C_{i}} = \mathit{C}$ but different 
+candidate inference models $\mathit{I_{i}}$. Yet, only one of them will be used 
+to run the actual inference. According to the specified $\mathit{C}$, 
+\verb;pirouette; will measure the evidence for each of them and select  only 
+the one with the highest evidence as the best candidate.
 
 Setting up experiments like this is thought to be so common,
 that \verb;pirouette; has a simple function to do:
@@ -828,9 +975,9 @@ The resulting figure is shown in figure~\ref{fig:example_2}.
   \label{fig:example_2}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 3}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In ERQ 1 we measured the baseline error of the \verb;pirouette; method, 
 by using a standard tree prior in both the generation of the tree 
@@ -856,7 +1003,8 @@ when hand-picking a tree prior, compared to the background noise?"
 
 Most of the settings for this example research question are
 the same as in the previous section, which are
-the phylogeny from an unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
+the phylogeny from an unknown speciation model 
+(listing~\ref{lst:unknown_phylogeny}), 
 the alignment parameters (listing~\ref{lst:create_alignment})
 and the list of experiments (listing~\ref{lst:create_generative_experiment}),
 the latter stating that the generative tree prior is a Yule tree prior.
@@ -865,9 +1013,14 @@ This time, however, we are interested measuring both the inference error
 and a baseline error, which is achieved by creating a twinning parameter
 set. 
 This time, however, we are interested in creating a twin tree. A twin tree
-has the same topology as the given tree, yet its branching times are simulated according to the standard tree prior used by BEAST2 to produce the posterior for the main pipeline. 
-Since there is coherence between the inference model and the generative model, we expect BEAST2 to produce a posterior of phylogenies more similar to the original one, respect to the outcome of the main pipeline. 
-Due to this, the twinning process is used to provide a control for the main experiment.
+has the same topology as the given tree, yet its branching times are simulated 
+according to the standard tree prior used by BEAST2 to produce the posterior 
+for the main pipeline. 
+Since there is coherence between the inference model and the generative model, 
+we expect BEAST2 to produce a posterior of phylogenies more similar to the 
+original one, respect to the outcome of the main pipeline. 
+Due to this, the twinning process is used to provide a control for the main 
+experiment.
 
 Creating a twinning parameter is easy, as it has sensible default settings:
 
@@ -914,14 +1067,18 @@ The resulting figure is shown in figure~\ref{fig:example_3}
   \label{fig:example_3}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 4}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Question}
 
-To answer ERQ 2 we used a evidence-based model selection procedure to obtain an error distribution.
-However, it is unclear to what extent this error is due to the mismatch between the tree priors (from generative and inference models) or due to stochasticity. As mentioned in ERQ 1, \verb;pirouette; provides a tool to evaluate this, using the twinning process. We now apply it to the same pipeline followed in ERQ 2.
+To answer ERQ 2 we used a evidence-based model selection procedure to obtain an 
+error distribution.
+However, it is unclear to what extent this error is due to the mismatch between 
+the tree priors (from generative and inference models) or due to stochasticity. 
+As mentioned in ERQ 1, \verb;pirouette; provides a tool to evaluate this, using 
+the twinning process. We now apply it to the same pipeline followed in ERQ 2.
 This leads to our fourth example research question:
 
 "What is the error made by BEAST2 from a phylogeny 
@@ -987,20 +1144,29 @@ The resulting figure is shown in figure~\ref{fig:example_4}.
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_4_errors.png}
   \caption{
-    Example 4: the error made by BEAST2 from a phylogeny, when the generative model is known, compared to candidates with similar inference models, in relationship to the background error.
+    Example 4: the error made by BEAST2 from a phylogeny, when the generative 
+model is known, compared to candidates with similar inference models, in 
+relationship to the background error.
   }
   \label{fig:example_4}
 \end{figure}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 5}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Question}
 
-In the previous research question we have seen how to use \verb;pirouette; to  run the analysis on main pipeline, either using a 'generative' or a 'best\_candidate' inference model. We also saw that to exclude the baseline error due to stochasticity it is possible to run a parallel twin pipeline. In this way two error distributions are obtained. Comparing them it is possible to estimate the error made by BEAST2 when inferring a posterior distribution starting from a phylogeny generated under an unknown generative tree prior.
-We can sum up all \verb;pirouette;'s features presented so far in the fifth research question:
+In the previous research question we have seen how to use \verb;pirouette; to  
+run the analysis on main pipeline, either using a 'generative' or a 
+'best\_candidate' inference model. We also saw that to exclude the baseline 
+error due to stochasticity it is possible to run a parallel twin pipeline. In 
+this way two error distributions are obtained. Comparing them it is possible to 
+estimate the error made by BEAST2 when inferring a posterior distribution 
+starting from a phylogeny generated under an unknown generative tree prior.
+We can sum up all \verb;pirouette;'s features presented so far in the fifth 
+research question:
 
 "What is the error made by BEAST2 from a phylogeny, 
 when the generative model is hand-picked, 
@@ -1021,7 +1187,8 @@ as shown in listing~\ref{lst:create_alignment}.
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
     \hline
-    \textbf{model type} & \textbf{run if} & \textbf{measure evidence} & \textbf{inference model} \\ 
+    \textbf{model type} & \textbf{run if} & \textbf{measure evidence} & 
+\textbf{inference model} \\ 
     \hline
     generative & always         & yes & JC, strict, Yule \\
     candidate  & best candidate & yes & JC, strict, BD \\
@@ -1042,7 +1209,8 @@ as shown in listing~\ref{lst:create_alignment}.
 \end{table}
 
 In the second step we state our experiments. 
-In this example, we must both specify the generative and candidate experiments. Here we specify the generative model:
+In this example, we must both specify the generative and candidate experiments. 
+Here we specify the generative model:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 generative_experiment <- create_experiment(
@@ -1052,7 +1220,9 @@ generative_experiment <- create_experiment(
 )
 \end{lstlisting}
 
-Specifying all candidates can be done simply by calling \verb;create_all_experiments;. In this case, all candidates will use the same site and clock model, and only differ in their tree priors:
+Specifying all candidates can be done simply by calling 
+\verb;create_all_experiments;. In this case, all candidates will use the same 
+site and clock model, and only differ in their tree priors:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 candidate_experiments <- create_all_experiments(
@@ -1072,7 +1242,10 @@ We need to combine these experiments into one set:
 experiments <- c(list(generative_experiment), candidate_experiments)
 \end{lstlisting}
 
-We choose again to use sensible defaults for the third (the BEAST2 inference) and fourth (measuring the error) steps, as we previously did to answer the second research question. To get an idea of a baseline error made by BEAST2, we also make use of the twinning option:
+We choose again to use sensible defaults for the third (the BEAST2 inference) 
+and fourth (measuring the error) steps, as we previously did to answer the 
+second research question. To get an idea of a baseline error made by BEAST2, we 
+also make use of the twinning option:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 pir_params <- create_pir_params(
@@ -1113,9 +1286,9 @@ The resulting figure is shown in figure~\ref{fig:example_5}.
   \label{fig:example_5}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In the four example research questions we showed how to use \verb;pirouette; 
 to assess if BEAST2 is able, with a birth-death prior, 
@@ -1141,7 +1314,8 @@ Figure~\ref{fig:example_2} shows that
 \richel{
   reword after new results with 6 taxa tree
 } 
-the best candidate model gives an error distribution similar to the unknown tree prior,
+the best candidate model gives an error distribution similar to the unknown 
+tree prior,
 hinting that the candidate model would be just as good in inference.
 Figure~\ref{fig:example_3} shows that 
 \richel{
@@ -1170,9 +1344,9 @@ tailored on the generative process, is needed.
 If this would indeed be the case, 
 one could implement their own tree prior as a new module in BEAST2.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; is free, libre and open source software available at 
 \url{http://github.com/richelbilderbeek/pirouette}
@@ -1201,12 +1375,14 @@ has guidelines on how to do so.
 All functions are documented in the package's internal documentation. 
 For quick use, 
 each exported function shows a minimal example. 
-For easy exploration, each exported function's documentation links to related functions.
-Additionally, \verb;pirouette; has a vignette that demonstrates extensively how to use it. 
+For easy exploration, each exported function's documentation links to related 
+functions.
+Additionally, \verb;pirouette; has a vignette that demonstrates extensively how 
+to use it. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Citation of pirouette}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Scientists using \verb;pirouette; in a published paper can cite this
 article, and/or cite the \verb;pirouette; package 
@@ -1216,9 +1392,9 @@ directly. To obtain this citation from within an R script, use:
 > citation("pirouette")
 \end{lstlisting}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgements}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We would like to thank the Center for Information Technology of the University 
 of Groningen for their support and for providing access to the Peregrine 
@@ -1227,45 +1403,49 @@ We thank the Netherlands
 Organization for Scientific Research (NWO) for financial support 
 through a VICI grant awarded to RSE.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%
 \section{Data Accessibility}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%
 
-All code is archived at \url{http://github.com/richelbilderbeek/pirouette_article},
+All code is archived at 
+\url{http://github.com/richelbilderbeek/pirouette_article},
 with DOI \url{https://doi.org/12.3456/zenodo.1234567}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Authors' contributions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 RJCB, GL and RSE conceived the idea for the package. 
-RJCB created and tested the package, and wrote the first draft of the manuscript.
+RJCB created and tested the package, and wrote the first draft of the 
+manuscript.
 GL tested the package and contributed substantially to revisions.
 RSE contributed to revisions.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MEE style
 \bibliographystyle{mee}
 \bibliography{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results in detail}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Errors}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
   \centering
   \resizebox {0.8\columnwidth} {!} {
@@ -1302,16 +1482,16 @@ RSE contributed to revisions.
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_1_esses.latex}
 % has label tab:esses_example_1
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 2}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
   \centering
   \resizebox {0.8\columnwidth} {!} {
@@ -1354,11 +1534,11 @@ RSE contributed to revisions.
 \input{example_2_evidences.latex}
 % has label tab:evidences_example_2
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 3}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
   \centering
   \resizebox {0.8\columnwidth} {!} {
@@ -1414,11 +1594,11 @@ RSE contributed to revisions.
 \input{example_3_esses.latex}
 % has label tab:esses_example_3
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 4}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
   \centering
   \resizebox {1.0\columnwidth} {!} {
@@ -1437,7 +1617,8 @@ RSE contributed to revisions.
       \includegraphics[height=0.45\textheight]{example_4_true_alignment.png}
     };   
     \node[state] (CB) [below of = B, rectangle, node distance=0.8\textheight] {
-      \includegraphics[height=0.95\textheight]{example_4_true_posterior_best.png}
+      
+\includegraphics[height=0.95\textheight]{example_4_true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle, node distance=1.0\textheight] {
       \includegraphics[height=0.65\textheight]{example_4_error_violin_best.png}
@@ -1448,11 +1629,15 @@ RSE contributed to revisions.
     \node[state] (BT) [below of = AT, rectangle] {
       \includegraphics[height=0.45\textheight]{example_4_twin_alignment.png}
     };   
-    \node[state] (CTB) [below of = BT, rectangle, node distance=0.8\textheight] {
-      \includegraphics[height=0.95\textheight]{example_4_twin_posterior_best.png}
+    \node[state] (CTB) [below of = BT, rectangle, node distance=0.8\textheight] 
+{
+      
+\includegraphics[height=0.95\textheight]{example_4_twin_posterior_best.png}
     };   
-    \node[state] (DTB) [below of = CTB, rectangle, node distance=1.0\textheight] {
-      \includegraphics[height=0.65\textheight]{example_4_twin_error_violin_best.png}
+    \node[state] (DTB) [below of = CTB, rectangle, node 
+distance=1.0\textheight] {
+      
+\includegraphics[height=0.65\textheight]{example_4_twin_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -1484,11 +1669,11 @@ RSE contributed to revisions.
 \input{example_4_evidence_twin.latex}
 % has label tab:evidences_example_4
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Example 5}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
   \centering
   \resizebox {0.8\columnwidth} {!} {
@@ -1528,13 +1713,15 @@ RSE contributed to revisions.
       \includegraphics[height=0.2\textheight]{example_5_twin_posterior_gen.png}
     };   
     \node[state] (DTG) [below of = CTG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_twin_error_violin_gen.png}
+      
+\includegraphics[height=0.2\textheight]{example_5_twin_error_violin_gen.png}
     };   
     \node[state] (CTB) [right of = CTG, rectangle] {
       \includegraphics[height=0.2\textheight]{example_5_twin_posterior_best.png}
     };   
     \node[state] (DTB) [below of = CTB, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_twin_error_violin_best.png}
+      
+\includegraphics[height=0.2\textheight]{example_5_twin_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
