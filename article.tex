@@ -1136,7 +1136,7 @@ The first step in \verb;pirouette; is to simulate a DNA alignment
 from the given phylogeny, for which we will use the same code 
 as shown in listing~\ref{lst:create_alignment}.
 
-We agin specify we want all 40 inference models to compete, 
+We again specify we want all 40 inference models to compete, 
 by calling \verb;create_all_experiments;,
 as done in listing~\ref{lst:create_all_experiments}.
 
@@ -1152,9 +1152,13 @@ listing~\ref{lst:create_twinning_params}.
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments,
+  error_measure_params = error_measure_params,
   twinning_params = twinning_params
 )
 \end{lstlisting}
+\richel{
+  Refer to earlier listing for this call to \texttt{create\_pir\_params}
+}
 
 Running the experiment:
 
@@ -1164,12 +1168,18 @@ errors <- pir_run(
   pir_params = pir_params
 )
 \end{lstlisting}
+\richel{
+  Refer to earlier listing for this call to \texttt{pir\_run}
+}
 
 Again, showing the results:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 pir_plot(errors)
 \end{lstlisting}
+\richel{
+  Refer to earlier listing for this call to \texttt{pir\_run}
+}
 
 The resulting figure is shown in figure~\ref{fig:example_4}.
 
@@ -1180,8 +1190,8 @@ The resulting figure is shown in figure~\ref{fig:example_4}.
   \includegraphics[width=\textwidth]{example_4_errors.png}
   \caption{
     Example 4: the error made by BEAST2 from a phylogeny, when the generative 
-model is known, compared to candidates with similar inference models, in 
-relationship to the background error.
+    model is known, compared to candidates with similar inference models, in 
+    relationship to the background error.
   }
   \label{fig:example_4}
 \end{figure}
