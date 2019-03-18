@@ -3,12 +3,13 @@
 # Works under Windows
 library(pirouette)
 library(ggplot2)
-library(ggthemes)
 library(ggtree)
 
 root_folder <- path.expand("~/GitHubs/pirouette_article/")
 example_no <- 3
 set.seed(314)
+
+testit::assert(is_beast2_installed())
 
 phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);")
 
@@ -30,9 +31,9 @@ pir_params <- create_pir_params(
   twinning_params = twinning_params
 )
 
-################################################################################
-# Settings to run on Peregrine cluster
-################################################################################
+print("#######################################################################")
+print("Settings to run on Peregrine cluster")
+print("#######################################################################")
 pir_params$alignment_params$fasta_filename <- file.path(root_folder, paste0("example_", example_no, "_true.fasta"))
 for (i in seq_along(pir_params$experiments)) {
   pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input.xml"))
@@ -47,7 +48,7 @@ if (!is_one_na(pir_params$twinning_params)) {
   twinning_params$twin_alignment_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.fasta"))
   twinning_params$twin_evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_twin.csv"))
 }
-################################################################################
+print("#######################################################################")
 
 errors <- pir_run(
   phylogeny,
@@ -64,6 +65,9 @@ esses <- tracerer::calc_esses(
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
 
+print("#######################################################################")
+print("ESSes")
+print("#######################################################################")
 sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
 xtable::xtable(
   esses,
@@ -74,10 +78,11 @@ xtable::xtable(
 sink()
 
 
-# Appendix figure
-################################################################################
-# trees
-################################################################################
+print("#######################################################################")
+print("Appendix")
+print("#######################################################################")
+print("trees")
+print("#######################################################################")
 
 # True tree
 ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() +
@@ -89,10 +94,9 @@ if (!is_one_na(pir_params$twinning_params)) {
     ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_tree.png")))
 }
 
-################################################################################
-# alignment
-################################################################################
-
+print("#######################################################################")
+print("alignment")
+print("#######################################################################")
 
 png(
   filename = file.path(root_folder, paste0("example_", example_no, "_true_alignment.png")),
@@ -125,9 +129,9 @@ if (!is_one_na(pir_params$twinning_params)) {
   )
   dev.off()
 }
-################################################################################
-# posteriors
-################################################################################
+print("#######################################################################")
+print("posteriors")
+print("#######################################################################")
 
 png(
   filename = file.path(root_folder, paste0("example_", example_no, "_true_posterior_gen.png")),
@@ -159,9 +163,9 @@ if (!is_one_na(pir_params$twinning_params)) {
   dev.off()
 }
 
-################################################################################
-# histogram of errors
-################################################################################
+print("#######################################################################")
+print("histogram of errors")
+print("#######################################################################")
 
 df_errors <- data.frame(error = read.csv(pir_params$experiments[[1]]$errors_filename)$x)
 

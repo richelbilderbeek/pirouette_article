@@ -25,9 +25,9 @@ pir_params <- create_pir_params(
   twinning_params = create_twinning_params()
 )
 
-################################################################################
-# Settings to run on Peregrine cluster
-################################################################################
+print("#######################################################################")
+print("Settings to run on Peregrine cluster")
+print("#######################################################################")
 pir_params$alignment_params$fasta_filename <- file.path(root_folder, paste0("example_", example_no, "_true.fasta"))
 for (i in seq_along(pir_params$experiments)) {
   pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input_best.xml"))
@@ -42,7 +42,7 @@ if (!is_one_na(pir_params$twinning_params)) {
   pir_params$twinning_params$twin_alignment_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.fasta"))
   pir_params$twinning_params$twin_evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_twin.csv"))
 }
-################################################################################
+print("#######################################################################")
 
 errors <- pir_run(
   phylogeny,
@@ -54,7 +54,9 @@ pir_plot(errors) +
   scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
   ggsave(file.path(root_folder, paste0("example_", example_no, "_errors.png")))
 
-## Evidence
+print("#######################################################################")
+print("Evidence")
+print("#######################################################################")
 
 # Evidence, true
 df_evidences <- utils::read.csv(pir_params$evidence_filename)[, c(-1, -6)]
@@ -109,7 +111,10 @@ xtable::xtable(
 )
 sink()
 
-# ESSes
+print("#######################################################################")
+print("ESSes")
+print("#######################################################################")
+
 esses_best <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(pir_params$experiments[[2]]$beast2_options$output_log_filename),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
@@ -138,10 +143,11 @@ xtable::xtable(
 )
 sink()
 
-# Appendix figure
-################################################################################
-# trees
-################################################################################
+print("#######################################################################")
+print("Appendix")
+print("#######################################################################")
+print("trees")
+print("#######################################################################")
 
 # True tree
 ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() +
@@ -153,10 +159,9 @@ if (!is_one_na(pir_params$twinning_params)) {
     ggsave(file.path(root_folder, paste0("example_", example_no, "_twin_tree.png")))
 }
 
-################################################################################
-# alignment
-################################################################################
-
+print("#######################################################################")
+print("alignment")
+print("#######################################################################")
 
 png(
   filename = file.path(root_folder, paste0("example_", example_no, "_true_alignment.png")),
@@ -189,9 +194,9 @@ if (!is_one_na(pir_params$twinning_params)) {
   )
   dev.off()
 }
-################################################################################
-# posteriors
-################################################################################
+print("#######################################################################")
+print("posteriors")
+print("#######################################################################")
 
 testit::assert(
   file.exists(
@@ -235,9 +240,9 @@ if (!is_one_na(pir_params$twinning_params)) {
   dev.off()
 }
 
-################################################################################
-# histogram of errors
-################################################################################
+print("#######################################################################")
+print("histogram of errors")
+print("#######################################################################")
 
 # True, best
 df_errors_best <- data.frame(error = read.csv(pir_params$experiments[[2]]$errors_filename)$x)
