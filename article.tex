@@ -14,8 +14,10 @@
 % RJCB: I think this title is better: 
 % (1) tree prior importantance is the goal, the error is just the means
 % (2) no need to specify BEAST2, it's also just a means
-\title{pirouette: Quantifying the importance of a tree prior in Bayesian 
-phylogenetics}
+\title{
+  pirouette:
+  Quantifying the importance of a tree prior in Bayesian phylogenetics
+}
 % \title{pirouette: Determining the error BEAST2 makes in inferring a phylogeny}
 
 \author[1]{Rich\`el J.C. Bilderbeek}
@@ -1337,16 +1339,19 @@ The resulting figure is shown in figure~\ref{fig:example_5}.
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the four example research questions we showed how to use \verb;pirouette; 
-to assess if BEAST2 is able, with a birth-death prior, 
-to recover the original tree simulated by a Yule process. 
-In principle any other, possibly much more complex, 
-generative prior can be tested.
+In the five example research questions, 
+we showed how to use \verb;pirouette; 
+to quantify the importance of a tree prior in Bayesian phylogenetics.
+In all ERQs we used and assumed the most simple tree prior possible,
+which is the Yule tree prior.
+In principle any other (more complex) generative tree prior 
+can be tested, but we chose to provide the 
+simplest (and fastest to run) examples.
 All tests were performed on a single original tree, 
 hence not providing us enough statistical power to 
 evaluate the level of accuracy of the inference. 
 
-However if the same procedure were repeated and performed on a distribution 
+However, if the same procedure were repeated and performed on a distribution 
 with a sufficient number of generative trees, 
 it could actually constitute a quantitative assessment 
 of the quality of the inference.
@@ -1358,23 +1363,14 @@ the minimum error BEAST2 when the
 generative model is known, which can serve as 
 a minimum noise level assessment in a bigger experiment.  
 Figure~\ref{fig:example_2} shows that 
-\richel{
-  reword after new results with 6 taxa tree
-} 
 the best candidate model gives an error distribution similar to the unknown 
 tree prior,
 hinting that the candidate model would be just as good in inference.
 Figure~\ref{fig:example_3} shows that 
-\richel{
-  reword after new results with 6 taxa tree
-} 
 the twin model gives an error distribution similar to the unknown tree prior,
 hinting that the shape of the phylogeny with unknown tree prior
 does not effect the error made by BEAST2.
 Figure~\ref{fig:example_4} shows that 
-\richel{
-  reword after new results with 6 taxa tree
-} 
 the twin model and best candidate model give 
 an error distribution similar to the unknown tree prior,
 hinting that the shape of the phylogeny with unknown tree prior
@@ -1396,44 +1392,57 @@ one could implement their own tree prior as a new module in BEAST2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; is free, libre and open source software available at 
-\url{http://github.com/richelbilderbeek/pirouette}
-and is licensed under the GNU General Public License v3.0.
-\verb;pirouette; follows all practices as recommended by the
-literature: continuous integration, a code coverage of 100\%
-and a style guide (\cite{style_guide}).
-\verb;pirouette; depends on multiple packages, which are 
+\url{http://github.com/richelbilderbeek/pirouette},
+licensed under the GNU General Public License version 3.
+\verb;pirouette; depends on multiple packages, which are:
+\richel{I think we can get rid of some dependencies, we just need to check}
 \verb;ape; (\cite{APE}), 
 \verb;babette; (\cite{bilderbeek2018babette}),
+\verb;becosys; (\cite{becosys}),
+\verb;DDD; (\cite{DDD}),
+\verb;devtools; (\cite{devtools}),
+\verb;geiger; (\cite{geiger}),
 \verb;ggplot2; (\cite{ggplot2}),
 \verb;knitr; (\cite{knitr}),
+\verb;lintr; (\cite{lintr}),
 \verb;mcbette; (\cite{mcbette}),
+\verb;nLTT; (\cite{nLTT}),
+\verb;PBD; (\cite{PBD}),
 \verb;phangorn; (\cite{phangorn}),
+\verb;phytools; (\cite{phytools}),
+\verb;rappdirs; (\cite{rappdirs}),
 \verb;rmarkdown; (\cite{rmarkdown}),
+\verb;Rmpfr; (\cite{Rmpfr}),
 \verb;stringr; (\cite{stringr}),
-\verb;testit; (\cite{testit}) and 
-\verb;usethis; (\cite{usethis}).
+\verb;subplex; (\cite{subplex}),
+\verb;TESS; (\cite{TESS}),
+\verb;testit; (\cite{testit}), 
+\verb;testthat; (\cite{testthat}) and
+\verb;tidyr; (\cite{tidyr}).
 
 \verb;pirouette;'s development takes place on GitHub,
-\url{https://github.com/richelbilderbeek/pirouette}, 
-which facilitates feature requests and 
-has guidelines on how to do so.
+\url{https://github.com/richelbilderbeek/pirouette},
+which allows submitting bug reports, requesting features, 
+or adding code. To ensure a high quality, \verb;pirouette; 
+uses a continuous integration service, has a code coverage of 100\%
+and enforces the most commonly used R style guide (\cite{style_guide}).
 
-\verb;pirouette;'s documentation is extensive. 
-All functions are documented in the package's internal documentation. 
-For quick use, 
-each exported function shows a minimal example. 
-For easy exploration, each exported function's documentation links to related 
-functions.
-Additionally, \verb;pirouette; has a vignette that demonstrates extensively how 
-to use it. 
+\verb;pirouette;'s is extensively documentated on its website,
+its documentation and its vignettes.
+The \verb;pirouette; website is a good starting point to learn
+how to use \verb;pirouette;, as it links to tutorials and videos.
+The \verb;pirouette; package documentation describes
+all functions and liberally links to related functions.
+All exported functions show a minimal example as part of their documentation.
+The \verb;pirouette; vignette demonstrates extensively how 
+to use \verb;pirouette; in a more lightly written way. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Citation of pirouette}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Scientists using \verb;pirouette; in a published paper can cite this
-article, and/or cite the \verb;pirouette; package 
-directly. To obtain this citation from within an R script, use:
+Professionals using \verb;pirouette; can cite this
+article. To obtain the citation from within R, use:
 
 \begin{lstlisting}[language=R]
 > citation("pirouette")
