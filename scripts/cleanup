@@ -3,6 +3,10 @@ rm *.pdf
 rm *.csv
 rm *.fasta
 rm *.log
+rm *.tree
 rm *.trees
 rm *.xml
 rm *.xml.state
+rm *.state
+rm *.png
+rm *.new
