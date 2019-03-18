@@ -180,6 +180,11 @@ if (!is_one_na(pir_params$twinning_params)) {
 # posteriors
 ################################################################################
 
+testit::assert(
+  file.exists(
+    pir_params$experiments[[2]]$beast2_options$output_trees_filenames
+  )
+)
 png(
   filename = file.path(root_folder, paste0("example_", example_no, "_true_posterior_best.png")),
   width = 1000, height = 800
@@ -195,6 +200,13 @@ babette::plot_densitree(
 dev.off()
 
 if (!is_one_na(pir_params$twinning_params)) {
+  testit::assert(
+    file.exists(
+      to_twin_filename(
+        pir_params$experiments[[2]]$beast2_options$output_trees_filenames
+      )
+    )
+  )
   png(
     filename = file.path(root_folder, paste0("example_", example_no, "_twin_posterior_best.png")),
     width = 1000, height = 800

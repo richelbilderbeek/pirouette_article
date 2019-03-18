@@ -20,7 +20,7 @@ alignment_params <- create_alignment_params(
 experiments <- list(create_experiment())
 
 twinning_params <- create_twinning_params(
-  twin_model = "bd", 
+  twin_model = "bd",
   method = "random_tree"
 )
 
@@ -180,7 +180,11 @@ ggplot2::ggplot(
   ggsave(file.path(root_folder, paste0("example_", example_no, "_error_violin.png")))
 
 if (!is_one_na(pir_params$twinning_params)) {
-  df_errors_twin <- data.frame(error = read.csv(to_twin_filename(pir_params$experiments[[1]]$errors_filename))$x)
+  twin_errors_filename <- to_twin_filename(
+    pir_params$experiments[[1]]$errors_filename
+  )
+  testit::assert(file.exists(twin_errors_filename))
+  df_errors_twin <- data.frame(error = read.csv(twin_errors_filename)$x)
 
   ggplot2::ggplot(
     df_errors_twin,
