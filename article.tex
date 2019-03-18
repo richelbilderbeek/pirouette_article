@@ -655,7 +655,7 @@ nucleotides each,
 where the per-nucleotide mutation rate is 0.1 mutations per unit time.
 We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
 and a strict clock model as these are the simplest.
-A Jukes-Cantor site model,
+A Jukes-Cantor site model
 assumes that mutation rates between nucleotides are equal and constant. 
 A strict clock model assumes that the mutation rates 
 of all species are equal and constant.
@@ -783,11 +783,13 @@ errors <- pir_run(
 )
 \end{lstlisting}
 
-\giovanni{I think we are providing too many information}
-\richel{agreed, thanks for pushing back}
-
-The error distribution returned by \verb;pir_run; is stored as a data frame. It 
-can be directly plotted using \verb;pir_plot;:
+The error distribution returned by \verb;pir_run; is stored as a data frame. 
+\richel{
+  I suggest \texttt{pir\_run} to return a list of run experiments,
+  as described in Issue 225, 
+  \url{https://github.com/richelbilderbeek/pirouette/issues/225}
+}
+It can be directly plotted using \verb;pir_plot;:
 
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
@@ -807,7 +809,12 @@ pir_plot(errors)
 \end{figure}
 
 The error distribution obtained is shown as a violin plot
-in figure~\ref{fig:example_1}. 
+in figure~\ref{fig:example_1}
+\richel{
+  I suggest to use a histogram (or density plot) instead:
+  I like how the error distribution in figure 1 looks.
+}
+. 
 
 This error distribution has little relevance on its own, 
 as we constructed the experiment in such a way $\mathit{I}$ 
