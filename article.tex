@@ -537,6 +537,8 @@ have a useful example, and have sensible defaults.
 \section{Usage: Example Research Question 1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Question}
+
 \verb;pirouette; quantifies the influence of a new tree prior on BEAST2's inference,
 by measuring the difference between a given tree and 
 phylogenies in a posterior. Due to stochasticity, all posterior trees
@@ -551,6 +553,8 @@ Now we can formulate the first example research question that \verb;pirouette; c
 "What is the inference error made on phylogenies
 created by a standard diversification model?"
 
+\subsection{Answer}
+
 In this example we use a standard generative tree prior $\mathit{P_{0}}$, namely the Yule (pure-birth) tree prior. 
 We choose to use a small tree with six taxa to keep
 the calculations short and the figure more readable.
@@ -563,7 +567,7 @@ used in simulating an alignment in the next step.
     label = {lst:create_yule_tree}, 
     caption = {
       Create a Yule tree. 
-      The resulting tree is shown in figure~\ref{fig:yule_tree}
+      The resulting tree is shown in figure~\ref{fig:yule_tree}.
     }
   ]
 phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
@@ -625,12 +629,12 @@ We specify in $\mathit{C}$ that the experiment will always be run.
     \hline
   \end{tabular}
   \caption{
-    Experimental setup to answer the first research question.
+    Inference conditions and inference model for ERQ 1.
     JC: Jukes-Cantor site model.
     strict: strict clock model.
     Yule: Yule (pure-birth) tree prior.
   }
-  \label{tbl:RQ1}
+  \label{tab:RQ1}
 \end{table}
 
 Listing~\ref{lst:create_generative_experiment_explicit} shows how to
@@ -751,10 +755,13 @@ We call it 'twinning' and we use it in ERQ 3.
 \section{Usage: Example Research Question 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Question}
+
+\iffalse
 In the previous example, we used a known generative tree prior to match with the inference model.
-However, a novel tree prior, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior). 
+However, a novel tree prior, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior).
 One option is to choose to hand-pick a related 
-standard tree prior, as done in ERCs 3 and 5, and combine it with 
+standard tree prior, as done in ERQs 3 and 5, and combine it with 
 a known generative alignment model.
 An alternative is to let multiple candidate inference models compete 
 and pick the best one, based on the highest evidence (aka marginal likelihood):
@@ -764,12 +771,43 @@ alignment \richel{or the other way around?}.
 The benefit of this approach is that this is a commonly used procedure,
 which picks an inference model that is
 best at explaining the alignment, where more complex inference models are
-penalized for having more parameters. 
+penalized for having more parameters.
+\fi
 
+In the previous example we selected the inference model $\mathit{I}$ to match with a known generative tree prior $\mathit{P_{0}}$.
+However, a novel tree prior $\mathit{P}$, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior).
+In this case the user has to specify the the tree prior $\mathit{t_{p}}$ to be used in the inference from a list of standard tree priors. In general, having no information on $\mathit{P}$, this choice is arbitrary.
+\verb;pirouette; provides two ways to deal with this problem. The choice can be made specifying the inference conditions $\mathit{C}$ to be used.
+
+If the user has sufficient reasons to believe that one standard tree prior could be more suitable than others for the inference, they can set it as part of the inference model and to adopt site and clock models used to simulate the alignment. This option can be specified selecting "model\_type" to be "generative" as part of the inference conditions (as seen in ERQ 1, table~\ref{tab:RQ1}).
+
+If, instead, there is no preference for a specific tree prior, the user can let \verb;pirouette; select the best inference model from a list of candidate models. The model selection is performed automatically based on the criterion of the highest evidence (aka marginal likelihood). This option can be specified providing any number of experiments, selecting "model\_type" to be "candidate" for each of them, and "run\_if" to be "best\_candidate" (table~\ref{tab:RQ2} will summarize this for ERQ 2).
+
+
+\iffalse
+One option is to choose to hand-pick a related 
+standard tree prior, as done in ERQs 3 and 5, and combine it with 
+a known generative alignment model.
+An alternative is to let multiple candidate inference models compete 
+and pick the best one, based on the highest evidence (aka marginal likelihood):
+when an alignment is simulated from the given tree, one can estimate the
+evidence for each inference model given that 
+alignment \richel{or the other way around?}.
+The benefit of this approach is that this is a commonly used procedure,
+which picks an inference model that is
+best at explaining the alignment, where more complex inference models are
+penalized for having more parameters.
+\fi
+\iffalse
 A second research question that \verb;pirouette; can answer, is:
+\fi
+
+We show the procedure using \verb;pirouette; to answer the second research question:
 
 "What is the inference error made on a novel phylogeny when
 picking the best inference model?"
+
+\subsection{Answer}
 
 Here we start with a tree generated from an unknown 
 diversification model, that has six taxa and a crown age of ten:
@@ -809,7 +847,7 @@ as shown in listing~\ref{lst:create_alignment}.
     \hline
   \end{tabular}
   \caption{
-    Experimental setup to answer the second research question.
+    Inference conditions and inference model for ERQ 2.
     JC: Jukes-Cantor site model.
     strict: strict clock model.
     Yule: Yule (pure-birth) tree prior.
@@ -819,12 +857,14 @@ as shown in listing~\ref{lst:create_alignment}.
     CCP: coalescent constant-population tree prior.
     CEP: coalescent exponential-population tree prior.
   }
+  \label{tab:RQ2}
 \end{table}
 
+\iffalse
 In the second step we set up our experiments. 
 Within this ERQ, each of our experiments contain a different
 inference model $I$, but has condition $C$ that will only let $I$
-be run in inference if that inference model $I$ is the 
+be run in inference only if that inference model $I$ is the 
 best candidate inference model, that is, 
 it is the inference model with the highest evidence.
 Setting up experiments like this is thought to be so common,
@@ -832,13 +872,23 @@ that \verb;pirouette; has a simple function to do:
 \verb;create_all_experiments; will create 40 experiments,
 containing the inference models of all combinations of 4 site 
 models, 2 clock models and 5 tree priors.
+\fi
+
+In the second step we set up our experiments. Unlike ERQ 1, here we provide a set of experiments $\{\mathit{X_{i}}\}_{i=1}^{40}$. All the experiments have the same inference conditions $\mathit{C_{i}} = \mathit{C}$ but different candidate inference models $\mathit{I_{i}}$. Yet, only one of them will be used to run the actual inference. According to the specified $\mathit{C}$, \verb;pirouette; will measure the evidence for each of them and select  only the one with the highest evidence as the best candidate.
+
+Setting up experiments like this is thought to be so common,
+that \verb;pirouette; has a simple function to do:
+\verb;create_all_experiments; will create the entire set of 40 experiments,
+containing the inference models of all combinations of 4 site 
+models, 2 clock models and 5 tree priors.
+
 
 \begin{lstlisting}[
   language=R, 
   floatplacement=ht, 
   frame=single, 
   label = {lst:create_all_experiments},
-  caption = Create all 40 candidate experiments
+  caption = Create all 40 candidate experiments.
 ]
 experiments <- create_all_experiments()
 \end{lstlisting}
@@ -851,7 +901,7 @@ same as listing~\ref{lst:create_pir_params}, but using the defaults):
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
   label = {lts:create_pir_params_defaults},
-  caption = Create a \texttt{pir\_params} with many defaults
+  caption = Create a \texttt{pir\_params} with many defaults.
 ]
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
@@ -891,10 +941,15 @@ In this ERQ, we assume the new tree prior so closely related to
 a standard tree prior, that we hand-pick a standard tree prior to
 serve as a stand-in generative tree prior.
 
-A third research question that \verb;pirouette; can answer is:
+\subsection{Question}
+
+In ERQ 1 we built the twin pipeline. At the end of the section we discussed how it has not much relevance if considered as a stand-alone process. Here, instead, we will use it as a control for the main pipeline, where the generative tree prior $\mathit{P}$ is unknown, but the site and clock models used for the inference are the ones used to simulate the alignment.
+This leads to the third ERQ:
 
 "What is the error made by BEAST2 from a phylogeny, 
 when hand-picking a tree prior, compared to the background noise?"
+
+\subsection{Answer}
 
 Most of the settings for this example research question are
 the same as in the previous section, which are
@@ -905,7 +960,13 @@ the latter stating that the generative tree prior is a Yule tree prior.
 
 This time, however, we are interested measuring both the inference error
 and a baseline error, which is achieved by creating a twinning parameter
-set. Doing so is easy, as it has sensible default settings:
+set. 
+This time, however, we are interested in creating a twin tree. A twin tree
+has the same topology as the given tree, yet its branching times are simulated according to the standard tree prior used by BEAST2 to produce the posterior for the main pipeline. 
+Since there is coherence between the inference model and the generative model, we expect BEAST2 to produce a posterior of phylogenies more similar to the original one, respect to the outcome of the main pipeline. 
+Due to this, the twinning process is used to provide a control for the main experiment.
+
+Creating a twinning parameter is easy, as it has sensible default settings:
 
 \begin{lstlisting}[
   language=R, 
@@ -954,7 +1015,11 @@ The resulting figure is shown in figure~\ref{fig:example_3}
 \section{Usage: Example Research Question 4}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A fourth research question that \verb;pirouette; can answer, is:
+\subsection{Question}
+
+To answer ERQ 2 we used a evidence-based model selection procedure to obtain an error distribution.
+However, it is unclear to what extent this error is due to the mismatch between the tree priors (from generative and inference models) or due to stochasticity. As mentioned in ERQ 1, \verb;pirouette; provides a tool to evaluate this, using the twinning process. We now apply it to the same pipeline followed in ERQ 2.
+This leads to our fourth example research question:
 
 "What is the error made by BEAST2 from a phylogeny 
 derived from an unknown speciation model,
@@ -965,6 +1030,8 @@ in relationship to the background error?"
   as think this is natural intermediate between the 
   previous and next/final example
 }
+
+\subsection{Answer}
 
 Here, same as example 2 and 3, we start with the phylogeny 
 from an unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
@@ -1027,12 +1094,17 @@ The resulting figure is shown in figure~\ref{fig:example_4}.
 \section{Usage: Example Research Question 5}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A fifth research question that \verb;pirouette; can answer, is:
+\subsection{Question}
+
+In the previous research question we have seen how to use \verb;pirouette; to  run the analysis on main pipeline, either using a 'generative' or a 'best\_candidate' inference model. We also saw that to exclude the baseline error due to stochasticity it is possible to run a parallel twin pipeline. In this way two error distributions are obtained. Comparing them it is possible to estimate the error made by BEAST2 when inferring a posterior distribution starting from a phylogeny generated under an unknown generative tree prior.
+We can sum up all \verb;pirouette;'s features presented so far in the fifth research question:
 
 "What is the error made by BEAST2 from a phylogeny, 
 when the generative model is hand-picked, 
 compared to candidates with similar inference models, 
 in relationship to the background error?"
+
+\subsection{Answer}
 
 In this example, we use a tree generated by the Yule process.
 Instead of using the common Yule tree as in example 1, we'll use
