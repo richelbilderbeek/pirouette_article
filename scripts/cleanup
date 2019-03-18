@@ -1,0 +1,7 @@
+#!/bin/bash
+rm *.csv
+rm *.fasta
+rm *.log
+rm *.trees
+rm *.xml
+rm *.xml.state
