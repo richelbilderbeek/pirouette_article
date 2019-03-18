@@ -1090,7 +1090,7 @@ Running and plotting the results:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 errors <- pir_run(
-  phylogeny,
+  phylogeny = phylogeny,
   pir_params = pir_params
 )
 pir_plot(errors)
@@ -1160,7 +1160,7 @@ Running the experiment:
 
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 errors <- pir_run(
-  phylogeny,
+  phylogeny = phylogeny,
   pir_params = pir_params
 )
 \end{lstlisting}
@@ -1294,7 +1294,7 @@ Running the experiment:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 errors <- pir_run(
-  phylogeny,
+  phylogeny = phylogeny,
   pir_params = pir_params
 )
 \end{lstlisting}
