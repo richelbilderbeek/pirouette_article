@@ -89,7 +89,7 @@ df_evidences$tree_prior_name <- plyr::revalue(
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
 
-sink("/home/richel/GitHubs/pirouette_article/example_2_evidences.latex")
+sink(file.path(root_folder, "example_2_evidences.latex"))
 xtable::xtable(
   df_evidences,
   caption = "Evidences of example 2", label = "tab:evidences_example_2", digits = 3
@@ -97,7 +97,7 @@ xtable::xtable(
 sink()
 
 ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() +
-  ggsave("/home/richel/GitHubs/pirouette_article/tree_unknown.png")
+  ggsave(file.path(root_folder, "tree_unknown.png"))
 
 # Appendix figure
 ################################################################################

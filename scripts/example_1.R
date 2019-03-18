@@ -67,8 +67,9 @@ sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
 xtable::xtable(esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0)
 sink()
 
-ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() + ggtitle("Faked Yule tree, #192") +
-  ggsave("/home/richel/GitHubs/pirouette_article/tree_yule.png")
+ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() + 
+  ggtitle("Faked Yule tree, #192") +
+  ggsave(file.path(root_folder, "tree_yule.png"))
 
 # Appendix figure
 ################################################################################
