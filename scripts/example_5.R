@@ -3,7 +3,6 @@
 # Works under Linux and MacOS only
 library(pirouette)
 library(ggplot2)
-library(ggthemes)
 library(ggtree)
 
 root_folder <- path.expand("~/GitHubs/pirouette_article/")
@@ -24,7 +23,7 @@ generative_experiment <- create_experiment(
     model_type = "generative",
     run_if = "always",
     do_measure_evidence = TRUE
-  )
+  ),
   inference_model = create_inference_model(
     site_model = create_jc69_site_model(),
     clock_model = create_strict_clock_model(),
