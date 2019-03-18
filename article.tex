@@ -937,14 +937,14 @@ influence of a new (non-standard) tree prior.
 To do so, we need to compare the inference error 
 from the new tree prior to a baseline error,
 by use of a twin tree (see subsection~\ref{subsec:twinning}).
-In this ERQ, we assume the new tree prior so closely related to
-a standard tree prior, that we hand-pick a standard tree prior to
-serve as a stand-in generative tree prior.
+To do so, we use the twin tree as a control for the main pipeline.
+In this example, we do not know the generative tree prior $\mathit{P}$,
+but we do know the alignment model, $\mathit{A}$.
+In this ERQ, we assume the new tree prior is so closely related to
+a standard tree prior, that it is reasonable to hand-pick a standard tree prior 
+to serve as a stand-in generative tree prior.
 
 \subsection{Question}
-
-In ERQ 1 we built the twin pipeline. At the end of the section we discussed how it has not much relevance if considered as a stand-alone process. Here, instead, we will use it as a control for the main pipeline, where the generative tree prior $\mathit{P}$ is unknown, but the site and clock models used for the inference are the ones used to simulate the alignment.
-This leads to the third ERQ:
 
 "What is the error made by BEAST2 from a phylogeny, 
 when hand-picking a tree prior, compared to the background noise?"
