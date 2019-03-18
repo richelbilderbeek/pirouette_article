@@ -65,7 +65,13 @@ df_evidences$clock_model_name <- plyr::revalue(
 )
 df_evidences$tree_prior_name <- plyr::revalue(
   df_evidences$tree_prior_name,
-  c("yule" = "Yule", "birth_death" = "BD", "coalescent_constant_population" = "CCP", "coalescent_exp_population" = "CEP")
+  c(
+    "yule" = "Yule",
+    "birth_death" = "BD",
+    "coalescent_bayesian_skyline" = "CBS",
+    "coalescent_constant_population" = "CCP",
+    "coalescent_exp_population" = "CEP"
+  )
 )
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
@@ -83,9 +89,16 @@ df_evidences$clock_model_name <- plyr::revalue(
   df_evidences$clock_model_name,
   c("strict" = "Strict", "relaxed_log_normal" = "RLN")
 )
+
 df_evidences$tree_prior_name <- plyr::revalue(
   df_evidences$tree_prior_name,
-  c("yule" = "Yule", "birth_death" = "BD", "coalescent_constant_population" = "CCP", "coalescent_exp_population" = "CEP")
+  c(
+    "yule" = "Yule",
+    "birth_death" = "BD",
+    "coalescent_bayesian_skyline" = "CBS",
+    "coalescent_constant_population" = "CCP",
+    "coalescent_exp_population" = "CEP"
+  )
 )
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
