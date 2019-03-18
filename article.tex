@@ -405,53 +405,6 @@ representative part of the state space.
 
 \subsection{Twin tree}\label{subsec:twinning}
 
-\iffalse
-%version 1
-An optional step is to generate a 'twin tree' 
-(Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
-that will be analyzed in the same way as the true tree.
-The twin tree will be the true tree 
-converted to follow the tree prior of the chosen inference model.
-
-To do so we exploit the likelihood function associated with the chosen inference model. We find the parameters (e.g. speciation and extinction rate for a birth-death model) that maximize such likelihood applied to the true tree, conditioned on its number of tips.
-
-We use these parameters to simulate the branching times of the twin tree, 
-which we combine with the original tree's topology.
-
-Using a twin tree serves as a control: both the given/true tree
-and twin tree will produce an error distribution.
-For the true tree, this error distribution is caused by
-the shape of the phylogeny (which is different from the tree priors used), 
-the stochastic alignment simulation and stochastic Bayesian inference.  
-The twin tree is created from the given phylogeny,
-as it has the same topology, 
-yet its branching times are simulated according to 
-the (implemented) generative tree prior.
-Due to this, this error distribution for the twin tree is caused 
-only by the stochastic alignment simulation and stochastic Bayesian inference.
-The difference between these two error distribution is the error caused
-by the new/unimplemented tree prior.
-\fi
-
-\iffalse
-%version 2 with no formulae
-An optional step is to generate a 'twin tree' 
-(Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
-that will be analyzed in the same way as the true tree. We want to produce such tree 'converting' the original tree, created according to the generative prior $\mathit{G}$, into the chosen inference model $\mathit{I}$.
-
-To do so we exploit the likelihood function associated with the chosen inference model $\mathit{I}$. We find the parameters (e.g. speciation and extinction rate for a birth-death model) that maximize such likelihood applied to the true tree, conditioned on its number of tips.
-
-We use these parameters to simulate an equal amount of branching times for the twin tree simulated under the chosen inference model's process. We then combine these branching times with the original tree's topology.
-
-Using a twin tree serves as a control: both the given/true tree and twin tree will produce an error distribution. We assume that these errors are a natural product of the input tree and the intermediate steps of the pipeline. All the factors that can cause such errors are: the branching times of the tree (as a consequence of the tree prior), the topology of the tree, the stochasticity induced by simulating the alignment (step 1a $\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). By imposing the same topology and replicating the pipeline a sufficient number of times we can sort out all the possible causes that are not a direct consequence of the choice of the tree prior.
-
-Potential differences in shapes of error distributions will therefore be consequences of different tree priors for the two parallel pipelines: the use of prior $\mathit{G}$ for the original pipeline and of prior $\mathit{I}$ for the twin pipeline. In the second case, though, such error distribution is not influenced by the mismatch between how the tree is generated and how it is analyzed by BEAST2.
-\fi
-
-\giovanni{This is a slightly more formal version}
-\richel{As agreed, go ahead and expend this formalization}
-
-%version 3, more formal
 An optional step is to generate a 'twin tree' $\tau_{I}$
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
 that will be analyzed in the same way as the true tree, following a parallel pipeline. We want to produce such tree 'converting' the original tree $\tau_{\mathit{P}}$, created according to the generative prior $\mathit{P}$, to be in accordance with the chosen inference model $\mathit{I}$:
@@ -757,23 +710,6 @@ We call it 'twinning' and we use it in ERQ 3.
 
 \subsection{Question}
 
-\iffalse
-In the previous example, we used a known generative tree prior to match with the inference model.
-However, a novel tree prior, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior).
-One option is to choose to hand-pick a related 
-standard tree prior, as done in ERQs 3 and 5, and combine it with 
-a known generative alignment model.
-An alternative is to let multiple candidate inference models compete 
-and pick the best one, based on the highest evidence (aka marginal likelihood):
-when an alignment is simulated from the given tree, one can estimate the
-evidence for each inference model given that 
-alignment \richel{or the other way around?}.
-The benefit of this approach is that this is a commonly used procedure,
-which picks an inference model that is
-best at explaining the alignment, where more complex inference models are
-penalized for having more parameters.
-\fi
-
 In the previous example we selected the inference model $\mathit{I}$ to match with a known generative tree prior $\mathit{P_{0}}$.
 However, a novel tree prior $\mathit{P}$, by definition, is non-standard, thus cannot be part of a standard inference model (i.e. an inference model using a standard tree prior).
 In this case the user has to specify the the tree prior $\mathit{t_{p}}$ to be used in the inference from a list of standard tree priors. In general, having no information on $\mathit{P}$, this choice is arbitrary.
@@ -782,25 +718,6 @@ In this case the user has to specify the the tree prior $\mathit{t_{p}}$ to be u
 If the user has sufficient reasons to believe that one standard tree prior could be more suitable than others for the inference, they can set it as part of the inference model and to adopt site and clock models used to simulate the alignment. This option can be specified selecting "model\_type" to be "generative" as part of the inference conditions (as seen in ERQ 1, table~\ref{tab:RQ1}).
 
 If, instead, there is no preference for a specific tree prior, the user can let \verb;pirouette; select the best inference model from a list of candidate models. The model selection is performed automatically based on the criterion of the highest evidence (aka marginal likelihood). This option can be specified providing any number of experiments, selecting "model\_type" to be "candidate" for each of them, and "run\_if" to be "best\_candidate" (table~\ref{tab:RQ2} will summarize this for ERQ 2).
-
-
-\iffalse
-One option is to choose to hand-pick a related 
-standard tree prior, as done in ERQs 3 and 5, and combine it with 
-a known generative alignment model.
-An alternative is to let multiple candidate inference models compete 
-and pick the best one, based on the highest evidence (aka marginal likelihood):
-when an alignment is simulated from the given tree, one can estimate the
-evidence for each inference model given that 
-alignment \richel{or the other way around?}.
-The benefit of this approach is that this is a commonly used procedure,
-which picks an inference model that is
-best at explaining the alignment, where more complex inference models are
-penalized for having more parameters.
-\fi
-\iffalse
-A second research question that \verb;pirouette; can answer, is:
-\fi
 
 We show the procedure using \verb;pirouette; to answer the second research question:
 
@@ -859,20 +776,6 @@ as shown in listing~\ref{lst:create_alignment}.
   }
   \label{tab:RQ2}
 \end{table}
-
-\iffalse
-In the second step we set up our experiments. 
-Within this ERQ, each of our experiments contain a different
-inference model $I$, but has condition $C$ that will only let $I$
-be run in inference only if that inference model $I$ is the 
-best candidate inference model, that is, 
-it is the inference model with the highest evidence.
-Setting up experiments like this is thought to be so common,
-that \verb;pirouette; has a simple function to do:
-\verb;create_all_experiments; will create 40 experiments,
-containing the inference models of all combinations of 4 site 
-models, 2 clock models and 5 tree priors.
-\fi
 
 In the second step we set up our experiments. Unlike ERQ 1, here we provide a set of experiments $\{\mathit{X_{i}}\}_{i=1}^{40}$. All the experiments have the same inference conditions $\mathit{C_{i}} = \mathit{C}$ but different candidate inference models $\mathit{I_{i}}$. Yet, only one of them will be used to run the actual inference. According to the specified $\mathit{C}$, \verb;pirouette; will measure the evidence for each of them and select  only the one with the highest evidence as the best candidate.
 
