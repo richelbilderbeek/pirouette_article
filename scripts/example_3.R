@@ -19,7 +19,10 @@ alignment_params <- create_alignment_params(
 
 experiments <- list(create_experiment())
 
-twinning_params <- create_twinning_params()
+twinning_params <- create_twinning_params(
+  twin_model = "bd", 
+  method = "random_tree"
+)
 
 pir_params <- create_pir_params(
   alignment_params = alignment_params,

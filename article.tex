@@ -748,9 +748,25 @@ experiments <- list(experiment)
 The objects we just created need to be bundled
 in a \verb;pirouette; parameters structure,
 together with error measurement parameters $\mathit{E}$ and
-twinning parameters $\mathit{T}$. We use the default error measurement
+twinning parameters $\mathit{T}$. 
+
+We use the default error measurement
 parameters, which uses a burn-in of 10\% and the nLTT statistic to
-measure the difference between phylogenies. We will not use twinning
+measure the difference between phylogenies. For clarity,
+we create this setup explicitly here:
+
+\begin{lstlisting}[
+  language=R, floatplacement=ht, frame=single,
+  label = {lst:create_error_measure_params},
+  caption = Calling \texttt{create\_error\_measure\_params}
+]
+error_measure_params <- create_error_measure_params(
+  burn_in_fraction = 0.1, 
+  error_function = get_nltt_error_function()
+)
+\end{lstlisting}
+
+We will not use twinning
 here yet.  
 All these arguments are bundled
 and checked by \verb;create_pir_params;:
@@ -763,7 +779,7 @@ and checked by \verb;create_pir_params;:
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments,
-  error_measure_params = create_error_measure_params(),
+  error_measure_params = error_measure_params,
   twinning_params = NA
 )
 \end{lstlisting}
@@ -1029,7 +1045,9 @@ original one, respect to the outcome of the main pipeline.
 Due to this, the twinning process is used to provide a control for the main 
 experiment.
 
-Creating a twinning parameter is easy, as it has sensible default settings:
+Creating a twinning parameter is easy, as it has sensible default settings.
+For clarity, we explicitly show the default values of the most
+important arguments:
 
 \begin{lstlisting}[
   language=R, 
@@ -1038,8 +1056,25 @@ Creating a twinning parameter is easy, as it has sensible default settings:
   label = {lst:create_twinning_params},
   caption = Create the default twinning parameters
 ]
-twinning_params <- create_twinning_params()
+twinning_params <- create_twinning_params(
+  twin_model = "bd", 
+  method = "random_tree"
+)
 \end{lstlisting}
+
+\richel{
+  I would enjoy being able to write ...
+}
+\begin{lstlisting}
+  twinning_params <- create_twinning_params(
+    tree_prior = create_bd_tree_prior(),
+    ...
+  )
+)
+\end{lstlisting}
+\richel{
+  ... as that would connect the tree priors more
+}
 
 Bundling all the \verb;pirouette; arguments by \verb;create_pir_params;:
 
@@ -1092,11 +1127,6 @@ This leads to our fourth example research question:
 derived from an unknown speciation model,
 when selecting the best inference model, 
 in relationship to the background error?"
-\richel{
-  I inserted this example research question, 
-  as think this is natural intermediate between the 
-  previous and next/final example
-}
 
 \subsection{Answer}
 
@@ -1106,14 +1136,12 @@ The first step in \verb;pirouette; is to simulate a DNA alignment
 from the given phylogeny, for which we will use the same code 
 as shown in listing~\ref{lst:create_alignment}.
 
-In the second step we specify we want all 
-40 inference models to compete, by 
-calling \verb;create_all_experiments;,
+We agin specify we want all 40 inference models to compete, 
+by calling \verb;create_all_experiments;,
 as done in listing~\ref{lst:create_all_experiments}.
 
-We choose again to use sensible defaults for the third (the BEAST2 inference) 
-and fourth (measuring the error) steps, 
-as we previously did to answer the second research question. 
+We again pick to use the default setup to measure the error,
+as shown in listing~\ref{lst:create_error_measure_params}.
 
 To get an idea of a baseline error made by BEAST2, 
 we also make use of the twinning option by using the
