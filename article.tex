@@ -333,8 +333,12 @@ For these ERQs we will quantify the importance of a tree prior.
     $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ 
       is used in the inference & $\mathit{m_{t}}, \mathit{r_{i}}$\\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    $\mathit{X}$ & Experiment & Full setting for the BEAST2 run & 
-      $\mathit{I},\mathit{C}$ \\
+    $\mathit{X}$ & Experiment (candidate) 
+      & Full setting for a Bayesian inference 
+      & $\mathit{I},\mathit{C}$ \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    $\mathit{X'}$ & Experiment (selected) & As above & 
+      $\mathit{I},\mathit{C}$, $Pr(D)$, $\omega$ \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{E}$ & Error measure parameters & Errors measurement setup & 
       $\mathit{e_{f}}$\\
@@ -346,7 +350,8 @@ For these ERQs we will quantify the importance of a tree prior.
   \end{tabular}
   \caption{
     Definitions of terms and relative symbols used in the main text and in 
-    Fig~\ref{fig:pipeline}.
+    Fig~\ref{fig:pipeline}. $Pr(D)$ denotes the evidence, $\omega$ denotes
+    a model's weight 
   }
   \label{tab:definitions}
   \giovanni{
@@ -377,13 +382,15 @@ $\mathit{P}$.
     The phylogeny is converted to an alignment (2a) using alignment model 
 $\mathit{A}$. 
     The user supplies one or more experiments.
-    For each experiment $\mathit{X}$ 
+    For each candidate experiment $\mathit{X}$ 
     (a tuple of inference model $\mathit{I}$ and condition $\mathit{C}$),
     if its condition $\mathit{C}$ is 
     satisfied (which can depend on the alignment), 
-    its inference model $\mathit{I}$ is used in the next step (3a).
-    The allowed inference models use the alignment (2a) 
-    to create a BEAST2 posterior of (parameter estimates and) phylogenies (4a). 
+    it becomes a selected experiment $\mathit{X'}$, 
+    to be used in the next step (3a).
+    The inference models of the selected experimenst use the alignment (2a) 
+    to each create a Bayesian posterior of (parameter estimates and) 
+    phylogenies (4a). 
     Each of the posteriors' trees is compared to the true phylogeny (1a) 
     using error measure $\mathit{E}$, 
     resulting in an error distribution (5a). 
