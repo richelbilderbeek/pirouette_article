@@ -25,14 +25,17 @@ generative_experiment <- create_experiment(
     run_if = "always",
     do_measure_evidence = TRUE
   )
+  inference_model = create_inference_model(
+    site_model = create_jc69_site_model(),
+    clock_model = create_strict_clock_model(),
+    tree_prior = create_yule_tree_prior()
+  )
 )
 check_experiment(generative_experiment)
 
 # All non-Yule tree priors
 candidate_experiments <- create_all_experiments(
-  site_models = list(create_jc69_site_model()),
-  clock_models = list(create_strict_clock_model()),
-  tree_priors = list(create_bd_tree_prior(), create_ccp_tree_prior(), create_cep_tree_prior())
+  exclude_model = generative_experiment$inference_model
 )
 check_experiments(candidate_experiments)
 
