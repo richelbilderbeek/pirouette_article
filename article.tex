@@ -1282,26 +1282,27 @@ candidate_experiments <- create_all_experiments(
 )
 \end{lstlisting}
 
-We need to combine these experiments into one set:
+We need to combine these experiments into one set of experiments:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 experiments <- c(list(generative_experiment), candidate_experiments)
 \end{lstlisting}
 
-We choose again to use sensible defaults for the third (the BEAST2 inference) 
-and fourth (measuring the error) steps, as we previously did to answer the 
-second research question. To get an idea of a baseline error made by BEAST2, we 
-also make use of the twinning option:
+We choose again to use the default error measurement parameters
+as created in listing~\ref{lst:create_error_measure_params}
+and combine this with the same twinning parameters 
+as used in listing~\ref{lst:create_twinning_params}:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments,
-  twinning_params = create_twinning_params()
+  error_measure_params = error_measure_params,
+  twinning_params = twinning_params
 )
 \end{lstlisting}
 
-Running the experiment:
+Running the experiment in the usual fashion:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 errors <- pir_run(
@@ -1450,10 +1451,8 @@ Organization for Scientific Research (NWO) for financial support
 through a VICI grant awarded to RSE.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%
 \section{Data Accessibility}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%
 
 All code is archived at 
 \url{http://github.com/richelbilderbeek/pirouette_article},
