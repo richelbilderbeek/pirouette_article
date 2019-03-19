@@ -289,7 +289,8 @@ For these ERQs we will quantify the importance of a tree prior.
     $\mathit{e_{f}}$ & error function & Specifies how to measure the error 
       & nLTT, $|\gamma|$ \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    $\mathit{\tau_{p}}$ & twin tree prior & Sets the tree prior for the twin tree 
+    $\mathit{\tau_{p}}$ & twin tree prior & Sets the tree prior for the twin 
+tree 
       & Yule, BD \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline
@@ -361,7 +362,9 @@ For these ERQs we will quantify the importance of a tree prior.
     As the twinning parameters contain more than only the twin model's tree 
     prior, I suggest to keep it 'twinning parameters'
   }
-  \giovanni{I don't completely get the $X'$ description. What are $Pr(D)$ and $\omega$? Is it something that we really need or it brings more complications than benefits?}
+  \giovanni{I don't completely get the $X'$ description. What are $Pr(D)$ and 
+$\omega$? Is it something that we really need or it brings more complications 
+than benefits?}
 \end{sidewaystable}
 
 \subsection{pirouette's pipeline}
@@ -393,7 +396,15 @@ $\mathit{A}$.
     the experiments \richel{improve}.
     From a twin phylogeny, the same intermediate steps are taken,
     resulting in a twin error distribution (5b)
-    \giovanni{Ok, that's my take on this: 1) all the capital letters should go in a ball (or a rhombus, as you already did for C) which stands in the middle of the arrows (as with C now); 2) The box in the middle should contain all the inference models $I_{i}$; 3) We need another C at the intersection of the arrows that point to T and A; 4) In between of the arrow 2a->4a there should be another rhombus (or circle) with an I (or I' or I*, according on how we want to call the selected inference model), which is pointed by the rhombus (of circle) containing C; 5) The first arrow should start from a rhombus (or circle) with P inside.}
+    \giovanni{Ok, that's my take on this: 1) all the capital letters should go 
+in a ball (or a rhombus, as you already did for C) which stands in the middle 
+of the arrows (as with C now); 2) The box in the middle should contain all the 
+inference models $I_{i}$; 3) We need another C at the intersection of the 
+arrows that point to T and A; 4) In between of the arrow 2a->4a there should be 
+another rhombus (or circle) with an I (or I' or I*, according on how we want to 
+call the selected inference model), which is pointed by the rhombus (of circle) 
+containing C; 5) The first arrow should start from a rhombus (or circle) with P 
+inside.}
   }
   \label{fig:pipeline}
 \end{figure}
@@ -1119,7 +1130,8 @@ The resulting figure is shown in figure~\ref{fig:example_3}
 
 \subsection{Question}
 
-To answer ERQ 2 we used an evidence-based model selection procedure to obtain an 
+To answer ERQ 2 we used an evidence-based model selection procedure to obtain 
+an 
 error distribution.
 However, it is unclear to what extent this error is due to the mismatch between 
 the tree priors (from generative and inference models) or due to stochasticity. 
