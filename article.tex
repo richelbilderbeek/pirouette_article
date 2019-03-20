@@ -1350,6 +1350,98 @@ The resulting figure is shown in figure~\ref{fig:example_5}.
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Interpretation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\richel{
+  I think we can put the interpretation in a table as well.
+  Question is: do you agree with the interpretations I gave?
+  Please correct me.
+}
+
+\begin{table}
+  \begin{tabular}{ | r | c | c | c | }
+    \hline
+    \textbf{Compare with} & \textbf{E2} & \textbf{E3} & \textbf{E4} \\ 
+    \hline
+    \textbf{E1} & Y & Y & N \\
+    \textbf{E2} & . & N & Y \\
+    \textbf{E3} & . & . & Y \\
+    \textbf{E4} & . & . & . \\
+    \hline
+  \end{tabular}
+  \caption{
+    Error distributions that are relevant to compare.
+    E1: true tree, generative model.
+    E2: true tree, best candidate model.
+    E3: true tree, generative model.
+    E4: true tree, best candidate model.
+  }
+  \label{tab:relevant_comparisions}
+\end{table}
+
+\begin{table}
+  \begin{tabular}{ | r | c | p{9cm} | }
+    \hline
+    \textbf{Condition} & \textbf{Expectation} & \textbf{Interpretation} \\ 
+    \hline
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E1 > E2$}       & Unexpected & Novel tree prior is more related to 
+      best candate than hand-picked tree prior \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E1 \approx E2$} & Possible   & Hand-picked tree prior is just as 
+      suitable as the best candidate tree prior \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E1 < E2$}       & Expected   & Hand-picked tree prior is the most 
+      related tree prior \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \hline
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E1 > E3$}       & Unknown    & Novel tree prior important \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E1 \approx E3$} & Unknown    & Novel tree prior unimportant \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E1 < E3$}       & Unexpected & Twinning procedure increases 
+      inference errors when using hand-picked tree prior \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \hline
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E2 > E4$}       & Expected   & Impact of novel tree prior cannot 
+      be compensated for by model selection: twin tree with low likelihood? \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E2 \approx E4$} & Possible   & Best candidate tree priors perform 
+      equally well in true and twin tree: true and twin tree similar? \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E2 < E4$}       & Unexpected & Twinning procedure increases 
+      inference errors  when using best tree prior candidate \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \hline
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E3 > E4$}       & Unexpected & Hand-picked tree prior (that equals 
+      the twinning tree prior!) worse than best candidate tree prior \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E3 \approx E4$} & Possible   & Twin tree fits equally well to the 
+      hand-picked and best candidate tree prior  \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{$E3 < E4$}       & Expected   & Hand-pick tree prior (that equals 
+      the twinning tree prior) performs as expected \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \hline
+  \end{tabular}
+  \caption{
+    Interpretation of the different error distributions.
+    This assumes that the operators ($<$, $\approx$ and $>$) to compare
+    distributions are defined.
+    E1: true tree, generative model.
+    E2: true tree, best candidate model.
+    E3: true tree, generative model.
+    E4: true tree, best candidate model.
+  }
+  \label{tab:interpretation}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
