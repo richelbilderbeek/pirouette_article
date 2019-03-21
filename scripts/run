@@ -5,10 +5,15 @@
 # This script can be run as-is, as it will 
 # sbatch the needed jobs itself
 #
-# Usage:
+# Usage of master branch:
 #
 # ./run
 #
+# Usage of develop branch:
+#
+# ./run develop
+#
+# sbatch install_pirouette develop
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
@@ -16,8 +21,14 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=run
 #SBATCH --output=run.log
+
 # Install first
-jobid=$(sbatch install | cut -d ' ' -f 4)
+branch=$1
+if [ "$#" -ne 1 ]; then
+  branch=master
+fi
+
+jobid=$(sbatch install $branch | cut -d ' ' -f 4)
 
 # After install, create all figures
 sbatch --dependency=afterok:$jobid run_r_script example_1.R
