@@ -1,0 +1,16 @@
+<itsabeastystatewerein version='2.0' sample='10000000'>
+<statenode id='Tree.t:example_3_true'>(0:1.0469068837052837,((1:0.8671509926738453,2:0.8671509926738453)6:0.150591037380008,((3:0.7134760354091112,4:0.7134760354091112)8:0.27307192760478327,5:0.9865479630138945)7:0.03119406703995886)9:0.0291648536514304)10:0.0</statenode>
+<statenode id='birthRate.t:example_3_true'>birthRate.t:example_3_true[1 1] (-Infinity,Infinity): 1.6518127225578298 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"YuleBirthRateScaler.t:example_3_true","p":0.21411470427225812,"accept":118325,"reject":281145,"acceptFC":117260,"rejectFC":280901,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeScaler.t:example_3_true","p":0.7813007929826228,"accept":77966,"reject":322044,"acceptFC":77861,"rejectFC":320888,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeRootScaler.t:example_3_true","p":0.6542009037689999,"accept":50852,"reject":349412,"acceptFC":50749,"rejectFC":348262,"rejectIv":118619,"rejectOp":118619},
+{"id":"YuleModelUniformOperator.t:example_3_true","p":"NaN","accept":1577163,"reject":2423552,"acceptFC":1572243,"rejectFC":2415973,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelSubtreeSlide.t:example_3_true","p":0.37027832158449464,"accept":331160,"reject":1668860,"acceptFC":330739,"rejectFC":1663104,"rejectIv":320832,"rejectOp":320832},
+{"id":"YuleModelNarrow.t:example_3_true","p":"NaN","accept":472265,"reject":1527536,"acceptFC":470688,"rejectFC":1522810,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelWide.t:example_3_true","p":"NaN","accept":14131,"reject":385451,"acceptFC":14101,"rejectFC":384235,"rejectIv":222310,"rejectOp":222310},
+{"id":"YuleModelWilsonBalding.t:example_3_true","p":"NaN","accept":7544,"reject":392595,"acceptFC":7516,"rejectFC":391386,"rejectIv":192304,"rejectOp":192304}
+]}
+-->
