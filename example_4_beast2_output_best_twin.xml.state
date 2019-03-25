@@ -1,0 +1,36 @@
+<itsabeastystatewerein version='2.0' sample='10000000'>
+<statenode id='Tree.t:example_4_twin'>(((0:0.4318112509742407,1:0.4318112509742407)8:0.6631756650204965,2:1.0949869159947372)9:0.3003335988429381,((3:0.2343554000246791,4:0.2343554000246791)6:0.08482345181413745,5:0.31917885183881656)7:1.0761416629988587)10:0.0</statenode>
+<statenode id='rateAC.s:example_4_twin'>rateAC.s:example_4_twin[1 1] (0.0,Infinity): 0.9214480721466538 </statenode>
+<statenode id='rateAG.s:example_4_twin'>rateAG.s:example_4_twin[1 1] (0.0,Infinity): 1.154863291868213 </statenode>
+<statenode id='rateAT.s:example_4_twin'>rateAT.s:example_4_twin[1 1] (0.0,Infinity): 0.9496969139656719 </statenode>
+<statenode id='rateCG.s:example_4_twin'>rateCG.s:example_4_twin[1 1] (0.0,Infinity): 1.4175303759822915 </statenode>
+<statenode id='rateGT.s:example_4_twin'>rateGT.s:example_4_twin[1 1] (0.0,Infinity): 0.9833315012837495 </statenode>
+<statenode id='freqParameter.s:example_4_twin'>freqParameter.s:example_4_twin[4 1] (0.0,1.0): 0.26631354457227946 0.24552707579515357 0.23991022532079018 0.2482491543117763 </statenode>
+<statenode id='ucldStdev.c:example_4_twin'>ucldStdev.c:example_4_twin[1 1] (0.0,Infinity): 0.25235374148169526 </statenode>
+<statenode id='rateCategories.c:example_4_twin'>rateCategories.c:example_4_twin[10 1] (0,9): 2 9 0 2 3 2 3 1 2 0 </statenode>
+<statenode id='ePopSize.t:example_4_twin'>ePopSize.t:example_4_twin[1 1] (0.0,Infinity): 2.2814584554267987 </statenode>
+<statenode id='growthRate.t:example_4_twin'>growthRate.t:example_4_twin[1 1] (-Infinity,Infinity): 0.7745868591813312 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"ePopSizeScaler.t:example_4_twin","p":0.21858293984589847,"accept":73084,"reject":195439,"acceptFC":72211,"rejectFC":195259,"rejectIv":0,"rejectOp":0},
+{"id":"GrowthRateRandomWalk.t:example_4_twin","p":4.856618863816705,"accept":69455,"reject":197975,"acceptFC":68766,"rejectFC":197704,"rejectIv":0,"rejectOp":0},
+{"id":"CoalescentExponentialTreeScaler.t:example_4_twin","p":0.7820031434412184,"accept":50920,"reject":218213,"acceptFC":50862,"rejectFC":217339,"rejectIv":0,"rejectOp":0},
+{"id":"CoalescentExponentialTreeRootScaler.t:example_4_twin","p":0.5550436037634401,"accept":41782,"reject":226546,"acceptFC":41663,"rejectFC":225651,"rejectIv":53796,"rejectOp":53796},
+{"id":"CoalescentExponentialUniformOperator.t:example_4_twin","p":"NaN","accept":374044,"reject":2314212,"acceptFC":372650,"rejectFC":2305882,"rejectIv":0,"rejectOp":0},
+{"id":"CoalescentExponentialSubtreeSlide.t:example_4_twin","p":0.43458918322276613,"accept":131937,"reject":1212069,"acceptFC":131712,"rejectFC":1207386,"rejectIv":306767,"rejectOp":306767},
+{"id":"CoalescentExponentialNarrow.t:example_4_twin","p":"NaN","accept":31187,"reject":1314441,"acceptFC":31099,"rejectFC":1309717,"rejectIv":0,"rejectOp":0},
+{"id":"CoalescentExponentialWide.t:example_4_twin","p":"NaN","accept":814,"reject":268188,"acceptFC":813,"rejectFC":267223,"rejectIv":149264,"rejectOp":149264},
+{"id":"CoalescentExponentialWilsonBalding.t:example_4_twin","p":"NaN","accept":194,"reject":268288,"acceptFC":193,"rejectFC":267312,"rejectIv":132490,"rejectOp":132490},
+{"id":"RateACScaler.s:example_4_twin","p":0.5285974889356578,"accept":2241,"reject":6734,"acceptFC":2236,"rejectFC":6703,"rejectIv":0,"rejectOp":0},
+{"id":"RateAGScaler.s:example_4_twin","p":0.5208014490732606,"accept":2060,"reject":6997,"acceptFC":2052,"rejectFC":6962,"rejectIv":0,"rejectOp":0},
+{"id":"RateATScaler.s:example_4_twin","p":0.48178805008803705,"accept":1707,"reject":7150,"acceptFC":1702,"rejectFC":7132,"rejectIv":0,"rejectOp":0},
+{"id":"RateCGScaler.s:example_4_twin","p":0.5331464096186879,"accept":2015,"reject":6903,"acceptFC":2011,"rejectFC":6881,"rejectIv":0,"rejectOp":0},
+{"id":"RateGTScaler.s:example_4_twin","p":0.503208781887034,"accept":2186,"reject":6816,"acceptFC":2179,"rejectFC":6795,"rejectIv":0,"rejectOp":0},
+{"id":"FrequenciesExchanger.s:example_4_twin","p":0.03561764262287895,"accept":2412,"reject":6409,"acceptFC":2393,"rejectFC":6401,"rejectIv":0,"rejectOp":0},
+{"id":"ucldStdevScaler.c:example_4_twin","p":0.15993196042637337,"accept":68964,"reject":199791,"acceptFC":68300,"rejectFC":199504,"rejectIv":0,"rejectOp":0},
+{"id":"CategoriesRandomWalk.c:example_4_twin","p":"NaN","accept":498913,"reject":398263,"acceptFC":497068,"rejectFC":396894,"rejectIv":357246,"rejectOp":357246},
+{"id":"CategoriesSwapOperator.c:example_4_twin","p":"NaN","accept":694584,"reject":202052,"acceptFC":691816,"rejectFC":201519,"rejectIv":0,"rejectOp":0},
+{"id":"CategoriesUniform.c:example_4_twin","p":"NaN","accept":738868,"reject":156148,"acceptFC":735996,"rejectFC":155778,"rejectIv":0,"rejectOp":0}
+]}
+-->

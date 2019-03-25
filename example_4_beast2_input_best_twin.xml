@@ -4,12 +4,12 @@
     <data
 id="example_4_twin"
 name="alignment">
-                    <sequence id="seq_A" taxon="A" totalcount="4" value="tatcgtggcaaaatacaacgagtgataatgatagataataacagaagaaaaataaagtcaaggtactataaattaccaccgagaattataagaagaacgaataacgtagagatacctacaatagaaaaatagacgtagttggtgataaatgcaaagataaccgcagatgaatagtcgctacactattaatcctagtgtgaaatagtataaatcccaatgcatcaatactgaaatccatataaatgaaacccttcgcctgttcggctccggacctcacagccccgccccactggaggcccctccgacacggcctgcccaccacacgttaattggtagagtgatcgggcctcctcccagagcacagatcaccctatgtatcccaacaacattacctctcccgcgctgacacctaacccccctgcctcggttagggcggcccctcggattcatacatacctacctcggattcccttgcggtacctcaacgcagtgtacaaggcatgatttatgtccgtgtggggtaaatcacttcgtcggtcctatatactcgacgtcgttgggctcagcggcgcaacggggaggcacggagtgttgggatgggcaggctgacgtgtcggaggagcagagcaaatggtgggttccaaggtggaagggggtgggtgggagcaagggggtgggggttgacgtaaagagatgtgtcgaggcgggggcgggttgagaggggatgggataaggtagcgggcacggggaaacctagttgttttttttggtacactgctgactcatgagtttaatagttatgcccttagtagatatcggttttgtctgttgaattcagcgtaatttttattgacattttttccaaactatctaataacacaatccgttgtaggttgtgtttcctatgttttacgggcgtttacatattctcggttttcacttgtgttgaatctggtgccttcctacatgctcgtacttggctatacgttaattagtcttt"/>
-                    <sequence id="seq_B" taxon="B" totalcount="4" value="tatacacttatcaaacgcctatttattctagtagagcaaaacaaaataaaaaataaatcaatatagaacagctaagcaccgaaaaatagaacaaggtataactacgccaatgaatccgagtctgagatagagtaggatactgagcacaatgagtaaatacaggaatatccgaagtcacactaagagaaaacacagaatcgcataccctgatgattataatagtactaccgagcagaatgtaactctgaaccatgtgagaggccggaccccgtcactaattccctgcaagcttgagctccctcccgcaagcccacgcaccatcgtactgcctacctcaccgatccttctggccggagtttacgcccccccccgttgtaccaccccaccggttccgcagctaggcctactcctagtccgtccacattgcttcgagtccctcagcacaacctcattccggtatccctcttccatcgccgcccctgcattccaggttcaacggtgatagttgtgtaggcgccgggggggtctggccggcggtggtaattagattgctttatcaggatgagctgtagaatgccgcggctcagggtaaggtaatggggcgggtagagcttcgtttacgctgaagaaacgggaggggattaggtgtcgttgagacgtggagagaagtgaggtaggggtgaacgtatgggtttatagcatggtggaaacgaggtattttcgcagggcctagggacttatgtgcgtgggatccttgtactcttttgttcaacggtttttatgctttggtatgatgagtatggctttagtggcagtccggtttttgtgtagaatcttcaatgttgtttagtgctattttattccgtagatctaatactttatgggtttctgatttgtatgatatttttcttatggtgattcccacatttcctgatgtgatttgtatttaatctttatcccggatacatcagagcactcgtgtgcatgttaggttgtcgtt"/>
-                    <sequence id="seq_C" taxon="C" totalcount="4" value="gtaggagcgcattaatagcgatgaaaaaagagttacttccataagacgagaaacgtctaaacaataataatcataagaactacccaaaatcaaaggaacaaaacccaactcttgttccaaaccaaaaaaagattacgacctaaaaaaatgaagtaactgctagcagcaaaactaatgcgtacggaagatgtaagctgaaaaaaagataggccaacaaattaaccagaaccataaatcacggcacccgatatcaatcccactgccccccctaagcttcaactccggccccatcgaaagccgtcccccacctcaccccaggaacttaccccacagtaagccgccaccatgccattcccccgttacccagttcccgcccccgataccaaccgctaattagcggactgggctaccatctccaactcgcccccacatccgcctacgctcgcccggaagaccaccaacgtcatccaccacggtgcccggccatcggtcgcgcctccttgtagctgcagactcgcgatggaggaggggggcgggggggttgtactttgtcaccagagccctatagggcccgggcaagatcggcggctccggtccgtgctagatttcacgggggagagaattcttccgaggaggatcggtgaggggagggggccacttggttcgatgtggggccgaggggaaatggagaggaaccgctgacaataagaatgtggagtgggccggaccgtgcaagtgttggcctcgaagcagtgaagtcttattatccgaggtcctaaggttgacgtcttttttcccagagttaggtgtctgacttgaagtttatttttttagttctcccttactctgttcatacagaatgggctaagtacgtaaagttgtcactgattcaggctttttcctttagcggctgacattatttacgcttttttccttagactgttcattcataaacctctatatgaataagaagtatagtcattcagtgaaatgttctttt"/>
-                    <sequence id="seq_D" taxon="D" totalcount="4" value="aaaagaactagcaaagaagacagcagcaatttaataaccagcgaaaagacgcaaggtattaccaagagataaagcaaactcatcaaattgtattactaaagttaggggaaagggggatataaagtggattgtgaaccataaccaaaggaaaaaacctttaccatgtgatatcccaaaatgctcaacaagaaagtacataaaattgagaaccctaaacaaatacagtatagtttttacaacaggtgcggagcaccagcctctccactgctgtacaactccaggcttttccccgcatcttaataccgccagggggaatgtccactaacccctctaaacctgcgggcccgacctacttgcccactccccttgtcctcaggcgcatccgctcactgcccttaccacaatttagcacatggccgcgcgcgataatatccgcgagctattaacaagggacatgacctgcccaacccatacgatctggagctagcccgcctcgtcgcagatcggtgctggtgggatcgaggtattgacgagacggcgtgggtgtgggggtcattctgcctcaagacgtctcgtcacgagagtaacgccgttaagcggcgggattccaaggcaggtaagtcagtgggggcagcgataaggttgttcgaataatgtcatctcccttcgtttgcggggtgcgtgagagtatcccccgtctttctcttagggaagggcgagcgtccagagtgacctggggatagaggttgcgttttctggtactatgatgtttttatcagcgtactggaccgtcgctcgcaacctgtcctctgtgttgacctcctcatctcatgtaagtcatttttcaatgtctttggattttgttacgtgtctgcttactcctgtcttgatttttttttactttcttattcgtatcattattcttagggtttatttcttttaagattagtcctattttattagtcagacgaaacatttgctactttgctcttctaagtgt"/>
-                    <sequence id="seq_E" taxon="E" totalcount="4" value="aaaagaacaaagaaaaaaacgactcacattttgataaatagcgaaaagcagtaaagtgttcacacgacataaaacatatacatcaaattgtatatctaaagttagggtaaaggaggacaaaaagtgttttttgaccaataaataaagaacaaaatttgcatcctgtgatatctcaacatgatcaacaataaagtacataaattgggcaaccaggaagaactacattgtgctttttacatccgggactaagaaccagcccaccccctgctcttcacactccgcctgtaccgcgcatcttattaccgcctggcgtactgctcactagcccctctaactccccgggccggccccacttgtcccctgcccttgccctcgaacgtatccgcttagtcaccttaccccgaggtcccacgtcgcagcgcgcgaagatggccgagaccccttcccagggagcctgaccttaggacctcacacactcgcgcgttacccctcctcataaaagatcggcgtaggtaggttgaaggtatgaagtaaaccgcgcccgtttgggggtgtagatgcctcgagacctctaggcaagtgcgtaaggccggtaaacgaggaaatgcctagacaggggaggtagtgggcggagcgaggagctggtgcgtatagtttcaaatctaatagcgtggggggtgcgggagagcatccccacgctcttagttacgacacgccgcgcgtcgagtgtgacctgggaatacaggttgcgtgttgtggtaatattatgttattacggttgttctgcatggttgatcgcgacgtgtcgtctgtatgaatctcttcatctcatggaattcgtttttcaatttcgttggattttcgtatctttctgcatatcgttgtactgatttcttattagattattatacggaggatgagtctcattgtttatttccttcaagattaatactattttaatagtcatgcgaaacatctctcactgtgctcttccaagttt"/>
-                    <sequence id="seq_F" taxon="F" totalcount="4" value="accacaacaaccaaaaacgactaaaaaaatttaatgtacagacaagagtgaaaatttactaacacaagataaaataaactccttaaatggtataacaaaagttcggctaaaggaggaactagagtgtatgtaaaacaataatggaagaagagagctctcaccatgcaagatgccaaattgtactataacagactgcacatatttcacaacaaggaacaaattcagcctaatttataatttcgggacagagcaccagcccttcccccgctctccatccccgtccagtgccgcgcttcttcatacagccaggcggacggttctctatcccacccagtcccgcggggccgccatacgcgctccctagccctgccataaaactcctacgcttagtgccctgatcccgaggtagaacgtccgcgtgtacgatcatcgcctagcctcgttcaccaagaagctgtactcagcaatcttcccgctctcgagcaacctagcctcacgaaagatcggagctggtgagatcgaggagtggacgatcccaggtgagtatggggcaccagacggcttgactcgcctacgcaagagcgggactgcgatgagtgggggaatgcctaggcaggagagtgagggggtggcgaaatgagcaggtgaggatagtttcacatcacttagcgtggagggtgggggagggcatcccccggaaaactattaggggggggtggggtttgagagtgccgtgatgatcggtgttgctatatgtagtaattcgatgtgttcatgggagctgtgcatcgatagtcgtgaagtgtatacattgtgcatctcttcatttactgttgtacacttttggttgtctttgggtgttattatccgcttgctgattcttgtactgatttttattgactgttttcttcctgttattacgtgttgtgggtatatttgttatctctagtcctattttattatgtcttcaccatatgtgtgatttatcaccgctaatttt"/>
+                    <sequence id="seq_A" taxon="A" totalcount="4" value="atctgagtcaaaatataacgagcttaaaggagattaataaatgaaataaaataaagcaaaatcttgatatcctaagcaggcaataatacgaaaaccaataagtaggtactctacaaaagaagaataaacatggtgtagacgatacgcaatagaaacctatggaacgactaacagtgctattaagccatgtgacatatcgatatagaacaattcataaaccagcaacactcaaagcaatctagaggaatcctcatctcctggcatacctgccgcgaaccgagccacaaccccacttattccgcccctccggatcctcccaccccctaagagtcgattgtccttatcacggcccgtctcccaagcatagcacccactgggccaacatcggcatagctcctcccccaacctccgtcccgtggttaccgcttaaagcttcccctgaagccccctatgacccttctgcgtaattgcccgtgctgcacgctcctcatacaattctcgatatcgtcttttcgggggttccgagttggcggacgagcggtatgggcacatcgcgagagttggaggcaccgttgggcagggagggaggtcgcagagggaagaggtgacaaagggctgaagcgacgaggatggggggagggcggggcgagatctgcgaggcaaagggaggacggggaggcaaacggcccgacaggggtacggtggaagggagggtcgggcgggggtgagcggcgacagggacgtcactggcggagtaatctttttttttgcagtatcgtccatgctcagtttatatattcgagctttgatgacgtgtaatttcttgtataacctagtagcaattttttctgaatctttttacgaggtattattcgggagactatagttaactatcttattgtgattctttccgcagtctagccaaattgtgaattttcagttgtcttccctgtcgctgactgtgctcggatgtctgtgacgtacggattcattaatgttt"/>
+                    <sequence id="seq_B" taxon="B" totalcount="4" value="ataagaacctcaaaggcacgaactttcgtgataggcaaaaaaaaaataaaaataaaccaaagttagacaacctaatcaaccaaaaataccaagtcaaaatacccaaaatttcgagtttgaactagcataaaggacactactacgcgagtaaaaacaatatcgcggtacagctagtcagaagaatagaaattgactatgaacctgaattataagatacattagcgcaattgaacgatgtgaaaaagaaaccgaggtgtaatgctcgcccagcacatgagaagccacgttcaatcttttcgcaccccccaggacccctcacccacgtagccctacgccctcccatgcggtggtccgtttaatcatcccccccccggtgtccccccccctgcttagcaccttccccagagtccgttgctgcagaacaggcttcaggcccgcccgagcgcgggggcccttggtctccgcggttccgaccgcccccgtcagtccagcaacttggagagagtctcggttgaccggcgccaagaggtgtgttgagcgttttacggagaacgccggaactcgccgccacggtggcgaggaaacgagcgcgtaggcgggggggtacataaggaattatagactggtgagcgcggaaagcgcggggcggcgtgtggaacccgtccggtgaacgccggcgcgaccactagagaaatgttgggctgttaggccaagaggagcgggggtgatgtgtgaccgtcaggagttgatgtatgttttaatgttttctctcgacttattcacgcttcatatctctcgtttaggtttcatgcccagcaattttttgtataacggtgtagctatctttccttagtttttatgacttacattgtcctcgttttcatgattccatatcttacattctttcgttcagtactataggcaggtttggaaatctactttctatttcatgttgtaggtgacactcgcatgccggtgatctctctattcccttatgctt"/>
+                    <sequence id="seq_C" taxon="C" totalcount="4" value="ctaggagagcattaatagagatgaaaaaatagttacttccataagacgagaaacgtctaaataataataagcataacaactacccaaaatcaaaggaacaaaacgcaacgcgtgttccaaaccaaaaaaagattatgacataaaaaaatgaagtaactgctagcaccaaaactaatgcgtgcggaggatctaagttgaaaaaaagataggcaaataaaaaaaccataaccataaatcacggcatccgatagcgcgaccgcgctctccccgtcccgcaccccccactggacttcgggctccgaccccggtcaggaccaccaccccccgtcgctcccgaagcggttcccgcatggactcagaccgtaccgttcccccatgcccgatctcccaaccgccagtgccgcaaccacggggtgacaagctctgcttcagtccggctccaccccccgccaacctgcgctcaccctagagctcgcggcatcgcgcgccacatatacccacgtgacacataggagctggcggggggcagcgggggggtgtcacttgatcactgcagaaatccgggtaaggcgaccgctggagcgaaaggataagtgatgctaaagtcggtgacgcgccttattaagggcgagctaggggggtgccggggaaacattggttagcgtggtggaagcggggccctggcgggcccaagagcctccatcgctgtaggcgtgggaggcatagtgaccgtgttggaatagccgtggcacttgccgtattcttctaaacggtcatccgcatgcagtattttgtaaacgcgttcggtatatgccttagcgtttcattttttggttattcattcatatgttactaacgcctgggatccgtcattcccgttctatatgcttacggatttttaatttcgaggatgcacttctgttcgattttttaattcccatgctacttagtcccaatttctctgcctcaccagtatcgtactttcgtgctctgttatttt"/>
+                    <sequence id="seq_D" taxon="D" totalcount="4" value="aaaaaatcagacaaagaagacactaggaatttaatgactagcgaaaagccgcaagctattaccaagagataaagcaaactcatcaaatagtaatactaaagttagggtaaaggggaatataaaatctttttagaccaatacacaaggaaaaaaatcctcaccgtgtaagatcccaaatcgaaaaacaaaaaagtacacaaatttgacactcaggaaaaaatacaatgtatttctaacgtccggtactgagcgctgacccgtccaccagtgtctcccgaccaccgttaccacacgtcttggggcaatgatacaagctactcgctgaccggccactccctgcgcgctcacccgtcttaccccttacccttaccctagggaaccgacacttgatcccgtcgcgacaacatcacacatcaccatacggagcggtaaccagatgccattagaggggcccctaacctagctggcgcgaggactaacacactgcccctcctcgtcgccggtaggtgatggtgggattgcggaccagcagcgcacgtgtggatatgggggtctagcagaactccagagtatcataccacgagaccagtatgtccggaggggaatcaaccgtacggggcgtgcttggacgacgagtcaggatagttcgccttgtcttcgctcctctcgcgtgaggggtaatggcgacactaaaaaggatttatgttcgggtcgggagcgagtagcgcgtgaaatggtgcttgccgtttaattttctggtgcactcctgtttttcttggcgtcagctctgggtactagagccgtggattaattggagctaggttaatttcatgaaattactttttacttctatttggcttttccgttaaatatgattcgtggtgtcatgctttttttttcatttgttcttagtctgcttcgaatttaagtatctttattttccacttcgtaatcttttcttcattgagaacccactttgtgcagttaattttatccatat"/>
+                    <sequence id="seq_E" taxon="E" totalcount="4" value="aaaaaaaaaaccaaaaaagctactcgcattttgatgaacagcgaaaagcagtaaattgttcacacgagataaaacatactcattaaattgtatatttaaagttaaggtaaaggaggacaaaaattgatttgaacataataaagaaatacaaaaactctcctcgtgtaagatgccacattctaaaacaacaaagtacacaagattgacaatcaggaagacatacgctctagtttatacaggcggtactgagcgccaagccctcccctagtctgcgtcccccacctttacctcacgtcttggtgccttcacacaagctactcgctgacccgtggccccctaaccacccatcccgcttacgccctgcccttactctggggaacctcgacttggtcccctagccccagaatcccggccccccatgcgaggcggtcaacagcccccattaaaccaaccaatagcttagccgacccgcgctttcacacactgcccgtgcttggagacgccaggtcatggtcacctagcgttaagtcagcgcaagggaggggatgtgggtatagctgaattccacagtataataccgccagaccactaggtccccggcgggctgaatcgaacgggggtagcgtggggggggggcgctgatggtgtgtctcgtctacgctcgtcttgagtgggggttgagtgccatactaacattgagtcattttcggggcgggagcgagtacatcgtgaaatggggcttgctgtagtattttgtagtgctctactttcttgctgggcgtcatggctgcttgctacagccatgaattaattgtgactatgttgatgtccagtcattactttttacctaaatttgggttttactgtaagtataactctggttgtcatcctttgttcttgacttgttctcaaagagctactaattgttgtatctttatgttccacgtcgtaatcttttgtcgatggagaacccacttggtgcattaaattttagcagttt"/>
+                    <sequence id="seq_F" taxon="F" totalcount="4" value="accacaacaactaaaaaccactaaaagaatttaatgtagagagaagagcggaaatgtactaacacaatataaaacaaagtcctcaaatagtataaaaaaagttcgggtaaagaaggaactagagtgtatgtaaaacaataatcgaagaagagagctctcaccatggaagatggcaaattggactacaacagactgcacatatttgacaacaaggaacaaattgaggctaatttctaattccgaaacagagcgccgacgcctccccgactctgcgcccaccaccgattccccacgttttggtaccaactcagatgcaactcgctgactccttagccccaaaacacccatgccgcagacgcactgcccgtatcctagggcatctcaacttgatccgctagcctaagcattcctaatcaggatacgctgcggtcaccagagccctttcatagcacgtctacactaggcgtgccgcacacttacacaccggtccacattggcgccggtaggcgatggtgcgctcgcggcgaggaagtacatcagtgcgtgtggggtcagagctgaataacgcgggatcacaccgcgaggccaagagctccgtgggggcctgcatcggatggcgcgtgcgagggaggcgccaagagacggtgagactcgtcttctctactcttgagtggcgggtgtgggcgagagtaagaaggacccctcttaggggggggggggaatagcgcgtgtaatgcagatggctgttgatctctgtcgtaatcgggtgtattgttgggcggtatgtcttgctcctagagcagtgtttcacttgtgtctgtgttaatttcttgtaatcacgttttatttctatttgggtattcatctaaggttgatagtttttgtcatgctttttcttacatattttcttattgtagttgtgaatcgtgagtctctatattctctgtcgtcatgttttgttctatctaaccgcactatgtgcattctacagaatactttt"/>
                 </data>
 
 
@@ -39,9 +39,14 @@ name="alignment">
                 <alignment idref="example_4_twin"/>
             </taxonset>
         </tree>
-        <parameter id="kappa1.s:example_4_twin" lower="0.0" name="stateNode">2.0</parameter>
-        <parameter id="kappa2.s:example_4_twin" lower="0.0" name="stateNode">2.0</parameter>
+        <parameter id="rateAC.s:example_4_twin" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateAG.s:example_4_twin" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateAT.s:example_4_twin" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateCG.s:example_4_twin" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="rateGT.s:example_4_twin" lower="0.0" name="stateNode">1.0</parameter>
         <parameter id="freqParameter.s:example_4_twin" dimension="4" lower="0.0" name="stateNode" upper="1.0">0.25</parameter>
+        <parameter id="ucldStdev.c:example_4_twin" lower="0.0" name="stateNode">0.1</parameter>
+        <stateNode id="rateCategories.c:example_4_twin" spec="parameter.IntegerParameter" dimension="10">1</stateNode>
         <parameter id="ePopSize.t:example_4_twin" name="stateNode">0.3</parameter>
         <parameter id="growthRate.t:example_4_twin" name="stateNode">3.0E-4</parameter>
     </state>
@@ -67,17 +72,41 @@ name="alignment">
                     <parameter id="RealParameter.201" estimate="false" name="scale">1</parameter>
                 </LaplaceDistribution>
             </prior>
-            <prior id="kappa1Prior.s:example_4_twin" name="distribution" x="@kappa1.s:example_4_twin">
-                <LogNormal id="LogNormalDistributionModel.0" name="distr">
-                    <parameter id="RealParameter.0" estimate="false" name="M">1</parameter>
-                    <parameter id="RealParameter.1" estimate="false" lower="0" name="S" upper="Infinity">1.25</parameter>
-                </LogNormal>
+            <prior id="RateACPrior.s:example_4_twin" name="distribution" x="@rateAC.s:example_4_twin">
+                <Gamma id="Gamma.0" name="distr">
+                    <parameter id="RealParameter.0" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.1" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
             </prior>
-            <prior id="kappa2Prior.s:example_4_twin" name="distribution" x="@kappa2.s:example_4_twin">
-                <LogNormal id="LogNormalDistributionModel.1" name="distr">
-                    <parameter id="RealParameter.2" estimate="false" name="M">1</parameter>
-                    <parameter id="RealParameter.3" estimate="false" lower="0" name="S" upper="Infinity">1.25</parameter>
-                </LogNormal>
+            <prior id="RateAGPrior.s:example_4_twin" name="distribution" x="@rateAG.s:example_4_twin">
+                <Gamma id="Gamma.1" name="distr">
+                    <parameter id="RealParameter.2" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.3" estimate="false" name="beta">20.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="RateATPrior.s:example_4_twin" name="distribution" x="@rateAT.s:example_4_twin">
+                <Gamma id="Gamma.2" name="distr">
+                    <parameter id="RealParameter.4" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.5" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="RateCGPrior.s:example_4_twin" name="distribution" x="@rateCG.s:example_4_twin">
+                <Gamma id="Gamma.3" name="distr">
+                    <parameter id="RealParameter.6" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.7" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="RateGTPrior.s:example_4_twin" name="distribution" x="@rateGT.s:example_4_twin">
+                <Gamma id="Gamma.4" name="distr">
+                    <parameter id="RealParameter.8" estimate="false" name="alpha">0.05</parameter>
+                    <parameter id="RealParameter.9" estimate="false" name="beta">10.0</parameter>
+                </Gamma>
+            </prior>
+            <prior id="ucldStdevPrior.c:example_4_twin" name="distribution" x="@ucldStdev.c:example_4_twin">
+                <Gamma id="Gamma.5" name="distr">
+                    <parameter id="RealParameter.10" estimate="false" name="alpha">0.5396</parameter>
+                    <parameter id="RealParameter.11" estimate="false" name="beta">0.3819</parameter>
+                </Gamma>
             </prior>
         </distribution>
         <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
@@ -86,12 +115,16 @@ name="alignment">
                     <parameter id="mutationRate.s:example_4_twin" estimate="false" name="mutationRate">1.0</parameter>
                     <parameter id="gammaShape.s:example_4_twin" estimate="false" name="shape">1.0</parameter>
                     <parameter id="proportionInvariant.s:example_4_twin" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
-                    <substModel id="tn93.s:example_4_twin" spec="TN93" kappa1="@kappa1.s:example_4_twin" kappa2="@kappa2.s:example_4_twin">
+                    <substModel id="gtr.s:example_4_twin" spec="GTR" rateAC="@rateAC.s:example_4_twin" rateAG="@rateAG.s:example_4_twin" rateAT="@rateAT.s:example_4_twin" rateCG="@rateCG.s:example_4_twin" rateGT="@rateGT.s:example_4_twin">
+                        <parameter id="rateCT.s:example_4_twin" estimate="false" lower="0.0" name="rateCT">1.0</parameter>
                         <frequencies id="estimatedFreqs.s:example_4_twin" spec="Frequencies" frequencies="@freqParameter.s:example_4_twin"/>
                     </substModel>
                 </siteModel>
-                <branchRateModel id="StrictClock.c:example_4_twin" spec="beast.evolution.branchratemodel.StrictClockModel">
-                    <parameter id="clockRate.c:example_4_twin" estimate="false" name="clock.rate">1.0</parameter>
+                <branchRateModel id="RelaxedClock.c:example_4_twin" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" rateCategories="@rateCategories.c:example_4_twin" tree="@Tree.t:example_4_twin">
+                    <LogNormal id="LogNormalDistributionModel.c:example_4_twin" S="@ucldStdev.c:example_4_twin" meanInRealSpace="true" name="distr">
+                        <parameter id="RealParameter.12" estimate="false" lower="0.0" name="M" upper="1.0">1.0</parameter>
+                    </LogNormal>
+                    <parameter id="ucldMean.c:example_4_twin" estimate="false" name="clock.rate">1.0</parameter>
                 </branchRateModel>
             </distribution>
         </distribution>
@@ -115,13 +148,27 @@ name="alignment">
 
     <operator id="CoalescentExponentialWilsonBalding.t:example_4_twin" spec="WilsonBalding" tree="@Tree.t:example_4_twin" weight="3.0"/>
 
-    <operator id="kappa1Scaler.s:example_4_twin" spec="ScaleOperator" parameter="@kappa1.s:example_4_twin" scaleFactor="0.5" weight="0.1"/>
+    <operator id="RateACScaler.s:example_4_twin" spec="ScaleOperator" parameter="@rateAC.s:example_4_twin" scaleFactor="0.5" weight="0.1"/>
 
-    <operator id="kappa2Scaler.s:example_4_twin" spec="ScaleOperator" parameter="@kappa2.s:example_4_twin" scaleFactor="0.5" weight="0.1"/>
+    <operator id="RateAGScaler.s:example_4_twin" spec="ScaleOperator" parameter="@rateAG.s:example_4_twin" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateATScaler.s:example_4_twin" spec="ScaleOperator" parameter="@rateAT.s:example_4_twin" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateCGScaler.s:example_4_twin" spec="ScaleOperator" parameter="@rateCG.s:example_4_twin" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateGTScaler.s:example_4_twin" spec="ScaleOperator" parameter="@rateGT.s:example_4_twin" scaleFactor="0.5" weight="0.1"/>
 
     <operator id="FrequenciesExchanger.s:example_4_twin" spec="DeltaExchangeOperator" delta="0.01" weight="0.1">
         <parameter idref="freqParameter.s:example_4_twin"/>
     </operator>
+
+    <operator id="ucldStdevScaler.c:example_4_twin" spec="ScaleOperator" parameter="@ucldStdev.c:example_4_twin" scaleFactor="0.5" weight="3.0"/>
+
+    <operator id="CategoriesRandomWalk.c:example_4_twin" spec="IntRandomWalkOperator" parameter="@rateCategories.c:example_4_twin" weight="10.0" windowSize="1"/>
+
+    <operator id="CategoriesSwapOperator.c:example_4_twin" spec="SwapOperator" intparameter="@rateCategories.c:example_4_twin" weight="10.0"/>
+
+    <operator id="CategoriesUniform.c:example_4_twin" spec="UniformOperator" parameter="@rateCategories.c:example_4_twin" weight="10.0"/>
 
     <logger id="tracelog" fileName="example_4_twin.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
         <log idref="posterior"/>
@@ -129,9 +176,14 @@ name="alignment">
         <log idref="prior"/>
         <log idref="treeLikelihood.example_4_twin"/>
         <log id="TreeHeight.t:example_4_twin" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:example_4_twin"/>
-        <log idref="kappa1.s:example_4_twin"/>
-        <log idref="kappa2.s:example_4_twin"/>
+        <log idref="rateAC.s:example_4_twin"/>
+        <log idref="rateAG.s:example_4_twin"/>
+        <log idref="rateAT.s:example_4_twin"/>
+        <log idref="rateCG.s:example_4_twin"/>
+        <log idref="rateGT.s:example_4_twin"/>
         <log idref="freqParameter.s:example_4_twin"/>
+        <log idref="ucldStdev.c:example_4_twin"/>
+        <log id="rate.c:example_4_twin" spec="beast.evolution.branchratemodel.RateStatistic" branchratemodel="@RelaxedClock.c:example_4_twin" tree="@Tree.t:example_4_twin"/>
         <log idref="CoalescentExponential.t:example_4_twin"/>
         <log idref="ePopSize.t:example_4_twin"/>
         <log idref="growthRate.t:example_4_twin"/>
@@ -145,7 +197,7 @@ name="alignment">
     </logger>
 
     <logger id="treelog.t:example_4_twin" fileName="$(tree).trees" logEvery="1000" mode="tree">
-        <log id="TreeWithMetaDataLogger.t:example_4_twin" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:example_4_twin"/>
+        <log id="TreeWithMetaDataLogger.t:example_4_twin" spec="beast.evolution.tree.TreeWithMetaDataLogger" branchratemodel="@RelaxedClock.c:example_4_twin" tree="@Tree.t:example_4_twin"/>
     </logger>
 
 </run>

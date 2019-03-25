@@ -1,12 +1,12 @@
-% latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Tue Mar 12 12:01:10 2019
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Mar 25 16:11:37 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrrrrrrr}
+\begin{tabular}{rrrrrrrrrrrrr}
   \hline
- & posterior & likelihood & prior & treeLikelihood & TreeHeight & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & YuleModel & birthRate \\ 
+ & posterior & likelihood & prior & treeLikelihood & TreeHeight & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & CoalescentExponential & ePopSize & growthRate \\ 
   \hline
-1 & 9584 & 9653 & 3272 & 9653 & 5058 & 2992 & 4258 & 2828 & 3131 & 9251 & 9644 \\ 
+1 & 9620 & 10001 & 1236 & 10001 & 364 & 325 & 413 & 360 & 415 & 2020 & 2768 & 1333 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 4 for best candidate model} 

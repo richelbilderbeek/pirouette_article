@@ -1,51 +1,51 @@
-% latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Tue Mar 12 12:00:26 2019
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Mar 25 16:11:35 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlllrr}
   \hline
  & Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
   \hline
-1 & GTR & RLN & BD & -8238.468 & 0.000 \\ 
-  2 & GTR & RLN & coalescent\_bayesian\_skyline & -8216.907 & 0.000 \\ 
-  3 & GTR & RLN & CCP & -8197.377 & 0.000 \\ 
-  4 & GTR & RLN & CEP & -8213.961 & 0.000 \\ 
-  5 & GTR & RLN & Yule & -8196.331 & 0.000 \\ 
-  6 & GTR & Strict & BD & -8235.545 & 0.000 \\ 
-  7 & GTR & Strict & coalescent\_bayesian\_skyline & -8218.053 & 0.000 \\ 
-  8 & GTR & Strict & CCP & -8244.177 & 0.000 \\ 
-  9 & GTR & Strict & CEP & -8244.915 & 0.000 \\ 
-  10 & GTR & Strict & Yule & -8242.928 & 0.000 \\ 
-  11 & HKY & RLN & BD & -8192.918 & 0.000 \\ 
-  12 & HKY & RLN & coalescent\_bayesian\_skyline & -8206.589 & 0.000 \\ 
-  13 & HKY & RLN & CCP & -8202.070 & 0.000 \\ 
-  14 & HKY & RLN & CEP & -8187.302 & 0.016 \\ 
-  15 & HKY & RLN & Yule & -8200.544 & 0.000 \\ 
-  16 & HKY & Strict & BD & -8288.241 & 0.000 \\ 
-  17 & HKY & Strict & coalescent\_bayesian\_skyline & -8200.160 & 0.000 \\ 
-  18 & HKY & Strict & CCP & -8213.874 & 0.000 \\ 
-  19 & HKY & Strict & CEP & -8189.503 & 0.002 \\ 
-  20 & HKY & Strict & Yule & -8203.385 & 0.000 \\ 
-  21 & JC & RLN & BD & -8192.080 & 0.000 \\ 
-  22 & JC & RLN & coalescent\_bayesian\_skyline & -8196.246 & 0.000 \\ 
-  23 & JC & RLN & CCP & -8190.578 & 0.001 \\ 
-  24 & JC & RLN & CEP & -8194.636 & 0.000 \\ 
-  25 & JC & RLN & Yule & -8183.157 & 0.982 \\ 
-  26 & JC & Strict & BD & -8196.166 & 0.000 \\ 
-  27 & JC & Strict & coalescent\_bayesian\_skyline & -8196.828 & 0.000 \\ 
-  28 & JC & Strict & CCP & -8197.668 & 0.000 \\ 
-  29 & JC & Strict & CEP & -8194.647 & 0.000 \\ 
-  30 & JC & Strict & Yule & -8197.472 & 0.000 \\ 
-  31 & TN & RLN & BD & -8206.402 & 0.000 \\ 
-  32 & TN & RLN & coalescent\_bayesian\_skyline & -8202.060 & 0.000 \\ 
-  33 & TN & RLN & CCP & -8213.503 & 0.000 \\ 
-  34 & TN & RLN & CEP & -8204.715 & 0.000 \\ 
-  35 & TN & RLN & Yule & -8214.973 & 0.000 \\ 
-  36 & TN & Strict & BD & -8205.808 & 0.000 \\ 
-  37 & TN & Strict & coalescent\_bayesian\_skyline & -8202.557 & 0.000 \\ 
-  38 & TN & Strict & CCP & -8244.197 & 0.000 \\ 
-  39 & TN & Strict & CEP & -8201.470 & 0.000 \\ 
-  40 & TN & Strict & Yule & -8219.565 & 0.000 \\ 
+1 & GTR & RLN & BD & -8240.427 & 0.000 \\ 
+  2 & GTR & RLN & CBS & -8237.903 & 0.000 \\ 
+  3 & GTR & RLN & CCP & -8220.055 & 0.000 \\ 
+  4 & GTR & RLN & CEP & -8252.427 & 0.000 \\ 
+  5 & GTR & RLN & Yule & -8225.595 & 0.000 \\ 
+  6 & GTR & Strict & BD & -8254.034 & 0.000 \\ 
+  7 & GTR & Strict & CBS & -8239.517 & 0.000 \\ 
+  8 & GTR & Strict & CCP & -8260.156 & 0.000 \\ 
+  9 & GTR & Strict & CEP & -8242.083 & 0.000 \\ 
+  10 & GTR & Strict & Yule & -8229.951 & 0.000 \\ 
+  11 & HKY & RLN & BD & -8231.011 & 0.000 \\ 
+  12 & HKY & RLN & CBS & -8229.616 & 0.000 \\ 
+  13 & HKY & RLN & CCP & -8220.206 & 0.000 \\ 
+  14 & HKY & RLN & CEP & -8220.627 & 0.000 \\ 
+  15 & HKY & RLN & Yule & -8227.854 & 0.000 \\ 
+  16 & HKY & Strict & BD & -8228.156 & 0.000 \\ 
+  17 & HKY & Strict & CBS & -8230.857 & 0.000 \\ 
+  18 & HKY & Strict & CCP & -8295.370 & 0.000 \\ 
+  19 & HKY & Strict & CEP & -8240.512 & 0.000 \\ 
+  20 & HKY & Strict & Yule & -8227.602 & 0.000 \\ 
+  21 & JC & RLN & BD & -8223.994 & 0.000 \\ 
+  22 & JC & RLN & CBS & -8223.627 & 0.000 \\ 
+  23 & JC & RLN & CCP & -8228.239 & 0.000 \\ 
+  24 & JC & RLN & CEP & -8212.109 & 0.601 \\ 
+  25 & JC & RLN & Yule & -8214.377 & 0.062 \\ 
+  26 & JC & Strict & BD & -8222.597 & 0.000 \\ 
+  27 & JC & Strict & CBS & -8223.045 & 0.000 \\ 
+  28 & JC & Strict & CCP & -8225.295 & 0.000 \\ 
+  29 & JC & Strict & CEP & -8213.312 & 0.181 \\ 
+  30 & JC & Strict & Yule & -8213.463 & 0.155 \\ 
+  31 & TN & RLN & BD & -8226.402 & 0.000 \\ 
+  32 & TN & RLN & CBS & -8272.811 & 0.000 \\ 
+  33 & TN & RLN & CCP & -8226.438 & 0.000 \\ 
+  34 & TN & RLN & CEP & -8274.276 & 0.000 \\ 
+  35 & TN & RLN & Yule & -8229.032 & 0.000 \\ 
+  36 & TN & Strict & BD & -8228.815 & 0.000 \\ 
+  37 & TN & Strict & CBS & -8223.687 & 0.000 \\ 
+  38 & TN & Strict & CCP & -8230.451 & 0.000 \\ 
+  39 & TN & Strict & CEP & -8223.911 & 0.000 \\ 
+  40 & TN & Strict & Yule & -8235.977 & 0.000 \\ 
    \hline
 \end{tabular}
 \caption{Evidences of example 5} 

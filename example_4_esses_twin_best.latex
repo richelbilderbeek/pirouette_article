@@ -1,12 +1,12 @@
-% latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Tue Mar 12 12:01:13 2019
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Mar 25 16:11:37 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrrrrrrrrrr}
+\begin{tabular}{rrrrrrrrrrrrrrrrrrrrrr}
   \hline
- & posterior & likelihood & prior & treeLikelihood & TreeHeight & kappa1 & kappa2 & freqParameter.1 & freqParameter.2 & freqParameter.3 & freqParameter.4 & CoalescentExponential & ePopSize & growthRate \\ 
+ & posterior & likelihood & prior & treeLikelihood & TreeHeight & rateAC & rateAG & rateAT & rateCG & rateGT & freqParameter.1 & freqParameter.2 & freqParameter.3 & freqParameter.4 & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & CoalescentExponential & ePopSize & growthRate \\ 
   \hline
-1 & 7391 & 7423 & 6818 & 7423 & 9998 & 1288 & 1214 & 759 & 699 & 769 & 707 & 9651 & 5705 & 7555 \\ 
+1 & 8477 & 8595 & 1860 & 8595 & 3814 & 398 & 414 & 333 & 331 & 393 & 370 & 659 & 471 & 282 & 1237 & 2872 & 1024 & 1196 & 9003 & 4786 & 6569 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 4 for best candidate model, twin tree} 
