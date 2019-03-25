@@ -1,0 +1,88 @@
+# Code of example 3
+#
+# Works under Windows
+library(pirouette)
+library(ggplot2)
+library(ggtree)
+
+root_folder <- path.expand("~/GitHubs/pirouette_article/")
+example_no <- 3
+set.seed(314)
+
+testit::assert(is_beast2_installed())
+
+phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);")
+
+alignment_params <- create_alignment_params(
+  root_sequence = create_blocked_dna(length = 1000),
+  mutation_rate = 0.1
+)
+
+experiments <- list(create_experiment())
+
+twinning_params <- create_twinning_params(
+  twin_model = "bd",
+  method = "random_tree"
+)
+
+pir_params <- create_pir_params(
+  alignment_params = alignment_params,
+  experiments = experiments,
+  twinning_params = twinning_params
+)
+
+print("#######################################################################")
+print("Settings to run on Peregrine cluster")
+print("#######################################################################")
+pir_params$alignment_params$fasta_filename <- file.path(root_folder, paste0("example_", example_no, "_true.fasta"))
+for (i in seq_along(pir_params$experiments)) {
+  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input.xml"))
+  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.log"))
+  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.trees"))
+  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output.xml.state"))
+  pir_params$experiments[[i]]$errors_filename <- file.path(root_folder, paste0("example_", example_no, "_error.csv"))
+}
+pir_params$evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_true.csv"))
+if (!is_one_na(pir_params$twinning_params)) {
+  twinning_params$twin_tree_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.tree"))
+  twinning_params$twin_alignment_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.fasta"))
+  twinning_params$twin_evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_twin.csv"))
+}
+print("#######################################################################")
+
+errors <- pir_run(
+  phylogeny,
+  pir_params = pir_params
+)
+
+pir_plot(errors) +
+  scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
+  ggsave(file.path(root_folder, paste0("example_", example_no, "_errors.png")))
+
+testit::assert(pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1)
+esses <- tracerer::calc_esses(
+  traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
+  sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
+)
+
+print("#######################################################################")
+print("ESSes")
+print("#######################################################################")
+sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
+xtable::xtable(
+  esses,
+  caption = paste0("ESSes of example ", example_no),
+  label = paste0("tab:esses_example_", example_no),
+  digits = 0
+)
+sink()
+
+
+print("#######################################################################")
+print("Appendix")
+print("#######################################################################")
+pir_to_pics(
+  phylogeny = phylogeny,
+  pir_params = pir_params,
+  folder = root_folder
+)
