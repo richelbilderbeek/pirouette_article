@@ -5,8 +5,9 @@ library(pirouette)
 library(ggplot2)
 library(ggtree)
 
-root_folder <- path.expand("~/GitHubs/pirouette_article/")
+root_folder <- path.expand("~/GitHubs/pirouette_article")
 example_no <- 3
+setwd(root_folder)
 set.seed(314)
 
 testit::assert(is_beast2_installed())

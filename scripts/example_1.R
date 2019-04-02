@@ -6,9 +6,12 @@ library(ggplot2)
 library(ggthemes)
 library(ggtree)
 
-root_folder <- path.expand("~/GitHubs/pirouette_article/")
+root_folder <- path.expand("~/GitHubs/pirouette_article")
 example_no <- 1
+setwd(root_folder)
 set.seed(314)
+
+testit::assert(is_beast2_installed())
 
 # Should run one day, https://github.com/richelbilderbeek/pirouette/issues/192
 #phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
