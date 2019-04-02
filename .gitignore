@@ -241,3 +241,12 @@ TSWLatexianTemp*
 # generated if using elsarticle.cls
 *.spl
 article.pdf
+.trees
+*.trees
+*.log
+*.fasta
+*.state
+*.state.xml
+Rplots.pdf
+*.xml
+*.tree
