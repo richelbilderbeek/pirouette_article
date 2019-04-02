@@ -1,0 +1,53 @@
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Tue Apr  2 14:23:34 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrr}
+  \hline
+Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
+  \hline
+JC & Strict & Yule & -7349.587 & 0.000 \\ 
+  GTR & RLN & BD & -7387.493 & 0.000 \\ 
+  GTR & RLN & coalescent\_bayesian\_skyline & -7697.603 & 0.000 \\ 
+  GTR & RLN & CCP & -7371.347 & 0.000 \\ 
+  GTR & RLN & CEP & -7386.521 & 0.000 \\ 
+  GTR & RLN & Yule & -7367.568 & 0.000 \\ 
+  GTR & Strict & BD & -7356.991 & 0.000 \\ 
+  GTR & Strict & coalescent\_bayesian\_skyline & -7366.652 & 0.000 \\ 
+  GTR & Strict & CCP & -7377.617 & 0.000 \\ 
+  GTR & Strict & CEP & -7370.201 & 0.000 \\ 
+  GTR & Strict & Yule & -7367.684 & 0.000 \\ 
+  HKY & RLN & BD & -7349.007 & 0.000 \\ 
+  HKY & RLN & coalescent\_bayesian\_skyline & -7356.665 & 0.000 \\ 
+  HKY & RLN & CCP & -7355.045 & 0.000 \\ 
+  HKY & RLN & CEP & -7367.667 & 0.000 \\ 
+  HKY & RLN & Yule & -7353.590 & 0.000 \\ 
+  HKY & Strict & BD & -7351.897 & 0.000 \\ 
+  HKY & Strict & coalescent\_bayesian\_skyline & -7367.487 & 0.000 \\ 
+  HKY & Strict & CCP & -7369.071 & 0.000 \\ 
+  HKY & Strict & CEP & -7366.530 & 0.000 \\ 
+  HKY & Strict & Yule & -7352.933 & 0.000 \\ 
+  JC & RLN & BD & -7345.188 & 0.004 \\ 
+  JC & RLN & coalescent\_bayesian\_skyline & -7352.371 & 0.000 \\ 
+  JC & RLN & CCP & -7360.526 & 0.000 \\ 
+  JC & RLN & CEP & -7339.549 & 0.991 \\ 
+  JC & RLN & Yule & -7346.909 & 0.001 \\ 
+  JC & Strict & BD & -7346.247 & 0.001 \\ 
+  JC & Strict & coalescent\_bayesian\_skyline & -7345.387 & 0.003 \\ 
+  JC & Strict & CCP & -7349.482 & 0.000 \\ 
+  JC & Strict & CEP & -7347.745 & 0.000 \\ 
+  TN & RLN & BD & -7356.222 & 0.000 \\ 
+  TN & RLN & coalescent\_bayesian\_skyline & -7372.226 & 0.000 \\ 
+  TN & RLN & CCP & -7371.549 & 0.000 \\ 
+  TN & RLN & CEP & -7353.336 & 0.000 \\ 
+  TN & RLN & Yule & -7358.902 & 0.000 \\ 
+  TN & Strict & BD & -7355.943 & 0.000 \\ 
+  TN & Strict & coalescent\_bayesian\_skyline & -7352.953 & 0.000 \\ 
+  TN & Strict & CCP & -7361.437 & 0.000 \\ 
+  TN & Strict & CEP & -7382.702 & 0.000 \\ 
+  TN & Strict & Yule & -7375.420 & 0.000 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences of example 5, twin tree} 
+\label{tab:evidences_example_5_twin}
+\end{table}
