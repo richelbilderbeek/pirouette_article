@@ -77,5 +77,5 @@ print("#######################################################################")
 pir_to_pics(
   phylogeny = phylogeny,
   pir_params = pir_params,
-  folder = file.path(example_folder, paste0("example_", example_no))
+  folder = example_folder
 )
