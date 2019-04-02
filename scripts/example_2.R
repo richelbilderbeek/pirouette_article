@@ -34,19 +34,19 @@ pir_params <- create_pir_params(
 ################################################################################
 # Settings to run on Peregrine cluster
 ################################################################################
-pir_params$alignment_params$fasta_filename <- file.path(example_folder, paste0("example_", example_no, "_true.fasta"))
+pir_params$alignment_params$fasta_filename <- file.path(example_folder, "true.fasta")
 for (i in seq_along(pir_params$experiments)) {
-  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(example_folder, paste0("example_", example_no, "_beast2_input.xml"))
-  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, paste0("example_", example_no, "_beast2_output.log"))
-  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, paste0("example_", example_no, "_beast2_output.trees"))
-  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, paste0("example_", example_no, "_beast2_output.xml.state"))
-  pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, paste0("example_", example_no, "_error.csv"))
+  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(example_folder, "beast2_input.xml")
+  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, "beast2_output.log")
+  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, "beast2_output.trees")
+  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, "beast2_output.xml.state")
+  pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error.csv")
 }
-pir_params$evidence_filename <- file.path(example_folder, paste0("example_", example_no, "_evidence_true.csv"))
+pir_params$evidence_filename <- file.path(example_folder, "evidence_true.csv")
 if (!is_one_na(pir_params$twinning_params)) {
-  twinning_params$twin_tree_filename <- file.path(example_folder, paste0("example_", example_no, "_twin.tree"))
-  twinning_params$twin_alignment_filename <- file.path(example_folder, paste0("example_", example_no, "_twin.fasta"))
-  twinning_params$twin_evidence_filename <- file.path(example_folder, paste0("example_", example_no, "_evidence_twin.csv"))
+  twinning_params$twin_tree_filename <- file.path(example_folder, "twin.tree")
+  twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
+  twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
 }
 ################################################################################
 
@@ -57,7 +57,7 @@ errors <- pir_run(
 
 pir_plot(errors) +
   scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
-  ggsave(file.path(example_folder, paste0("example_", example_no, "_errors.png")))
+  ggsave(file.path(example_folder, "errors.png"))
 
 
 testit::assert(pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1)
@@ -65,7 +65,7 @@ esses <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
-sink(file.path(example_folder, paste0("example_", example_no, "_esses.latex")))
+sink(file.path(example_folder, "esses.latex"))
 xtable::xtable(
   esses,
   caption = paste0("ESSes of example ", example_no),
@@ -110,7 +110,6 @@ ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() +
 print("#######################################################################")
 print("Appendix")
 print("#######################################################################")
-dir.create(file.path(example_folder, paste0("example_", example_no)), showWarnings = FALSE)
 pir_to_pics(
   phylogeny = phylogeny,
   pir_params = pir_params,
