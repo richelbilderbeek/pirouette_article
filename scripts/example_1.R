@@ -38,7 +38,7 @@ for (i in seq_along(pir_params$experiments)) {
   pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, "beast2_output.log")
   pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, "beast2_output.trees")
   pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, "beast2_output.xml.state")
-  pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error.csv"))
+  pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error.csv")
 }
 pir_params$evidence_filename <- file.path(example_folder, "evidence_true.csv")
 if (!is_one_na(pir_params$twinning_params)) {
