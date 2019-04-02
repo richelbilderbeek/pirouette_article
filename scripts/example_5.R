@@ -27,7 +27,8 @@ generative_experiment <- create_experiment(
   inference_model = create_inference_model(
     site_model = create_jc69_site_model(),
     clock_model = create_strict_clock_model(),
-    tree_prior = create_yule_tree_prior()
+    tree_prior = create_yule_tree_prior(),
+    mcmc = create_mcmc(chain_length = 1e+07, store_every = 1000)
   )
 )
 check_experiment(generative_experiment)

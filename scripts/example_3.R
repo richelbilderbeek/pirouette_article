@@ -21,7 +21,7 @@ alignment_params <- create_alignment_params(
 experiments <- list(create_experiment())
 
 twinning_params <- create_twinning_params(
-  twin_model = "bd",
+  twin_model = "birth_death",
   method = "random_tree"
 )
 
