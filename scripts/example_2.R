@@ -90,9 +90,12 @@ names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidenc
 
 
 sink(file.path(root_folder, "example_2_evidences.latex"))
-xtable::xtable(
-  df_evidences,
-  caption = "Evidences of example 2", label = "tab:evidences_example_2", digits = 3
+xtable::print.xtable(
+  xtable::xtable(
+    df_evidences,
+    caption = "Evidences of example 2", label = "tab:evidences_example_2", digits = 3
+  ),
+  include.rownames = FALSE
 )
 sink()
 

@@ -69,11 +69,14 @@ print("#######################################################################")
 print("ESSes")
 print("#######################################################################")
 sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
-xtable::xtable(
-  esses,
-  caption = paste0("ESSes of example ", example_no),
-  label = paste0("tab:esses_example_", example_no),
-  digits = 0
+xtable::print.xtable(
+  xtable::xtable(
+    esses,
+    caption = paste0("ESSes of example ", example_no),
+    label = paste0("tab:esses_example_", example_no),
+    digits = 0
+  ),
+  include.rownames = FALSE
 )
 sink()
 

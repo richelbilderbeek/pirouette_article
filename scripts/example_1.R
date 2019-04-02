@@ -64,7 +64,10 @@ esses <- tracerer::calc_esses(
 )
 
 sink(file.path(root_folder, paste0("example_", example_no, "_esses.latex")))
-xtable::xtable(esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0)
+xtable::print.xtable(
+  xtable::xtable(esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0),
+  include.rownames = FALSE
+)
 sink()
 
 ggtree::ggtree(phylogeny) + theme_tree2() + geom_tiplab() +

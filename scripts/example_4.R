@@ -78,9 +78,12 @@ df_evidences$tree_prior_name <- plyr::revalue(
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
 sink(file.path(root_folder, paste0("example_", example_no, "_evidence_true.latex")))
-xtable::xtable(
-  df_evidences,
-  caption = "Evidences of example 5", label = "tab:evidences_example_5", digits = 3
+xtable::print.xtable(
+  xtable::xtable(
+    df_evidences,
+    caption = "Evidences of example 5", label = "tab:evidences_example_5", digits = 3
+  ),
+  include.rownames = FALSE
 )
 sink()
 
@@ -105,9 +108,12 @@ df_evidences$tree_prior_name <- plyr::revalue(
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
 sink(file.path(root_folder, paste0("example_", example_no, "_evidence_twin.latex")))
-xtable::xtable(
-  df_evidences,
-  caption = "Evidences of example 5, twin tree", label = "tab:evidences_example_5_twin", digits = 3
+xtable::print.xtable(
+  xtable::xtable(
+    df_evidences,
+    caption = "Evidences of example 5, twin tree", label = "tab:evidences_example_5_twin", digits = 3
+  ),
+  include.rownames = FALSE
 )
 sink()
 
@@ -125,21 +131,27 @@ esses_twin_best <- tracerer::calc_esses(
 )
 
 sink(file.path(root_folder, paste0("example_", example_no, "_esses_best.latex")))
-xtable::xtable(
-  esses_best,
-  caption = paste0("ESSes of example ", example_no, " for best candidate model"),
-  label = paste0("tab:esses_example_", example_no, "_best"),
-  digits = 0
+xtable::print.xtable(
+  xtable::xtable(
+    esses_best,
+    caption = paste0("ESSes of example ", example_no, " for best candidate model"),
+    label = paste0("tab:esses_example_", example_no, "_best"),
+    digits = 0
+  ),
+  include.rownames = FALSE
 )
 sink()
 
 
 sink(file.path(root_folder, paste0("example_", example_no, "_esses_twin_best.latex")))
-xtable::xtable(
-  esses_twin_best,
-  caption = paste0("ESSes of example ", example_no, " for best candidate model, twin tree"),
-  label = paste0("tab:esses_example_", example_no, "_twin__best"),
-  digits = 0
+xtable::print.xtable(
+  xtable::xtable(
+    esses_twin_best,
+    caption = paste0("ESSes of example ", example_no, " for best candidate model, twin tree"),
+    label = paste0("tab:esses_example_", example_no, "_twin__best"),
+    digits = 0
+  ),
+  include.rownames = FALSE
 )
 sink()
 
