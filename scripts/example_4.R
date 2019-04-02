@@ -7,7 +7,9 @@ library(ggtree)
 
 root_folder <- path.expand("~/GitHubs/pirouette_article")
 example_no <- 4
-setwd(root_folder)
+example_folder <- file.path(root_folder, paste0("example_", example_no))
+dir.create(example_folder, showWarnings = FALSE)
+setwd(example_folder)
 set.seed(314)
 
 testit::assert(is_beast2_installed())
@@ -31,19 +33,19 @@ pir_params <- create_pir_params(
 print("#######################################################################")
 print("Settings to run on Peregrine cluster")
 print("#######################################################################")
-pir_params$alignment_params$fasta_filename <- file.path(root_folder, paste0("example_", example_no, "_true.fasta"))
+pir_params$alignment_params$fasta_filename <- file.path(example_folder, paste0("example_", example_no, "_true.fasta"))
 for (i in seq_along(pir_params$experiments)) {
-  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_input_best.xml"))
-  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_best.log"))
-  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_best.trees"))
-  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(root_folder, paste0("example_", example_no, "_beast2_output_best.xml.state"))
-  pir_params$experiments[[i]]$errors_filename <- file.path(root_folder, paste0("example_", example_no, "_error_best.csv"))
+  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(example_folder, paste0("example_", example_no, "_beast2_input_best.xml"))
+  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, paste0("example_", example_no, "_beast2_output_best.log"))
+  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, paste0("example_", example_no, "_beast2_output_best.trees"))
+  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, paste0("example_", example_no, "_beast2_output_best.xml.state"))
+  pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, paste0("example_", example_no, "_error_best.csv"))
 }
-pir_params$evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_true.csv"))
+pir_params$evidence_filename <- file.path(example_folder, paste0("example_", example_no, "_evidence_true.csv"))
 if (!is_one_na(pir_params$twinning_params)) {
-  pir_params$twinning_params$twin_tree_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.tree"))
-  pir_params$twinning_params$twin_alignment_filename <- file.path(root_folder, paste0("example_", example_no, "_twin.fasta"))
-  pir_params$twinning_params$twin_evidence_filename <- file.path(root_folder, paste0("example_", example_no, "_evidence_twin.csv"))
+  pir_params$twinning_params$twin_tree_filename <- file.path(example_folder, paste0("example_", example_no, "_twin.tree"))
+  pir_params$twinning_params$twin_alignment_filename <- file.path(example_folder, paste0("example_", example_no, "_twin.fasta"))
+  pir_params$twinning_params$twin_evidence_filename <- file.path(example_folder, paste0("example_", example_no, "_evidence_twin.csv"))
 }
 print("#######################################################################")
 
@@ -55,7 +57,7 @@ errors <- pir_run(
 
 pir_plot(errors) +
   scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
-  ggsave(file.path(root_folder, paste0("example_", example_no, "_errors.png")))
+  ggsave(file.path(example_folder, paste0("example_", example_no, "_errors.png")))
 
 print("#######################################################################")
 print("Evidence")
@@ -80,7 +82,7 @@ df_evidences$tree_prior_name <- plyr::revalue(
 )
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
-sink(file.path(root_folder, paste0("example_", example_no, "_evidence_true.latex")))
+sink(file.path(example_folder, paste0("example_", example_no, "_evidence_true.latex")))
 xtable::print.xtable(
   xtable::xtable(
     df_evidences,
@@ -110,7 +112,7 @@ df_evidences$tree_prior_name <- plyr::revalue(
 )
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
-sink(file.path(root_folder, paste0("example_", example_no, "_evidence_twin.latex")))
+sink(file.path(example_folder, paste0("example_", example_no, "_evidence_twin.latex")))
 xtable::print.xtable(
   xtable::xtable(
     df_evidences,
@@ -133,7 +135,7 @@ esses_twin_best <- tracerer::calc_esses(
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
 
-sink(file.path(root_folder, paste0("example_", example_no, "_esses_best.latex")))
+sink(file.path(example_folder, paste0("example_", example_no, "_esses_best.latex")))
 xtable::print.xtable(
   xtable::xtable(
     esses_best,
@@ -146,7 +148,7 @@ xtable::print.xtable(
 sink()
 
 
-sink(file.path(root_folder, paste0("example_", example_no, "_esses_twin_best.latex")))
+sink(file.path(example_folder, paste0("example_", example_no, "_esses_twin_best.latex")))
 xtable::print.xtable(
   xtable::xtable(
     esses_twin_best,
@@ -161,8 +163,9 @@ sink()
 print("#######################################################################")
 print("Appendix")
 print("#######################################################################")
+dir.create(file.path(example_folder, paste0("example_", example_no)), showWarnings = FALSE)
 pir_to_pics(
   phylogeny = phylogeny,
   pir_params = pir_params,
-  folder = root_folder
+  folder = file.path(example_folder, paste0("example_", example_no))
 )
