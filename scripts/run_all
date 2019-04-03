@@ -1,0 +1,10 @@
+#!/bin/bash
+# Script to run all:
+#   * Installation
+#   * Creating all figures
+./install
+Rscript example_1.R
+Rscript example_2.R
+Rscript example_3.R
+Rscript example_4.R
+Rscript example_5.R
