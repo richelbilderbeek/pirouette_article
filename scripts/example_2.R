@@ -94,7 +94,7 @@ df_evidences$tree_prior_name <- plyr::revalue(
 names(df_evidences) <- c("Site model", "Clock model", "Tree prior", "log(evidence)", "Weight")
 
 
-sink(file.path(example_folder, "example_2_evidences.latex"))
+sink(file.path(example_folder, "evidences.latex"))
 xtable::print.xtable(
   xtable::xtable(
     df_evidences,

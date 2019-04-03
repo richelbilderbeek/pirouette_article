@@ -650,7 +650,7 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 \end{lstlisting}
 
 \begin{figure}[ht]
-  \includegraphics[width=\textwidth]{tree_yule.png}
+  \includegraphics[width=\textwidth]{example_1/true_tree.png}
   \caption{The Yule tree, as created by listing~\ref{lst:create_yule_tree}.}
   \label{fig:yule_tree}
   \giovanni{Remove the text in top-left corner.}
@@ -831,7 +831,7 @@ pir_plot(errors)
 \end{lstlisting}
 
 \begin{figure}[ht]
-  \includegraphics[width=\textwidth]{example_1_errors.png}
+  \includegraphics[width=\textwidth]{example_1/errors.png}
   \caption{
     Example 1: the error BEAST2 makes from a phylogeny 
     when the generative and inference model are the same.
@@ -918,7 +918,7 @@ phylogeny  <- ape::read.tree(
 )
 \end{lstlisting}
 \begin{figure}[ht]
-  \includegraphics[width=\textwidth]{tree_unknown.png}
+  \includegraphics[width=\textwidth]{example_2/tree_unknown.png}
   \caption{The tree derived from an unknown diversification process, 
     as created by listing~\ref{lst:unknown_phylogeny}.
   }
@@ -1005,7 +1005,7 @@ The resulting figure is shown in figure~\ref{fig:example_2}.
 \richel{agreed, after the figures also show it :-) }
 
 \begin{figure}[ht]
-  \includegraphics[width=\textwidth]{example_2_errors.png}
+  \includegraphics[width=\textwidth]{example_2/errors.png}
   \caption{
     Example 2: the error BEAST2 makes from a phylogeny when
     picking the best inference model.
@@ -1109,7 +1109,7 @@ pir_plot(errors)
 The output is shown in figure~\ref{fig:example_3}
 
 \begin{figure}[ht]
-  \includegraphics[width=\textwidth]{example_3_errors.png}
+  \includegraphics[width=\textwidth]{example_3/errors.png}
   \caption{
     Example 3: the error made by BEAST2 from a phylogeny, 
     when hand-picking a generative tree prior versus the control.
@@ -1197,7 +1197,7 @@ The output is shown in figure~\ref{fig:example_4}.
 \richel{agreed, after the figures also show it :-) }
 
 \begin{figure}[ht]
-  \includegraphics[width=\textwidth]{example_4_errors.png}
+  \includegraphics[width=\textwidth]{example_4/errors.png}
   \caption{
     Example 4: the error made by BEAST2 from a phylogeny, when the generative 
     model is known, compared to candidates with similar inference models, in 
@@ -1332,7 +1332,7 @@ The output is shown in figure~\ref{fig:example_5}.
 \richel{agreed, after the figures also show it :-) }
 
 \begin{figure}[ht]
-  \includegraphics[width=\textwidth]{example_5_errors.png}
+  \includegraphics[width=\textwidth]{example_5/errors.png}
   \caption{
     Example 5: the error made by BEAST2 from a phylogeny, 
     when the generative model is known, 
@@ -1613,16 +1613,16 @@ RSE contributed to revisions.
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_1_true_tree.png}
+      \includegraphics[height=0.2\textheight]{example_1/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_1_true_alignment.png}
+      \includegraphics[height=0.2\textheight]{example_1/true_alignment.png}
     };   
     \node[state] (C) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_1_true_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_1/true_posterior_gen.png}
     };   
     \node[state] (D) [below of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_1_error_violin.png}
+      \includegraphics[height=0.2\textheight]{example_1/true_error_violin_gen.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -1639,7 +1639,7 @@ RSE contributed to revisions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{example_1_esses.latex}
+\input{example_1/esses.latex}
 % has label tab:esses_example_1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1659,16 +1659,16 @@ RSE contributed to revisions.
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2_true_tree.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2_true_alignment.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_alignment.png}
     };   
     \node[state] (C) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2_true_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_posterior_best.png}
     };   
     \node[state] (D) [below of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2_error_violin.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -1683,10 +1683,10 @@ RSE contributed to revisions.
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{example_2_esses.latex}
+\input{example_2/esses.latex}
 % has label tab:esses_example_2
 
-\input{example_2_evidences.latex}
+\input{example_2/evidences.latex}
 % has label tab:evidences_example_2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1706,28 +1706,28 @@ RSE contributed to revisions.
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3_true_tree.png}
+      \includegraphics[height=0.2\textheight]{example_3/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_3_true_alignment.png}
+      \includegraphics[height=0.13\textheight]{example_3/true_alignment.png}
     };   
     \node[state] (C) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3_true_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_3/true_posterior_gen.png}
     };   
     \node[state] (D) [below of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3_error_violin.png}
+      \includegraphics[height=0.2\textheight]{example_3/true_error_violin_gen.png}
     };   
     \node[state] (AT) [right of = A, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3_twin_tree.png}
+      \includegraphics[height=0.2\textheight]{example_3/twin_tree.png}
     };   
     \node[state] (BT) [below of = AT, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_3_twin_alignment.png}
+      \includegraphics[height=0.13\textheight]{example_3/twin_alignment.png}
     };   
     \node[state] (CT) [below of = BT, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3_twin_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_3/twin_posterior_gen.png}
     };   
     \node[state] (DT) [below of = CT, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3_twin_error_violin.png}
+      \includegraphics[height=0.2\textheight]{example_3/twin_error_violin_gen.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -1746,7 +1746,7 @@ RSE contributed to revisions.
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{example_3_esses.latex}
+\input{example_3/esses.latex}
 % has label tab:esses_example_3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1766,33 +1766,33 @@ RSE contributed to revisions.
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.4\textheight]{example_4_true_tree.png}
+      \includegraphics[height=0.4\textheight]{example_4/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.45\textheight]{example_4_true_alignment.png}
+      \includegraphics[height=0.45\textheight]{example_4/true_alignment.png}
     };   
     \node[state] (CB) [below of = B, rectangle, node distance=0.8\textheight] {
       
-\includegraphics[height=0.95\textheight]{example_4_true_posterior_best.png}
+\includegraphics[height=0.95\textheight]{example_4/true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle, node distance=1.0\textheight] {
-      \includegraphics[height=0.65\textheight]{example_4_error_violin_best.png}
+      \includegraphics[height=0.65\textheight]{example_4/true_error_violin_best.png}
     };   
     \node[state] (AT) [right of = A, rectangle, node distance=2.0\textwidth] {
-      \includegraphics[height=0.4\textheight]{example_4_twin_tree.png}
+      \includegraphics[height=0.4\textheight]{example_4/twin_tree.png}
     };   
     \node[state] (BT) [below of = AT, rectangle] {
-      \includegraphics[height=0.45\textheight]{example_4_twin_alignment.png}
+      \includegraphics[height=0.45\textheight]{example_4/twin_alignment.png}
     };   
     \node[state] (CTB) [below of = BT, rectangle, node distance=0.8\textheight] 
 {
       
-\includegraphics[height=0.95\textheight]{example_4_twin_posterior_best.png}
+\includegraphics[height=0.95\textheight]{example_4/twin_posterior_best.png}
     };   
     \node[state] (DTB) [below of = CTB, rectangle, node 
 distance=1.0\textheight] {
       
-\includegraphics[height=0.65\textheight]{example_4_twin_error_violin_best.png}
+\includegraphics[height=0.65\textheight]{example_4/twin_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -1812,16 +1812,16 @@ distance=1.0\textheight] {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\input{example_4_esses_best.latex}
+\input{example_4/esses_best.latex}
 % has label tab:esses_example_4_best
 
-\input{example_4_esses_twin_best.latex}
+\input{example_4/esses_twin_best.latex}
 % has label tab:esses_example_4_twin_best
 
-\input{example_4_evidence_true.latex}
+\input{example_4/evidence_true.latex}
 % has label tab:evidences_example_4
 
-\input{example_4_evidence_twin.latex}
+\input{example_4/evidence_twin.latex}
 % has label tab:evidences_example_4
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1841,42 +1841,42 @@ distance=1.0\textheight] {
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_true_tree.png}
+      \includegraphics[height=0.2\textheight]{example_5/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_5_true_alignment.png}
+      \includegraphics[height=0.13\textheight]{example_5/true_alignment.png}
     };   
     \node[state] (CG) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_true_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_5/true_posterior_gen.png}
     };   
     \node[state] (DG) [below of = CG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_error_violin_gen.png}
+      \includegraphics[height=0.2\textheight]{example_5/true_error_violin_gen.png}
     };   
     \node[state] (CB) [right of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_true_posterior_best.png}
+      \includegraphics[height=0.2\textheight]{example_5/true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_error_violin_best.png}
+      \includegraphics[height=0.2\textheight]{example_5/true_error_violin_best.png}
     };   
     \node[state] (AT) [right of = A, rectangle, node distance=0.8\textheight] {
-      \includegraphics[height=0.2\textheight]{example_5_twin_tree.png}
+      \includegraphics[height=0.2\textheight]{example_5/twin_tree.png}
     };   
     \node[state] (BT) [below of = AT, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_5_twin_alignment.png}
+      \includegraphics[height=0.13\textheight]{example_5/twin_alignment.png}
     };   
     \node[state] (CTG) [below of = BT, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_twin_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_5/twin_posterior_gen.png}
     };   
     \node[state] (DTG) [below of = CTG, rectangle] {
       
-\includegraphics[height=0.2\textheight]{example_5_twin_error_violin_gen.png}
+\includegraphics[height=0.2\textheight]{example_5/twin_error_violin_gen.png}
     };   
     \node[state] (CTB) [right of = CTG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_5_twin_posterior_best.png}
+      \includegraphics[height=0.2\textheight]{example_5/twin_posterior_best.png}
     };   
     \node[state] (DTB) [below of = CTB, rectangle] {
       
-\includegraphics[height=0.2\textheight]{example_5_twin_error_violin_best.png}
+\includegraphics[height=0.2\textheight]{example_5/twin_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -1899,22 +1899,22 @@ distance=1.0\textheight] {
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{example_5_esses_gen.latex}
+\input{example_5/esses_gen.latex}
 % has label tab:esses_example_5_gen
 
-\input{example_5_esses_best.latex}
+\input{example_5/esses_best.latex}
 % has label tab:esses_example_5_best
 
-\input{example_5_esses_twin_gen.latex}
+\input{example_5/esses_twin_gen.latex}
 % has label tab:esses_example_5_twin_gen
 
-\input{example_5_esses_twin_best.latex}
+\input{example_5/esses_twin_best.latex}
 % has label tab:esses_example_5_twin_best
 
-\input{example_5_evidence_true.latex}
+\input{example_5/evidence_true.latex}
 % has label tab:evidences_example_5
 
-\input{example_5_evidence_twin.latex}
+\input{example_5/evidence_twin.latex}
 % has label tab:evidences_example_5
 
 \end{document}
