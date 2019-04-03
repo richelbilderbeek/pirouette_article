@@ -148,19 +148,19 @@ in our understanding of how species evolve.
 Such tools have been increasingly exploited to hypothesize 
 and test what the main drivers and modes for diversification are.
 
-Because BEAST performs a Bayesian analysis, 
-it does not only need character data but also tree priors, 
-describing how the diversification occurs, to return posterior phylogenies.
-BEAST uses standard tree priors such as Yule or 
-constant-rate birth-death [\cite{nee1994reconstructed}] models.
-These models are the most commonly picked in biological research,
-as these embody a reasonable level of biological complexity, 
-yet are computationally fast enough.
-The recent development of BEAST2 [\cite{bouckaert2014beast}] provides, 
-unlike its predecessor, the possibility for third-party users 
-to use their own new or preferred diversification model, 
-if an algorithm is provided to calculate the probability 
-of a tree given such a diversification model.
+BEAST [\cite{drummond2007beast}] is a Bayesian phylogenetics tool, 
+that needs both data and priors to infer a posterior.
+Of these priors, the tree prior describes how diversification occurs.
+BEAST has built-in tree priors such as the Yule [\cite{yule}] and 
+(constant-rate) birth-death [\cite{nee1994reconstructed}] model.
+These simple tree priors are most commonly used, as these 
+have sufficient biological complexity, while being computationally fast.
+BEAST's successor, BEAST2 [\cite{bouckaert2014beast}],
+has a package manager, that allows third-party users to extend existing 
+functionality.
+By writing a BEAST2 package, novel diversification models can be added.
+The key ingredient of such a package would be the likelihood equation
+of a phylogeny for the novel diversification model.
 There have been plenty of these models (and their associated probability 
 algorithms) 
 developed, among others, those in which diversification is 
@@ -176,49 +176,56 @@ depends on a trait that has two [\cite{maddison2007estimating}],
 or more [\cite{fitzjohn2012diversitree}] states,
 or even allows concealed states [\cite{beaulieu2016detecting}] 
 or a combination of all these [\cite{herrera2018detecting}].
-Not all of these diversification models are available in BEAST2, 
-but the option is available.
+Only few of these diversification models are available as a BEAST2 package.
 
-When investigating a diversification process,
-starting from a given phylogeny, 
-the parameter values of the diversification model 
-are commonly estimated using maximum likelihood.
-To test the effectiveness of the diversification model,
-it is standard practice to simulate new phylogenies
-from the (maximum likely) parameters and use maximum
-likelihood to again estimate the parameters.
-An effective diversification model has an
-initial parameter estimate that is similar to the control parameter estimates.
+When a novel diversification model is introduced,
+its performance is commonly tested as well.
+Part of a model's performance is its parameter 
+recovery (e.g. [\cite{etienne2014estimating}]),
+in which phylogenies are simulated from known parameters, 
+after which the parameters are estimated from the phylogenies.
+Ideally, the estimated parameter values closely match the known/true values.
 
-Not all diversification models that pass the procedure described above
-are used in Bayesian inference.
+Even when a diversification model passes the procedure described above,
+it is not necessarily used in Bayesian inference.
 In Bayesian inference, the likelihood of a diversification 
-model, also called tree prior, is computed millions of time.
-Due to this, effective but computationally expensive tree priors 
-are unused in Bayesian inference.
+model, is computed millions of times.
+Due to this, effective but computationally expensive tree priors are inviable.
 Also, there may be no need to add such a tree prior to a Bayesian
 inference framework: the more informative the data, 
-the lower the influence of the tree prior.
-Due to this, existing and easy to compute tree priors are most commonly used.
+the lower the influence the tree prior has.
+Due to this, computionally faster tree priors are more commonly used.
 However, it is unknown if it is valid to assume that tree prior choice is 
 of low importance.
 
-Here we introduce a method to test the importance of a tree prior.
+\richel{
+  I think this is a usefull paragraph, adding some depth to this paper,
+  but it could use some rewording
+}
+There have been multiple attemps to investigate the importance of tree
+prior choice. For example, recently Sarver et al., [\cite{sarver2019choice}] 
+show that the choice of tree prior does not 
+substantially affect phylogenetic inferences of diversification rates.
+Also recently, Duchene et al. [\cite{duchene2018phylodynamic}] released
+a BEAST2 package to assess how well posterior predictive simulations
+recover a given tree when using the standard diversification models.
+These investigations show how current diversification models compare
+to one another, but these do not help assess the importance of a 
+new tree prio. 
+
+Here we introduce a method to quantify the importance of a novel tree prior.
 The method starts with a phylogeny generated by the process of 
 a (usually novel) tree prior.
-Using existing tree priors, a Bayesian posterior with phylogenies is inferred.
-The more simular the posterior phylogenies 
-and the original phylogeny are,
+Using the tree priors built-in into BEAST2, 
+a Bayesian posterior is inferred.
+The more similar the phylogenies in the posterior are to the original phylogeny,
 the less important the novel tree prior has been.
-Only tree priors that are measured to be influential
-will be worth the effort and computational burden 
+Only impactful tree priors will be worth the effort and computational burden 
 to use in a Bayesian framework.
 
 This method is programmed as an R package called \verb;pirouette;.
 \verb;pirouette; is built on \verb;babette; [\cite{bilderbeek2018babette}], 
 which calls BEAST2 [\cite{bouckaert2014beast}]. 
-With \verb;pirouette;, one has a method to quantify the importance 
-of a novel diversification model.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Description}
