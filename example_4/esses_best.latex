@@ -1,12 +1,12 @@
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Apr  2 13:59:07 2019
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Wed Apr  3 19:25:01 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrrr}
+\begin{tabular}{rrrrrrr}
   \hline
-posterior & likelihood & prior & treeLikelihood & TreeHeight & BirthDeath & BDBirthRate & BDDeathRate \\ 
+posterior & likelihood & prior & treeLikelihood & TreeHeight & YuleModel & birthRate \\ 
   \hline
-10001 & 10001 & 8785 & 10001 & 9816 & 8785 & 8302 & 6691 \\ 
+10001 & 10001 & 10001 & 10001 & 10001 & 10001 & 10001 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 4 for best candidate model} 

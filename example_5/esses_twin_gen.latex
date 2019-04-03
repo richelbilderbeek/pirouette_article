@@ -1,12 +1,12 @@
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Apr  2 14:23:38 2019
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Wed Apr  3 20:46:40 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrr}
   \hline
 posterior & likelihood & prior & treeLikelihood & TreeHeight & YuleModel & birthRate \\ 
   \hline
-9958 & 10001 & 9671 & 10001 & 9782 & 9671 & 9661 \\ 
+9983 & 10001 & 9956 & 10001 & 10001 & 9956 & 10001 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 5 for generative model, twin tree} 

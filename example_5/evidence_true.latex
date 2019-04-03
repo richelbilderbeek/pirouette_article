@@ -1,51 +1,51 @@
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Apr  2 14:23:34 2019
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Wed Apr  3 20:46:37 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllrr}
   \hline
 Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
   \hline
-JC & Strict & Yule & -8210.830 & 0.853 \\ 
-  GTR & RLN & BD & -8223.160 & 0.000 \\ 
-  GTR & RLN & coalescent\_bayesian\_skyline & -8237.711 & 0.000 \\ 
-  GTR & RLN & CCP & -8330.400 & 0.000 \\ 
-  GTR & RLN & CEP & -8221.900 & 0.000 \\ 
-  GTR & RLN & Yule & -8236.641 & 0.000 \\ 
-  GTR & Strict & BD & -8231.958 & 0.000 \\ 
-  GTR & Strict & coalescent\_bayesian\_skyline & -8235.565 & 0.000 \\ 
-  GTR & Strict & CCP & -8243.785 & 0.000 \\ 
-  GTR & Strict & CEP & -8236.498 & 0.000 \\ 
-  GTR & Strict & Yule & -8238.027 & 0.000 \\ 
-  HKY & RLN & BD & -8216.181 & 0.004 \\ 
-  HKY & RLN & coalescent\_bayesian\_skyline & -8229.395 & 0.000 \\ 
-  HKY & RLN & CCP & -8234.103 & 0.000 \\ 
-  HKY & RLN & CEP & -8235.112 & 0.000 \\ 
-  HKY & RLN & Yule & -8221.509 & 0.000 \\ 
-  HKY & Strict & BD & -8237.412 & 0.000 \\ 
-  HKY & Strict & coalescent\_bayesian\_skyline & -8226.200 & 0.000 \\ 
-  HKY & Strict & CCP & -8242.394 & 0.000 \\ 
-  HKY & Strict & CEP & -8289.934 & 0.000 \\ 
-  HKY & Strict & Yule & -8231.267 & 0.000 \\ 
-  JC & RLN & BD & -8219.035 & 0.000 \\ 
-  JC & RLN & coalescent\_bayesian\_skyline & -8220.686 & 0.000 \\ 
-  JC & RLN & CCP & -8224.788 & 0.000 \\ 
-  JC & RLN & CEP & -8225.594 & 0.000 \\ 
-  JC & RLN & Yule & -8212.775 & 0.122 \\ 
-  JC & Strict & BD & -8218.079 & 0.001 \\ 
-  JC & Strict & coalescent\_bayesian\_skyline & -8232.881 & 0.000 \\ 
-  JC & Strict & CCP & -8214.599 & 0.020 \\ 
-  JC & Strict & CEP & -8221.314 & 0.000 \\ 
-  TN & RLN & BD & -8239.510 & 0.000 \\ 
-  TN & RLN & coalescent\_bayesian\_skyline & -8233.387 & 0.000 \\ 
-  TN & RLN & CCP & -8258.513 & 0.000 \\ 
-  TN & RLN & CEP & -8232.513 & 0.000 \\ 
-  TN & RLN & Yule & -8221.179 & 0.000 \\ 
-  TN & Strict & BD & -8223.962 & 0.000 \\ 
-  TN & Strict & coalescent\_bayesian\_skyline & -8236.124 & 0.000 \\ 
-  TN & Strict & CCP & -8228.044 & 0.000 \\ 
-  TN & Strict & CEP & -8220.392 & 0.000 \\ 
-  TN & Strict & Yule & -8219.677 & 0.000 \\ 
+JC & Strict & Yule & -8190.178 & 0.006 \\ 
+  GTR & RLN & BD & -8210.155 & 0.000 \\ 
+  GTR & RLN & CBS & -8210.193 & 0.000 \\ 
+  GTR & RLN & CCP & -8249.074 & 0.000 \\ 
+  GTR & RLN & CEP & -8209.724 & 0.000 \\ 
+  GTR & RLN & Yule & -8238.330 & 0.000 \\ 
+  GTR & Strict & BD & -8217.786 & 0.000 \\ 
+  GTR & Strict & CBS & -8260.465 & 0.000 \\ 
+  GTR & Strict & CCP & -8201.355 & 0.000 \\ 
+  GTR & Strict & CEP & -8194.525 & 0.000 \\ 
+  GTR & Strict & Yule & -8211.218 & 0.000 \\ 
+  HKY & RLN & BD & -8200.399 & 0.000 \\ 
+  HKY & RLN & CBS & -8197.133 & 0.000 \\ 
+  HKY & RLN & CCP & -8196.231 & 0.000 \\ 
+  HKY & RLN & CEP & -8195.927 & 0.000 \\ 
+  HKY & RLN & Yule & -8200.847 & 0.000 \\ 
+  HKY & Strict & BD & -8200.963 & 0.000 \\ 
+  HKY & Strict & CBS & -8193.624 & 0.000 \\ 
+  HKY & Strict & CCP & -8274.538 & 0.000 \\ 
+  HKY & Strict & CEP & -8193.645 & 0.000 \\ 
+  HKY & Strict & Yule & -8185.372 & 0.753 \\ 
+  JC & RLN & BD & -8194.229 & 0.000 \\ 
+  JC & RLN & CBS & -8197.081 & 0.000 \\ 
+  JC & RLN & CCP & -8189.445 & 0.013 \\ 
+  JC & RLN & CEP & -8187.773 & 0.068 \\ 
+  JC & RLN & Yule & -8196.224 & 0.000 \\ 
+  JC & Strict & BD & -8189.241 & 0.016 \\ 
+  JC & Strict & CBS & -8199.629 & 0.000 \\ 
+  JC & Strict & CCP & -8198.024 & 0.000 \\ 
+  JC & Strict & CEP & -8190.156 & 0.006 \\ 
+  TN & RLN & BD & -8203.995 & 0.000 \\ 
+  TN & RLN & CBS & -8199.175 & 0.000 \\ 
+  TN & RLN & CCP & -8209.582 & 0.000 \\ 
+  TN & RLN & CEP & -8196.755 & 0.000 \\ 
+  TN & RLN & Yule & -8200.941 & 0.000 \\ 
+  TN & Strict & BD & -8208.899 & 0.000 \\ 
+  TN & Strict & CBS & -8207.973 & 0.000 \\ 
+  TN & Strict & CCP & -8204.628 & 0.000 \\ 
+  TN & Strict & CEP & -8187.074 & 0.137 \\ 
+  TN & Strict & Yule & -8204.642 & 0.000 \\ 
    \hline
 \end{tabular}
 \caption{Evidences of example 5} 
