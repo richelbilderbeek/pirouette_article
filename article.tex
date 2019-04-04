@@ -343,9 +343,6 @@ tree
       & Full setting for a Bayesian inference 
       & $\mathit{I},\mathit{C}$ \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    $\mathit{X'}$ & Experiment (selected) & As above & 
-      $\mathit{I},\mathit{C}$, $Pr(D)$, $\omega$ \\
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{E}$ & Error measure parameters & Errors measurement setup & 
       $\mathit{e_{f}}$\\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -360,16 +357,6 @@ tree
     a model's weight 
   }
   \label{tab:definitions}
-  \giovanni{
-    Should we rename "Twinning Parameters" to "Twinning model"?
-  }
-  \richel{
-    As the twinning parameters contain more than only the twin model's tree 
-    prior, I suggest to keep it 'twinning parameters'
-  }
-  \giovanni{I don't completely get the $X'$ description. What are $Pr(D)$ and 
-$\omega$? Is it something that we really need or it brings more complications 
-than benefits?}
 \end{sidewaystable}
 
 \subsection{pirouette's pipeline}
@@ -590,22 +577,22 @@ have a useful example, and have sensible defaults.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h]
-\centering
-\begin{tabular}{ | l | l | }
-\hline
-\textbf{Name} & \textbf{Description} \\
-\hline
-\verb;pir_run; & Run \verb;pirouette; \\
-\verb;create_pir_params; & Create the \verb;pirouette; parameters \\
-\hline
-\verb;create_alignment_params; & Create the alignment parameters \\
-\verb;create_twinning_params; & Create the twinning parameters \\
-\verb;create_experiment; & Create one experiment \\
-\verb;create_error_measure_params; & Create the error measurement parameters \\
-\hline
-\end{tabular}
-\caption{pirouette's main functions.}
-\label{tab:functions}
+  \centering
+  \begin{tabular}{ | l | l | }
+    \hline
+    \textbf{Name} & \textbf{Description} \\
+    \hline
+    \verb;pir_run; & Run \verb;pirouette; \\
+    \verb;create_pir_params; & Create the \verb;pirouette; parameters \\
+    \hline
+    \verb;create_alignment_params; & Create the alignment parameters \\
+    \verb;create_twinning_params; & Create the twinning parameters \\
+    \verb;create_experiment; & Create one experiment \\
+    \verb;create_error_measure_params; & Create the error measurement parameters \\
+    \hline
+  \end{tabular}
+  \caption{pirouette's main functions.}
+  \label{tab:functions}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -658,10 +645,6 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
   \includegraphics[width=\textwidth]{example_1/true_tree.png}
   \caption{The Yule tree, as created by listing~\ref{lst:create_yule_tree}.}
   \label{fig:yule_tree}
-  \giovanni{Remove the text in top-left corner.}
-  \richel{Agreed, iff the text matches the code}
-  \giovanni{I'd use a sexier topology, purely for esthetical reasons.}
-  \richel{Agreed, will pick a sexy RNG seed after create\_yule\_tree is there}
 \end{figure}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the 
@@ -975,6 +958,7 @@ As model selection is commonly performed on the full list of available candidate
 containing the inference models of all combinations of 4 site 
 models, 2 clock models and 5 tree priors.
 \giovanni{Do we still want to use CBS, CCP and CEP?}
+\richel{Yes, as we don't know anything about the process underlying the tree}
 
 \begin{lstlisting}[
   language=R, 
@@ -1002,12 +986,13 @@ pir_params <- create_pir_params(
 )
 \end{lstlisting}
 
-We can now run \verb;pirouette;  with listing~\ref{lst:pir_run}
-and plot the results with listing~\ref{lst:pir_plot}.
+We run \verb;pirouette (listing~\ref{lst:pir_run}) 
+and plot the results (listing~\ref{lst:pir_plot}).
 The resulting figure is shown in figure~\ref{fig:example_2}.
-
-\giovanni{describe winner}
-\richel{agreed, after the figures also show it :-) }
+In this case, the inference model with a JC69 site model, 
+strict clock model and Yule tree prior has the highest likelihood
+amongst all candidates (table \ref{tab:evidences_example_2} shows
+the evidences).
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_2/errors.png}
@@ -1196,10 +1181,16 @@ pir_plot(errors)
   Refer to earlier listing for this call to \texttt{pir\_run}
 }
 
-The output is shown in figure~\ref{fig:example_4}.
-
-\giovanni{describe winner}
-\richel{agreed, after the figures also show it :-) }
+The output is shown in figure~\ref{fig:example_4}. The alignment
+generated for the true tree had most evidence for the JC site model,
+strict clock model and Yule tree prior, 
+with a weight of 0.981 (as 
+shown in table \ref{tab:evidences_example_4}). 
+The alignment
+generated for the twin tree had most evidence for the JC site model,
+RLN clock model and CBS tree prior,
+with a weight of 0.707 (as 
+shown in table \ref{tab:evidences_example_4}). 
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_4/errors.png}
@@ -1333,8 +1324,16 @@ pir_plot(errors)
 
 The output is shown in figure~\ref{fig:example_5}.
 
-\giovanni{describe winner}
-\richel{agreed, after the figures also show it :-) }
+The alignment
+generated for the true tree had most evidence for the JC site model,
+strict clock model and Yule tree prior, 
+with a weight of 0.981 \richel{again} (as 
+shown in table \ref{tab:evidences_example_5}). 
+The alignment
+generated for the twin tree had most evidence for the JC site model,
+RLN clock model and CBS tree prior,
+with a weight of 0.707 \richel{again} (as 
+shown in table \ref{tab:evidences_example_5_twin}). 
 
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_5/errors.png}
@@ -1360,22 +1359,20 @@ The output is shown in figure~\ref{fig:example_5}.
 \begin{table}
   \begin{tabular}{ | r | c | c | c | }
     \hline
-    \textbf{Compare with} & \textbf{E2} & \textbf{E3} & \textbf{E4} \\ 
+    \textbf{Compare with} & \textbf{TB} & \textbf{WG} & \textbf{WB} \\ 
     \hline
-    \textbf{E1} & Y & Y & N \\
-    \textbf{E2} & . & N & Y \\
-    \textbf{E3} & . & . & Y \\
-    \textbf{E4} & . & . & . \\
+    \textbf{TG} & Y & Y & N \\
+    \textbf{TB} & . & N & Y \\
+    \textbf{WG} & . & . & Y \\
+    \textbf{WB} & . & . & . \\
     \hline
   \end{tabular}
   \caption{
     Error distributions that are relevant to compare.
-    E1: true tree, generative model.
-    E2: true tree, best candidate model.
-    E3: true tree, generative model.
-    E4: true tree, best candidate model.
-    \giovanni{What if instead we use two letters, such as "TG", "TB", "WG", "WB"?}
-    \giovanni{There is a typo: true tree is everywhere and twin is not present.}
+    TG: true tree, generative model.
+    TB: true tree, best candidate model.
+    WG: twin tree, generative model.
+    WB: twin tree, best candidate model.
   }
   \label{tab:relevant_comparisions}
 \end{table}
@@ -1386,44 +1383,44 @@ The output is shown in figure~\ref{fig:example_5}.
     \textbf{Condition} & \textbf{Expectation} & \textbf{Interpretation} \\ 
     \hline
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E1 > E2$}       & Unexpected & Novel tree prior is more related to 
+    \textbf{$TG > TB$}       & Unexpected & Novel tree prior is more related to 
       best candidate than hand-picked tree prior \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E1 \approx E2$} & Possible   & Hand-picked tree prior is just as 
+    \textbf{$TG \approx TB$} & Possible   & Hand-picked tree prior is just as 
       suitable as the best candidate tree prior \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E1 < E2$}       & Expected   & Hand-picked tree prior is the most 
+    \textbf{$TG < TB$}       & Expected   & Hand-picked tree prior is the most 
       related tree prior \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E1 > E3$}       & Unknown    & Novel tree prior important \\
+    \textbf{$TG > WG$}       & Unknown    & Novel tree prior important \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E1 \approx E3$} & Unknown    & Novel tree prior unimportant \\
+    \textbf{$TG \approx WG$} & Unknown    & Novel tree prior unimportant \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E1 < E3$}       & Unexpected & Twinning procedure increases 
+    \textbf{$TG < WG$}       & Unexpected & Twinning procedure increases 
       inference errors when using hand-picked tree prior \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E2 > E4$}       & Expected   & Impact of novel tree prior cannot 
+    \textbf{$TB > WB$}       & Expected   & Impact of novel tree prior cannot 
       be compensated for by model selection: twin tree with low likelihood? \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E2 \approx E4$} & Possible   & Best candidate tree priors perform 
+    \textbf{$TB \approx WB$} & Possible   & Best candidate tree priors perform 
       equally well in true and twin tree: true and twin tree similar? \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E2 < E4$}       & Unexpected & Twinning procedure increases 
+    \textbf{$TB < WB$}       & Unexpected & Twinning procedure increases 
       inference errors  when using best tree prior candidate \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E3 > E4$}       & Unexpected & Hand-picked tree prior (that equals 
+    \textbf{$WG > WB$}       & Unexpected & Hand-picked tree prior (that equals 
       the twinning tree prior!) worse than best candidate tree prior \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E3 \approx E4$} & Possible   & Twin tree fits equally well to the 
+    \textbf{$WG \approx WB$} & Possible   & Twin tree fits equally well to the 
       hand-picked and best candidate tree prior  \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{$E3 < E4$}       & Expected   & Hand-pick tree prior (that equals 
+    \textbf{$WG < WB$}       & Expected   & Hand-pick tree prior (that equals 
       the twinning tree prior) performs as expected \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline
@@ -1432,10 +1429,10 @@ The output is shown in figure~\ref{fig:example_5}.
     Interpretation of the different error distributions.
     This assumes that the operators ($<$, $\approx$ and $>$) to compare
     distributions are defined.
-    E1: true tree, generative model.
-    E2: true tree, best candidate model.
-    E3: true tree, generative model.
-    E4: true tree, best candidate model.
+    TG: true tree, generative model.
+    TB: true tree, best candidate model.
+    WG: true tree, generative model.
+    WB: true tree, best candidate model.
   }
   \label{tab:interpretation}
 \end{table}
@@ -1922,4 +1919,22 @@ distance=1.0\textheight] {
 \input{example_5/evidence_twin.latex}
 % has label tab:evidences_example_5
 
+\begin{table}
+  \begin{tabular}{ | r | c | }
+    \hline
+    \textbf{ERQ} & \textbf{run-time} \\ 
+    \hline
+      1 & 00:10:12 \\
+      2 & 00:34:10 \\
+      3 & 00:24:53 \\
+      4 & 01:04:50 \\
+      5 & 01:29:40 \\
+    \hline
+  \end{tabular}
+  \caption{
+    Time for an example research question to finish.
+    Time is in in hh:mm::ss.
+  }
+  \label{tab:runtime}
+\end{table}
 \end{document}

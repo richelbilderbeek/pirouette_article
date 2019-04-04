@@ -48,6 +48,6 @@ GTR & RLN & BD & -7409.249 & 0.000 \\
   TN & Strict & Yule & -7408.946 & 0.000 \\ 
    \hline
 \end{tabular}
-\caption{Evidences of example 5, twin tree} 
-\label{tab:evidences_example_5_twin}
+\caption{Evidences of example 4, twin tree} 
+\label{tab:evidences_example_4_twin}
 \end{table}

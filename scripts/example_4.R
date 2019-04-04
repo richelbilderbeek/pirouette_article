@@ -86,7 +86,9 @@ sink(file.path(example_folder, "evidence_true.latex"))
 xtable::print.xtable(
   xtable::xtable(
     df_evidences,
-    caption = "Evidences of example 5", label = "tab:evidences_example_5", digits = 3
+    caption = paste0("Evidences of example ", example_no, " for the true tree"), 
+    label = paste0("tab:evidences_example_", example_no, "_true"), 
+    digits = 3
   ),
   include.rownames = FALSE
 )
@@ -116,7 +118,9 @@ sink(file.path(example_folder, "evidence_twin.latex"))
 xtable::print.xtable(
   xtable::xtable(
     df_evidences,
-    caption = "Evidences of example 5, twin tree", label = "tab:evidences_example_5_twin", digits = 3
+    caption = paste0("Evidences of example ", example_no, " for the twin tree"), 
+    label = paste0("tab:evidences_example_", example_no, "_twin"), 
+    digits = 3
   ),
   include.rownames = FALSE
 )
