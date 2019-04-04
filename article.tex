@@ -232,18 +232,24 @@ which calls BEAST2 [\cite{bouckaert2014beast}].
 
 \verb;pirouette; is written in the R programming language (\cite{R}).
 The goal of \verb;pirouette; is to quantify the importance of a tree
-prior. It does so by measuring the inference error BEAST2
-makes for a given reconstructed phylogeny, 
-simulated under the mechanisms of a (usually novel) diversification model, 
-which we will refer to as the 'generative tree prior', $\mathit{P}$. 
-Such a study will typically construct phylogenies 
+prior.
+It does so by measuring the inference error
+made for a given reconstructed phylogeny, 
+simulated under the mechanisms of a (usually novel) diversification model.
+We refer to the true prior that generated the given tree
+as the 'generative tree prior', $\mathit{P}$.
+Many tree priors have a parameter setting in which these are equivalent
+to a standard tree prior. For example, a protracted birth-death model
+becomes equivalent to a birth-death when speciation rate approaches infinity.
+When benchmarking a novel tree prior, 
+such a study will typically construct phylogenies 
 for different combinations of the diversification model's parameters, 
-to assess under which scenarios the error made by BEAST2 cannot be neglected. 
+to assess under which scenarios the inference error cannot be neglected. 
 Although a well-conducted theoretical study uses many replicates, 
 this article only shows examples with one replicate, for the sake of clarity.
 
 \verb;pirouette; is very flexible and allows the user 
-to specify a big variety of custom settings. 
+to specify a wide variety of custom settings. 
 These settings can be grouped in macro-sections, 
 according to how they operate in the pipeline. 
 We summarize them in tables~\ref{tab:options} and~\ref{tab:definitions}.
@@ -251,7 +257,8 @@ We summarize them in tables~\ref{tab:options} and~\ref{tab:definitions}.
 Although many possible tests can be performed, 
 we present here what we think are the five most important 
 example research questions (ERQ) that \verb;pirouette; can answer. 
-For these ERQs we will quantify the importance of a tree prior.
+These ERQs gradually build up in complexity.
+For each of these ERQs we will quantify the importance of a tree prior.
 
 \begin{sidewaystable}
 \centering
@@ -259,12 +266,12 @@ For these ERQs we will quantify the importance of a tree prior.
     \hline
     \centering
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \textbf{Symbol} & \textbf{Sub-argument} & \textbf{Description} & 
-\textbf{Possible values} \\ 
+    \textbf{Symbol} & \textbf{Sub-argument} & \textbf{Description} 
+      & \textbf{Possible values} \\ 
     \hline
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{t_{p}}$ & tree prior & Macroevolutionary speciation model 
-      & Yule, BD, CBS, CCP, CEP \\
+      & Yule [\cite{yule}], BD, CBS, CCP, CEP \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{c_{m}}$ & clock model & Clock for the DNA mutation rates 
       & strict, relaxed log-normal \\
@@ -293,21 +300,21 @@ For these ERQs we will quantify the importance of a tree prior.
     $\mathit{e_{f}}$ & error function & Specifies how to measure the error 
       & nLTT, $|\gamma|$ \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    $\mathit{\tau_{p}}$ & twin tree prior & Sets the tree prior for the twin 
-tree 
+    $\mathit{\tau_{p}}$ & twin tree prior 
+      & Sets the tree prior for the twin tree 
       & Yule, BD \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline
   \end{tabular}
   \caption{
-    Most important parameter options. 
+    Most important parameter options.
     BD = birth death (\cite{nee1994reconstructed}), 
-    CBS = coalescent Bayesian Skyline (\cite{drummond2005bayesian}), 
+    CBS = coalescent Bayesian skyline (\cite{drummond2005bayesian}), 
     CCP = coalescent constant-population, 
     CEP = coalescent exponential-population,
-    JC = Jukes-Cantor 1969 (\cite{jukes1969evolution}), 
-    HKY = Hasegawa, Kishino and  Yano (\cite{hasegawa1985dating}), 
-    TN93 = \cite{tamura1993estimation}, 
+    JC = Jukes and Cantor (\cite{jukes1969evolution}), 
+    HKY = Hasegawa, Kishino and Yano (\cite{hasegawa1985dating}), 
+    TN93 = Tamura and Nei \cite{tamura1993estimation}, 
     GTR = Generalised time-reversible model (\cite{tavare1986some}).
   }
   \label{tab:options}
@@ -402,16 +409,16 @@ inside.}
 
 The pipeline is summarized by the following steps:
 \begin{enumerate}
-    \item for a given phylogeny an alignment is simulated under a known 
-alignment model;
-    \item for this alignment, according to the specified inference conditions, 
-an inference model is picked (which may be different from the generative 
-alignment model);
-    \item the alignment is then used as BEAST2 input to infer a posterior 
-distribution of phylogenies;
-    \item posterior phylogenies are compared with the given original phylogeny 
-to estimate the error made, according to the error measure specified by the 
-user;
+  \item from a given phylogeny an alignment is simulated 
+    under a known alignment model;
+  \item from this alignment, according to the specified inference conditions, 
+    an inference model is picked (which may differ from the 
+    generative alignment model);
+  \item the alignment and inference model are used 
+    to infer a posterior distribution;
+  \item the phylogenies in the posterior are compared with the given phylogeny 
+    to estimate the error made, according to the error measure specified 
+    by the user;
 \end{enumerate}
 The pipeline is visualized in Fig.~\ref{fig:pipeline}. 
 There is also the option to generate a 'twin tree', 
@@ -419,48 +426,39 @@ that goes through the same pipeline.
 The utility of this twin tree will be explained below.
 
 The first step simulates a DNA alignment from a given 
-phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a).
-This operation is performed according to the alignment model 
-specified by the user, which consists in a root DNA sequence, 
-a DNA mutation rate and a site model.
-A strict clock model is used as the only clock model
-type, as the currently used alignment simulation algorithm
-only supports a mutation rate that is equal across all the branches.
-This step is relatively fast, 
-but longer DNA alignments will noticeably slow down the inference step.
+phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a)
+using the DNA alignment parameters.
+The DNA alignment parameters consist of a DNA root sequence, a DNA mutation rate,
+a site model and a (strict) clock model.
+The DNA root sequence is the DNA sequence the shared common ancestor has,
+and is set to four equally-sized mononucleotide blocks by default, as this
+helps interpreting the resulting alignment.
+In the context of this research, a 'site model' is a nucleotide substitution
+model. Supported site models are JC, HKY, TN and GTR. Only the strict
+clock model is supported.
 
 The second step (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a)
-starts from experiments as set up by the user. 
-We define an experiment as the combination of an inference model 
-and the conditions to actually use it in the inference step.
-The inference model can be selected in two ways, either using the
-generative model or selecting one or more candidates out of a list of candidate 
-inference models.
-An experiment can use the generative model as the inference model, if the 
-generative model is known.
-An experiment uses a candidate model if either the generative model is unknown,
-or there is an interest in seeing how well non-generative models compete with
-the generative model.
-Typically, a generative model and/or a best candidate model are used in the 
-actual inference.
-When using an experiment with a generative model,
-it must use the same site and clock model used in the alignment simulation,
-as well as the tree prior that underlied the creation of the given phylogeny. 
-When using experiments with candidate models,
-\verb;pirouette; selects the best candidate based
-on the evidence (i.e. marginal likelihood) for the model given the alignment.
-The evidence of an inference model is estimated using a nested sampling (NS)
-approach, as described in \cite{maturana2018model}. The nested sampling is
-performed by \verb;mcbette; [\cite{mcbette}], that calls the 'NS' BEAST2 
-package. 
-Using BEAST2 packages (in a scripted way) can only be done under Linux and Mac,
-therefore the selection of candidate models is not available directly on 
-Windows. 
-However, even on Windows systems there is the option to perform the model 
-selection from browser, using \verb;mcbette;, yet the computation for this 
-model selection is
-restricted to one hour for free users of the host (Travis CI) continuous
-integration service.
+selects inference models from a set of experiments. 
+We define an experiment $X$ as the combination of an inference model $I$
+and the conditions, $C$ to actually use it in the inference step.
+There are two main setups of condition $C$: either the attached
+inference model $I$ is the generative model and should always be selected,
+or the attached inference model is a candidate model, that will be
+be selected if it is the best model.
+When setting $C$ to be attached to the generative model,
+it is implied that attached inference model $I$ uses the 
+same site and clock model used in the alignment simulation,
+and $I$ uses the same tree prior as used in the creation of the given phylogeny. 
+A 'best' model is defined as the inference model with
+the highest evidence (a.k.a. marginal likelihood) for that inference model, 
+given the alignment simulated in the previous step.
+The evidence of an inference model is estimated by nested 
+sampling [\cite{maturana2018model}], using the \verb;NS; BEAST2 package.
+Scripted use of BEAST2 packages is only possible under under Linux and Mac.
+Windows systems can do the model comparison for shorter DNA sequences
+using the web interface of \verb;mcbette; [\cite{mcbette}].
+
+\richel{Up until here}
 
 The third step infers the actual Bayesian posteriors from the simulated 
 alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a $\rightarrow$ 4a),
