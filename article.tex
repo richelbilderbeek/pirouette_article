@@ -471,63 +471,71 @@ Scripted use of BEAST2 packages is only possible under under Linux and Mac.
 Windows systems can do the model comparison for shorter DNA sequences
 using the web interface of \verb;mcbette; [\cite{mcbette}].
 
-\richel{Up until here}
+The third step infers the posteriors,
+using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a $\rightarrow$ 4a),
+and those inference models that were selected in the previous step. 
+Per selected experiment a posterior is inferred, using the 
+\verb;babette; [\cite{bilderbeek2018babette}] R package. 
+This step usually takes up most of the full pipeline's computation time.
 
-The third step infers the actual Bayesian posteriors from the simulated 
-alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a $\rightarrow$ 4a),
-using the inference models from the experiments selected in the previous step. 
-For each selected experiment, one BEAST2 posterior is inferred, using the 
-\verb;babette; [\cite{bilderbeek2018babette}] R package.
-
-The fourth step compares the true tree to each posterior tree, resulting in an 
-error distribution (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
-The nLTT statistic (\cite{janzen2015approximate}) is used by default, but also 
-a user-defined error statistic can be used. 
-As an example, \verb;pirouette; supplies one custom error statistic,
-that uses an absolute difference in the gamma statistic 
-[\cite{pybus2000testing}].
-Additionally, the user can specify the proportion of posterior phylogenies to 
-discard (i.e. the burn-in), throwing away the first $10\%$
-of all phylogenies by default. This burn-in is used to discard
-the part of the MCMC chain that has not yet converged to a
-representative part of the state space.
+The fourth step quantifies the inference error made.
+It creates an error distribution, by measuring the difference
+between the one true tree and each of the posterior 
+trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
+The default way to quantify the difference between two phylogenies
+is the nLTT statistic (\cite{janzen2015approximate}), but any 
+user-defined error statistic can be used.
+An MCMC needs to 'warm up', as initially it will sample
+an unrepresentative part of state space. This phase, called 
+the burn-in, is commonly set up to be a small part of the entire run, 
+after which it is discarded. By default, \verb;pirouette; 
+uses a cut-off value of 10\%.
 
 \subsection{Twin tree}\label{subsec:twinning}
 
 An optional step is to generate a 'twin tree' $\tau_{I}$
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
-that will be analyzed in the same way as the true tree, following a parallel 
-pipeline. We want to produce such tree 'converting' the original tree 
-$\tau_{\mathit{P}}$, created according to the generative prior $\mathit{P}$, to 
-be in accordance with the chosen inference model $\mathit{I}$:
-\begin{align}
-    \tau_{\mathit{P}} = (\Vec{t}_{\mathit{P}}, \psi_{\mathit{P}}) 
-\xrightarrow[]{\mathit{T}} \tau_{\mathit{I}} = (\Vec{t}_{\mathit{I}}, 
-\psi_{\mathit{I}}),
-\end{align}
-where $\Vec{t}$ are the tree branching times and $\psi$ is tree topology, which 
-provides information on where new lineages branch out at each branching time.
+that will be analyzed in the same way as the true tree.
+Any phylogeny $\tau$ is the combination of 
+branching times $\Vec{t}$ and topology $\psi$.
+Starting from a non-standard generative prior $t_p = \mathit{P}$,
+we can observe a given tree $\tau_{\mathit{P}}$,
+with branching times $\Vec{t}_{\mathit{P}}$ and 
+topology $\psi_{\mathit{P}}$, 
+but we cannot use the tree prior in Bayesian inference.
+The twinning process, T, in accordance with a chosen inference 
+model $t_p = \mathit{I}$, creates a tree $\tau_{\mathit{I}}$
+with branching times $\Vec{t}_{\mathit{I}}$ while preserving 
+topology $\psi_{\mathit{P}}$:
 
-To execute the twinning process we exploit the likelihood function 
-$L_{\mathit{I}}$ associated with the chosen inference model $\mathit{I}$. We 
-find the parameters $\theta^{*}_{\mathit{I}}$ (e.g. speciation and extinction 
-rates, in case of a birth-death model) that maximize $L_{\mathit{I}}$ applied 
+\begin{align}
+  \tau_{\mathit{P}} = (\Vec{t}_{\mathit{P}}, \psi_{\mathit{P}}) 
+  \xrightarrow[]{\mathit{T}} 
+  \tau_{\mathit{I}} = (\Vec{t}_{\mathit{I}}, \psi_{\mathit{P}})
+\end{align}
+
+To achieve this, we find the parameters $\theta^{*}_{\mathit{I}}$ 
+(e.g. speciation and extinction rates, in case of a birth-death model) 
+that maximize likelihood $L_{\mathit{I}}$ applied 
 to the true tree, conditioned on its number of tips $n_{\mathit{P}}$,
+where $L_{\mathit{I}}$ is  the likelihood function  
+associated with the chosen inference model $\mathit{I}$:
+
 \begin{align}
     max[L_{\mathit{I}}(\theta_{\mathit{I}}|\tau_{\mathit{P}}, n_{\mathit{P}})] 
 \rightarrow \theta^{*}_{\mathit{I}}.
 \end{align}
-We use $\theta^{*}_{\mathit{I}}$ to simulate an equal amount $n_{\mathit{I}} = 
-n_{\mathit{P}}$ of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree 
-$\tau_{\mathit{I}}$, under the process $\mathit{I}$. We then impose that 
-$\tau_{\mathit{P}}$ and $\tau_{\mathit{I}}$ must respect the same topology
-\begin{align}
-    \psi_{\mathit{I}} = \psi_{\mathit{P}}.
-\end{align}
+
+We use $\theta^{*}_{\mathit{I}}$ to simulate an equal amount 
+$n_{\mathit{I}} = n_{\mathit{P}}$ 
+of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree 
+$\tau_{\mathit{I}}$, under the process $\mathit{I}$, 
+while preserving the same topology.
+
 Using a twin tree serves as a control: both $\tau_{\mathit{P}}$ and 
-$\tau_{\mathit{I}}$ will produce an error distribution. We assume that these 
-errors are a natural product of the input tree and the intermediate steps of 
-the pipeline. All the factors that can cause such errors are: the branching 
+$\tau_{\mathit{I}}$ will produce an error distribution. 
+These errors are unavoidably accumulated in the \verb;pirouette; pipeline. 
+All the factors that can cause such errors are: the branching 
 times $\vec{t}$ of the tree (as a consequence of the tree prior), its topology 
 $\psi$, the stochasticity induced by simulating the alignment (step 1a 
 $\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by 
