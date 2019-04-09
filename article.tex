@@ -45,6 +45,7 @@ Groningen, Groningen, The Netherlands}
 \usepackage{longtable}
 \usepackage{rotating}
 \usepackage{mathtools}
+% \usepackage{float}
 
 \usepackage{tkz-graph}
 \usetikzlibrary{arrows,automata}
@@ -109,7 +110,7 @@ Groningen, Groningen, The Netherlands}
     and an inference model to create a
     posterior of jointly-estimated phylogenies and model parameters. 
     An important ingredient of BEAST2 is the species tree prior, 
-    due to which the tool can be used for inference of 
+    due to which the tool can be used for the inference of 
     macroevolutionary processes underlying the species tree. 
     However, only models that allow for fast computation of 
     the prior probability are possible in practice. 
@@ -156,10 +157,12 @@ These simple tree priors are most commonly used, as these
 have sufficient biological complexity, while being computationally fast.
 BEAST's successor, BEAST2 [\cite{bouckaert2014beast}],
 has a package manager, that allows third-party users to extend existing 
-functionality.
+functionalities.
 By writing a BEAST2 package, novel diversification models can be added.
 The key ingredient of such a package would be the likelihood equation
 of a phylogeny for the novel diversification model.
+
+\iffalse
 There have been plenty of these models (and their associated probability 
 algorithms) 
 developed, among others, those in which diversification is 
@@ -167,6 +170,16 @@ time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}],
 or diversity-dependent [\cite{etienne2011diversity}],
 or that can shift [\cite{etienne2012conceptual}, 
 \cite{rabosky2014automatic}, \cite{alfaro2009nine}, \cite{laudanno2018sls}].
+\fi
+
+Many of such models (and their associated probability 
+algorithms) have been
+developed to include diverse features: those in which diversification rates are 
+time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
+or diversity-dependent [\cite{etienne2011diversity}],
+or that can shift [\cite{etienne2012conceptual}, 
+\cite{rabosky2014automatic}, \cite{alfaro2009nine}, \cite{laudanno2018sls}].
+
 Other birth-death models treat speciation as a process that takes 
 time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}], 
 or that happens in bursts of simultaneous 
@@ -597,8 +610,6 @@ have a useful example, and have sensible defaults.
 \section{Usage: Example Research Question 1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Question}
-
 \verb;pirouette; quantifies the influence of a new tree prior on BEAST2's 
 inference,
 by measuring the difference between a given tree and 
@@ -612,7 +623,9 @@ all the tree priors that are available to be used within an inference model
 (see Table~\ref{tab:options}).
 
 Now we can formulate the first example research question that \verb;pirouette; 
-can answer:
+can answer.
+
+\subsection{Question}
 
 "What is the inference error made on phylogenies
 created by a standard diversification model?"
@@ -624,7 +637,7 @@ namely the Yule (pure-birth) tree prior.
 We choose to use a small tree with six taxa to keep
 the calculations short and the figure more readable.
 We pick a crown age of ten time units. This value is 
-completely arbitrary, but does tie in with the mutation rate 
+completely arbitrary, but it ties in with the mutation rate 
 used in simulating an alignment in the next step.
 
 \begin{lstlisting}[
@@ -758,7 +771,7 @@ we create this setup explicitly here:
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
   label = {lst:create_error_measure_params},
-  caption = Calling \texttt{create\_error\_measure\_params}
+  caption = Calling \texttt{create\_error\_measure\_params}.
 ]
 error_measure_params <- create_error_measure_params(
   burn_in_fraction = 0.1, 
@@ -774,7 +787,7 @@ and checked by \verb;create_pir_params;:
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
   label = {lst:create_pir_params},
-  caption = Calling \texttt{create\_pir\_params}
+  caption = Calling \texttt{create\_pir\_params}.
 ]
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
@@ -791,7 +804,7 @@ created by a standard diversification model:
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
   label = {lst:pir_run},
-  caption = Calling \texttt{pir\_run}
+  caption = Calling \texttt{pir\_run}.
 ]
 errors <- pir_run(
   phylogeny = phylogeny,
@@ -810,7 +823,7 @@ It can be directly plotted using \verb;pir_plot;:
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
   label = {lst:pir_plot},
-  caption = Calling \texttt{pir\_plot}
+  caption = Calling \texttt{pir\_plot}.
 ]
 pir_plot(errors)
 \end{lstlisting}
@@ -830,6 +843,7 @@ in figure~\ref{fig:example_1}
   I suggest to use a histogram (or density plot) instead:
   I like how the error distribution in figure 1 looks.
 }
+\giovanni{Can we show everything at the same time with standard histograms?}
 . 
 
 This error distribution has little relevance on its own, 
@@ -846,13 +860,11 @@ will appear similar, the error induced by the choice of a non-standard
 speciation process will be of little influence.
 Given the necessity of such comparison,
 we made it an inherent part of \verb;pirouette;. 
-We call it 'twinning' and we use it in ERQ 3.
+We call it 'twinning' and we use it from ERQ 3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage: Example Research Question 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Question}
 
 In the previous example we selected the inference model $\mathit{I}$ to match 
 with a known generative tree prior $\mathit{P_{0}}$.
@@ -867,7 +879,7 @@ made specifying the inference conditions $\mathit{C}$ to be used.
 
 If the user has sufficient reasons to believe that one standard tree prior 
 could be more suitable than others for the inference, they can set it as part 
-of the inference model and to adopt site and clock models used to simulate the 
+of the inference model along with site and clock models used to simulate the 
 alignment. This option can be specified selecting "model\_type" to be 
 "generative" as part of the inference conditions (as seen in ERQ 1, 
 table~\ref{tab:RQ1}).
@@ -881,14 +893,16 @@ for each of them, and "run\_if" to be "best\_candidate" (table~\ref{tab:RQ2}
 will summarize this for ERQ 2).
 
 We show the procedure using \verb;pirouette; to answer the second research 
-question:
+question.
+
+\subsection{Question}
 
 "What is the inference error made on a novel phylogeny when
 picking the best inference model?"
 
 \subsection{Answer}
 
-Here we start with a tree generated from an unknown 
+This time we start with a tree generated from an unknown 
 diversification model, that has six taxa and a crown age of ten:
 
 \begin{lstlisting}[
@@ -998,6 +1012,7 @@ the evidences).
     picking the best inference model.
   }
   \label{fig:example_2}
+  \giovanni{There is a weird NA at the top of the figure.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1036,7 +1051,7 @@ and a baseline error. We do so by setting the twinning parameters $\mathit{T}$ t
 has the same topology as the given tree, yet its branching times are simulated 
 according to the standard tree prior used by BEAST2 to produce the posterior 
 for the main pipeline. 
-Since there is coherence between the inference model and the generative model, 
+Since in the twin pipeline there is coherence between the inference model and the generative model, 
 we expect BEAST2 to produce a posterior of phylogenies that are more similar to the 
 original one, respect to the outcome of the main pipeline. 
 Due to this, the twinning process is used to provide a control for the main 
@@ -1101,7 +1116,7 @@ The output is shown in figure~\ref{fig:example_3}
     Example 3: the error made by BEAST2 from a phylogeny, 
     when hand-picking a generative tree prior versus the control.
     Here, the 'twin' column shows the baseline inference error,
-    as measured on the twin tree
+    as measured on the twin tree.
   }
   \label{fig:example_3}
 \end{figure}
@@ -1115,7 +1130,7 @@ an
 error distribution.
 However, it is unclear to what extent this error is due to the mismatch between 
 the tree priors (from generative and inference models) or due to stochasticity. 
-As mentioned in ERQ 1, \verb;pirouette; provides a tool to evaluate this, using 
+As mentioned in ERQs 1 and 3, \verb;pirouette; provides a tool to evaluate this, using 
 the twinning process. We now apply it to the same pipeline followed in ERQ 2.
 
 \subsection{Question}
@@ -1127,7 +1142,7 @@ in relation to the background error?"
 
 \subsection{Answer}
 
-Here, as in examples 2 and 3, we start with the phylogeny 
+Here, as in ERQs 2 and 3, we start with a phylogeny 
 generated by an unknown speciation model (listing~\ref{lst:unknown_phylogeny}). 
 The first step in \verb;pirouette; is to simulate a DNA alignment 
 from the given phylogeny, for which we will use the same code 
@@ -1178,7 +1193,7 @@ pir_plot(errors)
   Refer to earlier listing for this call to \texttt{pir\_run}
 }
 
-The output is shown in figure~\ref{fig:example_4}. The alignment
+The output is shown in figure~\ref{fig:example_4}\giovanni{figure~\ref{fig:example_4} needs to be closer}. The alignment
 generated for the true tree had most evidence for the JC site model,
 strict clock model and Yule tree prior, 
 with a weight of 0.981 (as 
@@ -1197,6 +1212,7 @@ shown in table \ref{tab:evidences_example_4}).
     relationship to the background error.
   }
   \label{fig:example_4}
+  \giovanni{NA on the top.}
 \end{figure}
 
 
@@ -1210,7 +1226,7 @@ run the analysis on the main pipeline, either using a 'generative' or a
 that does not mean much on its own.
 In ERQs 3 and 4 we measured the baseline error caused by stochasticity,
 by running a parallel twin pipeline. This yielded two error distributions:
-the baseline error and the complete inference error.
+the baseline error and the complete inference error. Here we want to combine all the instances of the previous ERQs at once.
 
 \subsection{Question}
 
@@ -1221,11 +1237,9 @@ in relation to the background error?"
 
 \subsection{Answer}
 
-In this example, we use a tree generated by the Yule process.
+In this example we use a tree generated by the Yule process.
 Instead of using the common Yule tree as in example 1, we will use
-a Yule tree of low (actually: zero) likelihood: 
-the one as used in ERQs 2-4, by using the code shown 
-in listing~\ref{lst:unknown_phylogeny}.
+a Yule tree of low (actually: zero) likelihood \giovanni{what do you mean by zero likelihood?}, i.e. the one already used in ERQs 2-4, by using the code shown in listing~\ref{lst:unknown_phylogeny}.
 The first step in \verb;pirouette; is to simulate a DNA alignment 
 from the given phylogeny, for which we will use the same code 
 as shown in listing~\ref{lst:create_alignment}.
@@ -1255,7 +1269,7 @@ as shown in listing~\ref{lst:create_alignment}.
 \end{table}
 
 In the second step we state our experiments. 
-In this example, we must both specify the generative and candidate experiments. 
+In this example we must specify both the generative and candidate experiments. 
 Here we specify the generative model:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
@@ -1291,9 +1305,9 @@ experiments <- c(list(generative_experiment), candidate_experiments)
 \giovanni{Does this code actually work?}
 
 We choose again to use the default error measurement parameters
-as created in listing~\ref{lst:create_error_measure_params}
+created in listing~\ref{lst:create_error_measure_params}
 and combine this with the same twinning parameters 
-as used in listing~\ref{lst:create_twinning_params}:
+used in listing~\ref{lst:create_twinning_params}:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 pir_params <- create_pir_params(
@@ -1320,9 +1334,9 @@ pir_plot(errors)
 \end{lstlisting}
 
 The output is shown in figure~\ref{fig:example_5}.
-
+\giovanni{figure~\ref{fig:example_5} needs to be closer}
 The alignment
-generated for the true tree had most evidence for the JC site model,
+generated from the true tree had most evidence for the JC site model,
 strict clock model and Yule tree prior, 
 with a weight of 0.981 \richel{again} (as 
 shown in table \ref{tab:evidences_example_5}). 
@@ -1340,6 +1354,7 @@ shown in table \ref{tab:evidences_example_5_twin}).
     compared to candidates with similar inference models, 
     in relationship to the background error.
   }
+  \giovanni{na on the top-right area. labels on x superimpose each other. We should change the names to their shortened versions: e.g. relaxed\_log\_normal $\to$ rln}
   \label{fig:example_5}
 \end{figure}
 
