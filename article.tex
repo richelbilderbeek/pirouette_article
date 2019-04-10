@@ -620,8 +620,9 @@ have a useful example, and have sensible defaults.
 inference,
 by measuring the difference between a given tree and 
 phylogenies in a posterior. Due to stochasticity, all posterior trees
-will differ from the given phylogeny, even when the generative tree
-prior $\mathit{P}$ and alignment model $\mathit{A}$ are the same as 
+will differ from the given phylogeny $\tau_{\mathit{P}}$, 
+even when the generative tree prior $\mathit{P}$ 
+and alignment model $\mathit{A}$ are the same as 
 those in the inference model $\mathit{I}$.
 Measuring this difference allows us to know the baseline error
 of the \verb;pirouette; pipeline. We therefore define as 'standard tree priors' 
@@ -665,16 +666,16 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the 
 given phylogeny. 
-To do so, we must specify an alignment model $\mathit{A}$ which consists of: a 
-DNA root sequence $\mathit{r_{s}}$, the DNA mutation rate $\mathit{m_{r}}$, a
+To do so, we must specify an alignment model $\mathit{A}$ which consists of a 
+DNA root sequence $\mathit{r_{s}}$, a DNA mutation rate $\mathit{m_{r}}$, a
 site model $\mathit{s_{m}}$ (in this context: a nucleotide substitution model) 
 and a clock model $\mathit{c_{m}}$. 
 In this example, the DNA root sequence consists in four blocks of 250 
-nucleotides each, 
+mononucleotides each, 
 where the per-nucleotide mutation rate is 0.1 mutations per unit time.
 We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
 and a strict clock model as these are the simplest.
-A Jukes-Cantor site model
+A JC site model
 assumes that mutation rates between nucleotides are equal and constant. 
 A strict clock model assumes that the mutation rates 
 of all species are equal and constant.
@@ -818,8 +819,8 @@ errors <- pir_run(
 )
 \end{lstlisting}
 
-The error distribution returned by \verb;pir_run; is stored as a data frame. 
-It can be directly plotted using \verb;pir_plot;:
+The error distribution returned by \verb;pir_run; is a data frame,
+that can be plotted directly using \verb;pir_plot;:
 
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
@@ -832,7 +833,7 @@ pir_plot(errors)
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_1/errors.png}
   \caption{
-    Example 1: the error BEAST2 makes from a phylogeny 
+    Example 1: the inference error made from a phylogeny 
     when the generative and inference model are the same.
   }
   \label{fig:example_1}
