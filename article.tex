@@ -765,7 +765,7 @@ in this case:
 experiments <- list(experiment)
 \end{lstlisting}
 
-The objects we just created need to be bundled
+The objects we just created must be bundled
 in a \verb;pirouette; parameters structure,
 together with error measurement parameters $\mathit{E}$ and
 twinning parameters $\mathit{T}$. 
@@ -786,8 +786,7 @@ error_measure_params <- create_error_measure_params(
 )
 \end{lstlisting}
 
-We will not use twinning
-here yet.  
+We will not use twinning here yet.  
 All these arguments are bundled
 and checked by \verb;create_pir_params;:
 
@@ -819,8 +818,7 @@ errors <- pir_run(
 )
 \end{lstlisting}
 
-The error distribution returned by \verb;pir_run; is a data frame,
-that can be plotted directly using \verb;pir_plot;:
+The error distribution can be plotted directly using \verb;pir_plot;:
 
 \begin{lstlisting}[
   language=R, floatplacement=ht, frame=single,
@@ -833,35 +831,20 @@ pir_plot(errors)
 \begin{figure}[ht]
   \includegraphics[width=\textwidth]{example_1/errors.png}
   \caption{
-    Example 1: the inference error made from a phylogeny 
+    ERQ 1: the inference error made from a phylogeny 
     when the generative and inference model are the same.
+    The vertical dashed line indicates the median error
   }
   \label{fig:example_1}
 \end{figure}
 
-The error distribution obtained is shown as a violin plot
-in figure~\ref{fig:example_1}
-\richel{
-  I suggest to use a histogram (or density plot) instead:
-  I like how the error distribution in figure 1 looks.
-}
-\giovanni{Can we show everything at the same time with standard histograms?}
-. 
-
-This error distribution has little relevance on its own, 
-as we constructed the experiment in such a way $\mathit{I}$ 
-matches with the generative model given by $\mathit{A}$ and $\mathit{P_{0}}$.
-However it will become clear when compared to the errors obtained from a 
-phylogeny 
-derived from a non-standard diversification process $\mathit{P}$.
-
-By doing so, this error distribution will serve as a control,
-as it can be seen as the baseline error caused by stochasticity.
-If the two error distributions obtained from $\mathit{P_{0}}$ and $\mathit{P}$ 
-will appear similar, the error induced by the choice of a non-standard 
-speciation process will be of little influence.
-Given the necessity of such comparison,
-we made it an inherent part of \verb;pirouette;. 
+The resulting error distribution, as shown figure~\ref{fig:example_1}),
+shows the inference error 
+when $\mathit{I}$ matches with the generative model given 
+by $\mathit{A}$ and $\mathit{P_{0}}$.
+This error distribution can serve as a control,
+as it is obtained from a tree of which the tree prior is standard and known.
+Obtaining this control is an inherent part of \verb;pirouette;. 
 We call it 'twinning' and we use it from ERQ 3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -870,29 +853,21 @@ We call it 'twinning' and we use it from ERQ 3.
 
 In the previous example we selected the inference model $\mathit{I}$ to match 
 with a known generative tree prior $\mathit{P_{0}}$.
-However, a novel tree prior $\mathit{P}$, by definition, is non-standard, thus 
-cannot be part of a standard inference model (i.e. an inference model using a 
-standard tree prior).
-In this case the user has to specify the the tree prior $\mathit{t_{p}}$ to be 
-used in the inference from a list of standard tree priors. In general, having 
-no information on $\mathit{P}$, this choice is arbitrary.
-\verb;pirouette; provides two ways to deal with this problem. The choice can be 
-made specifying the inference conditions $\mathit{C}$ to be used.
-
-If the user has sufficient reasons to believe that one standard tree prior 
-could be more suitable than others for the inference, they can set it as part 
-of the inference model along with site and clock models used to simulate the 
-alignment. This option can be specified selecting "model\_type" to be 
-"generative" as part of the inference conditions (as seen in ERQ 1, 
-table~\ref{tab:RQ1}).
-
-If, instead, there is no preference for a specific tree prior, the user can let 
-\verb;pirouette; select the best inference model from a list of candidate 
-models. The model selection is performed automatically based on the criterion 
-of the highest evidence (also known as marginal likelihood). This option can be specified 
-providing any number of experiments, selecting "model\_type" to be "candidate" 
-for each of them, and "run\_if" to be "best\_candidate" (table~\ref{tab:RQ2} 
-will summarize this for ERQ 2).
+However, a novel tree prior $\mathit{P}$, by our definition, is non-standard, 
+thus cannot be part of a standard inference 
+model (i.e. an inference model using a standard tree prior).
+In such a case, the user has to somehow select 
+a standard tree prior $\mathit{t_{p}}$ to be 
+used in the inference.
+There are two ways to deal with this problem: hand-pick a tree
+prior, or let the best of a set of models be picked. 
+Hand-picking a tree prior can be rational if one standard tree prior 
+is more suitable than others for the inference, for example, when
+the novel tree prior is most similar to a certain tree prior.
+Instead of hand-picking, the best inference model from a list of candidate 
+models can be used in inference.
+\verb;pirouette; selects the 'best' model, that is, 
+the model with the highest evidence (also known as marginal likelihood). 
 
 We show the procedure using \verb;pirouette; to answer the second research 
 question.
@@ -900,7 +875,7 @@ question.
 \subsection{Question}
 
 "What is the inference error made on a novel phylogeny when
-picking the best inference model?"
+using the best inference model?"
 
 \subsection{Answer}
 
@@ -925,7 +900,7 @@ phylogeny  <- ape::read.tree(
   }
 \end{figure}
 
-The first step in \verb;pirouette; is to simulate a DNA alignment from the 
+First step is to simulate a DNA alignment from the 
 given phylogeny. 
 We will re-use the alignment parameters of the previous example 
 as shown in listing~\ref{lst:create_alignment}.
@@ -960,9 +935,9 @@ as shown in listing~\ref{lst:create_alignment}.
 In the second step we set up our experiments. Unlike ERQ 1, here we provide a 
 set of experiments $\{\mathit{X_{i}}\}_{i=1}^{40}$. All the experiments have 
 the same inference conditions $\mathit{C_{i}} = \mathit{C}$ but different 
-candidate inference models $\mathit{I_{i}}$. Yet, only one of them will be used 
+candidate inference models $\mathit{I_{i}}$. Only one of them will be used 
 to run the actual inference. According to the specified $\mathit{C}$, 
-\verb;pirouette; will measure the evidence for each of them and select  only 
+\verb;pirouette; will measure the evidence for each of them and select only 
 the one with the highest evidence as the best candidate.
 
 As model selection is commonly performed on the full list of available candidate models,
@@ -970,8 +945,6 @@ As model selection is commonly performed on the full list of available candidate
 \verb;create_all_experiments; will create the entire set of 40 experiments,
 containing the inference models of all combinations of 4 site 
 models, 2 clock models and 5 tree priors.
-\giovanni{Do we still want to use CBS, CCP and CEP?}
-\richel{Yes, as we don't know anything about the process underlying the tree}
 
 \begin{lstlisting}[
   language=R, 
@@ -1000,8 +973,8 @@ pir_params <- create_pir_params(
 \end{lstlisting}
 
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
-and plot the results (listing~\ref{lst:pir_plot}).
-The resulting figure is shown in figure~\ref{fig:example_2}.
+and plot the results (listing~\ref{lst:pir_plot}),
+as shown in figure~\ref{fig:example_2}.
 In this case, the inference model with a JC69 site model, 
 strict clock model and Yule tree prior has the highest likelihood
 amongst all candidates (table \ref{tab:evidences_example_2} shows
@@ -1021,47 +994,39 @@ the evidences).
 \section{Usage: Example Research Question 3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In ERQ 1 we measured the baseline error of the \verb;pirouette; method. We did so by using a standard tree prior to generate the original tree as well as in the inference.
-The goal of \verb;pirouette; is to quantify the 
-influence of a new (non-standard) tree prior.
-To do so, we need to compare the inference error 
-from the new tree prior to a baseline error,
+In ERQ 1 we measured the baseline error of the \verb;pirouette; method,
+by using the same standard tree prior in both the generation of 
+the original tree, as well as in the inference.
+This baseline error distribution serves as a control,
+to quantify the impact of a new (non-standard) tree prior.
+To measure that impact, we compare the inference error 
+from the new tree prior to the baseline error,
 by using a twin tree (see subsection~\ref{subsec:twinning}).
-To do so, we use the twin tree as a control for the main pipeline.
-In this example, we have no knowledge of the generative tree prior $\mathit{P}$
-but we know the alignment model $\mathit{A}$.
-In this ERQ it is reasonable to hand-pick a standard tree prior 
-to serve as a stand-in generative tree prior as we assume that they are closely related.
+In this ERQ, we hand-pick a standard tree prior $\mathit{P}$.
 
 \subsection{Question}
 
-"What is the error made by BEAST2 from a phylogeny, 
+"What is the inference error made from a phylogeny, 
 when hand-picking a tree prior, compared to the background noise?"
 
 \subsection{Answer}
 
 Most of the settings for this ERQ are
-the same as in the previous section. They are
-the phylogeny from an unknown speciation model 
-(listing~\ref{lst:unknown_phylogeny}), 
+the same as in ERQ 2: we'll re-use the phylogeny from an 
+unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
 the alignment parameters (listing~\ref{lst:create_alignment})
 and the list of experiments (listing~\ref{lst:create_generative_experiment}),
 the latter stating that the generative tree prior is a Yule tree prior.
 
-This time, however, we are interested in measuring both the inference error
-and a baseline error. We do so by setting the twinning parameters $\mathit{T}$ to create a twin tree. A twin tree
-has the same topology as the given tree, yet its branching times are simulated 
-according to the standard tree prior used by BEAST2 to produce the posterior 
-for the main pipeline. 
-Since in the twin pipeline there is coherence between the inference model and the generative model, 
-we expect BEAST2 to produce a posterior of phylogenies that are more similar to the 
-original one, respect to the outcome of the main pipeline. 
-Due to this, the twinning process is used to provide a control for the main 
-experiment.
+This time, however, we measure both the baseline and complete inference error.
+We set the twinning parameters $\mathit{T}$ to create a twin tree,
+as described in the 'Twinning' section.
 
-Creating the twinning parameters is easy, as it has sensible default settings.
-For the sake of clarity, we explicitly show the default values of the most
+Creating the twinning parameters is trivial with the default settings.
+For clarity, however, we explicitly show the most
 important arguments:
+
+\richel{hiero!}
 
 \begin{lstlisting}[
   language=R, 
