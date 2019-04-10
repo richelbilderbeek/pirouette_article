@@ -2,7 +2,24 @@
 # Script to run all:
 #   * Installation
 #   * Creating all figures
-./install
+# 
+# Usage:
+#
+# * To install master:
+#
+# ./run_all
+#
+# * To install a branch, e.g. develop:
+#
+# ./run_all develop
+#
+
+branch=$1
+if [ "$#" -ne 1 ]; then
+  branch=master
+fi
+
+./install $branch
 Rscript example_1.R
 Rscript example_2.R
 Rscript example_3.R
