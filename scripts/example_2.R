@@ -56,7 +56,6 @@ errors <- pir_run(
 )
 
 pir_plot(errors) +
-  scale_y_continuous(breaks = seq(0.0, 0.11, by = 0.01), limits = c(0, 0.11)) +
   ggsave(file.path(example_folder, "errors.png"))
 
 
