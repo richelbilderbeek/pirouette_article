@@ -202,7 +202,7 @@ Even when a diversification model passes the procedure described above,
 it is not necessarily used in Bayesian inference.
 In Bayesian inference, the likelihood of a diversification 
 model, is computed millions of times.
-Due to this, effective but computationally expensive tree priors are not viable.
+Due to this, effective but computationally expensive tree priors are inviable.
 Also, there may be no need to add such a tree prior to a Bayesian
 inference framework: the more informative the data, 
 the lower the influence the tree prior has.
@@ -210,10 +210,6 @@ Due to this, computionally faster tree priors are more commonly used.
 However, it is unknown if it is valid to assume that tree prior choice is 
 of low importance.
 
-\richel{
-  I think this is a useful paragraph, adding some depth to this paper,
-  but it could use some rewording
-}
 There have been multiple attempts to investigate the importance of tree
 prior choice. For example, recently Sarver et al., [\cite{sarver2019choice}] 
 show that the choice of tree prior does not 
@@ -534,22 +530,23 @@ while preserving the same topology.
 
 Using a twin tree serves as a control: both $\tau_{\mathit{P}}$ and 
 $\tau_{\mathit{I}}$ will produce an error distribution. 
-These errors are unavoidably accumulated in the \verb;pirouette; pipeline. 
-All the factors that can cause such errors are: the branching 
-times $\vec{t}$ of the tree (as a consequence of the tree prior), its topology 
-$\psi$, the stochasticity induced by simulating the alignment (step 1a 
-$\rightarrow$ 2a in Fig.~\ref{fig:pipeline}) and the stochasticity induced by 
-the Bayesian inference (step 2a $\rightarrow$ 4a in Fig.~\ref{fig:pipeline}). 
-By imposing the same topology and replicating the pipelines a sufficient number 
-of times we can sort out all the possible causes that are not a direct 
-consequence of the choice of the tree prior.
+These errors unavoidably accumulate in the \verb;pirouette; pipeline,
+in both the true and twin tree: either tree may be an unlikely representative
+of the underlying tree prior, the alignment simulation may give different
+numbers of mutations for a same evolutionary time, 
+and the MCMC will sample different states.
+These errors can be equalized by imposing a same tree topology and by
+replicating the pipelines a sufficient number.
 
-Potential differences in shape of error distributions will therefore be 
-consequences of different tree priors for the two parallel pipelines: the use 
-of prior $\mathit{P}$ for the original pipeline and of prior $\mathit{I}$ for 
-the twin pipeline. In the second case, though, such error distribution is not 
-influenced by the mismatch between how the tree is generated and how it is 
-analyzed by BEAST2.
+The left-over differences in error distributions will be 
+consequences of different phylogeny and tree priors for the two parallel 
+pipelines: the main pipeline uses tree $\tau_{\mathit{P}}$ and
+possibly mismatched prior $\mathit{P}$, where the twin pipeline
+uses tree $\tau_{\mathit{I}}$ for a matching prior $\mathit{I}$.
+So, for the twin route, the resulting error distribution cannot be 
+attributed to a mismatch between true tree prior and tree prior used in
+inference.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -601,6 +598,7 @@ have a useful example, and have sensible defaults.
     \textbf{Name} & \textbf{Description} \\
     \hline
     \verb;pir_run; & Run \verb;pirouette; \\
+    \verb;pir_plot; & Show the \verb;pirouette; results as a plot \\
     \verb;create_pir_params; & Create the \verb;pirouette; parameters \\
     \hline
     \verb;create_alignment_params; & Create the alignment parameters \\
@@ -821,11 +819,6 @@ errors <- pir_run(
 \end{lstlisting}
 
 The error distribution returned by \verb;pir_run; is stored as a data frame. 
-\richel{
-  I suggest \texttt{pir\_run} to return a list of run experiments,
-  as described in Issue 225, 
-  \url{https://github.com/richelbilderbeek/pirouette/issues/225}
-}
 It can be directly plotted using \verb;pir_plot;:
 
 \begin{lstlisting}[
