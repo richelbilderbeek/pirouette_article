@@ -47,6 +47,19 @@ check_experiments(candidate_experiments)
 experiments <- c(list(generative_experiment), candidate_experiments)
 check_experiments(experiments)
 
+# Testing
+if (1 == 2) {
+  experiments <- experiments[1:2]
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$inference_model$mcmc <- create_mcmc(chain_length = 10000, store_every = 1000)
+    experiments[[i]]$est_evidence_mcmc <- create_mcmc_nested_sampling(
+      chain_length = 10000,
+      store_every = 1000,
+      epsilon = 100.0
+    )
+  }
+}
+
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments,
@@ -75,13 +88,25 @@ if (!is_one_na(pir_params$twinning_params)) {
   pir_params$twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
   pir_params$twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
 }
+rm_pir_param_files(pir_params)
 print("#######################################################################")
 
+Sys.time()
 errors <- pir_run(
   phylogeny,
   pir_params = pir_params
 )
+Sys.time()
 
+if (1 == 2) {
+  pir_plot(pir_out = errors)
+}
+
+utils::write.csv(
+  x = errors,
+  file = file.path(example_folder, "errors.csv"),
+  row.names = FALSE
+)
 
 pir_plot(errors) +
   ggsave(file.path(example_folder, "errors.png"))
@@ -100,10 +125,10 @@ df_evidences$clock_model_name <- plyr::revalue(
 df_evidences$tree_prior_name <- plyr::revalue(
   df_evidences$tree_prior_name,
   c(
-    "yule" = "Yule", 
-    "birth_death" = "BD", 
-    "coalescent_bayesian_skyline" = "CBS", 
-    "coalescent_constant_population" = "CCP", 
+    "yule" = "Yule",
+    "birth_death" = "BD",
+    "coalescent_bayesian_skyline" = "CBS",
+    "coalescent_constant_population" = "CCP",
     "coalescent_exp_population" = "CEP"
   )
 )
@@ -129,10 +154,10 @@ df_evidences$clock_model_name <- plyr::revalue(
 df_evidences$tree_prior_name <- plyr::revalue(
   df_evidences$tree_prior_name,
   c(
-    "yule" = "Yule", 
-    "birth_death" = "BD", 
-    "coalescent_bayesian_skyline" = "CBS", 
-    "coalescent_constant_population" = "CCP", 
+    "yule" = "Yule",
+    "birth_death" = "BD",
+    "coalescent_bayesian_skyline" = "CBS",
+    "coalescent_constant_population" = "CCP",
     "coalescent_exp_population" = "CEP"
   )
 )

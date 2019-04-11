@@ -23,6 +23,18 @@ alignment_params <- create_alignment_params(
 
 experiments <- list(create_experiment())
 
+# Testing
+if (1 == 2) {
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$inference_model$mcmc <- create_mcmc(chain_length = 10000, store_every = 1000)
+    experiments[[i]]$est_evidence_mcmc <- create_mcmc_nested_sampling(
+      chain_length = 10000,
+      store_every = 1000,
+      epsilon = 100.0
+    )
+  }
+}
+
 twinning_params <- create_twinning_params(
   twin_model = "birth_death",
   method = "random_tree"
@@ -47,15 +59,29 @@ for (i in seq_along(pir_params$experiments)) {
 }
 pir_params$evidence_filename <- file.path(example_folder, "evidence_true.csv")
 if (!is_one_na(pir_params$twinning_params)) {
-  twinning_params$twin_tree_filename <- file.path(example_folder, "twin.tree")
-  twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
-  twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
+  pir_params$twinning_params$twin_tree_filename <- file.path(example_folder, "twin.tree")
+  pir_params$twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
+  pir_params$twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
 }
+rm_pir_param_files(pir_params)
 print("#######################################################################")
 
+Sys.time()
+# 11:24:52
 errors <- pir_run(
   phylogeny,
   pir_params = pir_params
+)
+Sys.time()
+
+if (1 == 2) {
+  pir_plot(pir_out = errors)
+}
+
+utils::write.csv(
+  x = errors,
+  file = file.path(example_folder, "errors.csv"),
+  row.names = FALSE
 )
 
 pir_plot(errors) +

@@ -24,6 +24,19 @@ alignment_params <- create_alignment_params(
 experiments <- create_all_experiments()
 check_experiments(experiments)
 
+# Testing
+if (1 == 2) {
+  experiments <- experiments[1:2]
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$inference_model$mcmc <- create_mcmc(chain_length = 10000, store_every = 1000)
+    experiments[[i]]$est_evidence_mcmc <- create_mcmc_nested_sampling(
+      chain_length = 10000,
+      store_every = 1000,
+      epsilon = 100.0
+    )
+  }
+}
+
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments,
@@ -47,13 +60,25 @@ if (!is_one_na(pir_params$twinning_params)) {
   pir_params$twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
   pir_params$twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
 }
+rm_pir_param_files(pir_params)
 print("#######################################################################")
 
+Sys.time()
 errors <- pir_run(
   phylogeny,
   pir_params = pir_params
 )
+Sys.time()
 
+if (1 == 2) {
+  pir_plot(pir_out = errors)
+}
+
+utils::write.csv(
+  x = errors,
+  file = file.path(example_folder, "errors.csv"),
+  row.names = FALSE
+)
 
 pir_plot(errors) +
   ggsave(file.path(example_folder, "errors.png"))
@@ -85,8 +110,8 @@ sink(file.path(example_folder, "evidence_true.latex"))
 xtable::print.xtable(
   xtable::xtable(
     df_evidences,
-    caption = paste0("Evidences of example ", example_no, " for the true tree"), 
-    label = paste0("tab:evidences_example_", example_no, "_true"), 
+    caption = paste0("Evidences of example ", example_no, " for the true tree"),
+    label = paste0("tab:evidences_example_", example_no, "_true"),
     digits = 3
   ),
   include.rownames = FALSE
@@ -117,8 +142,8 @@ sink(file.path(example_folder, "evidence_twin.latex"))
 xtable::print.xtable(
   xtable::xtable(
     df_evidences,
-    caption = paste0("Evidences of example ", example_no, " for the twin tree"), 
-    label = paste0("tab:evidences_example_", example_no, "_twin"), 
+    caption = paste0("Evidences of example ", example_no, " for the twin tree"),
+    label = paste0("tab:evidences_example_", example_no, "_twin"),
     digits = 3
   ),
   include.rownames = FALSE
