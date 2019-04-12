@@ -419,14 +419,14 @@ inside.}
 The pipeline is summarized by the following steps:
 \begin{enumerate}
   \item from a given phylogeny an alignment is simulated 
-    under a known alignment model;
-  \item from this alignment, according to the specified inference conditions, 
-    an inference model is picked (which may differ from the 
+    under a known alignment model $\mathit{A}$;
+  \item from this alignment, according to the specified inference conditions $\mathit{C}$, 
+    an inference model $\mathit{I}$ is picked (which may differ from the 
     generative alignment model);
   \item the alignment and inference model are used 
     to infer a posterior distribution;
   \item the phylogenies in the posterior are compared with the given phylogeny 
-    to estimate the error made, according to the error measure specified 
+    to estimate the error made, according to the error measure $\mathit{E}$ specified 
     by the user;
 \end{enumerate}
 The pipeline is visualized in Fig.~\ref{fig:pipeline}. 
