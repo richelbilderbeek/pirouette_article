@@ -1,12 +1,12 @@
 % latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Wed Apr  3 20:46:40 2019
+% Fri Apr 12 09:28:55 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrrrrrrr}
+\begin{tabular}{rrrrrrrrrrrrrrrrr}
   \hline
-posterior & likelihood & prior & treeLikelihood & TreeHeight & kappa & freqParameter.1 & freqParameter.2 & freqParameter.3 & freqParameter.4 & YuleModel & birthRate \\ 
+posterior & likelihood & prior & treeLikelihood & TreeHeight & kappa & freqParameter.1 & freqParameter.2 & freqParameter.3 & freqParameter.4 & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & BirthDeath & BDBirthRate & BDDeathRate \\ 
   \hline
-6835 & 6884 & 9756 & 6884 & 9490 & 1851 & 714 & 439 & 755 & 579 & 9888 & 9808 \\ 
+8287 & 8451 & 2603 & 8451 & 3565 & 856 & 493 & 506 & 517 & 412 & 2207 & 3530 & 2415 & 2372 & 8712 & 6765 & 4602 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 5 for best candidate model} 

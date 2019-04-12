@@ -1,12 +1,12 @@
 % latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Wed Apr  3 20:46:40 2019
+% Fri Apr 12 09:28:55 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrr}
   \hline
 posterior & likelihood & prior & treeLikelihood & TreeHeight & YuleModel & birthRate \\ 
   \hline
-9964 & 9956 & 9872 & 9956 & 9512 & 9872 & 10001 \\ 
+9961 & 9944 & 9628 & 9944 & 10001 & 9628 & 10001 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 5 for generative model} 

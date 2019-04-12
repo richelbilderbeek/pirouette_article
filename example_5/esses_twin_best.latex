@@ -1,12 +1,12 @@
 % latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Wed Apr  3 20:46:40 2019
+% Fri Apr 12 09:28:55 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrrrrrrr}
+\begin{tabular}{rrrrrrrrrrr}
   \hline
-posterior & likelihood & prior & treeLikelihood & TreeHeight & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & BirthDeath & BDBirthRate & BDDeathRate \\ 
+posterior & likelihood & prior & treeLikelihood & TreeHeight & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & popSize & CoalescentConstant \\ 
   \hline
-9821 & 10001 & 2254 & 10001 & 7551 & 1373 & 5021 & 1153 & 1363 & 8643 & 7433 & 5839 \\ 
+8490 & 9989 & 1893 & 9989 & 2945 & 1008 & 1592 & 888 & 1055 & 8609 & 4631 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 5 for best candidate model, twin tree} 

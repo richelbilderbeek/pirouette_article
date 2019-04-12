@@ -1,12 +1,12 @@
 % latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Wed Apr  3 18:28:53 2019
+% Thu Apr 11 13:50:51 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrrr}
+\begin{tabular}{rrrrrrrrrrrrrrrrrrr}
   \hline
- & posterior & likelihood & prior & treeLikelihood & TreeHeight & YuleModel & birthRate \\ 
+ & posterior & likelihood & prior & treeLikelihood & TreeHeight & kappa1 & kappa2 & freqParameter.1 & freqParameter.2 & freqParameter.3 & freqParameter.4 & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & BirthDeath & BDBirthRate & BDDeathRate \\ 
   \hline
-1 & 10001 & 10001 & 10001 & 10001 & 10001 & 10001 & 9918 \\ 
+1 & 8666 & 8779 & 2579 & 8779 & 2631 & 955 & 702 & 460 & 602 & 565 & 478 & 1940 & 2929 & 1254 & 2018 & 8257 & 7249 & 5844 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 2} 
