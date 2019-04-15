@@ -1036,8 +1036,15 @@ experiment <- create_gen_experiment()
 
 Creating the complete set of experiments:
 
-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+\begin{lstlisting}[
+  language=R, 
+  floatplacement=ht, 
+  frame=single,
+  label = {lst:create_experiments},
+  caption = Create a list of one experiment.
+]
 experiments <- list(experiment)
+\end{lstlisting}
 
 This time, however, we measure both the baseline and complete inference error.
 We set the twinning parameters $\mathit{T}$ to create a twin tree,
