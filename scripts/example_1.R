@@ -22,7 +22,7 @@ alignment_params <- create_alignment_params(
   mutation_rate = 0.1
 )
 
-experiment <- create_experiment()
+experiment <- create_gen_experiment()
 experiments <- list(experiment)
 
 # Testing
@@ -88,9 +88,11 @@ esses <- tracerer::calc_esses(
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
 
+df_esses <- data.frame(parameter = colnames(esses), ESS = as.character(esses))
+
 sink(file.path(example_folder, "esses.latex"))
 xtable::print.xtable(
-  xtable::xtable(esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0),
+  xtable::xtable(df_esses, caption = "ESSes of example 1", label = "tab:esses_example_1", digits = 0),
   include.rownames = FALSE
 )
 sink()

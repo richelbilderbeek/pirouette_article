@@ -166,11 +166,13 @@ esses_twin_best <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(to_twin_filename(pir_params$experiments[[2]]$beast2_options$output_log_filename)),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
+df_esses_best <- data.frame(parameter = colnames(esses_best), ESS = as.character(esses_best))
+df_esses_twin_best <- data.frame(parameter = colnames(esses_twin_best), ESS = as.character(esses_twin_best))
 
 sink(file.path(example_folder, "esses_best.latex"))
 xtable::print.xtable(
   xtable::xtable(
-    esses_best,
+    df_esses_best,
     caption = paste0("ESSes of example ", example_no, " for best candidate model"),
     label = paste0("tab:esses_example_", example_no, "_best"),
     digits = 0
@@ -183,7 +185,7 @@ sink()
 sink(file.path(example_folder, "esses_twin_best.latex"))
 xtable::print.xtable(
   xtable::xtable(
-    esses_twin_best,
+    df_esses_twin_best,
     caption = paste0("ESSes of example ", example_no, " for best candidate model, twin tree"),
     label = paste0("tab:esses_example_", example_no, "_twin__best"),
     digits = 0

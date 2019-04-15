@@ -96,6 +96,7 @@ esses <- tracerer::calc_esses(
   traces = tracerer::parse_beast_log(pir_params$experiments[[1]]$beast2_options$output_log_filename),
   sample_interval = pir_params$experiments[[1]]$inference_model$mcmc$store_every
 )
+df_esses <- data.frame(parameter = colnames(esses), ESS = as.character(esses))
 
 print("#######################################################################")
 print("ESSes")
@@ -103,7 +104,7 @@ print("#######################################################################")
 sink(file.path(example_folder, "esses.latex"))
 xtable::print.xtable(
   xtable::xtable(
-    esses,
+    df_esses,
     caption = paste0("ESSes of example ", example_no),
     label = paste0("tab:esses_example_", example_no),
     digits = 0
