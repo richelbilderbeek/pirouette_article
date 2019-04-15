@@ -126,7 +126,8 @@ Groningen, Groningen, The Netherlands}
     We describe \verb;pirouette;'s usage and the biological scientific
     question it can answer, including full examples. \\
   \textbf{4. }
-    Last, we discuss the results obtained by the examples. \\
+    Last, we discuss the results obtained by the examples,
+    their interpretation. \\
 \end{abstract}
 
 {\bf Keywords:} computational biology, evolution, phylogenetics, tree prior,
@@ -1013,9 +1014,22 @@ when hand-picking a tree prior, compared to the background noise?"
 Most of the settings for this ERQ are
 the same as in ERQ 2: we will re-use the phylogeny from an 
 unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
-the alignment parameters (listing~\ref{lst:create_alignment})
-and the list of experiments (listing~\ref{lst:create_generative_experiment}),
-the latter stating that the generative tree prior is a Yule tree prior.
+the alignment parameters (listing~\ref{lst:create_alignment}).
+
+We will create a list of experiments as in 
+listing~\ref{lst:create_generative_experiment},
+but with all defaults:
+
+\begin{lstlisting}[
+  language=R, 
+  floatplacement=ht, 
+  frame=single,
+  label = {lst:create_gen_experiment_defaults},
+  caption = Create a list of one default generative experiment.
+]
+experiments <- list(create_gen_experiment())
+\end{lstlisting}
+
 
 This time, however, we measure both the baseline and complete inference error.
 We set the twinning parameters $\mathit{T}$ to create a twin tree,
@@ -1040,7 +1054,13 @@ twinning_params <- create_twinning_params(
 
 We combine all the parameters using \verb;create_pir_params;:
 
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+\begin{lstlisting}[
+  language=R, 
+  floatplacement=ht, 
+  frame=single,
+  label = {lst:create_pir_params_with_twinning},
+  caption = Create the default twinning parameters.
+]
 pir_params <- create_pir_params(
   alignment_params = alignment_params,
   experiments = experiments,
@@ -1048,16 +1068,8 @@ pir_params <- create_pir_params(
 )
 \end{lstlisting}
 
-Finally, we run and plot the results:
-
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-errors <- pir_run(
-  phylogeny = phylogeny,
-  pir_params = pir_params
-)
-pir_plot(errors)
-\end{lstlisting}
-
+We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
+and plot the results (listing~\ref{lst:pir_plot}),
 The output is shown in figure~\ref{fig:example_3}
 
 \begin{figure}[H]
@@ -1108,35 +1120,14 @@ We choose again to use the default error measurement setup,
 as shown in listing~\ref{lst:create_error_measure_params}.
 
 To get an idea of a baseline error made by BEAST2, 
-we also make use of the twinning option by using the
-default twinning parameters, as shown in 
-listing~\ref{lst:create_twinning_params}.
+we also make use of the twinning option by using
+the same pir\_params XXXXXXXXXXXXXXXXXXXXXXXXXXXx as shown in 
+listing~\ref{lst:create_pir_params_with_twinning}.
+We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
+and plot the results (listing~\ref{lst:pir_plot}).
+The output is shown in figure~\ref{fig:example_4}. 
 
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-pir_params <- create_pir_params(
-  alignment_params = alignment_params,
-  experiments = experiments,
-  error_measure_params = error_measure_params,
-  twinning_params = twinning_params
-)
-\end{lstlisting}
-
-We run the experiment:
-
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-errors <- pir_run(
-  phylogeny = phylogeny,
-  pir_params = pir_params
-)
-\end{lstlisting}
-
-and show the results:
-
-\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-pir_plot(errors)
-\end{lstlisting}
-
-The output is shown in figure~\ref{fig:example_4}. The alignment
+The alignment
 generated for the true tree had most evidence for the JC site model,
 strict clock model and Yule tree prior, 
 with a weight of 0.981 (as 
@@ -1162,13 +1153,12 @@ shown in table \ref{tab:evidences_example_4}).
 \section{Usage: Example Research Question 5}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In ERQs 1 and 2 we used \verb;pirouette; to  
-run the analysis on the main pipeline, either using a 'generative' or a 
-'best\_candidate' inference model, resulting in one error distribution,
-that does not mean much on its own.
-In ERQs 3 and 4 we measured the baseline error caused by stochasticity,
-by running a parallel twin pipeline. This yielded two error distributions:
-the baseline error and the complete inference error. Here we want to combine all the instances of the previous ERQs at once.
+When you are moderately sure about hand-picking an inference model,
+but would also like to check how well your hand-picked model compares
+to others, we can do both. Of course, you are interested in the
+baseline error for both the hand-picked and best candidate model,
+so you'll enable twinning as well. This example is a combination
+of the previos two ERQs. 
 
 \subsection{Question}
 
@@ -1181,8 +1171,10 @@ in relation to the background error?"
 
 In this example we use a tree generated by the Yule process.
 Instead of using the common Yule tree as in example 1, we will use
-a Yule tree of low (actually: zero) likelihood \giovanni{What do you mean by zero likelihood? This word might have a heavy meaning int his context...}, i.e. the one already used in ERQs 2-4, by using the code shown in listing~\ref{lst:unknown_phylogeny}.
-The first step in \verb;pirouette; is to simulate a DNA alignment 
+a Yule tree of low likelihood, 
+i.e. the one already used in ERQs 2-4, 
+by using the code shown in listing~\ref{lst:unknown_phylogeny}.
+The first step is to simulate a DNA alignment 
 from the given phylogeny, for which we will use the same code 
 as shown in listing~\ref{lst:create_alignment}.
 
@@ -1215,18 +1207,7 @@ In this example we must specify both the generative and candidate experiments.
 Here we specify the generative model:
 
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
-generative_experiment <- create_experiment(
-  inference_conditions = create_inference_conditions(
-    model_type = "generative",
-    run_if = "always",
-    do_measure_evidence = TRUE
-  )
-  inference_model = create_inference_model(
-    site_model = create_jc69_site_model(),
-    clock_model = create_strict_clock_model(),
-    tree_prior = create_yule_tree_prior()
-  )
-)
+generative_experiment <- create_gen_experiment()
 \end{lstlisting}
 
 We can specify all the candidates simply by calling 
@@ -1244,37 +1225,14 @@ We need to combine these experiments into one set of experiments:
 \begin{lstlisting}[language=R, floatplacement=H, frame=single]
 experiments <- c(list(generative_experiment), candidate_experiments)
 \end{lstlisting}
-\giovanni{Does this code actually work?}
 
 We choose again to use the default error measurement parameters
-created in listing~\ref{lst:create_error_measure_params}
-and combine this with the same twinning parameters 
-used in listing~\ref{lst:create_twinning_params}:
+created in listing~\ref{lst:create_error_measure_params},
+with twinning, as alsready shown in 
+listing~\ref{lst:create_pir_params_with_twinning}. XXXXXXXXXXXXXXXXXXXXX
 
-\begin{lstlisting}[language=R, floatplacement=H, frame=single]
-pir_params <- create_pir_params(
-  alignment_params = alignment_params,
-  experiments = experiments,
-  error_measure_params = error_measure_params,
-  twinning_params = twinning_params
-)
-\end{lstlisting}
-
-We run the experiment in the usual fashion:
-
-\begin{lstlisting}[language=R, floatplacement=H, frame=single]
-errors <- pir_run(
-  phylogeny = phylogeny,
-  pir_params = pir_params
-)
-\end{lstlisting}
-
-We plot the results:
-
-\begin{lstlisting}[language=R, floatplacement=H, frame=single]
-pir_plot(errors)
-\end{lstlisting}
-
+We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
+and plot the results (listing~\ref{lst:pir_plot}).
 The output is shown in figure~\ref{fig:example_5}.
 The alignment
 generated from the true tree had most evidence for the JC site model,
@@ -1290,10 +1248,10 @@ shown in table \ref{tab:evidences_example_5_twin}).
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_5/errors.png}
   \caption{
-    Example 5: the error made by BEAST2 from a phylogeny, 
-    when the generative model is known, 
-    compared to candidates with similar inference models, 
-    in relationship to the background error.
+    Example 5: the inference error made, 
+    when the generative model is hand-picked, 
+    compared to the best of 39 candidate models, 
+    each in relationship to the background error.
   }
   \label{fig:example_5}
 \end{figure}
@@ -1301,12 +1259,6 @@ shown in table \ref{tab:evidences_example_5_twin}).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Interpretation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\richel{
-  I think we can put the interpretation in a table as well.
-  Question is: do you agree with the interpretations I gave?
-  Please correct me.
-}
 
 \begin{table}
   \begin{tabular}{ | r | c | c | c | }

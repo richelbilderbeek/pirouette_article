@@ -36,6 +36,7 @@ generative_experiment <- create_experiment(
     mcmc = create_mcmc(chain_length = 1e+07, store_every = 1000)
   )
 )
+generative_experiment <- create_gen_experiment()
 check_experiment(generative_experiment)
 
 # All non-Yule tree priors

@@ -21,7 +21,7 @@ alignment_params <- create_alignment_params(
   mutation_rate = 0.1
 )
 
-experiments <- list(create_experiment())
+experiments <- list(create_gen_experiment())
 
 # Testing
 if (1 == 2) {
