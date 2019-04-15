@@ -447,7 +447,7 @@ If the attached inference model $I$ is the generative model, then it should alwa
 of it being the best).
 When $I$ is set to be the generative model,
 it will use the 
-same site and clock model used in the alignment simulation,
+same site and clock model used in the alignment simulation
 and the same tree prior used in the creation of the given phylogeny. 
 A 'best' model is defined as the inference model with
 the highest evidence (a.k.a. marginal likelihood) for that inference model, 
@@ -467,11 +467,11 @@ This step usually takes up most of the full pipeline's computation time.
 
 The fourth step quantifies the inference error made, by removing
 the burn-in, then applying an error statistic.
-The burn-in is the first phase of the MCMC,
-where it samples an unrepresentative part of state space,
+The burn-in is the first phase of the Markov chain Monte Carlo (MCMC) run,
+in which it samples an unrepresentative part of state space,
 and is commonly discarded. By default, \verb;pirouette; 
-uses removes the first 10\% of the posterior.
-From the remaining posterior, \verb;pirouette; 
+removes the first 10\% of the posterior.
+From the remaining posterior \verb;pirouette; 
 creates an error distribution, by measuring the difference
 between the true tree and each of the posterior 
 trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
@@ -491,9 +491,9 @@ we can observe a given tree $\tau_{\mathit{P}}$,
 with branching times $\Vec{t}_{\mathit{P}}$ and 
 topology $\psi_{\mathit{P}}$, 
 but we cannot use the tree prior in Bayesian inference.
-The twinning process, T, in accordance with a chosen inference 
+The twinning process T, in accordance with a chosen inference 
 model $t_p \in \mathit{I}$, creates a tree $\tau_{\mathit{I}}$
-with branching times $\Vec{t}_{\mathit{I}}$ while preserving 
+with branching times $\Vec{t}_{\mathit{I}}$ while preserving the 
 topology $\psi_{\mathit{P}}$:
 
 \begin{align}
