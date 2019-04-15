@@ -152,7 +152,7 @@ BEAST [\cite{drummond2007beast}] is a Bayesian phylogenetics tool,
 that needs both data and priors to infer a posterior.
 Of these priors, the tree prior describes how diversification occurs.
 BEAST has built-in tree priors such as the Yule [\cite{yule}] and 
-(constant-rate) birth-death [\cite{nee1994reconstructed}] model.
+(constant-rate) birth-death [\cite{nee1994reconstructed}] models.
 These simple tree priors are most commonly used, as these 
 have sufficient biological complexity, while being computationally fast.
 BEAST's successor, BEAST2 [\cite{bouckaert2014beast}],
@@ -200,8 +200,8 @@ Ideally, the estimated parameter values closely match the known/true values.
 
 Even when a diversification model passes the procedure described above,
 it is not necessarily used in Bayesian inference.
-In Bayesian inference, the likelihood of a diversification 
-model, is computed millions of times.
+In these kind of procedures the likelihood of a diversification 
+model can be computed millions of times.
 Due to this, effective but computationally expensive tree priors are non-viable.
 Also, there may be no need to add such a tree prior to a Bayesian
 inference framework: the more informative the data, 
@@ -218,7 +218,7 @@ Also recently, Duchene et al. [\cite{duchene2018phylodynamic}] released
 a BEAST2 package to assess how well posterior predictive simulations
 recover a given tree when using the standard diversification models.
 These investigations show how current diversification models compare
-to one another, but these do not help to assess the importance of a 
+to one another, but they do not help to assess the importance of a 
 new tree prior. 
 
 Here we introduce a method to quantify the importance of a novel tree prior.
@@ -442,7 +442,7 @@ The second step (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a)
 selects inference models from a set of experiments. 
 We define an experiment $X$ as the combination of an inference model $I$
 and the conditions $C$ to actually use it in the inference step.
-There are multiple setups of condition $C$: 
+There are multiple setups of $C$: 
 either the attached inference model $I$ is the generative model and should always be selected,
 or the attached inference model is a candidate model, that will be
 be selected if it is the best model, or will be selected always (regardless
