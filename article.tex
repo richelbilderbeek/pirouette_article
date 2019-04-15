@@ -967,10 +967,6 @@ pir_params <- create_pir_params(
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}),
 as shown in figure~\ref{fig:example_2}.
-In this case, the inference model with a JC69 site model, 
-strict clock model and Yule tree prior has the highest likelihood
-amongst all candidates (table \ref{tab:evidences_example_2} shows
-the evidences).
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_2/errors.png}
@@ -1127,17 +1123,6 @@ We run \verb;pirouette; (listing~\ref{lst:pir_run})
 and plot the results (listing~\ref{lst:pir_plot}).
 The output is shown in figure~\ref{fig:example_4}. 
 
-The alignment
-generated for the true tree had most evidence for the JC site model,
-strict clock model and Yule tree prior, 
-with a weight of 0.981 (as 
-shown in table \ref{tab:evidences_example_4}). 
-The alignment
-generated for the twin tree had most evidence for the JC site model,
-RLN clock model and CBS tree prior,
-with a weight of 0.707 (as 
-shown in table \ref{tab:evidences_example_4}). 
-
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_4/errors.png}
   \caption{
@@ -1234,16 +1219,6 @@ as shown in listing~\ref{lst:create_pir_params_with_twinning}.
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}).
 The output is shown in figure~\ref{fig:example_5}.
-The alignment
-generated from the true tree had most evidence for the JC site model,
-strict clock model and Yule tree prior, 
-with a weight of 0.981 \richel{again} (as 
-shown in table \ref{tab:evidences_example_5}). 
-The alignment
-generated for the twin tree had most evidence for the JC site model,
-RLN clock model and CBS tree prior,
-with a weight of 0.707 \richel{again} (as 
-shown in table \ref{tab:evidences_example_5_twin}). 
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_5/errors.png}
@@ -1255,10 +1230,6 @@ shown in table \ref{tab:evidences_example_5_twin}).
   }
   \label{fig:example_5}
 \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Interpretation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
   \begin{tabular}{ | r | c | c | c | }
