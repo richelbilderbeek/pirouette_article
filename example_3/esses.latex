@@ -1,12 +1,18 @@
-% latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Thu Apr 11 14:06:10 2019
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Apr 15 21:32:45 2019
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrr}
+\begin{tabular}{ll}
   \hline
-posterior & likelihood & prior & treeLikelihood & TreeHeight & YuleModel & birthRate \\ 
+parameter & ESS \\ 
   \hline
-10001 & 10001 & 9822 & 10001 & 10001 & 9822 & 9686 \\ 
+posterior & 9904 \\ 
+  likelihood & 9893 \\ 
+  prior & 9393 \\ 
+  treeLikelihood & 9893 \\ 
+  TreeHeight & 9754 \\ 
+  YuleModel & 9393 \\ 
+  birthRate & 10001 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 3} 
