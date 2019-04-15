@@ -451,10 +451,11 @@ The second step (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a)
 selects inference models from a set of experiments. 
 We define an experiment $X$ as the combination of an inference model $I$
 and the conditions $C$ to actually use it in the inference step.
-There are two main setups of condition $C$: either the attached
-inference model $I$ is the generative model and should always be selected,
+There are multiple setups of condition $C$: 
+either the attached inference model $I$ is the generative model and should always be selected,
 or the attached inference model is a candidate model, that will be
-be selected if it is the best model \giovanni{then why do you need the "run\_if" option?}.
+be selected if it is the best model, or will be selected always (regardless
+of it being the best). 
 When setting $C$ to be attached to the generative model,
 it is implied that attached inference model $I$ uses the 
 same site and clock model used in the alignment simulation,
@@ -482,7 +483,10 @@ trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
 The default way to quantify the difference between two phylogenies
 is the nLTT statistic (\cite{janzen2015approximate}), but any 
 user-defined error statistic can be used.
-\giovanni{How is the MCMC topic connected to what previously said?} An MCMC needs to 'warm up', as initially it will sample
+The error statistic is not applied on all posterior phylogenies 
+\giovanni{How is the MCMC topic connected to what previously said?} 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXX33
+An MCMC needs to 'warm up', as initially it will sample
 an unrepresentative part of state space. This phase, called 
 the burn-in, is commonly set up to be a small part of the entire run, 
 after which it is discarded. By default, \verb;pirouette; 
@@ -894,7 +898,7 @@ phylogeny  <- ape::read.tree(
   text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);"
 )
 \end{lstlisting}
-\begin{figure}[ht]
+\begin{figure}[H]
   \includegraphics[width=\textwidth]{example_2/tree_unknown.png}
   \caption{The tree derived from an unknown diversification process, 
     as created by listing~\ref{lst:unknown_phylogeny}.
@@ -1121,9 +1125,7 @@ by calling \verb;create_all_experiments;,
 as we previously did in listing~\ref{lst:create_all_experiments}.
 
 We choose again to use the default error measurement setup,
-as shown in listing~\ref{lst:create_error_measure_params},
-which is the default in \verb;create_pir_params;, so we'll
-leave it out for now.
+as shown in listing~\ref{lst:create_error_measure_params}.
 
 To get an idea of a baseline error made by BEAST2, 
 we also make use of the twinning option by using
