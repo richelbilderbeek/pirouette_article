@@ -727,13 +727,13 @@ We specify in $\mathit{C}$ that the experiment will always be run.
   \label{tab:RQ1}
 \end{table}
 
-Listing~\ref{lst:create_generative_experiment_explicit} shows how to
+Listing~\ref{lst:create_gen_experiment_explicit} shows how to
 set up this experiment:
 
 \begin{lstlisting}[
   language=R, 
   floatplacement=ht, frame=single,
-  label = {lst:create_generative_experiment_explicit},
+  label = {lst:create_gen_experiment_explicit},
   caption = {
     Create the experiments to answer research question 1, 
     using explicit arguments.
@@ -758,7 +758,7 @@ in this case:
 \begin{lstlisting}[
   language=R, 
   floatplacement=ht, frame=single,
-  label = {lst:create_generative_experiment},
+  label = {lst:create_gen_experiment},
   caption = {
     Create the experiments to answer research question 1.
   }
@@ -1016,8 +1016,8 @@ the same as in ERQ 2: we will re-use the phylogeny from an
 unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
 the alignment parameters (listing~\ref{lst:create_alignment}).
 
-We will create a list of experiments as in 
-listing~\ref{lst:create_generative_experiment},
+We will create an experiment as in 
+listing~\ref{lst:create_gen_experiment},
 but with all defaults:
 
 \begin{lstlisting}[
@@ -1027,9 +1027,13 @@ but with all defaults:
   label = {lst:create_gen_experiment_defaults},
   caption = Create a list of one default generative experiment.
 ]
-experiments <- list(create_gen_experiment())
+experiment <- create_gen_experiment()
 \end{lstlisting}
 
+Creating the complete set of experiments:
+
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+experiments <- list(experiment)
 
 This time, however, we measure both the baseline and complete inference error.
 We set the twinning parameters $\mathit{T}$ to create a twin tree,
@@ -1117,7 +1121,9 @@ by calling \verb;create_all_experiments;,
 as we previously did in listing~\ref{lst:create_all_experiments}.
 
 We choose again to use the default error measurement setup,
-as shown in listing~\ref{lst:create_error_measure_params}.
+as shown in listing~\ref{lst:create_error_measure_params},
+which is the default in \verb;create_pir_params;, so we'll
+leave it out for now.
 
 To get an idea of a baseline error made by BEAST2, 
 we also make use of the twinning option by using
