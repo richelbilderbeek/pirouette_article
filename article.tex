@@ -476,21 +476,19 @@ For each selected experiment a posterior is inferred, using the
 \verb;babette; [\cite{bilderbeek2018babette}] R package. 
 This step usually takes up most of the full pipeline's computation time.
 
-The fourth step quantifies the inference error made.
-It creates an error distribution, by measuring the difference
+The fourth step quantifies the inference error made, by removing
+the burn-in, then applying an error statistic.
+The burn-in is the first phase of the MCMC,
+where it samples an unrepresentative part of state space,
+and is commonly discarded. By default, \verb;pirouette; 
+uses removes the first 10\% of the posterior.
+From the remaining posterior, \verb;pirouette; 
+creates an error distribution, by measuring the difference
 between the true tree and each of the posterior 
 trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
 The default way to quantify the difference between two phylogenies
 is the nLTT statistic (\cite{janzen2015approximate}), but any 
 user-defined error statistic can be used.
-The error statistic is not applied on all posterior phylogenies 
-\giovanni{How is the MCMC topic connected to what previously said?} 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXX33
-An MCMC needs to 'warm up', as initially it will sample
-an unrepresentative part of state space. This phase, called 
-the burn-in, is commonly set up to be a small part of the entire run, 
-after which it is discarded. By default, \verb;pirouette; 
-uses a cut-off value of 10\%.
 
 \subsection{Twin tree}\label{subsec:twinning}
 
@@ -1130,13 +1128,11 @@ as shown in listing~\ref{lst:create_alignment}.
 We specify that we want all 40 inference models to compete 
 by calling \verb;create_all_experiments;,
 as we previously did in listing~\ref{lst:create_all_experiments}.
-
 We choose again to use the default error measurement setup,
 as shown in listing~\ref{lst:create_error_measure_params}.
-
 To get an idea of a baseline error made by BEAST2, 
 we also make use of the twinning option by using
-the same pir\_params XXXXXXXXXXXXXXXXXXXXXXXXXXXx as shown in 
+the same call to \verb;create_pir_params; as shown in 
 listing~\ref{lst:create_pir_params_with_twinning}.
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}).
@@ -1242,9 +1238,9 @@ experiments <- c(list(generative_experiment), candidate_experiments)
 \end{lstlisting}
 
 We choose again to use the default error measurement parameters
-created in listing~\ref{lst:create_error_measure_params},
-with twinning, as alsready shown in 
-listing~\ref{lst:create_pir_params_with_twinning}. XXXXXXXXXXXXXXXXXXXXX
+created in listing~\ref{lst:create_error_measure_params}.
+We enable twinning, by calling \verb;create_pir_params;
+as shown in listing~\ref{lst:create_pir_params_with_twinning}.
 
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}).
