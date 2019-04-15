@@ -64,6 +64,11 @@ errors <- pir_run(
 )
 
 if (1 == 2) {
+  errors <- utils::read.csv(
+    file = file.path(example_folder, "errors.csv")
+  )
+  check_pir_out(errors)
+
   pir_plot(errors)
 }
 
