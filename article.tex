@@ -375,17 +375,18 @@ For each of these ERQs we will quantify the importance of a tree prior.
   \label{tab:definitions}
 \end{sidewaystable}
 
-\subsection{pirouette's pipeline}\label{subsec:pipeline}
+\subsection{pirouette's pipeline}
+\label{subsec:pipeline}
 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{workflow.png}
   \caption{
-    \texttt{pirouette} pipeline. 
+    \texttt{pirouette} pipeline.
     The pipeline starts from a phylogeny (1a) simulated by generative prior 
-$\mathit{P}$.
+    $\mathit{P}$.
     The phylogeny is converted to an alignment (2a) using alignment model 
-$\mathit{A}$. 
+    $\mathit{A}$. 
     The user supplies one or more experiments.
     For each candidate experiment $\mathit{X}$ 
     (a tuple of inference model $\mathit{I}$ and condition $\mathit{C}$),
@@ -401,9 +402,10 @@ $\mathit{A}$.
     resulting in an error distribution (5a). 
     Optionally, a twin phylogeny (1b) can be generated from the original 
     phylogeny (1a) using twinning parameters $T$, where $T$ may depend on
-    the experiments \richel{improve}.
+    the experiments.
     From a twin phylogeny, the same intermediate steps are taken,
     resulting in a twin error distribution (5b)
+  }
   \label{fig:pipeline}
 \end{figure}
 
@@ -1401,8 +1403,6 @@ one could implement their own tree prior as a new module in BEAST2.
 \url{http://github.com/richelbilderbeek/pirouette},
 licensed under the GNU General Public License version 3.
 \verb;pirouette; depends on multiple packages, which are:
-\richel{I think we can get rid of some dependencies, we just need to check}
-\verb;ape; (\cite{APE}), 
 \verb;babette; (\cite{bilderbeek2018babette}),
 \verb;becosys; (\cite{becosys}),
 \verb;DDD; (\cite{DDD}),
