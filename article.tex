@@ -375,7 +375,7 @@ For each of these ERQs we will quantify the importance of a tree prior.
   \label{tab:definitions}
 \end{sidewaystable}
 
-\subsection{pirouette's pipeline}
+\subsection{pirouette's pipeline}\label{subsec:pipeline}
 
 \begin{figure}
   \centering
@@ -668,14 +668,12 @@ phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 \end{figure}
 
 The first step in \verb;pirouette; is to simulate a DNA alignment from the 
-given phylogeny. 
-To do so, we must specify an alignment model $\mathit{A}$ which consists of a 
-DNA root sequence $\mathit{r_{s}}$, a DNA mutation rate $\mathit{m_{r}}$, a
-site model $\mathit{s_{m}}$ (in this context: a nucleotide substitution model \giovanni{We already specified this in 2.1, when explaining the first step. Do we need to repeat it?}) 
-and a clock model $\mathit{c_{m}}$. 
-In this example, the DNA root sequence consists in four blocks of 250 
+given phylogeny, as described in subsection~\ref{subsec:pipeline}.
+In this example, the DNA root sequence $\mathit{r_{s}}$ 
+consists in four blocks of 250 
 mononucleotides each, 
-where the per-nucleotide mutation rate is 0.1 mutations per unit time.
+where the per-nucleotide mutation rate $\mathit{m_{r}}$ 
+is 0.1 mutations per unit time.
 We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
 and a strict clock model as these are the simplest.
 A JC site model
