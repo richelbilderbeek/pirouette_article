@@ -442,15 +442,13 @@ The second step (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a)
 selects inference models from a set of experiments. 
 We define an experiment $X$ as the combination of an inference model $I$
 and the conditions $C$ to actually use it in the inference step.
-There are multiple setups of $C$: 
-either the attached inference model $I$ is the generative model and should always be selected,
-or the attached inference model is a candidate model, that will be
-be selected if it is the best model, or will be selected always (regardless
-of it being the best). 
-When setting $C$ to be attached to the generative model,
-it is implied that attached inference model $I$ uses the 
+There are multiple possible setups for $C$. 
+If the attached inference model $I$ is the generative model, then it should always be selected. If, instead, the attached inference model is a candidate model the user can either let \verb;pirouette; select it as the best among all the candidate models, or force its selection (regardless
+of it being the best).
+When $I$ is set to be the generative model,
+it will use the 
 same site and clock model used in the alignment simulation,
-and $I$ uses the same tree prior as used in the creation of the given phylogeny. 
+and the same tree prior used in the creation of the given phylogeny. 
 A 'best' model is defined as the inference model with
 the highest evidence (a.k.a. marginal likelihood) for that inference model, 
 given the alignment simulated in the previous step.
