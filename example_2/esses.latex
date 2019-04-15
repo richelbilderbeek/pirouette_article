@@ -1,14 +1,24 @@
-% latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Thu Apr 11 13:50:51 2019
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrrrrrrrrrrrrrrrr}
-  \hline
- & posterior & likelihood & prior & treeLikelihood & TreeHeight & kappa1 & kappa2 & freqParameter.1 & freqParameter.2 & freqParameter.3 & freqParameter.4 & ucldStdev & rate.mean & rate.variance & rate.coefficientOfVariation & BirthDeath & BDBirthRate & BDDeathRate \\ 
-  \hline
-1 & 8666 & 8779 & 2579 & 8779 & 2631 & 955 & 702 & 460 & 602 & 565 & 478 & 1940 & 2929 & 1254 & 2018 & 8257 & 7249 & 5844 \\ 
-   \hline
+\begin{table}[]
+\begin{tabular}{rr}
+\hline
+parameter                   & ESS  \\ \hline
+posterior                   & 8666 \\ \hline
+likelihood                  & 8779 \\ \hline
+prior                       & 2579 \\ \hline
+treeLikelihood              & 8779 \\ \hline
+TreeHeight                  & 2631 \\ \hline
+kappa1                      & 955  \\ \hline
+kappa2                      & 702  \\ \hline
+freqParameter.1             & 460  \\ \hline
+freqParameter.2             & 602  \\ \hline
+freqParameter.3             & 565  \\ \hline
+freqParameter.4             & 478  \\ \hline
+ucldStdev                   & 1940 \\ \hline
+rate.mean                   & 2929 \\ \hline
+rate.variance               & 1254 \\ \hline
+rate.coefficientOfVariation & 2018 \\ \hline
+BirthDeath                  & 8257 \\ \hline
+BDBirthRate                 & 7249 \\ \hline
+BDDeathRate                 & 5844 \\ \cline{2-2} 
 \end{tabular}
-\caption{ESSes of example 2} 
-\label{tab:esses_example_2}
 \end{table}
