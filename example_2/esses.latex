@@ -1,24 +1,29 @@
-\begin{table}[]
-\begin{tabular}{rr}
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
 \hline
-parameter                   & ESS  \\ \hline
-posterior                   & 8666 \\ \hline
-likelihood                  & 8779 \\ \hline
-prior                       & 2579 \\ \hline
-treeLikelihood              & 8779 \\ \hline
-TreeHeight                  & 2631 \\ \hline
-kappa1                      & 955  \\ \hline
-kappa2                      & 702  \\ \hline
-freqParameter.1             & 460  \\ \hline
-freqParameter.2             & 602  \\ \hline
-freqParameter.3             & 565  \\ \hline
-freqParameter.4             & 478  \\ \hline
-ucldStdev                   & 1940 \\ \hline
-rate.mean                   & 2929 \\ \hline
-rate.variance               & 1254 \\ \hline
-rate.coefficientOfVariation & 2018 \\ \hline
-BirthDeath                  & 8257 \\ \hline
-BDBirthRate                 & 7249 \\ \hline
-BDDeathRate                 & 5844 \\ \cline{2-2} 
+parameter                   & ESS  \\
+\hline
+posterior                   & 8666 \\
+likelihood                  & 8779 \\
+prior                       & 2579 \\
+treeLikelihood              & 8779 \\
+TreeHeight                  & 2631 \\
+kappa1                      & 955  \\
+kappa2                      & 702  \\
+freqParameter.1             & 460  \\
+freqParameter.2             & 602  \\
+freqParameter.3             & 565  \\
+freqParameter.4             & 478  \\
+ucldStdev                   & 1940 \\
+rate.mean                   & 2929 \\
+rate.variance               & 1254 \\
+rate.coefficientOfVariation & 2018 \\
+BirthDeath                  & 8257 \\
+BDBirthRate                 & 7249 \\ 
+BDDeathRate                 & 5844 \\ 
+\hline
 \end{tabular}
+\caption{ESSes of example 2} 
+\label{tab:esses_example_2}
 \end{table}
