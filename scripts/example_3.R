@@ -1,6 +1,25 @@
 # Code of example 3
 #
 # Works under Windows
+#
+# Usage #1:
+#
+# Rscript example_3.R
+#
+# Uses default RNG seed.
+# Puts result in pirouette_article/example_3 folder
+#
+# Usage #2:
+#
+# Rscript example_3.R [rng_seed]
+#
+# For example:
+#
+# Rscript example_3.R 314
+#
+# Uses [rng_seed] as the RNG seed.
+# Puts result in 'pirouette_article/example_3_[rng_seed]' folder,
+# e.g 'pirouette_article/example_3_314'
 library(pirouette)
 library(ggplot2)
 library(ggtree)
@@ -10,7 +29,8 @@ example_no <- 3
 example_folder <- file.path(root_folder, paste0("example_", example_no))
 dir.create(example_folder, showWarnings = FALSE)
 setwd(example_folder)
-set.seed(314)
+rng_seed <- 314
+# No need to do 'set.seed(rng_seed)': we use 'rng_seed' arguments instead
 
 testit::assert(is_beast2_installed())
 
@@ -18,10 +38,11 @@ phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9)
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
-  mutation_rate = 0.1
+  mutation_rate = 0.1,
+  rng_seed = rng_seed
 )
 
-experiments <- list(create_gen_experiment())
+experiments <- list(create_gen_experiment(beast2_options = create_beast2_options(rng_seed = rng_seed)))
 
 # Testing
 if (1 == 2) {
@@ -37,7 +58,8 @@ if (1 == 2) {
 
 twinning_params <- create_twinning_params(
   twin_model = "birth_death",
-  method = "random_tree"
+  method = "random_tree",
+ rng_seed = rng_seed
 )
 
 pir_params <- create_pir_params(
@@ -46,25 +68,27 @@ pir_params <- create_pir_params(
   twinning_params = twinning_params
 )
 
-print("#######################################################################")
-print("Settings to run on Peregrine cluster")
-print("#######################################################################")
-pir_params$alignment_params$fasta_filename <- file.path(example_folder, "true.fasta")
-for (i in seq_along(pir_params$experiments)) {
-  pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(example_folder, "beast2_input.xml")
-  pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, "beast2_output.log")
-  pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, "beast2_output.trees")
-  pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, "beast2_output.xml.state")
-  pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error.csv")
+if (1 == 1) {
+  print("#######################################################################")
+  print("Settings to run on Peregrine cluster")
+  print("#######################################################################")
+  pir_params$alignment_params$fasta_filename <- file.path(example_folder, "true.fasta")
+  for (i in seq_along(pir_params$experiments)) {
+    pir_params$experiments[[i]]$beast2_options$input_filename <- file.path(example_folder, "beast2_input.xml")
+    pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, "beast2_output.log")
+    pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, "beast2_output.trees")
+    pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, "beast2_output.xml.state")
+    pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error.csv")
+  }
+  pir_params$evidence_filename <- file.path(example_folder, "evidence_true.csv")
+  if (!is_one_na(pir_params$twinning_params)) {
+    pir_params$twinning_params$twin_tree_filename <- file.path(example_folder, "twin.tree")
+    pir_params$twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
+    pir_params$twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
+  }
+  rm_pir_param_files(pir_params)
+  print("#######################################################################")
 }
-pir_params$evidence_filename <- file.path(example_folder, "evidence_true.csv")
-if (!is_one_na(pir_params$twinning_params)) {
-  pir_params$twinning_params$twin_tree_filename <- file.path(example_folder, "twin.tree")
-  pir_params$twinning_params$twin_alignment_filename <- file.path(example_folder, "twin.fasta")
-  pir_params$twinning_params$twin_evidence_filename <- file.path(example_folder, "evidence_twin.csv")
-}
-rm_pir_param_files(pir_params)
-print("#######################################################################")
 
 Sys.time()
 # 11:24:52
