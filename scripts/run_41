@@ -1,0 +1,23 @@
+#!/bin/bash
+# Script to investigate Issue #41
+# This script can be run as-is, as it will 
+# sbatch the needed jobs itself
+#
+# Usage:
+#
+# ./run_41
+#
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+#SBATCH --job-name=run_41
+#SBATCH --output=run_41_%j.log
+
+for rng_seed in $(seq 1 100)
+do
+  echo $rng_seed
+  sbatch run_r_script example_3.R $rng_seed
+done
+
