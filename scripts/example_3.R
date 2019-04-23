@@ -22,6 +22,7 @@
 # e.g 'pirouette_article/example_3_314'
 
 args <- commandArgs(TRUE)
+print(paste("Number of arguments:", length(args)))
 
 example_no <- 3
 root_folder <- path.expand("~/GitHubs/pirouette_article")
@@ -31,6 +32,8 @@ rng_seed <- 314
 if (length(args) == 1) {
   rng_seed <- as.numeric(args[1])
   example_folder <- file.path(root_folder, paste0("example_", example_no, "_", rng_seed))
+} else {
+  stop("Need argument")
 }
 
 print(rng_seed)

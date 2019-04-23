@@ -18,5 +18,5 @@ module load R
 module load ImageMagick
 module load X11
 module load cairo
-echo "xvfb-run Rscript $1"
-xvfb-run Rscript $1
+echo "xvfb-run Rscript $@"
+xvfb-run Rscript "$@"
