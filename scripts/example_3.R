@@ -20,16 +20,28 @@
 # Uses [rng_seed] as the RNG seed.
 # Puts result in 'pirouette_article/example_3_[rng_seed]' folder,
 # e.g 'pirouette_article/example_3_314'
+
+args <- commandArgs(TRUE)
+
+example_no <- 3
+root_folder <- path.expand("~/GitHubs/pirouette_article")
+example_folder <- file.path(root_folder, paste0("example_", example_no))
+rng_seed <- 314
+
+if (length(args) == 1) {
+  rng_seed <- as.numeric(args[1])
+  example_folder <- file.path(root_folder, paste0("example_", example_no, "_", rng_seed))
+}
+
+print(rng_seed)
+print(example_folder)
+
 library(pirouette)
 library(ggplot2)
 library(ggtree)
 
-root_folder <- path.expand("~/GitHubs/pirouette_article")
-example_no <- 3
-example_folder <- file.path(root_folder, paste0("example_", example_no))
 dir.create(example_folder, showWarnings = FALSE)
 setwd(example_folder)
-rng_seed <- 314
 # No need to do 'set.seed(rng_seed)': we use 'rng_seed' arguments instead
 
 testit::assert(is_beast2_installed())
