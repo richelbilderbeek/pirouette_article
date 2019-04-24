@@ -11,18 +11,19 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
-#SBATCH --mem=1G
+#SBATCH --mem=100M
 #SBATCH --job-name=run_41
 #SBATCH --output=run_41_%j.log
 
 rng_seed=1
-echo $rng_seed
-jobid=$(sbatch run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
+echo "rng_seed: "$rng_seed
+job_id=$(sbatch run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
+echo "job_id: "$job_id
 
 for rng_seed in $(seq 2 3)
 do
-  echo $rng_seed
-  echo $job_id
-  jobid=$(sbatch --dependency=afterany:$jobid run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
+  echo "rng_seed: "$rng_seed
+  job_id=$(sbatch --dependency=afterany:$job_id run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
+  echo "job_id: "$job_id
 done
 
