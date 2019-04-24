@@ -105,23 +105,16 @@ Groningen, Groningen, The Netherlands}
 \begin{abstract}
 
   \textbf{1. }
-    BEAST2 is a popular Bayesian phylogenetics software tool,
-    that takes an alignment of characters (usually nucleotides) 
-    and an inference model to create a
-    posterior of jointly-estimated phylogenies and model parameters. 
-    An important ingredient of BEAST2 is the species tree prior, 
-    due to which the tool can be used for the inference of 
-    macroevolutionary processes underlying the species tree. 
-    However, only models that allow for fast computation of 
-    the prior probability are possible in practice. 
-    This begs the question of how accurate the tree estimation is 
+    Phylogenetic trees are current routinely reconstructed from an alignment of character sequences (usually nucleotide sequences). Bayesian tools, such as MrBayes, RevBayes and BEAST2, have gained much popularity over the last decade, as they allow joint estimation of the posterior distribution of the phylogenetic tree and the parameters of the underlying inference model.  
+    An important ingredient of these Bayesian approaches is the species tree prior. While in principle the Bayesian framework allows for comparing different species tree priors and hence may elucidate the macroevolutionary processes underlying the species tree, in practice only 
+    macroevolutionary models that allow for fast computation of the prior probability are used. 
+    This begs the question how accurate the tree estimation is 
     when the real macroevolutionary processes are different 
-    from those assumed in BEAST2. \\
+    from those assumed in the tree prior. \\
   \textbf{2. }
     Here we present \verb;pirouette;, 
     a free, libre and open-source R package that assesses 
-    the inference error BEAST2 makes based on a 
-    phylogeny from any macroevolutionary diversification model. \\
+    the inference error made by Bayesian phylogenetics for a given macroevolutionary diversification model. \verb;pirouette; makes use of BEAST2, but its philosophy applies to any Bayesian phylogenetic inference tool\\
   \textbf{3. }
     We describe \verb;pirouette;'s usage and the biological scientific
     question it can answer, including full examples. \\
@@ -136,21 +129,17 @@ Groningen, Groningen, The Netherlands}
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The development of new powerful inference tools, 
+The development of new powerful Bayesian phylogenetic inference tools, 
 such as BEAST [\cite{drummond2007beast}], 
 MrBayes [\cite{huelsenbeck2001mrbayes}]
 or RevBayes [\cite{hohna2016revbayes}], 
-allows to build phylogenetic trees 
+has been a major advance in building phylogenetic trees 
 from character data (usually nucleotide sequences) extracted 
-from extant (but also extinct) organisms.
-This has constituted an important step forward 
-in our understanding of how species evolve.
-Such tools have been increasingly exploited to hypothesize 
-and test what the main drivers and modes for diversification are.
+from extant (but also extinct) organisms, and hence in our understanding of the main drivers and modes of diversification.
 
-BEAST [\cite{drummond2007beast}] is a Bayesian phylogenetics tool, 
-that needs both data and priors to infer a posterior.
-Of these priors, the tree prior describes how diversification occurs.
+BEAST [\cite{drummond2007beast}] is a typical Bayesian phylogenetics tool, 
+that needs both character data and priors to infer a posterior.
+Specifically, the species tree prior describes the process of diversification.
 BEAST has built-in tree priors such as the Yule [\cite{yule}] and 
 (constant-rate) birth-death [\cite{nee1994reconstructed}] models.
 These simple tree priors are most commonly used, as these 
@@ -158,80 +147,51 @@ have sufficient biological complexity, while being computationally fast.
 BEAST's successor, BEAST2 [\cite{bouckaert2014beast}],
 has a package manager, that allows third-party users to extend existing 
 functionalities.
-By writing a BEAST2 package, novel diversification models can be added.
-The key ingredient of such a package would be the likelihood equation
-of a phylogeny for the novel diversification model.
+Hence one can add novel diversification models by writing a BEAST2 package that contains the likelihood formula
+of a phylogeny under the novel diversification model, i.e. the prior probability of a species tree.
 
-\iffalse
-There have been plenty of these models (and their associated probability 
-algorithms) 
-developed, among others, those in which diversification is 
+Many such diversification models (and their associated probability 
+algorithms) have been developed
+developed, e.g., those in which diversification is 
 time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
 or diversity-dependent [\cite{etienne2011diversity}],
-or that can shift [\cite{etienne2012conceptual}, 
-\cite{rabosky2014automatic}, \cite{alfaro2009nine}, \cite{laudanno2018sls}].
-\fi
-
-Many of such models (and their associated probability 
-algorithms) have been
-developed to include diverse features: those in which diversification rates are 
-time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
-or diversity-dependent [\cite{etienne2011diversity}],
-or that can shift [\cite{etienne2012conceptual}, 
-\cite{rabosky2014automatic}, \cite{alfaro2009nine}, \cite{laudanno2018sls}].
-
-Other birth-death models treat speciation as a process that takes 
+or where diversification rates change for specific lineages and their descendants [\cite{etienne2012conceptual}, 
+\cite{rabosky2014automatic}, \cite{alfaro2009nine}, \cite{laudanno2018sls}], models that treat speciation as a process that takes 
 time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}][\cite{lambert2015reconstructed}], 
-or that happens in bursts of simultaneous 
-events [\cite{laudanno2018mbd}], or that
+or as a burst of simultaneous branching
+events [\cite{laudanno2018mbd}], or where diversification rate
 depends on a trait that has two [\cite{maddison2007estimating}], 
 or more [\cite{fitzjohn2012diversitree}] states,
-or even allows concealed states [\cite{beaulieu2016detecting}] 
+even concealed states [\cite{beaulieu2016detecting}] 
 or a combination of all these [\cite{herrera2018detecting}].
 Only few of these diversification models are available as a BEAST2 package.
 
 When a novel diversification model is introduced,
-its performance is commonly tested as well.
-Part of a model's performance is its parameter 
-recovery (e.g. [\cite{etienne2014estimating}]),
-in which phylogenies are simulated from known parameters, 
-and then the model is used to infer back the parameters from the phylogenies.
+its performance in inference is commonly tested.
+Part of a model's performance is its ability to recover parameters from simulated data with known parameters (e.g. [\cite{etienne2014estimating}]),
 Ideally, the estimated parameter values closely match the known/true values.
 
 Even when a diversification model passes the procedure described above,
 it is not necessarily used in Bayesian inference.
-In these kind of procedures the likelihood of a diversification 
-model can be computed millions of times.
-Due to this, effective but computationally expensive tree priors are non-viable.
-Also, there may be no need to add such a tree prior to a Bayesian
-inference framework: the more informative the data, 
-the lower the influence the tree prior has.
-Due to this, computationally faster tree priors are more commonly used.
-However, it is unknown if it is valid to assume that tree prior choice is 
-of low importance.
+Bayesian phylogenetic inference often requires that the prior probability of the phylogeny according to the diversification model has to be computed millions of times. Therefore, biologically interesting but computationally expensive tree priors are non-viable. This is not necessarily problematic, when the data are very informative, as this will reduce the influence of the tree prior.
+However, the assumption that tree prior choice is of low importance must first be verified.
 
 There have been multiple attempts to investigate the importance of tree
 prior choice. For example, recently Sarver et al., [\cite{sarver2019choice}] 
-show that the choice of tree prior does not 
+showed that the choice of tree prior does not 
 substantially affect phylogenetic inferences of diversification rates.
 Also recently, Duchene et al. [\cite{duchene2018phylodynamic}] released
 a BEAST2 package to assess how well posterior predictive simulations
 recover a given tree when using the standard diversification models.
-These investigations show how current diversification models compare
-to one another, but they do not help to assess the importance of a 
-new tree prior. 
+These studies show how current diversification models compare
+to one another, but they do not help to assess the importance of a new tree prior. 
 
 Here we introduce a method to quantify the importance of a novel tree prior.
-The method starts with a phylogeny generated by the process of 
-a (usually novel) tree prior.
-Using the tree priors built-in into BEAST2, 
-a Bayesian posterior is inferred.
-The more similar the phylogenies in the posterior are to the original phylogeny,
-the less important the novel tree prior has been.
-Only impactful tree priors will be worth the effort and computational burden 
-to use in a Bayesian framework.
+The method starts with a phylogeny generated by the new model for the tree prior. Next, nucleotide sequences are simulated on this phylogeny. Then, using the tree priors built-in into BEAST2, a Bayesian posterior distribution of phylogenies is inferred. We can then compare the inferred and simulated phylogenies. How to properly perform this comparison forms the heart of our method.
+Only new diversification models that result in a large discrepancy between inferred and simulated phylogeny will be worth the effort and computational burden 
+to implement a species tree prior for in a Bayesian framework.
 
-This method is programmed as an R package called \verb;pirouette;.
+Our method is programmed as an R package called \verb;pirouette;.
 \verb;pirouette; is built on \verb;babette; [\cite{bilderbeek2018babette}], 
 which calls BEAST2 [\cite{bouckaert2014beast}]. 
 
@@ -240,22 +200,19 @@ which calls BEAST2 [\cite{bouckaert2014beast}].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; is written in the R programming language (\cite{R}).
-The goal of \verb;pirouette; is to quantify the importance of a tree
-prior.
-It does so by measuring the inference error
-made for a given reconstructed phylogeny, 
-simulated under the mechanisms of a (usually novel) diversification model.
+The goal of \verb;pirouette; is to quantify the importance of a tree prior.
+It does so by measuring the inference error made for a given reconstructed phylogeny, 
+simulated under a (usually novel) diversification model.
 We refer to the true prior that generated the given tree
 as the 'generative tree prior', $\mathit{P}$.
 Many tree priors have a parameter setting in which these are equivalent
 to a standard tree prior. For example, a protracted birth-death model
-becomes equivalent to a standard birth-death model when speciation-completion rate approaches infinity.
+reduces to a standard birth-death model when speciation-completion rate approaches infinity.
 When benchmarking a novel tree prior, 
-such a study will typically construct phylogenies 
+one will typically construct phylogenies 
 for different combinations of the diversification model's parameters, 
 to assess under which scenarios the inference error cannot be neglected. 
-Although a well-conducted theoretical study uses many replicates, 
-this article only shows examples with one replicate, for the sake of clarity.
+While we recommend many replicate simulations when assessing a novel tree prior, our examples contain only one replicate as they are for illustrative purposes only.
 
 \verb;pirouette; is very flexible and allows the user 
 to specify a wide variety of custom settings. 
@@ -434,16 +391,16 @@ a site model and a (strict) clock model.
 The DNA root sequence is the DNA sequence of the shared common ancestor,
 and is set to four equally-sized mononucleotide blocks by default, as this
 helps interpreting the resulting alignment.
-In the context of this research, a 'site model' is a nucleotide substitution
-model. Supported site models are JC, HKY, TN and GTR. Only the strict
+The nucleotide substitution
+model will be referred to as 'site model'. Supported site models are JC, HKY, TN and GTR. Only the strict
 clock model is supported in this step.
 
 The second step (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a)
-selects inference models from a set of experiments. 
+selects an experiment from a set of experiments. 
 We define an experiment $X$ as the combination of an inference model $I$
 and the conditions $C$ to actually use it in the inference step.
 There are multiple possible setups for $C$. 
-If the attached inference model $I$ is the generative model, then it should always be selected. If, instead, the attached inference model is a candidate model the user can either let \verb;pirouette; select it as the best among all the candidate models, or force its selection (regardless
+If the attached inference model $I$ is the generative model, then it should always be selected. If, instead, the attached inference model is a candidate model, the user can either let \verb;pirouette; select it as the best among all the candidate models, or force its selection (regardless
 of it being the best).
 When $I$ is set to be the generative model,
 it will use the 
@@ -462,14 +419,11 @@ The third step infers the posteriors,
 using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 3a $\rightarrow$ 4a),
 and those inference models that were selected in the previous step. 
 For each selected experiment a posterior is inferred, using the 
-\verb;babette; [\cite{bilderbeek2018babette}] R package. 
+\verb;babette; [\cite{bilderbeek2018babette}] R package which makes use of BEAST2. 
 This step usually takes up most of the full pipeline's computation time.
 
-The fourth step quantifies the inference error made, by removing
-the burn-in, then applying an error statistic.
-The burn-in is the first phase of the Markov chain Monte Carlo (MCMC) run,
-in which it samples an unrepresentative part of state space,
-and is commonly discarded. By default, \verb;pirouette; 
+The fourth step quantifies the inference error made. First the burn-in is removed, i.e. the first phase of the Markov chain Monte Carlo (MCMC) run,
+in which it samples an unrepresentative part of state space. By default, \verb;pirouette; 
 removes the first 10\% of the posterior.
 From the remaining posterior \verb;pirouette; 
 creates an error distribution, by measuring the difference
@@ -484,13 +438,12 @@ user-defined error statistic can be used.
 An optional step is to generate a 'twin tree' $\tau_{I}$
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
 that will be analyzed in the same way as the true tree.
-Any phylogeny $\tau$ is the combination of 
+A phylogeny $\tau$ is the combination of 
 branching times $\Vec{t}$ and topology $\psi$.
-Starting from a non-standard generative prior $t_p = \mathit{P}$,
-we can observe a given tree $\tau_{\mathit{P}}$,
+Assume that a non-standard generative prior $t_p = \mathit{P}$,
+produces a tree $\tau_{\mathit{P}}$,
 with branching times $\Vec{t}_{\mathit{P}}$ and 
-topology $\psi_{\mathit{P}}$, 
-but we cannot use the tree prior in Bayesian inference.
+topology $\psi_{\mathit{P}}$.
 The twinning process T, in accordance with a chosen inference 
 model $t_p \in \mathit{I}$, creates a tree $\tau_{\mathit{I}}$
 with branching times $\Vec{t}_{\mathit{I}}$ while preserving the 
@@ -506,7 +459,7 @@ To achieve this, we find the parameters $\theta^{*}_{\mathit{I}}$
 (e.g. speciation and extinction rates, in case of a birth-death model) 
 that maximize the likelihood $L_{\mathit{I}}$ applied 
 to the true tree, conditioned on its number of tips $n_{\mathit{P}}$,
-where $L_{\mathit{I}}$ is  the likelihood function  
+where $L_{\mathit{I}}$ is the likelihood function  
 associated with the chosen inference model $\mathit{I}$:
 
 \begin{align}
@@ -514,7 +467,7 @@ associated with the chosen inference model $\mathit{I}$:
 \rightarrow \theta^{*}_{\mathit{I}}.
 \end{align}
 
-We use $\theta^{*}_{\mathit{I}}$ to simulate an equal amount 
+We use $\theta^{*}_{\mathit{I}}$ to simulate an equal number 
 $n_{\mathit{I}} = n_{\mathit{P}}$ 
 of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree 
 $\tau_{\mathit{I}}$, under the process $\mathit{I}$, 
@@ -543,12 +496,12 @@ inference.
 \section{Installation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\verb;pirouette; can be installed easily from CRAN:
+\verb;pirouette; will be made available on CRAN from which it can then be easily installed easily from CRAN:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 install.packages("pirouette")
 \end{lstlisting}
 
-For the most up-to-date version, 
+Until it is on CRAN, and for the most up-to-date version, 
 one can download and install the package from \verb;pirouette;'s GitHub 
 repository:
 
