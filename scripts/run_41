@@ -15,9 +15,14 @@
 #SBATCH --job-name=run_41
 #SBATCH --output=run_41_%j.log
 
-for rng_seed in $(seq 1 100)
+rng_seed=1
+echo $rng_seed
+jobid=$(sbatch run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
+
+for rng_seed in $(seq 2 3)
 do
   echo $rng_seed
-  sbatch run_r_script example_3.R $rng_seed
+  echo $job_id
+  jobid=$(sbatch --dependency=afterany:$jobid run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
 done
 
