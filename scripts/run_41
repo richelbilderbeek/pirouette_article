@@ -20,7 +20,7 @@ echo "rng_seed: "$rng_seed
 job_id=$(sbatch run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
 echo "job_id: "$job_id
 
-for rng_seed in $(seq 2 3)
+for rng_seed in $(seq 2 40)
 do
   echo "rng_seed: "$rng_seed
   job_id=$(sbatch --dependency=afterany:$job_id run_r_script example_3.R $rng_seed | cut -d ' ' -f 4)
