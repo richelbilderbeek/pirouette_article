@@ -413,19 +413,30 @@ Supported site\_models are JC, HKY, TN and GTR. Only the strict
 clock\_model is supported in this step.
 
 The second step (Fig.~\ref{fig:pipeline}, 3)
-selects an inference model $I$ from a set of inference models $I_{1},\dots,I_{n}$. 
-We define an experiment $X_{i}$ as the combination of an inference model $I_{i}$ and the conditions $C_{i}$ to actually use it in the inference step.
-
-Any inference model is composed by a tree\_prior, a clock\_model and a site\_model. 
-The inference conditions are composed by two main elements called model\_type and run\_if. They determine how to choose the basic elements composing the inference model that is going to be used in the following of the \verb;pirouette;'s pipeline.
-The simplest setup is to use the same site\_model and clock\_model used in the alignment simulation and the same tree\_prior used in the creation of the given phylogeny. We label this model\_type as "generative". In any other case we are dealing with a "candidate" model\_type.
-The argument run\_if determines whether the proposed model has to be used or not. If the model\_type is generative it will always be used. If, instead, one or more candidate models are proposed, the user can either let \verb;pirouette; select it as the best among all the candidate models (run\_if == "best\_candidate"), or force its selection (run\_if == "always"). A 'best' model is defined as the inference model with
-the highest evidence (a.k.a. marginal likelihood), given the alignment simulated in the previous step.
-The evidence of an inference model is estimated by nested sampling [\cite{maturana2018model}], using the \verb;NS; BEAST2 package. Scripted use of BEAST2 packages is only possible under Linux and Mac.
-Windows systems can do the model comparison for shorter DNA sequences using the web interface of \verb;mcbette; [\cite{mcbette}].
-\iffalse
-Even if the model selection is not performed, the user can still estimate the evidence of each proposed inference model by setting "do\_measure\_evidence" to be TRUE.
-\fi
+selects one or more inference models $I$ from a set of inference 
+models $I_{1},\dots,I_{n}$. 
+We define an experiment $X_{i}$ as the combination of 
+an inference model $I_{i}$ and the conditions $C_{i}$ 
+to actually use it in the inference step.
+For example, we can express that an inference
+model (a combination of a tree prior, clock model and site model) 
+is known to include the generative/true tree prior and that 
+we definitely want to use that model in our inference. 
+As a second example, wwe can also express that we've submitted a set of 
+candidate inference models,
+of which only the best should be used in the actual inference.
+In the first example, we specified the condition $C_{i}$ that this
+generative model should always be run, where in the second example,
+we specified condition $C_{i}$ that a candidate model should only be run
+when being the best.
+A 'best' model is defined as the inference model with
+the highest evidence (a.k.a. marginal likelihood), given the alignment 
+simulated in the previous step.
+The evidence of an inference model is estimated by nested 
+sampling [\cite{maturana2018model}], using the \verb;NS; BEAST2 package. 
+Scripted use of BEAST2 packages is only possible under Linux and Mac.
+Windows systems can do the model comparison for shorter DNA sequences 
+using the web interface of \verb;mcbette; [\cite{mcbette}].
 
 The third step infers the posteriors,
 using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 4a),
