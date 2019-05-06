@@ -272,7 +272,7 @@ For each of these ERQs we will quantify the importance of a tree prior.
     Specifies how to measure the error &
     nLTT, $|\gamma|$ \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    burn\_in\_fraction &
+    \verb;burn\_in\_fraction; &
     Specifies the percentage of initial posterior trees to discard &
     \verb;burn_in_fraction; $\in [0, 1]$\\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -430,7 +430,7 @@ For example, we can express that an inference
 model (a combination of a tree prior, clock model and site model) 
 is known to include the generative/true tree prior and that 
 we definitely want to use that model in our inference. 
-As a second example, wwe can also express that we've submitted a set of 
+As a second example, we can also express that we've submitted a set of 
 candidate inference models,
 of which only the best should be used in the actual inference.
 In the first example, we specified the condition $C_{i}$ that this
