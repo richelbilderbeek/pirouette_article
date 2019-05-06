@@ -76,6 +76,7 @@ for (i in seq_along(pir_params$experiments)) {
   pir_params$experiments[[i]]$beast2_options$output_log_filename <- file.path(example_folder, "beast2_output_best.log")
   pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- file.path(example_folder, "beast2_output_best.trees")
   pir_params$experiments[[i]]$beast2_options$output_state_filename <- file.path(example_folder, "beast2_output_best.xml.state")
+  pir_params$experiments[[i]]$beast2_options$beast2_working_dir <- example_folder
   pir_params$experiments[[i]]$errors_filename <- file.path(example_folder, "error_best.csv")
 }
 pir_params$experiments[[1]]$beast2_options$input_filename <- file.path(example_folder, "beast2_input_gen.xml")
