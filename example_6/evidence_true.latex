@@ -1,12 +1,50 @@
 % latex table generated in R 3.4.2 by xtable 1.8-3 package
-% Mon May 13 12:22:00 2019
+% Mon May 13 13:02:15 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllrr}
   \hline
 Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
   \hline
-GTR & RLN & BD & -8206.776 &    1 \\ 
+GTR & RLN & BD & -6288.205 & 0.000 \\ 
+  GTR & RLN & CBS & -6309.101 & 0.000 \\ 
+  GTR & RLN & CCP & -6310.470 & 0.000 \\ 
+  GTR & RLN & CEP & -6292.445 & 0.000 \\ 
+  GTR & RLN & Yule & -6287.362 & 0.000 \\ 
+  GTR & Strict & BD & -6296.911 & 0.000 \\ 
+  GTR & Strict & CBS & -6282.709 & 0.000 \\ 
+  GTR & Strict & CCP & -6301.407 & 0.000 \\ 
+  GTR & Strict & CEP & -6293.725 & 0.000 \\ 
+  GTR & Strict & Yule & -6296.522 & 0.000 \\ 
+  HKY & RLN & BD & -6283.046 & 0.000 \\ 
+  HKY & RLN & CBS &  & 0.000 \\ 
+  HKY & RLN & CCP & -6279.173 & 0.000 \\ 
+  HKY & RLN & CEP & -6272.785 & 0.026 \\ 
+  HKY & RLN & Yule & -6288.455 & 0.000 \\ 
+  HKY & Strict & BD & -6297.774 & 0.000 \\ 
+  HKY & Strict & CBS & -6276.684 & 0.001 \\ 
+  HKY & Strict & CCP & -6279.352 & 0.000 \\ 
+  HKY & Strict & CEP & -6285.176 & 0.000 \\ 
+  HKY & Strict & Yule & -6303.570 & 0.000 \\ 
+  JC & RLN & BD & -6273.496 & 0.013 \\ 
+  JC & RLN & CBS & -6284.088 & 0.000 \\ 
+  JC & RLN & CCP & -6277.732 & 0.000 \\ 
+  JC & RLN & CEP & -6281.329 & 0.000 \\ 
+  JC & RLN & Yule & -6270.073 & 0.390 \\ 
+  JC & Strict & BD & -6284.651 & 0.000 \\ 
+  JC & Strict & CBS & -6281.937 & 0.000 \\ 
+  JC & Strict & CCP & -6271.092 & 0.141 \\ 
+  JC & Strict & CEP & -6269.985 & 0.426 \\ 
+  TN & RLN & BD & -6283.099 & 0.000 \\ 
+  TN & RLN & CBS & -6291.353 & 0.000 \\ 
+  TN & RLN & CCP & -6289.927 & 0.000 \\ 
+  TN & RLN & CEP & -6282.749 & 0.000 \\ 
+  TN & RLN & Yule & -6286.744 & 0.000 \\ 
+  TN & Strict & BD & -6286.165 & 0.000 \\ 
+  TN & Strict & CBS & -6311.198 & 0.000 \\ 
+  TN & Strict & CCP & -6274.609 & 0.004 \\ 
+  TN & Strict & CEP & -6292.734 & 0.000 \\ 
+  TN & Strict & Yule & -6284.943 & 0.000 \\ 
    \hline
 \end{tabular}
 \caption{Evidences of example 5} 
