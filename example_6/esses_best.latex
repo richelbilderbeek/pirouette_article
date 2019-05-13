@@ -1,0 +1,34 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Mon May 13 12:22:00 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+parameter & ESS \\ 
+  \hline
+posterior & 11 \\ 
+  likelihood & 11 \\ 
+  prior & 11 \\ 
+  treeLikelihood & 11 \\ 
+  TreeHeight & 10 \\ 
+  rateAC & NA \\ 
+  rateAG & 3 \\ 
+  rateAT & 4 \\ 
+  rateCG & 3 \\ 
+  rateGT & 4 \\ 
+  freqParameter.1 & 5 \\ 
+  freqParameter.2 & 3 \\ 
+  freqParameter.3 & 4 \\ 
+  freqParameter.4 & 3 \\ 
+  ucldStdev & 9 \\ 
+  rate.mean & 8 \\ 
+  rate.variance & 5 \\ 
+  rate.coefficientOfVariation & 4 \\ 
+  BirthDeath & 11 \\ 
+  BDBirthRate & 11 \\ 
+  BDDeathRate & 9 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes of example 6 for best candidate model} 
+\label{tab:esses_example_6_best}
+\end{table}

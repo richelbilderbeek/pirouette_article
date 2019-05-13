@@ -1,0 +1,14 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Mon May 13 12:22:00 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrr}
+  \hline
+Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
+  \hline
+GTR & RLN & BD & -8206.776 &    1 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences of example 5} 
+\label{tab:evidences_example_5}
+\end{table}
