@@ -25,3 +25,4 @@ time Rscript example_2.R
 time Rscript example_3.R
 time Rscript example_4.R
 time Rscript example_5.R
+time Rscript example_6.R

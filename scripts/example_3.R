@@ -27,7 +27,6 @@ print(paste("Number of arguments:", length(args)))
 example_no <- 3
 root_folder <- path.expand("~/GitHubs/pirouette_article")
 example_folder <- file.path(root_folder, paste0("example_", example_no))
-rng_seed <- 314
 
 if (length(args) == 1) {
   rng_seed <- as.numeric(args[1])
@@ -45,11 +44,9 @@ library(ggtree)
 
 dir.create(example_folder, showWarnings = FALSE)
 setwd(example_folder)
-# No need to do 'set.seed(rng_seed)': we use 'rng_seed' arguments instead
-
+set.seed(314)
 testit::assert(is_beast2_installed())
-
-phylogeny  <- ape::read.tree(text = "(((A:8, B:8):1, C:9):1, ((D:8, E:8):1, F:9):1);")
+phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 
 alignment_params <- create_alignment_params(
   root_sequence = create_blocked_dna(length = 1000),
