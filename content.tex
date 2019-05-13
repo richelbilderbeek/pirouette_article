@@ -113,7 +113,7 @@ While we recommend many replicate simulations when assessing a novel tree prior,
 to specify a wide variety of custom settings. 
 These settings can be grouped in macro-sections, 
 according to how they operate in the pipeline. 
-We summarize them in tables~\ref{tab:options} and~\ref{tab:definitions}.
+We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
 
 Although many possible tests can be performed, 
 we present here what we think are the five most important 
@@ -245,7 +245,7 @@ For each of these ERQs we will quantify the importance of a tree prior.
     Definitions of terms and relative symbols used in the main text and in 
     Fig~\ref{fig:pipeline}. To run the pipeline $\mathit{A}$, $\mathit{X}$ 
     and $\mathit{E}$ must be specified. Examples can be found in 
-    listings~\ref{lst:create_alignment}, 
+    listings~\ref{lst:create_alignment_params}, 
     \ref{lst:create_gen_experiment_explicit} and 
     \ref{lst:create_error_measure_params}.
   }
@@ -462,7 +462,7 @@ install_beast2_pkg("NS")
 \end{lstlisting}
 
 An overview of \verb;pirouette;'s main functions is shown in 
-table~\ref{tab:functions}. 
+Table~\ref{tab:functions}. 
 Their usage is demonstrated in the example code below.
 All \verb;pirouette;'s functions are documented,
 have a useful example and sensible defaults.
@@ -470,21 +470,24 @@ have a useful example and sensible defaults.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h]
   \centering
-  \begin{tabular}{ | l | l | }
+  \begin{tabular}{ | l | l | l | }
     \hline
-    \textbf{Name} & \textbf{Description} \\
+    \textbf{Name} & \textbf{Description} & \textbf{Listing} \\
     \hline
-    \verb;pir_run; & Run \verb;pirouette; \\
-    \verb;pir_plot; & Show the \verb;pirouette; results as a plot \\
-    \verb;create_pir_params; & Create the \verb;pirouette; parameters \\
+    \verb;pir_run; & Run \verb;pirouette; & \ref{lst:pir_run} \\
+    \verb;pir_plot; & Show the \verb;pirouette; results as a plot & \ref{lst:pir_plot} \\
+    \verb;create_pir_params; & Create the \verb;pirouette; parameters & \ref{lst:create_pir_params} \\
     \hline
-    \verb;create_alignment_params; & Create the alignment parameters \\
-    \verb;create_twinning_params; & Create the twinning parameters \\
-    \verb;create_experiment; & Create one experiment \\
-    \verb;create_error_measure_params; & Create the error measurement parameters \\
+    \verb;create_alignment_params; & Create the alignment parameters & \ref{lst:create_alignment_params} \\
+    \verb;create_twinning_params; & Create the twinning parameters & \ref{lst:create_twinning_params} \\
+    \verb;create_experiment; & Create one experiment & \ref{lst:create_gen_experiment_explicit} \\
+    \verb;create_error_measure_params; & Create the error measurement parameters & \ref{lst:create_error_measure_params} \\
     \hline
   \end{tabular}
-  \caption{pirouette's main functions.}
+  \caption{
+    \texttt{pirouette}'s main functions, description and the number of the 
+    listing in which it is used. 
+  }
   \label{tab:functions}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -531,7 +534,7 @@ used in simulating an alignment in the next step.
     label = {lst:create_yule_tree}, 
     caption = {
       Create a Yule tree. 
-      The resulting tree is shown in figure~\ref{fig:yule_tree}.
+      The resulting tree is shown in Figure~\ref{fig:yule_tree}.
     }
   ]
 phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
@@ -558,7 +561,7 @@ of all species are equal and constant.
     language = R,
     floatplacement = ht,
     frame = single,
-    label = {lst:create_alignment}, 
+    label = {lst:create_alignment_params}, 
     caption = {Create an alignment.}
   ]
 alignment_params <- create_alignment_params(
@@ -728,7 +731,7 @@ pir_plot(errors)
   \label{fig:example_1}
 \end{figure}
 
-The resulting error distribution, as shown figure~\ref{fig:example_1},
+The resulting error distribution, as shown Figure~\ref{fig:example_1},
 shows the inference error 
 when $\mathit{I}$ matches with the generative model given 
 by $\mathit{A}$ and $\mathit{p_{G}^0}$.
@@ -793,7 +796,7 @@ phylogeny  <- ape::read.tree(
 The first step is to simulate a DNA alignment from the 
 given phylogeny. 
 We will re-use the alignment parameters of the previous example 
-as shown in listing~\ref{lst:create_alignment}.
+as shown in listing~\ref{lst:create_alignment_params}.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
@@ -867,7 +870,7 @@ pir_params <- create_pir_params(
 
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}),
-as shown in figure~\ref{fig:example_2}.
+as shown in Figure~\ref{fig:example_2}.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_2/errors.png}
@@ -902,7 +905,7 @@ when hand-picking a tree prior, compared to the background noise?"
 Most of the settings for this ERQ are
 the same as in ERQ 2: we will re-use the phylogeny from an 
 unknown speciation model (listing~\ref{lst:unknown_phylogeny}), 
-the alignment parameters (listing~\ref{lst:create_alignment}).
+the alignment parameters (listing~\ref{lst:create_alignment_params}).
 
 We create an experiment as in 
 listing~\ref{lst:create_gen_experiment},
@@ -972,7 +975,7 @@ pir_params <- create_pir_params(
 
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}),
-The output is shown in figure~\ref{fig:example_3}
+The output is shown in Figure~\ref{fig:example_3}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_3/errors.png}
@@ -1011,7 +1014,7 @@ Here, as in ERQs 2 and 3, we start with a phylogeny
 generated by an unknown speciation model (listing~\ref{lst:unknown_phylogeny}). 
 The first step is to simulate a DNA alignment 
 from the given phylogeny, for which we will use the same code 
-as shown in listing~\ref{lst:create_alignment}.
+as shown in listing~\ref{lst:create_alignment_params}.
 
 We specify that we want all 40 inference models to compete 
 by calling \verb;create_all_experiments;,
@@ -1024,7 +1027,7 @@ the same call to \verb;create_pir_params; as shown in
 listing~\ref{lst:create_pir_params_with_twinning}.
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}).
-The output is shown in figure~\ref{fig:example_4}. 
+The output is shown in Figure~\ref{fig:example_4}. 
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_4/errors.png}
@@ -1064,7 +1067,7 @@ i.e. the one already used in ERQs 2-4,
 by using the code shown in listing~\ref{lst:unknown_phylogeny}.
 The first step is to simulate a DNA alignment 
 from the given phylogeny, for which we will use the same code 
-as shown in listing~\ref{lst:create_alignment}.
+as shown in listing~\ref{lst:create_alignment_params}.
 
 \begin{table}
   \begin{tabular}{ | c | c | c | l | }
@@ -1131,7 +1134,7 @@ as shown in listing~\ref{lst:create_pir_params_with_twinning}.
 
 We run \verb;pirouette; (listing~\ref{lst:pir_run}) 
 and plot the results (listing~\ref{lst:pir_plot}).
-The output is shown in figure~\ref{fig:example_5}.
+The output is shown in Figure~\ref{fig:example_5}.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_5/errors.png}
@@ -1252,7 +1255,7 @@ of the quality of the inference.
 To give an idea of the insights \verb;pirouette; can give,
 we pretend the results of the example research questions
 to be obtained from thousands of replicates.
-In that case, figure~\ref{fig:example_1} would show 
+In that case, Figure~\ref{fig:example_1} would show 
 the minimum error BEAST2 when the
 generative model is known, which can serve as 
 a minimum noise level assessment in a bigger experiment.  
