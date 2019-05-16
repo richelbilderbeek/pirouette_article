@@ -3,8 +3,8 @@
 # Works under Windows
 library(pirouette)
 library(ggplot2)
-library(ggthemes)
 library(ggtree)
+library(beautier)
 
 root_folder <- path.expand("~/GitHubs/pirouette_article")
 example_no <- 1
