@@ -186,22 +186,22 @@
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_6/true_tree.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_6/true_alignment.png}
+      \includegraphics[height=0.13\textheight]{example_2/true_alignment.png}
     };   
     \node[state] (CG) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_6/true_posterior_gen.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_posterior_gen.png}
     };   
     \node[state] (DG) [below of = CG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_6/true_error_violin_gen.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_error_violin_gen.png}
     };   
     \node[state] (CB) [right of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_6/true_posterior_best.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_6/true_error_violin_best.png}
+      \includegraphics[height=0.2\textheight]{example_2/true_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -213,19 +213,19 @@
     ; 
     \end{tikzpicture}
   }
-  \label{fig:example_6_full_pipeline}
+  \label{fig:example_2_full_pipeline}
   \caption{Example 6: full pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{example_6/esses_gen.latex}
-% has label tab:esses_example_6_gen
+\input{example_2/esses_gen.latex}
+% has label tab:esses_example_2_gen
 
-\input{example_6/esses_best.latex}
-% has label tab:esses_example_6_best
+\input{example_2/esses_best.latex}
+% has label tab:esses_example_2_best
 
-\input{example_6/evidence_true.latex}
-% has label tab:evidences_example_6
+\input{example_2/evidence_true.latex}
+% has label tab:evidences_example_2
 
 \begin{table}
   \begin{tabular}{ | r | c | }
