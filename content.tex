@@ -351,9 +351,10 @@ user-defined error statistic can be used.
 \subsection{Twin tree}\label{subsec:twinning}
 
 An optional step is to generate a 'twin tree' $\tau_{I}$
-(Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b),
-that will be analyzed in the same way as the true tree.
-We define a phylogeny $\tau$ is the combination of 
+(Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b)
+and 'twin alignment'
+that will be analyzed in the same way as the true tree (and alignment).
+We define a phylogeny $\tau$ is the combination of
 branching times $\Vec{t}$ and topology $\psi$.
 Assuming that a non-standard generative prior $\mathit{p_{G}}$
 produces a tree $\tau_{\mathit{G}}$,
@@ -386,6 +387,15 @@ $n_{\mathit{I}} = n_{\mathit{G}}$
 of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree 
 $\tau_{\mathit{I}}$, under the process $\mathit{I}$, 
 while preserving the same topology.
+
+From the twin tree, we simulate an alignment following the same
+history as the twin tree, with the addition that 
+the same total number of mutations have
+taken place from root sequence to the sequences in the present.
+This addition assures there is the same amount of historical information
+stored in the alignments of both the true and twin alignment.
+We achieve this by simply simulating twin alignments up until we
+obtain one that has the desired number of mutations.
 
 Using a twin tree serves as a control: both $\tau_{\mathit{G}}$ and 
 $\tau_{\mathit{I}}$ will produce an error distribution. 
@@ -471,7 +481,8 @@ have a useful example and sensible defaults.
   }
   \label{tab:functions}
 \end{table}
-\giovanni{I think the reference to the listings is a great idea. I don't know what to add more to this table. Probably (not 100\% sure) we should make all tables fit within the page limits.}
+\giovanni{Probably (not 100\% sure) we should make all tables fit within the page limits.}
+\richel{Nope, the publisher will do this for us in the end}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -810,6 +821,7 @@ and plot the results (Listing~\ref{lst:pir_plot}) in Figure~\ref{fig:example_6}.
   \includegraphics[width=\textwidth]{example_6/errors.png}
   \caption{
     The inference error for both generative and best candidate inference models.
+    Vertical dashed lines show the median error value per distribution.
   }
   \label{fig:example_6}
 \end{figure}
@@ -891,10 +903,16 @@ The output is shown in Figure~\ref{fig:example_5}.
     for both a generative tree prior and best candidate model
     compared with the error obtained for the twin tree.
     Here, the 'twin' tree shows the baseline inference error.
+    Vertical dashed lines show the median error value per distribution.
   }
   \label{fig:example_5}
 \end{figure}
-\giovanni{I find the figure to be too confused. What if we use instead different plots, and in each of them we just show one inference model's results plus its twin counterpart?}
+\giovanni{
+  I find the figure to be too confused. 
+  What if we use instead different plots, 
+  and in each of them we just show one inference model's results plus its twin counterpart?
+}
+\richel{Will do}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -906,23 +924,10 @@ All tests were performed on a single original tree,
 hence not providing us enough statistical power to 
 evaluate the level of accuracy of the inference. 
 
-However, if the same procedure were repeated and performed on a distribution with a sufficient number of generative trees, it would constitute a quantitative and effective assessment of the quality of the inference.
-
-A twin tree does not always result in a lower error distribution,
+However, if the same procedure were repeated and performed on a distribution with a sufficient number of generative trees, 
+it would constitute a quantitative and effective assessment of the quality of the inference.
+Also a twin tree does not always result in a lower error distribution,
 due to the stochasticity in generating the twin tree.
-For example, of the second tree used in the 'Usage' section,
-94\% of all twin trees resulted in an error distribution with a lower median.
-\giovanni{If we write this some reviewer could argue: where do you see this? Do you have a plot to show it? Why don't you present such data about a bigger distribution, at least in an appendix?}
-
-% Add: the effect of the alignment on this
-% https://github.com/richelbilderbeek/pirouette_article/issues/45
-
-\iffalse
-\giovanni{We can probably just remove this.}
-To give an idea of the insights \verb;pirouette; can give,
-we pretend the final result was to be obtained from thousands of replicates.
-We ...
-\fi
 
 In conclusion, \verb;pirouette; can directly show the comparison between the results obtained 
 adopting a new generative prior as compared to the Bayesian inference error
