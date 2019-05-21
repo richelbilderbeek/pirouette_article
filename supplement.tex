@@ -1,17 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results in detail}
+\section{Supplementary materials}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Errors}
+\subsection{Usage with generative model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example 1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \resizebox {0.8\columnwidth} {!} {
     \begin{tikzpicture}[
@@ -53,58 +49,118 @@
 % has label tab:esses_example_1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example 5}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Usage with generative and candidate models}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \resizebox {0.8\columnwidth} {!} {
     \begin{tikzpicture}[
       ->,>=stealth',shorten >=1pt,auto,
-      node distance=0.4\textheight, 
+      node distance=0.7\textheight, 
       semithick
     ]   
     \tikzstyle{every state}=[]
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3/true_tree.png}
+      \includegraphics[height=0.5\textheight]{example_2/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_3/true_alignment.png}
+      \includegraphics[height=0.5\textheight]{example_2/true_alignment.png}
     };   
     \node[state] (CG) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3/true_posterior_gen.png}
+      \includegraphics[height=0.45\textheight]{example_2/true_posterior_gen.png}
     };   
     \node[state] (DG) [below of = CG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3/true_error_violin_gen.png}
+      \includegraphics[height=0.3\textheight]{example_2/true_error_violin_gen.png}
     };   
-    \node[state] (CB) [right of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3/true_posterior_best.png}
+    \node[state] (CB) [right of = CG, rectangle] {
+      \includegraphics[height=0.45\textheight]{example_2/true_posterior_best.png}
+    };   
+    \node[state] (DB) [right of = DG, rectangle] {
+      \includegraphics[height=0.3\textheight]{example_2/true_error_violin_best.png}
+    };   
+    \path 
+      (O) edge [anchor = south] node {} (A)
+      (A) edge [anchor = south] node {} (B)
+      (B) edge [anchor = south] node {} (CG)
+      (CG) edge [anchor = south] node {} (DG)
+      (B) edge [anchor = south] node {} (CB)
+      (CB) edge [anchor = south] node {} (DB)
+    ; 
+    \end{tikzpicture}
+  }
+  \label{fig:example_2_full_pipeline}
+  \caption{Usage with generative and candidate models: full pipeline}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{example_2/esses_gen.latex}
+% has label tab:esses_example_2_gen
+
+\input{example_2/esses_best.latex}
+% has label tab:esses_example_2_best
+
+\input{example_2/evidence_true.latex}
+% has label tab:evidences_example_2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Usage with generative and candidate models, compared to the background noise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \centering
+  \resizebox {1.0\columnwidth} {!} {
+    \begin{tikzpicture}[
+      ->,>=stealth',shorten >=1pt,auto,
+      node distance=0.5\textheight, 
+      semithick
+    ]   
+    \tikzstyle{every state}=[]
+    \node[state, draw=none] (O) [] {
+    };   
+    \node[state] (A) [right of = O, rectangle] {
+      \includegraphics[height=0.4\textheight]{example_3/true_tree.png}
+    };   
+    \node[state] (B) [below of = A, rectangle] {
+      \includegraphics[height=0.25\textheight]{example_3/true_alignment.png}
+    };   
+    \node[state] (CG) [below of = B, rectangle] {
+      \includegraphics[height=0.3\textheight]{example_3/true_posterior_gen.png}
+    };   
+    \node[state] (DG) [below of = CG, rectangle] {
+      \includegraphics[height=0.3\textheight]{example_3/true_error_violin_gen.png}
+    };   
+    \node[state] (CB) [right of = CG, rectangle] {
+      \includegraphics[height=0.3\textheight]{example_3/true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3/true_error_violin_best.png}
+      \includegraphics[height=0.3\textheight]{example_3/true_error_violin_best.png}
     };   
     \node[state] (AT) [right of = A, rectangle, node distance=0.8\textheight] {
-      \includegraphics[height=0.2\textheight]{example_3/twin_tree.png}
+      \includegraphics[height=0.4\textheight]{example_3/twin_tree.png}
     };   
     \node[state] (BT) [below of = AT, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_3/twin_alignment.png}
+      \includegraphics[height=0.25\textheight]{example_3/twin_alignment.png}
     };   
-    \node[state] (CTG) [below of = BT, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3/twin_posterior_gen.png}
+    \node[state] (CTG) [right of = CB, rectangle] {
+      \includegraphics[height=0.3\textheight]{example_3/twin_posterior_gen.png}
     };   
     \node[state] (DTG) [below of = CTG, rectangle] {
-      
-\includegraphics[height=0.2\textheight]{example_3/twin_error_violin_gen.png}
+      \includegraphics[height=0.3\textheight]{example_3/twin_error_violin_gen.png}
     };   
     \node[state] (CTB) [right of = CTG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_3/twin_posterior_best.png}
+      \includegraphics[height=0.3\textheight]{example_3/twin_posterior_best.png}
     };   
     \node[state] (DTB) [below of = CTB, rectangle] {
-      
-\includegraphics[height=0.2\textheight]{example_3/twin_error_violin_best.png}
+      \includegraphics[height=0.3\textheight]{example_3/twin_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -123,7 +179,7 @@
     \end{tikzpicture}
   }
   \label{fig:example_3_full_pipeline}
-  \caption{Example 5: full pipeline}
+  \caption{Usage with generative and candidate models, compared to the background noise: full pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -145,6 +201,10 @@
 \input{example_3/evidence_twin.latex}
 % has label tab:evidences_example_3
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Runtime}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{table}
   \begin{tabular}{ | r | c | }
     \hline
@@ -166,82 +226,3 @@
 
 
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Example 6}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-  \centering
-  \resizebox {0.8\columnwidth} {!} {
-    \begin{tikzpicture}[
-      ->,>=stealth',shorten >=1pt,auto,
-      node distance=0.4\textheight, 
-      semithick
-    ]   
-    \tikzstyle{every state}=[]
-    \node[state, draw=none] (O) [] {
-    };   
-    \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2/true_tree.png}
-    };   
-    \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.13\textheight]{example_2/true_alignment.png}
-    };   
-    \node[state] (CG) [below of = B, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2/true_posterior_gen.png}
-    };   
-    \node[state] (DG) [below of = CG, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2/true_error_violin_gen.png}
-    };   
-    \node[state] (CB) [right of = C, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2/true_posterior_best.png}
-    };   
-    \node[state] (DB) [below of = CB, rectangle] {
-      \includegraphics[height=0.2\textheight]{example_2/true_error_violin_best.png}
-    };   
-    \path 
-      (O) edge [anchor = south] node {} (A)
-      (A) edge [anchor = south] node {} (B)
-      (B) edge [anchor = south] node {} (CG)
-      (CG) edge [anchor = south] node {} (DG)
-      (B) edge [anchor = south east] node {} (CB)
-      (CB) edge [anchor = south] node {} (DB)
-    ; 
-    \end{tikzpicture}
-  }
-  \label{fig:example_2_full_pipeline}
-  \caption{Example 6: full pipeline}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\input{example_2/esses_gen.latex}
-% has label tab:esses_example_2_gen
-
-\input{example_2/esses_best.latex}
-% has label tab:esses_example_2_best
-
-\input{example_2/evidence_true.latex}
-% has label tab:evidences_example_2
-
-\begin{table}
-  \begin{tabular}{ | r | c | }
-    \hline
-    \textbf{ERQ} & \textbf{run-time} \\ 
-    \hline
-      1 & 00:10:12 \\
-      2 & 00:34:10 \\
-      3 & 00:24:53 \\
-      4 & 01:04:50 \\
-      5 & 01:29:40 \\
-    \hline
-  \end{tabular}
-  \caption{
-    Time for an example research question to finish.
-    Time is in in hh:mm::ss.
-  }
-  \label{tab:runtime}
-\end{table}

@@ -1,16 +1,28 @@
 \begin{abstract}
 
   \textbf{1. }
-    Phylogenetic trees are current routinely reconstructed from an alignment of character sequences (usually nucleotide sequences). Bayesian tools, such as MrBayes, RevBayes and BEAST2, have gained much popularity over the last decade, as they allow joint estimation of the posterior distribution of the phylogenetic tree and the parameters of the underlying inference model.  
-    An important ingredient of these Bayesian approaches is the species tree prior. While in principle the Bayesian framework allows for comparing different species tree priors and hence may elucidate the macroevolutionary processes underlying the species tree, in practice only 
-    macroevolutionary models that allow for fast computation of the prior probability are used. 
-    This begs the question how accurate the tree estimation is
+    Phylogenetic trees are current routinely reconstructed from an alignment 
+    of character sequences (usually nucleotide sequences). 
+    Bayesian tools, such as MrBayes, RevBayes and BEAST2, 
+    have gained much popularity over the last decade, 
+    as they allow joint estimation of the posterior distribution of the 
+    phylogenetic tree and the parameters of the underlying inference model.  
+    An important ingredient of these Bayesian approaches is the species tree 
+    prior. While in principle the Bayesian framework allows for comparing 
+    different species tree priors and hence may elucidate the macroevolutionary 
+    processes underlying the species tree, in practice only 
+    macroevolutionary models that allow for fast computation of the prior 
+    probability are used. 
+    An open question is, how accurate the tree estimation is
     when the real macroevolutionary processes are substantially different 
     from those assumed in the tree prior. \\
   \textbf{2. }
     Here we present \verb;pirouette;, 
     a free, libre and open-source R package that assesses 
-    the inference error made by Bayesian phylogenetics for a given macroevolutionary diversification model. \verb;pirouette; makes use of BEAST2, but its philosophy applies to any Bayesian phylogenetic inference tool\\
+    the inference error made by Bayesian phylogenetics for a given 
+    macroevolutionary diversification model. \verb;pirouette; makes use of 
+    BEAST2, but its philosophy applies to any Bayesian phylogenetic inference 
+    tool. \\
   \textbf{3. }
     We describe \verb;pirouette;'s usage and the biological scientific
     question it can answer, including full examples. \\
@@ -18,7 +30,8 @@
     Last, we discuss the results obtained by the examples and their interpretation. \\
 \end{abstract}
 
-{\bf Keywords:} computational biology, evolution, phylogenetics, tree prior, Bayesian model selection, BEAST2, babette, pirouette, R
+{\bf Keywords:} computational biology, evolution, phylogenetics, tree prior, 
+Bayesian model selection, BEAST2, babette, pirouette, R
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
