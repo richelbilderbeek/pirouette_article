@@ -1,12 +1,15 @@
-# Code of example 6
+# Code of example 2
 #
 # Works under Linux and MacOS only
+suppressMessages(library(ggtree))
+suppressMessages(library(ggplot2))
 library(pirouette)
-library(ggplot2)
-library(ggtree)
+library(babette)
+library(beautier)
+
 
 root_folder <- path.expand("~/GitHubs/pirouette_article")
-example_no <- 6
+example_no <- 2
 example_folder <- file.path(root_folder, paste0("example_", example_no))
 dir.create(example_folder, showWarnings = FALSE)
 setwd(example_folder)
@@ -118,7 +121,7 @@ print("Evidence")
 print("#######################################################################")
 
 # Evidence, true
-df_evidences <- utils::read.csv(pir_params$evidence_filename)[, c(-1, -6)]
+  df_evidences <- utils::read.csv(pir_params$evidence_filename)[, c(-1, -6)]
 df_evidences$site_model_name <- plyr::revalue(df_evidences$site_model_name, c("JC69" = "JC", "TN93" = "TN"))
 df_evidences$clock_model_name <- plyr::revalue(
   df_evidences$clock_model_name,
