@@ -1,33 +1,32 @@
 % latex table generated in R 3.6.0 by xtable 1.8-4 package
-% Wed May 29 10:51:16 2019
+% Thu May 30 14:22:07 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{ll}
   \hline
 parameter & ESS \\ 
   \hline
-NSlikelihood & 10 \\ 
-  posterior & 10 \\ 
-  likelihood & 10 \\ 
-  prior & 6 \\ 
-  treeLikelihood & 10 \\ 
-  TreeHeight & 29 \\ 
-  rateAC & 14 \\ 
-  rateAG & 13 \\ 
-  rateAT & 32 \\ 
-  rateCG & 8 \\ 
-  rateGT & 5 \\ 
-  freqParameter.1 & 4 \\ 
-  freqParameter.2 & 16 \\ 
-  freqParameter.3 & 3 \\ 
-  freqParameter.4 & 6 \\ 
-  ucldStdev & 4 \\ 
-  rate.mean & 7 \\ 
-  rate.variance & 14 \\ 
-  rate.coefficientOfVariation & 4 \\ 
-  BirthDeath & 17 \\ 
-  BDBirthRate & 29 \\ 
-  BDDeathRate & 54 \\ 
+posterior & 11 \\ 
+  likelihood & 11 \\ 
+  prior & 7 \\ 
+  treeLikelihood & 11 \\ 
+  TreeHeight & 9 \\ 
+  rateAC & 3 \\ 
+  rateAG & 3 \\ 
+  rateAT & 3 \\ 
+  rateCG & 4 \\ 
+  rateGT & 4 \\ 
+  freqParameter.1 & 3 \\ 
+  freqParameter.2 & 10 \\ 
+  freqParameter.3 & 11 \\ 
+  freqParameter.4 & 3 \\ 
+  ucldStdev & 5 \\ 
+  rate.mean & 4 \\ 
+  rate.variance & 8 \\ 
+  rate.coefficientOfVariation & 5 \\ 
+  BirthDeath & 6 \\ 
+  BDBirthRate & 11 \\ 
+  BDDeathRate & 5 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 2 for best candidate model} 

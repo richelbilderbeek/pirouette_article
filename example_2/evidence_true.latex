@@ -1,50 +1,12 @@
 % latex table generated in R 3.6.0 by xtable 1.8-4 package
-% Wed May 29 11:56:53 2019
+% Thu May 30 14:22:07 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllrr}
   \hline
 Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
   \hline
-GTR & RLN & BD & -6384.654 & 0.000 \\ 
-  GTR & RLN & CBS & -6419.245 & 0.000 \\ 
-  GTR & RLN & CCP & -6352.254 & 0.000 \\ 
-  GTR & RLN & CEP & -6374.850 & 0.000 \\ 
-  GTR & RLN & Yule & -6373.412 & 0.000 \\ 
-  GTR & Strict & BD & -6362.747 & 0.000 \\ 
-  GTR & Strict & CBS & -6363.573 & 0.000 \\ 
-  GTR & Strict & CCP & -6362.033 & 0.000 \\ 
-  GTR & Strict & CEP & -6386.834 & 0.000 \\ 
-  GTR & Strict & Yule & -6364.472 & 0.000 \\ 
-  HKY & RLN & BD & -6357.021 & 0.000 \\ 
-  HKY & RLN & CBS & -6364.070 & 0.000 \\ 
-  HKY & RLN & CCP & -6363.800 & 0.000 \\ 
-  HKY & RLN & CEP & -6354.332 & 0.000 \\ 
-  HKY & RLN & Yule & -6366.030 & 0.000 \\ 
-  HKY & Strict & BD & -6366.101 & 0.000 \\ 
-  HKY & Strict & CBS & -6360.725 & 0.000 \\ 
-  HKY & Strict & CCP & -6377.229 & 0.000 \\ 
-  HKY & Strict & CEP & -6358.459 & 0.000 \\ 
-  HKY & Strict & Yule & -6358.906 & 0.000 \\ 
-  JC & RLN & BD & -6337.487 & 1.000 \\ 
-  JC & RLN & CBS & -6348.372 & 0.000 \\ 
-  JC & RLN & CCP & -6350.324 & 0.000 \\ 
-  JC & RLN & CEP & -6354.080 & 0.000 \\ 
-  JC & RLN & Yule & -6353.300 & 0.000 \\ 
-  JC & Strict & BD & -6354.798 & 0.000 \\ 
-  JC & Strict & CBS & -6350.124 & 0.000 \\ 
-  JC & Strict & CCP & -6353.774 & 0.000 \\ 
-  JC & Strict & CEP & -6351.780 & 0.000 \\ 
-  TN & RLN & BD & -6369.111 & 0.000 \\ 
-  TN & RLN & CBS & -6363.721 & 0.000 \\ 
-  TN & RLN & CCP & -6360.986 & 0.000 \\ 
-  TN & RLN & CEP & -6367.677 & 0.000 \\ 
-  TN & RLN & Yule & -6361.298 & 0.000 \\ 
-  TN & Strict & BD & -6364.300 & 0.000 \\ 
-  TN & Strict & CBS & -6376.350 & 0.000 \\ 
-  TN & Strict & CCP & -6366.008 & 0.000 \\ 
-  TN & Strict & CEP & -6355.233 & 0.000 \\ 
-  TN & Strict & Yule & -6358.686 & 0.000 \\ 
+GTR & RLN & BD & -6372.480 &    1 \\ 
    \hline
 \end{tabular}
 \caption{Evidences of example 5} 
