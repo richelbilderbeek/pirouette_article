@@ -366,7 +366,7 @@ An optional step is to generate a 'twin tree' $\tau_{I}$
 (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b)
 and 'twin alignment'
 that will be analyzed in the same way as the true tree (and alignment).
-We define a phylogeny $\tau$ is the combination of
+We define a phylogeny $\tau$ as the combination of
 branching times $\Vec{t}$ and topology $\psi$.
 Assuming that a non-standard generative prior $\mathit{p_{G}}$
 produces a tree $\tau_{\mathit{G}}$,
@@ -375,25 +375,21 @@ topology $\psi_{\mathit{G}}$, the twinning process T, in accordance with a chose
 model $\mathit{I}$, creates a tree $\tau_{\mathit{I}}$
 with branching times $\Vec{t}_{\mathit{I}}$ while preserving the 
 topology $\psi_{\mathit{G}}$:
-
 \begin{align}
   \tau_{\mathit{G}} = (\Vec{t}_{\mathit{G}}, \psi_{\mathit{G}}) 
   \xrightarrow[]{\mathit{T}} 
   \tau_{\mathit{I}} = (\Vec{t}_{\mathit{I}}, \psi_{\mathit{G}})
 \end{align}
-
 To achieve this, we find the parameters $\theta^{*}_{\mathit{I}}$ 
 (e.g. speciation and extinction rates, in case of a birth-death model) 
 that maximize the likelihood $L_{\mathit{I}}$ applied 
 to the true tree, conditioned on its number of tips $n_{\mathit{G}}$,
 where $L_{\mathit{I}}$ is the likelihood function  
 associated with the chosen inference model $\mathit{I}$:
-
 \begin{align}
-    max[L_{\mathit{I}}(\theta_{\mathit{I}}|\tau_{\mathit{G}}, n_{\mathit{G}})] 
+    \max[L_{\mathit{I}}(\theta_{\mathit{I}}|\tau_{\mathit{G}}, n_{\mathit{G}})] 
 \rightarrow \theta^{*}_{\mathit{I}}.
 \end{align}
-
 We use $\theta^{*}_{\mathit{I}}$ to simulate an equal number 
 $n_{\mathit{I}} = n_{\mathit{G}}$ 
 of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree 
@@ -406,24 +402,15 @@ history as the twin tree, with the addition that
 the same total number of mutations have
 taken place from root sequence to the sequences in the present.
 This addition assures there is the same amount of historical information
-stored in the alignments of both the true and twin alignment.
-We achieve this by simply simulating twin alignments up until we
+stored in both the true and twin alignments.
+We achieve this by simply simulating twin alignments until we
 obtain one that has the desired number of mutations.
 
-Using a twin tree serves as a control: both $\tau_{\mathit{G}}$ and 
-$\tau_{\mathit{I}}$ will produce an error distribution. 
-These errors unavoidably accumulate across the \verb;pirouette; pipeline,
-for both the true and twin tree, due to several possible reasons: either tree may be an unlikely representative
-of the underlying tree prior, the alignment simulation may give different
-numbers of mutations for the same evolutionary time, 
-and the MCMC will sample different states.
-These errors can be equalized by imposing the same tree topology and by
-replicating the pipelines a sufficient number of times.
-
-The remaining differences in error distributions will be 
-consequences of different phylogenies and tree priors for the two parallel 
+The twin tree serves as a control: even when the generating and inference models are identical, the posterior distribution of inferred trees will differ from the true tree due to stochasticity in producing an alignment and in MCMC sampling of the posterior; the twin tree provides this minimum error. We therefore need to compare the error distributions of $\tau_{\mathit{G}}$ and 
+$\tau_{\mathit{I}}$. 
+By imposing the same topology and the same number of mutations in the alignments, the differences in error distributions of the true tree and the twin tree are the consequence of different phylogenies (produced by different processes) and tree priors for the two parallel 
 pipelines: the main pipeline uses the tree $\tau_{\mathit{G}}$ and a
-possibly mismatched prior $\mathit{G}$, where the twin pipeline
+possibly mismatched prior $\mathit{G}$, whereas the twin pipeline
 uses the tree $\tau_{\mathit{I}}$ for a matching prior $\mathit{I}$.
 So, for the twin trees, if the process is repeated a sufficient number of times, the resulting error distribution cannot be 
 attributed to a mismatch between the true tree prior and the tree prior used in
@@ -433,7 +420,7 @@ inference.
 \section{Installation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\verb;pirouette; will be made available on CRAN from which it can then be easily installed easily:
+\verb;pirouette; will be made available on CRAN from which it can then be easily installed:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 install.packages("pirouette")
 \end{lstlisting}
