@@ -1,0 +1,52 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Wed Apr 17 14:31:42 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrr}
+  \hline
+Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
+  \hline
+GTR & RLN & BD & -7409.778 & 0.000 \\ 
+  GTR & RLN & CBS & -7421.477 & 0.000 \\ 
+  GTR & RLN & CCP & -7423.837 & 0.000 \\ 
+  GTR & RLN & CEP & -7407.843 & 0.000 \\ 
+  GTR & RLN & Yule & -7422.778 & 0.000 \\ 
+  GTR & Strict & BD & -7448.862 & 0.000 \\ 
+  GTR & Strict & CBS & -7420.833 & 0.000 \\ 
+  GTR & Strict & CCP & -7433.389 & 0.000 \\ 
+  GTR & Strict & CEP & -7407.053 & 0.000 \\ 
+  GTR & Strict & Yule & -7399.439 & 0.000 \\ 
+  HKY & RLN & BD & -7399.417 & 0.000 \\ 
+  HKY & RLN & CBS & -7410.622 & 0.000 \\ 
+  HKY & RLN & CCP & -7399.343 & 0.000 \\ 
+  HKY & RLN & CEP & -7411.578 & 0.000 \\ 
+  HKY & RLN & Yule & -7405.886 & 0.000 \\ 
+  HKY & Strict & BD & -7410.010 & 0.000 \\ 
+  HKY & Strict & CBS & -7402.577 & 0.000 \\ 
+  HKY & Strict & CCP & -8326.163 & 0.000 \\ 
+  HKY & Strict & CEP & -7404.915 & 0.000 \\ 
+  HKY & Strict & Yule & -7407.486 & 0.000 \\ 
+  JC & RLN & BD & -7392.158 & 0.099 \\ 
+  JC & RLN & CBS & -7402.924 & 0.000 \\ 
+  JC & RLN & CCP & -7401.369 & 0.000 \\ 
+  JC & RLN & CEP & -7392.525 & 0.068 \\ 
+  JC & RLN & Yule & -7397.270 & 0.001 \\ 
+  JC & Strict & BD & -7403.562 & 0.000 \\ 
+  JC & Strict & CBS & -7394.371 & 0.011 \\ 
+  JC & Strict & CCP & -7407.346 & 0.000 \\ 
+  JC & Strict & CEP & -7390.040 & 0.821 \\ 
+  TN & RLN & BD & -7412.140 & 0.000 \\ 
+  TN & RLN & CBS & -7414.007 & 0.000 \\ 
+  TN & RLN & CCP & -7407.187 & 0.000 \\ 
+  TN & RLN & CEP & -7403.891 & 0.000 \\ 
+  TN & RLN & Yule & -7406.576 & 0.000 \\ 
+  TN & Strict & BD & -7417.008 & 0.000 \\ 
+  TN & Strict & CBS & -7403.007 & 0.000 \\ 
+  TN & Strict & CCP & -7416.063 & 0.000 \\ 
+  TN & Strict & CEP & -7402.365 & 0.000 \\ 
+  TN & Strict & Yule & -7408.779 & 0.000 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences of example 5, twin tree} 
+\label{tab:evidences_example_5_twin}
+\end{table}

@@ -1,0 +1,21 @@
+% latex table generated in R 3.4.2 by xtable 1.8-3 package
+% Wed Apr 17 16:06:38 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+parameter & ESS \\ 
+  \hline
+posterior & 10001 \\ 
+  likelihood & 10001 \\ 
+  prior & 6853 \\ 
+  treeLikelihood & 10001 \\ 
+  TreeHeight & 10001 \\ 
+  CoalescentExponential & 9645 \\ 
+  ePopSize & 6442 \\ 
+  growthRate & 7726 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes of example 5 for best candidate model, twin tree} 
+\label{tab:esses_example_5_twin__best}
+\end{table}
