@@ -20,6 +20,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 ./install $branch
+
 time Rscript example_1.R
 time Rscript example_2.R
 time Rscript example_3.R
