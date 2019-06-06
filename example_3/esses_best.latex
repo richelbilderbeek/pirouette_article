@@ -1,31 +1,24 @@
 % latex table generated in R 3.6.0 by xtable 1.8-4 package
-% Thu Jun  6 12:26:37 2019
+% Thu Jun  6 16:11:45 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{ll}
   \hline
 parameter & ESS \\ 
   \hline
-posterior & 135 \\ 
-  likelihood & 8540 \\ 
-  prior & 15 \\ 
-  treeLikelihood & 8540 \\ 
-  TreeHeight & 1352 \\ 
-  ucldStdev & 259 \\ 
-  rate.mean & 945 \\ 
-  rate.variance & 240 \\ 
-  rate.coefficientOfVariation & 356 \\ 
-  BayesianSkyline & 827 \\ 
-  bPopSizes.1 & 1701 \\ 
-  bPopSizes.2 & 1957 \\ 
-  bPopSizes.3 & 1740 \\ 
-  bPopSizes.4 & 2948 \\ 
-  bPopSizes.5 & 701 \\ 
-  bGroupSizes.1 & 5 \\ 
-  bGroupSizes.2 & 4 \\ 
-  bGroupSizes.3 & 4 \\ 
-  bGroupSizes.4 & 7 \\ 
-  bGroupSizes.5 & 6 \\ 
+posterior & 9778 \\ 
+  likelihood & 9790 \\ 
+  prior & 9449 \\ 
+  treeLikelihood & 9790 \\ 
+  TreeHeight & 10001 \\ 
+  kappa & 1527 \\ 
+  freqParameter.1 & 731 \\ 
+  freqParameter.2 & 713 \\ 
+  freqParameter.3 & 750 \\ 
+  freqParameter.4 & 729 \\ 
+  BirthDeath & 9606 \\ 
+  BDBirthRate & 9008 \\ 
+  BDDeathRate & 8386 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 3 for best candidate model} 

@@ -1,50 +1,50 @@
 % latex table generated in R 3.6.0 by xtable 1.8-4 package
-% Thu Jun  6 12:26:32 2019
+% Thu Jun  6 16:11:41 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{lllrr}
   \hline
 Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
   \hline
-GTR & RLN & BD & -6421.500 & 0.000 \\ 
-  GTR & RLN & CBS & -6424.612 & 0.000 \\ 
-  GTR & RLN & CCP & -6426.811 & 0.000 \\ 
-  GTR & RLN & CEP & -6430.357 & 0.000 \\ 
-  GTR & RLN & Yule & -6424.828 & 0.000 \\ 
-  GTR & Strict & BD & -6429.192 & 0.000 \\ 
-  GTR & Strict & CBS & -6437.658 & 0.000 \\ 
-  GTR & Strict & CCP & -6442.396 & 0.000 \\ 
-  GTR & Strict & CEP & -6440.301 & 0.000 \\ 
-  GTR & Strict & Yule & -6438.940 & 0.000 \\ 
-  HKY & RLN & BD & -6412.357 & 0.000 \\ 
-  HKY & RLN & CBS & -6423.425 & 0.000 \\ 
-  HKY & RLN & CCP & -6418.682 & 0.000 \\ 
-  HKY & RLN & CEP & -6415.790 & 0.000 \\ 
-  HKY & RLN & Yule & -6411.140 & 0.000 \\ 
-  HKY & Strict & BD & -6424.114 & 0.000 \\ 
-  HKY & Strict & CBS & -6416.207 & 0.000 \\ 
-  HKY & Strict & CCP & -6414.815 & 0.000 \\ 
-  HKY & Strict & CEP & -6423.850 & 0.000 \\ 
-  HKY & Strict & Yule & -6400.110 & 0.557 \\ 
-  JC & RLN & BD & -6411.708 & 0.000 \\ 
-  JC & RLN & CBS & -6418.875 & 0.000 \\ 
-  JC & RLN & CCP & -6405.110 & 0.004 \\ 
-  JC & RLN & CEP & -6401.168 & 0.193 \\ 
-  JC & RLN & Yule & -6412.114 & 0.000 \\ 
-  JC & Strict & BD & -6406.613 & 0.001 \\ 
-  JC & Strict & CBS & -6413.420 & 0.000 \\ 
-  JC & Strict & CCP & -6407.458 & 0.000 \\ 
-  JC & Strict & CEP & -6410.781 & 0.000 \\ 
-  TN & RLN & BD & -6407.723 & 0.000 \\ 
-  TN & RLN & CBS & -6417.144 & 0.000 \\ 
-  TN & RLN & CCP & -6406.756 & 0.001 \\ 
-  TN & RLN & CEP & -6420.976 & 0.000 \\ 
-  TN & RLN & Yule & -6413.758 & 0.000 \\ 
-  TN & Strict & BD & -6400.939 & 0.243 \\ 
-  TN & Strict & CBS & -6412.645 & 0.000 \\ 
-  TN & Strict & CCP & -6426.513 & 0.000 \\ 
-  TN & Strict & CEP & -6426.067 & 0.000 \\ 
-  TN & Strict & Yule & -6418.289 & 0.000 \\ 
+GTR & RLN & BD & -7459.417 & 0.000 \\ 
+  GTR & RLN & CBS & -7454.268 & 0.000 \\ 
+  GTR & RLN & CCP & -7451.591 & 0.000 \\ 
+  GTR & RLN & CEP & -7464.259 & 0.000 \\ 
+  GTR & RLN & Yule & -7452.548 & 0.000 \\ 
+  GTR & Strict & BD & -7452.398 & 0.000 \\ 
+  GTR & Strict & CBS & -7470.663 & 0.000 \\ 
+  GTR & Strict & CCP & -7455.618 & 0.000 \\ 
+  GTR & Strict & CEP & -7437.993 & 0.000 \\ 
+  GTR & Strict & Yule & -7456.265 & 0.000 \\ 
+  HKY & RLN & BD & -7451.776 & 0.000 \\ 
+  HKY & RLN & CBS & -7449.230 & 0.000 \\ 
+  HKY & RLN & CCP & -7441.647 & 0.000 \\ 
+  HKY & RLN & CEP & -7429.036 & 0.002 \\ 
+  HKY & RLN & Yule & -7447.096 & 0.000 \\ 
+  HKY & Strict & BD & -7441.533 & 0.000 \\ 
+  HKY & Strict & CBS & -7929.103 & 0.000 \\ 
+  HKY & Strict & CCP & -7444.648 & 0.000 \\ 
+  HKY & Strict & CEP & -7430.972 & 0.000 \\ 
+  HKY & Strict & Yule & -7426.209 & 0.037 \\ 
+  JC & RLN & BD & -7432.116 & 0.000 \\ 
+  JC & RLN & CBS & -7426.302 & 0.034 \\ 
+  JC & RLN & CCP & -7430.024 & 0.001 \\ 
+  JC & RLN & CEP & -7424.414 & 0.225 \\ 
+  JC & RLN & Yule & -7430.553 & 0.000 \\ 
+  JC & Strict & BD & -7423.423 & 0.605 \\ 
+  JC & Strict & CBS & -7425.278 & 0.095 \\ 
+  JC & Strict & CCP & -7433.059 & 0.000 \\ 
+  JC & Strict & CEP & -7431.469 & 0.000 \\ 
+  TN & RLN & BD & -7445.094 & 0.000 \\ 
+  TN & RLN & CBS & -7447.436 & 0.000 \\ 
+  TN & RLN & CCP & -7451.716 & 0.000 \\ 
+  TN & RLN & CEP & -7446.094 & 0.000 \\ 
+  TN & RLN & Yule & -7437.971 & 0.000 \\ 
+  TN & Strict & BD & -7429.991 & 0.001 \\ 
+  TN & Strict & CBS & -7454.925 & 0.000 \\ 
+  TN & Strict & CCP & -7456.562 & 0.000 \\ 
+  TN & Strict & CEP & -7439.784 & 0.000 \\ 
+  TN & Strict & Yule & -7437.238 & 0.000 \\ 
    \hline
 \end{tabular}
 \caption{Evidences of example 5, twin tree} 
