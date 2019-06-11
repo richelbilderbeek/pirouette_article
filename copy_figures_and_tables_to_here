@@ -18,3 +18,16 @@ do
   echo $to
   cp $from $to
 done
+
+# Copy true_tree.png
+for i in $(seq 1 12);
+do
+  echo $i
+  from="../pirouette_example_"$i"/example_"$i"/true_tree.png"
+  echo $from
+  to="example_"$i"/true_tree.png"
+  echo $to
+  cp $from $to
+done
+
+
