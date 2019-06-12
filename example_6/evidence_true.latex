@@ -1,0 +1,52 @@
+% latex table generated in R 3.6.0 by xtable 1.8-4 package
+% Tue Jun 11 13:45:41 2019
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrr}
+  \hline
+Site model & Clock model & Tree prior & log(evidence) & Weight \\ 
+  \hline
+GTR & RLN & BD & -8266.756 & 0.000 \\ 
+  GTR & RLN & CBS & -8262.288 & 0.000 \\ 
+  GTR & RLN & CCP & -8266.770 & 0.000 \\ 
+  GTR & RLN & CEP & -8247.168 & 0.000 \\ 
+  GTR & RLN & Yule & -8267.031 & 0.000 \\ 
+  GTR & Strict & BD & -8292.224 & 0.000 \\ 
+  GTR & Strict & CBS & -8270.006 & 0.000 \\ 
+  GTR & Strict & CCP & -8266.007 & 0.000 \\ 
+  GTR & Strict & CEP & -8259.277 & 0.000 \\ 
+  GTR & Strict & Yule & -8231.856 & 0.000 \\ 
+  HKY & RLN & BD & -8233.021 & 0.000 \\ 
+  HKY & RLN & CBS & -8234.202 & 0.000 \\ 
+  HKY & RLN & CCP & -8230.244 & 0.000 \\ 
+  HKY & RLN & CEP & -8224.461 & 0.001 \\ 
+  HKY & RLN & Yule & -8235.532 & 0.000 \\ 
+  HKY & Strict & BD & -8224.626 & 0.001 \\ 
+  HKY & Strict & CBS & -8218.598 & 0.268 \\ 
+  HKY & Strict & CCP & -8225.882 & 0.000 \\ 
+  HKY & Strict & CEP & -8292.476 & 0.000 \\ 
+  HKY & Strict & Yule & -8226.248 & 0.000 \\ 
+  JC & RLN & BD & -8220.822 & 0.029 \\ 
+  JC & RLN & CBS & -8223.821 & 0.001 \\ 
+  JC & RLN & CCP & -8223.010 & 0.003 \\ 
+  JC & RLN & CEP & -8221.922 & 0.010 \\ 
+  JC & RLN & Yule & -8218.632 & 0.259 \\ 
+  JC & Strict & BD & -8221.625 & 0.013 \\ 
+  JC & Strict & CBS & -8221.695 & 0.012 \\ 
+  JC & Strict & CCP & -8221.376 & 0.017 \\ 
+  JC & Strict & CEP & -8221.458 & 0.015 \\ 
+  TN & RLN & BD & -8233.473 & 0.000 \\ 
+  TN & RLN & CBS & -8235.544 & 0.000 \\ 
+  TN & RLN & CCP & -8223.572 & 0.002 \\ 
+  TN & RLN & CEP & -8260.877 & 0.000 \\ 
+  TN & RLN & Yule & -8238.610 & 0.000 \\ 
+  TN & Strict & BD & -8242.590 & 0.000 \\ 
+  TN & Strict & CBS & -8235.104 & 0.000 \\ 
+  TN & Strict & CCP & -8227.264 & 0.000 \\ 
+  TN & Strict & CEP & -8218.286 & 0.366 \\ 
+  TN & Strict & Yule & -8223.576 & 0.002 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences of example 5} 
+\label{tab:evidences_example_5}
+\end{table}
