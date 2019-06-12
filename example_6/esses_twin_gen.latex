@@ -15,6 +15,6 @@ posterior & 9997 \\
   birthRate & 9813 \\ 
    \hline
 \end{tabular}
-\caption{ESSes of example 3 for generative model, twin tree} 
+\caption{STUB! ESSes of example 3 for generative model, twin tree} 
 \label{tab:esses_example_3_twin_gen}
 \end{table}

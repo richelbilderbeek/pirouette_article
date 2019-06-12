@@ -15,6 +15,6 @@ posterior & 9959 \\
   birthRate & 9949 \\ 
    \hline
 \end{tabular}
-\caption{ESSes of example 3 for generative model} 
+\caption{STUB! ESSes of example 3 for generative model} 
 \label{tab:esses_example_3_gen}
 \end{table}
