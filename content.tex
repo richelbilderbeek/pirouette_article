@@ -629,7 +629,8 @@ generative_experiment <- create_experiment(
   inference_model = create_inference_model(
     tree_prior = create_yule_tree_prior(),
     clock_model = create_strict_clock_model(), 
-    site_model = create_jc69_site_model()
+    site_model = create_jc69_site_model(),
+    mcmc = create_mcmc(store_every = 1000)
   )
 )
 \end{lstlisting}
@@ -827,7 +828,7 @@ experiments:
     generative model, and 39 candidate models.
   }
 ]
-experiments <- list(
+experiments <- c(
   list(generative_experiment),
   candidate_experiments
 )
@@ -914,7 +915,7 @@ For clarity, however, we explicitly show the most important arguments:
   caption = Create the default twinning parameters.
 ]
 twinning_params <- create_twinning_params(
-  twin_model = "bd", 
+  twin_model = "birth_death",
   method = "random_tree"
 )
 \end{lstlisting}
