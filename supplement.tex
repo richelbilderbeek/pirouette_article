@@ -3,8 +3,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Usage with generative model}
+\subsection{Generative model only}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The code used in this part of the article can be found at 
+\url{https://github.com/richelbilderbeek/pirouette_example_1}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -39,22 +42,24 @@
     \end{tikzpicture}
   }
   \label{fig:example_1_full_pipeline}
-  \caption{Example 1: full pipeline}
+  \caption{Generative model only: full pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_1/esses.latex}
-% has label tab:esses_example_1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Usage with generative and candidate models}
+\subsection{Comparing to other candidate models}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The code used in this part of the article can be found at 
+\url{https://github.com/richelbilderbeek/pirouette_example_2}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -97,22 +102,22 @@
     \end{tikzpicture}
   }
   \label{fig:example_2_full_pipeline}
-  \caption{Usage with generative and candidate models: full pipeline}
+  \caption{Comparing to other candidate models: full pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_2/esses_gen.latex}
-% has label tab:esses_example_2_gen
 
 \input{example_2/esses_best.latex}
-% has label tab:esses_example_2_best
 
 \input{example_2/evidence_true.latex}
-% has label tab:evidences_example_2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Usage with generative and candidate models, compared to the background noise}
+\subsection{Comparing to background noise}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The code used in this part of the article can be found at 
+\url{https://github.com/richelbilderbeek/pirouette_example_6}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -179,50 +184,19 @@
     \end{tikzpicture}
   }
   \label{fig:example_3_full_pipeline}
-  \caption{Usage with generative and candidate models, compared to the background noise: full pipeline}
+  \caption{Comparing to background noise: full pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{example_6/esses_gen.latex}
-% has label tab:esses_example_3_gen
 
 \input{example_6/esses_best.latex}
-% has label tab:esses_example_3_best
 
 \input{example_6/esses_twin_gen.latex}
-% has label tab:esses_example_3_twin_gen
 
 \input{example_6/esses_twin_best.latex}
-% has label tab:esses_example_3_twin_best
 
 \input{example_6/evidence_true.latex}
-% has label tab:evidences_example_3
 
 \input{example_6/evidence_twin.latex}
-% has label tab:evidences_example_3
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Runtime}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table}
-  \begin{tabular}{ | r | c | }
-    \hline
-    \textbf{ERQ} & \textbf{run-time} \\ 
-    \hline
-      1 & 00:10:12 \\
-      2 & 00:34:10 \\
-      3 & 00:24:53 \\
-      4 & 01:04:50 \\
-      5 & 01:29:40 \\
-    \hline
-  \end{tabular}
-  \caption{
-    Time for an example research question to finish.
-    Time is in in hh:mm::ss.
-  }
-  \label{tab:runtime}
-\end{table}
-
-
 
