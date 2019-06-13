@@ -1,28 +1,18 @@
 % latex table generated in R 3.6.0 by xtable 1.8-4 package
-% Mon Jun  3 08:59:51 2019
+% Thu Jun 13 09:01:24 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{ll}
   \hline
 parameter & ESS \\ 
   \hline
-posterior & 6136 \\ 
-  likelihood & 6284 \\ 
-  prior & 766 \\ 
-  treeLikelihood & 6284 \\ 
-  TreeHeight & 1155 \\ 
-  kappa1 & 997 \\ 
-  kappa2 & 653 \\ 
-  freqParameter.1 & 603 \\ 
-  freqParameter.2 & 399 \\ 
-  freqParameter.3 & 455 \\ 
-  freqParameter.4 & 587 \\ 
-  ucldStdev & 469 \\ 
-  rate.mean & 1135 \\ 
-  rate.variance & 640 \\ 
-  rate.coefficientOfVariation & 549 \\ 
-  YuleModel & 2577 \\ 
-  birthRate & 6625 \\ 
+posterior & 10001 \\ 
+  likelihood & 10001 \\ 
+  prior & 10001 \\ 
+  treeLikelihood & 10001 \\ 
+  TreeHeight & 10001 \\ 
+  popSize & 9508 \\ 
+  CoalescentConstant & 10001 \\ 
    \hline
 \end{tabular}
 \caption{ESSes of example 2 for best candidate model} 
