@@ -1,21 +1,29 @@
 % latex table generated in R 3.6.0 by xtable 1.8-4 package
-% Thu Jun  6 16:11:45 2019
+% Wed Jun 12 14:30:14 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{ll}
   \hline
 parameter & ESS \\ 
   \hline
-posterior & 9957 \\ 
-  likelihood & 9932 \\ 
-  prior & 9738 \\ 
-  treeLikelihood & 9932 \\ 
-  TreeHeight & 9718 \\ 
-  BirthDeath & 9738 \\ 
-  BDBirthRate & 8472 \\ 
-  BDDeathRate & 7089 \\ 
+posterior & 8644 \\ 
+  likelihood & 8914 \\ 
+  prior & 2129 \\ 
+  treeLikelihood & 8914 \\ 
+  TreeHeight & 7066 \\ 
+  kappa & 1096 \\ 
+  freqParameter.1 & 579 \\ 
+  freqParameter.2 & 528 \\ 
+  freqParameter.3 & 502 \\ 
+  freqParameter.4 & 497 \\ 
+  ucldStdev & 1092 \\ 
+  rate.mean & 5259 \\ 
+  rate.variance & 1059 \\ 
+  rate.coefficientOfVariation & 1220 \\ 
+  YuleModel & 8522 \\ 
+  birthRate & 9517 \\ 
    \hline
 \end{tabular}
-\caption{STUB! ESSes of example 3 for best candidate model, twin tree} 
-\label{tab:esses_example_3_twin__best}
+\caption{ESSes of example 6 for best candidate model, twin tree} 
+\label{tab:esses_example_6_twin__best}
 \end{table}
