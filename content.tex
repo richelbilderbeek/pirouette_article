@@ -969,13 +969,12 @@ distribution with a sufficient number of generative trees,
 it would constitute a quantitative and effective assessment of the 
 quality of the inference.
 Also a twin tree does not always result in a lower error distribution,
-due to the stochasticity in generating the twin tree.
+as the stochasticity in generating a twin tree will occasionally
+yield a tree of very low likelihood.
 
-In conclusion, \verb;pirouette; can directly show the comparison 
-between the results obtained 
-adopting a new generative prior as compared to the Bayesian inference error
-when operating on a tree generated under a known and standard tree 
-prior (the twin tree).
+In conclusion, \verb;pirouette; can show the errors
+when adopting a new generative prior
+in comparison to the errors made by a standard prior.
 From such results an user can estimate whether or not a new tree prior, 
 tailored on the generative process, is needed. 
 If this were indeed the case, one could rightly implement 
