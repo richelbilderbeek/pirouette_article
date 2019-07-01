@@ -75,7 +75,7 @@ Part of a model's performance is its ability to recover parameters from simulate
 
 Even when a diversification model passes the procedure described above,
 it is not necessarily used in Bayesian inference.
-Bayesian phylogenetic inference often requires that the prior probability of the phylogeny according to the diversification model has to be computed millions of times. Therefore, biologically interesting but computationally expensive tree priors are non-viable. This is not necessarily problematic, when the data are very informative, as this will reduce the influence of the tree prior.
+Bayesian phylogenetic inference often requires that the prior probability of the phylogeny according to the diversification model has to be computed millions of times. Therefore, biologically interesting but computationally expensive tree priors are often not implemented, and simpler priors are used instead. This is not necessarily problematic, when the data are very informative, as this will reduce the influence of the tree prior.
 However, the assumption that tree prior choice is of low importance must first be verified.
 
 There have been multiple attempts to investigate the importance of tree
@@ -107,7 +107,7 @@ It does so by measuring the inference error made for a given reconstructed phylo
 simulated under a (usually novel) diversification model.
 We refer to the true prior that generated the given tree
 as the 'generative tree prior' $\mathit{p_{G}}$.
-Many tree priors have a parameter setting for which it reduces to a standard tree prior. For example, a protracted birth-death model reduces to a standard birth-death model when speciation-completion rate approaches infinity [i.e. rate $\lambda$ in \cite{etienne2014estimating}, eqs.~(2b) and (2c)].
+Many tree priors have a parameter setting for which it reduces to a standard tree prior. For example, a protracted birth-death model \citep{etienne2012prolonging} reduces to a standard birth-death model when the speciation-completion rate is infinite [i.e. rate $\lambda$ in \cite{etienne2014estimating}, eqs.~(2b) and (2c)].
 When benchmarking a novel tree prior, 
 one will typically construct phylogenies 
 for different combinations of the diversification model's parameters, 
@@ -121,7 +121,7 @@ according to how they operate in the pipeline.
 We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
 
 Although many possible tests can be performed, 
-we show the usage of \verb;pirouette; by a story that introduces
+we show the usage of \verb;pirouette; by introducing 
 its features gradually, yet ending in quantifying the impact a tree prior has
 in Bayesian inference.
 
@@ -294,7 +294,7 @@ We assume the user has a phylogeny simulated with the new diversification model.
   \item from the given phylogeny an alignment is simulated 
     under a known alignment model $\mathit{A}$;
   \item from this alignment, according to the specified inference conditions $\mathit{C}$, 
-    an inference model $\mathit{I}$ is picked (which may differ from the 
+    an inference model $\mathit{I}$ is chosen (which may differ from the 
     generative model);
   \item the inference model and the alignment are used 
     to infer a posterior distribution of phylogenies;
@@ -333,24 +333,24 @@ of which only the best should be used in the actual inference.
 In the first example, we specified the condition $C_{i}$ that this
 generative model should always be run, whereas in the second example,
 we specified condition $C_{i}$ that a candidate model should only be run
-when being the best.
-A 'best' model is defined as the inference model with
+when it is the best.
+The 'best' model is defined as the inference model with
 the highest evidence (a.k.a. marginal likelihood), given the alignment 
 simulated in the previous step.
-The evidence of an inference model is estimated by nested 
+The evidence for an inference model is estimated by nested 
 sampling [\cite{maturana2018model}], using the \verb;NS; BEAST2 package. We note that scripted use of BEAST2 packages is only possible under Linux and Mac.
 Windows systems can do the model comparison for shorter DNA sequences 
 using the web interface of \verb;mcbette; [\cite{mcbette}].
 
-The third step infers the posteriors,
+The third step infers the posterior distributions,
 using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 4a),
 and the inference models that were selected in the previous step (3). 
-For each selected experiment a posterior is inferred, using the 
+For each selected experiment a posterior distribution is inferred, using the 
 \verb;babette; [\cite{bilderbeek2018babette}] R package which makes use of BEAST2. 
-This step usually takes up most of the full pipeline's computation time.
+This step usually takes up most of the pipeline's computation time.
 
 The fourth step quantifies the inference error made. First the burn-in fraction is removed, i.e. the first phase of the Markov chain Monte Carlo (MCMC) run,
-in which it samples an unrepresentative part of state space. By default, \verb;pirouette; 
+which samples an unrepresentative part of state space. By default, \verb;pirouette; 
 removes the first 10\% of the posterior.
 From the remaining posterior \verb;pirouette; 
 creates an error distribution, by measuring the difference
@@ -397,10 +397,10 @@ $\tau_{\mathit{I}}$, under the process $\mathit{I}$,
 while preserving the same topology.
 
 From the twin tree, we simulate an alignment following the same
-history as the twin tree, with the addition that 
+history as the twin tree, with the constraint that 
 the same total number of mutations have
-taken place from root sequence to the sequences in the present.
-This addition assures there is the same amount of historical information
+taken place.
+This constraint ensures there is the same amount of historical information
 stored in both the true and twin alignments.
 We achieve this by simply simulating twin alignments until we
 obtain one that has the desired number of mutations.
@@ -500,7 +500,7 @@ running the pipeline starting from a tree generated by an unknown
 or non-standard tree prior.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Generative model only}
+\subsection{The generative and inference models are equal and standard.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; quantifies the influence of a new tree prior on BEAST2's 
@@ -578,10 +578,10 @@ them for the sake of clarity.
 In the second step we state our experiment.
 We define an experiment $\mathit{X}$ as a combination of an inference model 
 $\mathit{I}$ and conditions $\mathit{C}$.
-In this example we pick $\mathit{I}$ to be the same inference model as 
+In this example we choose $\mathit{I}$ to be the same inference model as 
 the generative one,
-which is the chosen Yule tree prior $\mathit{p_{G}^0}$ as well as site 
-and clock models defined in $\mathit{A}$, respectively JC and strict.
+i.e. the Yule tree prior $\mathit{p_{G}^0}$ and site 
+and clock models defined in $\mathit{A}$, respectively Jukes-Cantor and strict clock.
 We specify in $\mathit{C}$ that the experiment will always be run.
 
 \begin{table}
@@ -653,8 +653,8 @@ experiments <- list(generative_experiment)
 \end{lstlisting}
 
 We also need to specify the error measurement parameters $\mathit{E}$.
-Here we use the default $\mathit{E}$, which uses a burn-in fraction 
-of 10\% and the nLTT statistic to
+Here we choose the default $\mathit{E}$, which has a burn-in fraction 
+of 10\% and uses the nLTT statistic to
 measure the difference between phylogenies. For clarity,
 we create this setup explicitly here:
 
@@ -673,7 +673,7 @@ error_measure_params <- create_error_measure_params(
 
 We now have all the needed \verb;pirouette; parameters: the alignment 
 parameters, the experiments and the error measure parameters.
-These objects need to be bundled in a bigger parameter structure, 
+These objects need to be bundled in a larger parameter structure, 
 using \verb;create_pir_params;:
 
 \begin{lstlisting}[
@@ -736,24 +736,23 @@ by $\mathit{A}$ and $\mathit{p_{G}^0}$.
 This error distribution can serve as a control,
 as it is obtained from a tree of which the tree prior is standard and known.
 Obtaining this control is in fact an inherent part of \verb;pirouette;. 
-We call it 'twinning' and we will demonstrate it at section
+We call it 'twinning' and we will demonstrate it in section
  \ref{Comparing to background noise}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Comparing to other candidate models}
+\subsection{The inference model may differ from the generative model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In the previous example we selected the inference model $\mathit{I}$ to match 
 with a known generative tree prior $\mathit{p_{G}^0}$.
-However, a novel tree prior $\mathit{p_{G}}$, by our definition, is 
+However, a novel tree prior $\mathit{p_{G}}$ is by (our) definition
 non-standard, and hence not part of a standard inference 
 model (i.e. an inference model using a standard tree prior).
 In such a case, the question is which standard tree prior should be used in 
-the inference. In this example, not only we re-use our hand-picked 
+the inference. In this example, we do not only re-use our hand-picked 
 inference model, but we also pick the best inference model from a set of 
-inference models. With the 'best' inference model, we mean the model with 
-the highest evidence (also known as marginal likelihood), based on the 
-alignment. We show the procedure using \verb;pirouette; to answer a second 
+inference models, i.e.  the model with 
+the highest evidence measured by its marginal likelihood. We show the procedure using \verb;pirouette; to answer a second 
 research question: "What is the inference error made on a novel phylogeny when using the best inference model, in comparison to a hand-picked model?
 
 \begin{table}
@@ -864,7 +863,7 @@ and plot the results (Listing~\ref{lst:pir_plot}) in Figure~\ref{fig:example_2}.
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Comparing to background noise}\label{Comparing to background noise}
+\subsection{The generative model is non-standard}\label{Comparing to background noise}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 So far we have measured the inference error on a tree
@@ -876,11 +875,10 @@ To measure the impact of the tree prior, we measure both the baseline
 error (that serves as a control) and the full inference error: it is their 
 difference that shows the impact of the tree prior.
 To do so, we use a twin tree (see Subsection~\ref{subsec:twinning}) for 
-each of the generative and best candidate model.
+both the generative and best candidate models.
 The research question this example answers is:
 "What is the inference error made from a phylogeny, 
-for both a generative model and a best candidate model, compared to the 
-background noise?"
+for both a generative model and the best candidate model?"
 
 We start from the tree generated by a non-standard (and unknown) tree prior, having six taxa and a crown age of ten:
 \begin{lstlisting}[
@@ -938,7 +936,7 @@ pir_params <- create_pir_params(
 
 We run \verb;pirouette; (Listing~\ref{lst:pir_run}) 
 and plot the results (Listing~\ref{lst:pir_plot}).
-The output is shown in Figure~\ref{fig:example_3}.
+The output is shown in Figure~\ref{fig:example_3}. While the error distributions using the best or generative model as inference model are very similar, the error distributions of the true tree are substantially larger than those of the twin tree. This is the error made in inference by not using the generating species tree prior. 
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_6/errors.png}
@@ -961,26 +959,27 @@ tree prior in Bayesian phylogenetics, using the simplest generative tree
 prior possible.
 In principle any other (more complex) generative tree prior can be tested, 
 but we chose to provide the simplest (and fastest to run) examples.
-All examples used only one original tree,
+
+Figure~\ref{fig:example_3} illustrates the primary result of our pipeline: it shows the error distributions for the true tree and the twin tree when either the generating model or the best candidate model is used. For this specific case it does not seem to matter that the site and clock models used in inference are different from those used in generating the data, but the difference between the error distributions for the true tree and the twin tree suggest that the choice of tree prior does matter.
+
+We note, however, that all examples used only one original tree,
 where any speciation process produces a whole range of trees.
-One tree is not enough to determine the impact of a tree prior 
-on Bayesian inference.
-However, if the same procedure were repeated and performed on a 
-distribution with a sufficient number of generative trees, 
+One tree is not enough to determine the impact of a tree prior on Bayesian inference.
+However, if the same procedure were repeated and performed on a distribution with a sufficient number of generative trees, 
 it would constitute a quantitative and effective assessment of the 
 quality of the inference.
 Also a twin tree does not always result in a lower error distribution,
 as the stochasticity in generating a twin tree will occasionally
-yield a tree of very low likelihood.
+yield a tree of very low probability.
 
 In conclusion, \verb;pirouette; can show the errors
 when adopting a new generative prior
 in comparison to the errors made by a standard prior.
-From such results an user can estimate whether or not a new tree prior, 
+The user can then judge whether or not a new tree prior, 
 tailored on the generative process, is needed. 
-If this were indeed the case, one could rightly implement 
-their novel tree prior as an addition to 
-their favorite Bayesian inference tool.
+If this is indeed the case, one should implement 
+the novel tree prior as an addition to 
+the favorite Bayesian inference tool.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{pirouette resources}
@@ -1034,7 +1033,7 @@ The \verb;pirouette; vignette demonstrates extensively how
 to use \verb;pirouette; in a more informally written way. 
 
 The code used in this article and more examples that are periodically 
-tested to work, can be found at 
+tested, can be found at 
 \url{https://github.com/richelbilderbeek/pirouette_examples}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
