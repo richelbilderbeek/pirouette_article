@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Copies the results from the pirouette examples to here.
+#
+# Usage:
+#
+#   ./scripts/copy_figs_from_pir_example_to_here
+#
+#
+cd ..
+
+#for folder in pirouette_example_1 pirouette_example_2 pirouette_example_6
+for index in 1 2 6
+do
+  source_folder=$(echo "/home/richel/GitHubs/pirouette_example_"$index)
+  echo $source_folder
+  source_subfolder=$(echo $source_folder"/example_"$index"_314")
+  echo $source_subfolder
+  target_folder=$(echo "/home/richel/GitHubs/pirouette_article/example_"$index)
+  echo $target_folder
+  cp $source_subfolder/*.png $target_folder
+  cp $source_subfolder/*.latex $target_folder
+done

@@ -25,5 +25,5 @@ posterior & 8644 \\
    \hline
 \end{tabular}
 \caption{ESSes of example 6 for best candidate model, twin tree} 
-\label{tab:esses_example_6_twin_best}
+\label{tab:esses_example_6_twin__best}
 \end{table}
