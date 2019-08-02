@@ -1,12 +1,14 @@
 #!/bin/bash
-
-# cd ../figures
-# ./create_figures
-# cd ../article
+#
+# Creates the PDF version of the article.
+#
+# Usage:
+#
+#   ./scripts/create_article
+#
+#
 
 pdflatex article.tex --shell-escape
 bibtex article.aux
 pdflatex article.tex --shell-escape
 pdflatex article.tex --shell-escape
-
-# pdfunite article.pdf ../figures/figures.pdf article_full.pdf

@@ -1,5 +1,5 @@
 % latex table generated in R 3.6.0 by xtable 1.8-4 package
-% Wed Jun 12 14:30:14 2019
+% Thu Aug  1 17:11:46 2019
 \begin{table}[ht]
 \centering
 \begin{tabular}{ll}
@@ -20,6 +20,5 @@ posterior & 5295 \\
   growthRate & 1066 \\ 
    \hline
 \end{tabular}
-\caption{ESSes of example 6 for best candidate model} 
-\label{tab:esses_example_6_best}
+\caption{ESSes for best candidate model} 
 \end{table}
