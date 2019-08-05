@@ -8,6 +8,8 @@ install:
   - sudo npm install -g markdown-link-check
 
 script:
+  # Overleaf remove the execute flag from scipts 
+  - chmod +x scripts/check_dead_links
   # Check dead links
   - rm .travis.yml
   - ./scripts/check_dead_links
