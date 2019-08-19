@@ -452,12 +452,13 @@ while preserving the same topology.
 From the twin tree, we simulate an alignment following the same
 history as the twin tree, using the same mutation rate,
 with the constraint that 
-the same total number of mutations have
-taken place.
-This constraint ensures there is the same amount of historical information
-stored in both the true and twin alignments.
+the exact same total number of mutations have
+taken place from the phylogeny's root sequence and all sequences at the tips. 
 We achieve this by simply simulating twin alignments until we
 obtain one that has the desired number of mutations.
+This constraint ensures there is approximately 
+the same amount of historical information
+stored in both the true and twin alignments.
 
 The twin tree serves as a control: 
 even when the generating and inference models are identical, 
