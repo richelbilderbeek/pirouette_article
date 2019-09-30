@@ -301,7 +301,7 @@ in Bayesian inference.
 
 \begin{figure}
   \centering
-  \includegraphics[width = \textwidth]{workflow.png}
+  \includegraphics[width = \textwidth]{workflow4.png}
   \caption{
     \texttt{pirouette} pipeline.
     The pipeline starts from a phylogeny (1a) simulated by the generative tree prior 
@@ -310,21 +310,21 @@ in Bayesian inference.
     $\mathit{A} = (\mathit{c_{G}}, \mathit{s_{G}})$, composed by a clock and a site model. 
     The user supplies one or more experiments.
     For each candidate experiment $\mathit{X_{i}}$ 
-    (a tuple of inference model $\mathit{I_{i}}$ and condition $\mathit{C_{i}}$),
+    (a 2-tuple of inference model $\mathit{I_{i}}$ and condition $\mathit{C_{i}}$),
     if its condition $\mathit{C_{i}}$ is 
     satisfied (which can depend on the alignment), 
     the corresponding inference model $\mathit{I} = \mathit{I_{i}}$ is selected 
     to be used in the next step.
-    The inference models (3) of the selected experiments use the alignment (2a) 
+    The inference models (3a) of the selected experiments use the alignment (2a) 
     to each create a Bayesian posterior of (parameter estimates and) 
     phylogenies (4a). 
     Each of the posteriors' trees is compared to the true phylogeny (1a) 
-    using error measure $\mathit{E}$, 
+    using the error measure $\mathit{E}$, 
     resulting in an error distribution (5a). 
     Optionally, for each selected inference model a twin pipeline can be run.
     A twin phylogeny (1b) can be generated from the original 
-    phylogeny (1a) using the tree prior $\mathit{p_{I}}$ of the selected inference model (3).
-    Analogously, a twin alignment is simulated from the twin phylogeny along with clock model $\mathit{c_{I}}$ and site model $\mathit{s_{I}}$ imported from the selected inference model.
+    phylogeny (1a) using the twin tree prior $\mathit{p_{t}}$, selected among standard tree priors; the default option is the standard birth-death prior.
+    A twin alignment (2b) is then simulated from the twin phylogeny using clock model $\mathit{c_{G}}$ and site model $\mathit{s_{G}}$ imported from the generative model. The twin alignment has the same amount of mutations as the original alignment.
     The twin pipeline mimics the procedure of the main pipeline, resulting in a twin error distribution (5b).
   }
   \label{fig:pipeline}
@@ -411,74 +411,57 @@ The default way to quantify the difference between two phylogenies
 is the nLTT statistic (\cite{janzen2015approximate}), but any 
 user-defined error statistic can be used.
 
-\subsection{Twin tree}\label{subsec:twinning}
+\subsection{Twinning}\label{subsec:twinning}
 
-An optional step is to generate a 'twin tree' $\tau_{I}$
-(Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 1b)
-and 'twin alignment'
-that will be analyzed in the same way as the true tree (and alignment).
+An optional step is to use the 'twinning process'. Such process generates (T1) a 'twin tree' (Fig.~\ref{fig:pipeline}, 1b) and (T2) a 'twin alignment' (Fig.~\ref{fig:pipeline}, 2b)
+that will be analyzed in the same way as the true tree and alignment.
+
 We define a phylogeny $\tau$ as the combination of
-branching times $\Vec{t}$ and topology $\psi$.
-Assuming that a non-standard generative prior $\mathit{p_{G}}$
-produces a tree $\tau_{\mathit{G}}$,
-with branching times $\Vec{t}_{\mathit{G}}$ and 
-topology $\psi_{\mathit{G}}$, the twinning process T, 
-in accordance with a chosen inference 
-model $\mathit{I}$, creates a tree $\tau_{\mathit{I}}$
-with branching times $\Vec{t}_{\mathit{I}}$ while preserving the 
+branching times $\Vec{t}$ and topology $\psi$, and denote as $\tau_{\mathit{G}}$ the phylogeny produced by a non-standard generative prior, having branching times $\Vec{t}_{\mathit{G}}$ and 
+topology $\psi_{\mathit{G}}$.
+
+The first step (T1) of the twinning process creates a tree $\tau_{\mathit{T}}$
+with branching times $\Vec{t}_{\mathit{T}}$ while preserving the original
 topology $\psi_{\mathit{G}}$:
 \begin{align}
   \tau_{\mathit{G}} = (\Vec{t}_{\mathit{G}}, \psi_{\mathit{G}}) 
   \xrightarrow[]{\mathit{T}} 
-  \tau_{\mathit{I}} = (\Vec{t}_{\mathit{I}}, \psi_{\mathit{G}})
+  \tau_{\mathit{T}} = (\Vec{t}_{\mathit{T}}, \psi_{\mathit{G}})
 \end{align}
-To achieve this, we find the parameters $\theta^{*}_{\mathit{I}}$ 
+To do so, a standard tree prior $p_T$ for the twin tree must be specified. The default option here is the standard birth-death prior.
+It is then possible to use the likelihood function $L_{\mathit{T}}$ defined by such tree prior to find the parameters $\theta^{*}_{\mathit{T}}$ 
 (e.g. speciation and extinction rates, in case of a birth-death model) 
-that maximize the likelihood $L_{\mathit{I}}$ applied 
-to the true tree, conditioned on its number of tips $n_{\mathit{G}}$,
-where $L_{\mathit{I}}$ is the likelihood function  
-associated with the chosen inference model $\mathit{I}$:
+that maximize the likelihood applied 
+to the true tree, conditioned on its number of tips $n_{\mathit{G}}$:
 \begin{align}
-    \max[L_{\mathit{I}}(\theta_{\mathit{I}}|\tau_{\mathit{G}}, n_{\mathit{G}})] 
-\rightarrow \theta^{*}_{\mathit{I}}.
+    \max[L_{\mathit{T}}(\theta_{\mathit{T}}|\tau_{\mathit{G}}, n_{\mathit{G}})] 
+\rightarrow \theta^{*}_{\mathit{T}}.
 \end{align}
-We use $\theta^{*}_{\mathit{I}}$ to simulate an equal number 
-$n_{\mathit{I}} = n_{\mathit{G}}$ 
-of branching times $\Vec{t}_{\mathit{I}}$ for the twin tree 
-$\tau_{\mathit{I}}$, under the process $\mathit{I}$, 
+We use $\theta^{*}_{\mathit{T}}$ to simulate an equal number 
+$n_{\mathit{T}} = n_{\mathit{G}}$ 
+of branching times $\Vec{t}_{\mathit{T}}$ for the twin tree 
+$\tau_{\mathit{T}}$, under the process $p_{T}$, 
 while preserving the same topology.
 
-From the twin tree, we simulate an alignment following the same
-history as the twin tree, using the same mutation rate,
-with the constraint that 
-the exact same total number of mutations have
-taken place from the phylogeny's root sequence and all sequences at the tips. 
+The second step (T2) of the twinning process simulates the twin alignment. To do so, we use the same clock model, site model and mutation rate used to simulate the original alignment. 
+We also impose that, in the twin alignment, the total number of mutations respect to the root sequence must be the same as in the true alignment.
+
 We achieve this by simply simulating twin alignments until we
 obtain one that has the desired number of mutations.
 This constraint ensures there is approximately 
 the same amount of historical information
 stored in both the true and twin alignments.
 
-The twin tree serves as a control: 
-even when the generating and inference models are identical, 
-the posterior distribution of inferred trees will differ 
-from the true tree due to stochasticity in producing an alignment 
-and in MCMC sampling of the posterior; 
-the twin tree provides this minimum error. 
-We therefore need to compare the error distributions of $\tau_{\mathit{G}}$ and 
-$\tau_{\mathit{I}}$. 
-By imposing the same topology and the same number of mutations 
-in the alignments, the differences in error distributions of 
-the true tree and the twin tree are the consequence 
-of different phylogenies (produced by different processes) 
-and tree priors for the two parallel 
-pipelines: the main pipeline uses the tree $\tau_{\mathit{G}}$ and a
-possibly mismatched prior $\mathit{G}$, whereas the twin pipeline
-uses the tree $\tau_{\mathit{I}}$ for a matching prior $\mathit{I}$.
-So, for the twin trees, if the process is repeated 
-a sufficient number of times, the resulting error distribution cannot be 
-attributed to a mismatch between the true tree prior 
-and the tree prior used in inference.
+The twin pipeline serves as a control: even when the generating and inference models are identical, the inferred trees from the posterior distribution will still differ from the true tree due to stochasticity in producing an alignment and to the MCMC sampling of the posterior; the twin pipeline provides this minimum error. We therefore need to compare the error distributions at the end of the two parallel pipelines.
+By imposing the same topology and the same number of mutations in the two alignments, any differences found in the two error distributions will be the consequence of different distributions of branching times in the starting phylogenies. This is due to the fact that true and twin phylogenies are realizations of different processes: one non-standard, $p_G$, and one standard, $p_T$ (see Fig~\ref{fig:pipeline}).
+
+This can be seen for both the "generative" and "candidate" model types (see Table~\ref{tab:options}).
+If the chosen model type is "generative", the tree prior chosen for the twin inference will be exactly the same used to generate the tree.
+In the main pipeline, being the tree prior $p_{G}$ non-standard, this is not possible.
+If, instead, the chosen model type is "candidate", the twin tree prior will be included in the pool of examined models during the process of selection of the inference model. Being the generative tree prior non-standard, this is again not possible for the main pipeline.
+
+Finally, if the goal is to evaluate BEAST2's performance on a non-standard tree prior, the last source of stochasticity comes from phylogenies. In fact, a single phylogeny cannot be considered as fully representative of the prior. For this reason multiple phylogenies, as well as an equal amount of twins, must be considered. Being the error measure normalized (i.e. comprised in the interval $[0, 1]$), it is possible to considerate the aggregated versions of the errors distributions across all the runs.
+Therefore, if the number of considered phylogenies is high enough, the comparison between the main pipeline's aggregated error distribution and its twin counterpart leads to a fair evaluation of the new tree prior respect to the baseline error.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
