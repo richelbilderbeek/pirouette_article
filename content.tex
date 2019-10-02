@@ -137,10 +137,10 @@ The goal of \verb;pirouette; is to quantify the importance of a tree prior.
 It does so by measuring the inference error made 
 for a given reconstructed phylogeny, 
 simulated under a (usually novel) diversification model.
-We refer to the true prior that generated the given tree
-as the 'generative tree prior' $\mathit{p_{G}}$.
+We refer to the true model that generated the given tree
+as the 'generative tree model' $\mathit{p_{G}}$.
 Many tree priors have a parameter setting 
-for which it reduces to a standard tree prior. 
+for which they reduce to a standard tree prior. 
 For example, a protracted birth-death model \citep{etienne2012prolonging} 
 reduces to a standard birth-death model when the speciation-completion rate 
 is infinite [i.e. rate $\lambda$ in \cite{etienne2014estimating}, 
@@ -304,16 +304,16 @@ in Bayesian inference.
   \includegraphics[width = \textwidth]{workflow4.png}
   \caption{
     \texttt{pirouette} pipeline.
-    The pipeline starts from a phylogeny (1a) simulated by the generative tree prior 
+    The pipeline starts from a phylogeny (1a) simulated by the generative tree model 
     $\mathit{p_{G}}$.
     The phylogeny is converted to an alignment (2a) using the generative alignment model 
     $\mathit{A} = (\mathit{c_{G}}, \mathit{s_{G}})$, composed of a clock and a site model. 
-    The user supplies one or more experiments.
+    The user defines one or more experiments.
     For each candidate experiment $\mathit{X_{i}}$ 
-    (a 2-tuple of inference model $\mathit{I_{i}}$ and condition $\mathit{C_{i}}$),
+    (a combination of inference model $\mathit{I_{i}}$ and condition $\mathit{C_{i}}$),
     if its condition $\mathit{C_{i}}$ is 
     satisfied (which can depend on the alignment), 
-    the corresponding inference model $\mathit{I} = \mathit{I_{i}}$ is selected 
+    the corresponding inference model $\mathit{I} = \mathit{I_{i}}$ is selected
     to be used in the next step.
     The inference models (3a) of the selected experiments use the alignment (2a) 
     to each create a Bayesian posterior of (parameter estimates and) 
@@ -323,14 +323,14 @@ in Bayesian inference.
     resulting in an error distribution (5a). 
     Optionally, for each selected inference model a twin pipeline can be run.
     A twin phylogeny (1b) can be generated from the original 
-    phylogeny (1a) using the twin tree prior $\mathit{p_{t}}$, 
-    selected among standard tree priors; 
-    the default option is the standard birth-death prior.
+    phylogeny (1a) using the twin tree model $\mathit{p_{t}}$, 
+    selected among standard diversification models; 
+    the default option is the standard birth-death model, with parameters estimated from the original phylogeny.
     A twin alignment (2b) is then simulated from the twin phylogeny 
     using clock model $\mathit{c_{G}}$ and site model $\mathit{s_{G}}$ 
     imported from the generative model. 
-    The twin alignment has the same amount of mutations as the original alignment.
-    The twin pipeline mimics the procedure of the main pipeline, 
+    The twin alignment has the same number of mutations as the original alignment.
+    The twin pipeline follows the procedure of the main pipeline, 
     resulting in a twin error distribution (5b).
   }
   \label{fig:pipeline}
@@ -364,7 +364,7 @@ The DNA alignment parameters consist of
 a (DNA) root sequence, a (DNA) mutation rate, a clock model 
 and a nucleotide substitution model.
 The root sequence is the DNA sequence of the shared common ancestor,
-and is set to four equally-sized mononucleotide blocks by default, as this
+and is set to four different equally-sized mononucleotide blocks by default, as this
 helps interpreting the resulting alignment.
 Supported nucleotide substitution model, which
 we will refer to as site models, 
@@ -429,7 +429,7 @@ as the true tree and alignment.
 We define a phylogeny $\tau$ as the combination of
 branching times $\Vec{t}$ and topology $\psi$, 
 and denote as $\tau_{\mathit{G}}$ the phylogeny 
-produced by a (possibly non-standard) generative prior, 
+produced by a (possibly non-standard) generative diversification model, 
 having branching times $\Vec{t}_{\mathit{G}}$ and 
 topology $\psi_{\mathit{G}}$.
 
@@ -441,35 +441,29 @@ topology $\psi_{\mathit{G}}$:
   \xrightarrow[]{\mathit{T_1}} 
   \tau_{\mathit{T}} = (\Vec{t}_{\mathit{T}}, \psi_{\mathit{G}})
 \end{align}
-To do so, a standard tree prior $p_T$ for the twin tree must be specified. 
-The default option here is the standard birth-death prior.
+The default option for the diversification model $p_T$ is the standard birth-death model.
 It is then possible to use the likelihood function 
-$L_{\mathit{T}}$ defined by such tree prior to find the parameters $\theta^{*}_{\mathit{T}}$ 
+$L_{\mathit{T}}$ for this diversification model to find the parameters $\theta^{*}_{\mathit{T}}$ 
 (e.g. speciation and extinction rates, in case of a birth-death model) 
-that maximize the likelihood applied 
+that maximize this likelihood applied 
 to the true tree, conditioned on its number of tips $n_{\mathit{G}}$:
 \begin{align}
     \max[L_{\mathit{T}}(\theta_{\mathit{T}}|\tau_{\mathit{G}}, n_{\mathit{G}})] 
 \rightarrow \theta^{*}_{\mathit{T}}.
 \end{align}
-We use $\theta^{*}_{\mathit{T}}$ to simulate an equal number 
+We use $\theta^{*}_{\mathit{T}}$ to simulate a number 
 $n_{\mathit{T}} = n_{\mathit{G}}$ 
 of branching times $\Vec{t}_{\mathit{T}}$ for the twin tree 
 $\tau_{\mathit{T}}$, under the process $p_{T}$, 
-while preserving the same topology.
+while preserving the topology.
 
-The second step, $T_2$m of the twinning process simulates the twin alignment. 
-To do so, we use the same clock model, site model and mutation rate 
+The second step ($T_2$) of the twinning process simulates the twin alignment with the same clock model, site model and mutation rate 
 used to simulate the original alignment. 
 We also impose that, in the twin alignment, 
 the total number of mutations with respect to the root sequence 
-must be the same as in the true alignment.
-
-We achieve this by simply simulating twin alignments until we
+must be the same as in the true alignment in order to keep the information content 
+stored in both the true and twin alignments as similar as possible. We achieve this by simply simulating twin alignments until we
 obtain one that has the desired number of mutations.
-This constraint ensures there is approximately 
-the same amount of historical information
-stored in both the true and twin alignments.
 
 The twin pipeline serves as a control: 
 even when the generating and inference models are identical
@@ -478,7 +472,7 @@ the inferred trees from the posterior distribution will
 still differ from the true tree, 
 due to stochasticity in producing an alignment 
 and to the MCMC sampling of the posterior.
-The twin pipeline provides this minimum error possible,
+The twin pipeline provides this minimum error,
 because the generating and inference model match exactly.
 When comparing the true and twin error distribution,
 any differences will be due to the fact that true and twin phylogenies are realizations 
@@ -490,7 +484,7 @@ types (see Table~\ref{tab:options}).
 If the chosen model type is "generative", 
 the tree prior chosen for the twin inference will be 
 exactly the same used to generate the tree.
-In the main pipeline, as the tree prior $p_{G}$ is non-standard, 
+In the main pipeline, as the tree model $p_{G}$ is non-standard, 
 it cannot be used in inference.
 If, instead, the chosen model type is "candidate", 
 the twin tree prior will be included in the pool of examined models 
@@ -500,7 +494,7 @@ Finally, if the goal is to evaluate BEAST2's performance on a non-standard tree 
 the last source of stochasticity comes from phylogenies. 
 In fact, a single phylogeny cannot be considered as fully representative of the prior. 
 For this reason multiple phylogenies, 
-as well as an equal amount of twins, 
+as well as an equal number of twins, 
 must be considered. 
 Having the error measure normalized (i.e. comprised in the interval $[0, 1]$), 
 it is possible to considerate the aggregated versions of the errors distributions 
@@ -508,7 +502,7 @@ across all the runs.
 Therefore, if the number of considered phylogenies is high enough, 
 the comparison between the main pipeline's aggregated error distribution 
 and its twin counterpart leads to a fair evaluation 
-of the new tree prior respect to the baseline error.
+of the new tree prior with respect to the baseline error.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Installation}
@@ -587,14 +581,14 @@ We show the usage of \verb;pirouette; by gradually introducing
 its features.
 First, to get an idea of the baseline error, 
 we measure the Bayesian inference error when we start from a phylogeny 
-generated under a known and standard tree prior.
+generated under a known and standard tree model.
 Second, to establish that the true tree prior is indeed the best, 
 we also measure the inference error made by a
 best candidate inference model.
 Lastly, we quantify the impact of the tree prior in the Bayesian inference. 
 We do so by separating the baseline error from the complete error 
 running the pipeline starting from a tree generated by an unknown 
-or non-standard tree prior.
+or non-standard tree model.
 
 All the figures shown in this section are shown as-is, without any
 aesthetical modifications. Figures showing the full workflow 
@@ -609,9 +603,9 @@ of inference quality) can be found in the supplementary materials.
 inference by measuring the discrepancy between a given/true tree and a posterior 
 distribution of phylogenies obtained as result of the inference process. 
 Due to stochasticity, posterior trees will generally differ from the given 
-phylogeny $\tau_{\mathit{G}}$, even when the generative tree 
-prior $\mathit{p_{G}}$ and alignment model $\mathit{A}$ are the same as those 
-in the inference model $\mathit{I}$.
+phylogeny $\tau_{\mathit{G}}$, even when the tree 
+prior and alignment model used for inference are the same as those 
+used to generate the alignment.
 Measuring this difference allows us to know the baseline error
 of the \verb;pirouette; pipeline. We therefore define as 'standard tree priors' 
 all the tree priors that are available 
@@ -621,7 +615,7 @@ Now we can formulate the first example research question that \verb;pirouette;
 can answer: "What is the inference error made on phylogenies created by a 
 standard diversification model?"
 
-In this example we use a standard generative tree prior $\mathit{p_{G}^0}$, 
+In this example we use a standard generative tree model $\mathit{p_{G}^0}$, 
 namely the Yule (pure-birth) tree prior. 
 We choose to use a small tree with six taxa, to keep
 the calculations short and the figure more readable.
@@ -839,7 +833,7 @@ shows the inference error
 when $\mathit{I}$ matches with the generative model given 
 by $\mathit{A}$ and $\mathit{p_{G}^0}$.
 This error distribution can serve as a control,
-as it is obtained from a tree of which the tree prior is standard and known.
+as it is obtained from a tree of which the generating tree model is standard and known.
 Obtaining this control is in fact an inherent part of \verb;pirouette;. 
 We call it 'twinning' and we will demonstrate it in section
 \ref{Comparing to background noise} below.
@@ -976,20 +970,20 @@ and plot the results (Listing~\ref{lst:pir_plot}) in Figure~\ref{fig:example_2}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 So far we have measured the inference error on a tree
-generated according to a known (and standard) tree prior. 
-The goal of \verb;pirouette; is to measure the impact of a novel tree prior.
+generated according to a known (and standard) tree diversification model. 
+The goal of \verb;pirouette; is to measure the expected impact of a novel tree prior.
 To do so, in this example, we will use a tree generated by a non-standard 
-tree prior, assumed to be closely related to the Yule tree prior.
-To measure the impact of the tree prior, we measure both the baseline 
-error (that serves as a control) and the full inference error: it is their 
-difference that shows the impact of the tree prior.
-To do so, we use a twin tree (see Subsection~\ref{subsec:twinning}) for 
+tree diversification model, assumed to be closely related to the Yule tree prior.
+We measure both the baseline 
+error (that serves as a control) and the full inference error, because their 
+difference shows the impact of the tree model.
+We obtain the baseline error by using a twin tree (see Subsection~\ref{subsec:twinning}) for 
 both the generative and best candidate models.
 The research question this example answers is:
 "What is the inference error made from a phylogeny, 
 for both a generative model and the best candidate model?"
 
-We start from the tree generated by a non-standard (and unknown) tree prior, 
+We start from the tree generated by a non-standard (and unknown) diversification model, 
 having six taxa and a crown age of ten:
 \begin{lstlisting}[
   language = R, 
@@ -1076,15 +1070,15 @@ by not using the generating species tree prior.
 
 We showed how to use \verb;pirouette; to quantify the importance of a 
 tree prior in Bayesian phylogenetics, using the simplest generative tree 
-prior possible.
-In principle any other (more complex) generative tree prior can be tested, 
+model possible.
+In principle any other (more complex) generative tree model can be tested, 
 but we chose to provide the simplest (and fastest to run) examples.
 
 Figure~\ref{fig:example_3} illustrates the primary result of our pipeline: 
 it shows the error distributions for the true tree and the twin tree 
-when either the generating model or the best candidate model is used. 
+when either the generating model or the best candidate model is used in inference. 
 The clear difference between the error distributions 
-for the true tree and the twin tree suggest 
+for the true tree and the twin tree suggests 
 that the choice of tree prior does matter.
 
 We note, however, that all examples used only one original tree,
@@ -1099,13 +1093,11 @@ Also a twin tree does not always result in a lower error distribution,
 as the stochasticity in generating a twin tree will - with
 very low probability - yield a tree of that same very low probability.
 
-In conclusion, \verb;pirouette; can show the errors
-when adopting a new generative prior
-in comparison to the errors made by a standard prior.
+In conclusion, \verb;pirouette; can show the errors to be expected
+when the tree prior used in inference is different from the generating model.
 The user can then judge whether or not a new tree prior, 
 tailored on the generative process, is needed. 
-If this is indeed the case, one is warranted to implement 
-the novel tree prior as an addition to 
+If this is indeed the case, one can implement the novel tree prior as an addition to 
 his/her favorite Bayesian inference tool.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
