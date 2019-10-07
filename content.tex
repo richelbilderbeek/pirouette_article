@@ -378,8 +378,8 @@ We define an experiment $X_{i}$ as the combination of
 an inference model $I_{i}$ and the conditions $C_{i}$ 
 to actually use it in the inference step.
 For example, we may require that an inference
-model (a combination of a tree prior, clock model and site model) 
-should include the generative/true tree prior. 
+model (a combination of a tree model, clock model and site model) 
+should include the generative/true tree model. 
 As a second example, we may require that we have selected a set of 
 candidate inference models,
 of which only the best should be used in the actual inference.
@@ -482,17 +482,18 @@ and one standard, $p_T$ (see Fig~\ref{fig:pipeline}).
 This can be seen for both the "generative" and "candidate" model 
 types (see Table~\ref{tab:options}).
 If the chosen model type is "generative", 
-the tree prior chosen for the twin inference will be 
-exactly the same used to generate the tree.
+the tree prior chosen for the twin inference will  
+exactly match the model to generate the tree.
 In the main pipeline, as the tree model $p_{G}$ is non-standard, 
 it cannot be used in inference.
 If, instead, the chosen model type is "candidate", 
-the twin tree prior will be included in the pool of examined models 
+the twin tree model will be included in the pool of examined models 
 during the process of selection of the inference model. 
 
 Finally, if the goal is to evaluate BEAST2's performance on a non-standard tree prior, 
 the last source of stochasticity comes from phylogenies. 
-In fact, a single phylogeny cannot be considered as fully representative of the prior. 
+In fact, a single phylogeny cannot be considered 
+as fully representative of the model. 
 For this reason multiple phylogenies, 
 as well as an equal number of twins, 
 must be considered. 
@@ -616,7 +617,7 @@ can answer: "What is the inference error made on phylogenies created by a
 standard diversification model?"
 
 In this example we use a standard generative tree model $\mathit{p_{G}^0}$, 
-namely the Yule (pure-birth) tree prior. 
+namely the Yule (pure-birth) tree model. 
 We choose to use a small tree with six taxa, to keep
 the calculations short and the figure more readable.
 We pick a crown age of ten time units. This value is 
@@ -843,7 +844,7 @@ We call it 'twinning' and we will demonstrate it in section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In the previous example we selected the inference model $\mathit{I}$ to match 
-with a known generative tree prior $\mathit{p_{G}^0}$.
+with a known generative tree model $\mathit{p_{G}^0}$.
 However, a novel tree prior $\mathit{p_{G}}$ is by (our) definition
 non-standard, and hence not part of a standard inference 
 model (i.e. an inference model using a standard tree prior).
@@ -1049,8 +1050,8 @@ While the error distributions using the best or generative model
 as inference model are very similar, 
 the error distributions of the true tree are substantially 
 larger than those of the twin tree. 
-This is the error made in inference 
-by not using the generating species tree prior.
+This is the error made by the mismatch
+between the generating species tree model and the tree prior used in inference.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{example_3/errors.png}
