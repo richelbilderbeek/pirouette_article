@@ -208,7 +208,7 @@ in Bayesian inference.
     Sets whether or not the evidence of the model is to be computed &
     TRUE, FALSE \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \verb;error_function; &
+    \verb;error_fun; &
     Specifies how to measure the error &
     nLTT, $|\gamma|$ \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -524,7 +524,7 @@ repository:
     floatplacement = ht,
     frame = single
 ]
-usethis::install_github("richelbilderbeek/pirouette")
+remotes::install_github("richelbilderbeek/pirouette")
 \end{lstlisting}
 To start using \verb;pirouette;, 
 load its functions in the global namespace first:
@@ -667,8 +667,7 @@ alignment_params <- create_alignment_params(
     mutation_rate = 0.1,
     site_model = create_jc69_site_model()
   ),
-  root_sequence = create_blocked_dna(length = 1000),
-  rng_seed = rng_seed
+  root_sequence = create_blocked_dna(length = 1000)
 )
 \end{lstlisting}
 
@@ -732,7 +731,7 @@ generative_experiment <- create_experiment(
     tree_prior = create_yule_tree_prior(),
     clock_model = create_strict_clock_model(), 
     site_model = create_jc69_site_model(),
-    mcmc = create_mcmc(store_every = 1000)
+    mcmc = create_mcmc()
   )
 )
 \end{lstlisting}
@@ -768,7 +767,7 @@ we create this setup explicitly here:
   caption = Calling \texttt{create\_error\_measure\_params}.
 ]
 error_measure_params <- create_error_measure_params(
-  error_function = get_nltt_error_function(),
+  error_fun = get_nltt_error_fun(),
   burn_in_fraction = 0.1
 )
 \end{lstlisting}
@@ -1024,8 +1023,8 @@ For clarity, however, we explicitly show the most important arguments:
   caption = Create the default twinning parameters.
 ]
 twinning_params <- create_twinning_params(
-  twin_model = "birth_death",
-  method = "random_tree"
+  sim_twin_tree_fun = get_sim_bd_twin_tree_fun(),
+  sim_twin_alignment_fun = get_sim_twin_alignment_with_std_site_model_fun()
 )
 \end{lstlisting}
 
