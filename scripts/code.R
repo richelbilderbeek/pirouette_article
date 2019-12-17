@@ -4,7 +4,7 @@ install_beast2()
 install_beast2_pkg("NS")
 phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 alignment_params <- create_alignment_params(
-  sim_trall_fun = get_sim_trall_with_std_nsm_fun(
+  sim_tral_fun = get_sim_tral_with_std_nsm_fun(
     mutation_rate = 0.1,
     site_model = create_jc69_site_model()
   ),
