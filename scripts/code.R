@@ -4,7 +4,7 @@ install_beast2()
 install_beast2_pkg("NS")
 phylogeny <- create_yule_tree(n_taxa = 6, crown_age = 10)
 alignment_params <- create_alignment_params(
-  sim_true_alignment_fun = get_sim_true_alignment_with_std_nsm_fun(
+  sim_trall_fun = get_sim_trall_with_std_nsm_fun(
     mutation_rate = 0.1,
     site_model = create_jc69_site_model()
   ),
@@ -53,7 +53,7 @@ phylogeny  <- ape::read.tree(
 )
 twinning_params <- create_twinning_params(
   sim_twin_tree_fun = get_sim_bd_twin_tree_fun(),
-  sim_twin_alignment_fun = get_sim_twin_alignment_with_std_nsm_fun()
+  sim_twal_fun = get_sim_twal_with_std_nsm_fun()
 )
 pir_params <- create_pir_params(
   alignment_params = alignment_params,

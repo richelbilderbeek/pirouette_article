@@ -663,7 +663,7 @@ of all lineages are equal and constant.
     caption = {Create an alignment.}
   ]
 alignment_params <- create_alignment_params(
-  sim_true_alignment_fun = get_sim_true_alignment_with_std_site_model_fun(
+  sim_tral_fun = get_sim_tral_with_std_nsm_fun(
     mutation_rate = 0.1,
     site_model = create_jc69_site_model()
   ),
@@ -1024,7 +1024,7 @@ For clarity, however, we explicitly show the most important arguments:
 ]
 twinning_params <- create_twinning_params(
   sim_twin_tree_fun = get_sim_bd_twin_tree_fun(),
-  sim_twin_alignment_fun = get_sim_twin_alignment_with_std_site_model_fun()
+  sim_twal_fun = get_sim_twal_with_std_nsm_fun()
 )
 \end{lstlisting}
 
