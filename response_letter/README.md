@@ -1,59 +1,69 @@
 # Response letter
 
-> MEE-19-08-613 Quantifying the importance of an inference model in Bayesian phylogenetics
-> 
-> Dear Mr Giovanni Laudanno,
-> 
-> I have now received the reviewers' reports and a recommendation from the Associate Editor who handled the review process. Copies of their reports are included below.  Based on their evaluations, I regret to inform you that we are unable to publish your paper in Methods in Ecology and Evolution in its current form.
-> 
-> However, we would be willing to consider a new manuscript which takes into consideration the feedback you have received.
-> 
-> I think that this ms is "in between" an Application ms and a full Research ms. While the idea can be generally applied to phylogenetic inference, your piroutte R package is associated with BEAST2. I would suggest either writing it as a short Applications ms (3000 words) if you stick with the latter (and leave some programming details to Supplementary Information or vignette in R or github); OR expanding it to a full Research ms but being more general and thorough with exploring the interpretations and limitations of the approach (see reviewer 1 comments).
-> 
-> Please note that resubmitting your manuscript does not guarantee eventual acceptance, and that your resubmission may be subject to re-review before a decision is rendered. Please also ensure that your altered manuscript still conforms to our word limit of 6000-7000 for research articles, or 3000 for applications.
-> 
-> Once you have made the suggested changes, go to https://mc.manuscriptcentral.com/mee-besjournals and login to your Author Centre. Click on "Manuscripts with Decisions," and then click on "Create a Resubmission" located next to the manuscript number. Then, follow the steps for resubmitting your manuscript.
-> 
-> Because we are trying to facilitate timely publication of manuscripts submitted to Methods in Ecology and Evolution, your new manuscript should be uploaded within 12 weeks. The deadline for your resubmission is 27-Jan-2020. If it is not possible for you to submit your manuscript by that date, please get in touch with the editorial office, otherwise we will consider your paper as a completely new submission.
-> 
-> I look forward to your resubmission.
-> 
-> Sincerely,
-> 
-> Dr Lee Hsiang Liow
-> Senior Editor, Methods in Ecology and Evolution
-> 
-> Reply to:
-> Mr Chris Grieves
-> Methods in Ecology and Evolution Editorial Office
-> coordinator@methodsinecologyandevolution.org
-> 
-> 
-> Associate Editor Comments to Author:
-> Associate Editor
+## Feedback senior editor, Dr Lee Hsiang Liow
 
+> I think that this ms is "in between" an Application ms and a full Research ms. While the idea can be generally applied to phylogenetic inference, your piroutte R package is associated with BEAST2. I would suggest either writing it as a short Applications ms (3000 words) if you stick with the latter (and leave some programming details to Supplementary Information or vignette in R or github); OR expanding it to a full Research ms but being more general and thorough with exploring the interpretations and limitations of the approach (see reviewer 1 comments).
+
+We agree. We chose to shorten the ms to fit the Applications section.
+
+[RJCB: sent email to GL, created Issue #53]
+
+ * [ ] If agree: shorten to Application
+ 
 ## Comments to the Author:
 
-This is an interesting paper which introduces an R package design to test whether new tree prior are “relevant” enough to justify the effort to implement such new species tree prior. As said by one of the reviewers “Having a tool available to automate the workflow instead of having to cobble together some scripts to do this is a good idea”, but there are some aspects that need a bit more clarification and perhaps additional work to justify the publication of the method. I found the paper to be well written (but see reviewer’s comments for some interesting ideas on how to improve the paper flow), and the work potentially relevant, but as mentioned above I agree with the reviewers that there are a some clarifications/adjustments that need to be made before the we can properly evaluate the paper.
+> This is an interesting paper which introduces an R package design to test whether new tree prior are “relevant” enough to justify the effort to implement such new species tree prior. As said by one of the reviewers “Having a tool available to automate the workflow instead of having to cobble together some scripts to do this is a good idea”, but there are some aspects that need a bit more clarification and perhaps additional work to justify the publication of the method. I found the paper to be well written (but see reviewer’s comments for some interesting ideas on how to improve the paper flow), and the work potentially relevant, but as mentioned above I agree with the reviewers that there are a some clarifications/adjustments that need to be made before the we can properly evaluate the paper.
 
-Apart from what was mentioned by both reviewers I would add (some purely cosmetic) the following:
+Thanks!
 
- * 1) I understand that the main goal of the paper was to introduce the procedure and illustrate it with a simple example, but I felt it might be interesting to discuss some aspects that empiricists might face when trying to use this R package. This might help the reader to more probably engage with the paper and the method to be better evaluated. For example, it might be interesting to add in the discussion what are the author’s intuitions of how the tree size might affect the error. Does error scale with tree size? Or how sequence length might also affect error estimates (mentioned by one of the reviewers).
+ * [ ] Improve wording
 
- * 2) Related to the topic above, a discussion of what might be the effect of non-clock like models of DNA evolution on the measured error (in contrast with the clock like presented in the paper) might also be interesting for the empiricist.
+> Apart from what was mentioned by both reviewers I would add (some purely cosmetic) the following:
+>
+> * 1) I understand that the main goal of the paper was to introduce the procedure and illustrate it with a simple example, but I felt it might be interesting to discuss some aspects that empiricists might face when trying to use this R package. This might help the reader to more probably engage with the paper and the method to be better evaluated. For example, it might be interesting to add in the discussion what are the author’s intuitions of how the tree size might affect the error. Does error scale with tree size? Or how sequence length might also affect error estimates (mentioned by one of the reviewers).
 
- * 3) It might also be interesting to run an example of an “non-standard” tree prior which we think might be empirically relevant (e.g. diversity dependence). The authors mention this but I felt that using a tree prior (which by the way does resemble diversity dependence – or at least a decrease in speciation- given that most splits are concentrated in the base of the tree) that is unknown might not be the best narrative choice. As mentioned by the authors in the introduction “Only new diversification models that result in a large discrepancy between inferred and simulated phylogenies will be worth the effort and computational burden to implement a species tree prior for in a Bayesian framework.” In real life the utility of pirouete will be associated with the “non-standard” tree priors from which we suspect (and hence know them) might affect our inferences. Hence illustrating its utility with an already “known” “non-standard” tree prior might be more effective.
+...
 
- * 4) On lines 174-175, briefly explain what is the nLTT statistic.
+[RJCB: I struggle between adding an Appendix section called 'Guidelines'
+that addresses just this, or put it in the main story]
 
- * 5) Figure 5: the default plot setting results on the scale being plotted over the lower branch. This should be changed, or at least the figure should be fixed to help the reader. In fact in figure 2 this overlap did not happen…
+[RJCB: 'Does error scale with tree size?' is known to be sometimes
+counterintuitive: there is a paper in which error increases with information]
+
+> * 2) Related to the topic above, a discussion of what might be the effect of non-clock like models of DNA evolution on the measured error (in contrast with the clock like presented in the paper) might also be interesting for the empiricist.
+
+Agreed. We added this.
+
+ * [ ] Add this, mention nodeSub
+
+> * 3) It might also be interesting to run an example of an “non-standard” tree prior which we think might be empirically relevant (e.g. diversity dependence). The authors mention this but I felt that using a tree prior (which by the way does resemble diversity dependence – or at least a decrease in speciation- given that most splits are concentrated in the base of the tree) that is unknown might not be the best narrative choice. As mentioned by the authors in the introduction “Only new diversification models that result in a large discrepancy between inferred and simulated phylogenies will be worth the effort and computational burden to implement a species tree prior for in a Bayesian framework.” In real life the utility of pirouete will be associated with the “non-standard” tree priors from which we suspect (and hence know them) might affect our inferences. Hence illustrating its utility with an already “known” “non-standard” tree prior might be more effective.
+
+Agreed, we rewrote the initial non-standard tree to resemble a 
+diversity-dependent tree, with a strong decrease in speciation rates.
+
+ * [ ] Implement this
+
+> * 4) On lines 174-175, briefly explain what is the nLTT statistic.
+
+Agreed.
+
+ * [ ] Do so
+
+> * 5) Figure 5: the default plot setting results on the scale being plotted over the lower branch. This should be changed, or at least the figure should be fixed to help the reader. In fact in figure 2 this overlap did not happen…
+
+We agree it looks clumsy and we wrote a script to pretty-print this figure.
+
+Note that this cumbersome placement of the scale is default behavior of the 
+package we use for plotting (`ape`), as is written in the manuscript.
+
+ * [ ] RJCB: Write script to generate figure 2 with a proper plot.
 
 ## Reviewer(s)' Comments to Author:
 
 ### Reviewer: 1
 
-Comments to the Corresponding Author
-
+> Comments to the Corresponding Author
+>
 > In this paper, Bilderbeek and co-authors present “pirouette”, a tool implemented in R for evaluating tree inference error due to tree prior misspecification. The main task of pirouette is to quantitatively evaluate the amount of tree inference error when data is generated under a “new” tree model, but analyzed under another (true-and-tested) model – the ultimate goal is to determine whether the new tree model is “worth the effort and computational burden to implement […] in a Bayesian framework”. Pirouette works by first simulating data (sequence alignments) along a tree generated under the new model, given a set of known nucleotide evolution and clock models. Then it determines the baseline error (due to the stochasticity of MCMC) through a process the authors dubbed “twinning”, to which the “true” error (under a hand-picked or best-fit tree model) is compared. Throughout the paper error is measured with the nLTT statistic, though other statistics can be used.
 >
 > The paper is overall well written, with simple worked examples that are easy to follow and in logical order. However, as is, this article reads as a very pleasant tutorial that ultimately fails to justify the usefulness of the pirouette tool. Here are some points in which this study and its discussion could be improved.
