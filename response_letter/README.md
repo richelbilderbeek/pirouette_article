@@ -1,24 +1,5 @@
 # Response letter
 
-Copy-paste of email below:
-
-> Fwd: Methods in Ecology and Evolution - Decision on Manuscript ID MEE-19-08-613
->
-> 29 October 2019 11:15 42 KB
-> From: Giovanni Laudanno
-> To: Rampal S. Etienne, Richel Bilderbeek
-> 
-> I just received a reply from MEE.
-> 
-> ---------- Forwarded message ---------
-> Da: Methods in Ecology and Evolution <onbehalfof@manuscriptcentral.com>
-> Date: mar 29 ott 2019 alle ore 11:07
-> Subject: Methods in Ecology and Evolution - Decision on Manuscript ID MEE-19-08-613
-> To: [...]
-> 
-> 
-> 29-Oct-2019
-> 
 > MEE-19-08-613 Quantifying the importance of an inference model in Bayesian phylogenetics
 > 
 > Dear Mr Giovanni Laudanno,
