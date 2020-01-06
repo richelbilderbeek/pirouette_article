@@ -4,11 +4,10 @@
 
 > I think that this ms is "in between" an Application ms and a full Research ms. While the idea can be generally applied to phylogenetic inference, your piroutte R package is associated with BEAST2. I would suggest either writing it as a short Applications ms (3000 words) if you stick with the latter (and leave some programming details to Supplementary Information or vignette in R or github); OR expanding it to a full Research ms but being more general and thorough with exploring the interpretations and limitations of the approach (see reviewer 1 comments).
 
-We agree. We chose to shorten the ms to fit the Applications section.
+We agree. We chose to shorten the manuscript to fit the Applications section.
 
-[RJCB: sent email to GL, created Issue #53]
-
- * [ ] If agree: shorten to Application
+ * [x] RJCB: send email to GL, created Issue #53
+ * [ ] If @Giappo agrees: shorten to Application
  
 ## Comments to the Author:
 
@@ -68,23 +67,63 @@ package we use for plotting (`ape`), as is written in the manuscript.
 >
 > The paper is overall well written, with simple worked examples that are easy to follow and in logical order. However, as is, this article reads as a very pleasant tutorial that ultimately fails to justify the usefulness of the pirouette tool. Here are some points in which this study and its discussion could be improved.
 >
- * 1. As an initial remark, I imagine the models pirouette support have all been implemented in tested in other packages like geiger, ape, etc.? It might be interesting to list where the tree models are coming from, maybe merging Table 1 with section 6. If such models were implemented from scratch, there must evidencef that they're working as intended.
->
+ * 1. As an initial remark, I imagine the models pirouette support have all been implemented in tested in other packages like geiger, ape, etc.? It might be interesting to list where the tree models are coming from, maybe merging Table 1 with section 6. If such models were implemented from scratch, there must evidence that they're working as intended.
+
+[RJCB: this appears to be a misunderstanding: pirouette can work on any
+tree of type ape::phylo, irrelevant how it was generated]
+
 > 2. Tree models are often used as priors in phylogenetic analyses whose main goal is to infer species tree topologies and divergence times. However, we are often interested in estimating the model parameters as they represent relevant biological quantities. For example, in the “SSE” family of models that the authors refer to in the introduction, there are specific diversification parameters that can teach us about how speciation takes place (e.g., in a trait-, or geographic-dependent manner). So regardless of the measured tree inference error when the tree prior is misspecified, it might still be worth implementing a new tree model. I would go even further and say that while in turns out that tree priors end up being commonly used in species tree inference, it is commonly the case that they are invented and implemented because researchers are interested in learning other evolutionary aspects from their favorite clades or species.
->
+
+Agreed! Sometimes a non-standard tree prior is interesting, even with a
+considerable error and we already agreed upon that this finding 
+encourages to make that non-standard tree prior a standard one.
+We have added a paragraph to express this more explicitly.
+
+ * [ ] Add paragraph that states that a tree prior that produces big errors,
+       may still be favored. Also recommend adding that tree prior to BEAST2
+       exactly due to that.
+
 > 3. Let us say we run pirouette and observe something similar to Fig. 6. There is clearly an increase in tree inference error, but how much is “enough” so I can actually determine whether or not I want to implement my new model? The authors themselves highlight an important point in the introduction “(…) when the data are very informative, as this will reduce the influence of the tree prior”. Presumably, if I have a lot of data, then I should expect a small different between my twinning and true error to be alarming? Or did I misunderstand? And if this is correct, how much is a lot of data? How about hyper-prior misspecification? Does it matter? Should one worry about tree topology errors at all? None of these things are quantitatively (or qualitatively) addressed through the worked example and in the discussion. Bottom line is that I effectively would not know how to interpret my error distribution after using this tool, even after observing a difference between “twin” and “true”.
->
+
+We agree that the interpretation of the error distributions 
+is -sadly- still open to discussion. 
+
+...
+
+ * [ ] RJCB: Check: I think I mentioned this in the discussion
+
+
 > 4. Please correct me if I am wrong, but to run pirouette, I must have a working simulator of my new model. Is this not a quarter or a third of the way toward having an implementation of the tree model already? Arguably it is easier to implement simulators then likelihoods, but they often share the same engines (e.g., in order to simulate/stochastically map characters under an SSE model, one uses very similar ODE’s – see Freyman & Hohna 2018 for an example). Does this requirement of pirouette not defeat the tool’s purpose? But maybe I misunderstand.
->
+
+Indeed, having a working simulator is indeed a good first step. 
+
+ * [ ] RJCB: read Freyman & Hohna 2018 just to be sure
+
 > * 5. One thing that got me confused. In the last section, listing 13 sets the “twin_model” to “birth_death”, but then in both top and bottom panels of Fig. 6 we see either “Yule” or “CEP”. In the text, it says the tree came from a Yule-like process, which is why I assume the top panel has “Yule” in the legend. Is this a typo? I also do not understand why the top panel legends read “Generative”. If the purpose of pirouette is to evaluate whether or not I want to implement a new tree model, then it doesn’t make sense to already have it implemented the inferential part in R. When I read “generative” I immediately start to think that the true generative tree model was used in inference, but I think what the authors mean here is everything else in the whole model stayed the same, but Yule was used as the tree prior. Am I correct in assuming this? If so, I would re-label this graph. In fact, this section could use a bit of rewriting to clarify this point regardless of my correct understanding.
->
+
+Thanks for pointing out this point of confusion. We've rewritten the text with
+the goal of improving the clarity in the points mentioned.
+
+ * [ ] Improve definition of generative model
+ * [ ] Rewrite sections indicated with focus on removing this confusion
+
 > 6. My final point that would require some more work is in fact noted by the authors themselves, namely that “one tree is not enough to determine the impact of a tree prior on Bayesian inference”. Indeed, I would like to see not only the error distribution better characterized in terms of their relative magnitudes (as mentioned in my second point above), but also in terms of distributions of simulated trees. It is fine to have simple worked examples around a single tree – as they provide a clear axis along which to explain the workings of a program – but in a real-world scenario, one would probably have a distribution of trees in hand. What if the worked example in this paper revolves around a tree that is at the “tail” of the tree distribution produced by the new tree model? Perhaps if another tree was picked, then the twin and true error distributions could look more alike? Or be further apart?
+
+We agree on this point and we implemented this in the manuscript.
+Because -due feedback from the other reviewer- we use a diversity-dependent
+process to generate the true tree. Because the likelihood of these trees
+are known, we'll show the pirouette results for diversity-dependent trees 
+with low, medium and high likelihood.
+
+ * [ ] Add pirouette results for DD trees with low, medium and high likelihood
 
 ### Reviewer: 2
 
 > Comments to the Corresponding Author
 > Pirouette is a great tool for judging whether new models are new enough to be worth the effort of implementing in phylogenetic packages. Having a tool available to automate the workflow instead of having to cobble together some scripts to do this is a good idea.
-> 
+
+Thanks!
+
 > The manuscript can benefit from a bit of reorganisation, since initially it was not clear to me that this is the main function of pirouette -- I confused it with posterior predictive analysis, which seems to be closely related. Perhaps the confusion stems from the fact that section 2 and especially 2.2 dive into the practicalities before explaining the theory and motivation for someone wanting to do so. If that can be remedied it might prevent such confusion.
 > 
 >  * 1. line 20-22: "An open question is, how accurate the tree estimation is when the real macroevolutionary processes are substantially different from those assumed in the tree prior." which can be answered using tree model adequacy (TMA package for BEAST 2). Some context to clarify how this differs from posterior predictive analysis would be good here.
@@ -94,7 +133,12 @@ package we use for plotting (`ape`), as is written in the manuscript.
 > * 3. line 53-62 please break up sentence -- this one is really hard to follow.
 >
 > * 4. line 82ff: "Also recently, Duchene et al. [Duchene et al. 2018] released a BEAST2 package to assess how well posterior predictive simulations recover a given tree when using the standard diversification models. These studies show how current diversification models compare to one another, but they do not help to assess the importance of a new tree prior." This misrepresents the work of Duchene et al, which aims to demonstrate that a tree prior is *adequate* (the package is called TMA = tree model adequacy), which is pretty much the aim of this paper.
->
+
+Thanks for making us review our statements! We've rewritten our statement to
+properly represent Dechene et al.
+
+ * [ ] RJCB: check article again. Weird, how can this be?
+
 > * 5. Table 1 why is order of abbreviation in legend different from the order of rows in the table?
 >
 > * 6. Figure 1 "The twin alignment has the same number of mutations as the original alignment." and line 188ff: why keep the number of mutations constant? With the same root height and same mutation rate, there should be some natural variation in the number of mutations. Fixing these feels like this could cause unexpected biases, e.g., reduce the variance in the error measure for the twin tree analysis.
