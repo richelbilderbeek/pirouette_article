@@ -2,31 +2,58 @@
 
 ## Feedback senior editor, Dr Lee Hsiang Liow
 
-> I think that this ms is "in between" an Application ms and a full Research ms. While the idea can be generally applied to phylogenetic inference, your piroutte R package is associated with BEAST2. I would suggest either writing it as a short Applications ms (3000 words) if you stick with the latter (and leave some programming details to Supplementary Information or vignette in R or github); OR expanding it to a full Research ms but being more general and thorough with exploring the interpretations and limitations of the approach (see reviewer 1 comments).
+> I think that this ms is "in between" an Application ms and a full Research ms. 
+> While the idea can be generally applied to phylogenetic inference, 
+> your piroutte R package is associated with BEAST2. 
+> I would suggest either writing it as a short Applications ms (3000 words)
+> if you stick with the latter (and leave some programming details to 
+> Supplementary Information or vignette in R or github); OR expanding it to a 
+> full Research ms but being more general and thorough with exploring the 
+> interpretations and limitations of the approach (see reviewer 1 comments).
 
-We agree. We chose to shorten the manuscript to fit the Applications section.
+We agree. We chose to shorten the main section of the manuscript to fit the 
+Applications section. Due to this, the multiple comments by the reviewers to
+discuss something in more detail, have been added, yet moved to the appendix.
 
  * [ ] Shorten to Application
  
 ## Comments to the Author:
 
-> This is an interesting paper which introduces an R package design to test whether new tree prior are “relevant” enough to justify the effort to implement such new species tree prior. As said by one of the reviewers “Having a tool available to automate the workflow instead of having to cobble together some scripts to do this is a good idea”, but there are some aspects that need a bit more clarification and perhaps additional work to justify the publication of the method. I found the paper to be well written (but see reviewer’s comments for some interesting ideas on how to improve the paper flow), and the work potentially relevant, but as mentioned above I agree with the reviewers that there are a some clarifications/adjustments that need to be made before the we can properly evaluate the paper.
+> This is an interesting paper which introduces an R package design to test 
+> whether new tree prior are “relevant” enough to justify the effort to 
+> implement such new species tree prior. As said by one of the reviewers 
+> “Having a tool available to automate the workflow instead of having to 
+> cobble together some scripts to do this is a good idea”, but there are some 
+> aspects that need a bit more clarification and perhaps additional work to 
+> justify the publication of the method. I found the paper to be well 
+> written (but see reviewer’s comments for some interesting ideas on how to 
+> improve the paper flow), and the work potentially relevant, but as mentioned 
+> above I agree with the reviewers that there are a some 
+> clarifications/adjustments that need to be made before the we can properly 
+> evaluate the paper.
 
-Thanks!
+Thanks, we will happily do so.
 
- * [ ] Improve wording
-
-> Apart from what was mentioned by both reviewers I would add (some purely cosmetic) the following:
+> Apart from what was mentioned by both reviewers I would add (some purely 
+> cosmetic) the following:
 >
-> * 1) I understand that the main goal of the paper was to introduce the procedure and illustrate it with a simple example, but I felt it might be interesting to discuss some aspects that empiricists might face when trying to use this R package. This might help the reader to more probably engage with the paper and the method to be better evaluated. For example, it might be interesting to add in the discussion what are the author’s intuitions of how the tree size might affect the error. Does error scale with tree size? Or how sequence length might also affect error estimates (mentioned by one of the reviewers).
+> * 1) I understand that the main goal of the paper was to introduce the 
+> procedure and illustrate it with a simple example, but I felt it might be 
+> interesting to discuss some aspects that empiricists might face when trying 
+> to use this R package. This might help the reader to more probably engage 
+> with the paper and the method to be better evaluated. For example, it might 
+> be interesting to add in the discussion what are the author’s intuitions of 
+> how the tree size might affect the error. Does error scale with tree size? 
+> Or how sequence length might also affect error estimates (mentioned by one 
+> of the reviewers).
 
-...
-
-[RJCB: I struggle between adding an Appendix section called 'Guidelines'
-that addresses just this, or put it in the main story]
+Because we chose to mold the manuscript into an Application, we've
+added a 'Guidelines for empiricists' section in the appendix.
 
 [RJCB: 'Does error scale with tree size?' is known to be sometimes
-counterintuitive: there is a paper in which error increases with information]
+counterintuitive: there is a paper in which error increases with information,
+e.g. duchene2014impact]
+
 
 > * 2) Related to the topic above, a discussion of what might be the effect of non-clock like models of DNA evolution on the measured error (in contrast with the clock like presented in the paper) might also be interesting for the empiricist.
 
@@ -131,12 +158,19 @@ Thanks!
 >
 > * 3. line 53-62 please break up sentence -- this one is really hard to follow.
 >
-> * 4. line 82ff: "Also recently, Duchene et al. [Duchene et al. 2018] released a BEAST2 package to assess how well posterior predictive simulations recover a given tree when using the standard diversification models. These studies show how current diversification models compare to one another, but they do not help to assess the importance of a new tree prior." This misrepresents the work of Duchene et al, which aims to demonstrate that a tree prior is *adequate* (the package is called TMA = tree model adequacy), which is pretty much the aim of this paper.
+> * 4. line 82ff: "Also recently, Duchene et al. [Duchene et al. 2018] 
+>   released a BEAST2 package to assess how well posterior predictive 
+>   simulations recover a given tree when using the standard diversification 
+>   models. These studies show how current diversification models compare to 
+>   one another, but they do not help to assess the importance of a new tree 
+>   prior." This misrepresents the work of Duchene et al, which aims to 
+>   demonstrate that a tree prior is *adequate* (the package is called TMA = 
+>   tree model adequacy), which is pretty much the aim of this paper.
 
 Thanks for making us review our statements! We've rewritten our statement to
 properly represent Dechene et al.
 
- * [ ] RJCB: check article again. Weird, how can this be?
+ * [ ] RJCB: check article again. Weird, how can this be? Ah, it was a closed article!
 
 > * 5. Table 1 why is order of abbreviation in legend different from the order of rows in the table?
 
@@ -158,32 +192,154 @@ as a setting that uses a twin alignment with the same number
 of mutations,
 https://github.com/richelbilderbeek/pirouette_example_3]
 
+ * [ ] Mention the consequences of this choice, like the reviewer did
+
 > * 7. line 142 "nucleotide substitution model, which we will refer to as site models".
 >
 > 1. Site models include things like gamma rate heterogeneity and proportion invariable sites, so calling a substitution model a site model does not seem to be appropriate.
->
->2. Are gamma rate heterogeneity and proportion invariable sites supported?
->
->
+
+Thanks correcting us on our sloppy wording. We have reworded accordingly.
+
+ * [ ] Reword accordingly
+
+> 2. Are gamma rate heterogeneity and proportion invariable sites supported?
+
+Yes, they can ideed be specified in the inference model, as part 
+of the `create_site_model` function.
+
 > * 8. line 146 where does the set of inference models come from?
->
-> * 9. If the inference model used in generating data differs from that inferring the tree, are you really testing the adequacy of the original model, or doing integration testing of the whole process? Using the same site and clock model used to generate the alignment seems to be the natural thing to do, since you are interested in the tree model, not the clock or site models.
->
-> * 10. How to determine an appropriate length of the sequence? If the sequence is long enough, the site model model for inference will be the same as that for generating the alignment. Also, for sufficiently long sequences, the tree prior won't matter (as mentioned in the paper), so I suppose the sequences should not be too informative. Some discussion around these issues would be useful.
->
-> * 11. The height of the tree in units of substitutions will be a factor: when the tree is small (<< 0.1 substitutions) sequences will have many constant sites, and the tree cannot be reliably recovered. When the tree is large (>>1 substitutions), there will be saturations and it will be impossible to recover the tree. In the example, a distance of 1 is used (tree height = 10, mutation rate = 0.1), but not explained why that is a good combination. Some discussion around this would be useful.
->
-> * 12. Isn't it more natural to define priors on parameters of the site model (in the spirit of https://github.com/rbouckaert/DeveloperManual/) instead of fixing them in the set I_1,...,I_N?
->
-> * 13. line 174 The nLTT statistic is agnostic about taxa labels, as opposed to for example Robinson Foulds distance, and has only been demonstrated to be useful in an ABC setting. Please explain why this is such a good statistic instead of say tree length, gamma statistic, treeness, or any of the other tree metrics in the TreeStat2 package for BEAST 2.
->
-> * 14. Line 176 Instead of describing the mechanism for generating a twin tree, starting with motivation for why one wants to get involved with a twin tree would be good. This now only starts at line 186 and further.
-> 
-> * 15. line 568: capitals are missing from the references "bayesian" "nltt", etc. You might want to check other references as well.
->
+
+Thanks, this set indeed appeared out of the blue! It is the set of inference
+models of interest [RJCB: improve]
+
+[RJCB: maybe this will be cut out anyways, due to shortening]
+
+ * [ ] Improve
+
+> * 9. If the inference model used in generating data differs from that 
+>      inferring the tree, are you really testing the adequacy of the 
+>      original model, or doing integration testing of the whole process? 
+>      Using the same site and clock model used to generate the alignment 
+>      seems to be the natural thing to do, since you are interested in the 
+>      tree model, not the clock or site models.
+
+Completely agree! And this is indeed exactly what we do! We've mentioned this
+more explicitly in the text.
+
+ * [ ] Do so
+
+> * 10. How to determine an appropriate length of the sequence? 
+>   If the sequence is long enough, the site model model for inference will be 
+>   the same as that for generating the alignment. Also, for sufficiently 
+>   long sequences, the tree prior won't matter (as mentioned in the paper), 
+>   so I suppose the sequences should not be too informative. Some discussion 
+>   around these issues would be useful.
+
+[RJCB: I am unsure if a very long alignment will indeed decrease the
+error, I've added a pirouette example 19 for this]
+
+ * [ ] Refer to [1, 2]
+
+
+ * [1] Sarver, Brice AJ, et al. "The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates." PeerJ 7 (2019): e6334.
+ * [2] Wertheim, Joel O., and Michael J. Sanderson. "Estimating diversification rates: how useful are divergence times?." Evolution: International Journal of Organic Evolution 65.2 (2011): 309-320.
+
+> * 11. The height of the tree in units of substitutions will be a factor: 
+>   when the tree is small (<< 0.1 substitutions) sequences will have many 
+>   constant sites, and the tree cannot be reliably recovered. 
+>   When the tree is large (>>1 substitutions), there will be saturations and 
+>   it will be impossible to recover the tree. In the example, 
+>   a distance of 1 is used (tree height = 10, mutation rate = 0.1), 
+>   but not explained why that is a good combination. 
+>   Some discussion around this would be useful.
+
+Definitely! We've added this
+
+ * [ ] Add, also reference to literature
+
+> * 12. Isn't it more natural to define priors on parameters of the site 
+>       model (in the spirit of https://github.com/rbouckaert/DeveloperManual/) 
+>       instead of fixing them in the set I_1,...,I_N?
+
+...
+
+[RJCB: the reference is incredibly helpful! It only exists since September 2019,
+has 3 contributors and 2 other people that starred it]
+
+ * [ ] Reread
+
+> * 13. line 174 The nLTT statistic is agnostic about taxa labels, as opposed 
+>   to for example Robinson Foulds distance, and has only been demonstrated to 
+>   be useful in an ABC setting. Please explain why this is such a good 
+>   statistic instead of say tree length, gamma statistic, treeness, or any of 
+>   the other tree metrics in the TreeStat2 package for BEAST 2.
+
+We could have picked any method to quantify a difference
+between two phylogenies. The nLTT statistic is just one of the many options
+and simply happens to be our personal favorite.
+The Robinson Foulds distance would be just as fine.
+
+> * 14. Line 176 Instead of describing the mechanism for generating a twin 
+>   tree, starting with motivation for why one wants to get involved with a 
+>   twin tree would be good. This now only starts at line 186 and further.
+
+Agreed
+
+ * [ ] Reword as such
+
+> * 15. line 568: capitals are missing from the references "bayesian" 
+>   "nltt", etc. You might want to check other references as well.
+
+Thanks for pointing this out!
+
+ * [ ] Check
+
 > Out of curiosity:
 >
-> * 16. Have you identified tree models that are sufficiently different to be worth implementing in BEAST?
->
-> * 17. Why was this implemented as R package instead of a BEAST package (similar to the TMA package) so it can benefit from all models available in BEAST, and not just a limited subset?
+> * 16. Have you identified tree models that are sufficiently different to be 
+>   worth implementing in BEAST?
+
+Yes, we do. Question is not if a tree model can give difference with a BEAST2
+standard tree model, but for which parameter settings this starts to matter.
+As an example, we'll use the protracted birth-death 
+process [Etienne et al., ?2012]. Without going into details of that model,
+if speciation takes a very long time, species trees will be obtained with
+nodes close to the root:
+
+```
+    +---------------- A
+  +-+
+  | +---------------- B
+  |  +--------------- C
+ -+--+
+     +--------------- D
+```
+
+One can imagine that using a standard tree prior on this tree, will give a big
+error. So, we predict the error can be big for non-standard tree priors, which
+gives rise to question of if this is a biologically realistic set of
+parameters.
+
+> * 17. Why was this implemented as R package instead of a BEAST package 
+>   (similar to the TMA package) so it can benefit from all models available 
+>   in BEAST, and not just a limited subset?
+
+`pirouette` arose as a spin-off of a biological research project. 
+We thought it a
+good idea to seperate the re-usable part (`pirouette`) from the specifics.
+Because the initial research project was in R, `pirouette` ended up being in R.
+
+To go back in time a bit more, `pirouette` builds on 
+`babette` [Bilderbeek & Etienne, 2018], 
+an R package to call BEAST2, which was the first spin-off of that same 
+biological research project.
+
+A drawback of `babette`, indeed, is that it can not provide for all BEAST2 
+packages: it does have a BEAST2 package manager (called `mauricer`)
+and it does allow using one BEAST2 package (NS, for 'Nested Sampling', a
+method to estimate the marginal likelihood of an inference model).
+This BEAST2 package is used by `pirouette`, but not described in the article.
+
+All in all, putting `pirouette` into a BEAST package may have been an
+equally fine option. It just did not happen that way.
 
