@@ -167,10 +167,10 @@ Thanks!
 >   demonstrate that a tree prior is *adequate* (the package is called TMA = 
 >   tree model adequacy), which is pretty much the aim of this paper.
 
-Thanks for making us review our statements! We've rewritten our statement to
-properly represent Dechene et al.
+Blimey, thanks for re-directing us to this paper, which indeed is
+very similar to what `pirouette` does.
 
- * [ ] RJCB: check article again. Weird, how can this be? Ah, it was a closed article!
+ * [ ] RJCB: check article again to be sure
 
 > * 5. Table 1 why is order of abbreviation in legend different from the order of rows in the table?
 
