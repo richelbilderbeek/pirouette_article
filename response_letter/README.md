@@ -54,6 +54,9 @@ added a 'Guidelines for empiricists' section in the appendix.
 counterintuitive: there is a paper in which error increases with information,
 e.g. duchene2014impact]
 
+Bigger trees may increase error [1].
+
+ * [1] Revell, Liam J., Luke J. Harmon, and Richard E. Glor. "Under-parameterized model of sequence evolution leads to bias in the estimation of diversification rates from molecular phylogenies." Systematic Biology 54.6 (2005): 973-983.
 
 > * 2) Related to the topic above, a discussion of what might be the effect of non-clock like models of DNA evolution on the measured error (in contrast with the clock like presented in the paper) might also be interesting for the empiricist.
 
