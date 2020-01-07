@@ -6,8 +6,7 @@
 
 We agree. We chose to shorten the manuscript to fit the Applications section.
 
- * [x] RJCB: send email to GL, created Issue #53
- * [ ] If @Giappo agrees: shorten to Application
+ * [ ] Shorten to Application
  
 ## Comments to the Author:
 
@@ -140,9 +139,25 @@ properly represent Dechene et al.
  * [ ] RJCB: check article again. Weird, how can this be?
 
 > * 5. Table 1 why is order of abbreviation in legend different from the order of rows in the table?
->
+
+Agreed, we should have sorted the same way in both cases. 
+We changed this to sorting alphabetically [RJCB: or would
+increasing complexity be better? p < 40%].
+
+ * [ ] Sort values alphabetically 
+
 > * 6. Figure 1 "The twin alignment has the same number of mutations as the original alignment." and line 188ff: why keep the number of mutations constant? With the same root height and same mutation rate, there should be some natural variation in the number of mutations. Fixing these feels like this could cause unexpected biases, e.g., reduce the variance in the error measure for the twin tree analysis.
->
+
+Well spotted! We keep the number of mutations constant to keep the amount
+of genetic information between true and twin tree identical. 
+
+[RJCB: I've added an example,
+https://github.com/richelbilderbeek/pirouette_example_18
+that simulates a twin alignment with the same mutation rate
+as a setting that uses a twin alignment with the same number
+of mutations,
+https://github.com/richelbilderbeek/pirouette_example_3]
+
 > * 7. line 142 "nucleotide substitution model, which we will refer to as site models".
 >
 > 1. Site models include things like gamma rate heterogeneity and proportion invariable sites, so calling a substitution model a site model does not seem to be appropriate.
