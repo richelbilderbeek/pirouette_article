@@ -34,6 +34,8 @@ discuss something in more detail, have been added, yet moved to the appendix.
  * [ ] Shorten to Application
  * [ ] Move empiricists' guidelines to Appendix
  
+ GL: Agreed. Let's do this by leaving only one thorough example in the main text and adding a more step by step and long explanation in the appendix. I do not see what they mean here by empiricists. AFAIU Pirouette is a package to test diversification models, therefore is thought to be used by whom is developing models, i.e. theoreticians.
+ 
 ## Comments to the Author:
 
 > This is an interesting paper which introduces an R package design to test 
@@ -67,12 +69,16 @@ Thanks, we will happily do so.
 We've discussed these points at a new 'Guidelines for empiricists' 
 section in the appendix.
 
+GL: We can provide a simple worked example using a fixed tree prior and reasonably small trees (say in the magnitudes of hundreds of them) in order to plot how the error scales with the number of tips. I think this will not take a huge effort from our side and they'll be happy about it. Again I do not fully understand who are those "empiricists".
+
  * [ ] Discuss 'Does error scale with tree size?' in Appendix.
    Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
    Harmon, and Richard E. Glor. "Under-parameterized model of sequence 
    evolution leads to bias in the estimation of diversification rates from 
    molecular phylogenies." Systematic Biology 54.6 (2005): 973-983)
  * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
+ 
+ GL: Optionally we can also provide a similar plot of inference error vs sequence length. In the order of magnitude of the hundreds of trees. Again, not a huge work on our side.
 
 > * 2) Related to the topic above, a discussion of what might be the effect 
   of non-clock like models of DNA evolution on the measured error (in 
@@ -82,6 +88,8 @@ section in the appendix.
 Agreed. We added this.
 
  * [ ] Add this, mention nodeSub
+ 
+ GL: Adding a mention to nodesub looks like a great answer! Maybe we can provide a short example of its usage.
 
 > * 3) It might also be interesting to run an example of 
 >   a “non-standard” tree prior which we think might be empirically
@@ -103,7 +111,7 @@ Agreed, we rewrote the initial non-standard tree to resemble a
 diversity-dependent tree, with a strong decrease in speciation rates.
 
  * [ ] Add use of simulated DD tree in code
- * [ ] Add use of DD tree in text, with reference to Etienne & Haegeman, 2012
+ * [ ] Add use of DD tree in text, with reference to Etienne and Haegeman, 2012
 
 > * 4) On lines 174-175, briefly explain what is the nLTT statistic.
 
@@ -155,6 +163,20 @@ package we use for plotting (`ape`), as is written in the manuscript.
 [RJCB: here, the reviewer has a strong point: 'this article [..] fails to 
 justify the usefulness of the [..] tool'.]
 
+GL: The easiest way to address this criticism (and point 3 from previous list) 
+is to add in the appendix a clear example with two different runs:
+in the first one we use a generative model 
+that's close to the candidates (e.g. yule); in the second one we use something
+very different (DDD, as mentioned before is a good idea, but also PBD, MBD, 
+-SSE etc could be used, in principle). The aim is to maximize the
+divergence in outputs in order to prove our point, which should be
+something like this:
+"If the characteristics of the generating process can be grasped by the
+current standard available tree prior the development of a new BEAST2 tree
+prior is not required. If, on the contrary, pirouette returns a significantly
+different pair of true-twin distributions, it means that a new tree prior
+needs to be implemented. We show this with the following/previous worked example."
+
  * [ ] ...
 
 > * 1. As an initial remark, I imagine the models pirouette support have all 
@@ -193,6 +215,18 @@ We have added a paragraph to express this more explicitly.
  * [ ] Add paragraph that states that a tree prior that produces big errors,
        may still be favored. Also recommend adding that tree prior to BEAST2
        exactly due to that.
+       
+GL: We might also add that sometimes it's possible to write simulation codes for
+specific kind of diversification processes (e.g. all the new simulations that
+are currently under development in the DAISIE framework, like including
+island ontogeny (pedro and josh) or traits (shu) or many many others) whereas it
+is not possible to provide an equivalent likelihood for the process.
+As a matter of fact there many more models that could be simulated than
+the ones for which a likelihood could be defined.
+In those case one could desire to asses the error made by inferring with the best
+available likelihood (aka tree prior), even though it is clearly not the
+one perfectly tailored on the problem (as it is actually not available).
+This could actually turn to be quite usefull for all those cases, hopefully.
 
 > * 3. Let us say we run pirouette and observe something similar to Fig. 6. 
 >   There is clearly an increase in tree inference error, but how much 
@@ -211,7 +245,18 @@ We have added a paragraph to express this more explicitly.
 >   and “true”.
 
 We agree that the interpretation of the error distributions 
-is -sadly- still open to discussion. 
+is -sadly- still open to discussion.
+
+GL: This is actually something I've always wondered. The natural response to this,
+for me, would be to use some kind of overlap metric between distributions.
+I think Josh was working with something like this, as he is actually using the
+twinning concept in one of his projects and he needs a quantitative assessment
+of the distribution mismatch. He once showed me this paper which provides tools
+for this task: "P Kumar & L Hunter: On an information divergence measure and information inequalities".
+Additionally, he wanted to apply it to two distributions obtained with a nice
+method to measure tree discrepancies (like nllt, but a bit more sophisticated,
+taken from "Lewitus & Morlon (2016): Characterizing and Comparing Phylogenies
+from their Laplacian Spectrum").
 
 ...
 
@@ -226,7 +271,19 @@ is -sadly- still open to discussion.
 >   Freyman & Hohna 2018 for an example). Does this requirement of pirouette 
 >   not defeat the tool’s purpose? But maybe I misunderstand.
 
-Indeed, having a working simulator is indeed a good first step. 
+Indeed, having a working simulator is indeed a good first step.
+
+GL: I think he misunderstood. Nevertheless I will try to formulate a kind answer:
+"The reviewer is correct when he states that a simulation routine is needed
+to provide pirouette with the right input (i.e. a sufficient number of trees
+simulated under the same rules). However, even though simulation algorithms and
+likelihood formulas describe the same core mechanisms (e.g. diversity dependence,
+trait-based diversification etc), their respective implementations
+might entail very different degrees of efforts. In many cases, in fact, it is not
+even possible to define likelihood formulas. In this sense, pirouette
+proves to be a useful tool in providing numerical evidence for the sufficiency
+of the sole simulation algorithm whereas a likelihood is actually not available
+(i.e. in case true and twin distributions are similar enough).
 
  * [ ] Read Freyman & Hohna 2018 just to be sure, the reconsider this answer
 
@@ -271,6 +328,10 @@ process to generate the true tree. Because the likelihood of these trees
 are known, we'll show the pirouette results for diversity-dependent trees 
 with low, medium and high likelihood.
 
+GL: Here I completely agree with the reviewer. It would be nice to add a functions
+that wrap the pirouette routine running on an entire distribution, instead of
+on a single tree alone.
+
  * [ ] Add `pirouette` results for DD trees with low, medium and high likelihood
  * [ ] Describe this in text
 
@@ -293,7 +354,7 @@ Thanks!
 > prevent such confusion.
 
 Indeed, the posterior predictive analysis from Duchene et al, 2018 is very 
-similar. 
+similar.
 
 [RJCB: I would guess this type of analysis can be done by pirouette as well;
 pirouette does the same as Duchene et al., 2018 and more. If so, this
@@ -301,6 +362,62 @@ makes a stronger case for pirouette]
 
  * [ ] Check this
  * [ ] If true, add to text
+
+[GL: It does look similar but it's not the same. This is what I understood
+(which is summarized also in figure 1 of the article): 
+1) They start from an empirical tree, then they use Beast to infer a 
+posterior distribution of some parameters, given a model M, 
+e.g. growth rate or population size;
+2) They sample from this distribution to simulate a distribution of trees,
+which they call (cryptically) "posterior predictive simulations" (PPS);
+3) They use some summary statistics to compare this simulated distribution
+of trees with the original tree.
+Similarities (+) and differences (-) between Duchene (a) and pirouette (b):
+PIPELINE:
++) Their pipeline is similar to our left column in our figure 1. It is, though,
+not clear to me how they go from an empirical tree to a Beast posterior
+because, AFAIK, Beast operates from alignment to a posterior.
+TWINNING:
++) There is a similarity with the twinning:
+   a) Their method infers parameters with beast and then simulates.
+   b) Twinning infers parameters using maximum likelihood and then simulates.
+-) There is also a big difference with twinning:
+   a) This pseudotwinning yield the distribution to compare with the original tree.
+   b) Twin tree is just the starting point for a new pipeline.
+SUMMARY STATISTICS:
++) We both use some summary statistics to compare an original tree to a result
+obtained from the inference.
+GOALS:
+-) We do not use an empirical tree but trees simulated according to some
+diversification model. This is reflected in a difference in our goals:
+   a) Their goal is to see if the process they use to simulate the PPS 
+   can recover features of the original data, according to the chosen 
+   summary statistics. Eventually they can choose which process yield
+   the smallest difference according to the statistics.
+   b) Our goal is to see if BEAST tree priors can recover the features
+   of the diversification model that generated the original trees.
+INFERENCE MODEL AND MODEL SELECTION:
+-) The selection of the inference model is made in a different way:
+   a) Their method tests all models and infers parameters for each of them using beast.
+   Then it uses such parameters to simulate PPS for each model. Instead of a
+   stricto sensu model selection they evaluate a posteriori whether each model
+   is "adequate" using an equivalent of a P-valuecoming from the "posterior 
+   predictive probability" (PPP) obtained from tree statistics.
+   Their model evaluation is therefore operated a posteriori.
+   b) Our method uses model selection before creating a posterior distribution. After that one
+   could virtually use all the summary statistics he/she wants.
+   Their model "selection" relies on the summary statistics. A multivariate
+   assessment might be done in principle, but they stress that 
+   they prefer "considering each test statistically separately"
+   as Gelman et al. (2014) suggests.
+I agree with RJCB that this kind of analysis could, in principle, be done also using pirouette.
+I also agree that we can do more than that, such as providing a baseline
+error and pre-calculate model selection. Moreover, as I mentioned before,
+pirouette actually performs a different task, as the original scope
+of pirouette is to evaluate the goodness of the inference on trees generated
+by a specific generative tree model. The stress, in our case, is on
+the tree model, not on the empirical data. For this reason I believe our
+tool is to address more to theoreticians than empiricists.]
 
 > * 1. line 20-22: "An open question is, how accurate the tree estimation is 
 >   when the real macroevolutionary processes are substantially different from 
@@ -310,6 +427,14 @@ makes a stronger case for pirouette]
 
 Agreed.
 
+GL: In the spirit of what we discussed for reviewer 1, it is also
+possible to achieve this running some example analysis using
+some known generative prior (e.g. DDD) and evaluating the 
+error distributions, possibly with some metrics (i.e. a function
+that takes in two distributions and returns a number in [0,1],
+see for example "On an information divergence measure and 
+information inequalities" by Kumar and Hunter 2004)
+
 > * 2. In general, the difference between the pirouette approach and 
 >   TMA/posterior predictive method should be explained more clearly, since 
 >   it mostly seems to be the starting tree being from a different source, 
@@ -317,6 +442,9 @@ Agreed.
 >   addition to posterior predictive analysis.
 
 Agreed!
+
+GL: A good starting point could be what I wrote before in the long comment.
+Please let me know your opinions about that.
 
 > * 3. line 53-62 please break up sentence -- this one is really hard to follow.
 >
@@ -329,8 +457,8 @@ Agreed!
 >   demonstrate that a tree prior is *adequate* (the package is called TMA = 
 >   tree model adequacy), which is pretty much the aim of this paper.
 
-Blimey, thanks for re-directing us to this paper, which indeed is
-very similar to what `pirouette` does.
+Thanks for re-directing us to this paper, which actually shows
+some similarities to what `pirouette` does.
 
 [RJCB: I guess I wrote that blunder. I must have been confused with the 
 Duchene et al., 2014 paper?]
@@ -354,8 +482,11 @@ We changed this to sorting alphabetically
 >   like this could cause unexpected biases, e.g., reduce the variance in the 
 >   error measure for the twin tree analysis.
 
-Well spotted! We keep the number of mutations constant to keep the amount
-of genetic information between true and twin tree identical. 
+We agree on the point made by the reviewer. However we made this choice to keep
+the number of mutations constant in order to ensure that the amount
+of genetic information between true and twin tree is identical. We did so
+because we want to ensure that the comparison between true and twin
+pipeline is as fair as possible.
 
 [RJCB: I've added an example,
 https://github.com/richelbilderbeek/pirouette_example_18
@@ -371,7 +502,7 @@ https://github.com/richelbilderbeek/pirouette_example_3]
 >
 >   * 1. Site models include things like gamma rate heterogeneity and proportion invariable sites, so calling a substitution model a site model does not seem to be appropriate.
 
-Thanks correcting us on our sloppy wording. We have reworded accordingly.
+We agree on that. We have reworded accordingly.
 
  * [ ] Reword accordingly
 
@@ -413,7 +544,6 @@ error, I've added a pirouette example 19 for this]
 
  * [ ] Refer to [1, 2]
 
-
  * [1] Sarver, Brice AJ, et al. "The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates." PeerJ 7 (2019): e6334.
  * [2] Wertheim, Joel O., and Michael J. Sanderson. "Estimating diversification rates: how useful are divergence times?." Evolution: International Journal of Organic Evolution 65.2 (2011): 309-320.
 
@@ -426,7 +556,12 @@ error, I've added a pirouette example 19 for this]
 >   but not explained why that is a good combination. 
 >   Some discussion around this would be useful.
 
-Definitely! We've added this
+Definitely! We've added this.
+
+GL: I am not sure this is actually a good idea. To me looks more
+natural and straightforward to define crown age and mutation rate,
+which, by the way, means that the number of substitutions
+is not always constant.
 
  * [ ] Add, also reference to literature
 
