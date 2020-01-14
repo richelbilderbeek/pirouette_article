@@ -32,9 +32,13 @@ Applications section. Due to this, the multiple comments by the reviewers to
 discuss something in more detail, have been added, yet moved to the appendix.
 
  * [ ] Shorten to Application
- * [ ] Move empiricists' guidelines to Appendix
+ * [ ] Use only one example
+ * [ ] Move empiricists' guidelines to Appendix, step by step and long 
+       explanation in the appendix
  
- GL: Agreed. Let's do this by leaving only one thorough example in the main text and adding a more step by step and long explanation in the appendix. I do not see what they mean here by empiricists. AFAIU Pirouette is a package to test diversification models, therefore is thought to be used by whom is developing models, i.e. theoreticians.
+GL: AFAIU Pirouette is a package to test diversification models, 
+therefore is thought to be used by whom is developing models, 
+i.e. theoreticians.
  
 ## Comments to the Author:
 
