@@ -82,8 +82,13 @@ section in the appendix. Also, we've added a worked example for (1) trees with
 an increasing number of tips, (2) alignments of different sequence lengths.
 
 GL: [...] a fixed tree prior and 
-reasonably small trees (say in the magnitudes of hundreds of them) 
+reasonably small trees (say in the magnitudes of hundreds of them).
 RJCB: hundreds feels like lot.
+GL: We can do one hundred with not many tips, say 10:40?.
+Each tree will probably be very fast to evaluate.
+In fact, if I remember correcty, our razzo run has a strong
+bottleneck for the biggest trees, but the ones we obtain
+with small parameters are relatively fast to evaluate.
 
  * [ ] Write script that shows the true and twin error for 10,
    20, ..., 100/?1000 taxa at https://github.com/richelbilderbeek/pirouette_example_20
@@ -97,6 +102,7 @@ RJCB: hundreds feels like lot.
 GL: [...] In the order of magnitude of the hundreds of 
 trees. Again, not a huge work on our side.
 RJCB: Again, hundreds feels like lot.
+GL: Read above.
  
  * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
  * [ ] Write script that shows the true and twin error for 10,
@@ -201,7 +207,10 @@ prior is not required. If, on the contrary, pirouette returns a significantly
 different pair of true-twin distributions, it means that a new tree prior
 needs to be implemented. We show this with the following/previous worked example."
 
-RJCB: Gio, just want to mention: this is some awesome input, thanks! 
+RJCB: Gio, just want to mention: this is some awesome input, thanks!
+
+GL: Small note: if we implement a metric, say Jensen-Shannon divergence, we can
+easily use it to show numerically that they differ.
 
  * [ ] Prove our point
  * [ ] Write script that shows the true and twin error for Yule
@@ -260,6 +269,24 @@ one perfectly tailored on the problem (as it is actually not available).
 This could actually turn to be quite usefull for all those cases, hopefully.
 
 RJCB: Agreed, but unsure if this is the reviewer's point
+
+GL: Mmm, even though what I wrote could be of some utility
+in favor of pirouette's capabilities, I think you are
+right that this is not the reviewer's point.
+So I'll try again. AFAICS they're talking about the fact
+that you might be interested in estimating some parameters from
+an alignment. This can be done using BEAST2 exploiting its
+function to estimate parameter posteriors along with tree
+posteriors. My doubt is: many times I've seen people
+(Rampal in primis: e.g. DDD, DAISIE, PBD articles)
+estimating parameters with some likelihood models
+starting directly from a tree. Phylogenies do not exist
+in nature, therefore such trees have to come from
+some BEAST inference obtained using some tree prior, probably
+a birth-death prior. So, if you can clearly do it also in
+this way, why would people desire to start from alignment
+(which will require to implement the tree prior in beast)
+to estimate parameters? I am a bit puzzled.
 
 > * 3. Let us say we run pirouette and observe something similar to Fig. 6. 
 >   There is clearly an increase in tree inference error, but how much 
@@ -321,6 +348,9 @@ from their Laplacian Spectrum").
 
 RJCB: Blimey, Lewitus & Morlon (2016) also use the Jensen-Shannon divergence!
 
+GL: JS divergence appears to definitely be a good candidate. Let's discuss
+it with Rampal.
+
  * [ ] Check if Jensen-Shannon divergence is in the RPANDA R package
 
 RJCB: For completeness, I suggest to mention the following tree comparison
@@ -331,6 +361,8 @@ statisics:
  * define polytopic contours around a reconstructed tree in order to define 
    'confidence regions' in the tree (Billera et al. 2001)
  * The ones Thijs Janzen added to nodeSub
+ 
+ GL: Why not.
 
 > * 4. Please correct me if I am wrong, but to run pirouette, I must have a 
 >   working simulator of my new model. Is this not a quarter or a third of 
@@ -350,6 +382,11 @@ might entail very different degrees of efforts. In many cases, in fact, it is no
 even possible to define likelihood formulas. 
 
 RJCB: [Add examples, e.g. to MBD (or did you solve it?)/PBD and/or DAISIE here]
+GL: For MBD simulating is a joke. Maximum likelihood is a terrible nightmare.
+However, to answer your question, MBD likelihood's framework seems to
+estimate parameters pretty well up to trees with around 300 tips.
+We are working to extend it to even bigger trees.
+I can show you the results, if you are curious.
 
 In this sense, pirouette
 proves to be a useful tool in providing numerical evidence for the sufficiency
@@ -503,7 +540,7 @@ error and pre-calculate model selection. Moreover, as I mentioned before,
 pirouette actually performs a different task, as the original scope
 of pirouette is to evaluate the goodness of the inference on trees generated
 by a specific generative tree model. The stress, in our case, is on
-the tree model, not on the empirical data. For this reason I believe our
+the generative tree model, not on the empirical data. For this reason I believe our
 tool is to address more to theoreticians than empiricists.]
 
 > * 1. line 20-22: "An open question is, how accurate the tree estimation is 
@@ -526,6 +563,9 @@ RJCB: I've checked Kumar & Hunter, but I think these are unsuitable
 for our kind of data. Instead, I suggest the Jensen-Shannon distance
 instead, as also used by Lewitus & Morlon, 2015, 'Characterizing and Comparing 
 Phylogenies from their Laplacian Spectrum'.
+
+GL: As mentioned before, I think it's an interesting candidate.
+I am curious to know Rampal's opinion on that.
 
 > * 2. In general, the difference between the pirouette approach and 
 >   TMA/posterior predictive method should be explained more clearly, since 
@@ -662,6 +702,8 @@ chosen combination of crown_age/tree_height and mutation rate. He spotted
 correctly that we indeed strived for this 'distance of 
 1' (distance = crown_age * mutation_rate). I think we can and should clarify 
 this. Agreed?
+
+GL: Yes.
 
  * [ ] Add, also reference to literature
 
