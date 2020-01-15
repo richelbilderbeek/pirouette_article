@@ -85,6 +85,8 @@ GL: [...] a fixed tree prior and
 reasonably small trees (say in the magnitudes of hundreds of them) 
 RJCB: hundreds feels like lot.
 
+ * [ ] Write script that shows the true and twin error for 10,
+   20, ..., 100/?1000 taxa at https://github.com/richelbilderbeek/pirouette_example_20
  * [ ] Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
  * [R] Discuss 'Does error scale with tree size?' in Appendix.
    Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
@@ -97,6 +99,9 @@ trees. Again, not a huge work on our side.
 RJCB: Again, hundreds feels like lot.
  
  * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
+ * [ ] Write script that shows the true and twin error for 10,
+   1k, 2k, ..., 10k nucleotides at 
+   https://github.com/richelbilderbeek/pirouette_example_21
  * [ ] Add a worked example that shows the error for alignments of
        100, 1k, 2k, ..., 10k nucleotides. 
 
@@ -199,6 +204,9 @@ needs to be implemented. We show this with the following/previous worked example
 RJCB: Gio, just want to mention: this is some awesome input, thanks! 
 
  * [ ] Prove our point
+ * [ ] Write script that shows the true and twin error for Yule
+       tree and Yule tree prior at 
+       https://github.com/richelbilderbeek/pirouette_example_22
  * [ ] Add worked example with standard tree model and correct tree 
        prior (Yule tree and Yule tree prior)
 
@@ -398,9 +406,14 @@ on a single tree alone.
 RJCB: OK, I will add these. It will be simple anyways, yet, I predict, usually
 useless.
 
- * [R] Add `pirouette` results for DD trees with low, medium and high likelihood
- * [R] Describe this in text
+ * [ ] Write script that shows the true and twin errors for DD
+       trees of different likelihoods, using a BD tree prior,
+       https://github.com/richelbilderbeek/pirouette_example_23
+ * [ ] Add `pirouette` results for DD trees with low, medium and high likelihood
+ * [ ] Describe this in text
  * [ ] Add `pir_runs` function that works on a distribution/list of trees
+ * [ ] Use `pir_runs` in script of
+       https://github.com/richelbilderbeek/pirouette_example_23
 
 ### Reviewer: 2
 
