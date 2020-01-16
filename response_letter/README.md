@@ -11,9 +11,9 @@ I see the following threats:
    I feel `pirouette` cannot do this. We need to highlight the overlap
    and difference with PPA.
  * There is a conflict about the target audience of `pirouette`, which
-   can be (1) theoreticians, and (2) empiricists.
-
- * [ ] Talk at TECE: how would an empiricist use `pirouette`?
+   can be (1) theoreticians, and (2) empiricists. As a resolve, after
+   shortening the manuscript to an Application article, we'll add the
+   suggested worked out examples in the Appendix
 
 For the rest, it is some work, that will fit in only if prioritized.
 
@@ -39,13 +39,8 @@ discuss something in more detail, have been added, yet moved to the appendix.
  * [ ] Use only one example
  * [ ] Move empiricists' guidelines, 'step by step and long explanation', 
        to Appendix, 
- 
-GL: AFAIU Pirouette is a package to test diversification models, 
-therefore is thought to be used by whom is developing models, 
-i.e. theoreticians.
-
-???RJCB: Apparently, the reviewers would enjoy us focussing on
-empericists more.
+ * [ ] Ask Rampal's idea: what *is* an empiricist in the context of pirouette?
+ * [ ] Richel: think about 'Should/could empiricists use pirouette?'
  
 ## Comments to the Author:
 
@@ -81,31 +76,19 @@ We've discussed these points at a new 'Guidelines for empiricists'
 section in the appendix. Also, we've added a worked example for (1) trees with
 an increasing number of tips, (2) alignments of different sequence lengths.
 
-GL: [...] a fixed tree prior and 
-reasonably small trees (say in the magnitudes of hundreds of them).
-RJCB: hundreds feels like lot.
-GL: We can do one hundred with not many tips, say 10:40?.
-Each tree will probably be very fast to evaluate.
-In fact, if I remember correcty, our razzo run has a strong
-bottleneck for the biggest trees, but the ones we obtain
-with small parameters are relatively fast to evaluate.
-
- * [ ] Write script that shows the true and twin error for 10,
-   20, ..., 100/?1000 taxa at https://github.com/richelbilderbeek/pirouette_example_20
+ * [ ] Write script that shows the true and twin error for 
+   a fixed tree prior and reasonably small trees
+   (say in the magnitudes of hundreds of them)
+   with 10:40 taxa at https://github.com/richelbilderbeek/pirouette_example_20
  * [ ] Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
  * [R] Discuss 'Does error scale with tree size?' in Appendix.
    Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
    Harmon, and Richard E. Glor. "Under-parameterized model of sequence 
    evolution leads to bias in the estimation of diversification rates from 
-   molecular phylogenies." Systematic Biology 54.6 (2005): 973-983)
-
-GL: [...] In the order of magnitude of the hundreds of 
-trees. Again, not a huge work on our side.
-RJCB: Again, hundreds feels like lot.
-GL: Read above.
- 
+   molecular phylogenies." Systematic Biology 54.6 (2005): 973-983) 
  * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
- * [ ] Write script that shows the true and twin error for 10,
+ * [ ] Write script that shows the true and twin error for 
+  hundreds of trees with 10,
    1k, 2k, ..., 10k nucleotides at 
    https://github.com/richelbilderbeek/pirouette_example_21
  * [ ] Add a worked example that shows the error for alignments of
@@ -118,7 +101,7 @@ GL: Read above.
 
 Agreed. We added this, also as a worked examples.
 
- * [ ] Add this, mention nodeSub
+ * [ ] Add nodeSub working example to text
  * [R] Add nodeSub worked example (pirouette_example_17)
  
 > * 3) It might also be interesting to run an example of 
@@ -188,10 +171,11 @@ package we use for plotting (`ape`), as is written in the manuscript.
 > usefulness of the pirouette tool. Here are some points in which this 
 > study and its discussion could be improved.
 
-...
+Thanks for guiding us into emphasizing the usefulness of pirouette.
+We've added a worked example demonstrating this.
 
-[RJCB: here, the reviewer has a strong point: 'this article [..] fails to 
-justify the usefulness of the [..] tool'.]
+ * [ ] Add Gio's text to the manuscript
+ * [ ] Add worked example (if there are not plenty of those already)
 
 GL: The easiest way to address this criticism (and point 3 from previous list) 
 is to add in the appendix a clear example with two different runs:
@@ -206,10 +190,7 @@ current standard available tree prior the development of a new BEAST2 tree
 prior is not required. If, on the contrary, pirouette returns a significantly
 different pair of true-twin distributions, it means that a new tree prior
 needs to be implemented. We show this with the following/previous worked example."
-
-RJCB: Gio, just want to mention: this is some awesome input, thanks!
-
-GL: Small note: if we implement a metric, say Jensen-Shannon divergence, we can
+[...] If we implement a metric, say Jensen-Shannon divergence, we can
 easily use it to show numerically that they differ.
 
  * [ ] Prove our point
@@ -273,7 +254,9 @@ RJCB: Agreed, but unsure if this is the reviewer's point
 GL: Mmm, even though what I wrote could be of some utility
 in favor of pirouette's capabilities, I think you are
 right that this is not the reviewer's point.
-So I'll try again. AFAICS they're talking about the fact
+So I'll try again. 
+
+[GL: AFAICS they're talking about the fact
 that you might be interested in estimating some parameters from
 an alignment. This can be done using BEAST2 exploiting its
 function to estimate parameter posteriors along with tree
@@ -287,6 +270,14 @@ a birth-death prior. So, if you can clearly do it also in
 this way, why would people desire to start from alignment
 (which will require to implement the tree prior in beast)
 to estimate parameters? I am a bit puzzled.
+
+RJCB: I think the reviewer's point is, that even if pirouette gives a big
+difference between twin and true error distribution, one may still choose
+to use the model that generated the true tree. I agree with the reviewer.
+Regarding your point 'if you can clearly do it also [by using trees], 
+why would people desire to start from alignment [...] to estimate parameters?',
+I agree: a tree is a cleaner type of data then an alignment. I just don't think
+this is the point the reviewer makes here.
 
 > * 3. Let us say we run pirouette and observe something similar to Fig. 6. 
 >   There is clearly an increase in tree inference error, but how much 
@@ -305,64 +296,35 @@ to estimate parameters? I am a bit puzzled.
 >   and “true”.
 
 We agree that the interpretation of the error distributions 
-is -sadly- still open to discussion.
+was still open to discussion. We say 'was' because, thanks to you,
+we've taken a look at an interpretation using statistics.
 
-GL: This is actually something I've always wondered. The natural response to this,
-for me, would be to use some kind of overlap metric between distributions.
+[RJCB: Unsure if we keep them in, just briefly explore for now]
 
-RJCB: I think we should mention that `pirouette` does not do stats regarding
-this, as there are so many ways. One can do so statistics to test if 
-the distributions are significantly different.
-To resolve this reviewer's point, we could add a statistics function to do so.
-My suggestion to test if the true and
-twin distributions are 'the same' is the Mann Whitney U test,
-https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test ,
-as it is a ranked test, assuming nothing about the shapes of the
-distributions.
+ * [ ] Add Mann Whitney U test to pirouette examples to test if true and
+       twin error distributions are significantly different,
+       https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test
+ * [ ] Add Jensen-Shannon divergence to pirouette examples,
+       as this value is a value from zero to one,
+       https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence#Bounds
+ * [ ] Find proper Jensen-Shannon divergence implementation in R, maybe
+       Thijs Janzen has recently added one in nodeSub, or maybe
+       it is in Helene Morlon's RPANDA R package
+ * [ ] Mention other error statistics: Robinson-Foulds distance (Robinson and 
+       Foulds 1981), nearest neighbor interchange (Moore et al. 1973),
+       'define polytopic contours around a reconstructed tree in order to define 
+       'confidence regions' in the tree (Billera et al. 2001)' and the ones 
+       Thijs Janzen added to nodeSub
 
-RJCB: Also, I think we should mention that `pirouette` does measure the overlap, 
-as there are so many ways.
-However, also here, we could add a distance metric ('degree of overlap').
-One of my favorite degrees of overlap is the Jensen-Shannon
-divergence, as it gives a value from zero to one:
-https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence#Bounds .
-Sadly, I misunderstood, or I have not found a proper R implementation for 
-it (see https://github.com/richelbilderbeek/razzo/issues/383 ),
-or both. 
-
-GL: I think Josh was working with something like this, as he is actually using the
-twinning concept in one of his projects and he needs a quantitative assessment
-of the distribution mismatch. He once showed me this paper which provides tools
-for this task: "P Kumar & L Hunter: On an information divergence measure 
-and information inequalities".
-
-RJCB: I've checked Kumar & Hunter, but I think these are unsuitable
-for our kind of data. Instead, I suggest the Jensen-Shannon distance
-instead, as also used by Lewitus & Morlon, 2015, 'Characterizing and Comparing 
-Phylogenies from their Laplacian Spectrum'.
-
-GL: Additionally, he wanted to apply it to two distributions obtained with a nice
-method to measure tree discrepancies (like nLTT, but a bit more sophisticated,
+GL: [Josh] wanted to apply [a method from Kumar & Hunter]
+to measure tree discrepancies (like nLTT, but a bit more sophisticated,
 taken from "Lewitus & Morlon (2016): Characterizing and Comparing Phylogenies
 from their Laplacian Spectrum").
 
-RJCB: Blimey, Lewitus & Morlon (2016) also use the Jensen-Shannon divergence!
-
-GL: JS divergence appears to definitely be a good candidate. Let's discuss
-it with Rampal.
-
- * [ ] Check if Jensen-Shannon divergence is in the RPANDA R package
-
-RJCB: For completeness, I suggest to mention the following tree comparison
-statisics:
-
- * Robinson-Foulds distance (Robinson and Foulds 1981)
- * nearest neighbor interchange (Moore et al. 1973)
- * define polytopic contours around a reconstructed tree in order to define 
-   'confidence regions' in the tree (Billera et al. 2001)
- * The ones Thijs Janzen added to nodeSub
- 
- GL: Why not.
+RJCB: I think you are suggestion a new error statistic here, which
+I think is fun and even already may be in the nodeSub package. 
+I think this is something different, however, than the point of
+the reviewer, which is about the interpretation of the error distributions.
 
 > * 4. Please correct me if I am wrong, but to run pirouette, I must have a 
 >   working simulator of my new model. Is this not a quarter or a third of 
@@ -378,15 +340,11 @@ to provide pirouette with the right input (i.e. a sufficient number of trees
 simulated under the same rules). However, even though simulation algorithms and
 likelihood formulas describe the same core mechanisms (e.g. diversity dependence,
 trait-based diversification etc), their respective implementations
-might entail very different degrees of efforts. In many cases, in fact, it is not
-even possible to define likelihood formulas. 
-
-RJCB: [Add examples, e.g. to MBD (or did you solve it?)/PBD and/or DAISIE here]
-GL: For MBD simulating is a joke. Maximum likelihood is a terrible nightmare.
-However, to answer your question, MBD likelihood's framework seems to
-estimate parameters pretty well up to trees with around 300 tips.
-We are working to extend it to even bigger trees.
-I can show you the results, if you are curious.
+might entail very different degrees of efforts. An example is the Multiple-Birth
+Death model, a diversificant model the co-author Giovanni Laudanno works on:
+writing the simulation code is (I quote) 'a joke', estimating the likelihood
+is (I quote) 'a terrible nightmare'. In many cases, in fact, it is not even 
+possible to define likelihood formulas.
 
 In this sense, pirouette
 proves to be a useful tool in providing numerical evidence for the sufficiency
@@ -435,13 +393,6 @@ Because -due feedback from the other reviewer- we use a diversity-dependent
 process to generate the true tree. Because the likelihood of these trees
 are known, we'll show the pirouette results for diversity-dependent trees 
 with low, medium and high likelihood.
-
-GL: Here I completely agree with the reviewer. It would be nice to add a functions
-that wrap the pirouette routine running on an entire distribution, instead of
-on a single tree alone.
-
-RJCB: OK, I will add these. It will be simple anyways, yet, I predict, usually
-useless.
 
  * [ ] Write script that shows the true and twin errors for DD
        trees of different likelihoods, using a BD tree prior,
@@ -525,17 +476,8 @@ INFERENCE MODEL AND MODEL SELECTION:
    they prefer "considering each test statistically separately"
    as Gelman et al. (2014) suggests.
 
-GL: I agree with RJCB that this kind of analysis could, in principle, 
-be done also using pirouette.
-
-RJCB: After reading your (great!) synopsis, I have gotten the feeling
-I misunderstood and that `pirouette` cannot do the same thing: Duchene
-et al. skip the step with the alignment. Yes, I could add even more
-flexibility to `pirouette` to allow for this flexibility, but I'd worry
-this would dilute `priouette` to such a point I would not recognize her 
-anymore: `pirouette`'s being is about inferring trees from simulated alignments.
-
-GL: I also agree that we can do more than that, such as providing a baseline
+GL: I [...] agree that [pirouette could have more functionality added], 
+such as providing a baseline
 error and pre-calculate model selection. Moreover, as I mentioned before,
 pirouette actually performs a different task, as the original scope
 of pirouette is to evaluate the goodness of the inference on trees generated
@@ -543,29 +485,19 @@ by a specific generative tree model. The stress, in our case, is on
 the generative tree model, not on the empirical data. For this reason I believe our
 tool is to address more to theoreticians than empiricists.]
 
+RJCB: Let's ask Rampal:
+
+ * [ ] Ask Rampal: for an empiricist, what use would pirouette be?
+
 > * 1. line 20-22: "An open question is, how accurate the tree estimation is 
 >   when the real macroevolutionary processes are substantially different from 
 >   those assumed in the tree prior." which can be answered using tree model 
 >   adequacy (TMA package for BEAST 2). Some context to clarify how this 
 >   differs from posterior predictive analysis would be good here.
 
-Agreed.
+Thanks for this point! We've added this to the manuscript.
 
-GL: In the spirit of what we discussed for reviewer 1, it is also
-possible to achieve this running some example analysis using
-some known generative prior (e.g. DDD) and evaluating the 
-error distributions, possibly with some metrics (i.e. a function
-that takes in two distributions and returns a number in [0,1],
-see for example "On an information divergence measure and 
-information inequalities" by Kumar and Hunter 2004)
-
-RJCB: I've checked Kumar & Hunter, but I think these are unsuitable
-for our kind of data. Instead, I suggest the Jensen-Shannon distance
-instead, as also used by Lewitus & Morlon, 2015, 'Characterizing and Comparing 
-Phylogenies from their Laplacian Spectrum'.
-
-GL: As mentioned before, I think it's an interesting candidate.
-I am curious to know Rampal's opinion on that.
+ * [ ] Address this point
 
 > * 2. In general, the difference between the pirouette approach and 
 >   TMA/posterior predictive method should be explained more clearly, since 
@@ -575,14 +507,13 @@ I am curious to know Rampal's opinion on that.
 
 Agreed!
 
-GL: A good starting point could be what I wrote before in the long comment.
-Please let me know your opinions about that.
-
-RJCB: I enjoyed the clear synopsis!
+ * [ ] Address this point
 
 > * 3. line 53-62 please break up sentence -- this one is really hard to follow.
 
 Agreed.
+
+ * [ ] Address this point
 
 > * 4. line 82ff: "Also recently, Duchene et al. [Duchene et al. 2018] 
 >   released a BEAST2 package to assess how well posterior predictive 
@@ -616,20 +547,27 @@ We changed this to sorting alphabetically
 >   like this could cause unexpected biases, e.g., reduce the variance in the 
 >   error measure for the twin tree analysis.
 
-We agree on the point made by the reviewer. However we made this choice to keep
-the number of mutations constant in order to ensure that the amount
-of genetic information between true and twin tree is identical. We did so
-because we want to ensure that the comparison between true and twin
-pipeline is as fair as possible.
+We agree on the point made by the reviewer. We've simplified the setup
+accourdingly.
 
-[RJCB: I've added an example,
+RJCB: I suggest to follow the reviewer's idea and use the simpler version.
+I've already added an example, 
 https://github.com/richelbilderbeek/pirouette_example_18
 that simulates a twin alignment with the same mutation rate
-as a setting that uses a twin alignment with the same number
-of mutations,
-https://github.com/richelbilderbeek/pirouette_example_3]
+(as requested by the reviewer). It can be contrasted with
+the orignal setting that uses a twin alignment with the same number
+of mutations (and described in the Appendix),
+https://github.com/richelbilderbeek/pirouette_example_3
 
- * [ ] Mention the consequences of this choice, like the reviewer did
+RJCB: Else, the reply would be 'However, we made this choice to keep
+the number of mutations constant in order to ensure that the amount
+of genetic information of true and twin tree is identical. We did so
+because we want to ensure that the comparison between true and twin
+pipeline is as fair as possible.'
+
+ * [ ] Simplify the setup, as the reviewer requested
+ * [ ] Describe the consequence of this choice in Appendix, comparing
+       pirouette example 3 and 18
 
 > * 7. line 142 "nucleotide substitution model, which we will refer to as site 
 >   models".
@@ -647,12 +585,11 @@ of the `create_site_model` function.
 
 > * 8. line 146 where does the set of inference models come from?
 
-Thanks, this set indeed appeared out of the blue! It is the set of inference
-models of interest [RJCB: improve]
+Thanks, this set indeed appeared out of the blue! We've introduced
+the set of inference more gently, which are simply all standard 
+inference models that are appropriate in their most basic form.
 
-[RJCB: maybe this will be cut out anyways, due to shortening]
-
- * [ ] Improve
+ * [ ] More gently introduce the set of inference models we use
 
 > * 9. If the inference model used in generating data differs from that 
 >      inferring the tree, are you really testing the adequacy of the 
@@ -673,10 +610,12 @@ more explicitly in the text.
 >   so I suppose the sequences should not be too informative. Some discussion 
 >   around these issues would be useful.
 
-[RJCB: I am unsure if a very long alignment will indeed decrease the
-error, I've added a pirouette example 19 for this]
+This is indeed a tough question! We've added this discussion. 
+Also, we've added a worked example with different DNA sequence lengths.
 
- * [ ] Refer to [1, 2]
+ * [ ] Discuss DNA sequence length (?in Appendix?) of manuscript, refer to [1, 2]
+ * [ ] Enhance code of pirouette example 19 to do so
+ * [ ] Add worked example to Appendix
 
  * [1] Sarver, Brice AJ, et al. "The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates." PeerJ 7 (2019): e6334.
  * [2] Wertheim, Joel O., and Michael J. Sanderson. "Estimating diversification rates: how useful are divergence times?." Evolution: International Journal of Organic Evolution 65.2 (2011): 309-320.
@@ -690,34 +629,22 @@ error, I've added a pirouette example 19 for this]
 >   but not explained why that is a good combination. 
 >   Some discussion around this would be useful.
 
-Definitely! We've added this.
-
-GL: I am not sure this is actually a good idea. To me looks more
-natural and straightforward to define crown age and mutation rate,
-which, by the way, means that the number of substitutions
-is not always constant.
-
-RJCB: I think the reviewer wants us to only _clarify_ why we picked the 
-chosen combination of crown_age/tree_height and mutation rate. He spotted
-correctly that we indeed strived for this 'distance of 
-1' (distance = crown_age * mutation_rate). I think we can and should clarify 
-this. Agreed?
-
-GL: Yes.
+Definitely! We've added this, also as a worked example
 
  * [ ] Add, also reference to literature
+ * [ ] Add worked examples with mutation rates from 0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8,
+       at https://github.com/richelbilderbeek/pirouette_example_24
 
 > * 12. Isn't it more natural to define priors on parameters of the site 
 >       model (in the spirit of https://github.com/rbouckaert/DeveloperManual/) 
 >       instead of fixing them in the set I_1,...,I_N?
 
-...
-
-[RJCB: the reference is incredibly helpful! It only exists since September 2019,
-has 3 contributors and 2 other people that starred it]
-
- * [ ] Reread https://github.com/rbouckaert/DeveloperManual, add wisdom  
-       gained to manuscript
+Thanks for this interesting reference, regarding the development
+of new BEAST2 tree priors. The point of `pirouette`, however, is to 
+measure *whether* to have to implement new BEAST2 tree priors. We attribute
+this misunderstanding to ourselves, due to our rough introduction
+of our chosen set of inference models. We hope our rewrite regarding this,
+will also clear up this point.
 
 > * 13. line 174 The nLTT statistic is agnostic about taxa labels, as opposed 
 >   to for example Robinson Foulds distance, and has only been demonstrated to 
@@ -729,6 +656,8 @@ We could have picked any method to quantify a difference
 between two phylogenies. The nLTT statistic is just one of the many options
 and simply happens to be our personal favorite.
 The Robinson Foulds distance would be just as fine.
+
+ * [ ] Check metrics in TreeStat2 BEAST2 package
 
 > * 14. Line 176 Instead of describing the mechanism for generating a twin 
 >   tree, starting with motivation for why one wants to get involved with a 
