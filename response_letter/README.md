@@ -399,7 +399,7 @@ with low, medium and high likelihood.
        https://github.com/richelbilderbeek/pirouette_example_23
  * [ ] Add `pirouette` results for DD trees with low, medium and high likelihood
  * [ ] Describe this in text
- * [ ] Add `pir_runs` function that works on a distribution/list of trees
+ * [ ] #60: Add `pir_runs` function that works on a distribution/list of trees
  * [ ] Use `pir_runs` in script of
        https://github.com/richelbilderbeek/pirouette_example_23
 
