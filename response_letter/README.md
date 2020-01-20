@@ -76,7 +76,7 @@ We've discussed these points at a new 'Guidelines for empiricists'
 section in the appendix. Also, we've added a worked example for (1) trees with
 an increasing number of tips, (2) alignments of different sequence lengths.
 
- * [ ] Write script that shows the true and twin error for 
+ * [ ] #55: Write script that shows the true and twin error for 
    a fixed tree prior and reasonably small trees
    (say in the magnitudes of hundreds of them)
    with 10:40 taxa at https://github.com/richelbilderbeek/pirouette_example_20
@@ -87,7 +87,7 @@ an increasing number of tips, (2) alignments of different sequence lengths.
    evolution leads to bias in the estimation of diversification rates from 
    molecular phylogenies." Systematic Biology 54.6 (2005): 973-983) 
  * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
- * [ ] Write script that shows the true and twin error for 
+ * [ ] #56: Write script that shows the true and twin error for 
   hundreds of trees with 10,
    1k, 2k, ..., 10k nucleotides at 
    https://github.com/richelbilderbeek/pirouette_example_21
@@ -194,7 +194,7 @@ needs to be implemented. We show this with the following/previous worked example
 easily use it to show numerically that they differ.
 
  * [ ] Prove our point
- * [ ] Write script that shows the true and twin error for Yule
+ * [ ] #57: Write script that shows the true and twin error for Yule
        tree and Yule tree prior at 
        https://github.com/richelbilderbeek/pirouette_example_22
  * [ ] Add worked example with standard tree model and correct tree 
@@ -394,7 +394,7 @@ process to generate the true tree. Because the likelihood of these trees
 are known, we'll show the pirouette results for diversity-dependent trees 
 with low, medium and high likelihood.
 
- * [ ] Write script that shows the true and twin errors for DD
+ * [ ] #58: Write script that shows the true and twin errors for DD
        trees of different likelihoods, using a BD tree prior,
        https://github.com/richelbilderbeek/pirouette_example_23
  * [ ] Add `pirouette` results for DD trees with low, medium and high likelihood
@@ -632,7 +632,8 @@ Also, we've added a worked example with different DNA sequence lengths.
 Definitely! We've added this, also as a worked example
 
  * [ ] Add, also reference to literature
- * [ ] Add worked examples with mutation rates from 0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8,
+ * [ ] #59: Add worked examples with mutation rates from 
+       0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8,
        at https://github.com/richelbilderbeek/pirouette_example_24
 
 > * 12. Isn't it more natural to define priors on parameters of the site 
