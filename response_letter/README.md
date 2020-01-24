@@ -82,24 +82,24 @@ Thanks, we have done so.
 We have discussed these points in a new section called 'Guidelines for empiricists', 
 in the supplementary information [RSE: I bet the editor wants to see 
 this in the main text.]. Also, we have added a worked example for (1) trees with
-an increasing number of tips, (2) alignments of different sequence lengths.
+an increasing number of tips (section 'The effect of the number of taxa'), (2) alignments of different sequence lengths (section 'The effect of DNA sequence length')
 
- * [ ] #55: Write script that shows the true and twin error for 
+ * [/] #55: Write script that shows the true and twin error for 
    a fixed tree prior and reasonably small trees
    (say in the magnitudes of hundreds of them)
    with 10:40 taxa at https://github.com/richelbilderbeek/pirouette_example_20
- * [ ] Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
+ * [R] Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
  * [R] Discuss 'Does error scale with tree size?' in Appendix.
    Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
    Harmon, and Richard E. Glor. "Under-parameterized model of sequence 
    evolution leads to bias in the estimation of diversification rates from 
    molecular phylogenies." Systematic Biology 54.6 (2005): 973-983) 
  * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
- * [ ] #56: Write script that shows the true and twin error for 
+ * [/] #56: Write script that shows the true and twin error for 
   hundreds of trees with 10,
    1k, 2k, ..., 10k nucleotides at 
    https://github.com/richelbilderbeek/pirouette_example_21
- * [ ] Add a worked example that shows the error for alignments of
+ * [R] Add a worked example that shows the error for alignments of
        100, 1k, 2k, ..., 10k nucleotides. 
 
 > * 2) Related to the topic above, a discussion of what might be the effect 
@@ -107,7 +107,8 @@ an increasing number of tips, (2) alignments of different sequence lengths.
   contrast with the clock like presented in the paper) might also be 
   interesting for the empiricist.
 
-Agreed. We added this, also as a worked examples.
+Agreed. We added this, also as a worked examples (section 'The effect of 
+non-clock like models')
 
  * [ ] Add nodeSub working example to text
  * [R] Add nodeSub worked example (pirouette_example_17)
@@ -180,13 +181,14 @@ package we use for plotting (`ape`), as is written in the manuscript.
 > study and its discussion could be improved.
 
 Thanks for these comments. We have added a worked example demonstrating the 
-usefulness of pirouette [RSE: Add the text that you add to the ms also here in 
+usefulness of pirouette (section 'The effect of assuming a Yule tree prior on 
+a BD tree') [RSE: Add the text that you add to the ms also here in 
 the response letter. Do this for all additions (unless really minor)].
 
-
-
  * [ ] Add Gio's text to the manuscript
- * [ ] Add worked example (if there are not plenty of those already)
+ * [X] Add script that shows the true and twin error for a BD tree when 
+       assuming a Yule tree prior ('pirouette_example_26')
+ * [ ] Add section 'The effect of assuming a Yule tree prior on a BD tree'
 
 GL: The easiest way to address this criticism (and point 3 from previous list) 
 is to add in the appendix a clear example with two different runs:
@@ -205,11 +207,12 @@ needs to be implemented. We show this with the following/previous worked example
 easily use it to show numerically that they differ.
 
  * [ ] Prove our point
- * [ ] #57: Write script that shows the true and twin error for Yule
+ * [X] #57: Write script that shows the true and twin error for Yule
        tree and Yule tree prior at 
        https://github.com/richelbilderbeek/pirouette_example_22
  * [ ] Add worked example with standard tree model and correct tree 
-       prior (Yule tree and Yule tree prior)
+       prior (Yule tree and Yule tree prior), section 'The effect of assuming 
+       a Yule tree prior on a Yule tree'
 
 > * 1. As an initial remark, I imagine the models pirouette support have all 
 >      been implemented in tested in other packages like geiger, ape, etc.? 
@@ -315,9 +318,6 @@ was not discussed. We have added a discussion on this.
 
 [RJCB: Unsure if we keep them in, just briefly explore for now]
 
- * [ ] Add Mann Whitney U test to pirouette examples to test if true and
-       twin error distributions are significantly different,
-       https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test
  * [ ] Add Jensen-Shannon divergence to pirouette examples,
        as this value is a value from zero to one,
        https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence#Bounds
@@ -413,20 +413,22 @@ the goal of improving the clarity in the points mentioned.
 >   Perhaps if another tree was picked, then the twin and true error 
 >   distributions could look more alike? Or be further apart?
 
-We agree on this point and we have added a worked example in the manuscript.
-In response to other comments we have used a diversity-dependent
+We agree on this point and we have added a worked example in the 
+manuscript. In response to other comments we have used a diversity-dependent
 process to generate the true tree. Because the likelihood of these trees
 are known, we show the pirouette results for diversity-dependent trees 
-with low, medium and high likelihood. [RSE: Provide the frequency distribution 
+with low, medium and high likelihood (section 'The effect of differently 
+common diversity-dependent trees'). [RSE: Provide the frequency distribution 
 of the likelihoods of all the trees that you have generated from which you 
 picked the three trees. You can indicate these trees in the plot.]
 
  * [ ] #58: Write script that shows the true and twin errors for DD
        trees of different likelihoods, using a BD tree prior,
        https://github.com/richelbilderbeek/pirouette_example_23
- * [ ] Add `pirouette` results for DD trees with low, medium and high likelihood
+ * [ ] Add `pirouette` results for DD trees with low, medium and high likelihood,
+       section 'The effect of differently common diversity-dependent trees'
  * [ ] Describe this in text
- * [ ] #60: Add `pir_runs` function that works on a distribution/list of trees
+ * [X] #60: Add `pir_runs` function that works on a distribution/list of trees
  * [ ] Use `pir_runs` in script of
        https://github.com/richelbilderbeek/pirouette_example_23
 
@@ -600,7 +602,8 @@ pipeline is as fair as possible.'
 
  * [ ] Simplify the setup, as the reviewer requested
  * [ ] Describe the consequence of this choice in Appendix, comparing
-       pirouette example 3 and 18
+       pirouette example 3 and 18, section 'The effect of equal or 
+       equalized mutation rate in the twin alignment'
 
 > * 7. line 142 "nucleotide substitution model, which we will refer to as site 
 >   models".
@@ -649,12 +652,10 @@ assumption of the same substitution rate for all loci. Thus, longer sequences
 do not necessarily imply better inference].
 Also, we have added a worked example with different DNA sequence lengths.
 
-
 Also, we've added a worked example with different DNA sequence lengths.
 
  * [ ] Discuss DNA sequence length (?in Appendix?) of manuscript, refer to [1, 2]
- * [ ] Enhance code of pirouette example 19 to do so
- * [ ] Add worked example to Appendix
+ * [ ] Refer to worked example to Appendix, section 'The effect of DNA sequence length'
 
  * [1] Sarver, Brice AJ, et al. "The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates." PeerJ 7 (2019): e6334.
  * [2] Wertheim, Joel O., and Michael J. Sanderson. "Estimating diversification rates: how useful are divergence times?." Evolution: International Journal of Organic Evolution 65.2 (2011): 309-320.
@@ -668,12 +669,14 @@ Also, we've added a worked example with different DNA sequence lengths.
 >   but not explained why that is a good combination. 
 >   Some discussion around this would be useful.
 
-Definitely! We have added this, also as a worked example
+Definitely! We have added this, also as a worked example in the Appendix, 
+section 'The effect of mutation rate'
 
  * [ ] Add, also reference to literature
- * [ ] #59: Add worked examples with mutation rates from 
+ * [X] #59: Add worked examples with mutation rates from 
        0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8,
        at https://github.com/richelbilderbeek/pirouette_example_24
+ * [ ] Describe, section 'The effect of mutation rate'
 
 > * 12. Isn't it more natural to define priors on parameters of the site 
 >       model (in the spirit of https://github.com/rbouckaert/DeveloperManual/) 
