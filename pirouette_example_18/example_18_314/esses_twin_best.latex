@@ -1,0 +1,58 @@
+% latex table generated in R 3.6.1 by xtable 1.8-4 package
+% Fri Jan 24 12:27:11 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+parameter & ESS \\ 
+  \hline
+posterior & 517 \\ 
+  likelihood & 1775 \\ 
+  prior & 287 \\ 
+  treeLikelihood & 1775 \\ 
+  TreeHeight & 831 \\ 
+  kappa & 1009 \\ 
+  freqParameter.1 & 386 \\ 
+  freqParameter.2 & 533 \\ 
+  freqParameter.3 & 571 \\ 
+  freqParameter.4 & 555 \\ 
+  ucldStdev & 266 \\ 
+  rate.mean & 286 \\ 
+  rate.variance & 356 \\ 
+  rate.coefficientOfVariation & 244 \\ 
+  CoalescentExponential & 4980 \\ 
+  ePopSize & 1397 \\ 
+  growthRate & 1627 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes for best candidate model, twin tree} 
+\end{table}
+% latex table generated in R 3.6.1 by xtable 1.8-4 package
+% Fri Jan 24 12:27:11 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+parameter & ESS \\ 
+  \hline
+posterior & 517 \\ 
+  likelihood & 1775 \\ 
+  prior & 287 \\ 
+  treeLikelihood & 1775 \\ 
+  TreeHeight & 831 \\ 
+  kappa & 1009 \\ 
+  freqParameter.1 & 386 \\ 
+  freqParameter.2 & 533 \\ 
+  freqParameter.3 & 571 \\ 
+  freqParameter.4 & 555 \\ 
+  ucldStdev & 266 \\ 
+  rate.mean & 286 \\ 
+  rate.variance & 356 \\ 
+  rate.coefficientOfVariation & 244 \\ 
+  CoalescentExponential & 4980 \\ 
+  ePopSize & 1397 \\ 
+  growthRate & 1627 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes for best candidate model, twin tree} 
+\end{table}
