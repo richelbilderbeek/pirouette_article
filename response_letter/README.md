@@ -95,16 +95,15 @@ an increasing number of tips (section 'The effect of the number of taxa'), (2) a
  * [G] https://github.com/richelbilderbeek/pirouette_article/issues/63:
    Interpret and improve subsection 'The effect of the number of taxa';
    Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
- * [ ] Discuss 'Does error scale with tree size?' in Appendix.
+ * [R] https://github.com/richelbilderbeek/pirouette_article/issues/77:
+   Add literature to section 'Does error scale with tree size?' in Appendix.
    Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
    Harmon, and Richard E. Glor. "Under-parameterized model of sequence 
    evolution leads to bias in the estimation of diversification rates from 
    molecular phylogenies." Systematic Biology 54.6 (2005): 973-983) 
- * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
  * [X] https://github.com/richelbilderbeek/pirouette_article/issues/56: 
    Write script that shows the true and twin error for 
-   hundreds of trees with 10,
-   1k, 2k, ..., 10k nucleotides at 
+   hundreds of trees with 10, 1k, 2k, ..., 10k nucleotides at 
    https://github.com/richelbilderbeek/pirouette_example_21
  * [G] https://github.com/richelbilderbeek/pirouette_article/issues/64:
    Interpret and improve subsection 'The effect of DNA sequence length'
@@ -119,7 +118,7 @@ an increasing number of tips (section 'The effect of the number of taxa'), (2) a
 Agreed. We added this, also as a worked examples (section 'The effect of 
 non-clock like models')
 
- * [R] Add nodeSub worked example (pirouette_example_17)
+ * [X] Add nodeSub worked example (pirouette_example_17)
  * [G] https://github.com/richelbilderbeek/pirouette_article/issues/65:
    Interpret and improve subsection 'The effect of non-clock like models';
    Add nodeSub working example to text
@@ -145,13 +144,17 @@ diversity-dependent tree, with a strong decrease in speciation rates.
 
  * [G] https://github.com/richelbilderbeek/pirouette_article/issues/75:
    Pick a DD tree for our main example
- * [ ] Add use of DD tree in text, with reference to Etienne and Haegeman, 2012
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/78:
+   Use nice DD tree in main text's example code
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/79:
+   Describe DD in text, with reference to Etienne and Haegeman, 2012
 
 > * 4) On lines 174-175, briefly explain what is the nLTT statistic.
 
 We have done so.
 
- * [ ] Do so, with reference to Janzen & Hoehna, ?2016
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/80:
+   Describe nLTT statistic in main text, with reference to Janzen & Hoehna, ?2016
 
 > * 5) Figure 5: the default plot setting results on the scale being plotted 
 >   over the lower branch. This should be changed, or at least the figure 
@@ -163,7 +166,7 @@ We agree it looks clumsy and we wrote a script to pretty-print this figure.
 Note that this cumbersome placement of the scale is default behavior of the 
 package we use for plotting (`ape`), as is written in the manuscript.
 
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/76:
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/76:
    Write script to generate figure 2 with a proper plot.
 
 ## Reviewer(s)' Comments to Author:
@@ -199,9 +202,12 @@ a BD tree') [RSE: Add the text that you add to the ms also here in
 the response letter. Do this for all additions (unless really minor)].
 
  * [ ] Add Gio's text to the manuscript
- * [X] Add script that shows the true and twin error for a BD tree when 
-       assuming a Yule tree prior ('pirouette_example_26')
- * [ ] Add section 'The effect of assuming a Yule tree prior on a BD tree'
+ * [X] https://github.com/richelbilderbeek/pirouette_example_26:
+   Add script that shows the true and twin error for a BD tree when 
+   assuming a Yule tree prior.
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/67:
+   Interpret and improve subsection 'The effect of assuming a Yule tree prior 
+   on a BD tree'
 
 GL: The easiest way to address this criticism (and point 3 from previous list) 
 is to add in the appendix a clear example with two different runs:
@@ -220,12 +226,14 @@ needs to be implemented. We show this with the following/previous worked example
 easily use it to show numerically that they differ.
 
  * [ ] Prove our point
- * [X] #57: Write script that shows the true and twin error for Yule
-       tree and Yule tree prior at 
-       https://github.com/richelbilderbeek/pirouette_example_22
- * [ ] Add worked example with standard tree model and correct tree 
-       prior (Yule tree and Yule tree prior), section 'The effect of assuming 
-       a Yule tree prior on a Yule tree'
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/57: 
+   Write script that shows the true and twin error for Yule
+   tree and Yule tree prior at 
+   https://github.com/richelbilderbeek/pirouette_example_22
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/66:
+   Add worked example with standard tree model and correct tree 
+   prior (Yule tree and Yule tree prior), section 'The effect of assuming 
+   a Yule tree prior on a Yule tree'
 
 > * 1. As an initial remark, I imagine the models pirouette support have all 
 >      been implemented in tested in other packages like geiger, ape, etc.? 
@@ -237,8 +245,10 @@ Your assumption is correct: the tree models used in the Bayesian inference
 are all standard BEAST2 tree models. The phylogenies used in this manuscript
 are from the DDD [...] and ?TESS [...] R packages.
  
- * [ ] Add reference to DDD package here
- * [ ] Add reference to TESS package here
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/81:
+   Add reference to DDD package here
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/82:
+   Add reference to TESS package here
 
 > * 2. Tree models are often used as priors in phylogenetic analyses whose main 
 >      goal is to infer species tree topologies and divergence times. However, 
@@ -261,8 +271,8 @@ suggests that a non-standard tree prior is turned into a standard one.
 We have added a paragraph to express this more explicitly.
 
  * [ ] Add paragraph that states that a tree prior that produces big errors,
-       may still be favored. Also recommend adding that tree prior to BEAST2
-       exactly due to that.
+   may still be favored. Also recommend adding that tree prior to BEAST2
+   exactly due to that.
        
 GL: We might also add that sometimes it's possible to write simulation codes for
 specific kind of diversification processes (e.g. all the new simulations that
@@ -331,12 +341,7 @@ was not discussed. We have added a discussion on this.
 
 [RJCB: Unsure if we keep them in, just briefly explore for now]
 
- * [ ] Add Jensen-Shannon divergence to pirouette examples,
-       as this value is a value from zero to one,
-       https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence#Bounds
- * [ ] Find proper Jensen-Shannon divergence implementation in R, maybe
-       Thijs Janzen has recently added one in nodeSub, or maybe
-       it is in Helene Morlon's RPANDA R package
+ * [ ] Mention Jensen-Shannon divergence implementation in RPANDA
  * [ ] Mention other error statistics: Robinson-Foulds distance (Robinson and 
        Foulds 1981), nearest neighbor interchange (Moore et al. 1973),
        'define polytopic contours around a reconstructed tree in order to define 
@@ -435,15 +440,17 @@ common diversity-dependent trees'). [RSE: Provide the frequency distribution
 of the likelihoods of all the trees that you have generated from which you 
 picked the three trees. You can indicate these trees in the plot.]
 
- * [ ] #58: Write script that shows the true and twin errors for DD
-       trees of different likelihoods, using a BD tree prior,
-       https://github.com/richelbilderbeek/pirouette_example_23
- * [ ] Add `pirouette` results for DD trees with low, medium and high likelihood,
-       section 'The effect of differently common diversity-dependent trees'
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/58: 
+   Write script that shows the true and twin errors for DD
+   trees of different likelihoods, using a BD tree prior,
+   https://github.com/richelbilderbeek/pirouette_example_23
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/68:
+   Interpret and improve subsection 'The effect of differently 
+   common diversity-dependent trees'; add `pirouette` results for DD trees 
+   with low, medium and high likelihood
  * [ ] Describe this in text
- * [X] #60: Add `pir_runs` function that works on a distribution/list of trees
- * [ ] Use `pir_runs` in script of
-       https://github.com/richelbilderbeek/pirouette_example_23
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/60: 
+   Add `pir_runs` function that works on a distribution/list of trees
 
 ### Reviewer: 2
 
@@ -529,11 +536,6 @@ by a specific generative tree model. The stress, in our case, is on
 the generative tree model, not on the empirical data. For this reason I believe our
 tool is to address more to theoreticians than empiricists.]
 
-RJCB: Let's ask Rampal:
-
- * [ ] Ask Rampal: for an empiricist, what use would pirouette be? [RSE: See 
-   my earlier comment.]
-
 > * 1. line 20-22: "An open question is, how accurate the tree estimation is 
 >   when the real macroevolutionary processes are substantially different from 
 >   those assumed in the tree prior." which can be answered using tree model 
@@ -586,7 +588,8 @@ This seems similar but it is subtly but importantly different.]
 We agree that we should have sorted the same way in both cases. 
 We changed this to sorting alphabetically 
 
- * [ ] Sort values alphabetically 
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/83:
+   Sort values in Table 1 alphabetically 
 
 > * 6. Figure 1 "The twin alignment has the same number of mutations as the 
 >   original alignment." and line 188ff: why keep the number of mutations 
@@ -625,7 +628,9 @@ pipeline is as fair as possible.'
 
 We agree on that. We have reworded accordingly.
 
- * [ ] Reword accordingly
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/84:
+   Call a site model a site model and  
+   a nucleotide substitution model a nucleotide substitution model
 
 >   * 2. Are gamma rate heterogeneity and proportion invariable sites supported?
 
@@ -638,7 +643,8 @@ Thanks, this set indeed appeared out of the blue! We have introduced
 the set of inference models more gently, which are simply all standard 
 inference models that are appropriate in their most basic form.
 
- * [ ] More gently introduce the set of inference models we use
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/85:
+   More gently introduce the set of inference models we use
 
 > * 9. If the inference model used in generating data differs from that 
 >      inferring the tree, are you really testing the adequacy of the 
@@ -667,8 +673,9 @@ Also, we have added a worked example with different DNA sequence lengths.
 
 Also, we've added a worked example with different DNA sequence lengths.
 
- * [ ] Discuss DNA sequence length (?in Appendix?) of manuscript, refer to [1, 2]
- * [ ] Refer to worked example to Appendix, section 'The effect of DNA sequence length'
+ * [ ] Discuss DNA sequence length in general
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/64:
+   Discuss DNA sequence length in Appendix, section  'The effect of DNA sequence length'
 
  * [1] Sarver, Brice AJ, et al. "The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates." PeerJ 7 (2019): e6334.
  * [2] Wertheim, Joel O., and Michael J. Sanderson. "Estimating diversification rates: how useful are divergence times?." Evolution: International Journal of Organic Evolution 65.2 (2011): 309-320.
@@ -686,10 +693,12 @@ Definitely! We have added this, also as a worked example in the Appendix,
 section 'The effect of mutation rate'
 
  * [ ] Add, also reference to literature
- * [X] #59: Add worked examples with mutation rates from 
-       0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8,
-       at https://github.com/richelbilderbeek/pirouette_example_24
- * [ ] Describe, section 'The effect of mutation rate'
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/59: 
+   Add worked examples with mutation rates from 
+   0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8,
+   at https://github.com/richelbilderbeek/pirouette_example_24
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/70:
+   Describe, section 'The effect of mutation rate'
 
 > * 12. Isn't it more natural to define priors on parameters of the site 
 >       model (in the spirit of https://github.com/rbouckaert/DeveloperManual/) 
@@ -729,7 +738,8 @@ We have done so.
 
 We have corrected this.
 
- * [ ] Check
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/86: 
+   Correct capitalization of references
 
 > Out of curiosity:
 >
