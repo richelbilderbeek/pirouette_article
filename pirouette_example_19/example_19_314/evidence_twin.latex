@@ -49,3 +49,54 @@ GTR & RLN & BD & -3216.926 & 4.926 & 0.000 & 10.486 \\
 \end{tabular}
 \caption{Evidences for twin phylogeny} 
 \end{table}
+% latex table generated in R 3.6.1 by xtable 1.8-4 package
+% Thu Jan 23 11:17:42 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrrrr}
+  \hline
+Site model & Clock model & Tree prior & log(evidence) & log(evidence error) & Weight & ESS \\ 
+  \hline
+GTR & RLN & BD & -3216.926 & 4.926 & 0.000 & 10.486 \\ 
+  GTR & RLN & CBS & -3226.271 & 5.634 & 0.000 & 6.940 \\ 
+  GTR & RLN & CCP & -3244.225 & 6.619 & 0.000 & 6.945 \\ 
+  GTR & RLN & CEP & -3217.455 & 5.689 & 0.000 & 9.050 \\ 
+  GTR & RLN & Yule & -3217.316 & 4.918 & 0.000 & 9.506 \\ 
+  GTR & Strict & BD & -3215.101 & 5.108 & 0.000 & 9.309 \\ 
+  GTR & Strict & CBS & -3214.482 & 4.865 & 0.000 & 9.481 \\ 
+  GTR & Strict & CCP & -3218.204 & 6.175 & 0.000 & 10.279 \\ 
+  GTR & Strict & CEP & -3214.198 & 4.710 & 0.000 & 10.891 \\ 
+  GTR & Strict & Yule & -3222.647 & 5.626 & 0.000 & 8.773 \\ 
+  HKY & RLN & BD & -3212.835 & 4.629 & 0.000 & 6.831 \\ 
+  HKY & RLN & CBS & -3236.455 & 6.817 & 0.000 & 13.477 \\ 
+  HKY & RLN & CCP & -3213.064 & 4.421 & 0.000 & 5.757 \\ 
+  HKY & RLN & CEP & -3215.571 & 3.920 & 0.000 & 10.931 \\ 
+  HKY & RLN & Yule & -3215.457 & 4.586 & 0.000 & 12.209 \\ 
+  HKY & Strict & BD & -3227.193 & 5.070 & 0.000 & 12.876 \\ 
+  HKY & Strict & CBS & -3216.256 & 4.692 & 0.000 & 5.657 \\ 
+  HKY & Strict & CCP & -3212.982 & 4.418 & 0.000 & 8.319 \\ 
+  HKY & Strict & CEP & -3210.955 & 4.492 & 0.000 & 5.872 \\ 
+  HKY & Strict & Yule & -3212.048 & 4.687 & 0.000 & 8.060 \\ 
+  JC & RLN & BD & -3214.765 & 4.072 & 0.000 & 7.155 \\ 
+  JC & RLN & CBS & -3207.497 & 4.327 & 0.000 & 5.338 \\ 
+  JC & RLN & CCP & -3206.388 & 3.647 & 0.000 & 6.775 \\ 
+  JC & RLN & CEP & -3206.518 & 4.346 & 0.000 & 5.552 \\ 
+  JC & RLN & Yule & -3198.621 & 3.150 & 0.914 & 4.160 \\ 
+  JC & Strict & BD & -3201.162 & 2.870 & 0.072 & 7.432 \\ 
+  JC & Strict & CBS & -3210.534 & 4.399 & 0.000 & 4.037 \\ 
+  JC & Strict & CCP & -3202.950 & 4.145 & 0.012 & 4.225 \\ 
+  JC & Strict & CEP & -3209.087 & 4.490 & 0.000 & 6.169 \\ 
+  TN & RLN & BD & -3210.733 & 4.530 & 0.000 & 8.325 \\ 
+  TN & RLN & CBS & -3213.541 & 5.492 & 0.000 & 7.005 \\ 
+  TN & RLN & CCP & -3222.768 & 5.156 & 0.000 & 11.764 \\ 
+  TN & RLN & CEP & -3220.275 & 5.976 & 0.000 & 6.032 \\ 
+  TN & RLN & Yule & -3205.669 & 3.716 & 0.001 & 5.898 \\ 
+  TN & Strict & BD & -3227.736 & 6.285 & 0.000 & 10.464 \\ 
+  TN & Strict & CBS & -3206.812 & 4.073 & 0.000 & 6.252 \\ 
+  TN & Strict & CCP & -3230.607 & 5.678 & 0.000 & 6.904 \\ 
+  TN & Strict & CEP & -3220.283 & 5.165 & 0.000 & 9.893 \\ 
+  TN & Strict & Yule & -3222.428 & 5.806 & 0.000 & 9.865 \\ 
+   \hline
+\end{tabular}
+\caption{Evidences for twin phylogeny} 
+\end{table}
