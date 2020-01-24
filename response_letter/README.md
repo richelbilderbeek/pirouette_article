@@ -1,5 +1,10 @@
 # Response letter
 
+TODO:
+
+ * RSE: Write it as if you have already done the work
+
+
 RJCB: after reading the feedback carefully, also from Gio, 
 I see the following threats:
 
@@ -35,9 +40,9 @@ We agree. We chose to shorten the main section of the manuscript to fit the
 Applications section. At the same time, the reviewers requested more detail, 
 so we add this, but moved it to the supplementary information.
 
- * [ ] Shorten to Application
- * [ ] Use only one example
- * [ ] Move empiricists' guidelines, 'step by step and long explanation', 
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/74: Shorten to Application
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/72: Use only one example
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/73: Move empiricists' guidelines, 'step by step and long explanation', 
        to Appendix, 
  * [ ] Ask Rampal's idea: what *is* an empiricist in the context of pirouette?
        [RSE: The empiricist wants to be sure his/her phylogeny is close to the 
@@ -64,8 +69,6 @@ so we add this, but moved it to the supplementary information.
 
 Thanks, we have done so.
 
-[RSE: Write it as if you have already done the work]
-
 > Apart from what was mentioned by both reviewers I would add (some purely 
 > cosmetic) the following:
 >
@@ -84,23 +87,29 @@ in the supplementary information [RSE: I bet the editor wants to see
 this in the main text.]. Also, we have added a worked example for (1) trees with
 an increasing number of tips (section 'The effect of the number of taxa'), (2) alignments of different sequence lengths (section 'The effect of DNA sequence length')
 
- * [/] #55: Write script that shows the true and twin error for 
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/55: 
+   Write script that shows the true and twin error for 
    a fixed tree prior and reasonably small trees
    (say in the magnitudes of hundreds of them)
    with 10:40 taxa at https://github.com/richelbilderbeek/pirouette_example_20
- * [R] Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
- * [R] Discuss 'Does error scale with tree size?' in Appendix.
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/63:
+   Interpret and improve subsection 'The effect of the number of taxa';
+   Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
+ * [ ] Discuss 'Does error scale with tree size?' in Appendix.
    Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
    Harmon, and Richard E. Glor. "Under-parameterized model of sequence 
    evolution leads to bias in the estimation of diversification rates from 
    molecular phylogenies." Systematic Biology 54.6 (2005): 973-983) 
  * [ ] Discuss 'How does sequence length affect the error?' in Appendix.
- * [/] #56: Write script that shows the true and twin error for 
-  hundreds of trees with 10,
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/56: 
+   Write script that shows the true and twin error for 
+   hundreds of trees with 10,
    1k, 2k, ..., 10k nucleotides at 
    https://github.com/richelbilderbeek/pirouette_example_21
- * [R] Add a worked example that shows the error for alignments of
-       100, 1k, 2k, ..., 10k nucleotides. 
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/64:
+   Interpret and improve subsection 'The effect of DNA sequence length'
+   Add a worked example that shows the error for alignments of
+   100, 1k, 2k, ..., 10k nucleotides. 
 
 > * 2) Related to the topic above, a discussion of what might be the effect 
   of non-clock like models of DNA evolution on the measured error (in 
@@ -110,8 +119,10 @@ an increasing number of tips (section 'The effect of the number of taxa'), (2) a
 Agreed. We added this, also as a worked examples (section 'The effect of 
 non-clock like models')
 
- * [ ] Add nodeSub working example to text
  * [R] Add nodeSub worked example (pirouette_example_17)
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/65:
+   Interpret and improve subsection 'The effect of non-clock like models';
+   Add nodeSub working example to text
  
 > * 3) It might also be interesting to run an example of 
 >   a “non-standard” tree prior which we think might be empirically
@@ -132,7 +143,8 @@ non-clock like models')
 We agree. We rewrote the initial non-standard tree to resemble a 
 diversity-dependent tree, with a strong decrease in speciation rates.
 
- * [ ] Add use of simulated DD tree in code
+ * [G] https://github.com/richelbilderbeek/pirouette_article/issues/75:
+   Pick a DD tree for our main example
  * [ ] Add use of DD tree in text, with reference to Etienne and Haegeman, 2012
 
 > * 4) On lines 174-175, briefly explain what is the nLTT statistic.
@@ -151,7 +163,8 @@ We agree it looks clumsy and we wrote a script to pretty-print this figure.
 Note that this cumbersome placement of the scale is default behavior of the 
 package we use for plotting (`ape`), as is written in the manuscript.
 
- * [ ] Write script to generate figure 2 with a proper plot.
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/76:
+   Write script to generate figure 2 with a proper plot.
 
 ## Reviewer(s)' Comments to Author:
 
