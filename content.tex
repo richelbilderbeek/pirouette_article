@@ -265,7 +265,8 @@ in Bayesian inference.
     $\mathit{I}$ &
     Inference model &
     Phylogenetic inference model to run BEAST2. Likewise the generative model $G$, 
-    its main components are the tree prior $\mathit{p_{I}}$, the clock model $\mathit{c_{I}}$ and the site model $\mathit{s_{I}}$. \\
+    its main components are the tree prior $\mathit{p_{I}}$, 
+    the clock model $\mathit{c_{I}}$ and the site model $\mathit{s_{I}}$. \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ 
     is used in the inference. 
@@ -366,8 +367,7 @@ and a nucleotide substitution model.
 The root sequence is the DNA sequence of the shared common ancestor,
 and is set to four different equally-sized mononucleotide blocks by default, as this
 helps interpreting the resulting alignment.
-Supported nucleotide substitution model, which
-we will refer to as site models, 
+Supported nucleotide substitution model
 are JC, HKY, TN and GTR. Only the strict
 clock model is currently supported in this step.
 
@@ -458,7 +458,8 @@ of branching times $\Vec{t}_{\mathit{T}}$ for the twin tree
 $\tau_{\mathit{T}}$, under the process $p_{T}$, 
 while preserving the topology.
 
-The second step ($T_2$) of the twinning process simulates the twin alignment with the same clock model, site model and mutation rate 
+The second step ($T_2$) of the twinning process simulates the twin alignment 
+with the same clock model, site model and mutation rate 
 used to simulate the original alignment. 
 We also impose that, in the twin alignment, 
 the total number of mutations with respect to the root sequence 
@@ -648,9 +649,9 @@ given phylogeny, as described in Subsection~\ref{subsec:pipeline}.
 In this example, the root sequence consists of four blocks of 250 
 mononucleotides each, while the per-nucleotide mutation rate is 
 0.1 mutations per unit time.
-We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) site model
+We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) nucleotide substitution model
 and a strict clock model as these are the simplest.
-A JC site model assumes that mutation rates between nucleotides are equal and 
+A JC model assumes that mutation rates between nucleotides are equal and 
 constant. 
 A strict clock model assumes that the mutation rates 
 of all lineages are equal and constant.
@@ -701,7 +702,7 @@ We specify in $\mathit{C}$ that the experiment will always be run.
   \end{tabular}
   \caption{
     Inference conditions and model.
-    JC: Jukes-Cantor site model.
+    JC: Jukes-Cantor nucleotide substitution model.
     strict: strict clock model.
     Yule: Yule (pure-birth) tree prior.
   }
@@ -876,11 +877,11 @@ when using the best inference model, in comparison to a hand-picked model?
   \end{tabular}
   \caption{
     Inference conditions and model.
-    JC: Jukes-Cantor site model.
+    JC: Jukes-Cantor nucleotide substitution model.
     strict: strict clock model.
     Yule: Yule (pure-birth) tree prior.
     BD: birth-death tree prior.
-    GTR: GTR site model.
+    GTR: GTR nucleotide substitution model.
     RLN: relaxed log-normal clock model.
     CBS: coalescent Bayesian Skyline tree prior.
     CCP: coalescent constant-population tree prior.
@@ -901,7 +902,7 @@ As model selection is commonly performed on the full list of available
 candidate models, \verb;pirouette; has a dedicated function 
 for this choice: \verb;create_all_experiments; creates a full set 
 of 40 experiments, 
-containing the inference models of all combinations of 4 site models, 
+containing the inference models of all combinations of 4 nucleotide substitution model, 
 2 clock models and 5 tree priors. All we need to add is to exclude the 
 inference model in the generative experiment:
 
