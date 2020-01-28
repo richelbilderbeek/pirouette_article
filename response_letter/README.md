@@ -246,9 +246,9 @@ easily use it to show numerically that they differ.
 
 Your assumption is correct: the tree models used in the Bayesian inference 
 are all standard BEAST2 tree models. The phylogenies used in this manuscript
-are from the DDD [...] and ?TESS [...] R packages.
+are from the DDD (Etienne et al., 2011) and ?TESS [...] R packages.
  
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/81:
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/81:
    Add reference to DDD package here
  * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/82:
    Add reference to TESS package here
