@@ -588,8 +588,9 @@ This seems similar but it is subtly but importantly different.]
 > * 5. Table 1 why is order of abbreviation in legend different from the order 
 >   of rows in the table?
 
-We agree that we should have sorted the same way in both cases. 
-We changed this to sorting alphabetically 
+We agree. Now all the elements in the last column of table 1 are
+arranged alphabetically. The elements reported in the legend
+are presented in the same order.
 
  * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/83:
    Sort values in Table 1 alphabetically 
