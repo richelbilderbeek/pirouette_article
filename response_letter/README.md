@@ -85,7 +85,8 @@ Thanks, we have done so.
 We have discussed these points in a new section called 'Guidelines for empiricists', 
 in the supplementary information [RSE: I bet the editor wants to see 
 this in the main text.]. Also, we have added a worked example for (1) trees with
-an increasing number of tips (section 'The effect of the number of taxa'), (2) alignments of different sequence lengths (section 'The effect of DNA sequence length')
+an increasing number of tips (section 'The effect of the number of taxa'), 
+(2) alignments of different sequence lengths (section 'The effect of DNA sequence length')
 
  * [X] https://github.com/richelbilderbeek/pirouette_article/issues/55: 
    Write script that shows the true and twin error for 
@@ -140,13 +141,15 @@ non-clock like models')
 >   effective.
 
 We agree. We rewrote the initial non-standard tree to resemble a 
-diversity-dependent tree, with a strong decrease in speciation rates.
+diversity-dependent tree (from Etienne et al., 2011), 
+with a strong decrease in speciation rates, using the DDD package (as 
+introducted in Etienne et al., 2011).
 
  * [G] https://github.com/richelbilderbeek/pirouette_article/issues/75:
    Pick a DD tree for our main example
  * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/78:
    Use nice DD tree in main text's example code
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/79:
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/79:
    Describe DD in text, with reference to Etienne and Haegeman, 2012
 
 > * 4) On lines 174-175, briefly explain what is the nLTT statistic.
