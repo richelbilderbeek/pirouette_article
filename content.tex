@@ -178,15 +178,15 @@ in Bayesian inference.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;tree_prior; &
     Macroevolutionary diversification model &
-    Yule, BD, CBS, CCP, CEP \\
+    BD, CBS, CCP, CEP, Yule \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;clock_model; &
     Clock for the DNA mutation rates &
-    strict, RLN \\
+    RLN, strict \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;site_model; &
     Nucleotide substitution model &
-    JC, HKY, TN93, GTR \\
+    GTR, HKY, JC, TN93 \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;mutation_rate; &
     Pace at which mutation occurs &
@@ -220,17 +220,17 @@ in Bayesian inference.
   \end{tabular}
   \caption{
     Most important parameter options.
-    Yule = pure birth model (\cite{yule})
     BD = birth death (\cite{nee1994reconstructed}), 
     CBS = coalescent Bayesian skyline (\cite{drummond2005bayesian}), 
     CCP = coalescent constant-population, 
     CEP = coalescent exponential-population,
-    strict = strict clock model (\cite{zuckerkandl1965molecules}),
+    Yule = pure birth model (\cite{yule}),
     RLN = relaxed log-normal clock model (\cite{drummond2006relaxed}),
-    JC = Jukes and Cantor (\cite{jukes1969evolution}), 
+    strict = strict clock model (\cite{zuckerkandl1965molecules}), 
+    GTR = Generalized time-reversible model (\cite{tavare1986some}), 
     HKY = Hasegawa, Kishino and Yano (\cite{hasegawa1985dating}), 
-    TN93 = Tamura and Nei (\cite{tamura1993estimation}), 
-    GTR = Generalized time-reversible model (\cite{tavare1986some}).
+    JC = Jukes and Cantor (\cite{jukes1969evolution}), 
+    TN93 = Tamura and Nei (\cite{tamura1993estimation}).
   }
   \label{tab:options}
 \bigskip
