@@ -413,9 +413,10 @@ From the remaining posterior \verb;pirouette;
 creates an error distribution, by measuring the difference
 between the true tree and each of the posterior 
 trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
-The default way to quantify the difference between two phylogenies
-is the nLTT statistic (\cite{janzen2015approximate}), but any 
-user-defined error statistic can be used.
+The user can specify a function to quantify the differences between
+the true and posterior trees. By default, the package uses the nLTT 
+statistic (\cite{janzen2015approximate}), which is the absolute difference
+between the normalized lineages-through-time plots of two trees.
 
 \subsection{Twinning}\label{subsec:twinning}
 
