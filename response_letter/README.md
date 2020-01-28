@@ -246,11 +246,15 @@ easily use it to show numerically that they differ.
 
 Your assumption is correct: the tree models used in the Bayesian inference 
 are all standard BEAST2 tree models. The phylogenies used in this manuscript
-are from the DDD (Etienne et al., 2011) and ?TESS [...] R packages.
+are from the DDD (Etienne et al., 2011) and TESS [Höhna et al., 2016b] R packages.
+We reported in the manuscript that the TESS package is used to simulate
+twin trees. The DDD package, instead, is used to show the impact on trees produced
+by a non-standard tree prior.
+
  
  * [X] https://github.com/richelbilderbeek/pirouette_article/issues/81:
    Add reference to DDD package here
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/82:
+ * [X] https://github.com/richelbilderbeek/pirouette_article/issues/82:
    Add reference to TESS package here
 
 > * 2. Tree models are often used as priors in phylogenetic analyses whose main 
