@@ -1,9 +1,13 @@
 # Plot tree in article nicely
-#
-#
 # From https://github.com/richelbilderbeek/pirouette_article/issues/76
+#
+# Usage:
+#
+#   Rscript scripts/create_figure_2.R
 
-phylogeny <- ape::read.tree(text = 
+filename <-
+
+phylogeny <- ape::read.tree(text =
 "(((t5:1.476758646,(t6:0.6204090342,t1:0.6204090342):0.8563496113):5.035377242,(t4:1.817321178,t3:1.817321178):4.69481471):3.487864113,t2:10);
 "
 )
