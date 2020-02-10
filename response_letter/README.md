@@ -280,52 +280,6 @@ We have added a paragraph to express this more explicitly.
  * [ ] Add paragraph that states that a tree prior that produces big errors,
    may still be favored. Also recommend adding that tree prior to BEAST2
    exactly due to that.
-       
-GL: We might also add that sometimes it's possible to write simulation codes for
-specific kind of diversification processes (e.g. all the new simulations that
-are currently under development in the DAISIE framework, like including
-island ontogeny (pedro and josh) or traits (shu) or many many others) whereas it
-is not possible to provide an equivalent likelihood for the process.
-As a matter of fact there are many more models that could be simulated than
-the ones for which a likelihood could be defined.
-In those case one could desire to assess the error made by inferring with the best
-available likelihood (aka tree prior), even though it is clearly not the
-one perfectly tailored on the problem (as it is actually not available).
-This could actually turn to be quite usefull for all those cases, hopefully.
-
-RJCB: Agreed, but unsure if this is the reviewer's point
-
-GL: Mmm, even though what I wrote could be of some utility
-in favor of pirouette's capabilities, I think you are
-right that this is not the reviewer's point.
-So I'll try again. 
-
-[GL: AFAICS they're talking about the fact
-that you might be interested in estimating some parameters from
-an alignment. This can be done using BEAST2 exploiting its
-function to estimate parameter posteriors along with tree
-posteriors. My doubt is: many times I've seen people
-(Rampal in primis: e.g. DDD, DAISIE, PBD articles)
-estimating parameters with some likelihood models
-starting directly from a tree. Phylogenies do not exist
-in nature, therefore such trees have to come from
-some BEAST inference obtained using some tree prior, probably
-a birth-death prior. So, if you can clearly do it also in
-this way, why would people desire to start from alignment
-(which will require to implement the tree prior in beast)
-to estimate parameters? I am a bit puzzled.
-
-RJCB: I think the reviewer's point is, that even if pirouette gives a big
-difference between twin and true error distribution, one may still choose
-to use the model that generated the true tree. I agree with the reviewer.
-Regarding your point 'if you can clearly do it also [by using trees], 
-why would people desire to start from alignment [...] to estimate parameters?',
-I agree: a tree is a cleaner type of data then an alignment. I just don't think
-this is the point the reviewer makes here.
-
-[RSE: I agree with Richel that the reviewer just argues that we may want to 
-implement a non-standard tree prior to know more about biologically 
-meaningful parameter estimates. The reviewer just asks us to acknowledge this.]
 
 > * 3. Let us say we run pirouette and observe something similar to Fig. 6. 
 >   There is clearly an increase in tree inference error, but how much 
