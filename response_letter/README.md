@@ -329,23 +329,14 @@ was not discussed. We have added a discussion on this.
 
 Yes, indeed, a simulation routine is needed to provide pirouette with the right 
 input (i.e. a sufficient number of trees simulated under the same rules). 
-However, even though simulation algorithms and
-likelihood formulas often share the same engines, their respective implementations
-might entail very different degrees of efforts.
-
-[RSE: Don’t use examples that have not been published. I think the reviewer 
-wants the paper Freyman & Hoehna to be cited. I think we can cite it to say: 
-Although there are sometimes ways to perform inference based on the simulation 
-algorithm (e.g. Freyman & Hoehna 2018), inference in general and computing 
-tree priors in particular are computationally demanding if not impossible.]
+We agree that although there are sometimes ways to perform inference based 
+on the simulation algorithm (e.g. Freyman & Hoehna 2018), inference in general and computing 
+tree priors in particular are computationally demanding if not impossible.
 
 In this sense, pirouette
 proves to be a useful tool in providing numerical evidence for the sufficiency
 of the sole simulation algorithm whereas a likelihood is actually not available
 (i.e. in case true and twin distributions are similar enough).
-
-
- * [ ] Read Freyman & Hohna 2018 just to be sure, the reconsider this answer
 
 > * 5. One thing that got me confused. In the last section, listing 13 sets 
 >   the “twin_model” to “birth_death”, but then in both top and bottom panels 
