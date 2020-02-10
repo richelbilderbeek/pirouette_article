@@ -299,6 +299,14 @@ We have added a paragraph to express this more explicitly.
 
 We agree that the interpretation of the error distributions 
 was not discussed. We have added a discussion on this.
+[RJCB: Do so in RSE fashion: 
+> RSE: ... Testing for significance is not relevant, when we can simply increase the sample size. We are 
+> interested in the effect size. But ultimately it is up to the user whether he 
+> or she is alarmed by a difference in errors. When the ratio of these errors 
+> is 1.1, I would not be alarmed, but when it is 2, then I start to get worried. 
+>At the same time, you could argue that only the absolute error matters: the 
+> deviation from the true tree.
+]
 
 [RJCB: Unsure if we keep them in, just briefly explore for now]
 
@@ -309,24 +317,6 @@ was not discussed. We have added a discussion on this.
        'confidence regions' in the tree (Billera et al. 2001)' and the ones 
        Thijs Janzen added to nodeSub
 
-[RSE: I don’t think doing these statistics will help. Testing for significance 
-is not relevant, when we can simply increase the sample size. We are 
-interested in the effect size. But ultimately it is up to the user whether he 
-or she is alarmed by a difference in errors. When the ratio of these errors 
-is 1.1, I would not be alarmed, but when it is 2, then I start to get worried. 
-At the same time, you could argue that only the absolute error matters: the 
-deviation from the true tree. I think that adding a discussion paragraph along 
-these lines may be sufficient.]
-
-GL: [Josh] wanted to apply [a method from Kumar & Hunter]
-to measure tree discrepancies (like nLTT, but a bit more sophisticated,
-taken from "Lewitus & Morlon (2016): Characterizing and Comparing Phylogenies
-from their Laplacian Spectrum").
-
-RJCB: I think you are suggestion a new error statistic here, which
-I think is fun and even already may be in the nodeSub package. 
-I think this is something different, however, than the point of
-the reviewer, which is about the interpretation of the error distributions.
 
 > * 4. Please correct me if I am wrong, but to run pirouette, I must have a 
 >   working simulator of my new model. Is this not a quarter or a third of 
