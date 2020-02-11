@@ -45,6 +45,15 @@ horizontally) is done manually.
     effect when doing an inference with an under-parameterization
   }
   \item{
+    subsection \ref{subsec:different_n_mutations} shows the
+    effect when the twin alignment is allowed to have a different
+    number of mutations
+  }
+  \item{
+    subsection \ref{subsec:mutation_rate} shows the
+    effect of different mutation rates
+  }
+  \item{
     subsection \ref{subsec:better_label_needed} shows 
     \richel{better description needed}
   }
@@ -391,12 +400,20 @@ The code used in this part of the article can be found at
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The effect of equal or equalized mutation rate in the twin alignment}
+\label{subsec:different_n_mutations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_30/example_30_314/errors.png}
-  \caption{Equal number of mutations}
-\end{figure}
+\richel{Issue at \url{https://github.com/richelbilderbeek/pirouette_article/issues/69}}
+  
+The main example uses a twin alignment that has the same number
+of mutations (as measured from the ancestral sequence) as the true alignment.
+
+Here, we show the same results, with the difference that
+the twin alignment uses the same mutation rate, yet is not guaranteed
+to have the same number of mutations.
+
+The code used in this part of the article can be found at 
+\url{https://github.com/richelbilderbeek/pirouette_example_18}.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_18/example_18_314/errors.png}
@@ -405,7 +422,26 @@ The code used in this part of the article can be found at
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The effect of mutation rate}
+\label{subsec:mutation_rate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\richel{Issue at \url{https://github.com/richelbilderbeek/pirouette_article/issues/70}}
+
+The main example uses a mutation rate such that all nucleotides,
+on average, mutate once over the history going from the
+ancestral sequence at the crown to the alignments at the tips.
+In this way, the alignment is expected to contain the maximum
+amount of information.
+
+Here, we show the same results, with the only difference that
+the mutations rates are changed.
+For a lower mutation rate, less mutations will be observed, thus
+genetic information will be less, thus the inference is expected
+to go worse, thus the errors are expected to increase.
+For a lower mutation rate, more double-mutations will occur,
+scrambling the alignments, resulting in less genetic information, 
+thus the inference is expected to go worse, 
+thus the errors are expected to increase.
 
 The code used in this part of the article can be found at 
 \url{https://github.com/richelbilderbeek/pirouette_example_24}.
