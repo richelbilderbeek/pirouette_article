@@ -88,28 +88,12 @@ this in the main text.]. Also, we have added a worked example for (1) trees with
 an increasing number of tips (section 'The effect of the number of taxa'), 
 (2) alignments of different sequence lengths (section 'The effect of DNA sequence length')
 
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/55: 
-   Write script that shows the true and twin error for 
-   a fixed tree prior and reasonably small trees
-   (say in the magnitudes of hundreds of them)
-   with 10:40 taxa at https://github.com/richelbilderbeek/pirouette_example_20
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/63:
-   Interpret and improve subsection 'The effect of the number of taxa';
-   Add a worked example that shows the error for 10,20, ..., 100/?1000 tips
- * [R] https://github.com/richelbilderbeek/pirouette_article/issues/77:
+ * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/77:
    Add literature to section 'Does error scale with tree size?' in Appendix.
    Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
    Harmon, and Richard E. Glor. "Under-parameterized model of sequence 
    evolution leads to bias in the estimation of diversification rates from 
    molecular phylogenies." Systematic Biology 54.6 (2005): 973-983) 
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/56: 
-   Write script that shows the true and twin error for 
-   hundreds of trees with 10, 1k, 2k, ..., 10k nucleotides at 
-   https://github.com/richelbilderbeek/pirouette_example_21
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/64:
-   Interpret and improve subsection 'The effect of DNA sequence length'
-   Add a worked example that shows the error for alignments of
-   100, 1k, 2k, ..., 10k nucleotides. 
 
 > * 2) Related to the topic above, a discussion of what might be the effect 
   of non-clock like models of DNA evolution on the measured error (in 
@@ -118,11 +102,6 @@ an increasing number of tips (section 'The effect of the number of taxa'),
 
 Agreed. We added this, also as a worked examples (section 'The effect of 
 non-clock like models')
-
- * [X] Add nodeSub worked example (pirouette_example_17)
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/65:
-   Interpret and improve subsection 'The effect of non-clock like models';
-   Add nodeSub working example to text
  
 > * 3) It might also be interesting to run an example of 
 >   a “non-standard” tree prior which we think might be empirically
@@ -145,32 +124,21 @@ diversity-dependent tree (from Etienne et al., 2011),
 with a strong decrease in speciation rates, using the DDD package (as 
 introducted in Etienne et al., 2011).
 
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/75:
-   Pick a DD tree for our main example
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/78:
-   Use nice DD tree in main text's example code
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/79:
-   Describe DD in text, with reference to Etienne and Haegeman, 2012
-
 > * 4) On lines 174-175, briefly explain what is the nLTT statistic.
 
 We have done so.
-
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/80:
-   Describe nLTT statistic in main text, with reference to Janzen & Hoehna, ?2016
 
 > * 5) Figure 5: the default plot setting results on the scale being plotted 
 >   over the lower branch. This should be changed, or at least the figure 
 >   should be fixed to help the reader. In fact in figure 2 this overlap 
 >   did not happen...
 
+[RJCB: new figure, so maybe no clumsy picture]
+
 We agree it looks clumsy and we wrote a script to pretty-print this figure.
 
 Note that this cumbersome placement of the scale is default behavior of the 
 package we use for plotting (`ape`), as is written in the manuscript.
-
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/76:
-   Write script to generate figure 2 with a proper plot.
 
 ## Reviewer(s)' Comments to Author:
 
@@ -199,44 +167,29 @@ package we use for plotting (`ape`), as is written in the manuscript.
 > usefulness of the pirouette tool. Here are some points in which this 
 > study and its discussion could be improved.
 
-Thanks for these comments. We have added a worked example demonstrating the 
-usefulness of pirouette (section 'The effect of assuming a Yule tree prior on 
-a BD tree') [RSE: Add the text that you add to the ms also here in 
-the response letter. Do this for all additions (unless really minor)].
+Thanks for these comments. 
 
- * [ ] Add Gio's text to the manuscript
- * [X] https://github.com/richelbilderbeek/pirouette_example_26:
-   Add script that shows the true and twin error for a BD tree when 
-   assuming a Yule tree prior.
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/67:
-   Interpret and improve subsection 'The effect of assuming a Yule tree prior 
-   on a BD tree'
+To address this, we've changed the main example's tree 
+to be a tree generated by the DD tree model (Etienne & Haegeman, 2012). 
 
-GL: The easiest way to address this criticism (and point 3 from previous list) 
-is to add in the appendix a clear example with two different runs:
-in the first one we use a generative model 
-that's close to the candidates (e.g. yule); in the second one we use something
-very different (DDD, as mentioned before is a good idea, but also PBD, MBD, 
--SSE etc could be used, in principle). The aim is to maximize the
-divergence in outputs in order to prove our point, which should be
-something like this:
-"If the characteristics of the generating process can be grasped by the
-current standard available tree prior the development of a new BEAST2 tree
+If the characteristics of the generating process can be grasped by the
+current standard available tree prior, the development of a new BEAST2 tree
 prior is not required. If, on the contrary, pirouette returns a significantly
 different pair of true-twin distributions, it means that a new tree prior
-needs to be implemented. We show this with the following/previous worked example."
-[...] If we implement a metric, say Jensen-Shannon divergence, we can
-easily use it to show numerically that they differ.
+needs to be implemented.
 
- * [ ] Prove our point
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/57: 
-   Write script that shows the true and twin error for Yule
-   tree and Yule tree prior at 
-   https://github.com/richelbilderbeek/pirouette_example_22
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/66:
-   Add worked example with standard tree model and correct tree 
-   prior (Yule tree and Yule tree prior), section 'The effect of assuming 
-   a Yule tree prior on a Yule tree'
+Now, the main example shows that current standard tree priors 
+are mediocre in recovering the DD tree, making the case for adding a DD tree
+prior to one's favorite phylogenetic tool.
+
+Additionally, we have added another example to demonstrate the 
+usefulness of pirouette, by making it shown an 
+underparameterization (similar to Sarver et al., 2019, 'The choice of tree 
+prior and molecular clock does not substantially affect phylogenetic 
+inferences of diversification rates');
+that is, we simulated a tree using a BD model, yet assumed the simpler
+Yule model. Results are in section 'The effect of assuming a Yule tree prior on 
+a BD tree'.
 
 > * 1. As an initial remark, I imagine the models pirouette support have all 
 >      been implemented in tested in other packages like geiger, ape, etc.? 
@@ -250,12 +203,6 @@ are from the DDD (Etienne et al., 2011) and TESS [Höhna et al., 2016b] R packag
 We reported in the manuscript that the TESS package is used to simulate
 twin trees. The DDD package, instead, is used to show the impact on trees produced
 by a non-standard tree prior.
-
- 
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/81:
-   Add reference to DDD package here
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/82:
-   Add reference to TESS package here
 
 > * 2. Tree models are often used as priors in phylogenetic analyses whose main 
 >      goal is to infer species tree topologies and divergence times. However, 
@@ -307,16 +254,6 @@ was not discussed. We have added a discussion on this.
 >At the same time, you could argue that only the absolute error matters: the 
 > deviation from the true tree.
 ]
-
-[RJCB: Unsure if we keep them in, just briefly explore for now]
-
- * [ ] Mention Jensen-Shannon divergence implementation in RPANDA
- * [ ] Mention other error statistics: Robinson-Foulds distance (Robinson and 
-       Foulds 1981), nearest neighbor interchange (Moore et al. 1973),
-       'define polytopic contours around a reconstructed tree in order to define 
-       'confidence regions' in the tree (Billera et al. 2001)' and the ones 
-       Thijs Janzen added to nodeSub
-
 
 > * 4. Please correct me if I am wrong, but to run pirouette, I must have a 
 >   working simulator of my new model. Is this not a quarter or a third of 
@@ -381,18 +318,6 @@ with low, medium and high likelihood (section 'The effect of differently
 common diversity-dependent trees'). [RSE: Provide the frequency distribution 
 of the likelihoods of all the trees that you have generated from which you 
 picked the three trees. You can indicate these trees in the plot.]
-
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/58: 
-   Write script that shows the true and twin errors for DD
-   trees of different likelihoods, using a BD tree prior,
-   https://github.com/richelbilderbeek/pirouette_example_23
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/68:
-   Interpret and improve subsection 'The effect of differently 
-   common diversity-dependent trees'; add `pirouette` results for DD trees 
-   with low, medium and high likelihood
- * [ ] Describe this in text
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/60: 
-   Add `pir_runs` function that works on a distribution/list of trees
 
 ### Reviewer: 2
 
@@ -531,9 +456,6 @@ We agree. Now all the elements in the last column of table 1 are
 arranged alphabetically. The elements reported in the legend
 are presented in the same order.
 
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/83:
-   Sort values in Table 1 alphabetically 
-
 > * 6. Figure 1 "The twin alignment has the same number of mutations as the 
 >   original alignment." and line 188ff: why keep the number of mutations 
 >   constant? With the same root height and same mutation rate, there should 
@@ -541,28 +463,13 @@ are presented in the same order.
 >   like this could cause unexpected biases, e.g., reduce the variance in the 
 >   error measure for the twin tree analysis.
 
-We agree on the point made by the reviewer. We have simplified the setup
-accordingly.
-
-RJCB: I suggest to follow the reviewer's idea and use the simpler version.
-I've already added an example, 
-https://github.com/richelbilderbeek/pirouette_example_18
-that simulates a twin alignment with the same mutation rate
-(as requested by the reviewer). It can be contrasted with
-the orignal setting that uses a twin alignment with the same number
-of mutations (and described in the Appendix),
-https://github.com/richelbilderbeek/pirouette_example_3
-
-RJCB: Else, the reply would be 'However, we made this choice to keep
-the number of mutations constant in order to ensure that the amount
-of genetic information of true and twin tree is identical. We did so
-because we want to ensure that the comparison between true and twin
-pipeline is as fair as possible.'
-
- * [ ] Simplify the setup, as the reviewer requested
- * [ ] Describe the consequence of this choice in Appendix, comparing
-       pirouette example 3 and 18, section 'The effect of equal or 
-       equalized mutation rate in the twin alignment'
+We agree with these concerns. 
+To investigate if these concerns are warranted, 
+we've added 'The effect of equal or equalized mutation rate
+in the twin alignment'.
+From the results presented in this section,
+we can conclude that either approach results in very similar
+error distributions.
 
 > * 7. line 142 "nucleotide substitution model, which we will refer to as site 
 >   models".
