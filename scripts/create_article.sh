@@ -4,7 +4,7 @@
 #
 # Usage:
 #
-#   ./scripts/create_article
+#   ./scripts/create_article.sh
 #
 #
 

@@ -12,16 +12,28 @@ Article about pirouette, by Bilderbeek, Laudanno and Etienne
 
 ## FAQ
 
-### How do you build the PDF?
+### How do you build the PDF for the article?
 
 ```
-./scripts/create_article
+./scripts/create_article.sh
 ```
 
 Because Overleaf removes the file permissions, add the right to execute with:
 
 ```
-chmod +x scripts/create_article
+chmod +x scripts/create_article.sh
+```
+
+### How do you build the PDF for the response letter?
+
+```
+./scripts/create_response_letter.sh
+```
+
+Because Overleaf removes the file permissions, add the right to execute with:
+
+```
+chmod +x scripts/create_response_letter.sh
 ```
 
 ### How do you get the figures?
