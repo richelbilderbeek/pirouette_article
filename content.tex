@@ -6,17 +6,24 @@
     Bayesian tools, such as MrBayes, RevBayes and BEAST2, 
     have gained much popularity over the last decade, 
     as they allow joint estimation of the posterior distribution of the 
-    phylogenetic tree and the parameters of the underlying inference model.  
+    phylogenetic trees and the parameters of the underlying inference model.  
     An important ingredient of these Bayesian approaches is the species tree 
-    prior. While in principle the Bayesian framework allows for comparing 
+    prior.
+    \iffalse 
+    While in principle the Bayesian framework allows for comparing 
     different species tree priors and hence may elucidate the macroevolutionary 
     processes underlying the species tree, in practice only 
     macroevolutionary models that allow for fast computation of the prior 
     probability are used. 
-    An open question is, how accurate the tree estimation is
-    when the real macroevolutionary processes are substantially different 
-    from those assumed in the tree prior. \\
-  \textbf{2. }
+    \fi
+    In principle the Bayesian framework allows for comparing different tree priors, which may elucidate the macroevolutionary processes underlying the species tree.
+    In practice, however, only macroevolutionary models that allow for fast computation of the prior 
+    probability are used.
+    \iffalse
+    An open question is, how accurate the tree estimation is when the real macroevolutionary processes are substantially different from those assumed in the tree prior. \\
+    \fi
+    It is still unclear how accurate is the tree estimation when the real \giovanni{People will ask what we mean with "real".} macroevolutionary processes are substantially different from those assumed in the tree prior. \\
+    \textbf{2. }
     Here we present \verb;pirouette;, 
     a free, libre and open-source R package that assesses 
     the inference error made by Bayesian phylogenetics for a given 
@@ -40,11 +47,10 @@
 The development of new powerful Bayesian phylogenetic inference tools, 
 such as BEAST [\cite{drummond2007beast}], 
 MrBayes [\cite{huelsenbeck2001mrbayes}]
-or RevBayes [\cite{hohna2016revbayes}], 
+or RevBayes [\cite{hohna2016revbayes}] 
 has been a major advance in constructing phylogenetic trees 
 from character data (usually nucleotide sequences) extracted 
-from extant (but also extinct) organisms, 
-and hence in our understanding of the main drivers 
+from extant (but also extinct, where possible) organisms, and hence in our understanding of the main drivers 
 and modes of diversification.
 
 BEAST [\cite{drummond2007beast}] is a typical Bayesian phylogenetics tool, 
@@ -54,19 +60,17 @@ Specifically, for the species tree prior - which describes
 the process of diversification - 
 BEAST has built-in priors such as the Yule [\cite{yule}] and 
 (constant-rate) birth-death [\cite{nee1994reconstructed}] models.
-These simple tree priors are most commonly used, as these 
-have sufficient biological complexity, while being computationally fast.
+These simple tree priors are the most commonly used, as they have sufficient biological complexity, while being computationally fast.
 BEAST's successor, BEAST2 [\cite{bouckaert2019beast}],
 has a package manager, that allows third-party users 
-to extend existing functionalities. For example, 
-one can add novel diversification models by writing a BEAST2 package 
-that contains the likelihood formula of a phylogeny 
-under the novel diversification model, 
-i.e. the prior probability of a species tree.
-\richel{break up next sentence}
-Many such diversification models (and their associated probability algorithms) 
-have been developed, e.g., models in which diversification is 
-time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
+to extend existing functionalities.
+\iffalse
+For example, one can add novel diversification models by writing a BEAST2 package that contains the likelihood formula of a phylogeny under the novel diversification model, i.e. the prior probability of a species tree.
+\fi
+For example, one can add a novel diversification model by implementing a BEAST2 package featuring a novel likelihood formula to assign a prior probability to the species tree, given model's macroevolutionary parameters.
+\richel{break up next sentence}\giovanni{did it}
+\iffalse
+Many diversification models (and their associated probability algorithms) have been developed, e.g., models in which diversification is time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
 or diversity-dependent [\cite{etienne2011diversity}],
 or where diversification rates change for specific lineages 
 and their descendants [\cite{etienne2012conceptual}, 
@@ -79,18 +83,29 @@ depends on a trait that has two [\cite{maddison2007estimating}],
 or more [\cite{fitzjohn2012diversitree}] states,
 even concealed states [\cite{beaulieu2016detecting}] 
 or a combination of all these [\cite{herrera2018detecting}].
-Only a few of these diversification models are available as a BEAST2 package.
+\fi
+Many diversification models (and their associated probability algorithms) have been developed to account for possible mechanisms.
+There are models in which diversification rates are time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
+or diversity-dependent [\cite{etienne2011diversity}],
+or not homogeneous across the entire phylogeny [\cite{etienne2012conceptual}, 
+\cite{rabosky2014automatic}, \cite{alfaro2009nine}, 
+\cite{laudanno2018sls}], models that treat speciation as a process that takes time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}][\cite{lambert2015reconstructed}], 
+or as a burst of simultaneous branching
+events [\cite{laudanno2018mbd}].
+Others account for trait-dependent regimes, in several ways: where diversification rates
+depend on a trait that has two [\cite{maddison2007estimating}], 
+or more [\cite{fitzjohn2012diversitree}] states,
+even concealed states [\cite{beaulieu2016detecting}] 
+or a combination of all these [\cite{herrera2018detecting}].
+Despite such a rich theoretical landscape, only a few of these diversification models are available as a BEAST2 package.
 
 When a novel diversification model is introduced,
 its performance in inference should be tested.
-Part of a model's performance is its ability to recover parameters 
-from simulated data with known 
+Part of a model's performance is its ability to recover parameters from simulated data with known 
 parameters (e.g. [\cite{etienne2014estimating}]), 
-where ideally the estimated parameter values closely match 
-the known/true values.
+where ideally the estimated parameter values closely match the known/true values.
 
-Even when a diversification model passes the procedure described above,
-it is not necessarily used in Bayesian inference.
+Even when a diversification model passes the procedure described above, it is not necessarily used in Bayesian inference.
 Bayesian phylogenetic inference often requires 
 that the prior probability of the phylogeny 
 according to the diversification model has to be computed millions of times. 
@@ -98,34 +113,33 @@ Therefore, biologically interesting but computationally expensive tree priors
 are often not implemented, and simpler priors are used instead. 
 This is not necessarily problematic, when the data are very informative, 
 as this will reduce the influence of the tree prior.
-However, the assumption that tree prior choice is of low importance 
-must first be verified.
+However, the assumption that tree prior choice is of low importance must first be verified.
 
 There have been multiple attempts to investigate the importance of tree
 prior choice. For example, recently Sarver et al., [\cite{sarver2019choice}] 
 showed that the choice of tree prior does not 
 substantially affect phylogenetic inferences of diversification rates.
 Also recently, Duchene et al. [\cite{duchene2018phylodynamic}] released
-a BEAST2 package to assess how well posterior predictive simulations
-recover a given tree when using the standard diversification models.
-These studies show how current diversification models compare
-to one another, but they do not help to assess 
+a BEAST2 package to assess how well posterior predictive simulations recover a given tree when using the standard diversification models.
+These studies show how current diversification models compare to one another, but they do not help to assess 
 the importance of a new tree prior. 
 
 Here we introduce a method to quantify the importance of a novel tree prior.
 The method starts with a phylogeny generated 
 by the new model. 
-Next, nucleotide sequences are simulated on this phylogeny. 
-Then, using the tree priors built-in into BEAST2, 
+Next, nucleotide sequences are simulated on \giovanni{from?} this phylogeny. 
+Then,
+\iffalse
+using the tree priors built-in into BEAST2, 
+\fi
+using BEAST2's built-in tree priors,
 a Bayesian posterior distribution of phylogenies is inferred. 
-We then compare the inferred and simulated phylogenies. 
+We then compare the inferred and simulated \giovanni{original?} phylogenies. 
 How to properly perform this comparison forms the heart of our method.
 Only new diversification models that result 
-in a large discrepancy between inferred and simulated phylogenies 
-will be worth the effort and computational burden 
-to implement a species tree prior for in a Bayesian framework.
+in a large discrepancy between inferred and simulated phylogenies will be worth the effort and computational burden to implement a species tree prior for in a Bayesian framework.
 
-Our method is programmed as an R package called \verb;pirouette;.
+Our method is programmed as an R package (\cite{R}) called \verb;pirouette;.
 \verb;pirouette; is built on \verb;babette; [\cite{bilderbeek2018babette}], 
 which calls BEAST2 [\cite{bouckaert2019beast}]. 
 
@@ -133,7 +147,6 @@ which calls BEAST2 [\cite{bouckaert2019beast}].
 \section{Description}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\verb;pirouette; is written in the R programming language (\cite{R}).
 The goal of \verb;pirouette; is to quantify the importance of a tree prior.
 It does so by measuring the inference error made 
 for a given reconstructed phylogeny, 
@@ -142,8 +155,7 @@ We refer to the true model that generated the given tree
 as the 'generative tree model' $\mathit{p_{G}}$.
 Many tree priors have a parameter setting 
 for which they reduce to a standard tree prior. 
-For example, a protracted birth-death model \citep{etienne2012prolonging} 
-reduces to a standard birth-death model when the speciation-completion rate 
+For example, a protracted birth-death model [\cite{etienne2012prolonging}] reduces to a standard birth-death model when the speciation-completion rate 
 is infinite [i.e. rate $\lambda$ in \cite{etienne2014estimating}, 
 eqs.~(2b) and (2c)].
 When benchmarking a novel tree prior, 
@@ -153,18 +165,18 @@ to assess under which scenarios the inference error cannot be neglected.
 While we recommend many replicate simulations 
 when assessing a novel tree prior, 
 our examples contain only one replicate 
-as they are for illustrative purposes only.
+as they are for illustrative purposes only. \giovanni{Is this true also for the post-review state of the manuscript?}
 
 \verb;pirouette; is very flexible and allows the user 
 to specify a wide variety of custom settings. 
 These settings can be grouped in macro-sections, 
 according to how they operate in the pipeline. 
 We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
+\giovanni{Pirouette has become very complex. A user might feel lost. What if we build a function to help the user to build the pir-params he or she needs? Maybe we can even program it in such a way the function asks direct questions to the user. If you think this could be a good idea I candidate to write a first version of such function.}
 
 Although many possible tests can be performed, 
 we show the usage of \verb;pirouette; by introducing 
-its features gradually, yet ending in quantifying the impact a tree prior has
-in Bayesian inference.
+its features gradually \giovanni{Is this true in the new version of the manuscript?}, yet ending in quantifying the impact a tree prior has in Bayesian inference.
 
 \begin{sidewaystable}
 \centering
@@ -339,7 +351,33 @@ in Bayesian inference.
   \label{fig:pipeline}
 \end{figure}
 
-We assume the user has a phylogeny simulated with the new diversification model. 
+We assume the user has a phylogeny simulated with the new diversification model.
+
+\giovanni{long comment start}
+A nice thing to do would be to exploit the novel pir\_runs function to create a wrapper that could work directly from the diversification model simulation function.
+
+Something like this:
+\begin{lstlisting}
+sim_fun <- DDD::dd_sim
+sim_pars <- list(
+    pars1 = c(0.2, 0.1, 1.5, 0.1),
+    age = 8
+)
+pir_paramses <- pirouette::create_pir_paramses(
+    seeds = seeds,
+    ...
+)
+seeds <- 1:100
+pir_out <- pirouette::pir_run_from_sim_model(
+    sim_model = sim_fun,
+    sim_pars = sim_pars,
+    pir_paramses = pir_paramses,
+    seeds = seeds
+)
+\end{lstlisting}
+In case you deem this is a good idea I candidate to write this function. Then you can test it and see if it works in a satisfying way.
+\giovanni{long comment end}
+
 The pipeline to assess the error BEAST2 makes in inferring this phylogeny 
 then contains the following steps:
 \begin{enumerate}
@@ -365,17 +403,16 @@ phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a)
 using the DNA alignment parameters.
 The DNA alignment parameters consist of 
 a (DNA) root sequence, a (DNA) mutation rate, a clock model 
-and a nucleotide substitution model.
+and a nucleotide substitution model (which, for the sake of brevity, we will often refer to as "site model").
 The root sequence is the DNA sequence of the shared common ancestor,
 and is set to four different equally-sized mononucleotide blocks by default, as this
 helps interpreting the resulting alignment.
-Supported nucleotide substitution model
+Supported nucleotide substitution models
 are JC, HKY, TN and GTR. Only the strict
 clock model is currently supported in this step.
 
-The second step (Fig.~\ref{fig:pipeline}, 3)
-selects one or more inference models $I$ from a set of inference 
-models $I_{1},\dots,I_{n}$. 
+The second step (Fig.~\ref{fig:pipeline}, 3a)
+selects one (or more) inference model(s) $I$ from a set of inference models $I_{1},\dots,I_{n}$. 
 We define an experiment $X_{i}$ as the combination of 
 an inference model $I_{i}$ and the conditions $C_{i}$ 
 to actually use it in the inference step.
@@ -393,14 +430,14 @@ The 'best' model is defined as the inference model with
 the highest evidence (a.k.a. marginal likelihood), given the alignment 
 simulated in the previous step.
 The evidence for an inference model is estimated by nested 
-sampling [\cite{maturana2018model}], using the \verb;NS; BEAST2 package. 
+sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
 We note that scripted use of BEAST2 packages is only possible under Linux and Mac.
 Windows systems can do the model comparison for shorter DNA sequences 
 using the web interface of \verb;mcbette; [\cite{mcbette}].
 
 The third step infers the posterior distributions,
 using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 4a),
-and the inference models that were selected in the previous step (3). 
+and the inference models that were selected in the previous step (3a). 
 For each selected experiment a posterior distribution is inferred, using the 
 \verb;babette; [\cite{bilderbeek2018babette}] R package which makes use of BEAST2. 
 This step usually takes up most of the pipeline's computation time.
@@ -541,7 +578,7 @@ This can be done from within R, using:
 install_beast2()
 \end{lstlisting}
 For the option to select the best candidate model,
-\verb;pirouette; needs the "NS" BEAST2 package [\cite{maturana2018model}].
+\verb;pirouette; needs the "NS" BEAST2 package [\cite{russel2019model}].
 It can be installed from within R, using:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 install_beast2_pkg("NS")
