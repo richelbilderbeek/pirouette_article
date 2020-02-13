@@ -750,7 +750,7 @@ candidate models, \verb;pirouette; has a dedicated function
 for this choice: \verb;create_all_experiments; creates a full set 
 of 40 experiments, 
 containing the inference models of all combinations of 4 nucleotide substitution model, 
-2 clock models and 5 tree priors. All we need to add is to exclude the 
+2 clock models and 2 birth-death tree priors. All we need to add is to exclude the 
 inference model in the generative experiment:
 
 \begin{lstlisting}[
@@ -759,10 +759,11 @@ inference model in the generative experiment:
   frame = single, 
   label = {lst:create_all_experiments},
   caption = {
-    Create all 40 candidate experiments, except for the inference model of the generative model.
+    Create all 16 candidate experiments, 
+    except for the inference model of the generative model.
   }
 ]
-candidate_experiments <- create_all_experiments(
+candidate_experiments <- create_all_bd_experiments(
   exclude_model = generative_experiment$inference_model
 )
 \end{lstlisting}
