@@ -747,8 +747,8 @@ the generative model, as well as that we want all the other inference models
 to compete. We call the competing models 'candidate models'.
 As model selection is commonly performed on the full list of available 
 candidate models, \verb;pirouette; has a dedicated function 
-for this choice: \verb;create_all_experiments; creates a full set 
-of 40 experiments, 
+for this choice: \verb;create_all_bd_experiments; creates a full set 
+of 16 experiments, 
 containing the inference models of all combinations of 4 nucleotide substitution model, 
 2 clock models and 2 birth-death tree priors. All we need to add is to exclude the 
 inference model in the generative experiment:
@@ -778,7 +778,7 @@ experiments:
   label = {lst:combine_all_experiments},
   caption = {
     Create a collection of experiments, with 1
-    generative model, and 39 candidate models.
+    generative model, and 15 candidate models.
   }
 ]
 experiments <- c(
