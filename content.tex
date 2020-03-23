@@ -146,9 +146,10 @@ as the 'generative tree model' $\mathit{p_{G}}$.
 We define the birth-death (BD) model (\cite{nee1994reconstructed}) as
 the standard tree model, as many (non-standard) tree models 
 have a parameter setting for which they reduce to this model. 
-For example, a protracted birth-death (PBD) model [\cite{etienne2012prolonging}] 
-reduces to a BD model when the speciation-completion rate 
-is infinite [i.e. rate $\lambda$ in \cite{etienne2014estimating}, eqs.~(2b) and (2c)].
+One such example is the diversity-dependent (DD) tree model (\cite{DDD, etienne2011diversity}):
+the DD model is a BD model with a speciation rate that is dependent 
+on the number of species and a carrying capacity. For a carrying capacity
+of infinity, the DD model reduces to a BD model.
 When benchmarking a novel tree model, 
 one will typically construct phylogenies 
 for different combinations of the diversification model's parameters, 
@@ -516,18 +517,19 @@ of the new tree prior with respect to the baseline error.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We show the usage of \verb;pirouette; on an tree generated 
-by the non-standard diversity-dependent tree model \cite{DDD, etienne2011diversity},
-which is a birth-death model with a speciation rate that is dependent on the number of species. 
+by the non-standard diversity-dependent (DD) tree model \cite{DDD, etienne2011diversity},
+which is a BD model with a speciation rate that is dependent on the number of species. 
 
-We use a small tree with six taxa, to keep the figure more readable,
+We use the tree as shown in figure \ref{fig:dd_tree}.
+The with six taxa, to keep the figure more readable,
 with an arbitrary crown age of ten time units.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_30/example_30_314/true_tree.png}
   \caption{
-    The tree derived from a DD process, 
-    as created by listing~\ref{lst:create_dd_tree}.
+    The tree derived from a DD process.
   }
+  \label{fig:dd_tree}
 \end{figure}
 
 The first step in \verb;pirouette; is to 
