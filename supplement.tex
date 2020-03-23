@@ -16,6 +16,13 @@ horizontally) is done manually.
 
 \itemize{
   \item{
+    subsection \ref{subsec:installation}: installation
+  }
+  \item{
+    subsection \ref{subsec:main_functions}: \verb;pirouette;'s 
+    main functions
+  }
+  \item{
     subsection \ref{subsec:main_example}: extra figures and
     diagnostics regarding the main example.
   }
@@ -58,6 +65,80 @@ horizontally) is done manually.
     \richel{better description needed}
   }
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Installation}
+\label{subsec:installation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\verb;pirouette; will be made available on CRAN from which 
+it can then be easily installed:
+\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+install.packages("pirouette")
+\end{lstlisting}
+
+Until it is on CRAN, and for the most up-to-date version, 
+one can download and install the package from \verb;pirouette;'s GitHub 
+repository:
+
+\begin{lstlisting}[
+    language = R,
+    floatplacement = ht,
+    frame = single
+]
+remotes::install_github("richelbilderbeek/pirouette")
+\end{lstlisting}
+To start using \verb;pirouette;, 
+load its functions in the global namespace first:
+\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+library(pirouette)
+\end{lstlisting}
+Because \verb;pirouette; calls BEAST2, BEAST2 must be installed. 
+This can be done from within R, using:
+\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+install_beast2()
+\end{lstlisting}
+For the option to select the best candidate model,
+\verb;pirouette; needs the "NS" BEAST2 package [\cite{russel2019model}].
+It can be installed from within R, using:
+\begin{lstlisting}[language=R, floatplacement=ht, frame=single]
+install_beast2_pkg("NS")
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Main functions}
+\label{subsec:main_functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+An overview of \verb;pirouette;'s main functions is shown in 
+Table~\ref{tab:functions}. 
+All \verb;pirouette;'s functions are documented,
+have a useful example and sensible defaults.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h]
+  \centering
+  \begin{tabular}{ | l | l | l | }
+    \hline
+    \textbf{Name} & \textbf{Description} & \textbf{Listing} \\
+    \hline
+    \verb;pir_run; & Run \verb;pirouette; & \ref{lst:pir_run} \\
+    \verb;pir_plot; & Show the \verb;pirouette; results as a plot & \ref{lst:pir_plot} \\
+    \verb;create_pir_params; & Create the \verb;pirouette; parameters & \ref{lst:create_pir_params} \\
+    \hline
+    \verb;create_alignment_params; & Create the alignment parameters & \ref{lst:create_alignment_params} \\
+    \verb;create_twinning_params; & Create the twinning parameters & \ref{lst:create_twinning_params} \\
+    \verb;create_experiment; & Create one experiment & \ref{lst:create_gen_experiment_explicit} \\
+    \verb;create_error_measure_params; & Create the error measurement parameters & \ref{lst:create_error_measure_params} \\
+    \hline
+  \end{tabular}
+  \caption{
+    \texttt{pirouette}'s main functions, description and the number of the 
+    listing in which it is used. 
+  }
+  \label{tab:functions}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Main example}
