@@ -143,12 +143,13 @@ for a given reconstructed phylogeny,
 simulated under a (usually novel) diversification model.
 We refer to the true model that generated the given tree
 as the 'generative tree model' $\mathit{p_{G}}$.
-Many tree priors have a parameter setting 
-for which they reduce to a standard tree prior. 
-For example, a protracted birth-death model [\cite{etienne2012prolonging}] reduces to a standard birth-death model when the speciation-completion rate 
-is infinite [i.e. rate $\lambda$ in \cite{etienne2014estimating}, 
-eqs.~(2b) and (2c)].
-When benchmarking a novel tree prior, 
+We define the birth-death (BD) model (\cite{nee1994reconstructed}) as
+the standard tree model, as many (non-standard) tree models 
+have a parameter setting for which they reduce to this model. 
+For example, a protracted birth-death (PBD) model [\cite{etienne2012prolonging}] 
+reduces to a BD model when the speciation-completion rate 
+is infinite [i.e. rate $\lambda$ in \cite{etienne2014estimating}, eqs.~(2b) and (2c)].
+When benchmarking a novel tree model, 
 one will typically construct phylogenies 
 for different combinations of the diversification model's parameters, 
 to assess under which scenarios the inference error cannot be neglected. 
@@ -158,18 +159,12 @@ our examples contain only one replicate,
 as the goal is to show the workings of \verb;pirouette;,
 instead of doing an extensive analysis.
 The supplementary materials, however, do show the results
-of relicated runs under multiple settings.
+of replicated runs under multiple settings.
 
-\verb;pirouette; is very flexible and allows the user 
-to specify a wide variety of custom settings. 
+\verb;pirouette; allows the user to specify a wide variety of custom settings. 
 These settings can be grouped in macro-sections, 
 according to how they operate in the pipeline. 
 We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
-
-Although many possible tests can be performed, 
-we show the usage of \verb;pirouette; by 
-showcasing one single run in high detail,
-ending in quantifying the impact a tree prior has in Bayesian inference.
 
 \begin{sidewaystable}
 \centering
@@ -328,7 +323,8 @@ ending in quantifying the impact a tree prior has in Bayesian inference.
     A twin phylogeny (1b) can be generated from the original 
     phylogeny (1a) using the twin tree model $\mathit{p_{t}}$, 
     selected among standard diversification models; 
-    the default option is the standard birth-death model, with parameters estimated from the original phylogeny.
+    the default option is the standard BD model, 
+    with parameters estimated from the original phylogeny.
     A twin alignment (2b) is then simulated from the twin phylogeny 
     using clock model $\mathit{c_{G}}$ and site model $\mathit{s_{G}}$ 
     imported from the generative model. 
@@ -339,11 +335,11 @@ ending in quantifying the impact a tree prior has in Bayesian inference.
   \label{fig:pipeline}
 \end{figure}
 
-We assume the user has a phylogeny simulated with the new diversification model.
-
 The pipeline to assess the error BEAST2 makes in inferring this phylogeny 
 then contains the following steps:
 \begin{enumerate}
+  \item the user supplies one or (ideally) more phylogenies from a 
+    new diversification model
   \item from the given phylogeny an alignment is simulated 
     under a known alignment model $\mathit{A}$;
   \item from this alignment, according to the specified 
@@ -356,23 +352,28 @@ then contains the following steps:
     to estimate the error made, according to 
     the error measure $\mathit{E}$ specified by the user;
 \end{enumerate}
+
 The pipeline is visualized in Fig.~\ref{fig:pipeline}. 
 There is also the option to generate a 'twin tree', 
 that goes through the same pipeline. 
 The utility of this twin tree will be explained below.
 
-The first step simulates a DNA alignment from a given 
-phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a)
-using the DNA alignment parameters.
-The DNA alignment parameters consist of 
-a (DNA) root sequence, a (DNA) mutation rate, a clock model 
-and a (DNA) site model.
+The first step simulates an alignment from the given 
+phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a).
+For the sake of clarity, here we will assume the alignment consists out
+of DNA sequences, but other heritable material such as amino acids also works.
+The user must specify a root sequence, a mutation rate and a site model.
 The root sequence is the DNA sequence of the shared common ancestor,
-and is set to four different equally-sized mononucleotide blocks by default, as this
-helps interpreting the resulting alignment.
+and is set to four different equally-sized mononucleotide blocks by default, 
+which helps interpreting the resulting alignment.
 Supported nucleotide substitution models (part of a DNA
-site model) are JC, HKY, TN and GTR. Only the strict
-clock model is currently supported in this step.
+site model) are JC, HKY, TN and GTR (see \ref{tab:options} for
+the meaning of these abbreviatons).
+JC is the default nucleotide subsitution mode (NSM),
+in which the nucleotide substition rates between all
+nucleotides are equal and constant over time.
+Note that the user cannot specify a clock model, as only the strict clock model 
+is implemented and thus always assumed.
 
 The second step (Fig.~\ref{fig:pipeline}, 3a)
 selects one (or more) inference model(s) $I$ from a set of inference models $I_{1},\dots,I_{n}$. 
@@ -390,7 +391,7 @@ generative model should always be run, whereas in the second example,
 we specified condition $C_{i}$ that a candidate model should only be run
 when it is the best.
 The 'best' model is defined as the inference model with
-the highest evidence (a.k.a. marginal likelihood), given the alignment 
+the highest evidence (a.k.a. marginal likelihood), based on the alignment 
 simulated in the previous step.
 The evidence for an inference model is estimated by nested 
 sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
@@ -419,6 +420,10 @@ The user can specify a function to quantify the differences between
 the true and posterior trees. By default, the package uses the nLTT 
 statistic (\cite{janzen2015approximate}), which is the absolute difference
 between the normalized lineages-through-time plots of two trees.
+The nLTT statistic is chosen, as it can operate on any two trees (regardless
+of their crown ages and number of taxa) and its results have a clear range
+from zero to one. This normalized result makes it possible to compare trees 
+from a distribution of trees from any tree model.
 
 \subsection{Twinning}\label{subsec:twinning}
 
@@ -444,10 +449,10 @@ topology $\psi_{\mathit{G}}$:
   \xrightarrow[]{\mathit{T_1}} 
   \tau_{\mathit{T}} = (\Vec{t}_{\mathit{T}}, \psi_{\mathit{G}})
 \end{align}
-The default option for the diversification model $p_T$ is the standard birth-death model.
+The default option for the diversification model $p_T$ is the standard BD model.
 It is then possible to use the likelihood function 
 $L_{\mathit{T}}$ for this diversification model to find the parameters $\theta^{*}_{\mathit{T}}$ 
-(e.g. speciation and extinction rates, in case of a birth-death model) 
+(e.g. speciation and extinction rates, in case of a BD model) 
 that maximize this likelihood applied 
 to the true tree, conditioned on its number of tips $n_{\mathit{G}}$:
 \begin{align}
@@ -458,7 +463,8 @@ We use $\theta^{*}_{\mathit{T}}$ to simulate a number
 $n_{\mathit{T}} = n_{\mathit{G}}$ 
 of branching times $\Vec{t}_{\mathit{T}}$ for the twin tree 
 $\tau_{\mathit{T}}$, under the process $p_{T}$, 
-while preserving the topology. We simulate the new branching times using the TESS package (\cite{TESS, hohna2016tess}).
+while preserving the topology. 
+We simulate the new branching times using the TESS package (\cite{TESS, hohna2016tess}).
 
 The second step ($T_2$) of the twinning process simulates the twin alignment 
 with the same clock model, site model and mutation rate 
@@ -466,7 +472,8 @@ used to simulate the original alignment.
 We also impose that, in the twin alignment, 
 the total number of mutations with respect to the root sequence 
 must be the same as in the true alignment in order to keep the information content 
-stored in both the true and twin alignments as similar as possible. We achieve this by simply simulating twin alignments until we
+stored in both the true and twin alignments as similar as possible. 
+We achieve this by simply simulating twin alignments until we
 obtain one that has the desired number of mutations.
 
 The twin pipeline serves as a control: 
@@ -495,35 +502,25 @@ the twin tree model will be included in the pool of examined models
 during the process of selection of the inference model. 
 
 Finally, if the goal is to evaluate BEAST2's performance on a non-standard tree prior, 
-the last source of stochasticity comes from phylogenies. 
-In fact, a single phylogeny cannot be considered 
-as fully representative of the model. 
-For this reason multiple phylogenies, 
-as well as an equal number of twins, 
-must be considered. 
-Having the error measure normalized (i.e. comprised in the interval $[0, 1]$), 
-it is possible to considerate the aggregated versions of the errors distributions 
-across all the runs.
-Therefore, if the number of considered phylogenies is high enough, 
+one must also consider the last source of stochasticity: 
+the different phylogenies a tree model generates.
+A single phylogeny cannot be considered as fully representative of the model. 
+For this reason multiple phylogenies, as well as an equal number of twins, must be considered. 
+If the number of considered phylogenies is high enough, 
 the comparison between the main pipeline's aggregated error distribution 
 and its twin counterpart leads to a fair evaluation 
 of the new tree prior with respect to the baseline error.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We show the usage of \verb;pirouette; on an tree generated 
-by a non-standard 
-tree model \richel{code at \url{https://github.com/richelbilderbeek/pirouette_example_30}}. 
-We use the diversity-dependent tree model \cite{DDD, etienne2011diversity},
-which is a birth-death model with a speciation rate that is dependent on the
-number of species. 
+by the non-standard diversity-dependent tree model \cite{DDD, etienne2011diversity},
+which is a birth-death model with a speciation rate that is dependent on the number of species. 
 
-We choose to use a small tree with six taxa, to keep
-the calculations short and the figure more readable.
-We pick a arbitrary crown age of ten time units.
+We use a small tree with six taxa, to keep the figure more readable,
+with an arbitrary crown age of ten time units.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_30/example_30_314/true_tree.png}
@@ -541,7 +538,7 @@ mononucleotides each, while the per-nucleotide mutation rate is
 0.1 mutations per unit time.
 Together with the crown age of 10 time units, this results
 in an expected per-locus mutation probability of 1.
-We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) nucleotide substitution model
+We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) NSM
 and a strict clock model as these are the simplest.
 A JC model assumes that mutation rates between nucleotides are equal and 
 constant. 
