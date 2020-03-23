@@ -518,11 +518,11 @@ of the new tree prior with respect to the baseline error.
 
 We show the usage of \verb;pirouette; on an tree generated 
 by the non-standard diversity-dependent (DD) tree model \cite{DDD, etienne2011diversity},
-which is a BD model with a speciation rate that is dependent on the number of species. 
+which is a BD model with a speciation rate that is dependent on the number of species.
 
-We use the tree as shown in figure \ref{fig:dd_tree}.
-The with six taxa, to keep the figure more readable,
-with an arbitrary crown age of ten time units.
+We use the tree as shown in figure \ref{fig:dd_tree},
+which has an arbitrary crown age of ten time units
+and six taxa, to keep the figure more readable.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_30/example_30_314/true_tree.png}
@@ -532,37 +532,9 @@ with an arbitrary crown age of ten time units.
   \label{fig:dd_tree}
 \end{figure}
 
-The first step in \verb;pirouette; is to 
-simulate a DNA alignment from the 
-given phylogeny, as described in Subsection~\ref{subsec:pipeline}.
-In this example, the root sequence consists of four blocks of 250 
-mononucleotides each, while the per-nucleotide mutation rate is 
-0.1 mutations per unit time.
-Together with the crown age of 10 time units, this results
-in an expected per-locus mutation probability of 1.
-We use a Jukes-Cantor (JC, \cite{jukes1969evolution}) NSM
-and a strict clock model as these are the simplest.
-A JC model assumes that mutation rates between nucleotides are equal and 
-constant. 
-A strict clock model assumes that the mutation rates 
-of all lineages are equal and constant.
-
-In the second step we state our experiment.
-We define an experiment $\mathit{X}$ 
-as a combination of an inference model 
-$\mathit{I}$ and conditions $\mathit{C}$.
-As a generative model, we assume a
-site model with a JC69 NSM,
-a strict clock model and a Yule tree prior.
-For our candidate models,
-we select all 16 experiments
-that are a combination of the 4 NSMs,
-2 clock models and 2 BD tree priors.
-From this set, we exclude the generative model.
-
-We use the nLTT statistic to
-measure the difference between phylogenies,
-with a burn-in of 10\%.
+Using the default \verb;pirouette; settings,
+the error distribution shown in figure \label{fig:example_30}
+is produced.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_30/errors.png}
@@ -576,12 +548,21 @@ with a burn-in of 10\%.
   \label{fig:example_30}
 \end{figure}
 
-While the error distributions using the best or generative model 
-as inference model are very similar, 
-the error distributions of the true tree are substantially 
-larger than those of the twin tree. 
-This is the error made by the mismatch
-between the generating species tree model and the tree prior used in inference.
+Focussing on the upper panel of figure \ref{fig:example_30},
+we can see that the error distributions of the generative model
+differ strongly between the true and twin tree. 
+This difference shows the extent of the mismatch between
+the actual tree model (which is DD) and the (BD) tree prior used.
+Because these distributions are distinctively different,
+the inference error we make when using an 
+incorrect (that is, BD) tree prior on a DD tree
+is profound.
+
+Comparing the upper and lower panel of figure \ref{fig:example_30}, 
+we can see that the best
+candidate model is only slightly better at inferring the true tree,
+compared to the assumed generative model, confirming that the 
+picked generative model was a good choice.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -593,7 +574,7 @@ model possible.
 In principle any other (more complex) generative tree model can be tested, 
 but we chose to provide the simplest (and fastest to run) examples.
 
-Figure~\ref{fig:example_3} illustrates the primary result of our pipeline: 
+Figure~\ref{fig:example_30} illustrates the primary result of our pipeline: 
 it shows the error distributions for the true tree and the twin tree 
 when either the generating model or the best candidate model is used in inference. 
 The clear difference between the error distributions 
@@ -628,19 +609,17 @@ his/her favorite Bayesian inference tool.
 licensed under the GNU General Public License version 3.
 \verb;pirouette; depends on multiple packages, which are:
 \verb;ape; (\cite{ape}),
+\verb;assertive; (\cite{assertive}),
 \verb;babette; (\cite{bilderbeek2018babette}),
-\verb;becosys; (\cite{becosys}),
 \verb;DDD; (\cite{DDD}),
 \verb;devtools; (\cite{devtools}),
 \verb;dplyr; (\cite{dplyr}),
-\verb;geiger; (\cite{geiger}),
 \verb;ggplot2; (\cite{ggplot2}),
 \verb;knitr; (\cite{knitr}),
 \verb;lintr; (\cite{lintr}),
 \verb;magrittr; (\cite{magrittr}),
 \verb;mcbette; (\cite{mcbette}),
 \verb;nLTT; (\cite{nLTT}),
-\verb;PBD; (\cite{PBD}),
 \verb;phangorn; (\cite{phangorn}),
 \verb;phytools; (\cite{phytools}),
 \verb;plyr; (\cite{plyr}),

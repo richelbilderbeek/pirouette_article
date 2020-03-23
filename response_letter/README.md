@@ -39,18 +39,6 @@ For the rest, it is some work, that will fit in only if prioritized.
 We agree. We chose to shorten the main section of the manuscript to fit the 
 Applications section. At the same time, the reviewers requested more detail, 
 so we add this, but moved it to the supplementary information.
-
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/74: Shorten to Application
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/72: Use only one example
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/73: Move empiricists' guidelines, 'step by step and long explanation', 
-       to Appendix, 
- * [ ] Ask Rampal's idea: what *is* an empiricist in the context of pirouette?
-       [RSE: The empiricist wants to be sure his/her phylogeny is close to the 
-       truth. If he/she feels that a certain diversification process is 
-       important for their group, then he/she would like to know how important 
-       this is for tree inference. Pirouette will give the answer if this 
-       diversification process can be simulated]
- * [ ] Richel: think about 'Should/could empiricists use pirouette?'
  
 ## Comments to the Author:
 
@@ -83,25 +71,20 @@ Thanks, we have done so.
 > of the reviewers).
 
 We have discussed these points in a new section called 'Guidelines for empiricists', 
-in the supplementary information [RSE: I bet the editor wants to see 
-this in the main text.]. Also, we have added a worked example for (1) trees with
+in the supplementary information. 
+Also, we have added examples to the supplementary information 
+for (1) trees with
 an increasing number of tips (section 'The effect of the number of taxa'), 
-(2) alignments of different sequence lengths (section 'The effect of DNA sequence length')
-
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/77:
-   Add literature to section 'Does error scale with tree size?' in Appendix.
-   Mention paper in which bigger trees increase error (Revell, Liam J., Luke J. 
-   Harmon, and Richard E. Glor. "Under-parameterized model of sequence 
-   evolution leads to bias in the estimation of diversification rates from 
-   molecular phylogenies." Systematic Biology 54.6 (2005): 973-983) 
+(2) alignments of different sequence 
+lengths (section 'The effect of DNA sequence length').
 
 > * 2) Related to the topic above, a discussion of what might be the effect 
   of non-clock like models of DNA evolution on the measured error (in 
   contrast with the clock like presented in the paper) might also be 
   interesting for the empiricist.
 
-Agreed. We added this, also as a worked examples (section 'The effect of 
-non-clock like models')
+Agreed. We added this to the supplementary materials as well, 
+at the subsection 'The effect of  non-clock like models'.
  
 > * 3) It might also be interesting to run an example of 
 >   a “non-standard” tree prior which we think might be empirically
