@@ -116,12 +116,7 @@ We have done so.
 >   should be fixed to help the reader. In fact in figure 2 this overlap 
 >   did not happen...
 
-[RJCB: new figure, so maybe no clumsy picture]
-
 We agree it looks clumsy and we wrote a script to pretty-print this figure.
-
-Note that this cumbersome placement of the scale is default behavior of the 
-package we use for plotting (`ape`), as is written in the manuscript.
 
 ## Reviewer(s)' Comments to Author:
 

@@ -97,7 +97,8 @@ Part of a model's performance is its ability to recover parameters from simulate
 parameters (e.g. [\cite{etienne2014estimating}]), 
 where ideally the estimated parameter values closely match the known/true values.
 
-Even when a diversification model passes the procedure described above, it is not necessarily used in Bayesian inference.
+Even when a diversification model passes the procedure described above, 
+it is not necessarily used in Bayesian inference.
 Bayesian phylogenetic inference often requires 
 that the prior probability of the phylogeny 
 according to the diversification model has to be computed millions of times. 
@@ -105,16 +106,18 @@ Therefore, biologically interesting but computationally expensive tree priors
 are often not implemented, and simpler priors are used instead. 
 This is not necessarily problematic, when the data are very informative, 
 as this will reduce the influence of the tree prior.
-However, the assumption that tree prior choice is of low importance must first be verified.
+However, the assumption that tree prior choice is of low importance 
+must first be verified.
 
 There have been multiple attempts to investigate the importance of tree
 prior choice. For example, recently Sarver et al., [\cite{sarver2019choice}] 
 showed that the choice of tree prior does not 
 substantially affect phylogenetic inferences of diversification rates.
 Also recently, Duchene et al. [\cite{duchene2018phylodynamic}] released
-a BEAST2 package to assess how well posterior predictive simulations recover a given tree when using the standard diversification models.
-These studies show how current diversification models compare to one another, but they do not help to assess 
-the importance of a new tree prior. 
+a BEAST2 package to assess how well posterior predictive simulations 
+recover a given tree when using the standard diversification models.
+These studies show how current diversification models compare to one another, 
+but they do not help to assess the importance of a new tree prior. 
 
 Here we introduce a method to quantify the importance of a novel tree prior.
 The method starts with a phylogeny generated 
