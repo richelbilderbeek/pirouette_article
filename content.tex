@@ -361,15 +361,16 @@ in which the nucleotide substitution rates between all
 nucleotides are equal and constant over time.
 
 The second step (Fig.~\ref{fig:pipeline}, 3a)
-selects one (or more) inference model(s) $I$ from a set of inference models $I_{1},\dots,I_{n}$. 
-We define an experiment $X_{i}$ as the combination of 
-an inference model $I_{i}$ and the conditions $C_{i}$ 
-to actually use it in the inference step.
-As a first example, if the generative model is known and standard,
-one can specify this as such.
-As a second example, if we want to run only the inference
+selects one or more inference model(s) $I$ from 
+a set of standard inference models $I_{1},\dots,I_{n}$.
+For example, if the generative model is known and standard,
+one can specify an inference model as such.
+If the tree model is unknown or non-standard, one can pick
+an (assumed) closest standard inference model.
+Also, if we want to run only the inference
 model that fits best to an alignment from a set of candidates,
-one can specify this as well (see section 'Candidate models').
+one can specify these inference models as 
+well (see section 'Candidate models').
 
 The third step infers the posterior distributions,
 using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 4a),
@@ -576,6 +577,14 @@ still tell us something about an evolutionary aspect such as
 a trait or geography. \verb;pirouette;'s results encourage
 to convert this novel tree model into a standard tree prior, 
 so that the inference is (as predicted to be) improved strongly.
+
+Like most phylogenetic experiments, the setup of \verb;pirouette;
+is determined by many arbitrary choices. A prime example is the
+length of simulated DNA sequence. We predict that the inference error
+decreases for longer DNA sequences, but we only investigated this
+superficially (see the supplementary materials). The strength
+of \verb;pirouette; is, however, to supply a pipeline that is uniform
+regardless these choices.
 
 Interpreting the results of \verb;pirouette; remains a subject 
 of study. \verb;pirouette; can quantify these, which is a good
