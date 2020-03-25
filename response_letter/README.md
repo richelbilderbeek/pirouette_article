@@ -560,26 +560,26 @@ gamma statistics and other would be good choices as well.
 
 Great idea! We have done so.
 
- * [ ] Reword as such
-
 > * 15. line 568: capitals are missing from the references "bayesian" 
 >   "nltt", etc. You might want to check other references as well.
 
-We have corrected this.
-
- * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/86: 
-   Correct capitalization of references
+Well spotted! We have corrected this.
 
 > Out of curiosity:
 >
 > * 16. Have you identified tree models that are sufficiently different to be 
 >   worth implementing in BEAST?
 
-Yes, we have. The question is not so much whether a new tree model yields a 
+Yes, we have, yet not published this.
+
+The question is not so much whether a new tree model yields a 
 difference with a BEAST2
 standard tree model, but for which parameter settings this starts to matter.
 As an example, we used the protracted birth-death 
-process [Etienne et al., ?2012], based on the idea that speciation takes time. 
+process [Etienne and Rosindell, 2012, 'Prolonging the past counteracts the 
+pull of the present: protracted speciation can explain observed slowdowns 
+in diversification'. Systematic Biology], 
+based on the idea that speciation takes time. 
 Without going into details of that model,
 if speciation takes a very long time, species trees will be obtained with
 nodes close to the root:
@@ -603,16 +603,12 @@ parameters.
 >   in BEAST, and not just a limited subset?
 
 `pirouette` arose as a spin-off of a biological research project. 
-We wanted to sepaerate the re-usable part (`pirouette`) from the specifics.
-Because the initial research project was in R, `pirouette` ended up being in R.
-[RSE: I think that you should argue a bit more about using R. The whole idea 
-behind babette was, among others, that life is so much easier in R for most 
-biologists.]
-
-To go back in time a bit more, `pirouette` builds on 
-`babette` [Bilderbeek & Etienne, 2018], 
-an R package to call BEAST2, which was the first spin-off of that same 
-biological research project.
+We wanted to separate the re-usable part (`pirouette`) from the specific
+experiment. This initial research project was in R, as
+it was based on the R package `babette` [Bilderbeek & Etienne, 2018]. 
+Due to this, `pirouette` ended up 
+being written in R. One advantage of using R is that 
+running the experiment and analysing it can be done in the same script.
 
 A drawback of `babette`, indeed, is that it cannot provide for all BEAST2 
 packages: it does have a BEAST2 package manager (called `mauricer`)
