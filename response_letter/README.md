@@ -70,7 +70,8 @@ Thanks, we have done so.
 > Or how sequence length might also affect error estimates (mentioned by one 
 > of the reviewers).
 
-We have discussed these points in a new section called 'Guidelines for empiricists', 
+We have discussed these points in a new section 
+called 'Guidelines for empiricists', 
 in the supplementary information. 
 Also, we have added examples to the supplementary information 
 for (1) trees with
@@ -84,7 +85,7 @@ lengths (section 'The effect of DNA sequence length').
   interesting for the empiricist.
 
 Agreed. We added this to the supplementary materials as well, 
-at the subsection 'The effect of  non-clock like models'.
+at the subsection 'The effect of non-clock like models'.
  
 > * 3) It might also be interesting to run an example of 
 >   a “non-standard” tree prior which we think might be empirically
@@ -116,7 +117,7 @@ We have done so.
 >   should be fixed to help the reader. In fact in figure 2 this overlap 
 >   did not happen...
 
-We agree it looks clumsy and we wrote a script to pretty-print this figure.
+We agree it looked clumsy. With the new setup, this figure is drawn well.
 
 ## Reviewer(s)' Comments to Author:
 
@@ -177,7 +178,7 @@ a BD tree'.
 
 Your assumption is correct: the tree models used in the Bayesian inference 
 are all standard BEAST2 tree models. The phylogenies used in this manuscript
-are from the DDD (Etienne et al., 2011) and TESS [Höhna et al., 2016b] R packages.
+are from the DDD [Etienne et al., 2011] and TESS [Höhna et al., 2016b] R packages.
 We reported in the manuscript that the TESS package is used to simulate
 twin trees. The DDD package, instead, is used to show the impact on trees produced
 by a non-standard tree prior.
@@ -224,14 +225,6 @@ We have added a paragraph to express this more explicitly.
 
 We agree that the interpretation of the error distributions 
 was not discussed. We have added a discussion on this.
-[RJCB: Do so in RSE fashion: 
-> RSE: ... Testing for significance is not relevant, when we can simply increase the sample size. We are 
-> interested in the effect size. But ultimately it is up to the user whether he 
-> or she is alarmed by a difference in errors. When the ratio of these errors 
-> is 1.1, I would not be alarmed, but when it is 2, then I start to get worried. 
->At the same time, you could argue that only the absolute error matters: the 
-> deviation from the true tree.
-]
 
 > * 4. Please correct me if I am wrong, but to run pirouette, I must have a 
 >   working simulator of my new model. Is this not a quarter or a third of 
@@ -268,11 +261,14 @@ of the sole simulation algorithm whereas a likelihood is actually not available
 >   re-label this graph. In fact, this section could use a bit of rewriting 
 >   to clarify this point regardless of my correct understanding.
 
-Thanks for pointing out this point of confusion. We've rewritten the text with
-the goal of improving the clarity in the points mentioned.
+Thanks for pointing out this point of confusion! 
 
- * [ ] Improve definition of generative model
- * [ ] Rewrite sections indicated with focus on removing this confusion
+We've rewritten the text with the goal of improving the clarity in the points 
+mentioned. Special attention was given to the word 'generative': we
+write about 'a generative tree model' (the model that generated the 
+'true' phylogeny, which can by any novel model),
+as well as make a clear distinction with 'the generative model assumed' (which
+is always a standard tree prior).
 
 > * 6. My final point that would require some more work is in fact noted by 
 >   the authors themselves, namely that “one tree is not enough to determine 
@@ -288,14 +284,10 @@ the goal of improving the clarity in the points mentioned.
 >   Perhaps if another tree was picked, then the twin and true error 
 >   distributions could look more alike? Or be further apart?
 
-We agree on this point and we have added a worked example in the 
-manuscript. In response to other comments we have used a diversity-dependent
-process to generate the true tree. Because the likelihood of these trees
-are known, we show the pirouette results for diversity-dependent trees 
-with low, medium and high likelihood (section 'The effect of differently 
-common diversity-dependent trees'). [RSE: Provide the frequency distribution 
-of the likelihoods of all the trees that you have generated from which you 
-picked the three trees. You can indicate these trees in the plot.]
+We agree on this point and we have added examples with replicates
+to the supplementary materials. In response to other comments 
+we have used a diversity-dependent
+process to generate the true tree. 
 
 ### Reviewer: 2
 
@@ -315,11 +307,13 @@ Thank you for these kind comments.
 > motivation for someone wanting to do so. If that can be remedied it might
 > prevent such confusion.
 
-Indeed, the posterior predictive analysis from Duchene et al, 2018 bears some 
+Indeed, the posterior predictive analysis from Duchêne et al, 2018 bears some 
 resemblance to what pirouette does, but there are important differences, most 
 notably that we work with a tree generated by a non-standard tree prior, 
 whereas Duchene et al start with an empirical tree. We have described the 
 overlap and differences in the manuscript.
+
+HIERO
 
  * [ ] Describe overlap and differences with Duchene et al., 2018 in the manuscript
  * [ ] Reword Gio's synopsis below for reviewer
@@ -387,6 +381,8 @@ tool is to address more to theoreticians than empiricists.]
 >   adequacy (TMA package for BEAST 2). Some context to clarify how this 
 >   differs from posterior predictive analysis would be good here.
 
+HIERO
+
 Thanks for this point! We have added this to the manuscript.
 
  * [ ] Address this point
@@ -397,13 +393,15 @@ Thanks for this point! We have added this to the manuscript.
 >   and in tree statistics used. The twin phylogeny approach is a nice 
 >   addition to posterior predictive analysis.
 
+HIERO
+
 We agree and we have made this clearer in the ms.
 
  * [ ] Address this point
 
 > * 3. line 53-62 please break up sentence -- this one is really hard to follow.
 
-We have done so.
+Definitely agree! We have done so.
 
  * [ ] Address this point
 
@@ -415,6 +413,8 @@ We have done so.
 >   prior." This misrepresents the work of Duchene et al, which aims to 
 >   demonstrate that a tree prior is *adequate* (the package is called TMA = 
 >   tree model adequacy), which is pretty much the aim of this paper.
+
+HIERO
 
 We agree that our wording was awkward. We have rephrased this.
 
@@ -452,9 +452,12 @@ error distributions.
 > * 7. line 142 "nucleotide substitution model, which we will refer to as site 
 >   models".
 >
->   * 1. Site models include things like gamma rate heterogeneity and proportion invariable sites, so calling a substitution model a site model does not seem to be appropriate.
+>   * 1. Site models include things like gamma rate heterogeneity and proportion 
+>     invariable sites, so calling a substitution model a site model does 
+>     not seem to be appropriate.
 
-We agree on that. We have reworded accordingly.
+Thanks to point out our inappropriate choice of words.
+We have reworded accordingly.
 
  * [ ] https://github.com/richelbilderbeek/pirouette_article/issues/84:
    Call a site model a site model and  
@@ -463,9 +466,11 @@ We agree on that. We have reworded accordingly.
 >   * 2. Are gamma rate heterogeneity and proportion invariable sites supported?
 
 Yes, they can ideed be specified in the inference model, as part 
-of the `create_site_model` function.
+of the (now awkwardly named) `create_site_model` function.
 
 > * 8. line 146 where does the set of inference models come from?
+
+HIERO
 
 Thanks, this set indeed appeared out of the blue! We have introduced
 the set of inference models more gently, which are simply all standard 
@@ -481,6 +486,8 @@ inference models that are appropriate in their most basic form.
 >      seems to be the natural thing to do, since you are interested in the 
 >      tree model, not the clock or site models.
 
+HIERO
+
 We completely agree! And this is indeed exactly what we do! We have mentioned this
 more explicitly in the text.
 
@@ -492,6 +499,8 @@ more explicitly in the text.
 >   long sequences, the tree prior won't matter (as mentioned in the paper), 
 >   so I suppose the sequences should not be too informative. Some discussion 
 >   around these issues would be useful.
+
+HIERO
 
 We have added this discussion [RSE: In the 
 discussion you can also add that long sequences will likely violate the 
@@ -521,12 +530,6 @@ Definitely! We have added this, also as a worked example in the Appendix,
 section 'The effect of mutation rate'
 
  * [ ] Add, also reference to literature
- * [X] https://github.com/richelbilderbeek/pirouette_article/issues/59: 
-   Add worked examples with mutation rates from 
-   0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8,
-   at https://github.com/richelbilderbeek/pirouette_example_24
- * [G] https://github.com/richelbilderbeek/pirouette_article/issues/70:
-   Describe, section 'The effect of mutation rate'
 
 > * 12. Isn't it more natural to define priors on parameters of the site 
 >       model (in the spirit of https://github.com/rbouckaert/DeveloperManual/) 
@@ -545,19 +548,17 @@ measure *whether* we need to implement new BEAST2 tree priors.
 >   the other tree metrics in the TreeStat2 package for BEAST 2.
 
 We could have picked any method to quantify a difference
-between two phylogenies. The nLTT statistic is just one of the many options
-and simply happens to be our personal favorite.
-The Robinson Foulds distance would be just as fine. 
-We mention this now in the ms.
-
- * [ ] Check metrics in TreeStat2 BEAST2 package
- * [ ] Add to ms
+between two phylogenies. The advantage of the nLTT statistic is 
+that it can compare any two phylogenies and its results are in a known 
+range (that is, between zero and one). We added this explanation to the
+manuscript. Yet again, the Robinson Foulds distance, tree length, 
+gamma statistics and other would be good choices as well.
 
 > * 14. Line 176 Instead of describing the mechanism for generating a twin 
 >   tree, starting with motivation for why one wants to get involved with a 
 >   twin tree would be good. This now only starts at line 186 and further.
 
-We have done so.
+Great idea! We have done so.
 
  * [ ] Reword as such
 
