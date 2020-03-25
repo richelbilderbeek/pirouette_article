@@ -319,7 +319,7 @@ HIERO PIPPO BAUDO
  * [ ] Reword Gio's synopsis below for reviewer
 
 [GL: It does look similar but it's not the same. This is what I understood
-(which is summarized also in figure 1 of the article): 
+(which is summarized also in figure 1 of the article):
 1) They start from an empirical tree, then they use BEAST to infer a 
 posterior distribution of some parameters, given a model M, 
 e.g. growth rate or population size;
@@ -327,38 +327,58 @@ e.g. growth rate or population size;
 which they call (cryptically) "posterior predictive simulations" (PPS);
 3) They use some summary statistics to compare this simulated distribution
 of trees with the original tree.
+
 Similarities (+) and differences (-) between Duchêne (a) and pirouette (b):
+
 PIPELINE:
+
 +) Their pipeline is similar to our left column in our figure 1. It is, though,
 not clear to me how they go from an empirical tree to a Beast posterior
 because, AFAIK, Beast operates from alignment to a posterior.
+
 TWINNING:
+
 +) There is a similarity with the twinning:
+
    a) Their method infers parameters with beast and then simulates.
+   
    b) Twinning infers parameters using maximum likelihood and then simulates.
+   
 -) There is also a big difference with twinning:
+
    a) This pseudotwinning yield the distribution to compare with the original tree.
+   
    b) Twin tree is just the starting point for a new pipeline.
+   
 SUMMARY STATISTICS:
+
 +) We both use some summary statistics to compare an original tree to a result
 obtained from the inference.
+
 GOALS:
+
 -) We do not use an empirical tree but trees simulated according to some
 diversification model. This is reflected in a difference in our goals:
+
    a) Their goal is to see if the process they use to simulate the PPS 
    can recover features of the original data, according to the chosen 
    summary statistics. Eventually they can choose which process yield
    the smallest difference according to the statistics.
+   
    b) Our goal is to see if BEAST tree priors can recover the features
    of the diversification model that generated the original trees.
+   
 INFERENCE MODEL AND MODEL SELECTION:
+
 -) The selection of the inference model is made in a different way:
+
    a) Their method tests all models and infers parameters for each of them using beast.
    Then it uses such parameters to simulate PPS for each model. Instead of a
    stricto sensu model selection they evaluate a posteriori whether each model
    is "adequate" using an equivalent of a P-value coming from the "posterior 
    predictive probability" (PPP) obtained from tree statistics.
    Their model evaluation is therefore operated a posteriori.
+   
    b) Our method uses model selection before creating a posterior distribution. After that one
    could virtually use all the summary statistics he/she wants.
    Their model "selection" relies on the summary statistics. A multivariate
