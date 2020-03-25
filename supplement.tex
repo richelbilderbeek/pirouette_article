@@ -22,6 +22,13 @@ horizontally) is done manually.
     subsection \ref{subsec:installation}: installation
   }
   \item{
+    subsection \ref{subsec:resources}: resources, such as 
+    website, tutorials, packages used, bug reporting and contributing
+  }
+  \item{
+    subsection \ref{subsec:citation}: citation of pirouette
+  }
+  \item{
     subsection \ref{subsec:main_functions}: main functions
   }
   \item{
@@ -114,6 +121,71 @@ For the option to select the best candidate model,
 It can be installed from within R, using:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
 install_beast2_pkg("NS")
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Resources}
+\label{subsec:resources}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\verb;pirouette; is free, libre and open source software available at 
+\url{http://github.com/richelbilderbeek/pirouette},
+licensed under the GNU General Public License version 3.
+\verb;pirouette; depends on multiple packages, which are:
+\verb;ape; [\cite{ape}],
+\verb;assertive; [\cite{assertive}],
+\verb;babette; [\cite{bilderbeek2018babette}],
+\verb;DDD; [\cite{DDD}],
+\verb;devtools; [\cite{devtools}],
+\verb;dplyr; [\cite{dplyr}],
+\verb;ggplot2; [\cite{ggplot2}],
+\verb;knitr; [\cite{knitr}],
+\verb;lintr; [\cite{lintr}],
+\verb;magrittr; [\cite{magrittr}],
+\verb;mcbette; [\cite{mcbette}],
+\verb;nLTT; [\cite{nLTT}],
+\verb;phangorn; [\cite{phangorn}],
+\verb;phytools; [\cite{phytools}],
+\verb;plyr; [\cite{plyr}],
+\verb;rappdirs; [\cite{rappdirs}],
+\verb;rmarkdown; [\cite{rmarkdown}],
+\verb;Rmpfr; [\cite{Rmpfr}],
+\verb;stringr; [\cite{stringr}],
+\verb;TESS; [\cite{TESS}],
+\verb;testit; [\cite{testit}], 
+\verb;testthat; [\cite{testthat}] and
+\verb;tidyr; [\cite{tidyr}].
+
+\verb;pirouette;'s development takes place on GitHub,
+\url{https://github.com/richelbilderbeek/pirouette},
+which allows submitting bug reports, requesting features, 
+and adding code. To ensure a high quality, \verb;pirouette; 
+uses a continuous integration service, has a code coverage of above 95\%
+and enforces the most commonly used R style guide [\cite{style_guide}].
+
+\verb;pirouette;'s is extensively documented on its website,
+its documentation and its vignettes.
+The \verb;pirouette; website is a good starting point to learn
+how to use \verb;pirouette;, as it links to tutorials and videos.
+The \verb;pirouette; package documentation describes
+all functions and liberally links to related functions.
+All exported functions show a minimal example as part of their documentation.
+The \verb;pirouette; vignette demonstrates extensively how 
+to use \verb;pirouette; in a more informally written way. 
+
+The code used in this article and more examples that are periodically 
+tested, can be found at 
+\url{https://github.com/richelbilderbeek/pirouette_examples}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Citation of pirouette}
+\label{subsec:citation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To cite \verb;pirouette; this article from within R, use:
+
+\begin{lstlisting}[language=R]
+> citation("pirouette")
 \end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -413,7 +413,7 @@ Markov chain Monte Carlo (MCMC) run,
 which samples an unrepresentative part of state space. 
 By default, \verb;pirouette; 
 removes the first 10\% of the posterior.
-From the remaining posterior \verb;pirouette; 
+From the remaining posterior, \verb;pirouette; 
 creates an error distribution, by measuring the difference
 between the true tree and each of the posterior 
 trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
@@ -452,7 +452,8 @@ topology $\psi_{\mathit{G}}$:
 \end{align}
 The default option for the diversification model $p_T$ is the standard BD model.
 It is then possible to use the likelihood function 
-$L_{\mathit{T}}$ for this diversification model to find the parameters $\theta^{*}_{\mathit{T}}$ 
+$L_{\mathit{T}}$ for this diversification model to find 
+the parameters $\theta^{*}_{\mathit{T}}$ 
 (e.g. speciation and extinction rates, in case of a BD model) 
 that maximize this likelihood applied 
 to the true tree, conditioned on its number of tips $n_{\mathit{G}}$:
@@ -471,15 +472,16 @@ package [\cite{TESS, hohna2016tess}].
 The second step ($T_2$) of the twinning process simulates the twin alignment 
 with the same clock model, site model and mutation rate 
 used to simulate the original alignment. 
-We also impose that, in the twin alignment, 
-the total number of mutations with respect to the root sequence 
-must be the same as in the true alignment in order to keep the information content 
-stored in both the true and twin alignments as similar as possible. 
-We achieve this by simply simulating twin alignments until we
-obtain one that has the desired number of mutations.
+The twin alignment can be simulated in any user-defined way.
+\verb;pirouette; supplies the option to have it simulated with
+the same mutation rate as the true alignment. By default, however,
+not only the same mutation rate is used, but also the total number of mutations
+matches the true alignment. The total number of mutations is defines
+as the amount of different nucleotides between the (known) root sequence
+compared to the sequences at the tips.
 
 The twin pipeline serves as a control: 
-even when the generating and inference models are identical
+even when the generating model matches the assumed inference model
 (as is the case in the twin pipeline),
 the inferred trees from the posterior distribution will 
 still differ from the true tree, 
@@ -488,30 +490,32 @@ and to the MCMC sampling of the posterior.
 The twin pipeline provides this minimum error,
 because the generating and inference model match exactly.
 When comparing the true and twin error distribution,
-any differences will be due to the fact that true and twin phylogenies are realizations 
-of different processes: one (possibly) non-standard, $p_G$, 
+any differences will be due to the fact that true and twin phylogenies 
+are realizations of different processes: one (possibly) non-standard, $p_G$, 
 and one standard, $p_T$ (see Fig~\ref{fig:pipeline}).
 
-This can be seen for both the "generative" and "candidate" model 
-types (see Table~\ref{tab:options}).
-If the chosen model type is "generative", 
-the tree prior chosen for the twin inference will  
-exactly match the model to generate the tree.
-In the main pipeline, as the tree model $p_{G}$ is non-standard, 
-it cannot be used in inference.
-If, instead, the chosen model type is "candidate", 
-the twin tree model will be included in the pool of examined models 
-during the process of selection of the inference model. 
-
-Finally, if the goal is to evaluate BEAST2's performance on a non-standard tree prior, 
+Finally, if the goal is to evaluate BEAST2's performance 
+on a non-standard tree model, 
 one must also consider the last source of stochasticity: 
 the different phylogenies a tree model generates.
 A single phylogeny cannot be considered as fully representative of the model. 
-For this reason multiple phylogenies, as well as an equal number of twins, must be considered. 
+For this reason multiple phylogenies must be considered. 
 If the number of considered phylogenies is high enough, 
 the comparison between the main pipeline's aggregated error distribution 
 and its twin counterpart leads to a fair evaluation 
-of the new tree prior with respect to the baseline error.
+of the new tree model with respect to the baseline error.
+
+\subsection{Candidate models}\label{subsec:candidates}
+
+The user has to specify exactly one standard inference model,
+but may be insure which one to pick. To account for this, the user can
+specify a set of candidate inference models. After a true alignment
+has been simulated, the candidate model with the highest evidence will be
+used in another inference run, resulting in another error distribution.
+If twinning is used, a candidate model that has the highest evidence for
+the twin alignment, this model is also used to create another error
+distribution. Thanks to the use of candidate models, one can check
+if the generative model picked, has been a good choice.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage}
@@ -521,7 +525,7 @@ We show the usage of \verb;pirouette; on an tree generated
 by the non-standard diversity-dependent (DD) tree model \cite{DDD, etienne2011diversity},
 which is a BD model with a speciation rate that is dependent on the number of species.
 
-We use the tree as shown in Figure \ref{fig:dd_tree},
+We use the DD tree as shown in Figure \ref{fig:dd_tree},
 which has an arbitrary crown age of ten time units
 and six taxa, to keep the figure more readable.
 
@@ -575,105 +579,24 @@ model possible.
 In principle any other (more complex) generative tree model can be tested, 
 but we chose to provide the simplest (and fastest to run) examples.
 
-HIERO
-Note that the user cannot specify a clock model, as only the strict clock model 
-is implemented and thus always assumed.
-
-HIERO
-We note that scripted use of BEAST2 packages is only possible under Linux and Mac.
-Windows systems can do the model comparison for shorter DNA sequences 
-using the web interface of \verb;mcbette; [\cite{mcbette}].
-
-
-
 Figure~\ref{fig:example_30} illustrates the primary result of our pipeline: 
 it shows the error distributions for the true tree and the twin tree 
 when either the generating model or the best candidate model is used in inference. 
 The clear difference between the error distributions 
 for the true tree and the twin tree suggests 
 that the choice of tree prior does matter.
-
-We note, however, that all examples used only one original tree,
-where any speciation process produces a whole range of trees.
-One tree is not enough to determine the impact 
-of a tree prior on Bayesian inference.
-However, if the same procedure were repeated and 
-performed on a distribution with a sufficient number of generative trees, 
-it would constitute a quantitative and effective assessment of the 
-quality of the inference.
-Also a twin tree does not always result in a lower error distribution,
-as the stochasticity in generating a twin tree will - with
-very low probability - yield a tree of that same very low probability.
+We note, however, that only one tree from a novel tree model
+is not enough to determine the impact of using an incorrect
+tree prior. Instead, a distribution 
+of multiple trees, generated by the novel tree model, should be used.
 
 In conclusion, \verb;pirouette; can show the errors to be expected
 when the tree prior used in inference is different from the generating model.
 The user can then judge whether or not a new tree prior, 
 tailored on the generative process, is needed. 
-If this is indeed the case, one can implement the novel tree prior as an addition to 
+If this is indeed the case, one can implement 
+the novel tree prior as an addition to 
 his/her favorite Bayesian inference tool.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{pirouette resources}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\verb;pirouette; is free, libre and open source software available at 
-\url{http://github.com/richelbilderbeek/pirouette},
-licensed under the GNU General Public License version 3.
-\verb;pirouette; depends on multiple packages, which are:
-\verb;ape; [\cite{ape}],
-\verb;assertive; [\cite{assertive}],
-\verb;babette; [\cite{bilderbeek2018babette}],
-\verb;DDD; [\cite{DDD}],
-\verb;devtools; [\cite{devtools}],
-\verb;dplyr; [\cite{dplyr}],
-\verb;ggplot2; [\cite{ggplot2}],
-\verb;knitr; [\cite{knitr}],
-\verb;lintr; [\cite{lintr}],
-\verb;magrittr; [\cite{magrittr}],
-\verb;mcbette; [\cite{mcbette}],
-\verb;nLTT; [\cite{nLTT}],
-\verb;phangorn; [\cite{phangorn}],
-\verb;phytools; [\cite{phytools}],
-\verb;plyr; [\cite{plyr}],
-\verb;rappdirs; [\cite{rappdirs}],
-\verb;rmarkdown; [\cite{rmarkdown}],
-\verb;Rmpfr; [\cite{Rmpfr}],
-\verb;stringr; [\cite{stringr}],
-\verb;TESS; [\cite{TESS}],
-\verb;testit; [\cite{testit}], 
-\verb;testthat; [\cite{testthat}] and
-\verb;tidyr; [\cite{tidyr}].
-
-\verb;pirouette;'s development takes place on GitHub,
-\url{https://github.com/richelbilderbeek/pirouette},
-which allows submitting bug reports, requesting features, 
-and adding code. To ensure a high quality, \verb;pirouette; 
-uses a continuous integration service, has a code coverage of above 95\%
-and enforces the most commonly used R style guide [\cite{style_guide}].
-
-\verb;pirouette;'s is extensively documented on its website,
-its documentation and its vignettes.
-The \verb;pirouette; website is a good starting point to learn
-how to use \verb;pirouette;, as it links to tutorials and videos.
-The \verb;pirouette; package documentation describes
-all functions and liberally links to related functions.
-All exported functions show a minimal example as part of their documentation.
-The \verb;pirouette; vignette demonstrates extensively how 
-to use \verb;pirouette; in a more informally written way. 
-
-The code used in this article and more examples that are periodically 
-tested, can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_examples}. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Citation of pirouette}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-To cite \verb;pirouette; this article from within R, use:
-
-\begin{lstlisting}[language=R]
-> citation("pirouette")
-\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgments}
