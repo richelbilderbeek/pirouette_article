@@ -132,7 +132,7 @@ How to properly perform this comparison forms the heart of our method.
 Only new diversification models that result 
 in a large discrepancy between inferred and simulated phylogenies will be worth the effort and computational burden to implement a species tree prior for in a Bayesian framework.
 
-Our method is programmed as an R package (\cite{R}) called \verb;pirouette;.
+Our method is programmed as an R package [\cite{R}] called \verb;pirouette;.
 \verb;pirouette; is built on \verb;babette; [\cite{bilderbeek2018babette}], 
 which calls BEAST2 [\cite{bouckaert2019beast}]. 
 
@@ -146,10 +146,11 @@ for a given reconstructed phylogeny,
 simulated under a (usually novel) diversification model.
 We refer to the true model that generated the given tree
 as the 'generative tree model' $\mathit{p_{G}}$.
-We define the birth-death (BD) model (\cite{nee1994reconstructed}) as
+We define the birth-death (BD) model [\cite{nee1994reconstructed}] as
 the standard tree model, as many (non-standard) tree models 
 have a parameter setting for which they reduce to this model. 
-One such example is the diversity-dependent (DD) tree model (\cite{DDD, etienne2011diversity}):
+One such example is the diversity-dependent (DD) tree 
+model [\cite{DDD, etienne2011diversity}]:
 the DD model is a BD model with a speciation rate that is dependent 
 on the number of species and a carrying capacity. For a carrying capacity
 of infinity, the DD model reduces to a BD model.
@@ -191,7 +192,7 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;site_model; &
     Nucleotide substitution model &
-    GTR, HKY, JC, TN93 \\
+    GTR, HKY, JC, TN \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;mutation_rate; &
     Pace at which mutation occurs &
@@ -225,17 +226,17 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
   \end{tabular}
   \caption{
     Most important parameter options.
-    BD = birth death (\cite{nee1994reconstructed}), 
-    CBS = coalescent Bayesian skyline (\cite{drummond2005bayesian}), 
+    BD = birth death [\cite{nee1994reconstructed}], 
+    CBS = coalescent Bayesian skyline [\cite{drummond2005bayesian}], 
     CCP = coalescent constant-population, 
     CEP = coalescent exponential-population,
-    Yule = pure birth model (\cite{yule}),
-    RLN = relaxed log-normal clock model (\cite{drummond2006relaxed}),
-    strict = strict clock model (\cite{zuckerkandl1965molecules}), 
-    GTR = Generalized time-reversible model (\cite{tavare1986some}), 
-    HKY = Hasegawa, Kishino and Yano (\cite{hasegawa1985dating}), 
-    JC = Jukes and Cantor (\cite{jukes1969evolution}), 
-    TN93 = Tamura and Nei (\cite{tamura1993estimation}).
+    Yule = pure birth model [\cite{yule}],
+    RLN = relaxed log-normal clock model [\cite{drummond2006relaxed}],
+    strict = strict clock model [\cite{zuckerkandl1965molecules}], 
+    GTR = Generalized time-reversible model [\cite{tavare1986some}], 
+    HKY = Hasegawa, Kishino and Yano [\cite{hasegawa1985dating}], 
+    JC = Jukes and Cantor [\cite{jukes1969evolution}], 
+    TN = Tamura and Nei [\cite{tamura1993estimation}].
   }
   \label{tab:options}
 \bigskip
@@ -367,17 +368,16 @@ phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a).
 For the sake of clarity, here we will assume the alignment consists out
 of DNA sequences, but other heritable material such as amino acids also works.
 The user must specify a root sequence, a mutation rate and a site model.
-The root sequence is the DNA sequence of the shared common ancestor,
-and is set to four different equally-sized mononucleotide blocks by default, 
+The root sequence is the DNA sequence of the shared common ancestor of 
+all species, and is set to four different equally-sized 
+mononucleotide blocks by default, 
 which helps interpreting the resulting alignment.
 Supported nucleotide substitution models (part of a DNA
-site model) are JC, HKY, TN and GTR (see \ref{tab:options} for
+site model) are JC, HKY, TN and GTR (see Table \ref{tab:options} for
 the meaning of these abbreviatons).
 JC is the default nucleotide subsitution mode (NSM),
 in which the nucleotide substition rates between all
 nucleotides are equal and constant over time.
-Note that the user cannot specify a clock model, as only the strict clock model 
-is implemented and thus always assumed.
 
 The second step (Fig.~\ref{fig:pipeline}, 3a)
 selects one (or more) inference model(s) $I$ from a set of inference models $I_{1},\dots,I_{n}$. 
@@ -399,9 +399,6 @@ the highest evidence (a.k.a. marginal likelihood), based on the alignment
 simulated in the previous step.
 The evidence for an inference model is estimated by nested 
 sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
-We note that scripted use of BEAST2 packages is only possible under Linux and Mac.
-Windows systems can do the model comparison for shorter DNA sequences 
-using the web interface of \verb;mcbette; [\cite{mcbette}].
 
 The third step infers the posterior distributions,
 using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 4a),
@@ -422,7 +419,7 @@ between the true tree and each of the posterior
 trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
 The user can specify a function to quantify the differences between
 the true and posterior trees. By default, the package uses the nLTT 
-statistic (\cite{janzen2015approximate}), which is the absolute difference
+statistic [\cite{janzen2015approximate}], which is the absolute difference
 between the normalized lineages-through-time plots of two trees.
 The nLTT statistic is chosen, as it can operate on any two trees (regardless
 of their crown ages and number of taxa) and its results have a clear range
@@ -468,7 +465,8 @@ $n_{\mathit{T}} = n_{\mathit{G}}$
 of branching times $\Vec{t}_{\mathit{T}}$ for the twin tree 
 $\tau_{\mathit{T}}$, under the process $p_{T}$, 
 while preserving the topology. 
-We simulate the new branching times using the TESS package (\cite{TESS, hohna2016tess}).
+We simulate the new branching times using the TESS 
+package [\cite{TESS, hohna2016tess}].
 
 The second step ($T_2$) of the twinning process simulates the twin alignment 
 with the same clock model, site model and mutation rate 
@@ -523,7 +521,7 @@ We show the usage of \verb;pirouette; on an tree generated
 by the non-standard diversity-dependent (DD) tree model \cite{DDD, etienne2011diversity},
 which is a BD model with a speciation rate that is dependent on the number of species.
 
-We use the tree as shown in figure \ref{fig:dd_tree},
+We use the tree as shown in Figure \ref{fig:dd_tree},
 which has an arbitrary crown age of ten time units
 and six taxa, to keep the figure more readable.
 
@@ -536,7 +534,7 @@ and six taxa, to keep the figure more readable.
 \end{figure}
 
 Using the default \verb;pirouette; settings,
-the error distribution shown in figure \label{fig:example_30}
+the error distribution shown in Figure \label{fig:example_30}
 is produced.
 
 \begin{figure}[H]
@@ -551,7 +549,7 @@ is produced.
   \label{fig:example_30}
 \end{figure}
 
-Focussing on the upper panel of figure \ref{fig:example_30},
+Focussing on the upper panel of Figure \ref{fig:example_30},
 we can see that the error distributions of the generative model
 differ strongly between the true and twin tree. 
 This difference shows the extent of the mismatch between
@@ -561,7 +559,7 @@ the inference error we make when using an
 incorrect (that is, BD) tree prior on a DD tree
 is profound.
 
-Comparing the upper and lower panel of figure \ref{fig:example_30}, 
+Comparing the upper and lower panel of Figure \ref{fig:example_30}, 
 we can see that the best
 candidate model is only slightly better at inferring the true tree,
 compared to the assumed generative model, confirming that the 
@@ -576,6 +574,17 @@ tree prior in Bayesian phylogenetics, using the simplest generative tree
 model possible.
 In principle any other (more complex) generative tree model can be tested, 
 but we chose to provide the simplest (and fastest to run) examples.
+
+HIERO
+Note that the user cannot specify a clock model, as only the strict clock model 
+is implemented and thus always assumed.
+
+HIERO
+We note that scripted use of BEAST2 packages is only possible under Linux and Mac.
+Windows systems can do the model comparison for shorter DNA sequences 
+using the web interface of \verb;mcbette; [\cite{mcbette}].
+
+
 
 Figure~\ref{fig:example_30} illustrates the primary result of our pipeline: 
 it shows the error distributions for the true tree and the twin tree 
@@ -611,36 +620,36 @@ his/her favorite Bayesian inference tool.
 \url{http://github.com/richelbilderbeek/pirouette},
 licensed under the GNU General Public License version 3.
 \verb;pirouette; depends on multiple packages, which are:
-\verb;ape; (\cite{ape}),
-\verb;assertive; (\cite{assertive}),
-\verb;babette; (\cite{bilderbeek2018babette}),
-\verb;DDD; (\cite{DDD}),
-\verb;devtools; (\cite{devtools}),
-\verb;dplyr; (\cite{dplyr}),
-\verb;ggplot2; (\cite{ggplot2}),
-\verb;knitr; (\cite{knitr}),
-\verb;lintr; (\cite{lintr}),
-\verb;magrittr; (\cite{magrittr}),
-\verb;mcbette; (\cite{mcbette}),
-\verb;nLTT; (\cite{nLTT}),
-\verb;phangorn; (\cite{phangorn}),
-\verb;phytools; (\cite{phytools}),
-\verb;plyr; (\cite{plyr}),
-\verb;rappdirs; (\cite{rappdirs}),
-\verb;rmarkdown; (\cite{rmarkdown}),
-\verb;Rmpfr; (\cite{Rmpfr}),
-\verb;stringr; (\cite{stringr}),
-\verb;TESS; (\cite{TESS}),
-\verb;testit; (\cite{testit}), 
-\verb;testthat; (\cite{testthat}) and
-\verb;tidyr; (\cite{tidyr}).
+\verb;ape; [\cite{ape}],
+\verb;assertive; [\cite{assertive}],
+\verb;babette; [\cite{bilderbeek2018babette}],
+\verb;DDD; [\cite{DDD}],
+\verb;devtools; [\cite{devtools}],
+\verb;dplyr; [\cite{dplyr}],
+\verb;ggplot2; [\cite{ggplot2}],
+\verb;knitr; [\cite{knitr}],
+\verb;lintr; [\cite{lintr}],
+\verb;magrittr; [\cite{magrittr}],
+\verb;mcbette; [\cite{mcbette}],
+\verb;nLTT; [\cite{nLTT}],
+\verb;phangorn; [\cite{phangorn}],
+\verb;phytools; [\cite{phytools}],
+\verb;plyr; [\cite{plyr}],
+\verb;rappdirs; [\cite{rappdirs}],
+\verb;rmarkdown; [\cite{rmarkdown}],
+\verb;Rmpfr; [\cite{Rmpfr}],
+\verb;stringr; [\cite{stringr}],
+\verb;TESS; [\cite{TESS}],
+\verb;testit; [\cite{testit}], 
+\verb;testthat; [\cite{testthat}] and
+\verb;tidyr; [\cite{tidyr}].
 
 \verb;pirouette;'s development takes place on GitHub,
 \url{https://github.com/richelbilderbeek/pirouette},
 which allows submitting bug reports, requesting features, 
 and adding code. To ensure a high quality, \verb;pirouette; 
 uses a continuous integration service, has a code coverage of above 95\%
-and enforces the most commonly used R style guide (\cite{style_guide}).
+and enforces the most commonly used R style guide [\cite{style_guide}].
 
 \verb;pirouette;'s is extensively documented on its website,
 its documentation and its vignettes.
