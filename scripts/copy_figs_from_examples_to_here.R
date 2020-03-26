@@ -17,7 +17,7 @@ files <- list.files(path = from_root, pattern = "*.(png|latex)", recursive = TRU
 files
 
 # Only pirouette examples
-files <- stringr::str_match(string = files, pattern = "pirouette_example_.*(true|twin|errors|esses).*")
+files <- stringr::str_match(string = files, pattern = "pirouette_example_.*(likilihoods|true|twin|errors|esses).*")
 files
 
 # Remove NA's

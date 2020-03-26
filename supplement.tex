@@ -325,13 +325,9 @@ The code used in this part of the article can be found at
 \label{subsec:distribution}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\richel{Issue \url{https://github.com/richelbilderbeek/pirouette_article/issues/89}}
-
 This subsection extends the main example, by using multiple (instead of
 one) trees. These trees are produced by running a DD tree simulation
-with the same parameters as the main example, which are
-speciation rate \richel{?}, extinction rate $0.1$, and carrying
-capacity 40. 
+with the same parameters as the main example.
 
 The code used in this part of the article can be found at 
 \url{https://github.com/richelbilderbeek/pirouette_example_28}.
@@ -346,40 +342,39 @@ The code used in this part of the article can be found at
 \label{subsec:n_taxa}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\richel{Issue at \url{https://github.com/richelbilderbeek/pirouette_article/issues/63}}
-
-The main example uses \richel{?} taxa.
-One expects that the more taxa are present in a phylogeny,
-the better the inference will be, 
-thus the lower the errors will be.
-Here, we show the same results as the main example,
+The main example uses 6 taxa. Here, we show the same results as the main example,
 except for a varying number of taxa.
 
-Note that, \richel{[some authors]} found that an increase in the number
-of taxa may counterintuitively decrease the inference.
-
 The code used in this part of the article can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_example_20}. 
-
+\url{https://github.com/richelbilderbeek/pirouette_example_28} (6 taxa, main example),
+\url{https://github.com/richelbilderbeek/pirouette_example_32} (12 taxa),
+\url{https://github.com/richelbilderbeek/pirouette_example_33} (24 taxa),
+\url{https://github.com/richelbilderbeek/pirouette_example_41} (32 taxa),
+\url{https://github.com/richelbilderbeek/pirouette_example_42} (40 taxa). 
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_20/errors_5.png}
-  \caption{5 taxa}
+  \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
+  \caption{6 taxa, 16 hours, main example}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_20/errors_10.png}
-  \caption{10 taxa}
+  \includegraphics[width=\textwidth]{pirouette_example_32/errors.png}
+  \caption{12 taxa, 19 hours}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_20/errors_20.png}
-  \caption{20 taxa}
+  \includegraphics[width=\textwidth]{pirouette_example_33/errors.png}
+  \caption{24 taxa, 28 hours}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_20/errors_30.png}
-  \caption{30 taxa}
+  \includegraphics[width=\textwidth]{pirouette_example_41/errors.png}
+  \caption{32 taxa, 7 hours}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{pirouette_example_42/errors.png}
+  \caption{40 taxa, 8 hours}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -388,62 +383,34 @@ The code used in this part of the article can be found at
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The main example uses a DNA alignment length of 1000 nucleotides.
-One expects that the more nucleotides are present in the alignment,
-the more information is available,
-thus the better the inference will be, 
-thus the lower the errors will be.
 Here, we show the same results as the main example,
 except for a varying DNA alignment sequence length.
 
 The code used in this part of the article can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_example_21}.
+\url{https://github.com/richelbilderbeek/pirouette_example_19} (500 nucleotides),
+\url{https://github.com/richelbilderbeek/pirouette_example_28} (1000 nucleotides, main example),
+and \url{https://github.com/richelbilderbeek/pirouette_example_34} (2000 nucleotides).
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_100.png}
-  \caption{100 nucleotides}
-\end{figure}
-
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_248.png}
-  \caption{248 nucleotides}
-\end{figure}
-
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_500.png}
+  \includegraphics[width=\textwidth]{pirouette_example_19/errors.png}
   \caption{500 nucleotides}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_1000.png}
-  \caption{1000 nucleotides}
+  \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
+  \caption{1000 nucleotides (main example)}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_2000.png}
+  \includegraphics[width=\textwidth]{pirouette_example_34/errors.png}
   \caption{2000 nucleotides}
 \end{figure}
 
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_4000.png}
-  \caption{4000 nucleotides}
-\end{figure}
-
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_8000.png}
-  \caption{8000 nucleotides}
-\end{figure}
-
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_21/errors_16000.png}
-  \caption{16000 nucleotides}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The effect of non-clock like models}
 \label{subsec:non_clock}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\richel{Issue at \url{https://github.com/richelbilderbeek/pirouette_article/issues/87}}
 
 The main example generates an alignment using a strict clock model (that is,
 all species have an equal mutation rate).
@@ -460,7 +427,7 @@ The code used in this part of the article can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_27/errors.png}
-  \caption{An unlinked node substitution model}
+  \caption{An unlinked node substitution model, 20 replicates}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -508,8 +475,6 @@ The code used in this part of the article can be found at
 \label{subsec:better_label_needed}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\richel{Issue at \url{https://github.com/richelbilderbeek/pirouette_article/issues/68}}
-
 Here we show the results of a \verb;pirouette; run on a dataset 
 of 2 trees simulated under a diversity-dependent process. 
 All the trees are simulated using the DDD package (\cite{DDD}). 
@@ -546,6 +511,11 @@ The code used in this part of the article can be found at
   \caption{Highest likelihood}
 \end{figure}
 
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{pirouette_example_23/likelihoods.png}
+  \caption{Distribution of likelihoods, as well as which ones are picked}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The effect of equal or equalized mutation rate in the twin alignment}
 \label{subsec:different_n_mutations}
@@ -559,11 +529,17 @@ the twin alignment uses the same mutation rate, yet is not guaranteed
 to have the same number of mutations.
 
 The code used in this part of the article can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_example_18}.
+\url{https://github.com/richelbilderbeek/pirouette_example_18} and
+\url{https://github.com/richelbilderbeek/pirouette_example_28}.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_18/errors.png}
   \caption{Equal mutation rate}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
+  \caption{Equal mutation rate and number of mutations (main example)}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -588,40 +564,46 @@ thus the inference is expected to go worse,
 thus the errors are expected to increase.
 
 The code used in this part of the article can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_example_24}.
+\url{https://github.com/richelbilderbeek/pirouette_example_35} (0.25 / crown age),
+\url{https://github.com/richelbilderbeek/pirouette_example_36} (0.50 / crown age),
+\url{https://github.com/richelbilderbeek/pirouette_example_37} (0.75 / crown age),
+\url{https://github.com/richelbilderbeek/pirouette_example_28} (1.00 / crown age, main example),
+\url{https://github.com/richelbilderbeek/pirouette_example_38} (1.25 / crown age),
+\url{https://github.com/richelbilderbeek/pirouette_example_39} (1.50 / crown age),
+\url{https://github.com/richelbilderbeek/pirouette_example_40} (2.00 / crown age),
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_24/errors_1.png}
-  \caption{Per-nucleotide mutation rate of 0.0125}
+  \includegraphics[width=\textwidth]{pirouette_example_35/errors.png}
+  \caption{Per-nucleotide mutation rate of 0.25 / crown age}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_24/errors_2.png}
-  \caption{Per-nucleotide mutation rate of 0.025}
+  \includegraphics[width=\textwidth]{pirouette_example_36/errors.png}
+  \caption{Per-nucleotide mutation rate of 0.50 / crown age}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_24/errors_3.png}
-  \caption{Per-nucleotide mutation rate of 0.05}
+  \includegraphics[width=\textwidth]{pirouette_example_37/errors.png}
+  \caption{Per-nucleotide mutation rate of 0.75 / crown age}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_24/errors_4.png}
-  \caption{Per-nucleotide mutation rate of 0.1}
+  \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
+  \caption{Per-nucleotide mutation rate of 1.0 / crown age (main example)}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_24/errors_5.png}
-  \caption{Per-nucleotide mutation rate of 0.2}
+  \includegraphics[width=\textwidth]{pirouette_example_38/errors.png}
+  \caption{Per-nucleotide mutation rate of 1.25 / crown age}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_24/errors_6.png}
-  \caption{Per-nucleotide mutation rate of 0.4}
+  \includegraphics[width=\textwidth]{pirouette_example_39/errors.png}
+  \caption{Per-nucleotide mutation rate of 1.50 / crown age}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_24/errors_7.png}
-  \caption{Per-nucleotide mutation rate of 0.8}
+  \includegraphics[width=\textwidth]{pirouette_example_40/errors.png}
+  \caption{Per-nucleotide mutation rate of 2.0 / crown age}
 \end{figure}
 
