@@ -70,11 +70,10 @@ Thanks, we have done so.
 > Or how sequence length might also affect error estimates (mentioned by one 
 > of the reviewers).
 
-We have discussed these points in a new section 
-called 'Guidelines for empiricists', 
-in the supplementary information. 
-Also, we have added examples to the supplementary information 
-for (1) trees with
+We have discussed these points in the supplementary materials, where we added
+several examples to show how pirouette can help assessing
+the inference errors in various scenarios.
+We have added examples for (1) trees with
 an increasing number of tips (section 'The effect of the number of taxa'), 
 (2) alignments of different sequence 
 lengths (section 'The effect of DNA sequence length').
@@ -84,7 +83,7 @@ lengths (section 'The effect of DNA sequence length').
   contrast with the clock like presented in the paper) might also be 
   interesting for the empiricist.
 
-Agreed. We added this to the supplementary materials as well, 
+We agree. We added this to the supplementary materials as well, 
 at the subsection 'The effect of non-clock like models'.
  
 > * 3) It might also be interesting to run an example of 
@@ -106,7 +105,7 @@ at the subsection 'The effect of non-clock like models'.
 We agree. We rewrote the initial non-standard tree to resemble a 
 diversity-dependent tree (from Etienne et al., 2011), 
 with a strong decrease in speciation rates, using the DDD package (as 
-introduced in Etienne et al., 2011).
+introduced in Etienne et al., 2012).
 
 > * 4) On lines 174-175, briefly explain what is the nLTT statistic.
 
@@ -178,7 +177,7 @@ a BD tree'.
 
 Your assumption is correct: the tree models used in the Bayesian inference 
 are all standard BEAST2 tree models. The phylogenies used in this manuscript
-are from the DDD [Etienne et al., 2011] and TESS [Höhna et al., 2016b] R packages.
+are from the DDD [Etienne et al., 2012] and TESS [Höhna et al., 2016b] R packages.
 We reported in the manuscript that the TESS package is used to simulate
 twin trees. The DDD package, instead, is used to show the impact on trees produced
 by a non-standard tree prior.
@@ -307,8 +306,13 @@ Thank you for these kind comments.
 > motivation for someone wanting to do so. If that can be remedied it might
 > prevent such confusion.
 
-Indeed (and the other reviewer thought so as well), the manuscript needed
-some reordering. We did so. We think it is a great improvement!
+Indeed, the posterior predictive analysis from Duchêne et al, 2018 bears some 
+resemblance to what pirouette does. However, there is an important difference
+in what questions the two approaches aim to answer. The posterior predictive
+analysis aims to see if a specific standard model is adequate to explain features
+from the empirical data. Pirouette aims to numerically assess whether 
+new non-standard tree prior should be implemented in BEAST2.
+We have described the overlap and differences in the manuscript.
 
 > * 1. line 20-22: "An open question is, how accurate the tree estimation is 
 >   when the real macroevolutionary processes are substantially different from 
@@ -316,10 +320,11 @@ some reordering. We did so. We think it is a great improvement!
 >   adequacy (TMA package for BEAST 2). Some context to clarify how this 
 >   differs from posterior predictive analysis would be good here.
 
-Indeed, TMA answers the same question, therefor we replaced 'an open question'
-by 'a question'. In the discussion, we mention the similarities with TMA.
-We think it would be interesting to compare our results with those
-when using TMA.
+HIERO PIPPO BAUDO
+
+Thanks for this point! We have added this to the manuscript.
+
+ * [ ] Address this point
 
 > * 2. In general, the difference between the pirouette approach and 
 >   TMA/posterior predictive method should be explained more clearly, since 
@@ -327,11 +332,11 @@ when using TMA.
 >   and in tree statistics used. The twin phylogeny approach is a nice 
 >   addition to posterior predictive analysis.
 
-We put this in the discussion. We were in doubt to mention TMA in the 
-Introduction, as TMA tries to answer the same question in a different way.
-We felt, however, that the paper is not a good place for a detailed 
-comparison between the two methods. A new paper that would compare the two
-models would, in our opinion, be superior.
+HIERO PIPPO BAUDO
+
+We agree and we have made this clearer in the ms.
+
+ * [ ] Address this point
 
 > * 3. line 53-62 please break up sentence -- this one is really hard to follow.
 
@@ -348,13 +353,18 @@ Definitely agree! We have done so.
 >   demonstrate that a tree prior is *adequate* (the package is called TMA = 
 >   tree model adequacy), which is pretty much the aim of this paper.
 
-Agreed. This was a major blunder [1]! We gave the 2018 paper the more rightful
-credit.
+HIERO PIPPO BAUDO
 
- * [1] I, the author of that part, predict I was confused with the Duchene 
-   et al., 2014, 'The impact of calibration and clock-model choice on
-   molecular estimates of divergence times' paper
+We have rephrased this.
 
+[RJCB: I guess I wrote that blunder. I must have been confused with the 
+Duchêne et al., 2014 paper?] [RSE: I don’t think it is a blunder. I think 
+Duchêne et al are testing for tree model adequacy for standard tree priors. 
+Pirouette is testing whether non-standard tree priors should be implemented. 
+This seems similar but it is subtly but importantly different.]
+
+ * [ ] Check article again
+ * [ ] Rewrite blunder
 
 > * 5. Table 1 why is order of abbreviation in legend different from the order 
 >   of rows in the table?
