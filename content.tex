@@ -12,16 +12,15 @@
     In principle, the Bayesian framework allows for comparing 
     different tree priors, which may elucidate the macroevolutionary 
     processes underlying the species tree.
-    In practice, however, only macroevolutionary models that allow for 
-    fast computation of the prior probability are used.
-    Question is, how accurate the tree estimation 
-    is when the real macroevolutionary processes are substantially 
-    different from those assumed in the tree prior. \\
+    In practice, however, only macroevolutionary models that allow for fast computation of the prior probability are used.
+    \iffalse
+    This will inevitably introduce a bias on the inference, due to the choice of the tree prior. A way to estimate this error is to choose an inference tree prior
+    \fi
+    Question is, how accurate the tree estimation is when the real macroevolutionary processes are substantially different from those assumed in the tree prior. \\
     \textbf{2. }
     Here we present \verb;pirouette;, 
     a free, libre and open-source R package that assesses 
-    the inference error made by Bayesian phylogenetics for a given 
-    macroevolutionary diversification model. \verb;pirouette; makes use of 
+    the inference error made by Bayesian phylogenetics for a given macroevolutionary diversification model. \verb;pirouette; makes use of 
     BEAST2, but its philosophy applies to any Bayesian phylogenetic inference 
     tool. \\
   \textbf{3. }
