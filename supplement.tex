@@ -2,18 +2,23 @@
 \section{Supplementary materials}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-These supplementary materials show the full pipeline and
-added diagnostics for the examples in the main article.
+These supplementary materials show facets of \verb;pirouette; that did not
+fit the main article, such as the installation and an overview of
+pirouette's main functions.
 
-All the figures shown in this section are shown as-is, 
-without any aesthetical modifications, with the exception that the arrangement
-of the sub-figures (for example, aligning true and twin tree
-horizontally) is done manually.
+Additionally, there is a guide for empicists, based on multiple experiments
+that are shown here as well.
 
-We limited the amount of replicates by time, aiming at a duration of
+For these experiments, we limited the amount of replicates by time, 
+aiming at a duration of
 24 hours per setting, when run on the computer cluster of the
 University of Groningen. Due to this, for example, a run of 40 taxa only
 has 6 replicates, as one run takes 4 hours.
+
+All the figures shown in this section are shown as-is, 
+without any aesthetical modifications, with the exception that the arrangement
+of the sub-figures in subsection \ref{subsec:main_example},
+where we aligned parts of the figure by hand.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Overview}
@@ -85,8 +90,23 @@ has 6 replicates, as one run takes 4 hours.
 \label{subsec:guidelines}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+From the experiments shown below, we composed some rough guidelines.
+These guidelines should be treated as preliminary results, as
+the total runtime of these experiments is 'only' 19 days.
+
 \itemize{
-  \item follow the guidelines as given by BEAST2
+  \item the use of 20 replicates results in decent plots
+  \item the use of more taxa, counterintuitively, increases the inference error
+  \item the use of longer DNA sequences, as expected, decreases the inference error
+  \item {
+    there is a difference when a twin alignment is selected to have
+    an equal amount of mutations as the true alignment. The consequences
+    of this is unknown
+  }
+  \item using a mutation rate less than 1.0 / crown age, decreases the
+    inference error. We predict this will increase the error in the parameter
+    estimation
+  } 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
