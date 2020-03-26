@@ -79,10 +79,6 @@ where we aligned parts of the figure by hand.
     subsection \ref{subsec:mutation_rate} shows the
     effect of different mutation rates
   }
-  \item{
-    subsection \ref{subsec:better_label_needed} shows 
-    \richel{better description needed}
-  }
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,7 +126,9 @@ repository:
     floatplacement = ht,
     frame = single
 ]
-remotes::install_github("richelbilderbeek/pirouette")
+remotes::install_github(
+  "richelbilderbeek/pirouette"
+)
 \end{lstlisting}
 To start using \verb;pirouette;, 
 load its functions in the global namespace first:
@@ -229,21 +227,20 @@ have a useful example and sensible defaults.
   \centering
   \begin{tabular}{ | l | l | l | }
     \hline
-    \textbf{Name} & \textbf{Description} & \textbf{Listing} \\
+    \textbf{Name} & \textbf{Description} \\
     \hline
-    \verb;pir_run; & Run \verb;pirouette; & \ref{lst:pir_run} \\
-    \verb;pir_plot; & Show the \verb;pirouette; results as a plot & \ref{lst:pir_plot} \\
-    \verb;create_pir_params; & Create the \verb;pirouette; parameters & \ref{lst:create_pir_params} \\
+    \verb;pir_run; & Run \verb;pirouette; \\
+    \verb;pir_plot; & Show the \verb;pirouette; results as a plot  \\
+    \verb;create_pir_params; & Create the \verb;pirouette; parameters  \\
     \hline
-    \verb;create_alignment_params; & Create the alignment parameters & \ref{lst:create_alignment_params} \\
-    \verb;create_twinning_params; & Create the twinning parameters & \ref{lst:create_twinning_params} \\
-    \verb;create_experiment; & Create one experiment & \ref{lst:create_gen_experiment_explicit} \\
-    \verb;create_error_measure_params; & Create the error measurement parameters & \ref{lst:create_error_measure_params} \\
+    \verb;create_alignment_params; & Create the alignment parameters  \\
+    \verb;create_twinning_params; & Create the twinning parameters  \\
+    \verb;create_experiment; & Create one experiment  \\
+    \verb;create_error_measure_params; & Create the error measurement parameters  \\
     \hline
   \end{tabular}
   \caption{
-    \texttt{pirouette}'s main functions, description and the number of the 
-    listing in which it is used. 
+    \texttt{pirouette}'s main functions and description. 
   }
   \label{tab:functions}
 \end{table}
@@ -414,17 +411,17 @@ and \url{https://github.com/richelbilderbeek/pirouette_example_34} (2000 nucleot
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_19/errors.png}
-  \caption{500 nucleotides}
+  \caption{500 nucleotides, 12 hours}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
-  \caption{1000 nucleotides (main example)}
+  \caption{1000 nucleotides, 17 hours (main example)}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_34/errors.png}
-  \caption{2000 nucleotides}
+  \caption{2000 nucleotides, 11 hours}
 \end{figure}
 
 
@@ -448,7 +445,7 @@ The code used in this part of the article can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_27/errors.png}
-  \caption{An unlinked node substitution model, 20 replicates}
+  \caption{An unlinked node substitution model, 20 replicates, 8 hours}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -468,7 +465,7 @@ The code used in this part of the article can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_22/errors.png}
-  \caption{Assuming a Yule tree prior on a Yule tree}
+  \caption{Assuming a Yule tree prior on a Yule tree, 9 hours}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -488,7 +485,7 @@ The code used in this part of the article can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_26/errors.png}
-  \caption{Assuming a Yule tree prior on a BD tree}
+  \caption{Assuming a Yule tree prior on a BD tree, 9 hours}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -515,7 +512,8 @@ measure the error made by the inference process using the $\gamma$ error statist
 which is currently implemented in \verb;pirouette;.
 
 The code used in this part of the article can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_example_23}.
+\url{https://github.com/richelbilderbeek/pirouette_example_23}
+and took 120 hours in total.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_23/errors_low.png}
@@ -555,12 +553,12 @@ The code used in this part of the article can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_18/errors.png}
-  \caption{Equal mutation rate}
+  \caption{Equal mutation rate, 10 hours}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
-  \caption{Equal mutation rate and number of mutations (main example)}
+  \caption{Equal mutation rate and number of mutations, 19 hours (main example)}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -595,36 +593,36 @@ The code used in this part of the article can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_35/errors.png}
-  \caption{Per-nucleotide mutation rate of 0.25 / crown age}
+  \caption{Per-nucleotide mutation rate of 0.25 / crown age, 11 hours}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_36/errors.png}
-  \caption{Per-nucleotide mutation rate of 0.50 / crown age}
+  \caption{Per-nucleotide mutation rate of 0.50 / crown age, 14 hours}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_37/errors.png}
-  \caption{Per-nucleotide mutation rate of 0.75 / crown age}
+  \caption{Per-nucleotide mutation rate of 0.75 / crown age, 16 hours}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
-  \caption{Per-nucleotide mutation rate of 1.0 / crown age (main example)}
+  \caption{Per-nucleotide mutation rate of 1.0 / crown age, 19 hours (main example)}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_38/errors.png}
-  \caption{Per-nucleotide mutation rate of 1.25 / crown age}
+  \caption{Per-nucleotide mutation rate of 1.25 / crown age, 17 hours}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_39/errors.png}
-  \caption{Per-nucleotide mutation rate of 1.50 / crown age}
+  \caption{Per-nucleotide mutation rate of 1.50 / crown age, 10 hours}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_40/errors.png}
-  \caption{Per-nucleotide mutation rate of 2.0 / crown age}
+  \caption{Per-nucleotide mutation rate of 2.0 / crown age, 19 hours}
 \end{figure}
 
