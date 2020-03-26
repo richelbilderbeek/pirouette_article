@@ -1,30 +1,5 @@
 # Response letter
 
-TODO:
-
- * RSE: Write it as if you have already done the work
-
-
-RJCB: after reading the feedback carefully, also from Gio, 
-I see the following threats:
-
- * There is a conflict between (1) shortening the manuscript to be an
-   Application article, and (2) explaining more details for empiricists.
-   As a resolve, I suggest to move the details to a 'Guidelines for
-   empiricists' section in the Appendix
- * There is an overlap with the posterior predictive analysis ('PPA') of [1].
-   I feel `pirouette` cannot do this. We need to highlight the overlap
-   and difference with PPA.
- * There is a conflict about the target audience of `pirouette`, which
-   can be (1) theoreticians, and (2) empiricists. As a resolve, after
-   shortening the manuscript to an Application article, we'll add the
-   suggested worked out examples in the Appendix
-
-For the rest, it is some work, that will fit in only if prioritized.
-
- * [1] Duchêne, Sebastian, et al. "Phylodynamic model adequacy using posterior 
-   predictive simulations." Systematic biology 68.2 (2018): 358-364.
-
 ## Feedback senior editor, Dr Lee Hsiang Liow
 
 > I think that this ms is "in between" an Application ms and a full Research ms. 
@@ -36,8 +11,8 @@ For the rest, it is some work, that will fit in only if prioritized.
 > full Research ms but being more general and thorough with exploring the 
 > interpretations and limitations of the approach (see reviewer 1 comments).
 
-We agree. We chose to shorten the main section of the manuscript to fit the 
-Applications section. At the same time, the reviewers requested more detail, 
+We agree. We shortened the main section of the manuscript to fit the 
+Applications section. At the same time, the reviewers requested more detail,
 so we add this, but moved it to the supplementary information.
  
 ## Comments to the Author:
@@ -203,10 +178,6 @@ considerable error and we already argued that this finding
 suggests that a non-standard tree prior is turned into a standard one.
 We have added a paragraph to express this more explicitly.
 
- * [ ] Add paragraph that states that a tree prior that produces big errors,
-   may still be favored. Also recommend adding that tree prior to BEAST2
-   exactly due to that.
-
 > * 3. Let us say we run pirouette and observe something similar to Fig. 6. 
 >   There is clearly an increase in tree inference error, but how much 
 >   is “enough” so I can actually determine whether or not I want to implement 
@@ -337,8 +308,6 @@ models would, in our opinion, be superior.
 
 Definitely agree! We have done so.
 
- * [ ] Address this point
-
 > * 4. line 82ff: "Also recently, Duchêne et al. [Duchêne et al. 2018] 
 >   released a BEAST2 package to assess how well posterior predictive 
 >   simulations recover a given tree when using the standard diversification 
@@ -351,7 +320,7 @@ Definitely agree! We have done so.
 Agreed. This was a major blunder [1]! We gave the 2018 paper the more rightful
 credit.
 
- * [1] I, the author of that part, predict I was confused with the Duchene 
+ * [1] I, RJCB, the author of that part, predict I was confused with the Duchene 
    et al., 2014, 'The impact of calibration and clock-model choice on
    molecular estimates of divergence times' paper
 
@@ -374,9 +343,11 @@ We agree with these concerns.
 To investigate if these concerns are warranted, 
 we've added 'The effect of equal or equalized mutation rate
 in the twin alignment'.
-From the results presented in this section,
-we can conclude that either approach results in very similar
-error distributions.
+From the results presented in that section,
+we can conclude that this indeed has an effect (in hindsight, using
+only a same mutation rate would have made our main text's example
+more dramatic!), but we could not decide which approach of the two
+is better. Due to this, we left things as they were.
 
 > * 7. line 142 "nucleotide substitution model, which we will refer to as site 
 >   models".
@@ -386,7 +357,7 @@ error distributions.
 >     not seem to be appropriate.
 
 Thanks to point out our inappropriate choice of words.
-We have reworded accordingly.
+We have reworded accordingly throughout the document.
 
 >   * 2. Are gamma rate heterogeneity and proportion invariable sites supported?
 
@@ -398,7 +369,6 @@ of the (now awkwardly named) `create_site_model` function.
 Thanks, this set indeed appeared out of the blue! We have introduced
 the set of inference models more gently, which are simply all standard 
 inference models that are appropriate in their most basic form.
-
 
 > * 9. If the inference model used in generating data differs from that 
 >      inferring the tree, are you really testing the adequacy of the 
@@ -427,8 +397,10 @@ Again, we hope that our new choice of words helps in making this clearer.
 
 We have added your suggestion to the discussion and we share your predictions.
 To test these, we added an example with different DNA sequence lengths to the
-supplementary materials. Sadly, these results are not conclusive, due to
-the low number of replicates.
+supplementary materials, section 'the effect of the DNA alignment sequence 
+length'. These results are not conclusive, due to
+the low number of replicates, but they hint that, as expected, longer
+DNA sequences reduce the errors.
 
 > * 11. The height of the tree in units of substitutions will be a factor: 
 >   when the tree is small (<< 0.1 substitutions) sequences will have many 
@@ -445,7 +417,6 @@ section 'The effect of mutation rate'
 > * 12. Isn't it more natural to define priors on parameters of the site 
 >       model (in the spirit of https://github.com/rbouckaert/DeveloperManual/) 
 >       instead of fixing them in the set I_1,...,I_N?
-[RSE: I don’t quite understand this point.]
 
 Thanks for this interesting reference, regarding the development
 of new BEAST2 tree priors. The point of `pirouette`, however, is to 
@@ -469,7 +440,7 @@ gamma statistics and other would be good choices as well.
 >   tree, starting with motivation for why one wants to get involved with a 
 >   twin tree would be good. This now only starts at line 186 and further.
 
-Great idea! We have done so.
+Great idea! We have done so and think is is a great improvement.
 
 > * 15. line 568: capitals are missing from the references "Bayesian" 
 >   "nLTT", etc. You might want to check other references as well.
@@ -525,7 +496,6 @@ A drawback of `babette`, indeed, is that it cannot provide for all BEAST2
 packages: it does have a BEAST2 package manager (called `mauricer`)
 and it does allow using one BEAST2 package (NS, for 'Nested Sampling', a
 method to estimate the marginal likelihood of an inference model).
-This BEAST2 package is used by `pirouette`, but not described in the article.
 
 All in all, putting `pirouette` into a BEAST package may have been an
 equally fine option. It just did not happen that way.
