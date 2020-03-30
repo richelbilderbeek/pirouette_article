@@ -1,31 +1,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Supplementary materials}
+\section{Supplementary material}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-These supplementary materials show facets of \verb;pirouette; that did not
-fit the main article, such as the installation and an overview of
-pirouette's main functions.
-
-Additionally, there is a guide for empicists, based on multiple experiments
+This supplementary material contains additional facets of \verb;pirouette;, such as the installation of the package, an overview of
+pirouette's main functions and a guide for empiricists, based on multiple experiments
 that are shown here as well.
 
-For these experiments, we limited the amount of replicates by time, 
+For these experiments, we limited the number of replicates by time, 
 aiming at a duration of
-24 hours per setting, when run on the computer cluster of the
+24 hours per setting, when run on the Peregrine computer cluster of the
 University of Groningen. Due to this, for example, a run of 40 taxa only
-has 6 replicates, as one run takes 4 hours.
-
-For all experiments, the intermediate results can all be downloaded 
+has 6 replicates, because one run takes 4 hours. For all experiments, the intermediate results can all be downloaded 
 from their respective websites, which is approximately 5 gigabyte in total.
 
-All the figures shown in this section are shown as-is, 
-without any aesthetical modifications, with the exception that the arrangement
+All the figures shown in this section are shown without any aesthetical modifications, with the exception that the arrangement
 of the sub-figures in subsection \ref{subsec:main_example},
 where we aligned parts of the figure by hand.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Overview}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Here is an overview of the various sections:
 
 \itemize{
   \item{
@@ -95,23 +87,22 @@ the total runtime of these experiments is 'only' 19 days.
 
 \itemize{
   \item{
-    the use of 20 replicates results in decent plots
+    The use of 20 replicates results in decent plots.
   }
   \item{
-    the use of more taxa, counterintuitively, increases the inference error
+    The use of more taxa increases the inference error
   }
   \item{
-    the use of longer DNA sequences, as expected, decreases the inference error
+    The use of longer DNA sequences decreases the inference error.
   }
   \item{
-    there is a difference when a twin alignment is selected to have
-    an equal amount of mutations as the true alignment. The consequences
-    of this is unknown
+    When we do not impose the same number of mutations between true and twin alignment, we observe a difference in the error distributions with respect to the standard case (presented in the main text) where they are forced to have the same number of mutations.
+    The consequences of this are unknown.
   }
   \item{
-    using a mutation rate less than 1.0 / crown age, decreases the
+    Using a mutation rate less than 1.0 / crown age, decreases the
     inference error. We predict this will increase the error in the parameter
-    estimation
+    estimation.
   }
 }
 
@@ -147,17 +138,17 @@ library(pirouette)
 Because \verb;pirouette; calls BEAST2, BEAST2 must be installed. 
 This can be done from within R, using:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-install_beast2()
+beastier::install_beast2()
 \end{lstlisting}
 For the option to select the best candidate model,
 \verb;pirouette; needs the "NS" BEAST2 package [\cite{russel2019model}].
 It can be installed from within R, using:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
-install_beast2_pkg("NS")
+mauricer::install_beast2_pkg("NS")
 \end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Resources}
+\subsection{Resources}
 \label{subsec:resources}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -192,7 +183,7 @@ licensed under the GNU General Public License version 3.
 \verb;pirouette;'s development takes place on GitHub,
 \url{https://github.com/richelbilderbeek/pirouette},
 which allows submitting bug reports, requesting features, 
-and adding code. To ensure a high quality, \verb;pirouette; 
+and adding code. To improve quality, \verb;pirouette; 
 uses a continuous integration service, has a code coverage of above 95\%
 and enforces the most commonly used R style guide [\cite{style_guide}].
 
@@ -255,6 +246,8 @@ have a useful example and sensible defaults.
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Main example}
 \label{subsec:main_example}
@@ -262,6 +255,8 @@ have a useful example and sensible defaults.
 
 This subsection shows the diagnostics from the main example, which
 uses one tree.
+To assess if the results of the inference are meaningful one important parameter is the Effective Sample Size (ESS). This quantity describes how many independent trees are sampled from the posterior distributions. For reliable results it is good practice to have at least $ESS = 200$ (see \url{https://beast.community/ess_tutorial}).
+In the following we present the ESS for the posterior distributions of the 4 cases shown in Fig. \ref{fig:example_30_full_pipeline}: "true" pipeline with generative model (Table \ref{tab:esses_true_gen}), "true" pipeline with best candidate model (Table \ref{tab:esses_true_best}), "twin" pipeline with generative model (Table \ref{tab:esses_twin_gen}), "twin" pipeline with best candidate model (Table \ref{tab:esses_twin_best}). We also report the marginal likelihood (or evidence) data for model selection performed both in the "true" (Table \ref{tab:true_evidence}) and "twin" pipeline (Table \ref{tab:twin_evidence}).
 
 The code to reproduce this can be found at  
 \url{https://github.com/richelbilderbeek/pirouette_example_30}.
@@ -331,7 +326,7 @@ The code to reproduce this can be found at
     \end{tikzpicture}
   }
   \label{fig:example_30_full_pipeline}
-  \caption{Comparing to background noise: full pipeline}
+  \caption{Comparing to background noise: full pipeline. The true tree (top right) is used to simulate an alignment. From this alignment two posterior distributions of trees are created: one using the generative model and another one using the inference model with the highest marginal likelihood. From each of the two, exploiting the nltt error statistics, a distribution of errors between the posterior trees and the main trees is drawn. From the true tree also a twin tree is created (right side of the figure) which follows the same pipeline, leading to two additional error distributions to use as baseline errors for their equivalents.}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -347,6 +342,9 @@ The code to reproduce this can be found at
 
 \input{pirouette_example_30/example_30_314/evidence_twin.latex}
 
+\clearpage
+%\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Using a distribution of trees}
 \label{subsec:distribution}
@@ -361,15 +359,17 @@ The code to reproduce this figure can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
-  \caption{Error distribution from a distribution of trees}
+  \caption{Error distribution from a distribution of trees. What is shown in the figure is similar to Fig. \ref{fig:example_30} for the main example. The main difference is that here the original tree (and its twin counterpart) is not only one, but instead there are 20 replicated. Each replicate has been simulated independently. For each setting (true generative, true best candidate, twin generative and twin candidate), the resulting errors from each replicated pipeline have been merged in a single dataset.}
 \end{figure}
+
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The effect of the number of taxa}
 \label{subsec:n_taxa}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The main example uses 6 taxa. Here, we show the same results as the main example,
+The main example uses 6 taxa. Here we show the same results as the main example,
 except for a varying number of taxa. We did so, by setting the DD model's
 carrying capacity to the desired number of taxa.
 
@@ -499,13 +499,13 @@ The code to reproduce this figure can be found at
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The effect of differently common diversity-dependent trees}
+\subsection{The effect of diversity-dependent trees differing in how likely they are under the DD process}
 \label{subsec:better_label_needed}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Here we show the results of a \verb;pirouette; run on a dataset 
 of multiple DD trees that we selected for having a low, median
-and high likelihood. In that way, we effectively selected for trees
+and high likelihood. In this way, we effectively selected for trees
 that are rare, uncommon and common respectively.
 
 The code to reproduce these figure can be found at  
@@ -533,11 +533,9 @@ and took 120 hours in total.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
 The main example uses a twin alignment that has the same number
-of mutations (as measured from the ancestral sequence) as the true alignment.
-
-Here, we show the same results, with the difference that
+of mutations (as measured from the ancestral sequence) as the true alignment. Here, we show the same results, with the difference that
 the twin alignment uses the same mutation rate, yet is not guaranteed
-to have the same number of mutations.
+to have the same number of mutations. Any difference in the error distributions can therefore also stem from a difference in the amount of information contained in the alignments.
 
 The code to reproduce this figure can be found at  
 \url{https://github.com/richelbilderbeek/pirouette_example_18} and
@@ -578,36 +576,42 @@ The code to reproduce this figure can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_35/errors.png}
-  \caption{Per-nucleotide mutation rate of 0.25 / crown age, 11 hours}
+  \caption{Error distribution for the example tree of the main text but
+with a per-nucleotide mutation rate of 0.25 / crown age. Run time of 11 hours.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_36/errors.png}
-  \caption{Per-nucleotide mutation rate of 0.50 / crown age, 14 hours}
+  \caption{Error distribution for the example tree of the main text but
+with a per-nucleotide mutation rate of 0.50 / crown age. Run time of 14 hours.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_37/errors.png}
-  \caption{Per-nucleotide mutation rate of 0.75 / crown age, 16 hours}
+  \caption{Error distribution for the example tree of the main text but
+with a per-nucleotide mutation rate of 0.75 / crown age. Run time of 16 hours.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
-  \caption{Per-nucleotide mutation rate of 1.0 / crown age, 16 hours (main example)}
+  \caption{Error distribution for the example tree of the main text but
+with a per-nucleotide mutation rate of 1.0 / crown age. Run time of 16 hours (main example).}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_38/errors.png}
-  \caption{Per-nucleotide mutation rate of 1.25 / crown age, 17 hours}
+  \caption{Error distribution for the example tree of the main text but
+with a per-nucleotide mutation rate of 1.25 / crown age. Run time of 17 hours.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_39/errors.png}
-  \caption{Per-nucleotide mutation rate of 1.50 / crown age, 10 hours}
+  \caption{Error distribution for the example tree of the main text but
+with a per-nucleotide mutation rate of 1.50 / crown age. Run time of 10 hours.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_40/errors.png}
-  \caption{Per-nucleotide mutation rate of 2.0 / crown age, 19 hours}
+  \caption{Error distribution for the example tree of the main text but
+with a per-nucleotide mutation rate of 2.0 / crown age. Run time of 19 hours.}
 \end{figure}
-
