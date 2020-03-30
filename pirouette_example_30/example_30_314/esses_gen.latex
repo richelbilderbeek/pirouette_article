@@ -15,6 +15,6 @@ posterior & 10001 \\
   birthRate & 10001 \\ 
    \hline
 \end{tabular}
-\caption{ESSes for generative model}
+\caption{ESSes for the posterior distributions of Fig. \ref{fig:example_30_full_pipeline} for the true tree, using the generative model}
 \label{tab:esses_true_gen}
 \end{table}

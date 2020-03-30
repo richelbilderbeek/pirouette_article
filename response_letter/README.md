@@ -67,9 +67,8 @@ lengths (section 'The effect of DNA sequence length').
   contrast with the clock like presented in the paper) might also be 
   interesting for the empiricist.
 
-Agreed. We added this to the supplementary materials as well, 
-in the subsection 'The effect of non-clock like models'.
- 
+We have included a brief discussion on further usage of the pirouette pipeline, including non-standard clock models. However, it is beyond the scope of the current paper to explore all these different options.
+
 > * 3) It might also be interesting to run an example of 
 >   a “non-standard” tree prior which we think might be empirically
 >   relevant (e.g. diversity dependence). The authors mention this but I felt 
@@ -359,8 +358,8 @@ is better. Therefore, we left things as they were.
 >     invariable sites, so calling a substitution model a site model does 
 >     not seem to be appropriate.
 
-Thanks to point out our inappropriate choice of words.
-We have reworded accordingly throughout the document.
+Thanks for pointing out our inappropriate choice of words.
+We have reworded accordingly throughout the manuscript.
 
 >   * 2. Are gamma rate heterogeneity and proportion invariable sites supported?
 

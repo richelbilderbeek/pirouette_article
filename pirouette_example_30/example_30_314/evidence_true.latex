@@ -23,6 +23,7 @@ GTR & RLN & BD & -7903.924 & 4.581 & 0.000 & 7.853 \\
   TN & Strict & Yule & -8041.066 & 4.320 & 0.000 & 7.862 \\ 
    \hline
 \end{tabular}
-\caption{Evidences for the true phylogeny}
+\caption{Evidence, measured by the marginal likelihood, for various candidate models, applied to alignments on the true tree}
 \label{tab:true_evidence}
 \end{table}
+

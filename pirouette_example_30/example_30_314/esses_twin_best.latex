@@ -20,6 +20,6 @@ posterior & 9744 \\
   BDDeathRate & 6280 \\ 
    \hline
 \end{tabular}
-\caption{ESSes for best candidate model, twin tree}
+\caption{ESSes for the posterior distributions of Fig. \ref{fig:example_30_full_pipeline} for the twin tree, using the best candidate model}
 \label{tab:esses_twin_best}
 \end{table}

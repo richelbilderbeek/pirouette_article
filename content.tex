@@ -124,7 +124,7 @@ We define the birth-death (BD) model [\cite{nee1994reconstructed}] as
 the standard tree model, as many (non-standard) tree models 
 have a parameter setting for which they reduce to this model. 
 One such example is the diversity-dependent (DD) diversification 
-model [\cite{etienne2020package, etienne2012diversity}]:
+model [\cite{DDD, etienne2012diversity}]:
 the DD model is a BD model with a speciation or extinction rate that depends 
 on the number of species and a clade-level carrying capacity. For a carrying capacity
 of infinity, the DD model reduces to the BD model.
@@ -275,7 +275,7 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
 
 \begin{figure}
   \centering
-  \includegraphics[width = \textwidth]{workflow4.png}
+  \includegraphics[width = 0.99\textwidth]{workflow4.png}
   \caption{
     \texttt{pirouette} pipeline.
     The pipeline starts from a phylogeny (1a) simulated by the 
@@ -482,7 +482,7 @@ of the new tree model with respect to the baseline error.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We show the usage of \verb;pirouette; on an tree generated 
-by the non-standard diversity-dependent (DD) tree model [\citep{etienne2020package, etienne2012diversity}],
+by the non-standard diversity-dependent (DD) tree model [\citep{DDD, etienne2012diversity}],
 which is a BD model with a speciation rate that is dependent on the number of species.
 
 We use the DD tree as shown in Figure \ref{fig:dd_tree},
@@ -534,8 +534,8 @@ The candidate model that had highest evidence given the simulated alignment,
 was JC, RLN, BD (see Table \ref{tab:options} for the meaning of these 
 abbreviations). JC was indeed the site model used when simulating the
 alignments. The RLN clock model is an unexpected choice: the RLN clock
-model assumes that mutation rates differ between species, whereas the
-alignment was simulated with equal mutation rates for all species.
+model assumes that mutation rates differ between lineages, whereas the
+alignment was simulated with equal mutation rates for all lineages.
 The BD model is indeed closer to the DD model than Yule, as both BD and DD
 model allow for extinction, while Yule does not.
 
@@ -577,13 +577,14 @@ In principle, \verb;pirouette; allows for this, but in our example we used a div
 As noted in the introduction, Duch\^{e}ne and colleagues [\cite{duchene2018phylodynamic}],
 also developed a method to assess the adequacy of a tree model
 on empirical trees. They simulate trees from the posterior distribution of the parameters and then compare this to the originally inferred tree using tree statistics, to determine whether the assumed tree model in inference indeed generates the tree as inferred. This is useful if these trees match, but when they do not, this does not mean that the inferred tree is incorrect; if sufficient data is available the species tree prior may not be important, and hence the inference may be adequate even though the assumed species tree prior is not. In short, the approach is applied to empirical trees and compares the posterior and prior distribution of trees (with the latter generated with the posterior parameters!).
-\verb;pirouette; aims to identify when assuming standard priors, not only for the species tree - which was our main focus here -, but also for the site and clock model, leads to incorrect inference if one believes more complex diversification, site or clock models are operating than can be currently accommodated in inference. In short, our approach applies to simulated trees and compares the posterior distributions of trees generated with a standard and non-standard model, but inferred with a standard one. The two methods therefore complement one another.
+\verb;pirouette; aims to identify when assuming standard priors for the species tree leads to incorrect inference if one believes more complex diversification models are operating than can be currently accommodated in inference. In short, our approach applies to simulated trees and compares the posterior distributions of trees generated with a standard and non-standard model, but inferred with a standard one. The two methods therefore complement one another.
+
+However, we note that the \verb;pirouette; pipeline is not restricted to exploring the effects of a new species tree model. The pipeline can also be used to explore the effects of non-standard clock or site models, such as relaxed clock models with a non-standard distribution, correlated substitutions on sister lineages, or elevated substitutions rates during speciation events. It is, however, beyond the scope of this paper to discuss all these options in more detail.
 
 In conclusion, \verb;pirouette; can show the errors to be expected
-when the tree model assumed in inference is different from the 
-actual generative tree model.
-The user can then judge whether or not a new tree prior, 
-tailored to the novel tree model, is needed in our Bayesian phylogenetic tool. 
+when the model assumed in inference is different from the 
+actual generative model.
+The user can then judge whether or not this new model should be implemented in our Bayesian phylogenetic tool. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgments}

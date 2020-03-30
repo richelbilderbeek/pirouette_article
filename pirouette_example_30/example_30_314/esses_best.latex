@@ -19,6 +19,6 @@ posterior & 9658 \\
   birthRate & 8691 \\ 
    \hline
 \end{tabular}
-\caption{ESSes for best candidate model} 
+\caption{ESSes for the posterior distributions of Fig. \ref{fig:example_30_full_pipeline} for the true tree, using the best candidate model} 
 \label{tab:esses_true_best}
 \end{table}

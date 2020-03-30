@@ -23,6 +23,6 @@ GTR & RLN & BD & -6279.634 & 6.081 & 0.000 & 7.975 \\
   TN & Strict & Yule & -6268.767 & 4.685 & 0.000 & 6.628 \\ 
    \hline
 \end{tabular}
-\caption{Evidences for twin phylogeny}
+\caption{Evidence, measured by the marginal likelihood, for various candidate models, applied to alignments on the twin tree}
 \label{tab:twin_evidence}
 \end{table}
