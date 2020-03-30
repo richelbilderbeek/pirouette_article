@@ -8,7 +8,7 @@
 #
 #
 
-pdflatex article.tex --shell-escape
-bibtex article.aux
-pdflatex article.tex --shell-escape
-pdflatex article.tex --shell-escape
+pdflatex article --shell-escape
+bibtex article
+pdflatex article --shell-escape
+pdflatex article --shell-escape
