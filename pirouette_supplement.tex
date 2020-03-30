@@ -114,7 +114,7 @@ install.packages("pirouette")
 
 Until it is on CRAN, and for the most up-to-date version, 
 one can download and install the package from \verb;pirouette;'s GitHub 
-repository. We first need the \verb;mcbette; package:
+repository. We do first need the \verb;mcbette; and \verb;nodeSub; packages:
 \begin{lstlisting}[
     language = R,
     floatplacement = ht,
@@ -122,6 +122,9 @@ repository. We first need the \verb;mcbette; package:
 ]
 remotes::install_github(
   "richelbilderbeek/mcbette"
+)
+remotes::install_github(
+  "thijsjanzen/nodeSub"
 )
 \end{lstlisting}
 
