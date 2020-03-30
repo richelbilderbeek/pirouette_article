@@ -571,7 +571,9 @@ Interpreting the results of \verb;pirouette; is up to the user;
 \verb;pirouette; does not answer the question 
 whether the inference error is too large to trust the inferred tree. The user is encouraged to use different statistics to measure the error. The nLTT statistic is
 a promising starting point, as it can compare any two trees and 
-results in an error distribution of known range, but one may also explore other statistics. One such statistic is phylogenetic tree balance. In principle,
+results in an error distribution of known range, but one may also explore other statistics.
+\giovanni{tree imbalance is NOT measured with gamma but with beta among other metrics. If we want to mention gamma we should talk about tree balance. I suggest to remove the last sentence here, in order to avoid talking about topology.}
+One such statistic is phylogenetic tree balance. In principle,
 \verb;pirouette; allows for this, but in our example we used a diversification model (DD) that only deviates from the Yule and BD models in the temporal branching pattern, not in the topology.
 
 As noted in the introduction, Duch\^{e}ne and colleagues [\cite{duchene2018phylodynamic}],
