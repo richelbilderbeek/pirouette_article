@@ -114,8 +114,7 @@ install.packages("pirouette")
 
 Until it is on CRAN, and for the most up-to-date version, 
 one can download and install the package from \verb;pirouette;'s GitHub 
-repository:
-
+repository. We first need the \verb;mcbette; package:
 \begin{lstlisting}[
     language = R,
     floatplacement = ht,
@@ -124,10 +123,20 @@ repository:
 remotes::install_github(
   "richelbilderbeek/mcbette"
 )
+\end{lstlisting}
+
+Now we can install \verb;pirouette;:
+\begin{lstlisting}[
+    language = R,
+    floatplacement = ht,
+    frame = single
+]
 remotes::install_github(
   "richelbilderbeek/pirouette"
 )
 \end{lstlisting}
+which also installs its dependencies from CRAN.
+
 To start using \verb;pirouette;, 
 load its functions in the global namespace first:
 \begin{lstlisting}[language=R, floatplacement=ht, frame=single]
@@ -256,47 +265,6 @@ uses one tree.
 To assess if the results of the inference are meaningful one important parameter is the Effective Sample Size (ESS). This quantity describes how many independent trees are sampled from the posterior distributions. For reliable results it is good practice to have at least $ESS = 200$ (see \url{https://beast.community/ess_tutorial}).
 In the following we present the ESS for the posterior distributions of the 4 cases shown in Fig. \ref{fig:example_30_full_pipeline}: "true" pipeline with generative model (Table \ref{tab:esses_true_gen}), "true" pipeline with best candidate model (Table \ref{tab:esses_true_best}), "twin" pipeline with generative model (Table \ref{tab:esses_twin_gen}), "twin" pipeline with best candidate model (Table \ref{tab:esses_twin_best}). We also report the marginal likelihood (or evidence) data for model selection performed both in the "true" (Table \ref{tab:true_evidence}) and "twin" pipeline (Table \ref{tab:twin_evidence}).
 
-The code to reproduce this can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_30}
-and a simplified version is shown here for convenience:
-
-\begin{lstlisting}[language=R]
-library(pirouette)
-
-# Create phylogeny
-set.seed(314)
-phylogeny <- create_exemplary_dd_tree(
-  n_taxa = 6, 
-  crown_age = 10
-)
-
-# Setup pirouette
-pir_params <- create_std_pir_params(
-  folder_name = "example_30"
-)
-
-# Do the runs
-pir_out <- pir_run(
-  phylogeny = phylogeny,
-  pir_params = pir_params
-)
-
-# Save
-library(ggplot2)
-pir_outs <- list()
-pir_outs[[1]] <- pir_out
-pir_plots(pir_outs) +
-  ggtitle("pirouette example 30") +
-  ggsave("errors.png", width = 7, height = 7)
-
-pir_save(
-  phylogeny = phylogeny,
-  pir_params = pir_params,
-  pir_out = pir_out,
-  folder_name = "example_30"
-)
-\end{lstlisting}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -396,7 +364,7 @@ The code to reproduce this figure can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
-  \caption{Error distributions of trees, similar to Fig. \ref{fig:example_30} for the main example, but now for a collection of 20 replicate trees. For each setting (true generative, true best candidate, twin generative and twin best candidate), the resulting errors from each replicate pipeline have been merged into a single distribution.}
+  \caption{Aggregate error distributions, similar to Fig. \ref{fig:example_30} for the main example, but now for a collection of 20 replicate trees. For each setting (true generative, true best candidate, twin generative and twin best candidate), the resulting errors from each replicate pipeline have been merged into a single distribution.}
   \label{fig:replicate_trees}
 \end{figure}
 
@@ -420,27 +388,27 @@ The code to reproduce these figure can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
-  \caption{Aggregate error distributions for 20 replicates. Here each each true tree has 6 taxa. This took 16 hours to compute.}
+  \caption{Aggregate error distributions for 20 replicates. Here each true tree has 6 taxa. This took 16 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_32/errors.png}
-  \caption{Aggregate error distributions for 10 replicates. Here each each true tree has 12 taxa. This took 19 hours to compute.}
+  \caption{Aggregate error distributions for 10 replicates. Here each true tree has 12 taxa. This took 19 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_33/errors.png}
-    \caption{Aggregate error distributions for 20 replicates. Here each each true tree has 24 taxa. This took 28 hours to compute.}
+    \caption{Aggregate error distributions for 20 replicates. Here each true tree has 24 taxa. This took 28 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_41/errors.png}
-  \caption{Aggregate error distributions for 5 replicates. Here each each true tree has 32 taxa. This took 7 hours to compute.}
+  \caption{Aggregate error distributions for 5 replicates. Here each true tree has 32 taxa. This took 7 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_42/errors.png}
-  \caption{Aggregate error distributions for 2 replicates. Here each each true tree has 40 taxa. This took 8 hours to compute.}
+  \caption{Aggregate error distributions for 2 replicates. Here each true tree has 40 taxa. This took 8 hours to compute.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -602,7 +570,7 @@ The code to reproduce this figure can be found at
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_38/errors.png}
-  \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 1.25 / crown age.This took 17 hours to compute.}
+  \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 1.25 / crown age. This took 17 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
