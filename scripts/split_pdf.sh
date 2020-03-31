@@ -13,5 +13,5 @@
 #   sudo apt-get install pdftk
 #
 
-pdftk article.pdf cat 1-35 output main.pdf
-pdftk article.pdf cat 36-45 output supp_mat.pdf
+pdftk pirouette_article.pdf cat 1-24 output main.pdf
+pdftk pirouette_article.pdf cat 25-end output supp_mat.pdf
