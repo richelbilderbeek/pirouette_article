@@ -1,2 +1,2 @@
 all:
-	echo "Stub"
+	./create_article.sh
