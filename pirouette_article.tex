@@ -1,7 +1,7 @@
 \begin{abstract}
 
   \textbf{1. }
-    Phylogenetic trees are current routinely reconstructed from an alignment 
+    Phylogenetic trees are currently routinely reconstructed from an alignment 
     of character sequences (usually nucleotide sequences). 
     Bayesian tools, such as MrBayes, RevBayes and BEAST2, 
     have gained much popularity over the last decade, 
@@ -12,16 +12,12 @@
     In principle, the Bayesian framework allows for comparing 
     different tree priors, which may elucidate the macroevolutionary 
     processes underlying the species tree.
-    In practice, however, only macroevolutionary models that allow for 
-    fast computation of the prior probability are used.
-    An open question is, how accurate the tree estimation 
-    is when the real macroevolutionary processes are substantially 
-    different from those assumed in the tree prior. \\
+    In practice, however, only macroevolutionary models that allow for fast computation of the prior probability are used.
+    The question is how accurate the tree estimation is when the real macroevolutionary processes are substantially different from those assumed in the tree prior. \\
     \textbf{2. }
     Here we present \verb;pirouette;, 
     a free, libre and open-source R package that assesses 
-    the inference error made by Bayesian phylogenetics for a given 
-    macroevolutionary diversification model. \verb;pirouette; makes use of 
+    the inference error made by Bayesian phylogenetics for a given macroevolutionary diversification model. \verb;pirouette; makes use of 
     BEAST2, but its philosophy applies to any Bayesian phylogenetic inference 
     tool. \\
   \textbf{3. }
@@ -54,7 +50,7 @@ Specifically, for the species tree prior - which describes
 the process of diversification - 
 BEAST has built-in priors such as the Yule [\cite{yule}] and 
 (constant-rate) birth-death [\cite{nee1994reconstructed}] models.
-These simple tree priors are the most commonly used, as they have sufficient biological complexity, while being computationally fast.
+These simple tree priors are the most commonly used, as they represent some biologically realistic processes (i.e. branching at per species constant rates), while being computationally fast.
 BEAST's successor, BEAST2 [\cite{bouckaert2019beast}],
 has a package manager, that allows third-party users 
 to extend existing functionalities.
@@ -62,43 +58,25 @@ For example, one can add novel diversification models
 by writing a BEAST2 package that contains the likelihood 
 formula of a phylogeny under the novel diversification model, 
 i.e. the prior probability of a species tree.
-Many diversification models (and their associated probability algorithms) have been developed, e.g., models in which diversification is time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
-or diversity-dependent [\cite{etienne2011diversity}],
+Many diversification models (and their associated probability algorithms) 
+have been developed, e.g., models in which diversification is time-dependent [\cite{nee1994reconstructed,rabosky2008explosive}],
+or diversity-dependent [\cite{etienne2012diversity}],
 or where diversification rates change for specific lineages 
-and their descendants [\cite{etienne2012conceptual}, 
-\cite{rabosky2014automatic}, \cite{alfaro2009nine}, 
-\cite{laudanno2020sls}], models that treat speciation as a process that takes 
-time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}][\cite{lambert2015reconstructed}], 
-or as a burst of simultaneous branching
-events [\cite{laudanno2018mbd}], or where diversification rate
-depends on a trait that has two [\cite{maddison2007estimating}], 
-or more [\cite{fitzjohn2012diversitree}] states,
-even concealed states [\cite{beaulieu2016detecting}] 
-or a combination of all these [\cite{herrera2018detecting}].
-
-Many diversification models (and their associated probability algorithms) have been developed to account for possible mechanisms.
-There are models in which diversification rates are time-dependent [\cite{nee1994reconstructed}, \cite{rabosky2008explosive}], 
-or diversity-dependent [\cite{etienne2011diversity}],
-or not homogeneous across the entire phylogeny [\cite{etienne2012conceptual}, 
-\cite{rabosky2014automatic}, \cite{alfaro2009nine}, 
-\cite{laudanno2020sls}], models that treat speciation as a process that takes time [\cite{rosindell2010protracted}][\cite{etienne2012prolonging}][\cite{lambert2015reconstructed}], 
-or as a burst of simultaneous branching
-events [\cite{laudanno2018mbd}].
-Others account for trait-dependent regimes, in several ways: where diversification rates
-depend on a trait that has two [\cite{maddison2007estimating}], 
-or more [\cite{fitzjohn2012diversitree}] states,
-even concealed states [\cite{beaulieu2016detecting}] 
-or a combination of all these [\cite{herrera2018detecting}].
-Despite such a rich theoretical landscape, only a few of these diversification models are available as a BEAST2 package.
+and their descendants [\cite{etienne2012conceptual, rabosky2014automatic, alfaro2009nine}].
+Other models treat speciation as a process that takes 
+time [\cite{rosindell2010protracted, etienne2012prolonging, lambert2015reconstructed}],
+or where diversification rate
+depends on one or more traits [\cite{maddison2007estimating, fitzjohn2012diversitree}].
+Despite such a rich theoretical landscape, only a few of these 
+diversification models are available as tree priors in BEAST2.
 
 When a novel diversification model is introduced,
 its performance in inference should be tested.
 Part of a model's performance is its ability to recover parameters from simulated data with known 
 parameters (e.g. [\cite{etienne2014estimating}]), 
 where ideally the estimated parameter values closely match the known/true values.
-
-Even when a diversification model passes the procedure described above, 
-it is not necessarily used in Bayesian inference.
+Even when a diversification model passes this procedure, 
+it is not necessarily used as tree prior in Bayesian inference.
 Bayesian phylogenetic inference often requires 
 that the prior probability of the phylogeny 
 according to the diversification model has to be computed millions of times. 
@@ -110,29 +88,25 @@ However, the assumption that tree prior choice is of low importance
 must first be verified.
 
 There have been multiple attempts to investigate the importance of tree
-prior choice. For example, recently Sarver et al., [\cite{sarver2019choice}] 
+prior choice. For example, Sarver and colleagues, [\cite{sarver2019choice}] 
 showed that the choice of tree prior does not 
 substantially affect phylogenetic inferences of diversification rates.
-Also recently, Duchene et al. [\cite{duchene2018phylodynamic}] released
-a BEAST2 package to assess how well posterior predictive simulations 
-recover a given tree when using the standard diversification models.
-These studies show how current diversification models compare to one another, 
-but they do not help to assess the importance of a new tree prior. 
+However, they only compared current diversification models to one another, 
+and thus this does not inform us on the importance of a new tree prior.
 
 Here we introduce a method to quantify the importance of a novel tree prior.
-The method starts with a phylogeny generated 
-by the new model. 
-Next, nucleotide sequences are simulated that follow the same
-evolutionary history as the given phylogeny. 
-
+The method starts with a phylogeny generated by the new model. 
+Next, nucleotide sequences are simulated that follow the evolutionary history of the given phylogeny. 
 Then, using BEAST2's built-in tree priors,
 a Bayesian posterior distribution of phylogenies is inferred. 
 We then compare the inferred with the original phylogenies. 
 How to properly perform this comparison forms the heart of our method.
 Only new diversification models that result 
-in a large discrepancy between inferred and simulated phylogenies will be worth the effort and computational burden to implement a species tree prior for in a Bayesian framework.
+in a large discrepancy between inferred and simulated phylogenies 
+will be worth the effort and computational burden to implement 
+a species tree prior for in a Bayesian framework.
 
-Our method is programmed as an R package (\cite{R}) called \verb;pirouette;.
+Our method is programmed as an R package [\cite{R}] called \verb;pirouette;.
 \verb;pirouette; is built on \verb;babette; [\cite{bilderbeek2018babette}], 
 which calls BEAST2 [\cite{bouckaert2019beast}]. 
 
@@ -144,15 +118,16 @@ The goal of \verb;pirouette; is to quantify the importance of a tree prior.
 It does so by measuring the inference error made 
 for a given reconstructed phylogeny, 
 simulated under a (usually novel) diversification model.
-We refer to the true model that generated the given tree
+We refer to the model that has generated the given tree
 as the 'generative tree model' $\mathit{p_{G}}$.
-We define the birth-death (BD) model (\cite{nee1994reconstructed}) as
+We define the birth-death (BD) model [\cite{nee1994reconstructed}] as
 the standard tree model, as many (non-standard) tree models 
 have a parameter setting for which they reduce to this model. 
-One such example is the diversity-dependent (DD) tree model (\cite{DDD, etienne2011diversity}):
-the DD model is a BD model with a speciation rate that is dependent 
-on the number of species and a carrying capacity. For a carrying capacity
-of infinity, the DD model reduces to a BD model.
+One such example is the diversity-dependent (DD) diversification 
+model [\cite{DDD, etienne2012diversity}]:
+the DD model is a BD model with a speciation or extinction rate that depends 
+on the number of species and a clade-level carrying capacity. For a carrying capacity
+of infinity, the DD model reduces to the BD model.
 When benchmarking a novel tree model, 
 one will typically construct phylogenies 
 for different combinations of the diversification model's parameters, 
@@ -162,7 +137,7 @@ when assessing a novel tree prior,
 our examples contain only one replicate,
 as the goal is to show the workings of \verb;pirouette;,
 instead of doing an extensive analysis.
-The supplementary materials, however, do show the results
+The supplementary material, however, does show the results
 of replicated runs under multiple settings.
 
 \verb;pirouette; allows the user to specify a wide variety of custom settings. 
@@ -191,7 +166,7 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;site_model; &
     Nucleotide substitution model &
-    GTR, HKY, JC, TN93 \\
+    GTR, HKY, JC, TN \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;mutation_rate; &
     Pace at which mutation occurs &
@@ -210,7 +185,7 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     Always, Best candidate \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;do_measure_evidence; &
-    Sets whether or not the evidence of the model is to be computed &
+    Sets whether or not the evidence of the model must be computed &
     TRUE, FALSE \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \verb;error_fun; &
@@ -225,17 +200,17 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
   \end{tabular}
   \caption{
     Most important parameter options.
-    BD = birth death (\cite{nee1994reconstructed}), 
-    CBS = coalescent Bayesian skyline (\cite{drummond2005bayesian}), 
+    BD = birth death [\cite{nee1994reconstructed}], 
+    CBS = coalescent Bayesian skyline [\cite{drummond2005bayesian}], 
     CCP = coalescent constant-population, 
     CEP = coalescent exponential-population,
-    Yule = pure birth model (\cite{yule}),
-    RLN = relaxed log-normal clock model (\cite{drummond2006relaxed}),
-    strict = strict clock model (\cite{zuckerkandl1965molecules}), 
-    GTR = Generalized time-reversible model (\cite{tavare1986some}), 
-    HKY = Hasegawa, Kishino and Yano (\cite{hasegawa1985dating}), 
-    JC = Jukes and Cantor (\cite{jukes1969evolution}), 
-    TN93 = Tamura and Nei (\cite{tamura1993estimation}).
+    Yule = pure birth model [\cite{yule}],
+    RLN = relaxed log-normal clock model [\cite{drummond2006relaxed}],
+    strict = strict clock model [\cite{zuckerkandl1965molecules}], 
+    GTR = Generalized time-reversible model [\cite{tavare1986some}], 
+    HKY = Hasegawa, Kishino and Yano [\cite{hasegawa1985dating}], 
+    JC = Jukes and Cantor [\cite{jukes1969evolution}], 
+    TN = Tamura and Nei [\cite{tamura1993estimation}].
   }
   \label{tab:options}
 \bigskip
@@ -257,10 +232,8 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
     $\mathit{A}$ &
     Alignment model &
-    It includes the parts of the generative model that directly affect the 
-    alignment generation, like the clock model $\mathit{c_{G}}$ and 
-    the site model $\mathit{s_{G}}$. Additional arguments can be provided, 
-    such as the mutation rate and the root sequence. \\
+    Specifies the alignment generation, such as the clock model 
+    $\mathit{c_{G}}$, site model $\mathit{s_{G}}$ and root sequence. \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{X_{i}}$ &
     $i$-th candidate experiment &
@@ -270,30 +243,26 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{I}$ &
     Inference model &
-    Phylogenetic inference model to run BEAST2. Likewise the generative model $G$, 
-    its main components are the tree prior $\mathit{p_{I}}$, 
-    the clock model $\mathit{c_{I}}$ and the site model $\mathit{s_{I}}$. \\
+    The assumed phylogenetic inference model, of which the main components
+    are the tree prior $\mathit{p_{I}}$, assumed clock model $\mathit{c_{I}}$ 
+    and assumed site model $\mathit{s_{I}}$. \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{C}$ & Inference conditions & Conditions under which $\mathit{I}$ 
     is used in the inference. 
-    They are composed by the model type, run condition and 
+    They are composed of the model type, run condition and 
     whether to measure the evidence. \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{E}$ & Error measure parameters & 
     Errors measurement setup that can be specified providing an 
     error function to measure the difference between the original phylogeny 
-    and the inferred posterior. The initial part of the posterior that is 
-    reckoned as not representative can be discarded using a burn-in fraction. \\
+    and the inferred posterior. The first iterations of the MCMC chain of the posterior may not be representative and can be discarded using a burn-in fraction. \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \hline 
   \end{tabular}
   \caption{
     Definitions of terms and relative symbols used in the main text and in 
     Fig~\ref{fig:pipeline}. To run the pipeline $\mathit{A}$, $\mathit{X}$ 
-    and $\mathit{E}$ must be specified. Examples can be found in 
-    listings~\ref{lst:create_alignment_params}, 
-    \ref{lst:create_gen_experiment_explicit} and 
-    \ref{lst:create_error_measure_params}.
+    and $\mathit{E}$ must be specified.
   }
   \label{tab:definitions}
 \end{sidewaystable}
@@ -303,13 +272,15 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
 
 \begin{figure}
   \centering
-  \includegraphics[width = \textwidth]{workflow4.png}
+  \includegraphics[width = 0.99\textwidth]{workflow4.png}
   \caption{
     \texttt{pirouette} pipeline.
-    The pipeline starts from a phylogeny (1a) simulated by the generative tree model 
+    The pipeline starts from a phylogeny (1a) simulated by the 
+    generative tree model 
     $\mathit{p_{G}}$.
-    The phylogeny is converted to an alignment (2a) using the generative alignment model 
-    $\mathit{A} = (\mathit{c_{G}}, \mathit{s_{G}})$, composed of a clock and a site model. 
+    The phylogeny is converted to an alignment (2a) using the generative 
+    alignment model 
+    $\mathit{A} = (\mathit{c_{G}}, \mathit{s_{G}})$, composed of a clock model and a site model. 
     The user defines one or more experiments.
     For each candidate experiment $\mathit{X_{i}}$ 
     (a combination of inference model $\mathit{I_{i}}$ and condition $\mathit{C_{i}}$),
@@ -332,7 +303,6 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     A twin alignment (2b) is then simulated from the twin phylogeny 
     using clock model $\mathit{c_{G}}$ and site model $\mathit{s_{G}}$ 
     imported from the generative model. 
-    The twin alignment has the same number of mutations as the original alignment.
     The twin pipeline follows the procedure of the main pipeline, 
     resulting in a twin error distribution (5b).
   }
@@ -340,21 +310,21 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
 \end{figure}
 
 The pipeline to assess the error BEAST2 makes in inferring this phylogeny 
-then contains the following steps:
+contains the following steps:
 \begin{enumerate}
-  \item the user supplies one or (ideally) more phylogenies from a 
-    new diversification model
-  \item from the given phylogeny an alignment is simulated 
-    under a known alignment model $\mathit{A}$;
-  \item from this alignment, according to the specified 
+  \item The user supplies one or (ideally) more phylogenies from a 
+    new diversification model.
+  \item From the given phylogeny an alignment is simulated 
+    under a known alignment model $\mathit{A}$.
+  \item From this alignment, according to the specified 
     inference conditions $\mathit{C}$, 
     an inference model $\mathit{I}$ is chosen (which may differ from the 
-    generative model);
-  \item the inference model and the alignment are used 
-    to infer a posterior distribution of phylogenies;
-  \item the phylogenies in the posterior are compared with the given phylogeny 
+    generative model).
+  \item The inference model and the alignment are used 
+    to infer a posterior distribution of phylogenies.
+  \item The phylogenies in the posterior are compared with the given phylogeny 
     to estimate the error made, according to 
-    the error measure $\mathit{E}$ specified by the user;
+    the error measure $\mathit{E}$ specified by the user.
 \end{enumerate}
 
 The pipeline is visualized in Fig.~\ref{fig:pipeline}. 
@@ -364,44 +334,31 @@ The utility of this twin tree will be explained below.
 
 The first step simulates an alignment from the given 
 phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a).
-For the sake of clarity, here we will assume the alignment consists out
-of DNA sequences, but other heritable material such as amino acids also works.
+For the sake of clarity, here we will assume the alignment consists
+of DNA sequences, but one can also use other heritable material such as amino acids.
 The user must specify a root sequence, a mutation rate and a site model.
-The root sequence is the DNA sequence of the shared common ancestor,
-and is set to four different equally-sized mononucleotide blocks by default, 
+The root sequence is the DNA sequence of the shared common ancestor of 
+all species, and is set to four different equally-sized 
+mononucleotide blocks by default, 
 which helps interpreting the resulting alignment.
 Supported nucleotide substitution models (part of a DNA
-site model) are JC, HKY, TN and GTR (see \ref{tab:options} for
-the meaning of these abbreviatons).
-JC is the default nucleotide subsitution mode (NSM),
-in which the nucleotide substition rates between all
+site model) are JC, HKY, TN and GTR (see Table \ref{tab:options} for
+the meaning of these abbreviations).
+JC is the default nucleotide substitution model (NSM),
+in which the nucleotide substitution rates between all
 nucleotides are equal and constant over time.
-Note that the user cannot specify a clock model, as only the strict clock model 
-is implemented and thus always assumed.
 
 The second step (Fig.~\ref{fig:pipeline}, 3a)
-selects one (or more) inference model(s) $I$ from a set of inference models $I_{1},\dots,I_{n}$. 
-We define an experiment $X_{i}$ as the combination of 
-an inference model $I_{i}$ and the conditions $C_{i}$ 
-to actually use it in the inference step.
-For example, we may require that an inference
-model (a combination of a tree model, clock model and site model) 
-should include the generative/true tree model. 
-As a second example, we may require that we have selected a set of 
-candidate inference models,
-of which only the best should be used in the actual inference.
-In the first example, we specified the condition $C_{i}$ that this
-generative model should always be run, whereas in the second example,
-we specified condition $C_{i}$ that a candidate model should only be run
-when it is the best.
-The 'best' model is defined as the inference model with
-the highest evidence (a.k.a. marginal likelihood), based on the alignment 
-simulated in the previous step.
-The evidence for an inference model is estimated by nested 
-sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
-We note that scripted use of BEAST2 packages is only possible under Linux and Mac.
-Windows systems can do the model comparison for shorter DNA sequences 
-using the web interface of \verb;mcbette; [\cite{mcbette}].
+selects one or more inference model(s) $I$ from 
+a set of standard inference models $I_{1},\dots,I_{n}$.
+For example, if the generative model is known and standard,
+one can specify the inference model to be the same as the generative model.
+If the tree model is unknown or non-standard - which is the primary motivation for this paper -, one can pick
+a standard inference model which is considered to be closest to the true tree model.
+Also, if we want to run only the inference
+model that fits best to an alignment from a set of candidates,
+one can specify these inference models as 
+well (see section 'Candidate models').
 
 The third step infers the posterior distributions,
 using the simulated alignment (Fig.~\ref{fig:pipeline}, 2a $\rightarrow$ 4a),
@@ -413,16 +370,16 @@ This step usually takes up most of the pipeline's computation time.
 The fourth step quantifies the inference error made. 
 First the burn-in fraction is removed, i.e. the first phase of the 
 Markov chain Monte Carlo (MCMC) run,
-which samples an unrepresentative part of state space. 
+which samples an unrepresentative part of paraneter and tree space. 
 By default, \verb;pirouette; 
 removes the first 10\% of the posterior.
-From the remaining posterior \verb;pirouette; 
+From the remaining posterior, \verb;pirouette; 
 creates an error distribution, by measuring the difference
 between the true tree and each of the posterior 
 trees (Fig.~\ref{fig:pipeline}, 4a $\rightarrow$ 5a).
 The user can specify a function to quantify the differences between
 the true and posterior trees. By default, the package uses the nLTT 
-statistic (\cite{janzen2015approximate}), which is the absolute difference
+statistic [\cite{janzen2015approximate}], which is the absolute difference
 between the normalized lineages-through-time plots of two trees.
 The nLTT statistic is chosen, as it can operate on any two trees (regardless
 of their crown ages and number of taxa) and its results have a clear range
@@ -431,8 +388,15 @@ from a distribution of trees from any tree model.
 
 \subsection{Twinning}\label{subsec:twinning}
 
-An optional step is to use the 'twinning process'.
-This process, $T$, encompasses two steps:
+Similar to lab experiments, \verb;pirouette; allows to perform
+a control measurement, by use of a process we call twinning. 
+In this context, this control results in an error distribution
+that is the baseline error of the pipeline. The difference
+between the 'true' and 'twin' error distributions is caused only
+by the mismatch between the generative tree model and the assumed
+tree prior.
+
+The twinning process, $T$, encompasses two steps:
 $T_1$, that generates a 'twin tree' (Fig.~\ref{fig:pipeline}, 1b) 
 and $T_2$, which generates a 'twin alignment' (Fig.~\ref{fig:pipeline}, 2b).
 Both twin tree and alignment will be analyzed in the same way 
@@ -455,7 +419,8 @@ topology $\psi_{\mathit{G}}$:
 \end{align}
 The default option for the diversification model $p_T$ is the standard BD model.
 It is then possible to use the likelihood function 
-$L_{\mathit{T}}$ for this diversification model to find the parameters $\theta^{*}_{\mathit{T}}$ 
+$L_{\mathit{T}}$ for this diversification model to find 
+the parameters $\theta^{*}_{\mathit{T}}$ 
 (e.g. speciation and extinction rates, in case of a BD model) 
 that maximize this likelihood applied 
 to the true tree, conditioned on its number of tips $n_{\mathit{G}}$:
@@ -468,91 +433,128 @@ $n_{\mathit{T}} = n_{\mathit{G}}$
 of branching times $\Vec{t}_{\mathit{T}}$ for the twin tree 
 $\tau_{\mathit{T}}$, under the process $p_{T}$, 
 while preserving the topology. 
-We simulate the new branching times using the TESS package (\cite{TESS, hohna2016tess}).
+We simulate the new branching times using the TESS 
+package [\cite{TESS, hohna2016tess}].
 
 The second step ($T_2$) of the twinning process simulates the twin alignment 
 with the same clock model, site model and mutation rate 
 used to simulate the original alignment. 
-We also impose that, in the twin alignment, 
-the total number of mutations with respect to the root sequence 
-must be the same as in the true alignment in order to keep the information content 
-stored in both the true and twin alignments as similar as possible. 
-We achieve this by simply simulating twin alignments until we
-obtain one that has the desired number of mutations.
+The twin alignment can be simulated in any user-defined way.
+\verb;pirouette; supplies the option to have it simulated with
+the same mutation rate as the true alignment. By default, however,
+not only the same mutation rate is used, but also the total number of mutations
+matches the true alignment. The total number of mutations is defined
+as the amount of different nucleotides between the (known) root sequence
+compared to the sequences at the tips.
 
-The twin pipeline serves as a control: 
-even when the generating and inference models are identical
-(as is the case in the twin pipeline),
-the inferred trees from the posterior distribution will 
-still differ from the true tree, 
-due to stochasticity in producing an alignment 
-and to the MCMC sampling of the posterior.
-The twin pipeline provides this minimum error,
-because the generating and inference model match exactly.
-When comparing the true and twin error distribution,
-any differences will be due to the fact that true and twin phylogenies are realizations 
-of different processes: one (possibly) non-standard, $p_G$, 
-and one standard, $p_T$ (see Fig~\ref{fig:pipeline}).
+\subsection{Candidate models}\label{subsec:candidates}
 
-This can be seen for both the "generative" and "candidate" model 
-types (see Table~\ref{tab:options}).
-If the chosen model type is "generative", 
-the tree prior chosen for the twin inference will  
-exactly match the model to generate the tree.
-In the main pipeline, as the tree model $p_{G}$ is non-standard, 
-it cannot be used in inference.
-If, instead, the chosen model type is "candidate", 
-the twin tree model will be included in the pool of examined models 
-during the process of selection of the inference model. 
+The user has to specify exactly one standard inference model,
+but may be unsure which one to pick. To account for this, the user can
+specify a set of candidate inference models. Each of these candidate inference models is run in an initial, relatively short, analysis; the candidate model with the highest 
+evidence (i.e., marginal likelihood) will then be
+used in another, longer, inference run, resulting in another error distribution.
+The evidence for an inference model is estimated by nested 
+sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
 
-Finally, if the goal is to evaluate BEAST2's performance on a non-standard tree prior, 
+If twinning is used, a candidate model that has the highest evidence for
+the twin alignment is also used to create another error
+distribution.
+
+\subsection{Stochasticity caused by simulating phylogenies}
+
+Finally, if the goal is to evaluate BEAST2's performance 
+on a non-standard tree model, 
 one must also consider the last source of stochasticity: 
 the different phylogenies a tree model generates.
 A single phylogeny cannot be considered as fully representative of the model. 
-For this reason multiple phylogenies, as well as an equal number of twins, must be considered. 
+For this reason multiple phylogenies must be considered. 
 If the number of considered phylogenies is high enough, 
 the comparison between the main pipeline's aggregated error distribution 
 and its twin counterpart leads to a fair evaluation 
-of the new tree prior with respect to the baseline error.
+of the new tree model with respect to the baseline error.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We show the usage of \verb;pirouette; on an tree generated 
-by the non-standard diversity-dependent (DD) tree model \cite{DDD, etienne2011diversity},
+by the non-standard diversity-dependent (DD) tree model [\citep{DDD, etienne2012diversity}],
 which is a BD model with a speciation rate that is dependent on the number of species.
 
-We use the tree as shown in figure \ref{fig:dd_tree},
-which has an arbitrary crown age of ten time units
-and six taxa, to keep the figure more readable.
+The code to reproduce our results can be found at  
+\url{https://github.com/richelbilderbeek/pirouette_example_30}
+and a simplified version is shown here for convenience:
+
+\begin{lstlisting}[language=R]
+library(pirouette)
+
+# Create phylogeny
+set.seed(314)
+phylogeny <- create_exemplary_dd_tree(
+  n_taxa = 6, 
+  crown_age = 10,
+  extinction_rate = 0.1
+)
+
+# Setup pirouette
+pir_params <- create_std_pir_params(
+  folder_name = "example_30"
+)
+
+# Do the runs
+pir_out <- pir_run(
+  phylogeny = phylogeny,
+  pir_params = pir_params
+)
+
+# Save
+library(ggplot2)
+pir_outs <- list()
+pir_outs[[1]] <- pir_out
+pir_plots(pir_outs) +
+  ggtitle("pirouette example 30") +
+  ggsave("errors.png", width = 7, height = 7)
+
+pir_save(
+  phylogeny = phylogeny,
+  pir_params = pir_params,
+  pir_out = pir_out,
+  folder_name = "example_30"
+)
+\end{lstlisting}
+
+The DD tree that is generated by this code is as shown in Figure \ref{fig:dd_tree},
+which has an arbitrarily chosen crown age of 10 time units and 6 tips for an extinction rate of 0.1. The carrying-capacity is also set at 6. The initial speciation rate $\lambda_0$ is chosen such that the expected number of species in a constant-rate BD model would be equal to the number of tips, which amounts to $\lambda_0 = 0.63$.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_30/example_30_314/true_tree.png}
   \caption{
-    The tree derived from a DD process.
+    The example tree resulting from a diversity-dependent (DD) simulation.
   }
   \label{fig:dd_tree}
 \end{figure}
 
 Using the default \verb;pirouette; settings,
-the error distribution shown in figure \label{fig:example_30}
+the error distribution shown in Figure \ref{fig:example_30}
 is produced.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_30/errors.png}
   \caption{
     The inference error made 
-    for both a generative tree prior and best candidate model
+    for an assumed generative tree model and best candidate model,
     compared with the error obtained for the twin tree.
-    Here, the 'twin' tree shows the baseline inference error.
+    The assumed generative tree model is the model assumed to be closest to
+    the actual generative tree model that generated the true tree.
+    The twin distributions show the baseline inference error.
     Vertical dashed lines show the median error value per distribution.
   }
   \label{fig:example_30}
 \end{figure}
 
-Focussing on the upper panel of figure \ref{fig:example_30},
-we can see that the error distributions of the generative model
+In the upper panel of Figure \ref{fig:example_30},
+we can see that the error distributions of the assumed generative model
 differ strongly between the true and twin tree. 
 This difference shows the extent of the mismatch between
 the actual tree model (which is DD) and the (BD) tree prior used.
@@ -561,116 +563,72 @@ the inference error we make when using an
 incorrect (that is, BD) tree prior on a DD tree
 is profound.
 
-Comparing the upper and lower panel of figure \ref{fig:example_30}, 
+Comparing the upper and lower panel of Figure \ref{fig:example_30}, 
 we can see that the best
 candidate model is only slightly better at inferring the true tree,
-compared to the assumed generative model, confirming that the 
-picked generative model was a good choice.
+than the assumed generative model, thereby showing that they cannot compensate for the true generative tree model not being among the inference models.
+
+The candidate model that had highest evidence given the simulated alignment,
+was JC, RLN, BD (see Table \ref{tab:options} for the meaning of these 
+abbreviations). JC was indeed the site model used when simulating the
+alignments. The RLN clock model is an unexpected choice: the RLN clock
+model assumes that mutation rates differ between lineages, whereas the
+alignment was simulated with equal mutation rates for all lineages.
+The BD model is indeed closer to the DD model than Yule, as both BD and DD
+model allow for extinction, while Yule does not.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We showed how to use \verb;pirouette; to quantify the importance of a 
-tree prior in Bayesian phylogenetics, using the simplest generative tree 
-model possible.
-In principle any other (more complex) generative tree model can be tested, 
-but we chose to provide the simplest (and fastest to run) examples.
+tree prior in Bayesian phylogenetics, assuming the simplest standard 
+tree model possible.
+In principle any other standard tree model can be assumed, 
+but we chose to provide the simplest example.
 
 Figure~\ref{fig:example_30} illustrates the primary result of our pipeline: 
 it shows the error distributions for the true tree and the twin tree 
-when either the generating model or the best candidate model is used in inference. 
+when either the (assumed) generating model or the best candidate model is used in inference. 
 The clear difference between the error distributions 
 for the true tree and the twin tree suggests 
 that the choice of tree prior does matter.
+We note, however, that only one tree from a novel tree model
+is not enough to determine the impact of using an incorrect
+tree prior. Instead, a distribution 
+of multiple trees, generated by the novel tree model, should be used. In the supplementary material we have provided some examples.
 
-We note, however, that all examples used only one original tree,
-where any speciation process produces a whole range of trees.
-One tree is not enough to determine the impact 
-of a tree prior on Bayesian inference.
-However, if the same procedure were repeated and 
-performed on a distribution with a sufficient number of generative trees, 
-it would constitute a quantitative and effective assessment of the 
-quality of the inference.
-Also a twin tree does not always result in a lower error distribution,
-as the stochasticity in generating a twin tree will - with
-very low probability - yield a tree of that same very low probability.
+Like most phylogenetic experiments, the setup of \verb;pirouette;
+involves many choices. A prime example is the
+length of the simulated DNA sequence. One expects that the inference error
+decreases for longer DNA sequences. We investigated this
+superficially and confirmed this prediction (see the supplementary materials). However, we note that for longer DNA sequences, the assumption of constant substitution rates may become less realistic and hence longer sequences may require more parameters. Hence, simply getting longer sequences will not always lead to a drastic reduction of the influence of the species tree prior.
+Fortunately, \verb;pirouette; provides a pipeline that works for all choices.
+
+Interpreting the results of \verb;pirouette; is up to the user; 
+\verb;pirouette; does not answer the question 
+whether the inference error is too large to trust the inferred tree. The user is encouraged to use different statistics to measure the error. The nLTT statistic is
+a promising starting point, as it can compare any two trees and 
+results in an error distribution of known range, but one may also explore other statistics.
+In principle, \verb;pirouette; allows for this, but in our example we used a diversification model (DD) that only deviates from the Yule and BD models in the temporal branching pattern, not in the topology.
+
+As noted in the introduction, Duch\^{e}ne and colleagues [\cite{duchene2018phylodynamic}],
+also developed a method to assess the adequacy of a tree model
+on empirical trees. They simulate trees from the posterior distribution of the parameters and then compare this to the originally inferred tree using tree statistics, to determine whether the assumed tree model in inference indeed generates the tree as inferred. This is useful if these trees match, but when they do not, this does not mean that the inferred tree is incorrect; if sufficient data is available the species tree prior may not be important, and hence the inference may be adequate even though the assumed species tree prior is not. In short, the approach is applied to empirical trees and compares the posterior and prior distribution of trees (with the latter generated with the posterior parameters!).
+\verb;pirouette; aims to identify when assuming standard priors for the species tree leads to incorrect inference if one believes more complex diversification models are operating than can be currently accommodated in inference. In short, our approach applies to simulated trees and compares the posterior distributions of trees generated with a standard and non-standard model, but inferred with a standard one. The two methods therefore complement one another.
+
+However, we note that the \verb;pirouette; pipeline is not restricted to exploring the effects of a new species tree model. The pipeline can also be used to explore the effects of non-standard clock or site models, such as relaxed clock models with a non-standard distribution, correlated substitutions on sister lineages, or elevated substitutions rates during speciation events. It is, however, beyond the scope of this paper to discuss all these options in more detail.
 
 In conclusion, \verb;pirouette; can show the errors to be expected
-when the tree prior used in inference is different from the generating model.
-The user can then judge whether or not a new tree prior, 
-tailored on the generative process, is needed. 
-If this is indeed the case, one can implement the novel tree prior as an addition to 
-his/her favorite Bayesian inference tool.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{pirouette resources}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\verb;pirouette; is free, libre and open source software available at 
-\url{http://github.com/richelbilderbeek/pirouette},
-licensed under the GNU General Public License version 3.
-\verb;pirouette; depends on multiple packages, which are:
-\verb;ape; (\cite{ape}),
-\verb;assertive; (\cite{assertive}),
-\verb;babette; (\cite{bilderbeek2018babette}),
-\verb;DDD; (\cite{DDD}),
-\verb;devtools; (\cite{devtools}),
-\verb;dplyr; (\cite{dplyr}),
-\verb;ggplot2; (\cite{ggplot2}),
-\verb;knitr; (\cite{knitr}),
-\verb;lintr; (\cite{lintr}),
-\verb;magrittr; (\cite{magrittr}),
-\verb;mcbette; (\cite{mcbette}),
-\verb;nLTT; (\cite{nLTT}),
-\verb;phangorn; (\cite{phangorn}),
-\verb;phytools; (\cite{phytools}),
-\verb;plyr; (\cite{plyr}),
-\verb;rappdirs; (\cite{rappdirs}),
-\verb;rmarkdown; (\cite{rmarkdown}),
-\verb;Rmpfr; (\cite{Rmpfr}),
-\verb;stringr; (\cite{stringr}),
-\verb;TESS; (\cite{TESS}),
-\verb;testit; (\cite{testit}), 
-\verb;testthat; (\cite{testthat}) and
-\verb;tidyr; (\cite{tidyr}).
-
-\verb;pirouette;'s development takes place on GitHub,
-\url{https://github.com/richelbilderbeek/pirouette},
-which allows submitting bug reports, requesting features, 
-and adding code. To ensure a high quality, \verb;pirouette; 
-uses a continuous integration service, has a code coverage of above 95\%
-and enforces the most commonly used R style guide (\cite{style_guide}).
-
-\verb;pirouette;'s is extensively documented on its website,
-its documentation and its vignettes.
-The \verb;pirouette; website is a good starting point to learn
-how to use \verb;pirouette;, as it links to tutorials and videos.
-The \verb;pirouette; package documentation describes
-all functions and liberally links to related functions.
-All exported functions show a minimal example as part of their documentation.
-The \verb;pirouette; vignette demonstrates extensively how 
-to use \verb;pirouette; in a more informally written way. 
-
-The code used in this article and more examples that are periodically 
-tested, can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_examples}. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Citation of pirouette}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-To cite \verb;pirouette; this article from within R, use:
-
-\begin{lstlisting}[language=R]
-> citation("pirouette")
-\end{lstlisting}
+when the model assumed in inference is different from the 
+actual generative model.
+The user can then judge whether or not this new model should be implemented in our Bayesian phylogenetic tool. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgments}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We would like to thank the Center for Information Technology of the University 
+We thank the Center for Information Technology of the University 
 of Groningen for its support and for providing access to the Peregrine 
 high performance computing cluster. 
 We thank the Netherlands 
@@ -686,7 +644,7 @@ All code is archived at
 with DOI \url{https://doi.org/12.3456/zenodo.1234567}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Authors' contributions}
+\section{Author contributions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 RJCB, GL and RSE conceived the idea for the package. 
@@ -699,7 +657,7 @@ GL and RSE contributed to revisions.
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MEE style
-\bibliographystyle{mee}
-\bibliography{article}
+\bibliographystyle{pirouette_mee}
+\bibliography{pirouette_article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
