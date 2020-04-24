@@ -5,14 +5,9 @@ tex_files = \
 
 all: pirouette_article.pdf
 
-pirouette_article.pdf: pirouette_article.tex
+pirouette_article.pdf: $(tex_files)
 	./create_article.sh
 
-pirouette_article.tex: $(tex_files)
-	./scripts/merge_files.sh
-
 clean:
-	# Temporary file created by merging files
-	rm -rf pirouette_article.tex
 	rm -rf *.aux *.log *.out *.toc *.blg *.bbl *.pdf
 
