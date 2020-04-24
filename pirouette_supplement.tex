@@ -163,7 +163,9 @@ mauricer::install_beast2_pkg("NS")
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \verb;pirouette; is free, libre and open source software available at 
-\url{http://github.com/richelbilderbeek/pirouette},
+\begin{sloppypar}
+  \url{http://github.com/richelbilderbeek/pirouette},
+\end{sloppypar}
 licensed under the GNU General Public License version 3.
 \verb;pirouette; depends on multiple packages, which are:
 \verb;ape; [\cite{ape}],
@@ -191,7 +193,9 @@ licensed under the GNU General Public License version 3.
 \verb;tidyr; [\cite{tidyr}].
 
 \verb;pirouette;'s development takes place on GitHub,
-\url{https://github.com/richelbilderbeek/pirouette},
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette},
+\end{sloppypar}
 which allows submitting bug reports, requesting features, 
 and adding code. To improve quality, \verb;pirouette; 
 uses a continuous integration service, has a code coverage of above 95\%
@@ -208,8 +212,10 @@ The \verb;pirouette; vignette demonstrates extensively how
 to use \verb;pirouette; in a more informally written way. 
 
 The code used in this article and more examples that are periodically 
-tested, can be found at 
-\url{https://github.com/richelbilderbeek/pirouette_examples}. 
+tested, can be found at
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_examples}. 
+\end{sloppypar}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Citation of pirouette}
@@ -265,7 +271,14 @@ have a useful example and sensible defaults.
 
 This subsection shows the diagnostics from the main example, which
 uses one tree.
-To assess if the results of the inference are meaningful one important parameter is the Effective Sample Size (ESS). This quantity describes how many independent trees are sampled from the posterior distributions. For reliable results it is good practice to have at least $ESS = 200$ (see \url{https://beast.community/ess_tutorial}).
+To assess if the results of the inference are meaningful one important 
+parameter is the Effective Sample Size (ESS). This quantity describes how 
+many independent trees are sampled from the posterior distributions. 
+For reliable results it is good practice to have at 
+least $ESS = 200$ (see 
+\begin{sloppypar}
+  \url{https://beast.community/ess_tutorial}).
+\end{sloppypar}
 In the following we present the ESS for the posterior distributions of the 4 cases shown in Fig. \ref{fig:example_30_full_pipeline}: "true" pipeline with generative model (Table \ref{tab:esses_true_gen}), "true" pipeline with best candidate model (Table \ref{tab:esses_true_best}), "twin" pipeline with generative model (Table \ref{tab:esses_twin_gen}), "twin" pipeline with best candidate model (Table \ref{tab:esses_twin_best}). We also report the marginal likelihood (or evidence) data for model selection performed both in the "true" (Table \ref{tab:true_evidence}) and "twin" pipeline (Table \ref{tab:twin_evidence}).
 
 
@@ -363,7 +376,9 @@ one) trees. These trees are produced by running a DD tree simulation
 with the same parameters as the main example.
 
 The code to reproduce this figure can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_28}.
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_28}.
+\end{sloppypar}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
@@ -383,11 +398,13 @@ except for a varying number of taxa. We did so, by setting the DD model's
 carrying capacity to the desired number of taxa.
 
 The code to reproduce these figure can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_28} (6 taxa, main example),
-\url{https://github.com/richelbilderbeek/pirouette_example_32} (12 taxa),
-\url{https://github.com/richelbilderbeek/pirouette_example_33} (24 taxa),
-\url{https://github.com/richelbilderbeek/pirouette_example_41} (32 taxa),
-\url{https://github.com/richelbilderbeek/pirouette_example_42} (40 taxa). 
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_28} (6 taxa, main example),
+  \url{https://github.com/richelbilderbeek/pirouette_example_32} (12 taxa),
+  \url{https://github.com/richelbilderbeek/pirouette_example_33} (24 taxa),
+  \url{https://github.com/richelbilderbeek/pirouette_example_41} (32 taxa),
+  \url{https://github.com/richelbilderbeek/pirouette_example_42} (40 taxa). 
+\end{sloppypar}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
@@ -424,9 +441,12 @@ Here, we show the same results as the main example,
 except for a varying DNA alignment sequence length.
 
 The code to reproduce these figures can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_19} (500 nucleotides),
-\url{https://github.com/richelbilderbeek/pirouette_example_28} (1000 nucleotides, main example),
-and \url{https://github.com/richelbilderbeek/pirouette_example_34} (2000 nucleotides).
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_19} (500 nucleotides),
+  \url{https://github.com/richelbilderbeek/pirouette_example_28} (1000 nucleotides, main example),
+  and \url{https://github.com/richelbilderbeek/pirouette_example_34} (2000 nucleotides).
+\end{sloppypar}
+
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_19/errors.png}
@@ -456,7 +476,9 @@ This example thus shows a parameterization at the correct level for the
 simplest case possible.
 
 The code to reproduce this figure can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_22}.
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_22}.
+\end{sloppypar}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_22/errors.png}
@@ -475,8 +497,10 @@ the tree used is generated by a birth-death (BD) tree model,
 where we assume it is generated by a Yule (or pure-birth) model.
 This example thus shows the effect of underparameterization.
 
-The code to reproduce this figure can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_26}.
+The code to reproduce this figure can be found at
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_26}.
+\end{sloppypar}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_26/errors.png}
@@ -494,7 +518,9 @@ and high likelihood. In this way, we effectively selected for trees
 that are rare, uncommon and common respectively.
 
 The code to reproduce these figure can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_23}
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_23}
+\end{sloppypar}
 and took 120 hours in total.
 
 \begin{figure}[H]
@@ -522,9 +548,11 @@ of mutations (as measured from the ancestral sequence) as the true alignment. He
 the twin alignment uses the same mutation rate, yet is not guaranteed
 to have the same number of mutations. Any difference in the error distributions can therefore also stem from a difference in the amount of information contained in the alignments.
 
-The code to reproduce this figure can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_18} and
-\url{https://github.com/richelbilderbeek/pirouette_example_28}.
+The code to reproduce this figure can be found at
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_18} and
+  \url{https://github.com/richelbilderbeek/pirouette_example_28}.
+\end{sloppypar}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_18/errors.png}
@@ -547,14 +575,16 @@ amount of information.
 
 Here, we show the same results for different mutation rates.
 
-The code to reproduce this figure can be found at  
-\url{https://github.com/richelbilderbeek/pirouette_example_35} (0.25 / crown age),
-\url{https://github.com/richelbilderbeek/pirouette_example_36} (0.50 / crown age),
-\url{https://github.com/richelbilderbeek/pirouette_example_37} (0.75 / crown age),
-\url{https://github.com/richelbilderbeek/pirouette_example_28} (1.00 / crown age, example reported in \ref{subsec:distribution}, see Fig. \ref{fig:replicate_trees}),
-\url{https://github.com/richelbilderbeek/pirouette_example_38} (1.25 / crown age),
-\url{https://github.com/richelbilderbeek/pirouette_example_39} (1.50 / crown age),
-\url{https://github.com/richelbilderbeek/pirouette_example_40} (2.00 / crown age),
+The code to reproduce this figure can be found at
+\begin{sloppypar}
+  \url{https://github.com/richelbilderbeek/pirouette_example_35} (0.25 / crown age),
+  \url{https://github.com/richelbilderbeek/pirouette_example_36} (0.50 / crown age),
+  \url{https://github.com/richelbilderbeek/pirouette_example_37} (0.75 / crown age),
+  \url{https://github.com/richelbilderbeek/pirouette_example_28} (1.00 / crown age, example reported in \ref{subsec:distribution}, see Fig. \ref{fig:replicate_trees}),
+  \url{https://github.com/richelbilderbeek/pirouette_example_38} (1.25 / crown age),
+  \url{https://github.com/richelbilderbeek/pirouette_example_39} (1.50 / crown age),
+  \url{https://github.com/richelbilderbeek/pirouette_example_40} (2.00 / crown age),
+\end{sloppypar}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{pirouette_example_35/errors.png}
