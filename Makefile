@@ -1,5 +1,5 @@
 tex_files = \
-  pirouette_article.tex \
+  pirouette_content.tex \
   pirouette_header.tex \
   pirouette_supplement.tex
 
