@@ -7,4 +7,4 @@
 #   ./view.sh
 #
 #
-qpdfview pirouette_article.pdf
+evince pirouette_article.pdf
