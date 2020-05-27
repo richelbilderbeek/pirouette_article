@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This supplementary material contains additional facets of \verb;pirouette;, such as the installation of the package, an overview of
-pirouette's main functions and a guide for empiricists, based on multiple experiments
+pirouette's main functions and a guide for users, based on multiple experiments
 that are shown here as well.
 
 For these experiments, we limited the number of replicates by time, 
@@ -21,7 +21,7 @@ Here is an overview of the various sections:
 
 \begin{itemize}
   \item{
-    subsection \ref{subsec:guidelines}: guidelines for empiricists
+    subsection \ref{subsec:guidelines}: guidelines for users
   }
   \item{
     subsection \ref{subsec:installation}: installation
@@ -73,7 +73,7 @@ Here is an overview of the various sections:
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Guidelines for empiricists}
+\subsection{Guidelines for users}
 \label{subsec:guidelines}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -354,7 +354,12 @@ performed both in the "true" (Table \ref{tab:true_evidence}) and
     ; 
     \end{tikzpicture}
   }
-  \caption{Full pirouette pipeline, including comparison to baseline error. The true tree (top right) is used to simulate an alignment. From this alignment two posterior distributions of trees are created: one using the generative model and another one using the inference model with the highest marginal likelihood. For each distribution of trees, a distribution of errors, measured with the nLTT statistic, between the posterior trees and the main trees is drawn. From the true tree also a twin tree is created (right side of the figure) which follows the same pipeline, leading to two additional error distributions to use as baseline errors.}
+  \caption{
+    Full pirouette pipeline, including comparison to baseline error. 
+    The true tree (top left) is used to simulate an alignment. 
+    From this alignment two posterior distributions of trees are created: 
+    one using the generative model and another one using the inference model with the highest marginal likelihood. For each distribution of trees, a distribution of errors, measured with the nLTT statistic, between the posterior trees and the main trees is drawn. From the true tree also a twin tree is created (right side of the figure) which follows the same pipeline, leading to two additional error distributions to use as baseline errors.
+  }
   \label{fig:example_30_full_pipeline}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
