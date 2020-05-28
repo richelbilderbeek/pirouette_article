@@ -36,18 +36,40 @@ Methods in Ecology and Evolution Editorial Office
 Associate Editor Comments to Author:
 Associate Editor
 Comments to the Author:
-This is a much-improved version of the manuscript. It will be a nice contribution, but as pointed out by both reviewers there are still a few issues that need to be better explained for the paper to be ready for publication. The following points raised by the reviewers were of particular interest: 1- better refer to previous work, making it explicitly clear what are novel aspects of pirouette; 2- re-work some of the terminology, including making it  more congruent with previous usage (or alternatively justify the use of some terms); better describe some of the results and interpretations of some of the supplemental sections (in particular sections 8.7 through 8.14).
 
+> This is a much-improved version of the manuscript. It will be a nice 
+> contribution, but as pointed out by both reviewers there are still a 
+> few issues that need to be better explained 
+> for the paper to be ready for publication. 
+> The following points raised by the reviewers were of particular interest: 
+> 1- better refer to previous work, making it explicitly clear what are 
+> novel aspects of pirouette; 2- re-work some of the terminology, 
+> including making it  more congruent with previous usage (or alternatively 
+> justify the use of some terms); better describe some of the results 
+> and interpretations of some of the supplemental sections (in particular 
+> sections 8.7 through 8.14).
 
-Reviewer(s)' Comments to Author:
-Reviewer: 3
+# Reviewer(s)' Comments to Author:
+
+## Reviewer: 3
 
 Comments to the Corresponding Author
-This manuscript by Bilderbeek et al. presents an R package whose purpose is to evaluate the value of new tree priors, by calculating the error introduced by using a different tree prior than the one which generated the tree.
-Overall, I think this package and its goal are interesting and worth publishing, but the presentation could be improved on several points.
 
-Detailed comments
-- the authors mention in their response to the previous reviewers that this package was created from code used in a different project, and I think adding a citation for this original project would be useful as a rationale and example of actual use.
+> This manuscript by Bilderbeek et al. presents an R package 
+> whose purpose is to evaluate the value of new tree priors, 
+> by calculating the error introduced by using a different tree prior 
+> than the one which generated the tree.
+> Overall, I think this package and its goal are interesting 
+> and worth publishing, but the presentation could be improved on several points.
+
+
+### Detailed comments
+
+> the authors mention in their response to the previous reviewers 
+> that this package was created from code used in a different project, 
+> and I think adding a citation for this original project would be useful 
+> as a rationale and example of actual use.
+
 - there is no mention of coalescent tree priors anywhere in the manuscript, which is strange considering several are supported by the package according to Table 1. In particular, the introduction makes it sound as if all existing tree priors are birth-death processes.
 - some of the models presented in the introduction are already implemented in BEAST2: for instance time-dependent processes in the BDSky package, and some of the SSE models in the bdmm package. Adding these citations would be useful for the reader to better understand what is currently available in BEAST2 or not.
 - sections 8.7 through 8.14 of the Supplementary materials need a description of the results and their interpretation. For instance, my read on section 8.11 is that pirouette cannot distinguish between the Yule process and the BD process on the tested tree, but there is nothing in the text to confirm whether I am reading the figures correctly.
