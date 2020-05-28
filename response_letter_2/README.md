@@ -70,15 +70,79 @@ Comments to the Corresponding Author
 > and I think adding a citation for this original project would be useful 
 > as a rationale and example of actual use.
 
-- there is no mention of coalescent tree priors anywhere in the manuscript, which is strange considering several are supported by the package according to Table 1. In particular, the introduction makes it sound as if all existing tree priors are birth-death processes.
-- some of the models presented in the introduction are already implemented in BEAST2: for instance time-dependent processes in the BDSky package, and some of the SSE models in the bdmm package. Adding these citations would be useful for the reader to better understand what is currently available in BEAST2 or not.
-- sections 8.7 through 8.14 of the Supplementary materials need a description of the results and their interpretation. For instance, my read on section 8.11 is that pirouette cannot distinguish between the Yule process and the BD process on the tested tree, but there is nothing in the text to confirm whether I am reading the figures correctly.
-- the twinning procedure is interesting but I am not confident that it produces trees matching the chosen generating process. As far as I understand all the twin trees in the manuscript were produced using the BD process, however the best candidate model on the twin trees is frequently the Yule model. This and the supplementary seem to confirm that the proposed method cannot distinguish between Yule and BD. If true, this is an important caveat, as the purpose of the package is to evaluate the differences between tree priors. One possible explanation is that the tested trees were purely extant, which is known to affect extinction estimates ; it should be straightforward to confirm or infirm this hypothesis using a sampling-through-time tree.
-- the use of "generative model" to describe the model used for comparison by pirouette, as opposed to the true generating process, was quite confusing to me. I would switch that to "baseline model" or "comparison model" and clarify in the caption of Fig 3 that this model is an already implemented tree prior.
+We would agree, would we actually intend to publish this original
+work. Due to time constraints, this original work is terminated.
+
+> there is no mention of coalescent tree priors anywhere in the manuscript, 
+> which is strange considering several are supported by the package 
+> according to Table 1. 
+> In particular, the introduction makes it sound as if 
+> all existing tree priors are birth-death processes.
+
+babette can do coalescent models, but the twinning process cannot
+
+ * [ ] Improve
+
+> some of the models presented in the introduction are already implemented 
+> in BEAST2: for instance time-dependent processes in the BDSky package, 
+> and some of the SSE models in the bdmm package. 
+> Adding these citations would be useful for the reader 
+> to better understand what is currently available in BEAST2 or not.
+
+[RJCB: I think this would be fine to tailor the citations towards 
+BEAST2 packages]
+
+ * [ ] Do so
+
+> sections 8.7 through 8.14 of the Supplementary materials 
+> need a description of the results and their interpretation. 
+> For instance, my read on section 8.11 is that pirouette cannot 
+> distinguish between the Yule process and the BD process on the tested tree, 
+> but there is nothing in the text to confirm 
+> whether I am reading the figures correctly.
+
+Completely agree. We have added in interpretation to each figure.
+
+ * [ ] Do so
+
+> the twinning procedure is interesting but I am not confident that 
+> it produces trees matching the chosen generating process. As far as I 
+> understand all the twin trees in the manuscript were produced using 
+> the BD process, however the best candidate model on the twin trees is 
+> frequently the Yule model. This and the supplementary seem to confirm that 
+> the proposed method cannot distinguish between Yule and BD. If true, this 
+> is an important caveat, as the purpose of the package is to evaluate the 
+> differences between tree priors. One possible explanation is that the 
+> tested trees were purely extant, which is known to affect extinction 
+> estimates ; it should be straightforward to confirm or infirm this 
+> hypothesis using a sampling-through-time tree.
+
+Yes indeed, most twin tree are generated using a BD process.
+
+[RJCB: The explanation that this is caused by using extant trees seems valid
+to me. I feel 'using a sampling-through-time tree' is not straightforward:
+it will be quite some work instead]
+
+ * [ ] Check: best candidate is Yule indeed?
+ * [ ] Reply better
+
+> the use of "generative model" to describe the model used for comparison 
+> by pirouette, as opposed to the true generating process, was quite 
+> confusing to me. I would switch that to "baseline model" or "comparison 
+> model" and clarify in the caption of Fig 3 that this model is an already 
+> implemented tree prior.
+
+[RJCB: actually, looking at this again, I do agree with this reasoning!
+When the true tree is generated with a non-standard model, we handpick
+a model that we could call 'baseline/comparison model'. I think for the
+twin tree, where we know the generative model, we should stick to using
+the current term]
 
 ### Minor comments
 
 > Table 1: descriptions are missing for the error_fun section
+
+
 
 > l184: the model p_T is only defined in the caption of figure 1, I think the definition needs to be repeated here
 
