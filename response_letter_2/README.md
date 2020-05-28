@@ -142,19 +142,29 @@ the current term]
 
 > Table 1: descriptions are missing for the error_fun section
 
+Well spotted!
 
+ * [ ] Add descriptions in the table's caption for nLTT and absolute gamma
+       function
 
-> l184: the model p_T is only defined in the caption of figure 1, I think the definition needs to be repeated here
+> l184: the model p_T is only defined in the caption of figure 1, 
+> I think the definition needs to be repeated here
 
-> section 8.1: "Guidelines for empiricists" is a strange title since this package is aimed at developers of tree priors. Consider replacing with "Guidelines for users".
+ * [ ] Do so
 
-We followed your suggestion.
+> section 8.1: "Guidelines for empiricists" is a strange title since this 
+> package is aimed at developers of tree priors. Consider replacing with 
+> "Guidelines for users".
+
+We used the name 'guidelines for empiricists' from a suggestion by another
+reviewer. We have renamed to 'guidelines for users'.
 
  * [x] Done
 
 - l563: Figure 8.6 does not exist
 
-?
+The figure that appears missing in section '8.6' is the one in the main
+text.
 
 - Figure 4: the true tree is top left, not top right
 
@@ -188,16 +198,22 @@ but not re-do the sims]
 > sample), which is not what the authors are aiming at in this article. 
 > These terms must be rectified or very clearly justified in the manuscript.
 
- * [ ] 
+[RJCB: I think the reviewer has a point. I suggest to do so]
 
-> The authors must acknowledge that twinning should be performed at least 
+ * [ ] Do so
+
+> (1) The authors must acknowledge that twinning should be performed at least 
 > 100 times, and that the example is not useful for rejecting the BD model. 
-> On that note, it would be much preferable if the authors referred to the 
+> (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
-> It is very likely that across several parameter combinations there is no 
+> (3) It is very likely that across several parameter combinations there is no 
 > distinction between the proposed and implemented models.
 
- * [ ]
+[(1) RJCB: unsure if I agree. We used 20x due to time constraints]
+
+For (2), we have reworded accordingly.
+
+[(3) RJCB: agreed, say a BD model with zero extinction]
 
 > The authors must discuss the drawback of forcing the topology on the twin 
 > tree. Topology is known to be highly influenced by the diversification 
@@ -205,7 +221,11 @@ but not re-do the sims]
 > placing a constrain on the implemented model to behave like the proposed 
 > model, and this makes for an unfair comparison.
 
- * [ ] 
+We agree that forcing a topology indeed has an effect. Still, we feel
+this to be the lesser evil, as we feel that removing this contraint
+makes an unfair comparison.
+
+ * [ ] Reword
 
 > The work by Duchene and colleagues is not mentioned in the introduction 
 > as indicated in line 273. Also, the authors must acknowledge that the 
@@ -232,7 +252,10 @@ as you suggested.
 > Goldman (1994, Journal Mol Evol, 36(2)), who are pioneers in 
 > assessing model adequacy.
 
- * [ ]
+Agreed.
+
+ * [ ] Read those papers
+ * [ ] Acknowledge these
 
 > Interestingly, the type of assessment proposed by the authors is a form of 
 > approximate model comparison, which they could consider mentioning 
@@ -241,13 +264,18 @@ as you suggested.
 > Pennel, 2020, Nature), so the authors should mention the addition of test 
 > statistics that can more reliably discriminate among models.
 
- * [ ]
+ * [ ] Read Louca and Pennel
+ * [ ] Answer
 
 ### Minor comments
 
 > Abstract. Point 3 is not actually explicitly explained in the manuscript 
 > and the question does not seem biological. Instead, the abstract can
 > indicate that the pirouette interrogates a model for its power to describe another.
+
+[RJCB: the line he/she refers to: 'We describe pirouette’s usage and 
+the biological scientific question it can answer, including full examples']
+[RJCB: I feel his/her suggestion is really a nice way to describe pirouette!]
 
  * [ ] 
 
@@ -323,13 +351,15 @@ Agreed. We've reworded accordingly.
 
  * [ ]
 
-> Line 193. These models are not quite mutations models, but rather substitutions models.
+> Line 193. These models are not quite mutations models, but rather 
+> substitutions models.
 
-[RJCB: ?
+[RJCB: I see no mention of a 'mutation model'?]
 
  * [ ]
 
-> Figure 1. The alignments shown are not aligned! No serious phylogenetics study would believe those have homology.
+> Figure 1. The alignments shown are not aligned! 
+> No serious phylogenetics study would believe those have homology.
 
 We agree that this alignment looks different from what one normally finds
 in the field. In this case, we simulated the alignments with the maximum
