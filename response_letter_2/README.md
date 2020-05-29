@@ -265,7 +265,7 @@ answer we have to give.
 
 For (2), we have reworded accordingly.
 
- * [x] Do so
+ * [x] Done
 
 [(3) RJCB: agreed, say a BD model with zero extinction]
 
@@ -332,7 +332,7 @@ the biological scientific question it can answer, including full examples']
 [RJCB: I feel his/her suggestion is really a nice way to describe pirouette!]
 [GL: Agree]
 
- * [x] 
+ * [x] Done
 
 > Line 23. There is no real difference between free and libre, 
 > and in fact the latter does not appear in english dictionaries.
