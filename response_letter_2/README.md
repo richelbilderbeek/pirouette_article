@@ -252,10 +252,20 @@ Well spotted! We have reworded accordingly.
   No idea where the 100x comes from. 
   We used 20x due to time constraints
 ]
+[
+(1) I also think 100 is arbitrary.
+However I think he is right and this
+would probably make our supplementary
+plots much clearer whereas sometimes
+it is hard to provide sound interpretations.
+All that said, it required too much time
+so I agree with you that this is the
+answer we have to give.
+]
 
 For (2), we have reworded accordingly.
 
- * [ ] Do so
+ * [x] Do so
 
 [(3) RJCB: agreed, say a BD model with zero extinction]
 
