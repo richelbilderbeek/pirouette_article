@@ -292,6 +292,10 @@ words, which was needed to make it to the deadline. In this rewrite,
 we have had more time to properly refer to the literature, so we did
 as you suggested.
 
+[GL: In another comment he suggests to add it somewhere in Lines 76-81.
+I suggest we see if what was present in the previous version could
+fit there]
+
  * [ ] Actually do so
 
 > I agree with a previous reviewer that this piece is remarkably similar 
@@ -393,6 +397,8 @@ We have added these.
 > phylogenetic informativeness.
 
 [RJCB: That is correct. `babette` cannot handle this.]
+[GL: Let's just state that we cannot do it because we
+heavily rely on 'babette']
 
  * [ ] 
 
@@ -405,6 +411,8 @@ We have added these.
 > model performance.
 
 [RJCB: This is correct. We always assume that we have samples all species]
+
+[GL: I am not sure this is important for what we want to show]
 
  * [ ]
 
