@@ -134,6 +134,10 @@ Yes indeed, most twin tree are generated using a BD process.
 to me. I feel 'using a sampling-through-time tree' is not straightforward:
 it will be quite some work instead]
 
+[GL: Actually the figure in the supplementary at 8.11 was actually incorrect.
+The correct one still shows similar median values but the shape of distributions
+are different]
+
  * [ ] Check: best candidate is Yule indeed?
  * [ ] Reply better
 
