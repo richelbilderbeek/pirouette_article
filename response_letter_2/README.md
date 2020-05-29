@@ -215,6 +215,8 @@ Well spotted! We have reworded accordingly.
 
   OTOH, Giovanni should first finish his PhD, and re-running takes time
   that I also need for my current job.
+  
+  [GL: Completely agree!]
 
   In the end: I suggest to give a lame excuse.
 ]
