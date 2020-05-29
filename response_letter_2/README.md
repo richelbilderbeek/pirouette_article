@@ -330,8 +330,9 @@ Agreed.
 [RJCB: the line he/she refers to: 'We describe pirouette’s usage and 
 the biological scientific question it can answer, including full examples']
 [RJCB: I feel his/her suggestion is really a nice way to describe pirouette!]
+[GL: Agree]
 
- * [ ] 
+ * [x] 
 
 > Line 23. There is no real difference between free and libre, 
 > and in fact the latter does not appear in english dictionaries.
