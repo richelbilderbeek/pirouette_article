@@ -431,6 +431,5 @@ from an alignment.
 
 > Figure 3. Remove the title because it is superfluous.
 
- * [ ] RJCB: write script to regenerate figure without title. 
-       Or cut away the title from the picture :-)
+ * [x]
 
