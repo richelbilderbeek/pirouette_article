@@ -112,7 +112,7 @@ the many models to the Supplementary Materials]
 > but there is nothing in the text to confirm 
 > whether I am reading the figures correctly.
 
-Completely agree. We have added in interpretation to each figure.
+Completely agree. We have added an interpretation to each figure.
 
  * [x] Done, thanks @Giappo
 
@@ -162,7 +162,14 @@ Well spotted! We added these.
 > l184: the model p_T is only defined in the caption of figure 1, 
 > I think the definition needs to be repeated here
 
- * [ ] Do so
+We did so:
+
+```
+The default option for the twin diversification model p_T 
+is to use the standard BD model.
+```
+
+ * [x] Done, 00003
 
 > section 8.1: "Guidelines for empiricists" is a strange title since this 
 > package is aimed at developers of tree priors. Consider replacing with 
@@ -173,27 +180,40 @@ reviewer. We have renamed to 'guidelines for users'.
 
  * [x] Done
 
-- l563: Figure 8.6 does not exist
+> l563: Figure 8.6 does not exist
 
 The figure that appears missing in section '8.6' is the one in the main
-text.
+text. In a previous version, we put the
+figure in the Supplementary Materials
+as well, until a reviewer suggested to remove this duplication.
 
-- Figure 4: the true tree is top left, not top right
+> Figure 4: the true tree is top left, not top right
 
-Well spotted! We have reworded
+Well spotted! We have reworded accordingly.
 
  * [x] Done!
 
-> some figures (e.g. fig 3, 8) have the distributions be partially transparent, which makes them easier to read. I think all the figures should be like that.
+> some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
+> which makes them easier to read. I think all the figures should be like that.
 
-[RJCB: this is a hard one! The reasons the distributions are partially
-transparent is due to the histograms being multiple pixels wide. In the
-cases where the histograms are smaller, only the non-transparent
-outlines remain. To fix this, the `pir_plot` function must be rewritten
-in such a way, that there are the right amount of categories. Additionally,
-all the simulations must be re-run! I suggest to acknowledge this point,
-but not re-do the sims]
+[
+  RJCB: I agree with the reviewer. Why don't we have approx 40 bins
+  as in the pretty figures? Well, I see here, which I quote from 'pir_plot.R':
 
+  ```
+  ##### More aesthetic settings for the plots #####
+
+  n_errors <- length(unique(df_long$error_index))
+  bindwidth <- 0.1 / sqrt(n_errors)
+  ```
+
+  I would enjoy `pir_plot` to have more aesthetic settings.
+
+  OTOH, Giovanni should first finish his PhD, and re-running takes time
+  that I also need for my current job.
+
+  In the end: I suggest to give a lame excuse.
+]
 
 ## Reviewer: 4
 
@@ -221,9 +241,15 @@ but not re-do the sims]
 > (3) It is very likely that across several parameter combinations there is no 
 > distinction between the proposed and implemented models.
 
-[(1) RJCB: unsure if I agree. We used 20x due to time constraints]
+[  
+  (1) RJCB: unsure if I agree. 
+  No idea where the 100x comes from. 
+  We used 20x due to time constraints
+]
 
 For (2), we have reworded accordingly.
+
+ * [ ] Do so
 
 [(3) RJCB: agreed, say a BD model with zero extinction]
 
@@ -245,7 +271,7 @@ makes an unfair comparison.
 > models (the hierarchical model), as shown also by Duchene and colleagues 
 > in previous work (Duchene et al. 2015, MBE, 32(11), 2986-2995).
 
-Indeed, we ruthlessly removed the mentions to Duchene's work, only to save 
+Indeed, we ruthlessly moved Duchene's work the the discussion, only to save 
 words, which was needed to make it to the deadline. In this rewrite,
 we have had more time to properly refer to the literature, so we did
 as you suggested.
@@ -300,19 +326,21 @@ stress that the 'Free' is 'free as in speech', which can be translated
 to 'Libre' (unlike 'free as in beer', which would be translated to 'Gratis').
 But indeed, not everyone may value the addition of the 'L', so we removed it.
 
- * [X] Done
+ * [x] Done
 
 > Line 40. Time-stamped data where samples come from various time points 
 > are very widely used in phylogenetics too.
 
- * [ ] Add this
+We have added this.
+
+ * [x] Added this, 00004
 
 > Line 46. I would argue that coalescent models are used as often 
 > as birth-death models, so this statement is probably inaccurate.
 
 We reworded accordingly
 
- * [ ] Do so
+ * [ ] Done so, 00002
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
@@ -324,9 +352,9 @@ Agreed. We've reworded accordingly.
 > Line 62. A great range of models are implemented in BEAST 2 (and 1), 
 > including many coalescent models, multispecies coalescent, BD skyline, etc.
 
-[RJCB: that is correct]
+We have added these.
 
- * [ ]
+ * [ ] Add these at 00005
 
 > Line 73. This might also occur if the prior is truly 
 > uninformative (e.g., a reference prior).
