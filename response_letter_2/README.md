@@ -357,7 +357,7 @@ We have added this.
 
 We reworded accordingly
 
- * [ ] Done so, 00002
+ * [x] Done so, 00002
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
@@ -411,9 +411,13 @@ We have added these.
 > Line 193. These models are not quite mutations models, but rather 
 > substitutions models.
 
-[RJCB: I see no mention of a 'mutation model'?]
+We have never used the expression 'mutation model'. We assume that
+the reviewer refers to the use of the work 'mutation' used to
+refer to the change of one nucleotide into
+a different one. In such cases we replaced them with
+the word 'substitution'.
 
- * [ ]
+ * [x]
 
 > Figure 1. The alignments shown are not aligned! 
 > No serious phylogenetics study would believe those have homology.
