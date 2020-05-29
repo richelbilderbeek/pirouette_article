@@ -417,7 +417,7 @@ refer to the change of one nucleotide into
 a different one. In such cases we replaced them with
 the word 'substitution'.
 
- * [x]
+ * [x] Done
 
 > Figure 1. The alignments shown are not aligned! 
 > No serious phylogenetics study would believe those have homology.
@@ -431,5 +431,5 @@ from an alignment.
 
 > Figure 3. Remove the title because it is superfluous.
 
- * [x]
+ * [x] Done
 
