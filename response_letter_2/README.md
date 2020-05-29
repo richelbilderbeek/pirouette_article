@@ -155,10 +155,9 @@ We hope you agree this is a good idea.
 
 > Table 1: descriptions are missing for the error_fun section
 
-Well spotted!
+Well spotted! We added these.
 
- * [ ] Add descriptions in the table's caption for nLTT and absolute gamma
-       function
+ * [x] Done
 
 > l184: the model p_T is only defined in the caption of figure 1, 
 > I think the definition needs to be repeated here
