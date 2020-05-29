@@ -8,6 +8,7 @@ install:
   - sudo npm install -g markdown-link-check
 
 script:
+  - make
   # Overleaf remove the execute flag from scipts 
   - chmod +x scripts/check_dead_links
   # Check dead links
