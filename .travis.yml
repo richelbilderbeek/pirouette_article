@@ -2,14 +2,40 @@ language: generic
 dist: bionic
 
 install:
+  # Newer tools
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
   # Check dead links
-  - sudo apt-get install -qq npm
-  - npm config set strict-ssl false
-  - sudo npm install -g markdown-link-check
+  #- sudo apt-get install -qq npm
+  #- npm config set strict-ssl false
+  #- sudo npm install -g markdown-link-check
+  # spell
+  - apt-cache search spell
+  - sudo apt install spell
+  # proselint
+  - sudo pip install proselint
+  # pandoc
+  - sudo apt install pandoc 
+  # imagemagick
+  - sudo apt install imagemagick
+  # PDF creation
+  - sudo apt install texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-extra-utils texlive-humanities texlive-full texlive-games texlive-pictures texlive-science texlive-xetex ktikz
+  # No: pgf
 
 script:
-  # Overleaf remove the execute flag from scipts 
-  - chmod +x scripts/check_dead_links
   # Check dead links
-  - rm .travis.yml
-  - ./scripts/check_dead_links
+  #- ls
+  #- rm .travis.yml
+  #- ./scripts/check_dead_links || true
+  # proselint
+  - proselint $(find | grep .*\.md) | egrep -v "curly_quotes" || true
+  # Build article
+  - rm -f article/article.pdf
+  - make
+  - if [ ! -f article/article.pdf ]; then echo "file 'article.pdf' not found" ; exit 1 ; fi
+  # List possible spelling errors
+  - spell `find | egrep "(tex|md)"`
+  # Count words, must be below 3000 for 'Applications'
+  - make count_words
+  # Figures must have at least 300 dpi
+  - identify -format '%x,%y\n' -units PixelsPerInch article/figures.jpg
