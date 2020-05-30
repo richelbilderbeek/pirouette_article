@@ -397,6 +397,7 @@ We have added these.
 > phylogenetic informativeness.
 
 [RJCB: That is correct. `babette` cannot handle this.]
+
 [GL: Let's just state that we cannot do it because we
 heavily rely on 'babette']
 
@@ -420,7 +421,7 @@ heavily rely on 'babette']
 > substitutions models.
 
 We have never used the expression 'mutation model'. We assume that
-the reviewer refers to the use of the work 'mutation' used to
+the reviewer refers to the use of the word 'mutation', used to
 refer to the change of one nucleotide into
 a different one. In such cases we replaced them with
 the word 'substitution'.
