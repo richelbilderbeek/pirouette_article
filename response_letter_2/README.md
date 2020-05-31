@@ -238,10 +238,10 @@ Well spotted! We have reworded accordingly.
 
 We agree with the reviewer on the use of the word "importance". We
 changed it in "impact", as already present in the literature
-(see for example [A]).
+(see for example [1]).
 We believe, instead, that the word "error" is not inappropriate here.
 The "stochastic error" is one of the possible error, but not the only one.
-We added one line in the main text to clarify this.
+We clarified this in the description section.
 
  * [x] Done, 00006
 
