@@ -72,10 +72,10 @@ Comments to the Corresponding Author
 
  We would agree, would we actually intend to publish this original
 work. Due to time constraints, this original work is terminated,
-although it can be found [1] (the code) and [2] (the article)
+although it can be found (1) (the code) and (2) (the article)
 
- * [1] https://github.com/richelbilderbeek/razzo
- * [2] https://github.com/richelbilderbeek/razzo_article
+ * (1) https://github.com/richelbilderbeek/razzo
+ * (2) https://github.com/richelbilderbeek/razzo_article
 
  * [x] Done
 
@@ -236,9 +236,14 @@ Well spotted! We have reworded accordingly.
 > sample), which is not what the authors are aiming at in this article. 
 > These terms must be rectified or very clearly justified in the manuscript.
 
-[RJCB: I think the reviewer has a point. I suggest to do so]
+We agree with the reviewer on the use of the word "importance". We
+changed it in "impact", as already present in the literature
+(see for example [A]).
+We believe, instead, that the word "error" is not inappropriate here.
+The "stochastic error" is one of the possible error, but not the only one.
+We added one line in the main text to clarify this.
 
- * [ ] Do so
+ * [x] Done, 00006
 
 > (1) The authors must acknowledge that twinning should be performed at least 
 > 100 times, and that the example is not useful for rejecting the BD model. 
@@ -441,4 +446,6 @@ from an alignment.
 > Figure 3. Remove the title because it is superfluous.
 
  * [x] Done
+
+[1] Sarver, B.A., Pennell, M.W., Brown, J.W., Keeble, S., Hardwick, K.M., Sullivan, J. & Harmon, L.J. (2019) The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates. PeerJ, 7, e6334
 
