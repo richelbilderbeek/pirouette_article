@@ -622,7 +622,10 @@ to have the same number of mutations. Any difference in the error distributions 
 \end{figure}
 
 \new{
-Comparing Fig. \ref{fig:example_random_mutations} to  \label{fig:replicate_trees} we can see that the extent of the error tend to increase both for the true and the twin distributions. This is probably due to the fact that 
+  Comparing Fig. \ref{fig:example_random_mutations} to 
+  \label{fig:replicate_trees} we can see that the extent of the error 
+  tend to increase both for the true and the twin distributions. This is 
+  probably due to the fact that 
 }
 
 The code to reproduce this figure can be found at
@@ -646,6 +649,15 @@ In this way, the alignment is expected to contain the maximum
 amount of information.
 
 Here, we show the same results for different mutation rates.
+
+\new{
+  We can observe that the error increases for mutation rates above
+  `1.0 / crown age`. Below this value, the errors are the same.
+  For these lower mutation rates, however, the shape of the error
+  distribution changes for the baseline/generative models,
+  deviating more and more from the gamma-distribution-like shape
+  as is stil present in the twin distributions.
+}
 
 The code to reproduce this figure can be found at
 \begin{sloppypar}

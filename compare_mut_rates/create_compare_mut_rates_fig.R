@@ -67,4 +67,4 @@ ggplot(df, aes(x = mutation_rate, y = value, col = name)) +
   geom_smooth(method = "loess") +
   coord_cartesian(ylim = c(0.0, 0.1)) +
   facet_grid(cols = vars(name)) +
-  ggsave("compare_mut_rates_graphs.png", width = 7, height = 7)
+  ggsave("compare_mut_rates.png", width = 7, height = 7)
