@@ -72,10 +72,10 @@ Comments to the Corresponding Author
 
  We would agree, would we actually intend to publish this original
 work. Due to time constraints, this original work is terminated,
-although it can be found [1] (the code) and [2] (the article)
+although it can be found (1) (the code) and (2) (the article)
 
- * [1] https://github.com/richelbilderbeek/razzo
- * [2] https://github.com/richelbilderbeek/razzo_article
+ * (1) https://github.com/richelbilderbeek/razzo
+ * (2) https://github.com/richelbilderbeek/razzo_article
 
  * [x] Done
 
@@ -236,9 +236,14 @@ Well spotted! We have reworded accordingly.
 > sample), which is not what the authors are aiming at in this article. 
 > These terms must be rectified or very clearly justified in the manuscript.
 
-[RJCB: I think the reviewer has a point. I suggest to do so]
+We agree with the reviewer on the use of the word "importance". We
+changed it in "impact", as already present in the literature
+(see for example [1]).
+We believe, instead, that the word "error" is not inappropriate here.
+The "stochastic error" is one of the possible error, but not the only one.
+We clarified this in the description section.
 
- * [ ] Do so
+ * [x] Done, 00006
 
 > (1) The authors must acknowledge that twinning should be performed at least 
 > 100 times, and that the example is not useful for rejecting the BD model. 
@@ -291,6 +296,10 @@ Indeed, we ruthlessly moved Duchene's work the the discussion, only to save
 words, which was needed to make it to the deadline. In this rewrite,
 we have had more time to properly refer to the literature, so we did
 as you suggested.
+
+[GL: In another comment he suggests to add it somewhere in Lines 76-81.
+I suggest we see if what was present in the previous version could
+fit there]
 
  * [ ] Actually do so
 
@@ -394,6 +403,9 @@ We have added these.
 
 [RJCB: That is correct. `babette` cannot handle this.]
 
+[GL: Let's just state that we cannot do it because we
+heavily rely on 'babette']
+
  * [ ] 
 
 > Line 139. Describe the term "mononucleotide blocks".
@@ -406,13 +418,15 @@ We have added these.
 
 [RJCB: This is correct. We always assume that we have samples all species]
 
+[GL: I am not sure this is important for what we want to show]
+
  * [ ]
 
 > Line 193. These models are not quite mutations models, but rather 
 > substitutions models.
 
 We have never used the expression 'mutation model'. We assume that
-the reviewer refers to the use of the work 'mutation' used to
+the reviewer refers to the use of the word 'mutation', used to
 refer to the change of one nucleotide into
 a different one. In such cases we replaced them with
 the word 'substitution'.
@@ -432,4 +446,6 @@ from an alignment.
 > Figure 3. Remove the title because it is superfluous.
 
  * [x] Done
+
+[1] Sarver, B.A., Pennell, M.W., Brown, J.W., Keeble, S., Hardwick, K.M., Sullivan, J. & Harmon, L.J. (2019) The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates. PeerJ, 7, e6334
 
