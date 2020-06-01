@@ -385,9 +385,7 @@ We have added these.
 > Line 73. This might also occur if the prior is truly 
 > uninformative (e.g., a reference prior).
 
-[RJCB: that is correct]
-
- * [ ]
+ * [x] We mentioned it in the manuscript.
 
 > Lines 76-81. This paragraph should cite other explorations of tree priors 
 > that show that the tree prior can have a great influence (e.g., Ritchie 
