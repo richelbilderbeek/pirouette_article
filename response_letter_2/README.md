@@ -134,6 +134,10 @@ Yes indeed, most twin tree are generated using a BD process.
 to me. I feel 'using a sampling-through-time tree' is not straightforward:
 it will be quite some work instead]
 
+[GL: Actually the figure in the supplementary at 8.11 was actually incorrect.
+The correct one still shows similar median values but the shape of distributions
+are different]
+
  * [ ] Check: best candidate is Yule indeed?
  * [ ] Reply better
 
@@ -211,6 +215,8 @@ Well spotted! We have reworded accordingly.
 
   OTOH, Giovanni should first finish his PhD, and re-running takes time
   that I also need for my current job.
+  
+  [GL: Completely agree!]
 
   In the end: I suggest to give a lame excuse.
 ]
@@ -246,10 +252,20 @@ Well spotted! We have reworded accordingly.
   No idea where the 100x comes from. 
   We used 20x due to time constraints
 ]
+[
+(1) I also think 100 is arbitrary.
+However I think he is right and this
+would probably make our supplementary
+plots much clearer whereas sometimes
+it is hard to provide sound interpretations.
+All that said, it required too much time
+so I agree with you that this is the
+answer we have to give.
+]
 
 For (2), we have reworded accordingly.
 
- * [ ] Do so
+ * [x] Done
 
 [(3) RJCB: agreed, say a BD model with zero extinction]
 
@@ -314,8 +330,9 @@ Agreed.
 [RJCB: the line he/she refers to: 'We describe pirouette’s usage and 
 the biological scientific question it can answer, including full examples']
 [RJCB: I feel his/her suggestion is really a nice way to describe pirouette!]
+[GL: Agree]
 
- * [ ] 
+ * [x] Done
 
 > Line 23. There is no real difference between free and libre, 
 > and in fact the latter does not appear in english dictionaries.
@@ -340,7 +357,7 @@ We have added this.
 
 We reworded accordingly
 
- * [ ] Done so, 00002
+ * [x] Done so, 00002
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
@@ -394,9 +411,13 @@ We have added these.
 > Line 193. These models are not quite mutations models, but rather 
 > substitutions models.
 
-[RJCB: I see no mention of a 'mutation model'?]
+We have never used the expression 'mutation model'. We assume that
+the reviewer refers to the use of the work 'mutation' used to
+refer to the change of one nucleotide into
+a different one. In such cases we replaced them with
+the word 'substitution'.
 
- * [ ]
+ * [x] Done
 
 > Figure 1. The alignments shown are not aligned! 
 > No serious phylogenetics study would believe those have homology.
@@ -410,6 +431,5 @@ from an alignment.
 
 > Figure 3. Remove the title because it is superfluous.
 
- * [ ] RJCB: write script to regenerate figure without title. 
-       Or cut away the title from the picture :-)
+ * [x] Done
 

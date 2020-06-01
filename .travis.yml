@@ -23,6 +23,12 @@ install:
   # No: pgf
 
 script:
+<<<<<<< HEAD
+=======
+  - make
+  # Overleaf remove the execute flag from scipts 
+  - chmod +x scripts/check_dead_links
+>>>>>>> fe255dff4baa7a2ad9525cb3889c4b032b6a75cf
   # Check dead links
   #- ls
   #- rm .travis.yml
