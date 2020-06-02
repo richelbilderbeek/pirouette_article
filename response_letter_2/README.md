@@ -99,9 +99,7 @@ part of the 'twinning_params' to simulate a twin coalescent tree.
 > Adding these citations would be useful for the reader 
 > to better understand what is currently available in BEAST2 or not.
 
-[RJCB: I think this would be fine to tailor the citations towards 
-BEAST2 packages. I do think to limit the amount of words, to move
-the many models to the Supplementary Materials]
+Agreed! We have done so.
 
  * [ ] Do so
 
@@ -112,7 +110,7 @@ the many models to the Supplementary Materials]
 > but there is nothing in the text to confirm 
 > whether I am reading the figures correctly.
 
-Completely agree. We have added an interpretation to each figure.
+Completely agree. We have added an interpretation to each (set of) figure(s).
 
  * [x] Done, thanks @Giappo
 
@@ -128,18 +126,24 @@ Completely agree. We have added an interpretation to each figure.
 > estimates ; it should be straightforward to confirm or infirm this 
 > hypothesis using a sampling-through-time tree.
 
-Yes indeed, most twin tree are generated using a BD process.
+In 7 out of 19 cases, indeed, the best candidate model is the Yule
+model. And we think that is an interesting point you bring up: 
+that the method may be unable to distinguish between Yule and BD
+for extant trees. We have added this to the manuscript.
 
-[RJCB: The explanation that this is caused by using extant trees seems valid
-to me. I feel 'using a sampling-through-time tree' is not straightforward:
-it will be quite some work instead]
+For us, creating a sampling-through-time tree is not
+straightforward, therefore we decided not to test this, also
+because we felt this is beyond describing what pirouette does.
+
 
 [GL: Actually the figure in the supplementary at 8.11 was actually incorrect.
 The correct one still shows similar median values but the shape of distributions
-are different]
+are different] 
+[RJCB: What do you mean with 'was actually incorrect'?]
 
- * [ ] Check: best candidate is Yule indeed?
- * [ ] Reply better
+ * [ ] Do put in text
+
+[RJCB: literature: Stadler, Tanja. "Sampling-through-time in birth–death trees." Journal of theoretical biology 267.3 (2010): 396-404.]
 
 > the use of "generative model" to describe the model used for comparison 
 > by pirouette, as opposed to the true generating process, was quite 
@@ -153,7 +157,10 @@ For the 'twin' pipeline, however, the baseline model is the generative
 model and we kept using the word 'generative' there.
 We hope you agree this is a good idea.
 
- * [ ] Do so
+[RJCB: note that it probably should follow that we adapt the figures' labels.
+This would demand quite some calculations]
+
+ * [ ] Modify the text as such
 
 ### Minor comments
 
@@ -220,6 +227,8 @@ Well spotted! We have reworded accordingly.
 
   In the end: I suggest to give a lame excuse.
 ]
+
+ * [ ] Give lame excuse
 
 ## Reviewer: 4
 
@@ -299,7 +308,7 @@ as you suggested.
 
 [GL: In another comment he suggests to add it somewhere in Lines 76-81.
 I suggest we see if what was present in the previous version could
-fit there]
+fit there][RJCB: Agreed]
 
  * [ ] Actually do so
 
@@ -319,6 +328,8 @@ Agreed.
 
  * [ ] Read those papers
  * [ ] Acknowledge these
+
+[RJCB: reference to literature: Drummond, Alexei J., and Marc A. Suchard. "Fully Bayesian tests of neutrality using genealogical summary statistics." BMC genetics 9.1 (2008): 68.]
 
 > Interestingly, the type of assessment proposed by the authors is a form of 
 > approximate model comparison, which they could consider mentioning 
@@ -399,14 +410,19 @@ We have added these.
 > since it is common in empirical data and fundamental for 
 > phylogenetic informativeness.
 
-[RJCB: That is correct. `babette` cannot handle this.]
-
-[GL: Let's just state that we cannot do it because we
-heavily rely on 'babette']
-
- * [ ] 
+Well spotted! Because we use the same defaults as BEAUti does (which does not
+assume a rate heterogeneity), we overlooked this. We mention this is the 
+table now. 
+ 
+ * [ ] Do so
 
 > Line 139. Describe the term "mononucleotide blocks".
+
+Sorry that this term has caused confusion. We have done so:
+
+```
+text here
+```
 
  * [ ] Do so
 
@@ -414,11 +430,10 @@ heavily rely on 'babette']
 > are handled during simulation. This might have an important influence on 
 > model performance.
 
-[RJCB: This is correct. We always assume that we have samples all species]
+Indeed, in all cases we assumed a sampling fraction of 100 percent.
+We mention that this may have an effect.
 
-[GL: I am not sure this is important for what we want to show]
-
- * [ ]
+ * [ ] Do so
 
 > Line 193. These models are not quite mutations models, but rather 
 > substitutions models.
