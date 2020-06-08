@@ -401,8 +401,13 @@ with the same parameters as the main example.
 \end{figure}
 
 \new{
-The resulting error distributions are showed in Fig. \ref{fig:replicate_trees}. We present results for cases where (1) the generative model has been used or (2) the model with highest evidence has been selected for the inference.
-From the plots we can see that in both cases there is a clear distinction between the two distributions (true and twin), suggesting that the inference models that have been used cannot capture in an accurate way the features of the diversity-dependent tree prior used to simulate the original trees. 
+  The resulting error distributions are shown in Fig. \ref{fig:replicate_trees}. 
+  We present results for cases where (1) the generative model has been used 
+  or (2) the model with highest evidence has been selected for the inference.
+  From the plots we can see that in both cases there is a clear distinction 
+  between the two distributions (true and twin), suggesting that the inference 
+  models that have been used cannot capture in an accurate way the features of 
+  the diversity-dependent tree prior used to simulate the original trees. 
 }
 
 The code to reproduce Fig. \ref{fig:replicate_trees} can be found at  
@@ -621,7 +626,7 @@ Any difference in the error distributions can therefore also stem from a differe
 \end{figure}
 
 \new{
-Comparing figures \ref{fig:example_random_mutations} and \ref{fig:replicate_trees} we can see that the discrepancy between true and twin distributions tend to increase. This is probably due to the fact that letting mutation rates induces a difference in the amount of information contained in the alignments and this is reflected in the error distributions.
+  Comparing figures \ref{fig:example_random_mutations} and \ref{fig:replicate_trees} we can see that the discrepancy between true and twin distributions tend to increase. This is probably due to the fact that letting mutation rates induces a difference in the amount of information contained in the alignments and this is reflected in the error distributions.
 }
 
 The code to reproduce this figure can be found at
@@ -645,6 +650,15 @@ In this way, the alignment is expected to contain the maximum
 amount of information.
 
 Here, we show the same results for different mutation rates.
+
+\new{
+  We can observe that the error increases for mutation rates above
+  `1.0 / crown age`. Below this value, the errors are the same.
+  For these lower mutation rates, however, the shape of the error
+  distribution changes for the baseline/generative models,
+  deviating more and more from the gamma-distribution-like shape
+  as is stil present in the twin distributions.
+}
 
 The code to reproduce this figure can be found at
 \begin{sloppypar}

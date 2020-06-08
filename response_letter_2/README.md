@@ -72,10 +72,10 @@ Comments to the Corresponding Author
 
  We would agree, would we actually intend to publish this original
 work. Due to time constraints, this original work is terminated,
-although it can be found [1] (the code) and [2] (the article)
+although it can be found (1) (the code) and (2) (the article)
 
- * [1] https://github.com/richelbilderbeek/razzo
- * [2] https://github.com/richelbilderbeek/razzo_article
+ * (1) https://github.com/richelbilderbeek/razzo
+ * (2) https://github.com/richelbilderbeek/razzo_article
 
  * [x] Done
 
@@ -99,9 +99,7 @@ part of the 'twinning_params' to simulate a twin coalescent tree.
 > Adding these citations would be useful for the reader 
 > to better understand what is currently available in BEAST2 or not.
 
-[RJCB: I think this would be fine to tailor the citations towards 
-BEAST2 packages. I do think to limit the amount of words, to move
-the many models to the Supplementary Materials]
+Agreed! We have done so.
 
  * [ ] Do so
 
@@ -112,7 +110,7 @@ the many models to the Supplementary Materials]
 > but there is nothing in the text to confirm 
 > whether I am reading the figures correctly.
 
-Completely agree. We have added an interpretation to each figure.
+Completely agree. We have added an interpretation to each (set of) figure(s).
 
  * [x] Done, thanks @Giappo
 
@@ -128,14 +126,24 @@ Completely agree. We have added an interpretation to each figure.
 > estimates ; it should be straightforward to confirm or infirm this 
 > hypothesis using a sampling-through-time tree.
 
-Yes indeed, most twin tree are generated using a BD process.
+In 7 out of 19 cases, indeed, the best candidate model is the Yule
+model. And we think that is an interesting point you bring up: 
+that the method may be unable to distinguish between Yule and BD
+for extant trees. We have added this to the manuscript.
 
-[RJCB: The explanation that this is caused by using extant trees seems valid
-to me. I feel 'using a sampling-through-time tree' is not straightforward:
-it will be quite some work instead]
+For us, creating a sampling-through-time tree is not
+straightforward, therefore we decided not to test this, also
+because we felt this is beyond describing what pirouette does.
 
- * [ ] Check: best candidate is Yule indeed?
- * [ ] Reply better
+
+[GL: Actually the figure in the supplementary at 8.11 was actually incorrect.
+The correct one still shows similar median values but the shape of distributions
+are different] 
+[RJCB: What do you mean with 'was actually incorrect'?]
+
+ * [ ] Do put in text
+
+[RJCB: literature: Stadler, Tanja. "Sampling-through-time in birth–death trees." Journal of theoretical biology 267.3 (2010): 396-404.]
 
 > the use of "generative model" to describe the model used for comparison 
 > by pirouette, as opposed to the true generating process, was quite 
@@ -149,7 +157,10 @@ For the 'twin' pipeline, however, the baseline model is the generative
 model and we kept using the word 'generative' there.
 We hope you agree this is a good idea.
 
- * [ ] Do so
+[RJCB: note that it probably should follow that we adapt the figures' labels.
+This would demand quite some calculations]
+
+ * [ ] Modify the text as such
 
 ### Minor comments
 
@@ -211,9 +222,13 @@ Well spotted! We have reworded accordingly.
 
   OTOH, Giovanni should first finish his PhD, and re-running takes time
   that I also need for my current job.
+  
+  [GL: Completely agree!]
 
   In the end: I suggest to give a lame excuse.
 ]
+
+ * [ ] Give lame excuse
 
 ## Reviewer: 4
 
@@ -230,9 +245,14 @@ Well spotted! We have reworded accordingly.
 > sample), which is not what the authors are aiming at in this article. 
 > These terms must be rectified or very clearly justified in the manuscript.
 
-[RJCB: I think the reviewer has a point. I suggest to do so]
+We agree with the reviewer on the use of the word "importance". We
+changed it in "impact", as already present in the literature
+(see for example [1]).
+We believe, instead, that the word "error" is not inappropriate here.
+The "stochastic error" is one of the possible error, but not the only one.
+We clarified this in the description section.
 
- * [ ] Do so
+ * [x] Done, 00006
 
 > (1) The authors must acknowledge that twinning should be performed at least 
 > 100 times, and that the example is not useful for rejecting the BD model. 
@@ -246,10 +266,20 @@ Well spotted! We have reworded accordingly.
   No idea where the 100x comes from. 
   We used 20x due to time constraints
 ]
+[
+(1) I also think 100 is arbitrary.
+However I think he is right and this
+would probably make our supplementary
+plots much clearer whereas sometimes
+it is hard to provide sound interpretations.
+All that said, it required too much time
+so I agree with you that this is the
+answer we have to give.
+]
 
 For (2), we have reworded accordingly.
 
- * [ ] Do so
+ * [x] Done
 
 [(3) RJCB: agreed, say a BD model with zero extinction]
 
@@ -276,6 +306,10 @@ words, which was needed to make it to the deadline. In this rewrite,
 we have had more time to properly refer to the literature, so we did
 as you suggested.
 
+[GL: In another comment he suggests to add it somewhere in Lines 76-81.
+I suggest we see if what was present in the previous version could
+fit there][RJCB: Agreed]
+
  * [ ] Actually do so
 
 > I agree with a previous reviewer that this piece is remarkably similar 
@@ -294,6 +328,8 @@ Agreed.
 
  * [ ] Read those papers
  * [ ] Acknowledge these
+
+[RJCB: reference to literature: Drummond, Alexei J., and Marc A. Suchard. "Fully Bayesian tests of neutrality using genealogical summary statistics." BMC genetics 9.1 (2008): 68.]
 
 > Interestingly, the type of assessment proposed by the authors is a form of 
 > approximate model comparison, which they could consider mentioning 
@@ -314,8 +350,9 @@ Agreed.
 [RJCB: the line he/she refers to: 'We describe pirouette’s usage and 
 the biological scientific question it can answer, including full examples']
 [RJCB: I feel his/her suggestion is really a nice way to describe pirouette!]
+[GL: Agree]
 
- * [ ] 
+ * [x] Done
 
 > Line 23. There is no real difference between free and libre, 
 > and in fact the latter does not appear in english dictionaries.
@@ -340,7 +377,7 @@ We have added this.
 
 We reworded accordingly
 
- * [ ] Done so, 00002
+ * [x] Done so, 00002
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
@@ -359,9 +396,7 @@ We have added these.
 > Line 73. This might also occur if the prior is truly 
 > uninformative (e.g., a reference prior).
 
-[RJCB: that is correct]
-
- * [ ]
+ * [x] We mentioned it in the manuscript.
 
 > Lines 76-81. This paragraph should cite other explorations of tree priors 
 > that show that the tree prior can have a great influence (e.g., Ritchie 
@@ -375,11 +410,19 @@ We have added these.
 > since it is common in empirical data and fundamental for 
 > phylogenetic informativeness.
 
-[RJCB: That is correct. `babette` cannot handle this.]
-
- * [ ] 
+Well spotted! Because we use the same defaults as BEAUti does (which does not
+assume a rate heterogeneity), we overlooked this. We mention this is the 
+table now. 
+ 
+ * [ ] Do so
 
 > Line 139. Describe the term "mononucleotide blocks".
+
+Sorry that this term has caused confusion. We have done so:
+
+```
+text here
+```
 
  * [ ] Do so
 
@@ -387,16 +430,21 @@ We have added these.
 > are handled during simulation. This might have an important influence on 
 > model performance.
 
-[RJCB: This is correct. We always assume that we have samples all species]
+Indeed, in all cases we assumed a sampling fraction of 100 percent.
+We mention that this may have an effect.
 
- * [ ]
+ * [ ] Do so
 
 > Line 193. These models are not quite mutations models, but rather 
 > substitutions models.
 
-[RJCB: I see no mention of a 'mutation model'?]
+We have never used the expression 'mutation model'. We assume that
+the reviewer refers to the use of the word 'mutation', used to
+refer to the change of one nucleotide into
+a different one. In such cases we replaced them with
+the word 'substitution'.
 
- * [ ]
+ * [x] Done
 
 > Figure 1. The alignments shown are not aligned! 
 > No serious phylogenetics study would believe those have homology.
@@ -410,6 +458,7 @@ from an alignment.
 
 > Figure 3. Remove the title because it is superfluous.
 
- * [ ] RJCB: write script to regenerate figure without title. 
-       Or cut away the title from the picture :-)
+ * [x] Done
+
+[1] Sarver, B.A., Pennell, M.W., Brown, J.W., Keeble, S., Hardwick, K.M., Sullivan, J. & Harmon, L.J. (2019) The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates. PeerJ, 7, e6334
 
