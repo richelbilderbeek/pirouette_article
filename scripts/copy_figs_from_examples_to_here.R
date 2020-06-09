@@ -14,15 +14,12 @@ to_root <- "~/GitHubs/thesis/pirouette_article"
 
 # Rough search
 files <- list.files(path = from_root, pattern = "*.(png|latex)", recursive = TRUE)
-files
 
 # Only pirouette examples
 files <- stringr::str_match(string = files, pattern = "pirouette_example_.*(likilihoods|true|twin|errors|esses).*")
-files
 
 # Remove NA's
 files <- as.character(na.omit(files[, 1]))
-files
 
 from_files <- file.path(from_root, files)
 to_files <- file.path(to_root, files)
