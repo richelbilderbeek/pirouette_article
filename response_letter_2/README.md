@@ -1,38 +1,3 @@
----------- Forwarded message ---------
-Da: Methods in Ecology and Evolution [...]
-Date: lun 18 mag 2020 alle ore 16:11
-Subject: Methods in Ecology and Evolution - Decision on Manuscript ID MEE-20-03-251
-To: [...]
-
-
-18-May-2020
-
-MEE-20-03-251 Quantifying the importance of an inference model in Bayesian phylogenetics
-
-MEE-20-03-251 Quantifying the importance of an inference model in Bayesian phylogenetics
-
-Dear Mr Giovanni Laudanno,
-
-Thank you for submitting your manuscript to Methods in Ecology and Evolution. I have now received the reviewers' reports and a recommendation from the Associate Editor who handled the review process of your resubmission. Copies of their reports are included below. This manuscript has the potential to make a valuable contribution to the area, but there are still a number of significant concerns that need to be addressed. I have considered your paper in light of the comments received and I would like to invite you to prepare a revision.
-
-In your revision, please make sure that you take full account of the comments  made in the reports below. Please note that Methods in Ecology and Evolution does not automatically accept papers after revision, and an invitation to revise a manuscript does not represent commitment to eventual publication on our part. We will reject revised manuscripts if they are returned without satisfactory responses to the reviewers' comments. When returning the revised paper, please show point-by-point how you have dealt with the various comments in the appropriate section of the submission form.
-
-Please return your revision by 29-Jun-2020. If you need longer, please let us know so we can update our system accordingly.  Please read the resubmission instructions at the end of this email before submitting your updated manuscript.
-
-
-We look forward to hearing from you in due course.
-
-Sincerely,
-
-Dr Lee Hsiang Liow
-Senior Editor, Methods in Ecology and Evolution
-
-Reply to:
-Ms India Stephenson
-Methods in Ecology and Evolution Editorial Office
-[...]
-
-
 Associate Editor Comments to Author:
 Associate Editor
 Comments to the Author:
@@ -49,35 +14,27 @@ Comments to the Author:
 > and interpretations of some of the supplemental sections (in particular 
 > sections 8.7 through 8.14).
 
+
+[RSE: Add a response.]
+
 # Reviewer(s)' Comments to Author:
 
 ## Reviewer: 3
 
 Comments to the Corresponding Author
 
-> This manuscript by Bilderbeek et al. presents an R package 
-> whose purpose is to evaluate the value of new tree priors, 
-> by calculating the error introduced by using a different tree prior 
-> than the one which generated the tree.
-> Overall, I think this package and its goal are interesting 
-> and worth publishing, but the presentation could be improved on several points.
 
-
-### Detailed comments
 
 > the authors mention in their response to the previous reviewers 
 > that this package was created from code used in a different project, 
 > and I think adding a citation for this original project would be useful 
 > as a rationale and example of actual use.
 
- We would agree, would we actually intend to publish this original
-work. Due to time constraints, this original work is terminated,
-although it can be found (1) (the code) and (2) (the article)
+This work is not yet published, but it can be found in 
+(1) (the code) and (2) (the article).
 
  * (1) https://github.com/richelbilderbeek/razzo
  * (2) https://github.com/richelbilderbeek/razzo_article
-
- * [x] Done
 
 > there is no mention of coalescent tree priors anywhere in the manuscript, 
 > which is strange considering several are supported by the package 
@@ -90,6 +47,9 @@ Although pirouette does allow for any BEAST2 tree model, the coalescent
 models, however, are not implemented in the twinning yet. pirouette
 does allow to do so, by setting the 'sim_twin_tree_fun',
 part of the 'twinning_params' to simulate a twin coalescent tree.
+
+[RSE: State where you mention this. And I don't understand the second sentence. 
+You say that it is not implemented and then you say how you can set sim_twin_tree_fun. That sounds like it is implemented.]
 
  * [x] Done, at 00002
 
@@ -131,6 +91,8 @@ model. And we think that is an interesting point you bring up:
 that the method may be unable to distinguish between Yule and BD
 for extant trees. We have added this to the manuscript.
 
+[RSE: State where you do this.]
+
 For us, creating a sampling-through-time tree is not
 straightforward, therefore we decided not to test this, also
 because we felt this is beyond describing what pirouette does.
@@ -156,6 +118,7 @@ use the term 'baseline model' for the 'true' pipeline.
 For the 'twin' pipeline, however, the baseline model is the generative
 model and we kept using the word 'generative' there.
 We hope you agree this is a good idea.
+[RSE: I am not onvinced by this change of terminology, but let's see how the ms turns out.]
 
 [RJCB: note that it probably should follow that we adapt the figures' labels.
 This would demand quite some calculations]
@@ -180,6 +143,8 @@ The default option for the twin diversification model p_T
 is to use the standard BD model.
 ```
 
+[RSE: Remove. Just say where you added the text]
+
  * [x] Done, 00003
 
 > section 8.1: "Guidelines for empiricists" is a strange title since this 
@@ -198,6 +163,8 @@ text. In a previous version, we put the
 figure in the Supplementary Materials
 as well, until a reviewer suggested to remove this duplication.
 
+[RSE: Mention the correct figure number.]
+
 > Figure 4: the true tree is top left, not top right
 
 Well spotted! We have reworded accordingly.
@@ -207,6 +174,8 @@ Well spotted! We have reworded accordingly.
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
 
+[RSE: Why is it so difficult to change the figures? It does not require new simulations, does it?]
+[RJCB: Actually, it would require new sims]
 [
   RJCB: I agree with the reviewer. Why don't we have approx 40 bins
   as in the pretty figures? Well, I see here, which I quote from 'pir_plot.R':
@@ -249,8 +218,9 @@ We agree with the reviewer on the use of the word "importance". We
 changed it in "impact", as already present in the literature
 (see for example [1]).
 We believe, instead, that the word "error" is not inappropriate here.
-The "stochastic error" is one of the possible error, but not the only one.
+The "stochastic error" is one of the possible errors, but not the only one.
 We clarified this in the description section.
+[RSE: You have to clarify it here. You can also copy the section. The point is that editors may just read the response letter and then decide instead of reading the whole ms again.]
 
  * [x] Done, 00006
 
@@ -266,6 +236,7 @@ We clarified this in the description section.
   No idea where the 100x comes from. 
   We used 20x due to time constraints
 ]
+[RSE: Just reply (and put in the ms) that 20x is not enough, and that users should consider 100x or more.]
 [
 (1) I also think 100 is arbitrary.
 However I think he is right and this
@@ -282,6 +253,7 @@ For (2), we have reworded accordingly.
  * [x] Done
 
 [(3) RJCB: agreed, say a BD model with zero extinction]
+[RSE: So what is the reply here?]
 
 > The authors must discuss the drawback of forcing the topology on the twin 
 > tree. Topology is known to be highly influenced by the diversification 
@@ -292,6 +264,7 @@ For (2), we have reworded accordingly.
 We agree that forcing a topology indeed has an effect. Still, we feel
 this to be the lesser evil, as we feel that removing this contraint
 makes an unfair comparison.
+[RSE: State something like: "The topology may indeed be important. However, in the comparisons we consider, DD vs BD, or BD vs Yule, the topology contains no information to distinguish between the models. We have, however, added a sentence in the discussion [?] that for models that make different predictions on topology, the twinning process should be modified in line with this."]
 
  * [ ] Reword
 
@@ -338,7 +311,7 @@ Agreed.
 > Pennel, 2020, Nature), so the authors should mention the addition of test 
 > statistics that can more reliably discriminate among models.
 
- * [ ] Read Louca and Pennel
+ * [ ] Read Louca and Pennel [RSE: Louca & Pennell only argue that the LTT cannot distinguish between the constant-rate model and a family of time-dependent model. It can still discriminate between various BD models and between DD and BD.]
  * [ ] Answer
 
 ### Minor comments
@@ -351,8 +324,9 @@ Agreed.
 the biological scientific question it can answer, including full examples']
 [RJCB: I feel his/her suggestion is really a nice way to describe pirouette!]
 [GL: Agree]
+[RSE:So what is the response?]
 
- * [x] Done
+ * [ ] Done
 
 > Line 23. There is no real difference between free and libre, 
 > and in fact the latter does not appear in english dictionaries.
@@ -363,12 +337,10 @@ stress that the 'Free' is 'free as in speech', which can be translated
 to 'Libre' (unlike 'free as in beer', which would be translated to 'Gratis').
 But indeed, not everyone may value the addition of the 'L', so we removed it.
 
- * [x] Done
-
 > Line 40. Time-stamped data where samples come from various time points 
 > are very widely used in phylogenetics too.
 
-We have added this.
+We have added this at ...
 
  * [x] Added this, 00004
 
