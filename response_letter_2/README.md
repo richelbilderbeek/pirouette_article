@@ -14,16 +14,14 @@ Comments to the Author:
 > and interpretations of some of the supplemental sections (in particular 
 > sections 8.7 through 8.14).
 
-
-[RSE: Add a response.]
+We are happy to read our previous improvements are appreciated. We thank
+the previous round of reviewers for that.
 
 # Reviewer(s)' Comments to Author:
 
 ## Reviewer: 3
 
 Comments to the Corresponding Author
-
-
 
 > the authors mention in their response to the previous reviewers 
 > that this package was created from code used in a different project, 
@@ -42,16 +40,15 @@ This work is not yet published, but it can be found in
 > In particular, the introduction makes it sound as if 
 > all existing tree priors are birth-death processes.
 
-We agree: we underaddressed the coalescent model and mention these more now.
-Although pirouette does allow for any BEAST2 tree model, the coalescent
-models, however, are not implemented in the twinning yet. pirouette
-does allow to do so, by setting the 'sim_twin_tree_fun',
-part of the 'twinning_params' to simulate a twin coalescent tree.
-
-[RSE: State where you mention this. And I don't understand the second sentence. 
-You say that it is not implemented and then you say how you can set sim_twin_tree_fun. That sounds like it is implemented.]
-
- * [x] Done, at 00002
+We agree: we underaddressed the coalescent model and mention these more now
+in the Introduction [RJCB: 00002].
+`pirouette` allows for any BEAST2 tree model in the regular pipeline.
+In the twinning pipeline, where a 'most likely' (see 
+equation 1) twin tree is simulated from
+a true tree, the coalescent models are not implemented yet.
+It can be put in by any user, by setting the 'sim_twin_tree_fun' (part 
+of the 'twinning_params') to simulate a twin coalescent tree. Wouls someone
+write that code, we would happily accept it in `pirouette`.
 
 > some of the models presented in the introduction are already implemented 
 > in BEAST2: for instance time-dependent processes in the BDSky package, 
@@ -71,8 +68,6 @@ Agreed! We have done so.
 > whether I am reading the figures correctly.
 
 Completely agree. We have added an interpretation to each (set of) figure(s).
-
- * [x] Done, thanks @Giappo
 
 > the twinning procedure is interesting but I am not confident that 
 > it produces trees matching the chosen generating process. As far as I 
@@ -102,6 +97,7 @@ because we felt this is beyond describing what pirouette does.
 The correct one still shows similar median values but the shape of distributions
 are different] 
 [RJCB: What do you mean with 'was actually incorrect'?]
+[GL: At some point I mention an incorrect figure (in paragraph 8.11). Simply put: the figure that was in the previous version of the manuscript was not the one coming from the repo of the pirouette example. You can open the folder relative to that pirouette example in overleaf and check yourself the two figures. The old one is still there.]
 
  * [ ] Do put in text
 
