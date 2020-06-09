@@ -138,14 +138,7 @@ Well spotted! We added these.
 > l184: the model p_T is only defined in the caption of figure 1, 
 > I think the definition needs to be repeated here
 
-We did so:
-
-```
-The default option for the twin diversification model p_T 
-is to use the standard BD model.
-```
-
-[RSE: Remove. Just say where you added the text]
+Now we mention it also in the 'twinning' section.
 
  * [x] Done, 00003
 
