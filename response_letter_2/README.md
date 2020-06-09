@@ -318,13 +318,11 @@ Agreed.
 > and the question does not seem biological. Instead, the abstract can
 > indicate that the pirouette interrogates a model for its power to describe another.
 
-[RJCB: the line he/she refers to: 'We describe pirouette’s usage and 
-the biological scientific question it can answer, including full examples']
-[RJCB: I feel his/her suggestion is really a nice way to describe pirouette!]
-[GL: Agree]
-[RSE:So what is the response?]
+We rephrased point 3 in the abstract as following:
+"We describe pirouette's usage providing full examples in which
+we interrogate a model for its power to describe another."
 
- * [ ] Done
+ * [x] Done
 
 > Line 23. There is no real difference between free and libre, 
 > and in fact the latter does not appear in english dictionaries.
@@ -345,14 +343,17 @@ We have added this at ...
 > Line 46. I would argue that coalescent models are used as often 
 > as birth-death models, so this statement is probably inaccurate.
 
-We reworded accordingly
+We rephrased the sentence as: "These simple tree priors
+are among the most commonly used."
 
  * [x] Done so, 00002
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
 
-Agreed. We've reworded accordingly.
+We rephrased the sentence as: "To allow users to extend the
+functionalities of BEAST by using plug-ins, BEAST2 was written
+and both tools are still developed independently."
 
  * [x] Did so at '00001'
 
