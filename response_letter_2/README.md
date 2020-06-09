@@ -72,6 +72,9 @@ Agreed! We have done so.
 
 Completely agree. We have added an interpretation to each (set of) figure(s).
 
+[GL: Richel, please give a look to them and see if you approve.
+In particular, check 8.14. I am not sure what to write there]
+
  * [x] Done, thanks @Giappo
 
 > the twinning procedure is interesting but I am not confident that 
@@ -118,6 +121,7 @@ use the term 'baseline model' for the 'true' pipeline.
 For the 'twin' pipeline, however, the baseline model is the generative
 model and we kept using the word 'generative' there.
 [RSE: I am not convinced by this change of terminology, but let's see how the ms turns out.]
+[GL: It looks to me like it could be a lot of work for no signicative improvement.]
 
 [RJCB: note that it probably should follow that we adapt the figures' labels.
 This would demand quite some calculations]
