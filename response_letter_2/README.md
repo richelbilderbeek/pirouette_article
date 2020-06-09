@@ -117,8 +117,7 @@ We think this a great suggestion and we rewrote the article to
 use the term 'baseline model' for the 'true' pipeline.
 For the 'twin' pipeline, however, the baseline model is the generative
 model and we kept using the word 'generative' there.
-We hope you agree this is a good idea.
-[RSE: I am not onvinced by this change of terminology, but let's see how the ms turns out.]
+[RSE: I am not convinced by this change of terminology, but let's see how the ms turns out.]
 
 [RJCB: note that it probably should follow that we adapt the figures' labels.
 This would demand quite some calculations]
@@ -158,16 +157,12 @@ reviewer. We have renamed to 'guidelines for users'.
 
 > l563: Figure 8.6 does not exist
 
-The figure that appears missing in section '8.6' is the one in the main
-text. In a previous version, we put the
-figure in the Supplementary Materials
-as well, until a reviewer suggested to remove this duplication.
-
-[RSE: Mention the correct figure number.]
+We mistakenly referred to the section instead of the figure. We corrected
+this. Now we refer to the right figure: Figure 4.
 
 > Figure 4: the true tree is top left, not top right
 
-Well spotted! We have reworded accordingly.
+We have reworded accordingly.
 
  * [x] Done!
 
@@ -219,8 +214,11 @@ changed it in "impact", as already present in the literature
 (see for example [1]).
 We believe, instead, that the word "error" is not inappropriate here.
 The "stochastic error" is one of the possible errors, but not the only one.
-We clarified this in the description section.
-[RSE: You have to clarify it here. You can also copy the section. The point is that editors may just read the response letter and then decide instead of reading the whole ms again.]
+We clarified this in the description section adding the following
+lines: "The error we aim to quantify is not of stochastic nature.
+Stochastic errors are usually non-directional.
+We, instead, aim to expose the bias due to the mismatch
+between generative and inference models."
 
  * [x] Done, 00006
 
