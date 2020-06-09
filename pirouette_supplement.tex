@@ -64,7 +64,7 @@ Here is an overview of the various sections:
   \item{
     subsection \ref{subsec:different_n_mutations} shows the
     effect when the twin alignment is allowed to have a different
-    number of mutations
+    number of \new{substitution}s
   }
   \item{
     subsection \ref{subsec:mutation_rate} shows the
@@ -92,7 +92,7 @@ the total runtime of these experiments is 'only' 19 days.
     The use of longer DNA sequences decreases the inference error.
   }
   \item{
-    When we do not impose the same number of mutations between true and twin alignment, we observe a difference in the error distributions with respect to the standard case (presented in the main text) where they are forced to have the same number of mutations.
+    When we do not impose the same number of \new{substitution}s between true and twin alignment, we observe a difference in the error distributions with respect to the standard case (presented in the main text) where they are forced to have the same number of \new{substitution}s.
   }
   \item{
     Using a mutation rate less than 1.0 / crown age, decreases the
@@ -376,6 +376,7 @@ performed both in the "true" (Table \ref{tab:true_evidence}) and
 
 \input{pirouette_example_30/example_30_314/evidence_twin.latex}
 
+\clearpage
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -388,7 +389,7 @@ one) trees. These trees are produced by running a DD tree simulation
 with the same parameters as the main example.
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_28/errors.png}
   \caption{
     Aggregate error distributions, similar to Fig. \ref{fig:example_30} 
     for the main example, but now for a collection of 20 replicate trees. 
@@ -426,31 +427,31 @@ except for a varying number of taxa. We did so, by setting the DD model's
 carrying capacity to the desired number of taxa.
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_28/errors.png}
   \caption{Aggregate error distributions for 20 replicates. Here each true tree has 6 taxa. This took 16 hours to compute.}
   \label{fig:example_6_taxa}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_32/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_32/errors.png}
   \caption{Aggregate error distributions for 10 replicates. Here each true tree has 12 taxa. This took 19 hours to compute.}
   \label{fig:example_12_taxa}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_33/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_33/errors.png}
     \caption{Aggregate error distributions for 20 replicates. Here each true tree has 24 taxa. This took 28 hours to compute.}
     \label{fig:example_24_taxa}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_41/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_41/errors.png}
   \caption{Aggregate error distributions for 5 replicates. Here each true tree has 32 taxa. This took 7 hours to compute.}
   \label{fig:example_32_taxa}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_42/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_42/errors.png}
   \caption{Aggregate error distributions for 2 replicates. Here each true tree has 40 taxa. This took 8 hours to compute.}
   \label{fig:example_40_taxa}
 \end{figure}
@@ -480,19 +481,19 @@ Here, we show the same results as the main example,
 except for a varying DNA alignment sequence length.
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_19/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_19/errors.png}
   \caption{Aggregate error distributions for 20 replicates. Here each each alignment has a sequence length of 500 nucleotides. This took 12 hours to compute.}
   \label{fig:example_500_nucleotides}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_28/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_28/errors.png}
   \caption{Aggregate error distributions for 20 replicates. Here each each alignment has a sequence length of 1000 nucleotides (as used in the main example). This took 16 hours to compute.}
   \label{fig:example_1000_nucleotides}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_34/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_34/errors.png}
   \caption{Aggregate error distributions for 10 replicates. Here each each alignment has a sequence length of 2000 nucleotides. This took 11 hours to compute.}
   \label{fig:example_2000_nucleotides}
 \end{figure}
@@ -512,7 +513,7 @@ The code to reproduce these figures can be found at
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Effect of assuming a Yule tree prior on a Yule tree}
+\subsection{The effect of assuming a Yule tree prior on a Yule tree}
 \label{subsec:simplest_correct_parameterization}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -522,7 +523,7 @@ the tree used is generated by simplest tree model (the Yule model),
 which we also assume as the (correct) tree prior.
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_22/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_22/errors.png}
   \caption{Aggregate error distributions for 10 replicates. Here each true tree is generated by a Yule process. For the inference we used a Yule tree prior. This took 9 hours to compute.}
   \label{fig:example_yule}
 \end{figure}
@@ -541,7 +542,7 @@ The code to reproduce this figure can be found at
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Effect of assuming a Yule tree prior on a BD tree}
+\subsection{The effect of assuming a Yule tree prior on a BD tree}
 \label{subsec:under_parameterization}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -552,7 +553,7 @@ where we assume it is generated by a Yule (or pure-birth) model.
 This example thus shows the effect of underparameterization.
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_26/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_26/errors.png}
   \caption{Aggregate error distributions for 20 replicates. Here each true tree is generated by a BD process. For the inference we used instead a Yule tree prior. This took 9 hours to compute.}
 \end{figure}
 
@@ -580,17 +581,17 @@ and high likelihood. In this way, we effectively selected for trees
 that are rare, uncommon and common respectively.
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_23/errors_low.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_23/errors_low.png}
   \caption{Aggregate error distributions for a distribution of trees, where the true trees are DD with low likelihood.}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_23/errors_mid.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_23/errors_mid.png}
   \caption{Aggregate error distributions for a distribution of trees, where the true trees are DD with median likelihood.}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_23/errors_high.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_23/errors_high.png}
   \caption{Aggregate error distributions for a distribution of trees, where the true trees are DD with high likelihood.}
 \end{figure}
 
@@ -611,21 +612,21 @@ The code to reproduce these figure can be found at
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
 The main example uses a twin alignment that has the same number
-of mutations (as measured from the ancestral sequence) as the true alignment. Here, we show the same results, with the difference that
+of \new{substitution}s (as measured from the ancestral sequence) as the true alignment. Here, we show the same results, with the difference that
 the twin alignment uses the same mutation rate, yet is not guaranteed
-to have the same number of mutations. Any difference in the error distributions can therefore also stem from a difference in the amount of information contained in the alignments.
+to have the same number of \new{substitution}s.
+\iffalse
+Any difference in the error distributions can therefore also stem from a difference in the amount of information contained in the alignments.
+\fi
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_18/errors.png}
-  \caption{Aggregate error distributions similar to Fig. \ref{fig:replicate_trees}, but here the number of mutations is not imposed to be the same between true and twin alignment. Instead we just use an equal mutation rate. This took 10 hours to compute.}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_18/errors.png}
+  \caption{Aggregate error distributions similar to Fig. \ref{fig:replicate_trees}, but here the number of \new{substitution}s is not imposed to be the same between true and twin alignment. Instead we just use an equal mutation rate. This took 10 hours to compute.}
   \label{fig:example_random_mutations}
 \end{figure}
 
 \new{
-  Comparing Fig. \ref{fig:example_random_mutations} to 
-  \label{fig:replicate_trees} we can see that the extent of the error 
-  tend to increase both for the true and the twin distributions. This is 
-  probably due to the fact that 
+  Comparing figures \ref{fig:example_random_mutations} and \ref{fig:replicate_trees} we can see that the discrepancy between true and twin distributions tend to increase. This is probably due to the fact that letting mutation rates induces a difference in the amount of information contained in the alignments and this is reflected in the error distributions.
 }
 
 The code to reproduce this figure can be found at
@@ -671,34 +672,36 @@ The code to reproduce this figure can be found at
 \end{sloppypar}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_35/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_35/errors.png}
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 0.25 / crown age. This took 11 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_36/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_36/errors.png}
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 0.50 / crown age. This took 14 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_37/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_37/errors.png}
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 0.75 / crown age. This took 16 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_38/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_38/errors.png}
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 1.25 / crown age. This took 17 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_39/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_39/errors.png}
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 1.50 / crown age. This took 10 hours to compute.}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_40/errors.png}
+  \includegraphics[width=0.98\textwidth]{pirouette_example_40/errors.png}
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 2.0 / crown age. This took 19 hours to compute.}
 \end{figure}
+
+\giovanni{I am not able to give an interpretation to these figures. I would expect a trend between the difference of true and twin medians and mutation rate, but I cannot see anything. The fact that sometimes true is smaller and some other times twin is, makes me think that these results are probably not very reliable, probably due to a not sufficient number of replicates.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
