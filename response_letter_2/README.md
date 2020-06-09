@@ -92,15 +92,6 @@ For us, creating a sampling-through-time tree is not
 straightforward, therefore we decided not to test this, also
 because we felt this is beyond describing what pirouette does.
 
-
-[GL: Actually the figure in the supplementary at 8.11 was actually incorrect.
-The correct one still shows similar median values but the shape of distributions
-are different] 
-[RJCB: What do you mean with 'was actually incorrect'?]
-[GL: At some point I mention an incorrect figure (in paragraph 8.11). Simply put: the figure that was in the previous version of the manuscript was not the one coming from the repo of the pirouette example. You can open the folder relative to that pirouette example in overleaf and check yourself the two figures. The old one is still there.]
-
- * [ ] Do put in text
-
 [RJCB: literature: Stadler, Tanja. "Sampling-through-time in birth–death trees." Journal of theoretical biology 267.3 (2010): 396-404.]
 
 > the use of "generative model" to describe the model used for comparison 
