@@ -14,14 +14,16 @@ Comments to the Author:
 > and interpretations of some of the supplemental sections (in particular 
 > sections 8.7 through 8.14).
 
-We are happy to read our previous improvements are appreciated. We thank
-the previous round of reviewers for that.
+
+[RSE: Add a response.]
 
 # Reviewer(s)' Comments to Author:
 
 ## Reviewer: 3
 
 Comments to the Corresponding Author
+
+
 
 > the authors mention in their response to the previous reviewers 
 > that this package was created from code used in a different project, 
@@ -40,15 +42,16 @@ This work is not yet published, but it can be found in
 > In particular, the introduction makes it sound as if 
 > all existing tree priors are birth-death processes.
 
-We agree: we underaddressed the coalescent model and mention these more now
-in the Introduction [RJCB: 00002].
-`pirouette` allows for any BEAST2 tree model in the regular pipeline.
-In the twinning pipeline, where a 'most likely' (see 
-equation 1) twin tree is simulated from
-a true tree, the coalescent models are not implemented yet.
-It can be put in by any user, by setting the 'sim_twin_tree_fun' (part 
-of the 'twinning_params') to simulate a twin coalescent tree. Wouls someone
-write that code, we would happily accept it in `pirouette`.
+We agree: we underaddressed the coalescent model and mention these more now.
+Although pirouette does allow for any BEAST2 tree model, the coalescent
+models, however, are not implemented in the twinning yet. pirouette
+does allow to do so, by setting the 'sim_twin_tree_fun',
+part of the 'twinning_params' to simulate a twin coalescent tree.
+
+[RSE: State where you mention this. And I don't understand the second sentence. 
+You say that it is not implemented and then you say how you can set sim_twin_tree_fun. That sounds like it is implemented.]
+
+ * [x] Done, at 00002
 
 > some of the models presented in the introduction are already implemented 
 > in BEAST2: for instance time-dependent processes in the BDSky package, 
@@ -69,6 +72,8 @@ Agreed! We have done so.
 
 Completely agree. We have added an interpretation to each (set of) figure(s).
 
+ * [x] Done, thanks @Giappo
+
 > the twinning procedure is interesting but I am not confident that 
 > it produces trees matching the chosen generating process. As far as I 
 > understand all the twin trees in the manuscript were produced using 
@@ -86,12 +91,21 @@ model. And we think that is an interesting point you bring up:
 that the method may be unable to distinguish between Yule and BD
 for extant trees. We have added this to the manuscript.
 
- * [ ] Add this to the manuscript
- * [ ] RSE: State where you do this
+[RSE: State where you do this.]
 
 For us, creating a sampling-through-time tree is not
 straightforward, therefore we decided not to test this, also
 because we felt this is beyond describing what pirouette does.
+
+
+[GL: Actually the figure in the supplementary at 8.11 was actually incorrect.
+The correct one still shows similar median values but the shape of distributions
+are different] 
+[RJCB: What do you mean with 'was actually incorrect'?]
+
+ * [ ] Do put in text
+
+[RJCB: literature: Stadler, Tanja. "Sampling-through-time in birth–death trees." Journal of theoretical biology 267.3 (2010): 396-404.]
 
 > the use of "generative model" to describe the model used for comparison 
 > by pirouette, as opposed to the true generating process, was quite 
@@ -117,10 +131,21 @@ This would demand quite some calculations]
 
 Well spotted! We added these.
 
+ * [x] Done
+
 > l184: the model p_T is only defined in the caption of figure 1, 
 > I think the definition needs to be repeated here
 
-We did so in the 'Twinning' subsection [RJCB: 00003]
+We did so:
+
+```
+The default option for the twin diversification model p_T 
+is to use the standard BD model.
+```
+
+[RSE: Remove. Just say where you added the text]
+
+ * [x] Done, 00003
 
 > section 8.1: "Guidelines for empiricists" is a strange title since this 
 > package is aimed at developers of tree priors. Consider replacing with 
@@ -129,23 +154,48 @@ We did so in the 'Twinning' subsection [RJCB: 00003]
 We used the name 'guidelines for empiricists' from a suggestion by another
 reviewer. We have renamed to 'guidelines for users'.
 
+ * [x] Done
+
 > l563: Figure 8.6 does not exist
 
 The figure that appears missing in section '8.6' is the one in the main
-text, which is figure 3. In a previous version, we put the
+text. In a previous version, we put the
 figure in the Supplementary Materials
 as well, until a reviewer suggested to remove this duplication.
+
+[RSE: Mention the correct figure number.]
 
 > Figure 4: the true tree is top left, not top right
 
 Well spotted! We have reworded accordingly.
 
+ * [x] Done!
+
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
 
-[RSE: Why is it so difficult to change the figures? 
-It does not require new simulations, does it?]
-[RJCB: Replotting (and redesigning the `pir_plot` function would be a lot of work]
+[RSE: Why is it so difficult to change the figures? It does not require new simulations, does it?]
+[RJCB: Actually, it would require new sims]
+[
+  RJCB: I agree with the reviewer. Why don't we have approx 40 bins
+  as in the pretty figures? Well, I see here, which I quote from 'pir_plot.R':
+
+  ```
+  ##### More aesthetic settings for the plots #####
+
+  n_errors <- length(unique(df_long$error_index))
+  bindwidth <- 0.1 / sqrt(n_errors)
+  ```
+
+  I would enjoy `pir_plot` to have more aesthetic settings.
+
+  OTOH, Giovanni should first finish his PhD, and re-running takes time
+  that I also need for my current job.
+  
+  [GL: Completely agree!]
+
+  In the end: I suggest to give a lame excuse.
+]
 
  * [ ] Give lame excuse
 
@@ -169,13 +219,10 @@ changed it in "impact", as already present in the literature
 (see for example [1]).
 We believe, instead, that the word "error" is not inappropriate here.
 The "stochastic error" is one of the possible errors, but not the only one.
-We clarified this in the 'Description' section [RJCB: 00006].
+We clarified this in the description section.
+[RSE: You have to clarify it here. You can also copy the section. The point is that editors may just read the response letter and then decide instead of reading the whole ms again.]
 
- * [ ] [RSE: You have to clarify it here. You can also copy the section. 
-       The point is that editors may just read the response letter and then 
-       decide instead of reading the whole ms again.]
-
-
+ * [x] Done, 00006
 
 > (1) The authors must acknowledge that twinning should be performed at least 
 > 100 times, and that the example is not useful for rejecting the BD model. 
@@ -201,7 +248,9 @@ so I agree with you that this is the
 answer we have to give.
 ]
 
-For (2), we have reworded line 103 accordingly.
+For (2), we have reworded accordingly.
+
+ * [x] Done
 
 [(3) RJCB: agreed, say a BD model with zero extinction]
 [RSE: So what is the reply here?]
@@ -215,12 +264,7 @@ For (2), we have reworded line 103 accordingly.
 We agree that forcing a topology indeed has an effect. Still, we feel
 this to be the lesser evil, as we feel that removing this contraint
 makes an unfair comparison.
-[RSE: State something like: "The topology may indeed be important. 
-However, in the comparisons we consider, DD vs BD, or BD vs Yule, 
-the topology contains no information to distinguish between the models. 
-We have, however, added a sentence in the discussion [?] 
-that for models that make different predictions on topology, 
-the twinning process should be modified in line with this."]
+[RSE: State something like: "The topology may indeed be important. However, in the comparisons we consider, DD vs BD, or BD vs Yule, the topology contains no information to distinguish between the models. We have, however, added a sentence in the discussion [?] that for models that make different predictions on topology, the twinning process should be modified in line with this."]
 
  * [ ] Reword
 
