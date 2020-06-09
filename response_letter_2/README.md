@@ -14,8 +14,7 @@ Comments to the Author:
 > and interpretations of some of the supplemental sections (in particular 
 > sections 8.7 through 8.14).
 
-
-[RSE: Add a response.]
+[RSE: Add a response.] 
 
 # Reviewer(s)' Comments to Author:
 
