@@ -10,7 +10,7 @@
 #
 
 from_root <- "~/GitHubs"
-to_root <- "~/GitHubs/pirouette_article"
+to_root <- "~/GitHubs/thesis/pirouette_article"
 
 # Rough search
 files <- list.files(path = from_root, pattern = "*.(png|latex)", recursive = TRUE)

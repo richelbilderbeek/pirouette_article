@@ -240,6 +240,7 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
 article.pdf
 .trees
 *.trees
