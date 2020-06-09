@@ -1,0 +1,20 @@
+% latex table generated in R 3.6.1 by xtable 1.8-4 package
+% Mon Feb 17 10:28:10 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{ll}
+  \hline
+parameter & ESS \\ 
+  \hline
+posterior & 10001 \\ 
+  likelihood & 10001 \\ 
+  prior & 10001 \\ 
+  treeLikelihood & 10001 \\ 
+  TreeHeight & 10001 \\ 
+  YuleModel & 10001 \\ 
+  birthRate & 10001 \\ 
+   \hline
+\end{tabular}
+\caption{ESSes for the posterior distributions of Fig. \ref{fig:example_30_full_pipeline} for the true tree, using the generative model}
+\label{tab:esses_true_gen}
+\end{table}
