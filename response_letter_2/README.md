@@ -14,7 +14,9 @@ Comments to the Author:
 > and interpretations of some of the supplemental sections (in particular 
 > sections 8.7 through 8.14).
 
-[RSE: Add a response.] 
+We are glad to know that our revisions went in the right direction. We thank 
+you and the reviewers for your help with that. The 3 main points you mentioned
+above have been addressed (among the others) in the point by point response.
 
 # Reviewer(s)' Comments to Author:
 
