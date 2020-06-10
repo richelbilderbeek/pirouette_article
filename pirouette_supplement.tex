@@ -404,10 +404,12 @@ with the same parameters as the main example.
   The resulting error distributions are shown in Fig. \ref{fig:replicate_trees}. 
   We present results for cases where (1) the generative model has been used 
   or (2) the model with highest evidence has been selected for the inference.
-  From the plots we can see that in both cases there is a clear distinction 
-  between the two distributions (true and twin), suggesting that the inference 
-  models that have been used cannot capture in an accurate way the features of 
-  the diversity-dependent tree prior used to simulate the original trees. 
+  From the plots we can see that in both cases the two distributions 
+  (true and twin) are mostly overlapping, but not everywhere.
+  This suggests that the inference 
+  models that have been used can to a reasonable extent capture in an accurate way 
+  the features of the diversity-dependent tree prior used to simulate 
+  the original trees. 
 }
 
 The code to reproduce Fig. \ref{fig:replicate_trees} can be found at  
@@ -457,7 +459,19 @@ carrying capacity to the desired number of taxa.
 \end{figure}
 
 \new{
-We show in figures \ref{fig:example_6_taxa}, \ref{fig:example_12_taxa}, \ref{fig:example_24_taxa}, \ref{fig:example_32_taxa} and \ref{fig:example_40_taxa} what are the errors obtained when starting from phylogenies with, respectively, 6, 12, 24, 32 and 40 taxa. Again we can see that in each case errors tend to be greater in the true distribution than in the twin distribution, confirming the result of the previous paragraph. However we cannot detect a clear trend between the number of taxa of the original phylogeny and the extent of such discrepancy. Due to long computational times we have been able to provide data only for a limited amount of replicates. We cannot exclude that a clearer trend could be observed increasing the number of replicates.
+  We show in figures \ref{fig:example_6_taxa}, \ref{fig:example_12_taxa}, 
+  \ref{fig:example_24_taxa}, \ref{fig:example_32_taxa} and 
+  \ref{fig:example_40_taxa} what are the errors obtained when starting from 
+  phylogenies with, respectively, 6, 12, 24, 32 and 40 taxa. Again we can see 
+  that in each case errors tend to be greater in the true distribution than 
+  in the twin distribution, similar to the result of the previous 
+  subsection, subsection\ref{subsec:distribution}.
+  In addition to this, we cannot detect a clear trend between the number of 
+  taxa of the original phylogeny and the extent of such discrepancy. 
+  Due to long computational times we have been able to provide data only 
+  for a limited amount of replicates. 
+  We cannot exclude that a clearer trend could be observed increasing the 
+  number of replicates.
 }
 
 The code to reproduce these figures can be found at  
@@ -499,9 +513,28 @@ except for a varying DNA alignment sequence length.
 \end{figure}
 
 \new{
-From figures \ref{fig:example_500_nucleotides}, \ref{fig:example_1000_nucleotides} and \ref{fig:example_2000_nucleotides} we can observe a that the discrepancy between the true and twin error distributions tend to become smaller as the number of nucleotides increase. This occurred for both the generative and best candidate cases. 
+  From figures \ref{fig:example_500_nucleotides}, 
+  \ref{fig:example_1000_nucleotides} and \ref{fig:example_2000_nucleotides} 
+  we can observe a that the discrepancy between the true and twin error 
+  distributions tend to become smaller as the number of nucleotides increase. 
+  This occurred for both the generative and best candidate cases.
+  This follows the expectation that a prior becomes less important when
+  more information becomes available.
 }
-\giovanni{richel do you have an idea why this happens? Also, do we have the raw data stored somewhere? From what I can judge from the plots the median discrepancy is 0.012 for 500 nucs, 0.008 for 1000 nucs and 0.003 for 2000 nucs.}
+\giovanni{
+  Also, do we have the raw data 
+  stored somewhere? From what I can judge from the plots the median discrepancy 
+   is 0.012 for 500 nucs, 0.008 for 1000 nucs and 0.003 for 2000 nucs.
+}
+\richel{
+  Sure, raw data is at
+  \url{https://www.richelbilderbeek.nl/pirouette_example_19.zip},
+  \url{https://www.richelbilderbeek.nl/pirouette_example_28.zip}
+  and 
+  \url{https://www.richelbilderbeek.nl/pirouette_example_34.zip}.
+  These URLS can be found on the GitHub site.
+  What would you like to with the raw data?
+}
 
 The code to reproduce these figures can be found at  
 \begin{sloppypar}
@@ -530,8 +563,10 @@ which we also assume as the (correct) tree prior.
 
 This example shows a parameterization at the correct level for the
 simplest case possible.
+
 \new{
-As expected the twin and true distributions in Fig. \ref{fig:example_yule} are extremely similar for both the generative and the best candidate case.
+  As expected the twin and true distributions in Fig. \ref{fig:example_yule} 
+  are extremely similar for both the generative and the best candidate case.
 }
 
 The code to reproduce this figure can be found at  
@@ -554,13 +589,32 @@ This example thus shows the effect of underparameterization.
 
 \begin{figure}[H]
   \includegraphics[width=0.98\textwidth]{pirouette_example_26/errors.png}
-  \caption{Aggregate error distributions for 20 replicates. Here each true tree is generated by a BD process. For the inference we used instead a Yule tree prior. This took 9 hours to compute.}
+  \caption{Aggregate error distributions for 10 replicates. 
+  Here each true tree is generated by a BD process. 
+  For the inference we used instead a Yule tree prior. This took 
+  \richel{unknown} hours to compute.
+}
 \end{figure}
 
-\giovanni{This is the example one of the reviewer was referring to. The figure that was present before (still present in the overleaf files) looked actually quite different from the one on the repo (\url{https://raw.githubusercontent.com/richelbilderbeek/pirouette_example_26/master/errors.png}). I changed it with the one found there. In case you think this is wrong you can revert it back.}
-
+\giovanni{
+  This is the example one of the reviewer was referring to. 
+  The figure that was present before (still present in the overleaf files) 
+  looked actually quite different from the one on the 
+  repo (\url{https://raw.githubusercontent.com/richelbilderbeek/pirouette_example_26/master/errors.png}). 
+  I changed it with the one found there. In case you think this is wrong you can revert it back.
+}
+\richel{ 
+  Well spotted! Thanks to you, the figure is correct now
+}
 \new{
-Since the two models are very similar to each other (the BD model can be turned into a Yule model just by setting the extinction parameter to zero \giovanni{Cite Louca and Pennell here?}) the median discrepancy it's almost negligible. However, respect to the previous case when a Yule tree prior has been considered, here the distributions exhibit a greater difference in shapes.
+  Since the two models are very similar to each other (the BD model can be 
+  turned into a Yule model just by setting the extinction parameter to 
+  zero [\cite{nee1994reconstructed}]) the median discrepancy is
+  almost negligible. 
+  However, with respect to the previous 
+  case (subsection \ref{subsec:simplest_correct_parameterization}), 
+  where a Yule tree prior has been used, 
+  the distributions here exhibit a greater difference.
 }
 
 The code to reproduce this figure can be found at
@@ -596,7 +650,14 @@ that are rare, uncommon and common respectively.
 \end{figure}
 
 \new{
-Here the median errors are similar in the three settings and similar to ones relative to the full dataset of \ref{subsec:distribution}. We can also notice that in the case of median likelihood, the twin median error appear to be lower than the true mean error. This usually is a sign that the number of replicates (in this case 10) is too low to allow us to draw precise conclusions from this test. We decided to not explore further in this direction using more simulations because computational times turned to be extremely high. The entire run took 120 hours in total.
+  Here the median errors are similar in the three settings and similar to 
+  ones relative to the full dataset of \ref{subsec:distribution}. We can also 
+  notice that in the case of median likelihood, the twin median error appear 
+  to be lower than the true mean error. This usually is a sign that the number 
+  of replicates (in this case 10) is too low to allow us to draw precise 
+  conclusions from this test. We decided to not explore further in this 
+  direction using more simulations because computational times turned to be 
+  extremely high. The entire run took 120 hours in total.
 }
 
 The code to reproduce these figure can be found at  
@@ -615,9 +676,6 @@ The main example uses a twin alignment that has the same number
 of \new{substitution}s (as measured from the ancestral sequence) as the true alignment. Here, we show the same results, with the difference that
 the twin alignment uses the same mutation rate, yet is not guaranteed
 to have the same number of \new{substitution}s.
-\iffalse
-Any difference in the error distributions can therefore also stem from a difference in the amount of information contained in the alignments.
-\fi
 
 \begin{figure}[H]
   \includegraphics[width=0.98\textwidth]{pirouette_example_18/errors.png}
@@ -626,7 +684,12 @@ Any difference in the error distributions can therefore also stem from a differe
 \end{figure}
 
 \new{
-  Comparing figures \ref{fig:example_random_mutations} and \ref{fig:replicate_trees} we can see that the discrepancy between true and twin distributions tend to increase. This is probably due to the fact that letting mutation rates induces a difference in the amount of information contained in the alignments and this is reflected in the error distributions.
+  Comparing figures \ref{fig:example_random_mutations} 
+  and \ref{fig:replicate_trees} we can see that the discrepancy between 
+  true and twin distributions tend to increase. 
+  This is probably due to the fact that letting mutation rates 
+  induces a difference in the amount of information contained in the 
+  alignments and this is reflected in the error distributions.
 }
 
 The code to reproduce this figure can be found at
@@ -701,7 +764,17 @@ The code to reproduce this figure can be found at
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 2.0 / crown age. This took 19 hours to compute.}
 \end{figure}
 
-\giovanni{I am not able to give an interpretation to these figures. I would expect a trend between the difference of true and twin medians and mutation rate, but I cannot see anything. The fact that sometimes true is smaller and some other times twin is, makes me think that these results are probably not very reliable, probably due to a not sufficient number of replicates.}
+\giovanni{
+  I am not able to give an interpretation to these figures. 
+  I would expect a trend between the difference of true and twin medians 
+  and mutation rate, but I cannot see anything. The fact that sometimes true 
+  is smaller and some other times twin is, makes me think that these results 
+  are probably not very reliable, probably due to a not sufficient number 
+  of replicates.
+}
+\richel{
+  I interpreted our curvy friends :-)
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
