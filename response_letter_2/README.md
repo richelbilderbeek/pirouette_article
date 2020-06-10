@@ -258,7 +258,8 @@ For (2), we have reworded accordingly.
 We agree that forcing a topology indeed has an effect. Still, we feel
 this to be the lesser evil, as we feel that removing this contraint
 makes an unfair comparison.
-[RSE: State something like: "The topology may indeed be important. However, in the comparisons we consider, DD vs BD, or BD vs Yule, the topology contains no information to distinguish between the models. We have, however, added a sentence in the discussion [?] that for models that make different predictions on topology, the twinning process should be modified in line with this."]
+
+The topology may indeed be important. However, when topology contains no information to distinguish between the models, we prefer to use the same topology because we want the twin tree to be as similar as possible to the original tree. This is the case for the comparisons we consider: DD vs BD, or BD vs Yule. However, to stress the importance that topology might have in other cases, we have added a sentence in the discussion stating: "For models that make different predictions on topology, the twinning process should be modified in line with it".
 
  * [ ] Reword
 
