@@ -392,7 +392,7 @@ table now.
 
 > Line 139. Describe the term "mononucleotide blocks".
 
-We explained in brackets what we mean with "mononucleotide block".
+We added a brief explanation on what we mean with "mononucleotide block".
 
 ```
 "A block of length n is a sequence in which the same character is repeated n times"
