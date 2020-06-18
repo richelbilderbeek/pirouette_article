@@ -360,6 +360,9 @@ and both tools are still developed independently."
 > Line 62. A great range of models are implemented in BEAST 2 (and 1), 
 > including many coalescent models, multispecies coalescent, BD skyline, etc.
 
+[GL: I reworded to address this at 00005 in a comment.
+Add it to the main text if you agree.]
+
 We have added these.
 
  * [ ] Add these at 00005
