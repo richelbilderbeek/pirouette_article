@@ -10,7 +10,7 @@
 
 pdflatex pirouette_header --shell-escape
 bibtex pirouette_header
-pdflatex pirouette_header --shell-escape > /dev/null
+pdflatex pirouette_header --shell-escape
 pdflatex pirouette_header --shell-escape
 mv pirouette_header.pdf pirouette_article.pdf
 
