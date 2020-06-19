@@ -600,16 +600,6 @@ This example thus shows the effect of underparameterization.
 }
 \end{figure}
 
-\giovanni{
-  This is the example one of the reviewer was referring to. 
-  The figure that was present before (still present in the overleaf files) 
-  looked actually quite different from the one on the 
-  repo (\url{https://raw.githubusercontent.com/richelbilderbeek/pirouette_example_26/master/errors.png}). 
-  I changed it with the one found there. In case you think this is wrong you can revert it back.
-}
-\richel{ 
-  Well spotted! Thanks to you, the figure is correct now
-}
 \new{
   Since the two models are very similar to each other (the BD model can be 
   turned into a Yule model just by setting the extinction parameter to 
@@ -619,6 +609,12 @@ This example thus shows the effect of underparameterization.
   case (subsection \ref{subsec:simplest_correct_parameterization}), 
   where a Yule tree prior has been used, 
   the distributions here exhibit a greater difference.
+}
+\new{
+  As we use only extant trees, it is reasonable that the method
+  is slightly weaker in distinguishing between the Yule and BD
+  models. It is unknown what the discriminatory power would be
+  when comparing trees with extinction events.
 }
 
 The code to reproduce this figure can be found at
@@ -767,18 +763,6 @@ The code to reproduce this figure can be found at
   \includegraphics[width=0.98\textwidth]{pirouette_example_40/errors.png}
   \caption{Aggregate error distributions for the tree distribution presented in \ref{subsec:distribution} but with a per-nucleotide mutation rate of 2.0 / crown age. This took 19 hours to compute.}
 \end{figure}
-
-\giovanni{
-  I am not able to give an interpretation to these figures. 
-  I would expect a trend between the difference of true and twin medians 
-  and mutation rate, but I cannot see anything. The fact that sometimes true 
-  is smaller and some other times twin is, makes me think that these results 
-  are probably not very reliable, probably due to a not sufficient number 
-  of replicates.
-}
-\richel{
-  I interpreted our curvy friends :-)
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography

@@ -47,6 +47,8 @@ This work is not yet published, but it can be found in
 We agree: we underaddressed the coalescent model and now mention these
 more frequent in the Introduction.
 
+ * [ ] Do better
+
 % 00009
 Indeed, the implemented tree priors for the twinning process are Yule
 and BD, yet a user can also specify any way how to simulate a twin tree,
@@ -72,11 +74,6 @@ Agreed! We have done so.
 
 Completely agree. We have added an interpretation to each (set of) figure(s).
 
-[GL: Richel, please give a look to them and see if you approve.
-In particular, check 8.14. I am not sure what to write there]
-
- * [x] Done, thanks @Giappo
-
 > the twinning procedure is interesting but I am not confident that 
 > it produces trees matching the chosen generating process. As far as I 
 > understand all the twin trees in the manuscript were produced using 
@@ -92,23 +89,12 @@ In particular, check 8.14. I am not sure what to write there]
 In 7 out of 19 cases, indeed, the best candidate model is the Yule
 model. And we think that is an interesting point you bring up: 
 that the method may be unable to distinguish between Yule and BD
-for extant trees. We have added this to the manuscript.
-
-[RSE: State where you do this.]
+for extant trees. We have added this to the manuscript
+at the subsection 'The effect of assuming a Yule tree prior on a BD tree'
 
 For us, creating a sampling-through-time tree is not
 straightforward, therefore we decided not to test this, also
 because we felt this is beyond describing what pirouette does.
-
-
-[GL: Actually the figure in the supplementary at 8.11 was actually incorrect.
-The correct one still shows similar median values but the shape of distributions
-are different] 
-[RJCB: What do you mean with 'was actually incorrect'?]
-
- * [ ] Do put in text
-
-[RJCB: literature: Stadler, Tanja. "Sampling-through-time in birth–death trees." Journal of theoretical biology 267.3 (2010): 396-404.]
 
 > the use of "generative model" to describe the model used for comparison 
 > by pirouette, as opposed to the true generating process, was quite 
@@ -123,25 +109,19 @@ model and we kept using the word 'generative' there.
 [RSE: I am not convinced by this change of terminology, but let's see how the ms turns out.]
 [GL: It looks to me like it could be a lot of work for no signicative improvement.]
 
-[RJCB: note that it probably should follow that we adapt the figures' labels.
-This would demand quite some calculations]
-
- * [ ] Modify the text as such
+ * [ ] Modify the text as such, Richel volunteers
 
 ### Minor comments
 
 > Table 1: descriptions are missing for the error_fun section
 
-Well spotted! We added these.
-
- * [x] Done
+Well spotted! We added these, at the error_fun section.
 
 > l184: the model p_T is only defined in the caption of figure 1, 
 > I think the definition needs to be repeated here
 
+% 00003
 Now we mention it also in the 'twinning' section.
-
- * [x] Done, 00003
 
 > section 8.1: "Guidelines for empiricists" is a strange title since this 
 > package is aimed at developers of tree priors. Consider replacing with 
@@ -149,8 +129,6 @@ Now we mention it also in the 'twinning' section.
 
 We used the name 'guidelines for empiricists' from a suggestion by another
 reviewer. We have renamed to 'guidelines for users'.
-
- * [x] Done
 
 > l563: Figure 8.6 does not exist
 
@@ -161,35 +139,13 @@ this. Now we refer to the right figure: Figure 4.
 
 We have reworded accordingly.
 
- * [x] Done!
-
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
 
 [RSE: Why is it so difficult to change the figures? It does not require new simulations, does it?]
-[RJCB: Actually, it would require new sims]
-[
-  RJCB: I agree with the reviewer. Why don't we have approx 40 bins
-  as in the pretty figures? Well, I see here, which I quote from 'pir_plot.R':
 
-  ```
-  ##### More aesthetic settings for the plots #####
-
-  n_errors <- length(unique(df_long$error_index))
-  bindwidth <- 0.1 / sqrt(n_errors)
-  ```
-
-  I would enjoy `pir_plot` to have more aesthetic settings.
-
-  OTOH, Giovanni should first finish his PhD, and re-running takes time
-  that I also need for my current job.
-  
-  [GL: Completely agree!]
-
-  In the end: I suggest to give a lame excuse.
-]
-
- * [ ] Give lame excuse
+ * [ ] Redo simulations, create new figures
+ * [ ] If fails: give lame excuse
 
 ## Reviewer: 4
 
@@ -206,6 +162,7 @@ We have reworded accordingly.
 > sample), which is not what the authors are aiming at in this article. 
 > These terms must be rectified or very clearly justified in the manuscript.
 
+% 00006
 We agree with the reviewer on the use of the word "importance". We
 changed it in "impact", as already present in the literature
 (see for example [1]).
@@ -217,38 +174,26 @@ Stochastic errors are usually non-directional.
 We, instead, aim to expose the bias due to the mismatch
 between generative and inference models."
 
- * [x] Done, 00006
-
 > (1) The authors must acknowledge that twinning should be performed at least 
 > 100 times, and that the example is not useful for rejecting the BD model. 
+
+[RJCB: we agreed to do so]
+
+ * [ ] Do so
+
 > (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
+
+We have reworded accordingly at [...?]
+
+ * [ ] Mention where
+
 > (3) It is very likely that across several parameter combinations there is no 
 > distinction between the proposed and implemented models.
 
-[  
-  (1) RJCB: unsure if I agree. 
-  No idea where the 100x comes from. 
-  We used 20x due to time constraints
-]
-[RSE: Just reply (and put in the ms) that 20x is not enough, and that users should consider 100x or more.]
-[
-(1) I also think 100 is arbitrary.
-However I think he is right and this
-would probably make our supplementary
-plots much clearer whereas sometimes
-it is hard to provide sound interpretations.
-All that said, it required too much time
-so I agree with you that this is the
-answer we have to give.
-]
+We agree and have added this to the text at [...?]
 
-For (2), we have reworded accordingly.
-
- * [x] Done
-
-[(3) RJCB: agreed, say a BD model with zero extinction]
-[RSE: So what is the reply here?]
+ * [ ] Do so
 
 > The authors must discuss the drawback of forcing the topology on the twin 
 > tree. Topology is known to be highly influenced by the diversification 
@@ -260,10 +205,9 @@ We agree that forcing a topology indeed has an effect. Still, we feel
 this to be the lesser evil, as we feel that removing this contraint
 makes an unfair comparison.
 
+% 00007
 The topology may indeed be important. However, when topology contains no information to distinguish between the models, we prefer to use the same topology because we want the twin tree to be as similar as possible to the original tree. This is the case for the comparisons we consider: DD vs BD, or BD vs Yule.
 However, to stress the importance that topology might have in other cases, we mentioned the issue both in the twinning section ("We choose to preserve the original topology to increase the similarity between the twin to the original tree. This works well in the cases of the birth-death or diversity-dependent models we consider in our examples. However this might not be suited for models in which branching times are strongly influenced by topology.") and in the discussion ("For models that make different predictions on topology, the twinning process should be modified in line with it").
-
- * [x] Done % 00007
 
 > The work by Duchene and colleagues is not mentioned in the introduction 
 > as indicated in line 273. Also, the authors must acknowledge that the 
@@ -296,8 +240,8 @@ fit there][RJCB: Agreed]
 
 Agreed.
 
- * [ ] Read those papers
- * [ ] Acknowledge these
+ * [ ] Read those papers, Richel volunteers
+ * [ ] Acknowledge these, Richel volunteers
 
 [RJCB: reference to literature: Drummond, Alexei J., and Marc A. Suchard. "Fully Bayesian tests of neutrality using genealogical summary statistics." BMC genetics 9.1 (2008): 68.]
 
@@ -308,8 +252,8 @@ Agreed.
 > Pennel, 2020, Nature), so the authors should mention the addition of test 
 > statistics that can more reliably discriminate among models.
 
- * [ ] Read Louca and Pennel [RSE: Louca & Pennell only argue that the LTT cannot distinguish between the constant-rate model and a family of time-dependent model. It can still discriminate between various BD models and between DD and BD.]
- * [ ] Answer
+ * [ ] Read Louca and Pennel, Richel volunteers [RSE: Louca & Pennell only argue that the LTT cannot distinguish between the constant-rate model and a family of time-dependent model. It can still discriminate between various BD models and between DD and BD.]
+ * [ ] Answer, Richel volunteers
 
 ### Minor comments
 
@@ -320,8 +264,6 @@ Agreed.
 We rephrased point 3 in the abstract as following:
 "We describe pirouette's usage providing full examples in which
 we interrogate a model for its power to describe another."
-
- * [x] Done
 
 > Line 23. There is no real difference between free and libre, 
 > and in fact the latter does not appear in english dictionaries.
@@ -335,41 +277,36 @@ But indeed, not everyone may value the addition of the 'L', so we removed it.
 > Line 40. Time-stamped data where samples come from various time points 
 > are very widely used in phylogenetics too.
 
-We have added this at ...
-
- * [x] Added this, 00004
+% 00004
+We have added this at the Introduction.
 
 > Line 46. I would argue that coalescent models are used as often 
 > as birth-death models, so this statement is probably inaccurate.
 
+% 00002
 We rephrased the sentence as: "These simple tree priors
 are among the most commonly used."
 
- * [x] Done so, 00002
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
 
+% 00001
 We rephrased the sentence as: "To allow users to extend the
 functionalities of BEAST by using plug-ins, BEAST2 was written
 and both tools are still developed independently."
 
- * [x] Did so at '00001'
-
 > Line 62. A great range of models are implemented in BEAST 2 (and 1), 
 > including many coalescent models, multispecies coalescent, BD skyline, etc.
 
-[GL: I reworded to address this at 00005 in a comment.
-Add it to the main text if you agree.]
-
-We have added these.
-
- * [ ] Add these at 00005
+% 00005
+We have added these in the Introduction.
 
 > Line 73. This might also occur if the prior is truly 
 > uninformative (e.g., a reference prior).
 
- * [x] We mentioned it in the manuscript.
+% 00010
+Indeed! We mention this now in the Introduction.
 
 > Lines 76-81. This paragraph should cite other explorations of tree priors 
 > that show that the tree prior can have a great influence (e.g., Ritchie 
@@ -391,13 +328,12 @@ table now.
 
 > Line 139. Describe the term "mononucleotide blocks".
 
+% 00008
 We added a brief explanation on what we mean with "mononucleotide block".
 
 ```
 "A block of length n is a sequence in which the same character is repeated n times"
 ```
-
- * [x] Done %00008
 
 > Line 187. There is no mention of how missing data (sampling fraction) 
 > are handled during simulation. This might have an important influence on 
@@ -417,8 +353,6 @@ refer to the change of one nucleotide into
 a different one. In such cases we replaced them with
 the word 'substitution'.
 
- * [x] Done
-
 > Figure 1. The alignments shown are not aligned! 
 > No serious phylogenetics study would believe those have homology.
 
@@ -431,7 +365,9 @@ from an alignment.
 
 > Figure 3. Remove the title because it is superfluous.
 
- * [x] Done
+Done.
 
-[1] Sarver, B.A., Pennell, M.W., Brown, J.W., Keeble, S., Hardwick, K.M., Sullivan, J. & Harmon, L.J. (2019) The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates. PeerJ, 7, e6334
+## References
+
+ * [1] Sarver, B.A., Pennell, M.W., Brown, J.W., Keeble, S., Hardwick, K.M., Sullivan, J. & Harmon, L.J. (2019) The choice of tree prior and molecular clock does not substantially affect phylogenetic inferences of diversification rates. PeerJ, 7, e6334
 
