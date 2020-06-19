@@ -43,16 +43,15 @@ This work is not yet published, but it can be found in
 > In particular, the introduction makes it sound as if 
 > all existing tree priors are birth-death processes.
 
-We agree: we underaddressed the coalescent model and mention these more now.
-Although pirouette does allow for any BEAST2 tree model, the coalescent
-models, however, are not implemented in the twinning yet. pirouette
-does allow to do so, by setting the 'sim_twin_tree_fun',
-part of the 'twinning_params' to simulate a twin coalescent tree.
+% 00002
+We agree: we underaddressed the coalescent model and now mention these
+more frequent in the Introduction.
 
-[RSE: State where you mention this. And I don't understand the second sentence. 
-You say that it is not implemented and then you say how you can set sim_twin_tree_fun. That sounds like it is implemented.]
-
- * [x] Done, at 00002
+% 00009
+Indeed, the implemented tree priors for the twinning process are Yule
+and BD, yet a user can also specify any way how to simulate a twin tree,
+such as, for example, one that uses a coalescent model. We mention this
+explicitly in the 'Twinning' subsection.
 
 > some of the models presented in the introduction are already implemented 
 > in BEAST2: for instance time-dependent processes in the BDSky package, 
