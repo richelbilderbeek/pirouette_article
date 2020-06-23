@@ -351,16 +351,18 @@ table now.
 We added the following line to explain what we mean with "mononucleotide block":
 "A block of length n is a sequence in which the same character is repeated n times".
 
- * [x] Done % 00008
+ * [x] Done %00008
 
 > Line 187. There is no mention of how missing data (sampling fraction) 
 > are handled during simulation. This might have an important influence on 
 > model performance.
 
 Indeed, in all cases we assumed a sampling fraction of 100 percent.
-We mention that this may have an effect.
+We now added the following line to clarify this:
+"For simplicity, when simulating phylogenies we assumed a sampling fraction of 100%.
+A different choice might have an effect on model performance."
 
- * [ ] Do so
+ * [x] Done %00013
 
 > Line 193. These models are not quite mutations models, but rather 
 > substitutions models.
