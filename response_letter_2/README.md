@@ -200,6 +200,19 @@ We have rephrased the sentence. Now it states that:
 
 We agree and have added this to the text at [...?]
 
+[
+GL: I actually do not agree. This is the answer I propose to give:
+
+It is indeed true that the inference error will depend on the
+parameters used to simulate input phylogenies.
+For example for very large carrying capacities we expect
+the DD process to be indistinguishable from a BD process.
+Pirouette can be used to assess how the error vary
+for different generative parameter combinations.
+However, presenting a full study goes beyond the scope
+of this manuscript.
+]
+
  * [ ] Do so
 
 > The authors must discuss the drawback of forcing the topology on the twin 
