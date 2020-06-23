@@ -177,9 +177,13 @@ between generative and inference models."
 > (1) The authors must acknowledge that twinning should be performed at least 
 > 100 times, and that the example is not useful for rejecting the BD model. 
 
-[RJCB: we agreed to do so]
+We agree with the reviewer. Our aim in the main text is just to present
+how the algorithm works with a minimal example.
+In the usage section we now clarify that a full analysis should involve
+at least 100 trees and we refer to the supplementary materials
+where we show the results for a distribution of trees.
 
- * [ ] Do so
+ * [x] Done %00011
 
 > (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
