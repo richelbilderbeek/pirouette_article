@@ -179,18 +179,21 @@ between generative and inference models."
 
 We agree with the reviewer. Our aim in the main text is just to present
 how the algorithm works with a minimal example.
-In the usage section we now clarify that a full analysis should involve
-at least 100 trees and we refer to the supplementary materials
-where we show the results for a distribution of trees.
+We clarified adding the following lines at the start ot the usage section:
+"The example we propose here has only an instructional purpose. To perform
+a full analysis we suggest to repeat the same procedure for at least 100
+independent true and twin trees (we show the outcome of an analysis
+involving replicates in the supplementary material at subsection 8.7)."
 
  * [x] Done %00011
 
 > (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
 
-We have reworded accordingly at [...?]
+We have rephrased the sentence. Now it states that:
+"The BD model can be seen as a special case for the DD model".
 
- * [ ] Mention where
+ * [x] Done %00012
 
 > (3) It is very likely that across several parameter combinations there is no 
 > distinction between the proposed and implemented models.
