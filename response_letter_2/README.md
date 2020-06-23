@@ -348,12 +348,10 @@ table now.
 
 > Line 139. Describe the term "mononucleotide blocks".
 
-% 00008
-We added a brief explanation on what we mean with "mononucleotide block".
+We added the following line to explain what we mean with "mononucleotide block":
+"A block of length n is a sequence in which the same character is repeated n times".
 
-```
-"A block of length n is a sequence in which the same character is repeated n times"
-```
+ * [x] Done % 00008
 
 > Line 187. There is no mention of how missing data (sampling fraction) 
 > are handled during simulation. This might have an important influence on 
