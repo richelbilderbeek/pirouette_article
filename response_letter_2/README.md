@@ -24,14 +24,13 @@ above have been addressed (among the others) in the point by point response.
 
 Comments to the Corresponding Author
 
-
-
 > the authors mention in their response to the previous reviewers 
 > that this package was created from code used in a different project, 
 > and I think adding a citation for this original project would be useful 
 > as a rationale and example of actual use.
 
-This work is not yet published, but it can be found in 
+This work is not yet published, therefore we chose not to mention it.
+Before this, the project can be found at
 (1) (the code) and (2) (the article).
 
  * (1) https://github.com/richelbilderbeek/razzo
@@ -44,8 +43,8 @@ This work is not yet published, but it can be found in
 > all existing tree priors are birth-death processes.
 
 % 00002
-We agree: we underaddressed the coalescent model and now mention these
-more frequent in the Introduction.
+We agree: we underaddressed the coalescent models and now refer
+to coalescent models in the Introduction.
 
  * [ ] Do better
 
@@ -61,9 +60,10 @@ explicitly in the 'Twinning' subsection.
 > Adding these citations would be useful for the reader 
 > to better understand what is currently available in BEAST2 or not.
 
-Agreed! We have done so.
-
- * [ ] Do so
+% 00014
+Agreed! We have done so in the Introduction. Because there are so
+mant, we chose to limit ourselves to all BD tree priors listed
+at http://www.beast2.org/beast-features/index.html
 
 > sections 8.7 through 8.14 of the Supplementary materials 
 > need a description of the results and their interpretation. 
@@ -137,7 +137,7 @@ this. Now we refer to the right figure: Figure 4.
 
 > Figure 4: the true tree is top left, not top right
 
-We have reworded accordingly.
+We have reworded the figure accordingly.
 
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
@@ -179,29 +179,23 @@ between generative and inference models."
 
 We agree with the reviewer. Our aim in the main text is just to present
 how the algorithm works with a minimal example.
+
+%00011
 We clarified adding the following lines at the start ot the usage section:
 "The example we propose here has only an instructional purpose. To perform
 a full analysis we suggest to repeat the same procedure for at least 100
 independent true and twin trees (we show the outcome of an analysis
 involving replicates in the supplementary material at subsection 8.7)."
 
- * [x] Done %00011
-
 > (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
 
+% 00012
 We have rephrased the sentence. Now it states that:
 "The BD model can be seen as a special case for the DD model".
 
- * [x] Done %00012
-
 > (3) It is very likely that across several parameter combinations there is no 
 > distinction between the proposed and implemented models.
-
-We agree and have added this to the text at [...?]
-
-[
-GL: I actually do not agree. This is the answer I propose to give:
 
 It is indeed true that the inference error will depend on the
 parameters used to simulate input phylogenies.
@@ -211,9 +205,6 @@ Pirouette can be used to assess how the error vary
 for different generative parameter combinations.
 However, presenting a full study goes beyond the scope
 of this manuscript.
-]
-
- * [ ] Do so
 
 > The authors must discuss the drawback of forcing the topology on the twin 
 > tree. Topology is known to be highly influenced by the diversification 
@@ -226,8 +217,21 @@ this to be the lesser evil, as we feel that removing this contraint
 makes an unfair comparison.
 
 % 00007
-The topology may indeed be important. However, when topology contains no information to distinguish between the models, we prefer to use the same topology because we want the twin tree to be as similar as possible to the original tree. This is the case for the comparisons we consider: DD vs BD, or BD vs Yule.
-However, to stress the importance that topology might have in other cases, we mentioned the issue both in the twinning section ("We choose to preserve the original topology to increase the similarity between the twin to the original tree. This works well in the cases of the birth-death or diversity-dependent models we consider in our examples. However this might not be suited for models in which branching times are strongly influenced by topology.") and in the discussion ("For models that make different predictions on topology, the twinning process should be modified in line with it").
+The topology may indeed be important. However, when topology contains no 
+information to distinguish between the models, we prefer to use the same 
+topology because we want the twin tree to be as similar as possible to the 
+original tree. This is the case for the comparisons we consider: DD vs BD, 
+or BD vs Yule.
+
+However, to stress the importance that topology might have in other cases, 
+we mentioned the issue both in the twinning section ("We choose to preserve 
+the original topology to increase the similarity between the twin to the 
+original tree. This works well in the cases of the birth-death or 
+diversity-dependent models we consider in our examples. However this might 
+not be suited for models in which branching times are strongly influenced 
+by topology.") and in the discussion ("For models that make different 
+predictions on topology, the twinning process should be modified in line 
+with it").
 
 > The work by Duchene and colleagues is not mentioned in the introduction 
 > as indicated in line 273. Also, the authors must acknowledge that the 
@@ -240,8 +244,9 @@ words, which was needed to make it to the deadline. In this rewrite,
 we have had more time to properly refer to the literature, so we did
 as you suggested.
 
-[GL: In another comment he suggests to add it somewhere in Lines 76-81.
-I suggest we see if what was present in the previous version could
+[GL: In another comment he suggests to add it somewhere in Lines 
+76-81 (location 00014 nowadays). I suggest we see if what was present in the previous 
+version could
 fit there][RJCB: Agreed]
 
  * [ ] Actually do so
@@ -272,9 +277,15 @@ Agreed.
 > Pennel, 2020, Nature), so the authors should mention the addition of test 
 > statistics that can more reliably discriminate among models.
 
- * [ ] Read Louca and Pennel, Richel volunteers [RSE: Louca & Pennell only argue that the LTT cannot distinguish between the constant-rate model and a family of time-dependent model. It can still discriminate between various BD models and between DD and BD.]
- * [ ] Answer, Richel volunteers
+Indeed, Louca and Pennell argue that the LTT cannot distinguish between the 
+constant-rate model and a family of time-dependent model.
+However (and lucky for us!), the nLTT statistic can still discriminate between 
+various BD models and between DD and BD.
+We added your suggestion to [...]
 
+ * [ ] Mention the inappropriativeness of nLTT for distinction between CR and TD
+       when describing the nLTT statistic
+ 
 ### Minor comments
 
 > Abstract. Point 3 is not actually explicitly explained in the manuscript 
@@ -306,7 +317,6 @@ We have added this at the Introduction.
 % 00002
 We rephrased the sentence as: "These simple tree priors
 are among the most commonly used."
-
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
@@ -348,21 +358,19 @@ table now.
 
 > Line 139. Describe the term "mononucleotide blocks".
 
+%00008
 We added the following line to explain what we mean with "mononucleotide block":
 "A block of length n is a sequence in which the same character is repeated n times".
-
- * [x] Done %00008
 
 > Line 187. There is no mention of how missing data (sampling fraction) 
 > are handled during simulation. This might have an important influence on 
 > model performance.
 
+%00013
 Indeed, in all cases we assumed a sampling fraction of 100 percent.
 We now added the following line to clarify this:
 "For simplicity, when simulating phylogenies we assumed a sampling fraction of 100%.
 A different choice might have an effect on model performance."
-
- * [x] Done %00013
 
 > Line 193. These models are not quite mutations models, but rather 
 > substitutions models.

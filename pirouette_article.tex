@@ -61,8 +61,7 @@ branching at per species constant rates), while being computationally fast.
 \new{
   % 00002
   In this paper, we focus on BD models, instead of coalescent models,
-  although these are just as important. Coalescent models ... 
-  [RJCB: Describe coalescent models]
+  although these are just as important.
 }
 
 \new{
@@ -94,10 +93,15 @@ diversification models are available as tree priors in BEAST2
   many others for which a likelihood formula is already available 
   in literature, are not implemented yet.
 }
+% 00014
 \new{
   BEAST2 allows to extend its functionality by plug-ins, such
-  as BD skyline (ref) [RJCB: name some other plug-ins with 
-  refs to literature].
+  as the calibrated Yule model (\cite{heled2015calibrated}),
+  BD with incomplete sampling (\cite{stadler2009incomplete}),
+  BD serial sampling (\cite{stadler2012estimating}),
+  BD serial skyline (\cite{stadler2013birth})
+  Fossilized BD process (\cite{gavryushkina2014bayesian}),
+  BD SIR (\cite{kuhnert2014simultaneous}) and many more.
 }
 
 When a novel diversification model is introduced,
