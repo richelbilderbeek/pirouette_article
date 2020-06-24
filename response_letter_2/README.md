@@ -46,11 +46,11 @@ Before this, the project can be found at
 We agree: we underaddressed the coalescent models and now refer
 to coalescent models in the Introduction.
 
- * [ ] Do better
-
 % 00009
-Indeed, the implemented tree priors for the twinning process are Yule
-and BD, yet a user can also specify any way how to simulate a twin tree,
+Regarding the range of options available within pirouette,
+indeed, the implemented tree priors for the twinning process are Yule
+and BD.
+However, a user can also specify any way how to simulate a twin tree,
 such as, for example, one that uses a coalescent model. We mention this
 explicitly in the 'Twinning' subsection.
 
@@ -102,14 +102,17 @@ because we felt this is beyond describing what pirouette does.
 > model" and clarify in the caption of Fig 3 that this model is an already 
 > implemented tree prior.
 
-We think this a great suggestion and we rewrote the article to
-use the term 'baseline model' for the 'true' pipeline.
-For the 'twin' pipeline, however, the baseline model is the generative
-model and we kept using the word 'generative' there.
-[RSE: I am not convinced by this change of terminology, but let's see how the ms turns out.]
-[GL: It looks to me like it could be a lot of work for no signicative improvement.]
+% 00015
+Thanks for pointing out this point of confusion!
+We hope to have resolved this, in the Introduction, as shown below,
+using your (well-chosen!) synonymns:
 
- * [ ] Modify the text as such, Richel volunteers
+> A 'generative tree model', in this paper, is always a standard tree model.
+> If the actual model that generated the tree is non-standard, 
+> the 'generative tree model' is the (standard) tree model that is (assumed
+> to be) closest to the actual (non-standard) model. In that case, the
+> 'generative tree model' can also be called 'baseline model' 
+> or 'comparison model'.
 
 ### Minor comments
 
@@ -144,8 +147,7 @@ We have reworded the figure accordingly.
 
 [RSE: Why is it so difficult to change the figures? It does not require new simulations, does it?]
 
- * [ ] Redo simulations, create new figures
- * [ ] If fails: give lame excuse
+ * [ ] Richel is working on this
 
 ## Reviewer: 4
 
@@ -239,17 +241,21 @@ with it").
 > models (the hierarchical model), as shown also by Duchene and colleagues 
 > in previous work (Duchene et al. 2015, MBE, 32(11), 2986-2995).
 
+% 00016
 Indeed, we ruthlessly moved Duchene's work the the discussion, only to save 
 words, which was needed to make it to the deadline. In this rewrite,
 we have had more time to properly refer to the literature, so we did
-as you suggested.
+as you suggested in the Introduction:
 
-[GL: In another comment he suggests to add it somewhere in Lines 
-76-81 (location 00014 nowadays). I suggest we see if what was present in the previous 
-version could
-fit there][RJCB: Agreed]
+> Here we introduce a method to quantify the impact
+> of a novel tree prior,
+> that is, a tree model that can simulate phylogenies, but not yet
+> calculate their likelihoods.
+> This new method simultaneously assesses the substitution, clock and tree
+> models and thus is a hierarchical model.
+> We learn from (Duchene et al. 2015, MBE, 32(11), 2986-2995) that 
+> such a method may be sensitive to other aspects of the hierarchical model.
 
- * [ ] Actually do so
 
 > I agree with a previous reviewer that this piece is remarkably similar 
 > to the approach explored by Duchene and colleagues (not by those authors 
@@ -263,12 +269,13 @@ fit there][RJCB: Agreed]
 > Goldman (1994, Journal Mol Evol, 36(2)), who are pioneers in 
 > assessing model adequacy.
 
-Agreed.
+Indeed, the difference between pirouette and previous work 
+is the focus on testing novel models. We have taken some care (also due
+to other reviewers' comments) to make this more clear.
 
- * [ ] Read those papers, Richel volunteers
- * [ ] Acknowledge these, Richel volunteers
-
-[RJCB: reference to literature: Drummond, Alexei J., and Marc A. Suchard. "Fully Bayesian tests of neutrality using genealogical summary statistics." BMC genetics 9.1 (2008): 68.]
+ * [ ] Read those papers, the Goldman paper ''Statistical tests of models of 
+       DNA substitution' is `\cite{goldman1993statistical}`
+ * [ ] Acknowledge these
 
 > Interestingly, the type of assessment proposed by the authors is a form of 
 > approximate model comparison, which they could consider mentioning 
