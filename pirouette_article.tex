@@ -168,7 +168,8 @@ model [\cite{DDD, etienne2012diversity}]:
 the DD model is a \new{diversification model} with a speciation 
 or extinction rate that depends 
 on the number of species and a clade-level carrying capacity.
-\new{The BD model can be seen as a special case for the DD model. In fact, for} a carrying capacity
+\new{ %00012
+The BD model can be seen as a special case for the DD model. In fact, for} a carrying capacity
 of infinity, the DD model reduces to the BD model.
 When benchmarking a novel tree model, 
 one will typically construct phylogenies 
@@ -510,6 +511,9 @@ $\tau_{\mathit{T}}$, under the process $p_{T}$,
 while preserving the topology. 
 We simulate the new branching times using the TESS 
 package [\cite{TESS, hohna2016tess}].
+\new{ %00013
+For simplicity, when simulating phylogenies we assumed a sampling fraction of $100\%$. A different choice might have an effect on model performance.
+}
 
 The second step ($T_2$) of the twinning process simulates the twin alignment 
 with the same clock model, site model and mutation rate 
@@ -553,10 +557,13 @@ of the new tree model with respect to the baseline error.
 \section{Usage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We show the usage of \verb;pirouette; on an tree generated 
+We show the usage of \verb;pirouette; on a tree generated 
 by the non-standard diversity-dependent (DD) tree 
 model [\citep{DDD, etienne2012diversity}],
-which is a BD model with a speciation rate that is dependent on the number of species.
+which is a BD model with a speciation rate that is dependent on the number of species. 
+\new{ %00011
+The example we propose here has only an instructional purpose. To perform a full analysis we suggest to repeat the same procedure for at least 100 independent true and twin trees (we show the outcome of an analysis involving replicates in the supplementary material at subsection \ref{subsec:distribution}).
+}
 
 The code to reproduce our results can be found at  
 \url{https://github.com/richelbilderbeek/pirouette_example_30}
