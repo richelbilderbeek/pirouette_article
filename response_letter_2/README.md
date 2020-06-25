@@ -14,9 +14,9 @@ Comments to the Author:
 > and interpretations of some of the supplemental sections (in particular 
 > sections 8.7 through 8.14).
 
-We are glad to know that our revisions went in the right direction. We thank 
-you and the reviewers for your help with that. The 3 main points you mentioned
-above have been addressed (among the others) in the point by point response.
+We are glad that our revisions went in the right direction. We thank 
+you and the reviewers for your help. We address the points you mentioned
+above (along with the others) in the point by point response below.
 
 # Reviewer(s)' Comments to Author:
 
@@ -30,7 +30,7 @@ Comments to the Corresponding Author
 > as a rationale and example of actual use.
 
 This work is not yet published, therefore we chose not to mention it.
-Before this, the project can be found at
+Currently, the project can be found at
 (1) (the code) and (2) (the article).
 
  * (1) https://github.com/richelbilderbeek/razzo
@@ -50,7 +50,7 @@ to coalescent models in the Introduction.
 Regarding the range of options available within pirouette,
 indeed, the implemented tree priors for the twinning process are Yule
 and BD.
-However, a user can also specify any way how to simulate a twin tree,
+However, a user can also specify any other way to simulate a twin tree,
 such as, for example, one that uses a coalescent model. We mention this
 explicitly in the 'Twinning' subsection.
 
@@ -62,7 +62,7 @@ explicitly in the 'Twinning' subsection.
 
 % 00014
 Agreed! We have done so in the Introduction. Because there are so
-mant, we chose to limit ourselves to all BD tree priors listed
+many, we chose to limit ourselves to all BD tree priors listed
 at http://www.beast2.org/beast-features/index.html
 
 > sections 8.7 through 8.14 of the Supplementary materials 
@@ -92,9 +92,7 @@ that the method may be unable to distinguish between Yule and BD
 for extant trees. We have added this to the manuscript
 at the subsection 'The effect of assuming a Yule tree prior on a BD tree'
 
-For us, creating a sampling-through-time tree is not
-straightforward, therefore we decided not to test this, also
-because we felt this is beyond describing what pirouette does.
+We believe that further testing with a sampling-through-time tree is beyond describing what pirouette does, which is the purpose of this ms.
 
 > the use of "generative model" to describe the model used for comparison 
 > by pirouette, as opposed to the true generating process, was quite 
@@ -104,15 +102,15 @@ because we felt this is beyond describing what pirouette does.
 
 % 00015
 Thanks for pointing out this point of confusion!
-We hope to have resolved this, in the Introduction, as shown below,
-using your (well-chosen!) synonymns:
+We hope to have resolved this, in the Introduction
+using your (well-chosen!) synonyms:
 
-> A 'generative tree model', in this paper, is always a standard tree model.
-> If the actual model that generated the tree is non-standard, 
-> the 'generative tree model' is the (standard) tree model that is (assumed
-> to be) closest to the actual (non-standard) model. In that case, the
-> 'generative tree model' can also be called 'baseline model' 
-> or 'comparison model'.
+"A 'generative tree model', in this paper, is always a standard tree model.
+If the actual model that generated the tree is non-standard, 
+the 'generative tree model' is the (standard) tree model that is (assumed
+to be) closest to the actual (non-standard) model. In that case, the
+'generative tree model' can also be called 'baseline model' 
+or 'comparison model'."
 
 ### Minor comments
 
@@ -166,7 +164,7 @@ We have reworded the figure accordingly.
 
 % 00006
 We agree with the reviewer on the use of the word "importance". We
-changed it in "impact", as already present in the literature
+changed it to "impact", as already present in the literature
 (see for example [1]).
 We believe, instead, that the word "error" is not inappropriate here.
 The "stochastic error" is one of the possible errors, but not the only one.
@@ -183,7 +181,7 @@ We agree with the reviewer. Our aim in the main text is just to present
 how the algorithm works with a minimal example.
 
 %00011
-We clarified adding the following lines at the start ot the usage section:
+We clarified adding the following lines at the start of the usage section:
 "The example we propose here has only an instructional purpose. To perform
 a full analysis we suggest to repeat the same procedure for at least 100
 independent true and twin trees (we show the outcome of an analysis
@@ -194,7 +192,7 @@ involving replicates in the supplementary material at subsection 8.7)."
 
 % 00012
 We have rephrased the sentence. Now it states that:
-"The BD model can be seen as a special case for the DD model".
+"The BD model can be seen as a special case of the DD model".
 
 > (3) It is very likely that across several parameter combinations there is no 
 > distinction between the proposed and implemented models.
@@ -214,9 +212,7 @@ of this manuscript.
 > placing a constrain on the implemented model to behave like the proposed 
 > model, and this makes for an unfair comparison.
 
-We agree that forcing a topology indeed has an effect. Still, we feel
-this to be the lesser evil, as we feel that removing this contraint
-makes an unfair comparison.
+We agree that forcing a topology can indeed have an effect. However, for the DD model in our example and many other new diversification models, all topologies are equally likely.
 
 % 00007
 The topology may indeed be important. However, when topology contains no 
@@ -235,6 +231,8 @@ by topology.") and in the discussion ("For models that make different
 predictions on topology, the twinning process should be modified in line 
 with it").
 
+[RSE: the response is repetitive. Please clean up]
+
 > The work by Duchene and colleagues is not mentioned in the introduction 
 > as indicated in line 273. Also, the authors must acknowledge that the 
 > method simultaneously assesses the tree, rates and substitution 
@@ -243,19 +241,8 @@ with it").
 
 % 00016
 Indeed, we ruthlessly moved Duchene's work the the discussion, only to save 
-words, which was needed to make it to the deadline. In this rewrite,
-we have had more time to properly refer to the literature, so we did
-as you suggested in the Introduction:
-
-> Here we introduce a method to quantify the impact
-> of a novel tree prior,
-> that is, a tree model that can simulate phylogenies, but not yet
-> calculate their likelihoods.
-> This new method simultaneously assesses the substitution, clock and tree
-> models and thus is a hierarchical model.
-> We learn from (Duchene et al. 2015, MBE, 32(11), 2986-2995) that 
-> such a method may be sensitive to other aspects of the hierarchical model.
-
+words, which was needed to make it to the deadline. For this revision,
+we had more time to properly refer to the literature
 
 > I agree with a previous reviewer that this piece is remarkably similar 
 > to the approach explored by Duchene and colleagues (not by those authors 
@@ -316,7 +303,7 @@ But indeed, not everyone may value the addition of the 'L', so we removed it.
 > are very widely used in phylogenetics too.
 
 % 00004
-We have added this at the Introduction.
+We have added this in the Introduction.
 
 > Line 46. I would argue that coalescent models are used as often 
 > as birth-death models, so this statement is probably inaccurate.
