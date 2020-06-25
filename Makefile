@@ -12,6 +12,7 @@ pirouette_article.pdf: $(tex_files)
 	aspell -t -c pirouette_article.tex
 	aspell -t -c pirouette_supplement.tex
 	./create_article.sh
+	texcount pirouette_article.tex | egrep "Words in text"
 
 clean:
 	rm -rf *.aux *.log *.out *.toc *.blg *.bbl *.pdf

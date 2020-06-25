@@ -39,13 +39,13 @@ such as BEAST [\cite{drummond2007beast}],
 MrBayes [\cite{huelsenbeck2001mrbayes}]
 or RevBayes [\cite{hohna2016revbayes}] 
 has been a major advance in constructing phylogenetic trees 
-from character data (usually nucleotide sequences) extracted
-% 00004
-from organisms (usually extant, but extinction events 
-and/or time-stamped data can be added), 
+from character data (usually nucleotide sequences) extracted from organisms
+\new{
+  (usually extant, but extinction events
+  and/or time-stamped data can be added), 
+}
 and hence in our understanding of the main drivers 
-and modes of diversification \richel{Reword this awkwardly long sentence}.
-
+and modes of diversification.
 
 BEAST [\cite{drummond2007beast}] is a typical Bayesian phylogenetics tool, 
 that needs both character data and priors to infer 
@@ -54,23 +54,23 @@ Specifically, for the species tree prior - which describes
 the process of diversification - 
 BEAST has built-in priors such as the Yule [\cite{yule}] and 
 (constant-rate) birth-death [\cite{nee1994reconstructed}] models.
-These simple tree priors are \new{among} the most commonly used, 
+These simple tree priors are 
+\new{
+  among
+} 
+the most commonly used, 
 as they represent some biologically realistic processes (i.e. 
 branching at per species constant rates), while being computationally fast.
-
 \new{
-  % 00002
   In this paper, we focus on BD models, instead of coalescent models,
   although these are just as important.
 }
 
 \new{
-  % 00001
   To allow users to extend the functionalities of BEAST
   by using plug-ins, BEAST2 was written [\cite{bouckaert2019beast}]
   and both tools are still developed independently.
 }
-
 For example, one can add novel diversification models 
 by writing a BEAST2 package that contains the likelihood 
 formula of a phylogeny under the novel diversification model, 
@@ -86,22 +86,20 @@ or where diversification rate
 depends on one or more traits [\cite{maddison2007estimating, fitzjohn2012diversitree}].
 Despite such a rich theoretical landscape, only a few of these 
 diversification models are available as tree priors in BEAST2
-% 00005
 \new{
   Despite the fact that some models are already included as tree priors 
   in BEAST2 (e.g. birth-death models, coalescent models, coalescent skyline, etc.) 
   many others for which a likelihood formula is already available 
   in literature, are not implemented yet.
 }
-% 00014
 \new{
   BEAST2 allows to extend its functionality by plug-ins, such
-  as the calibrated Yule model (\cite{heled2015calibrated}),
-  BD with incomplete sampling (\cite{stadler2009incomplete}),
-  BD serial sampling (\cite{stadler2012estimating}),
-  BD serial skyline (\cite{stadler2013birth})
-  Fossilized BD process (\cite{gavryushkina2014bayesian}),
-  BD SIR (\cite{kuhnert2014simultaneous}) and many more.
+  as the calibrated Yule model [\cite{heled2015calibrated}],
+  BD with incomplete sampling [\cite{stadler2009incomplete}],
+  BD serial sampling [\cite{stadler2012estimating}],
+  BD serial skyline [\cite{stadler2013birth}]
+  Fossilized BD process [\cite{gavryushkina2014bayesian}],
+  BD SIR [\cite{kuhnert2014simultaneous}] and many more.
 }
 
 When a novel diversification model is introduced,
@@ -118,7 +116,6 @@ according to the diversification model has to be computed millions of times.
 Therefore, biologically interesting but computationally expensive tree priors 
 are often not implemented, and simpler priors are used instead. 
 This is not necessarily problematic, when the data are very informative 
-% 00010
 \new{
   or when the prior is truly uninformative
 }, 
@@ -134,20 +131,22 @@ However, they only compared current diversification models to one another,
 and thus this does not inform us on the \new{impact} of a new tree prior.
 
 \new{
+  Another way to benchmark a diversification model, is by doing
+  a model comparison, in which the best model is determined
+  from a set of models. A good early example is \cite{goldman1993statistical} 
+  in which Goldman compared DNA substitution models.
   A recent approach to test the impact of tree prior choice, is developed
   by \cite{duchene2018phylodynamic}, which allows to measure
   a phylodynamic model's adequacy for models that are
-  mathematically described (i.e. have a known likelihood equation)
+  mathematically described (i.e. have a known likelihood equation).
 }
 
 Here we introduce a method to quantify the \new{impact} 
 of a novel tree prior,
-% 00016
 \new{
   that is, a tree model that can simulate phylogenies, but not yet
   calculate their likelihoods.
 }
-% 00017
 \new{
   This new method simultaneously assesses the substitution, clock and tree
   models and thus is a hierarchical model.
@@ -182,7 +181,6 @@ We refer to the model that has generated the given tree
 as the 'generative tree model' $\mathit{p_{G}}$.
 
 \new{
-  % 00015
   A 'generative tree model', in this paper, is always a standard tree model.
   If the actual model that generated the tree is non-standard, 
   the 'generative tree model' is the (standard) tree model that is (assumed
@@ -193,7 +191,6 @@ as the 'generative tree model' $\mathit{p_{G}}$.
 
 
 \new{
-  % 00006
   The error we aim to quantify is not of stochastic nature.
   Stochastic errors are usually non-directional.
   We, instead, aim to expose the bias due to the mismatch between 
@@ -208,8 +205,11 @@ model [\cite{DDD, etienne2012diversity}]:
 the DD model is a \new{diversification model} with a speciation 
 or extinction rate that depends 
 on the number of species and a clade-level carrying capacity.
-\new{ %00012
-The BD model can be seen as a special case for the DD model. In fact, for} a carrying capacity
+\new{
+  The BD model can be seen as a special case of the DD model. 
+  In fact, for
+} 
+a carrying capacity
 of infinity, the DD model reduces to the BD model.
 When benchmarking a novel tree model, 
 one will typically construct phylogenies 
@@ -425,16 +425,12 @@ phylogeny (Fig.~\ref{fig:pipeline}, 1a $\rightarrow$ 2a).
 For the sake of clarity, here we will assume the alignment consists
 of DNA sequences, but one can also use other heritable material such as amino acids.
 The user must specify a root sequence, a mutation rate and a site model.
-\iffalse
-The root sequence is the DNA sequence of the shared common ancestor of 
-all species, and is set to four different equally-sized 
-mononucleotide blocks by default, 
-which helps interpreting the resulting alignment.
-\fi
-\new{ % 00008
-The root sequence is the DNA sequence of the shared common ancestor of 
-all species. By default it is set to four different equally-sized 
-mononucleotide blocks (a block of length $n$ is a sequence in which the same character is repeated $n$ times), which helps interpreting the resulting alignment.
+\new{
+  The root sequence is the DNA sequence of the shared common ancestor of 
+  all species. By default it is set to four different equally-sized 
+  mononucleotide blocks (a block of length $n$ is a sequence in which the 
+  same character is repeated $n$ times), which helps interpreting the 
+  resulting alignment.
 }
 Supported nucleotide substitution models (part of a DNA
 site model) are JC, HKY, TN and GTR (see Table \ref{tab:options} for
@@ -482,6 +478,11 @@ The nLTT statistic is chosen, as it can operate on any two trees (regardless
 of their crown ages and number of taxa) and its results have a clear range
 from zero to one. This normalized result makes it possible to compare trees 
 from a distribution of trees from any tree model.
+new{
+  The nLTT statistic is unsuitable, however, to distinguish
+  between a constant-rate BD model and a family of time-dependent 
+  models [\cite{louca2020extant}].
+}
 
 \subsection{Twinning}\label{subsec:twinning}
 
@@ -517,7 +518,6 @@ topology $\psi_{\mathit{G}}$:
 \end{align}
 
 \new{
-  % 00007
   We choose to preserve the original topology to 
   increase the similarity between the twin to the original tree. 
   This works well in the cases of the birth-death or diversity-dependent models 
@@ -525,14 +525,11 @@ topology $\psi_{\mathit{G}}$:
   However, this might not be suited for models in which branching times 
   are strongly influenced by topology.
 }
-
 \new{
-  % 00003
   The default option for the twin diversification model $p_T$ 
   is to use the standard BD model.
 }
 \new{
-  % 00009
   pirouette has a built-in function to use a Yule model as well.
   Additionally, a user can specify a function to generate a twin tree
   from any speciation model, such as, for example, a coalescent model.
@@ -555,8 +552,9 @@ $\tau_{\mathit{T}}$, under the process $p_{T}$,
 while preserving the topology. 
 We simulate the new branching times using the TESS 
 package [\cite{TESS, hohna2016tess}].
-\new{ %00013
-For simplicity, when simulating phylogenies we assumed a sampling fraction of $100\%$. A different choice might have an effect on model performance.
+\new{
+  For simplicity, when simulating phylogenies we assumed a sampling fraction 
+  of $100\%$. A different choice might have an effect on model performance.
 }
 
 The second step ($T_2$) of the twinning process simulates the twin alignment 
@@ -605,9 +603,14 @@ We show the usage of \verb;pirouette; on a tree generated
 by the non-standard diversity-dependent (DD) tree 
 model [\citep{DDD, etienne2012diversity}],
 which is a BD model with a speciation rate that is dependent on the number of species. 
-\new{ %00011
-The example we propose here has only an instructional purpose. To perform a full analysis we suggest to repeat the same procedure for at least 100 independent true and twin trees (we show the outcome of an analysis involving replicates in the supplementary material at subsection \ref{subsec:distribution}).
+\new{
+  The example we propose here has only an instructional purpose. 
+  To perform a full analysis we suggest to repeat the same procedure 
+  for at least 100 independent true and twin trees (we show the outcome of 
+  an analysis involving replicates in the supplementary material at 
+  subsection \ref{subsec:distribution}).
 }
+\richel{Check if we really do so}
 
 The code to reproduce our results can be found at  
 \url{https://github.com/richelbilderbeek/pirouette_example_30}
@@ -739,14 +742,31 @@ a promising starting point, as it can compare any two trees and
 results in an error distribution of known range, but one may also explore other statistics.
 In principle, \verb;pirouette; allows for this, but in our example we used a diversification model (DD) that only deviates from the Yule and BD models in the temporal branching pattern, not in the topology.
 \new{
-    % 00007
-    For models that make different predictions on topology, the twinning process should be modified in line with it.
+  For models that make different predictions on topology, 
+  the twinning process should be modified in line with it.
 }
 
-As noted in the introduction, Duch\^{e}ne and colleagues [\cite{duchene2018phylodynamic}],
+As noted in the introduction, Duch\^{e}ne and 
+colleagues [\cite{duchene2018phylodynamic}],
 also developed a method to assess the adequacy of a tree model
-on empirical trees. They simulate trees from the posterior distribution of the parameters and then compare this to the originally inferred tree using tree statistics, to determine whether the assumed tree model in inference indeed generates the tree as inferred. This is useful if these trees match, but when they do not, this does not mean that the inferred tree is incorrect; if sufficient data is available the species tree prior may not be important, and hence the inference may be adequate even though the assumed species tree prior is not. In short, the approach is applied to empirical trees and compares the posterior and prior distribution of trees (with the latter generated with the posterior parameters!).
-\verb;pirouette; aims to identify when assuming standard priors for the species tree leads to incorrect inference if one believes more complex diversification models are operating than can be currently accommodated in inference. In short, our approach applies to simulated trees and compares the posterior distributions of trees generated with a standard and non-standard model, but inferred with a standard one. The two methods therefore complement one another.
+on empirical trees. They simulate trees from the posterior distribution of 
+the parameters and then compare this to the originally inferred tree using 
+tree statistics, to determine whether the assumed tree model in inference 
+indeed generates the tree as inferred. This is useful if these trees match, 
+but when they do not, this does not mean that the inferred tree is incorrect; 
+if sufficient data is available the species tree prior may not be important, 
+and hence the inference may be adequate 
+even though the assumed species tree prior is not. 
+In short, the approach is applied to empirical trees and 
+compares the posterior and prior distribution of trees (with the latter 
+generated with the posterior parameters!).
+\verb;pirouette; aims to identify when assuming standard priors for the 
+species tree leads to incorrect inference if one believes more complex 
+diversification models are operating than can be currently accommodated in 
+inference. In short, our approach applies to simulated trees and compares 
+the posterior distributions of trees generated with 
+a standard and non-standard model, but inferred with a standard one. 
+The two methods therefore complement one another.
 
 However, we note that the \verb;pirouette; pipeline is not restricted 
 to exploring the effects of a new species tree model. 

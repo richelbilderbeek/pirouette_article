@@ -22,7 +22,7 @@ above (along with the others) in the point by point response below.
 
 ## Reviewer: 3
 
-Comments to the Corresponding Author
+## Comments to the Corresponding Author
 
 > the authors mention in their response to the previous reviewers 
 > that this package was created from code used in a different project, 
@@ -42,17 +42,22 @@ Currently, the project can be found at
 > In particular, the introduction makes it sound as if 
 > all existing tree priors are birth-death processes.
 
-% 00002
 We agree: we under-addressed the coalescent models and now refer
-to coalescent models in the Introduction.
+to coalescent models in the Introduction:
 
-% 00009
+"In this paper, we focus on BD models, instead of coalescent models,
+although these are just as important."
+
 Regarding the range of options available within pirouette,
 indeed, the implemented tree priors for the twinning process are Yule
 and BD.
 However, a user can also specify any other way to simulate a twin tree,
 such as, for example, one that uses a coalescent model. We mention this
-explicitly in the 'Twinning' subsection.
+explicitly in the 'Twinning' subsection:
+
+"pirouette has a built-in function to use a Yule model as well.
+Additionally, a user can specify a function to generate a twin tree
+from any speciation model, such as, for example, a coalescent model."
 
 > some of the models presented in the introduction are already implemented 
 > in BEAST2: for instance time-dependent processes in the BDSky package, 
@@ -60,10 +65,18 @@ explicitly in the 'Twinning' subsection.
 > Adding these citations would be useful for the reader 
 > to better understand what is currently available in BEAST2 or not.
 
-% 00014
 Agreed! We have done so in the Introduction. Because there are so
 many, we chose to limit ourselves to all BD tree priors listed
-at http://www.beast2.org/beast-features/index.html
+at [http://www.beast2.org/beast-features/index.html](http://www.beast2.org/beast-features/index.html). 
+This resulted in:
+
+"BEAST2 allows to extend its functionality by plug-ins, such
+as the calibrated Yule model (Heled et al., 2015),
+BD with incomplete sampling (Stadler et al., 2009),
+BD serial sampling (Stadler et al., 2012),
+BD serial skyline (Stadler et al., 2013)
+Fossilized BD process (Gavryushkina et al., 2014),
+BD SIR (Kuhnert et al., 2014) and many more."
 
 > sections 8.7 through 8.14 of the Supplementary materials 
 > need a description of the results and their interpretation. 
@@ -73,6 +86,8 @@ at http://www.beast2.org/beast-features/index.html
 > whether I am reading the figures correctly.
 
 Completely agree. We have added an interpretation to each (set of) figure(s).
+
+### Comment
 
 > the twinning procedure is interesting but I am not confident that 
 > it produces trees matching the chosen generating process. As far as I 
@@ -92,7 +107,8 @@ that the method may be unable to distinguish between Yule and BD
 for extant trees. We have added this to the manuscript
 at the subsection 'The effect of assuming a Yule tree prior on a BD tree'
 
-We believe that further testing with a sampling-through-time tree is beyond describing what pirouette does, which is the purpose of this ms.
+We believe that further testing with a sampling-through-time tree is beyond 
+describing what pirouette does, which is the purpose of this manuscript.
 
 > the use of "generative model" to describe the model used for comparison 
 > by pirouette, as opposed to the true generating process, was quite 
@@ -100,7 +116,6 @@ We believe that further testing with a sampling-through-time tree is beyond desc
 > model" and clarify in the caption of Fig 3 that this model is an already 
 > implemented tree prior.
 
-% 00015
 Thanks for pointing out this point of confusion!
 We hope to have resolved this, in the Introduction
 using your (well-chosen!) synonyms:
@@ -118,11 +133,16 @@ or 'comparison model'."
 
 Well spotted! We added these, at the error_fun section.
 
+"nLTT = normalized lineages-through-time (Janzen et al., 2015),
+|gamma| = absolute value of the gamma statistic (Pybus, 2000)."
+
 > l184: the model p_T is only defined in the caption of figure 1, 
 > I think the definition needs to be repeated here
 
-% 00003
-Now we mention it also in the 'twinning' section.
+Thanks! We now repeat it in the 'twinning' section:
+
+"The default option for the twin diversification model $p_T$ 
+is to use the standard BD model."
 
 > section 8.1: "Guidelines for empiricists" is a strange title since this 
 > package is aimed at developers of tree priors. Consider replacing with 
@@ -150,7 +170,11 @@ We have reworded the figure accordingly.
 ## Reviewer: 4
 
 > Comments to the Corresponding Author
-> In this article, Bilderbeek and colleagues present a piece of software that can assess the adequacy of a hierarchical model of tree, clock, and molecular substitution. Their effort is worthwhile and the manuscript is largely well-written, and with a few changes it should be a useful tool for power-users in phylogenetics.
+> In this article, Bilderbeek and colleagues present a piece of software 
+> that can assess the adequacy of a hierarchical model of tree, 
+> clock, and molecular substitution. Their effort is worthwhile and the 
+> manuscript is largely well-written, and with a few changes it should 
+> be a useful tool for power-users in phylogenetics.
 
 > Much of the terminology used is inconsistent with previous literature. 
 > This needs rectification or justification. For example, the terms 
@@ -162,7 +186,7 @@ We have reworded the figure accordingly.
 > sample), which is not what the authors are aiming at in this article. 
 > These terms must be rectified or very clearly justified in the manuscript.
 
-% 00006
+Thanks for helping us improve upon our choice of words!
 We agree with the reviewer on the use of the word "importance". We
 changed it to "impact", as already present in the literature
 (see for example [1]).
@@ -180,7 +204,6 @@ between generative and inference models."
 We agree with the reviewer. Our aim in the main text is just to present
 how the algorithm works with a minimal example.
 
-%00011
 We clarified adding the following lines at the start of the usage section:
 "The example we propose here has only an instructional purpose. To perform
 a full analysis we suggest to repeat the same procedure for at least 100
@@ -190,7 +213,6 @@ involving replicates in the supplementary material at subsection 8.7)."
 > (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
 
-% 00012
 We have rephrased the sentence. Now it states that:
 "The BD model can be seen as a special case of the DD model".
 
@@ -232,10 +254,40 @@ with it").
 > models (the hierarchical model), as shown also by Duchene and colleagues 
 > in previous work (Duchene et al. 2015, MBE, 32(11), 2986-2995).
 
-% 00016
-Indeed, we ruthlessly moved Duchene's work the the discussion, only to save 
+Indeed, we moved Duchene's work the the discussion, only to save 
 words, which was needed to make it to the deadline. For this revision,
-we had more time to properly refer to the literature
+we had more time to properly refer to the literature.
+
+We devote a whole paragraph to Duchene's 2018 work:
+
+"As noted in the introduction, Duchene and 
+colleagues [Duchene et al., 2018],
+also developed a method to assess the adequacy of a tree model
+on empirical trees. They simulate trees from the posterior distribution of 
+the parameters and then compare this to the originally inferred tree using 
+tree statistics, to determine whether the assumed tree model in inference 
+indeed generates the tree as inferred. This is useful if these trees match, 
+but when they do not, this does not mean that the inferred tree is incorrect; 
+if sufficient data is available the species tree prior may not be important, 
+and hence the inference may be adequate 
+even though the assumed species tree prior is not. 
+In short, the approach is applied to empirical trees and 
+compares the posterior and prior distribution of trees (with the latter 
+generated with the posterior parameters!).
+\verb;pirouette; aims to identify when assuming standard priors for the 
+species tree leads to incorrect inference if one believes more complex 
+diversification models are operating than can be currently accommodated in 
+inference. In short, our approach applies to simulated trees and compares 
+the posterior distributions of trees generated with 
+a standard and non-standard model, but inferred with a standard one. 
+The two methods therefore complement one another."
+
+We added refer to Duchene's 2015 work and one of its findings:
+
+"This new method simultaneously assesses the substitution, clock and tree
+models and thus is a hierarchical model.
+We learn from (Duchene et al., 2015) that 
+such a method may be sensitive to other aspects of the hierarchical model."
 
 > I agree with a previous reviewer that this piece is remarkably similar 
 > to the approach explored by Duchene and colleagues (not by those authors 
@@ -253,25 +305,33 @@ Indeed, the difference between pirouette and previous work
 is the focus on testing novel models. We have taken some care (also due
 to other reviewers' comments) to make this more clear.
 
- * [ ] Read those papers, the Goldman paper ''Statistical tests of models of 
-       DNA substitution' is `\cite{goldman1993statistical}`
- * [ ] Acknowledge these
+We have added this in the Introduction:
+
+"Another way to benchmark a diversification model, is by doing
+a model comparison, in which the best model is determined
+from a set of models. A good early example is Goldman, 1993 
+in which Goldman compared DNA substitution models.
+A recent approach to test the impact of tree prior choice, is developed
+by Duchene, 2018, which allows to measure
+a phylodynamic model's adequacy for models that are
+mathematically described (i.e. have a known likelihood equation)."
 
 > Interestingly, the type of assessment proposed by the authors is a form of 
 > approximate model comparison, which they could consider mentioning 
 > explicitly. Critically, it looks like the test statistics proposed are 
 > not appropriate in light of recent research (Louca and 
-> Pennel, 2020, Nature), so the authors should mention the addition of test 
+> Pennell, 2020, Nature), so the authors should mention the addition of test 
 > statistics that can more reliably discriminate among models.
 
 Indeed, Louca and Pennell argue that the LTT cannot distinguish between the 
 constant-rate model and a family of time-dependent model.
 However (and lucky for us!), the nLTT statistic can still discriminate between 
 various BD models and between DD and BD.
-We added your suggestion to [...]
+We added your suggestion to where we mention the nLTT statistic:
 
- * [ ] Mention the inappropriateness of nLTT for distinction between CR and TD
-       when describing the nLTT statistic
+"The nLTT statistic is unsuitable, however, to distinguish
+between a constant-rate BD model and a family of time-dependent 
+models [Louca and Pennell, 2020].
  
 ### Minor comments
 
@@ -295,20 +355,27 @@ But indeed, not everyone may value the addition of the 'L', so we removed it.
 > Line 40. Time-stamped data where samples come from various time points 
 > are very widely used in phylogenetics too.
 
-% 00004
-We have added this in the Introduction.
+Indeed. We have added this to the Introduction:
+
+> "The development of new powerful Bayesian phylogenetic inference tools, 
+> such as [...]
+> has been a major advance in constructing phylogenetic trees 
+> from character data [...] extracted from organisms
+> (usually extant, but extinction events
+> and/or time-stamped data can be added), 
+> and hence in our understanding of the main drivers 
+> and modes of diversification."
 
 > Line 46. I would argue that coalescent models are used as often 
 > as birth-death models, so this statement is probably inaccurate.
 
-% 00002
 We rephrased the sentence as: "These simple tree priors
-are among the most commonly used."
+are among the most commonly used." and "In this paper, we focus on BD models, 
+instead of coalescent models, although these are just as important."
 
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
 
-% 00001
 We rephrased the sentence as: "To allow users to extend the
 functionalities of BEAST by using plug-ins, BEAST2 was written
 and both tools are still developed independently."
@@ -316,14 +383,23 @@ and both tools are still developed independently."
 > Line 62. A great range of models are implemented in BEAST 2 (and 1), 
 > including many coalescent models, multi-species coalescent, BD skyline, etc.
 
-% 00005
-We have added these in the Introduction.
+We have added these in the Introduction:
+
+> "Despite the fact that some models are already included as tree priors 
+> in BEAST2 (e.g. birth-death models, coalescent models, coalescent skyline, etc.) 
+> many others for which a likelihood formula is already available 
+> in literature, are not implemented yet."
+
 
 > Line 73. This might also occur if the prior is truly 
 > uninformative (e.g., a reference prior).
 
-% 00010
-Indeed! We mention this now in the Introduction.
+Indeed! We mention this now in the Introduction:
+
+> "This is not necessarily problematic, when the data are very informative 
+> or when the prior is truly uninformative, as this will reduce the influence 
+> of the tree prior."
+
 
 > Lines 76-81. This paragraph should cite other explorations of tree priors 
 > that show that the tree prior can have a great influence (e.g., Ritchie 
@@ -345,7 +421,6 @@ table now.
 
 > Line 139. Describe the term "mono-nucleotide blocks".
 
-%00008
 We added the following line to explain what we mean with "mono-nucleotide block":
 "A block of length n is a sequence in which the same character is repeated n times".
 
@@ -353,7 +428,6 @@ We added the following line to explain what we mean with "mono-nucleotide block"
 > are handled during simulation. This might have an important influence on 
 > model performance.
 
-%00013
 Indeed, in all cases we assumed a sampling fraction of 100 percent.
 We now added the following line to clarify this:
 "For simplicity, when simulating phylogenies we assumed a sampling fraction of 100%.
