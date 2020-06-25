@@ -163,9 +163,11 @@ We have reworded the figure accordingly.
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
 
-[RSE: Why is it so difficult to change the figures? It does not require new simulations, does it?]
-
- * [ ] Richel is working on this
+```
+********************************************************************************
+* TODO 1: Richel does so                                                       *
+********************************************************************************
+```
 
 ## Reviewer: 4
 
@@ -406,6 +408,12 @@ Indeed! We mention this now in the Introduction:
 > et al. 2017, Syst Biol 66(3)). This is also a good stage to introduce the 
 > concept of assessing model adequacy.
 
+```
+********************************************************************************
+* TODO 2: Need Rampal for this                                                 *
+********************************************************************************
+```
+
  * [ ] Do so
 
 > Table 2. Models of rates across sites are not included in the substitution 
@@ -413,11 +421,12 @@ Indeed! We mention this now in the Introduction:
 > since it is common in empirical data and fundamental for 
 > phylogenetic informativeness.
 
-Well spotted! Because we use the same defaults as BEAUti does (which does not
-assume a rate heterogeneity), we overlooked this. We mention this is the 
-table now. 
- 
- * [ ] Do so
+Agreed! The rate variation accross sites is part of the site model,
+which (the site model) includes the substitution model.
+
+We added this to the Table with definitions:
+"Site model [equals] Both the substitution model and rate variation 
+across sites."
 
 > Line 139. Describe the term "mono-nucleotide blocks".
 
@@ -447,10 +456,7 @@ the word 'substitution'.
 
 We agree that this alignment looks different from what one normally finds
 in the field. In this case, we simulated the alignments with the maximum
-amount of information present. It can be viewed as only taking the SNPs
-from an alignment.
-
- * [ ] Explain in text
+amount of information present.
 
 > Figure 3. Remove the title because it is superfluous.
 

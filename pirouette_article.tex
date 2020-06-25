@@ -315,6 +315,10 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     Its core features are the tree prior $\mathit{p_{G}}$, the clock 
     model $\mathit{c_{G}}$ and the site model $\mathit{s_{G}}$. \\
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+    $\mathit{s_{G}}$ &
+    Site model &
+    Both the substitution model and rate variation across sites. \\
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     $\mathit{A}$ &
     Alignment model &
     Specifies the alignment generation, such as the clock model 
@@ -367,7 +371,8 @@ We summarize them in Table~\ref{tab:options} and Table~\ref{tab:definitions}.
     $\mathit{p_{G}}$.
     The phylogeny is converted to an alignment (2a) using the generative 
     alignment model 
-    $\mathit{A} = (\mathit{c_{G}}, \mathit{s_{G}})$, composed of a clock model and a site model. 
+    $\mathit{A} = (\mathit{c_{G}}, \mathit{s_{G}})$, composed of a clock model 
+    and a site model. 
     The user defines one or more experiments.
     For each candidate experiment $\mathit{X_{i}}$ 
     (a combination of inference model $\mathit{I_{i}}$ and condition $\mathit{C_{i}}$),
