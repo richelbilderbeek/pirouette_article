@@ -212,14 +212,9 @@ of this manuscript.
 > placing a constrain on the implemented model to behave like the proposed 
 > model, and this makes for an unfair comparison.
 
-We agree that forcing a topology can indeed have an effect. However, for the DD model in our example and many other new diversification models, all topologies are equally likely.
-
-% 00007
-The topology may indeed be important. However, when topology contains no 
-information to distinguish between the models, we prefer to use the same 
-topology because we want the twin tree to be as similar as possible to the 
-original tree. This is the case for the comparisons we consider: DD vs BD, 
-or BD vs Yule.
+We agree that forcing a topology can indeed have an effect. 
+However, for the DD model in our example and many other new diversification 
+models, all topologies are equally likely.
 
 However, to stress the importance that topology might have in other cases, 
 we mentioned the issue both in the twinning section ("We choose to preserve 
@@ -230,8 +225,6 @@ not be suited for models in which branching times are strongly influenced
 by topology.") and in the discussion ("For models that make different 
 predictions on topology, the twinning process should be modified in line 
 with it").
-
-[RSE: the response is repetitive. Please clean up]
 
 > The work by Duchene and colleagues is not mentioned in the introduction 
 > as indicated in line 273. Also, the authors must acknowledge that the 
