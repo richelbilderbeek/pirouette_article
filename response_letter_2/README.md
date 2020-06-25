@@ -43,7 +43,7 @@ Currently, the project can be found at
 > all existing tree priors are birth-death processes.
 
 % 00002
-We agree: we underaddressed the coalescent models and now refer
+We agree: we under-addressed the coalescent models and now refer
 to coalescent models in the Introduction.
 
 % 00009
@@ -243,7 +243,7 @@ we had more time to properly refer to the literature
 > genetics, 9(1), 68.). The difference between pirouette and previous work 
 > seems to be the focus testing novel models. This is worthwhile and indeed 
 > liberates these methods from the constrain of the model itself. However, 
-> it would be appropriate if the authors make due acknowledgement of the 
+> it would be appropriate if the authors make due acknowledgment of the 
 > original literature of that field. Perhaps citing work in Bayesian 
 > statistics by Gelman and in phylogenetics by Nick 
 > Goldman (1994, Journal Mol Evol, 36(2)), who are pioneers in 
@@ -270,7 +270,7 @@ However (and lucky for us!), the nLTT statistic can still discriminate between
 various BD models and between DD and BD.
 We added your suggestion to [...]
 
- * [ ] Mention the inappropriativeness of nLTT for distinction between CR and TD
+ * [ ] Mention the inappropriateness of nLTT for distinction between CR and TD
        when describing the nLTT statistic
  
 ### Minor comments
@@ -284,7 +284,7 @@ We rephrased point 3 in the abstract as following:
 we interrogate a model for its power to describe another."
 
 > Line 23. There is no real difference between free and libre, 
-> and in fact the latter does not appear in english dictionaries.
+> and in fact the latter does not appear in English dictionaries.
 
 'Libre' came form the abbreviation 'FLOSS' ('Free, Libre and Open Source 
 Software'), as coined by Richard Stallman, where the 'L' helps
@@ -314,7 +314,7 @@ functionalities of BEAST by using plug-ins, BEAST2 was written
 and both tools are still developed independently."
 
 > Line 62. A great range of models are implemented in BEAST 2 (and 1), 
-> including many coalescent models, multispecies coalescent, BD skyline, etc.
+> including many coalescent models, multi-species coalescent, BD skyline, etc.
 
 % 00005
 We have added these in the Introduction.
@@ -343,10 +343,10 @@ table now.
  
  * [ ] Do so
 
-> Line 139. Describe the term "mononucleotide blocks".
+> Line 139. Describe the term "mono-nucleotide blocks".
 
 %00008
-We added the following line to explain what we mean with "mononucleotide block":
+We added the following line to explain what we mean with "mono-nucleotide block":
 "A block of length n is a sequence in which the same character is repeated n times".
 
 > Line 187. There is no mention of how missing data (sampling fraction) 
