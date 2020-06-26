@@ -178,16 +178,21 @@ for a given reconstructed phylogeny,
 simulated under a (usually novel) diversification model.
 We refer to the model that has generated the given tree 
 as the 'generative tree model' $\mathit{p_{G}}$.
-\rampal{This only increases the confusion; maybe replace by baseline model everywhere}
+\rampal{
+	This only increases the confusion; maybe replace by baseline model everywhere
+}
+\richel{
+	I feel the new wording below is good enough. Replacing 'generative'
+	by 'baseline' add to confustion when the generative model is the
+	generative model. Giovanni, what do you think?
+}
 \new{
   A 'generative tree model', in this paper, is always a standard tree model.
   If the actual model that generated the tree is non-standard, 
-  the 'generative tree model' is the (standard) tree model that is (assumed
-  to be) closest to the actual (non-standard) model. In that case, the
-  'generative tree model' can also be called 'baseline model' 
-  or 'comparison model'.
+  the 'generative tree model' is the standard tree model that is 
+  closest to the actual model. In that case, the
+  'generative tree model' serves as a baseline or comparison model.
 }
-
 
 \new{
   The error we aim to quantify is not of stochastic nature.
