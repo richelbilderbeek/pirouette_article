@@ -34,16 +34,18 @@
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \new{
-	The development of new powerful Bayesian phylogenetic inference tools, 
+	The development of new powerful Bayesian phylogenetic inference tools,
 	such as BEAST [\cite{drummond2007beast}], 
 	MrBayes [\cite{huelsenbeck2001mrbayes}]
 	or RevBayes [\cite{hohna2016revbayes}] 
 	has been a major advance in constructing phylogenetic trees 
-	from character   data (usually nucleotide sequences) extracted from organisms
+	from character data (usually nucleotide sequences) extracted from organisms
 	(usually extant, but extinction events and/or time-stamped data can also be added), 
 	and hence in our understanding of the main drivers 
 	and modes of diversification.
+}
 
+\new{
 	BEAST [\cite{drummond2007beast}] is a typical Bayesian phylogenetics tool, 
 	that needs both character data and priors to infer 
 	a posterior distribution of phylogenies.
@@ -55,35 +57,48 @@
 	These simple tree priors are among the most commonly used, 
 	as they represent some biologically realistic processes (e.g. 
 	viewing diversification as a branching process), while being computationally fast.
+}
 
+\new{
 	To allow users to extend the functionalities of BEAST
 	using plug-ins, BEAST2 was written [\cite{bouckaert2019beast}]
 	(with BEAST and BEAST2 still independently being developed further).
 	For example, one can add novel diversification models 
 	by writing a BEAST2 plugin that contains the likelihood formula of a phylogeny under the novel diversification model, 
 	i.e. the prior probability of a species tree.
-	Plugins have been provided, for instance, for the calibrated Yule model [\cite{heled2015calibrated}],
+	Plugins have been provided, for instance, for the calibrated 
+	Yule model [\cite{heled2015calibrated}],
 	  BD with incomplete sampling [\cite{stadler2009incomplete}],
 	  BD serial sampling [\cite{stadler2012estimating}],
 	  BD serial skyline [\cite{stadler2013birth}]
 	  Fossilized BD process [\cite{gavryushkina2014bayesian}], and
 	  BD SIR [\cite{kuhnert2014simultaneous}].
+}
+
+\new{
 	Many other diversification models (and their associated likelihood algorithms) 
-	have been developed, e.g., models in which diversification is time-dependent [\cite{nee1994reconstructed,rabosky2008explosive}],
+	have been developed, e.g., models in which diversification 
+	is time-dependent [\cite{nee1994reconstructed,rabosky2008explosive}],
 	or diversity-dependent [\cite{etienne2012diversity}],
 	or where diversification rates change for specific lineages 
 	and their descendants [\cite{etienne2012conceptual, rabosky2014automatic, alfaro2009nine, laudanno2020sls}].
 	Other models treat speciation as a process that takes 
 	time [\cite{rosindell2010protracted, etienne2012prolonging, lambert2015reconstructed}],
 	or where diversification rates
-	depends on one or more traits [\cite{maddison2007estimating, fitzjohn2012diversitree, herrera2018detecting}].
+	depends on one or more traits 
+	[\cite{maddison2007estimating, fitzjohn2012diversitree, herrera2018detecting}].
+}
+
+\new{
 	These are, however, not yet available as tree priors in BEAST2, 
 	for reasons explained below. In this paper, 
 	we present methodology to determine whether such new plug-ins are needed, 
 	or whether currently available plug-ins are sufficient. 
 	We show this using the Yule and BD species tree priors, 
 	but our methods can be used with other built-in tree priors as well.
+}
 
+\new{
 	The rationale of our paper is as follows. 
 }
 When a novel diversification model is introduced,
@@ -515,8 +530,9 @@ topology $\psi_{\mathit{G}}$:
   The default option for the twin diversification model $p_T$ 
   is the standard BD model.
 }
+\verb;pirouette;
 \new{
-  \verb;pirouette; has a built-in function to use a Yule model as well.
+   has a built-in function to use a Yule model as well.
   Additionally, a user can specify a function to generate a twin tree
   from any speciation model, such as, for example, a coalescent model.
 }
@@ -738,7 +754,10 @@ In principle, \verb;pirouette; allows for this, but in our example we used a div
 	In short, the approach is applied to empirical trees and 
 	compares the posterior and prior distribution of trees (with the latter 
 	generated with the posterior parameters!).
-	\verb;pirouette; aims to identify when assuming standard priors for the 
+}
+\verb;pirouette;
+new{
+	aims to identify when assuming standard priors for the 
 	species tree leads to incorrect inference if one believes more complex 
 	diversification models are operating than can be currently accommodated in 
 	inference. In short, our approach applies to simulated trees and compares 
