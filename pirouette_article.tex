@@ -186,6 +186,25 @@ as the 'generative tree model' $\mathit{p_{G}}$.
 	by 'baseline' add to confusion when the generative model is the
 	generative model. Giovanni, what do you think?
 }
+\rampal{
+	This explanation again does not resolve the confusion. 
+	You have a new model with which you generate a tree and the alignment. 
+	In the pirouette paper this is DD. You could call this the generative model. 
+	You also create a twin tree using a standard tree prior, e.g. BD. 
+	Then in inference you use a tree prior, e.g. Yule. I think what you mean 
+	is that Yule is not the one used for the twin tree, 
+	and is therefore not the generative tree model. 
+	But this is far from clear as it could also refer to the DD model. 
+	Perhaps if you replace by "generative model for the twin tree", 
+	then it is fine. Note that comparison model or baseline model 
+	are NOT synonyms.
+}
+\rampal{
+	Not synonyms for the generative tree model for the twin tree, I mean.
+}
+\richel{
+	Giovanni, could you process this feedback?
+}
 \new{
   A 'generative tree model', in this paper, is always a standard tree model.
   If the actual model that generated the tree is non-standard, 
