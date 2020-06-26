@@ -45,8 +45,9 @@ Currently, the project can be found at
 We agree: we under-addressed the coalescent models and now refer
 to coalescent models in the Introduction:
 
-"In this paper, we focus on BD models, instead of coalescent models,
-although these are just as important."
+"BEAST has built-in priors such as the Yule [\cite{yule}] and 
+(constant-rate) birth-death [\cite{nee1994reconstructed}] models
+as well as coalescent priors."
 
 Regarding the range of options available within pirouette,
 indeed, the implemented tree priors for the twinning process are Yule
@@ -70,13 +71,12 @@ many, we chose to limit ourselves to all BD tree priors listed
 at [http://www.beast2.org/beast-features/index.html](http://www.beast2.org/beast-features/index.html). 
 This resulted in:
 
-"BEAST2 allows to extend its functionality by plug-ins, such
-as the calibrated Yule model (Heled et al., 2015),
+"Plugins have been provided, for instance, the calibrated Yule model (Heled et al., 2015),
 BD with incomplete sampling (Stadler et al., 2009),
 BD serial sampling (Stadler et al., 2012),
 BD serial skyline (Stadler et al., 2013)
-Fossilized BD process (Gavryushkina et al., 2014),
-BD SIR (Kuhnert et al., 2014) and many more."
+Fossilized BD process (Gavryushkina et al., 2014), and
+BD SIR (Kuhnert et al., 2014)."
 
 > sections 8.7 through 8.14 of the Supplementary materials 
 > need a description of the results and their interpretation. 
@@ -127,6 +127,8 @@ to be) closest to the actual (non-standard) model. In that case, the
 'generative tree model' can also be called 'baseline model' 
 or 'comparison model'."
 
+[RSE: I find this still confusing. I would then use baseline model all the time.]
+
 ### Minor comments
 
 > Table 1: descriptions are missing for the error_fun section
@@ -142,7 +144,7 @@ Well spotted! We added these, at the error_fun section.
 Thanks! We now repeat it in the 'twinning' section:
 
 "The default option for the twin diversification model $p_T$ 
-is to use the standard BD model."
+is the standard BD model."
 
 > section 8.1: "Guidelines for empiricists" is a strange title since this 
 > package is aimed at developers of tree priors. Consider replacing with 
@@ -206,11 +208,7 @@ between generative and inference models."
 We agree with the reviewer. Our aim in the main text is just to present
 how the algorithm works with a minimal example.
 
-We clarified adding the following lines at the start of the usage section:
-"The example we propose here has only an instructional purpose. To perform
-a full analysis we suggest to repeat the same procedure for at least 100
-independent true and twin trees (we show the outcome of an analysis
-involving replicates in the supplementary material at subsection 8.7)."
+We clarified adding that the analysis should be performed on "at least 100 independent true and twin trees" in the section "Stochasticity caused by simulating phylogenies"
 
 > (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
@@ -240,15 +238,19 @@ We agree that forcing a topology can indeed have an effect.
 However, for the DD model in our example and many other new diversification 
 models, all topologies are equally likely.
 
-However, to stress the importance that topology might have in other cases, 
-we mentioned the issue both in the twinning section ("We choose to preserve 
-the original topology to increase the similarity between the twin to the 
-original tree. This works well in the cases of the birth-death or 
-diversity-dependent models we consider in our examples. However this might 
-not be suited for models in which branching times are strongly influenced 
-by topology.") and in the discussion ("For models that make different 
-predictions on topology, the twinning process should be modified in line 
-with it").
+Nevertheless, to stress the importance that topology might have in other cases, 
+we mentioned the issue both in the twinning section and in the discussion:
+
+"We choose to preserve the original topology to 
+  increase the similarity between the twin to the original tree. 
+  This works well in the cases of birth-death or diversity-dependent models 
+  we consider in our example, because all these models make the same
+  assumption about the topology (all topologies are equally likely).
+  However, this might not be suited for new models that assign different probabilities
+  to trees with the same branching times but different topologies.""
+
+"For models that make different 
+predictions on topology, the twinning process should be modified accordingly."
 
 > The work by Duchene and colleagues is not mentioned in the introduction 
 > as indicated in line 273. Also, the authors must acknowledge that the 
@@ -260,7 +262,7 @@ Indeed, we moved Duchene's work the the discussion, only to save
 words, which was needed to make it to the deadline. For this revision,
 we had more time to properly refer to the literature.
 
-We devote a whole paragraph to Duchene's 2018 work:
+We now devote a whole paragraph to Duchene's 2018 work:
 
 "As noted in the introduction, Duchene and 
 colleagues [Duchene et al., 2018],
@@ -291,6 +293,8 @@ models and thus is a hierarchical model.
 We learn from (Duchene et al., 2015) that 
 such a method may be sensitive to other aspects of the hierarchical model."
 
+[RSE: I find the use of hierarchical odd]
+
 > I agree with a previous reviewer that this piece is remarkably similar 
 > to the approach explored by Duchene and colleagues (not by those authors 
 > but actually pioneered by Drummond and Suchard, 2008, BMC 
@@ -315,7 +319,7 @@ from a set of models. A good early example is Goldman, 1993
 in which Goldman compared DNA substitution models.
 A recent approach to test the impact of tree prior choice, is developed
 by Duchene, 2018, which allows to measure
-a phylodynamic model's adequacy for models that are
+a model's adequacy for phylodynamic models that are
 mathematically described (i.e. have a known likelihood equation)."
 
 > Interestingly, the type of assessment proposed by the authors is a form of 
