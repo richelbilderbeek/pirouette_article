@@ -183,7 +183,7 @@ as the 'generative tree model' $\mathit{p_{G}}$.
 }
 \richel{
 	I feel the new wording below is good enough. Replacing 'generative'
-	by 'baseline' add to confustion when the generative model is the
+	by 'baseline' add to confusion when the generative model is the
 	generative model. Giovanni, what do you think?
 }
 \new{
@@ -489,35 +489,18 @@ from a distribution of trees from any tree model.
   models [\cite{louca2020extant}].
 }
 
-\subsection{Twinning}\label{subsec:twinning}
+\subsection{Controls}\label{subsec:controls}
 
 Similar to lab experiments, \verb;pirouette; allows to perform
-a control measurement, by use of a process we call twinning. 
-In this context, this control results in an error distribution
-that is the baseline error of the pipeline. The difference
-between the 'true' and 'twin' error distributions is caused only
-by the mismatch between the (known-to-be-true or assumed) 
-generative tree model and the 
-tree prior used in the actual inference.
-
-\new{
-	See the supplementary materials section \ref{subsec:twinning_mathematics}
-	for more details.
-}
-
-\subsection{Candidate models}\label{subsec:candidates}
-
-The user has to specify exactly one standard inference model,
-but may be unsure which one to pick. To account for this, the user can
-specify a set of candidate inference models. Each of these candidate inference models is run in an initial, relatively short, analysis; the candidate model with the highest 
-evidence (i.e., marginal likelihood) will then be
-used in another, longer, inference run, resulting in another error distribution.
-The evidence for an inference model is estimated by nested 
-sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
-
-If twinning is used, a candidate model that has the highest evidence for
-the twin alignment is also used to create another error
-distribution.
+two types of control measurements. The first type of control
+is called 'twinning', which results in an error distribution
+that is the baseline error of the inference pipeline (see
+supplementary materials, section \ref{subsec:twinning} for more details).
+The second type of control is the use of candidate models,
+which results in an error distribution
+for a generative model that is determined to be the best fit to
+the tree (see supplementary materials, 
+section \ref{subsec:candidates} for more details).
 
 \subsection{Stochasticity caused by simulating phylogenies}
 

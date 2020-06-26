@@ -238,9 +238,18 @@ To cite \verb;pirouette; this article from within R, use:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The mathematics of the twinning process}
-\label{subsec:twinning_mathematics}
+\subsection{The twinning process}
+\label{subsec:twinning}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Similar to lab experiments, \verb;pirouette; allows to perform
+a control measurement, by use of a process we call twinning. 
+In this context, this control results in an error distribution
+that is the baseline error of the pipeline. The difference
+between the 'true' and 'twin' error distributions is caused only
+by the mismatch between the (known-to-be-true or assumed) 
+generative tree model and the 
+tree prior used in the actual inference.
 
 The twinning process, $T$, encompasses two steps:
 $T_1$, that generates a 'twin tree' (Fig.~\ref{fig:pipeline}, 1b) 
@@ -317,6 +326,23 @@ not only the same mutation rate is used, but also the total number of
 matches the true alignment. The total number of \new{substitution}s is defined
 as the amount of different nucleotides between the (known) root sequence
 compared to the sequences at the tips.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Candidate models}
+\label{subsec:candidates}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The user has to specify exactly one standard inference model,
+but may be unsure which one to pick. To account for this, the user can
+specify a set of candidate inference models. Each of these candidate inference models is run in an initial, relatively short, analysis; the candidate model with the highest 
+evidence (i.e., marginal likelihood) will then be
+used in another, longer, inference run, resulting in another error distribution.
+The evidence for an inference model is estimated by nested 
+sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
+
+If twinning is used, a candidate model that has the highest evidence for
+the twin alignment is also used to create another error
+distribution.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Main functions}
