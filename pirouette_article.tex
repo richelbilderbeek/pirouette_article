@@ -12,12 +12,17 @@
     In principle, the Bayesian framework allows for comparing 
     different tree priors, which may elucidate the macroevolutionary 
     processes underlying the species tree.
-    In practice, however, only macroevolutionary models that allow for fast computation of the prior probability are used.
-    The question is how accurate the tree estimation is when the real macroevolutionary processes are substantially different from those assumed in the tree prior. \\
+    In practice, however, only macroevolutionary models that allow 
+    for fast computation of the prior probability are used.
+    The question is how accurate the tree estimation is when 
+    the real macroevolutionary processes are substantially different 
+    from those assumed in the tree prior. \\
     \textbf{2. }
     Here we present \verb;pirouette;, 
     a free and open-source R package that assesses 
-    the inference error made by Bayesian phylogenetics for a given macroevolutionary diversification model. \verb;pirouette; makes use of 
+    the inference error made by Bayesian phylogenetics 
+    for a given macroevolutionary diversification model. 
+    \verb;pirouette; makes use of 
     BEAST2, but its philosophy applies to any Bayesian phylogenetic inference 
     tool. \\
   \textbf{3. }
@@ -28,7 +33,7 @@
     interpretation. \\
 \end{abstract}
 
-{\bf Keywords:} Bayesian model selection, BEAST2, computational biology, evolution, phylogenetics, R, tree prior
+{\bf Keywords:} Bayesian model selection, BEAST2, computational biology, evolution, phylogenetics, R, tree prior, babette
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
@@ -40,7 +45,8 @@
 	or RevBayes [\cite{hohna2016revbayes}] 
 	has been a major advance in constructing phylogenetic trees 
 	from character data (usually nucleotide sequences) extracted from organisms
-	(usually extant, but extinction events and/or time-stamped data can also be added), 
+	(usually extant, but extinction events and/or time-stamped data 
+	can also be added), 
 	and hence in our understanding of the main drivers 
 	and modes of diversification.
 }
@@ -56,7 +62,8 @@
 	as well as coalescent priors.
 	These simple tree priors are among the most commonly used, 
 	as they represent some biologically realistic processes (e.g. 
-	viewing diversification as a branching process), while being computationally fast.
+	viewing diversification as a branching process), 
+	while being computationally fast.
 }
 
 \new{
@@ -64,7 +71,8 @@
 	using plug-ins, BEAST2 was written [\cite{bouckaert2019beast}]
 	(with BEAST and BEAST2 still independently being developed further).
 	For example, one can add novel diversification models 
-	by writing a BEAST2 plugin that contains the likelihood formula of a phylogeny under the novel diversification model, 
+	by writing a BEAST2 plugin that contains 
+	the likelihood formula of a phylogeny under the novel diversification model, 
 	i.e. the prior probability of a species tree.
 	Plugins have been provided, for instance, for the calibrated 
 	Yule model [\cite{heled2015calibrated}],
@@ -489,13 +497,6 @@ The code to reproduce our results can be found at
 \url{https://github.com/richelbilderbeek/pirouette_example_30}
 and a simplified version is shown here for convenience:
 
-\giovanni{
-  Do we need the library calls in the listing?
-}
-\richel{
-  I simplified the code and only call pirouette now. 
-  I think this is cleaner then using a scope operator.
-}
 \begin{lstlisting}[language=R]
 library(pirouette)
 
