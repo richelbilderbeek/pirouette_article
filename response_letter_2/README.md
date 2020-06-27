@@ -45,8 +45,8 @@ Currently, the project can be found at
 We agree: we under-addressed the coalescent models and now refer
 to coalescent models in the Introduction:
 
-"BEAST has built-in priors such as the Yule [\cite{yule}] and 
-(constant-rate) birth-death [\cite{nee1994reconstructed}] models
+"BEAST has built-in priors such as the Yule [Yule 1925] and 
+(constant-rate) birth-death [Nee et al. 1994] models
 as well as coalescent priors."
 
 Regarding the range of options available within pirouette,
@@ -242,12 +242,12 @@ Nevertheless, to stress the importance that topology might have in other cases,
 we mentioned the issue both in the twinning section and in the discussion:
 
 "We choose to preserve the original topology to 
-  increase the similarity between the twin to the original tree. 
-  This works well in the cases of birth-death or diversity-dependent models 
-  we consider in our example, because all these models make the same
-  assumption about the topology (all topologies are equally likely).
-  However, this might not be suited for new models that assign different probabilities
-  to trees with the same branching times but different topologies.""
+increase the similarity between the twin to the original tree. 
+This works well in the cases of birth-death or diversity-dependent models 
+we consider in our example, because all these models make the same
+assumption about the topology (all topologies are equally likely).
+However, this might not be suited for new models that assign different probabilities
+to trees with the same branching times but different topologies.""
 
 "For models that make different 
 predictions on topology, the twinning process should be modified accordingly."
@@ -278,7 +278,7 @@ even though the assumed species tree prior is not.
 In short, the approach is applied to empirical trees and 
 compares the posterior and prior distribution of trees (with the latter 
 generated with the posterior parameters!).
-\verb;pirouette; aims to identify when assuming standard priors for the 
+pirouette aims to identify when assuming standard priors for the 
 species tree leads to incorrect inference if one believes more complex 
 diversification models are operating than can be currently accommodated in 
 inference. In short, our approach applies to simulated trees and compares 
@@ -337,7 +337,7 @@ We added your suggestion to where we mention the nLTT statistic:
 
 "The nLTT statistic is unsuitable, however, to distinguish
 between a constant-rate BD model and a family of time-dependent 
-models [Louca and Pennell, 2020].
+models [Louca and Pennell, 2020]".
  
 ### Minor comments
 
