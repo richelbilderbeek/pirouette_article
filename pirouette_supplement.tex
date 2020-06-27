@@ -345,6 +345,23 @@ the twin alignment is also used to create another error
 distribution.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stochasticity caused by simulating phylogenies}
+\label{subsec:stochasticity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The goal is to evaluate BEAST2's performance 
+on a non-standard tree model, 
+one must also consider the last source of stochasticity: 
+the different phylogenies a tree model generates.
+A single phylogeny cannot be considered as fully representative of the model. 
+For this reason multiple phylogenies must be 
+considered \new{(at least 100 independent true and twin trees)}.
+If the number of considered phylogenies is high enough, 
+the comparison between the main pipeline's aggregated error distribution 
+and its twin counterpart leads to a fair evaluation 
+of the new tree model with respect to the baseline error.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Main functions}
 \label{subsec:main_functions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

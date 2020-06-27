@@ -179,34 +179,8 @@ simulated under a (usually novel) diversification model.
 We refer to the model that has generated the given tree 
 as the 'generative tree model' $\mathit{p_{G}}$.
 \rampal{
-	This only increases the confusion; maybe replace by baseline model everywhere
-}
-\richel{
-	I feel the new wording below is good enough. Replacing 'generative'
-	by 'baseline' add to confusion when the generative model is the
-	generative model. Giovanni, what do you think?
-}
-\rampal{
-	This explanation again does not resolve the confusion. 
-	You have a new model with which you generate a tree and the alignment. 
-	In the pirouette paper this is DD. You could call this the generative model. 
-	You also create a twin tree using a standard tree prior, e.g. BD. 
-	Then in inference you use a tree prior, e.g. Yule. I think what you mean 
-	is that Yule is not the one used for the twin tree, 
-	and is therefore not the generative tree model. 
-	But this is far from clear as it could also refer to the DD model. 
 	Perhaps if you replace by "generative model for the twin tree", 
-	then it is fine. Note that comparison model or baseline model 
-	are NOT synonyms.
-}
-\rampal{
-	Not synonyms for the generative tree model for the twin tree, I mean.
-}
-\richel{
-	Giovanni, could you process this feedback?
-}
-\richel{
-	I will use 'generative model for the twin tree'
+	then it is fine.
 }
 \new{
   A 'generative tree model', in this paper, is always a standard tree model.
@@ -214,6 +188,7 @@ as the 'generative tree model' $\mathit{p_{G}}$.
   the 'generative tree model' is the standard tree model that is 
   closest to the actual model. In that case, the
   'generative tree model' serves as a baseline model.
+  This is is done in the example, where the Yule model is the generative model.
 }
 
 \new{
@@ -523,20 +498,9 @@ which results in an error distribution
 for a generative model that is determined to be the best fit to
 the tree (see supplementary materials, 
 section \ref{subsec:candidates} for more details).
-
-\subsection{Stochasticity caused by simulating phylogenies}
-
-Finally, if the goal is to evaluate BEAST2's performance 
-on a non-standard tree model, 
-one must also consider the last source of stochasticity: 
-the different phylogenies a tree model generates.
-A single phylogeny cannot be considered as fully representative of the model. 
-For this reason multiple phylogenies must be 
-considered \new{(at least 100 independent true and twin trees)}.
-If the number of considered phylogenies is high enough, 
-the comparison between the main pipeline's aggregated error distribution 
-and its twin counterpart leads to a fair evaluation 
-of the new tree model with respect to the baseline error.
+Additionally, multiple \verb;pirouette; runs are needed
+to reduce the influence of stochasticity (see supplementary materials, 
+section \ref{subsec:stochasticity} for more details).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Usage}
