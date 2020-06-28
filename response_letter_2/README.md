@@ -165,11 +165,11 @@ We have reworded the figure accordingly.
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
 
-```
-********************************************************************************
-* TODO 1: Richel does so                                                       *
-********************************************************************************
-```
+We agree, and we tried: we ran the simulations with more replicates, which
+finished 3 days before the deadline. Plotting these results, however,
+was unexpectedly hard (1 plot would take 16 hours to draw!). 
+We decided to prioritize making the deadline, over asking for an extension
+regarding this, which was also partly motivated due to health issues. 
 
 ## Reviewer: 4
 
@@ -412,13 +412,11 @@ Indeed! We mention this now in the Introduction:
 > et al. 2017, Syst Biol 66(3)). This is also a good stage to introduce the 
 > concept of assessing model adequacy.
 
-```
-********************************************************************************
-* TODO 2: Need Rampal for this                                                 *
-********************************************************************************
-```
-
- * [ ] Do so
+We think your suggestion is great and would lead to a better Introduction,
+due to the smoother way to introduce how to assess model adequacy.
+In the end, however, we have not put this suggestion in, as this
+would require too much rewriting, 1 day before the deadline. We decided
+to prioritize making the deadline and we hope you can agree with this reasoning.
 
 > Table 2. Models of rates across sites are not included in the substitution 
 > models. It is quite important to include this form of heterogeneity 
