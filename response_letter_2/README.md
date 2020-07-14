@@ -127,7 +127,8 @@ to be) closest to the actual (non-standard) model. In that case, the
 'generative tree model' can also be called 'baseline model' 
 or 'comparison model'."
 
-[RSE: I find this still confusing. ]
+[RSE: I find this still confusing. I would then use baseline model all the time.]
+[GL: Maybe we can use the naming "true generative model" and "twin generative model"?]
 
 ### Minor comments
 
