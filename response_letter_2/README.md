@@ -128,7 +128,9 @@ to be) closest to the actual (non-standard) model. In that case, the
 or 'comparison model'."
 
 [RSE: I find this still confusing. I would then use baseline model all the time.]
-[GL: Maybe we can use the naming "true generative model" and "twin generative model"?]
+[GL: I am not a fan of nomenclature issues. One possible solution could be to use
+"true generative model" and "twin generative model"? However I have, in general,
+no strong preference. I'll leave this decision to you.]
 
 ### Minor comments
 
