@@ -54,7 +54,7 @@ indeed, the implemented tree priors for the twinning process are Yule
 and BD.
 However, a user can also specify any other way to simulate a twin tree,
 such as, for example, one that uses a coalescent model. We mention this
-explicitly in the 'Twinning' subsection:
+explicitly in the 'Twinning' subsection in the supplementary material:
 
 "pirouette has a built-in function to use a Yule model as well.
 Additionally, a user can specify a function to generate a twin tree
@@ -69,7 +69,7 @@ from any speciation model, such as, for example, a coalescent model."
 Agreed! We have done so in the Introduction. Because there are so
 many, we chose to limit ourselves to all BD tree priors listed
 at [http://www.beast2.org/beast-features/index.html](http://www.beast2.org/beast-features/index.html). 
-This resulted in:
+This resulted in the following addition to the Introduction:
 
 "Plugins have been provided, for instance, the calibrated Yule model (Heled et al., 2015),
 BD with incomplete sampling (Stadler et al., 2009),
@@ -105,10 +105,10 @@ In 7 out of 19 cases, indeed, the best candidate model is the Yule
 model. And we think that is an interesting point you bring up: 
 that the method may be unable to distinguish between Yule and BD
 for extant trees. We have added this to the manuscript
-at the subsection 'The effect of assuming a Yule tree prior on a BD tree'
+in the subsection 'The effect of assuming a Yule tree prior on a BD tree'
 
 We believe that further testing with a sampling-through-time tree is beyond 
-describing what pirouette does, which is the purpose of this manuscript.
+the purpose of this manuscript, namely describing what pirouette does.
 
 > the use of "generative model" to describe the model used for comparison 
 > by pirouette, as opposed to the true generating process, was quite 
@@ -161,16 +161,17 @@ this. Now we refer to the right figure: Figure 4.
 
 > Figure 4: the true tree is top left, not top right
 
-We have reworded the figure accordingly.
+We have reworded the figure caption accordingly.
 
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
 
 We agree, and we tried: we ran the simulations with more replicates, which
 finished 3 days before the deadline. Plotting these results, however,
-was unexpectedly hard (1 plot would take 16 hours to draw!). 
-We decided to prioritize making the deadline, over asking for an extension
-regarding this, which was also partly motivated due to health issues. 
+was unexpectedly hard (one plot would take 16 hours to draw!). 
+We decided to prioritize making the deadline for the revision.
+
+[RSE: can't believe this takes so long. Any reason why?]
 
 ## Reviewer: 4
 
@@ -209,7 +210,7 @@ between generative and inference models."
 We agree with the reviewer. Our aim in the main text is just to present
 how the algorithm works with a minimal example.
 
-We clarified adding that the analysis should be performed on "at least 100 independent true and twin trees" in the section "Stochasticity caused by simulating phylogenies"
+We clarified adding that the analysis should be performed on "at least 100 independent true and twin trees" in the section "Stochasticity caused by simulating phylogenies" in the supplementary material.
 
 > (2) On that note, it would be much preferable if the authors referred to the 
 > BD model as a DD model, instead of the other way around (line 103). 
@@ -240,7 +241,7 @@ However, for the DD model in our example and many other new diversification
 models, all topologies are equally likely.
 
 Nevertheless, to stress the importance that topology might have in other cases, 
-we mentioned the issue both in the twinning section and in the discussion:
+we mentioned the issue both in the twinning section of the supplementary material and in the discussion:
 
 "We choose to preserve the original topology to 
 increase the similarity between the twin to the original tree. 
@@ -259,11 +260,7 @@ predictions on topology, the twinning process should be modified accordingly."
 > models (the hierarchical model), as shown also by Duchene and colleagues 
 > in previous work (Duchene et al. 2015, MBE, 32(11), 2986-2995).
 
-Indeed, we moved Duchene's work the the discussion, only to save 
-words, which was needed to make it to the deadline. For this revision,
-we had more time to properly refer to the literature.
-
-We now devote a whole paragraph to Duchene's 2018 work:
+We now devote a whole paragraph to Duchene's 2018 work in the Discussion:
 
 "As noted in the introduction, Duchene and 
 colleagues [Duchene et al., 2018],
@@ -276,25 +273,21 @@ but when they do not, this does not mean that the inferred tree is incorrect;
 if sufficient data is available the species tree prior may not be important, 
 and hence the inference may be adequate 
 even though the assumed species tree prior is not. 
-In short, the approach is applied to empirical trees and 
+In short, their approach is applied to empirical trees and 
 compares the posterior and prior distribution of trees (with the latter 
 generated with the posterior parameters!).
-pirouette aims to identify when assuming standard priors for the 
+By contrast, pirouette aims to identify when assuming standard priors for the 
 species tree leads to incorrect inference if one believes more complex 
 diversification models are operating than can be currently accommodated in 
-inference. In short, our approach applies to simulated trees and compares 
+inference. Hence, our approach applies to simulated trees and compares 
 the posterior distributions of trees generated with 
 a standard and non-standard model, but inferred with a standard one. 
 The two methods therefore complement one another."
 
-We added refer to Duchene's 2015 work and one of its findings:
+We also added a reference to Duchene's 2015 work:
 
 "This new method simultaneously assesses the substitution, clock and tree
-models and thus is a hierarchical model.
-We learn from (Duchene et al., 2015) that 
-such a method may be sensitive to other aspects of the hierarchical model."
-
-[RSE: I find the use of hierarchical odd]
+models (Duchene et al., 2015).""
 
 > I agree with a previous reviewer that this piece is remarkably similar 
 > to the approach explored by Duchene and colleagues (not by those authors 
@@ -383,41 +376,48 @@ instead of coalescent models, although these are just as important."
 > Line 49. BEAST 2 is not the successor of BEAST 1. The latter is still being 
 > actively developed and has features that are not available in BEAST 2.
 
-We rephrased the sentence as: "To allow users to extend the
-functionalities of BEAST by using plug-ins, BEAST2 was written
-and both tools are still developed independently."
+We rephrased the sentence as: "To allow users to extend the functionalities of BEAST
+using plug-ins, BEAST2 was written [\cite{bouckaert2019beast}]
+(with BEAST and BEAST2 still independently being developed further)."
 
 > Line 62. A great range of models are implemented in BEAST 2 (and 1), 
 > including many coalescent models, multi-species coalescent, BD skyline, etc.
 
-We have added these in the Introduction:
+As mentioned above We have added the follwoing to the Introduction:
 
-> "Despite the fact that some models are already included as tree priors 
-> in BEAST2 (e.g. birth-death models, coalescent models, coalescent skyline, etc.) 
-> many others for which a likelihood formula is already available 
-> in literature, are not implemented yet."
-
+"Plugins have been provided, for instance, the calibrated Yule model (Heled et al., 2015),
+BD with incomplete sampling (Stadler et al., 2009),
+BD serial sampling (Stadler et al., 2012),
+BD serial skyline (Stadler et al., 2013)
+Fossilized BD process (Gavryushkina et al., 2014), and
+BD SIR (Kuhnert et al., 2014)."
 
 > Line 73. This might also occur if the prior is truly 
 > uninformative (e.g., a reference prior).
 
 Indeed! We mention this now in the Introduction:
 
-> "This is not necessarily problematic, when the data are very informative 
-> or when the prior is truly uninformative, as this will reduce the influence 
-> of the tree prior."
-
+"This is not necessarily problematic, when the data are very informative 
+or when the prior is truly uninformative, as this will reduce the influence 
+of the tree prior."
 
 > Lines 76-81. This paragraph should cite other explorations of tree priors 
 > that show that the tree prior can have a great influence (e.g., Ritchie 
 > et al. 2017, Syst Biol 66(3)). This is also a good stage to introduce the 
 > concept of assessing model adequacy.
 
-We think your suggestion is great and would lead to a better Introduction,
-due to the smoother way to introduce how to assess model adequacy.
-In the end, however, we have not put this suggestion in, as this
-would require too much rewriting, 1 day before the deadline. We decided
-to prioritize making the deadline and we hope you can agree with this reasoning.
+Thank you for the suggestion. We have inserted the following:
+
+"Similarly, Ritchie and colleagues showed that inference was accurate when birth-death or skyline coalescent priors were used, but they simulated their trees with a Yule process only, as their focus was not so much on the diversification process but on the influence of inter- and intraspecific sampling.
+Another way to benchmark a diversification model, is by doing
+  a model comparison, in which the best model is determined
+  from a set of models. A good early example is \cite{goldman1993statistical} 
+  in which Goldman compared DNA substitution models.
+  A recent approach to test the impact of tree prior choice, proposed
+  by \cite{duchene2018phylodynamic}, allows to measure
+  model adequacy for phylodynamic models that are
+  mathematically described (i.e. having a known likelihood equation).
+"
 
 > Table 2. Models of rates across sites are not included in the substitution 
 > models. It is quite important to include this form of heterogeneity 
