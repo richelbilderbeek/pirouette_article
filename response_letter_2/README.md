@@ -122,15 +122,10 @@ using your (well-chosen!) synonyms:
 
 "A 'generative tree model', in this paper, is always a standard tree model.
 If the actual model that generated the tree is non-standard, 
-the 'generative tree model' is the (standard) tree model that is (assumed
-to be) closest to the actual (non-standard) model. In that case, the
-'generative tree model' can also be called 'baseline model' 
-or 'comparison model'."
-
-[RSE: I find this still confusing. I would then use baseline model all the time.]
-[GL: I am not a fan of nomenclature issues. One possible solution could be to use
-"true generative model" and "twin generative model"? However I have, in general,
-no strong preference. I'll leave this decision to you.]
+the 'generative tree model' is the standard tree model that is 
+closest to the actual model. In that case, the
+'generative tree model' serves as a baseline model.
+This is is done in the example, where the Yule model is the generative model."
 
 ### Minor comments
 
@@ -168,12 +163,8 @@ We have reworded the figure caption accordingly.
 > some figures (e.g. fig 3, 8) have the distributions be partially transparent, 
 > which makes them easier to read. I think all the figures should be like that.
 
-We agree, and we tried: we ran the simulations with more replicates, which
-finished 3 days before the deadline. Plotting these results, however,
-was unexpectedly hard (one plot would take 16 hours to draw!). 
-We decided to prioritize making the deadline for the revision.
-
-[RSE: can't believe this takes so long. Any reason why?]
+We re-ran all simulations with more replicates and increased the similarity
+between plots.
 
 ## Reviewer: 4
 
