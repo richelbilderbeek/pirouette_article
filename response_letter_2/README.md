@@ -116,16 +116,9 @@ the purpose of this manuscript, namely describing what pirouette does.
 > model" and clarify in the caption of Fig 3 that this model is an already 
 > implemented tree prior.
 
-Thanks for pointing out this point of confusion!
-We hope to have resolved this, in the Introduction
-using your (well-chosen!) synonyms:
+We added a section in the Introduction to clarify this.
 
-"A 'generative tree model', in this paper, is always a standard tree model.
-If the actual model that generated the tree is non-standard, 
-the 'generative tree model' is the standard tree model that is 
-closest to the actual model. In that case, the
-'generative tree model' serves as a baseline model.
-This is is done in the example, where the Yule model is the generative model."
+"A 'generative tree model', in this paper, can be either the novel diversification model for which we are testing the impact of choosing standard tree priors for, or it is the model with which we generate the twin tree that is needed for comparison (see below). In the latter case, we also refer to it as the actual generative tree model, and it thus serves as a baseline model. This is is done in the example, where the Yule model is the generative model."
 
 ### Minor comments
 
