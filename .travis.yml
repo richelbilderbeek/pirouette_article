@@ -7,7 +7,7 @@ install:
   - sudo apt-get update -qq
   # spell
   - apt-cache search spell
-  - sudo apt install spell
+  - sudo apt install aspell
   # proselint
   - sudo pip install proselint
   # pandoc
