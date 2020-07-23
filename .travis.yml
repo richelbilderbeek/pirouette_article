@@ -23,12 +23,11 @@ script:
   # proselint
   - proselint $(find | grep .*\.md) | egrep -v "curly_quotes" || true
   # Build article
-  - rm -f article/article.pdf
+  - rm -f pirouette_article.pdf
   - make
-  - if [ ! -f article/article.pdf ]; then echo "file 'article.pdf' not found" ; exit 1 ; fi
-  # List possible spelling errors
-  - spell `find | egrep "(tex|md)"`
+  - if [ ! -f pirouette_article.pdf ]; then echo "file 'pirouette_article.pdf' not found" ; exit 1 ; fi
   # Count words, must be below 3000 for 'Applications'
   - make count_words
   # Figures must have at least 300 dpi
   - identify -format '%x,%y\n' -units PixelsPerInch article/figures.jpg
+
