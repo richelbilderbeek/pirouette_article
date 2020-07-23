@@ -9,9 +9,11 @@ pirouette_article.pdf: $(tex_files)
 	chmod +x edit.sh
 	chmod +x create_article.sh
 	chmod +x view.sh
+	./create_article.sh
+
+spell_check:
 	aspell -t -c pirouette_article.tex
 	aspell -t -c pirouette_supplement.tex
-	./create_article.sh
 
 count_words:
 	cp pirouette_article.tex tmp_pirouette_article.tex
