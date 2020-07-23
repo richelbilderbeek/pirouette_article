@@ -11,6 +11,7 @@ pirouette_article.pdf: $(tex_files)
 	chmod +x view.sh
 	./create_article.sh
 
+
 spell_check:
 	aspell -t -c pirouette_article.tex
 	aspell -t -c pirouette_supplement.tex
