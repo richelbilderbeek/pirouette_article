@@ -12,7 +12,16 @@ pirouette_article.pdf: $(tex_files)
 	aspell -t -c pirouette_article.tex
 	aspell -t -c pirouette_supplement.tex
 	./create_article.sh
-	texcount pirouette_article.tex | egrep "Words in text"
+
+count_words:
+	cp pirouette_article.tex tmp_pirouette_article.tex
+	# Get rid of the dollars in the code
+	sed -i 's/pir_params.experiments..1...inference_model./pir_params_experiments[[1]]_inference_model_/g' tmp_pirouette_article.tex
+	sed -i 's/pir_params.twinning_params.sim_twin_tree_fun/pir_params_twinning_params_sim_twin_tree_fun/g' tmp_pirouette_article.tex
+	texcount tmp_pirouette_article.tex
+	texcount tmp_pirouette_article.tex | egrep "Words in text"
+	rm tmp_pirouette_article.tex
+
 
 clean:
 	rm -rf *.aux *.log *.out *.toc *.blg *.bbl *.pdf
