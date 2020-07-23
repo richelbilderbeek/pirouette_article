@@ -28,6 +28,4 @@ script:
   - if [ ! -f pirouette_article.pdf ]; then echo "file 'pirouette_article.pdf' not found" ; exit 1 ; fi
   # Count words, must be below 3000 for 'Applications'
   - make count_words
-  # Figures must have at least 300 dpi
-  - identify -format '%x,%y\n' -units PixelsPerInch article/figures.jpg
 
