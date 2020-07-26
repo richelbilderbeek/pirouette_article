@@ -16,7 +16,8 @@ install:
   - sudo apt install imagemagick
   # PDF creation
   - sudo apt install texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-extra-utils texlive-humanities texlive-full texlive-games texlive-pictures texlive-science texlive-xetex ktikz
-  # No: pgf
+  # R
+  - sudo apt install r-base-core
 
 script:
   - make
