@@ -1,1 +1,1 @@
-install.packages(c("stringr", "readr", "beautier"))
+install.packages(c("beautier", "readr", "stringr", "testthat"))
