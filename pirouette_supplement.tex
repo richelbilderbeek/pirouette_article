@@ -472,7 +472,7 @@ of all 4 nucleotides substitution models (JC69, HKY, TN93, GTR),
 all 2 clock models (strict and relaxed log-normal) and 2 birth-death
 models (Yule and Birth-Death), except the inference model used as the
 generative model (JC69, strict clock, Yule). The inference model that had the
-highest evidence (as shown in Table \ref{tab:true_evidence}) was 
+highest evidence (as shown in Table \ref{tab:evidence_true}) was 
 the inference model with a JC69 nucleotide substitution model,
 a relaxed log-normal clock model and a Yule tree model.
 The resulting posterior trees are shown in the second panel
@@ -505,7 +505,7 @@ of the bottom row of figure \ref{fig:pipeline}.
 Based on the 'twin alignment' (center-right panel), the candidate model
 with the highest marginal likelihood is determined, from the same 
 set of 15 candidate models.The inference model that had the
-highest evidence (as shown in Table \ref{tab:twin_evidence}) was 
+highest evidence (as shown in Table \ref{tab:evidence_twin}) was 
 the inference model with a JC69 nucleotide substitution model,
 a strict clock model and a BD tree model (note: this indeed matches how
 the twin tree and twin tree were simulated).
@@ -529,13 +529,13 @@ least $ESS = 200$ (see
 \end{sloppypar}
 In the following we present the ESS for the posterior distributions of 
 the 4 cases shown in Fig. \ref{fig:example_30_full_pipeline}: 
-"true" pipeline with generative model (Table \ref{tab:esses_true_gen}), 
-"true" pipeline with best candidate model (Table \ref{tab:esses_true_best}), 
+"true" pipeline with generative model (Table \ref{tab:esses_gen}), 
+"true" pipeline with best candidate model (Table \ref{tab:esses_best}), 
 "twin" pipeline with generative model (Table \ref{tab:esses_twin_gen}), 
 "twin" pipeline with best candidate model (Table \ref{tab:esses_twin_best}). 
 We also report the marginal likelihood (or evidence) data for model selection 
-performed both in the "true" (Table \ref{tab:true_evidence}) and 
-"twin" pipeline (Table \ref{tab:twin_evidence}).
+performed both in the "true" (Table \ref{tab:evidence_true}) and 
+"twin" pipeline (Table \ref{tab:evidence_twin}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -550,40 +550,40 @@ performed both in the "true" (Table \ref{tab:true_evidence}) and
     \node[state, draw=none] (O) [] {
     };   
     \node[state] (A) [right of = O, rectangle] {
-      \includegraphics[height=0.4\textheight]{pirouette_example_30/example_30_314/true_tree.png}
+      \includegraphics[height=0.4\textheight]{pirouette_example_30/example_30/true_tree.png}
     };   
     \node[state] (B) [below of = A, rectangle] {
-      \includegraphics[height=0.25\textheight]{pirouette_example_30/example_30_314/true_alignment.png}
+      \includegraphics[height=0.25\textheight]{pirouette_example_30/example_30/true_alignment.png}
     };   
     \node[state] (CG) [below of = B, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/true_posterior_gen.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/true_posterior_gen.png}
     };   
     \node[state] (DG) [below of = CG, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/true_error_violin_gen.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/true_error_violin_gen.png}
     };   
     \node[state] (CB) [right of = CG, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/true_posterior_best.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/true_posterior_best.png}
     };   
     \node[state] (DB) [below of = CB, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/true_error_violin_best.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/true_error_violin_best.png}
     };   
     \node[state] (AT) [right of = A, rectangle, node distance=0.8\textheight] {
-      \includegraphics[height=0.4\textheight]{pirouette_example_30/example_30_314/twin_tree.png}
+      \includegraphics[height=0.4\textheight]{pirouette_example_30/example_30/twin_tree.png}
     };   
     \node[state] (BT) [below of = AT, rectangle] {
-      \includegraphics[height=0.25\textheight]{pirouette_example_30/example_30_314/twin_alignment.png}
+      \includegraphics[height=0.25\textheight]{pirouette_example_30/example_30/twin_alignment.png}
     };   
     \node[state] (CTG) [right of = CB, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/twin_posterior_gen.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/twin_posterior_gen.png}
     };   
     \node[state] (DTG) [below of = CTG, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/twin_error_violin_gen.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/twin_error_violin_gen.png}
     };   
     \node[state] (CTB) [right of = CTG, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/twin_posterior_best.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/twin_posterior_best.png}
     };   
     \node[state] (DTB) [below of = CTB, rectangle] {
-      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30_314/twin_error_violin_best.png}
+      \includegraphics[height=0.3\textheight]{pirouette_example_30/example_30/twin_error_violin_best.png}
     };   
     \path 
       (O) edge [anchor = south] node {} (A)
@@ -618,27 +618,27 @@ performed both in the "true" (Table \ref{tab:true_evidence}) and
 
 \newpage
 
-\input{pirouette_example_30/example_30_314/esses_gen.latex}
+\input{pirouette_example_30/example_30/esses_gen.latex}
 
 \newpage
 
-\input{pirouette_example_30/example_30_314/esses_best.latex}
+\input{pirouette_example_30/example_30/esses_best.latex}
 
 \newpage
 
-\input{pirouette_example_30/example_30_314/esses_twin_gen.latex}
+\input{pirouette_example_30/example_30/esses_twin_gen.latex}
 
 \newpage
 
-\input{pirouette_example_30/example_30_314/esses_twin_best.latex}
+\input{pirouette_example_30/example_30/esses_twin_best.latex}
 
 \newpage
 
-\input{pirouette_example_30/example_30_314/evidence_true.latex}
+\input{pirouette_example_30/example_30/evidence_true.latex}
 
 \newpage
 
-\input{pirouette_example_30/example_30_314/evidence_twin.latex}
+\input{pirouette_example_30/example_30/evidence_twin.latex}
 
 \newpage
 
