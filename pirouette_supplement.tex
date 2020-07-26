@@ -46,7 +46,7 @@ Here is an overview of the various sections:
   }
   \item{
     subsection \ref{subsec:nltt}: the
-    nLTT statistics
+    nLTT statistic
   }
   \item{
     subsection \ref{subsec:main_functions}: main functions
@@ -61,8 +61,7 @@ Here is an overview of the various sections:
     same stochastic process as the main example
   }
   \item{
-    subsection \ref{subsec:n_taxa}: the effect of the number
-    of taxa
+    subsection \ref{subsec:n_taxa}: the effect of the number of taxa
   }
   \item{
     subsection \ref{subsec:n_nucleotides}: the effect of the DNA
@@ -70,11 +69,11 @@ Here is an overview of the various sections:
   }
   \item{
     subsection \ref{subsec:simplest_correct_parameterization} shows the
-    effect when doing an inference in the simplest use case
+    effect when performing inference in the simplest use case
   }
   \item{
     subsection \ref{subsec:under_parameterization} shows the
-    effect when doing an inference with an under-parameterization
+    effect when performing inference with an under-parameterization
   }
   \item{
     subsection \ref{subsec:different_n_mutations} shows the
@@ -262,20 +261,16 @@ To cite \verb;pirouette; this article from within R, use:
 \label{subsec:twinning}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Similar to lab experiments, \verb;pirouette; allows to perform
-a control measurement, by use of a process we call twinning. 
-In this context, this control results in an error distribution
+\verb;pirouette; allows to perform
+a control measurement, by use of a process we call twinning. This control results in an error distribution
 that is the baseline error of the pipeline. The difference
-between the 'true' and 'twin' error distributions is caused only
-by the mismatch between the (known-to-be-true or assumed) 
-generative tree model and the 
+between the 'true' and 'twin' error distributions is caused only by the mismatch between the true tree model and the 
 tree prior used in the actual inference.
 
 The twinning process, $T$, encompasses two steps:
 $T_1$, that generates a 'twin tree' (Fig.~\ref{fig:pipeline}, 1b) 
 and $T_2$, which generates a 'twin alignment' (Fig.~\ref{fig:pipeline}, 2b).
-Both twin tree and alignment will be analyzed in the same way 
-as the true tree and alignment.
+Both twin tree and alignment will be analyzed in the same way as the true tree and alignment.
 
 We define a phylogeny $\tau$ as the combination of
 branching times $\Vec{t}$ and topology $\psi$, 
@@ -294,12 +289,12 @@ topology $\psi_{\mathit{G}}$:
 \end{align}
 
 \new{
-  We choose to preserve the original topology to 
+  We chose to preserve the original topology to 
   increase the similarity between the twin to the original tree. 
   This works well in the cases of BD or DD models 
   we consider in our example, because all these models make the same
   assumption about topology (all topologies are equally likely).
-  However, this might not be suited for new models that assign different probabilities
+  However, this might not be suitable for new models that assign different probabilities
   to trees with the same branching times but different topologies.
 }
 \new{
@@ -317,8 +312,7 @@ It is then possible to use the likelihood function
 $L_{\mathit{T}}$ for this diversification model to find 
 the parameters $\theta^{*}_{\mathit{T}}$ 
 (e.g. speciation and extinction rates, in case of a BD model) 
-that maximize this likelihood applied 
-to the true tree, conditioned on its number of tips $n_{\mathit{G}}$:
+that maximize this likelihood applied to the true tree, conditioned on its number of tips $n_{\mathit{G}}$:
 \begin{align}
     \max[L_{\mathit{T}}(\theta_{\mathit{T}}|\tau_{\mathit{G}}, n_{\mathit{G}})] 
 \rightarrow \theta^{*}_{\mathit{T}}.
@@ -337,14 +331,13 @@ package [\cite{TESS, hohna2016tess}].
 
 The second step ($T_2$) of the twinning process simulates the twin alignment 
 with the same clock model, site model and mutation rate 
-used to simulate the original alignment. 
+used to simulate the alignment on the true. 
 The twin alignment can be simulated in any user-defined way.
-\verb;pirouette; supplies the option to have it simulated with
-the same mutation rate as the true alignment. By default, however,
+\verb;pirouette; provides the option simulate it with the same mutation rate as the true alignment. By default, however,
 not only the same mutation rate is used, but also the total number of 
 \new{substitution}s
 matches the true alignment. The total number of \new{substitution}s is defined
-as the amount of different nucleotides between the (known) root sequence
+as the number of different nucleotides between the (known) root sequence
 compared to the sequences at the tips.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -361,7 +354,7 @@ The evidence for an inference model is estimated by nested
 sampling [\cite{russel2019model}], using the \verb;NS; BEAST2 package. 
 
 If twinning is used, a candidate model that has the highest evidence for
-the twin alignment is also used to create another error
+the twin alignment is also used to create the twin error
 distribution.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -393,7 +386,7 @@ of their crown ages and number of taxa) and its results have a clear range
 from zero to one. This normalized result makes it possible to compare trees 
 from a distribution of trees from any tree model.
 \new{
-  The nLTT statistic is unsuitable, however, to distinguish
+  The nLTT statistic is not suitable, however, to distinguish
   between a constant-rate BD model and a family of time-dependent 
   models [\cite{louca2020extant}].
 }
@@ -464,54 +457,49 @@ From the 'true alignment' the generative inference model is run.
 Of course, it cannot be the actual (DD) model. Instead, the
 default BEAST2 inference model is used, which assumes a JC69 nucleotide
 substitution model, a strict clock model and a Yule tree model.
-The resulting posterior trees are shows in the
+The resulting posterior trees are shown in the
 center-left panel of figure \ref{fig:pipeline}.
 
-From this 'generative true' posterior (center-left panel in 
-figure \ref{fig:pipeline}), the difference between each of its trees is
+From this 'generative true' posterior (center-left panel in figure \ref{fig:pipeline}), the difference between each of its trees is
 compared to the 'true tree' (top-left panel), using the nLTT statistic,
-resulting in the error distribution shown at the bottom-left panel
+resulting in the error distribution shown in the bottom-left panel
 of figure \ref{fig:pipeline}.
 
 Based on the 'true alignment' (center-left panel), the candidate model
 with the highest marginal likelihood is determined, from a set of 
-15 models. The set of models consists out of all combinations
+15 models. The set of models consists of all combinations
 of all 4 nucleotides substitution models (JC69, HKY, TN93, GTR),
 all 2 clock models (strict and relaxed log-normal) and 2 birth-death
-models (Yule and Birth-Death), except for the inference model used as the
-generative model (JC69, strict, Yule). The inference model that had the
+models (Yule and Birth-Death), except the inference model used as the
+generative model (JC69, strict clock, Yule). The inference model that had the
 highest evidence (as shown in Table \ref{tab:true_evidence}) was 
 the inference model with a JC69 nucleotide substitution model,
 a relaxed log-normal clock model and a Yule tree model.
-From the 'true alignment' this best candidate inference model is run.
 The resulting posterior trees are shown in the second panel
 of the third row of posteriors in figure \ref{fig:pipeline}.
 
-From this 'best true' posterior (second panel in third row of
-figure \ref{fig:pipeline}), the difference between each of its trees is
+From this 'best true' posterior, the difference between each of its trees is
 compared to the 'true tree' (top-left panel), using the nLTT statistic,
 resulting in the second error distribution in the bottom row
 of figure \ref{fig:pipeline}.
 
 From the 'true tree' (top-left) we generated a BD twin tree (top-right).
 
-From this 'twin tree', a 'twin alignment' is simulated, using
+From this 'twin tree', a 'twin alignment' was simulated, using
 the JC69 nucleotide substitution model and a strict clock model.
-The resulting alignment is shown at the center-right
+The resulting alignment is shown in the center-right panel
 of figure \ref{fig:pipeline}.
 
 From the 'twin alignment' the generative inference model is run as well.
 Also here, the default BEAST2 inference model is used, 
 which assumes a JC69 nucleotide
 substitution model, a strict clock model and a Yule tree model.
-The resulting posterior trees are shows in the
+The resulting posterior trees are shown in the
 third panel of the third row of figure \ref{fig:pipeline}.
-
-From this 'generative twin' posterior (third panel in 
-third row of figure \ref{fig:pipeline}), 
+From this 'generative twin' posterior, 
 the difference between each of its trees is
 compared to the 'twin tree' (top-right panel), using the nLTT statistic,
-resulting in the error distribution shown at the third panel
+resulting in the error distribution shown in the third panel
 of the bottom row of figure \ref{fig:pipeline}.
 
 Based on the 'twin alignment' (center-right panel), the candidate model
@@ -520,13 +508,13 @@ set of 15 candidate models.The inference model that had the
 highest evidence (as shown in Table \ref{tab:twin_evidence}) was 
 the inference model with a JC69 nucleotide substitution model,
 a strict clock model and a BD tree model (note: this indeed matches how
-the twin tree and twin tree have been simulated).
+the twin tree and twin tree were simulated).
 From the 'twin alignment' this best candidate inference model is run.
 The resulting posterior trees are shown in the fourth panel
 of the third row of posteriors in figure \ref{fig:pipeline}.
 
 From this 'best twin' posterior (fourth in third row of
-figure \ref{fig:pipeline}), the difference between each of its trees is
+figure \ref{fig:pipeline}), the difference between each of its trees was
 compared to the 'twin tree' (top-right panel), using the nLTT statistic,
 resulting in the fourth error distribution in the bottom row
 of figure \ref{fig:pipeline}.
@@ -621,7 +609,7 @@ performed both in the "true" (Table \ref{tab:true_evidence}) and
     For each distribution of trees, a distribution of errors, 
     measured with the nLTT statistic, 
     between the posterior trees and the main trees is drawn. 
-    From the true tree also a twin tree is created (right side of the figure) 
+    From the true tree also a twin tree is created (right side of the figure)
     which follows the same pipeline, 
     leading to two additional error distributions to use as baseline errors.}
   \label{fig:example_30_full_pipeline}
@@ -800,7 +788,7 @@ except for a varying DNA alignment sequence length.
   From figures \ref{fig:example_500_nucleotides}, 
   \ref{fig:example_1000_nucleotides} and \ref{fig:example_2000_nucleotides} 
   we can observe that the discrepancy between the true and twin error 
-  distributions tend to become smaller as the number of nucleotides increase (see also Fig. \ref{fig:error_vs_seqlength}). 
+  distributions tends to become smaller as the number of nucleotides increase (see also Fig. \ref{fig:error_vs_seqlength}).
   This occurred for both the generative and best candidate cases.
   This follows the expectation that a prior becomes less important when
   more information becomes available.
@@ -869,13 +857,13 @@ This example thus shows the effect of underparameterization.
 \end{figure}
 
 \new{
-  Since the two models are very similar to each other (the BD model can be 
+  Because the two models are very similar to each other (the BD model can be 
   turned into a Yule model just by setting the extinction parameter to 
   zero [\cite{nee1994reconstructed}]) the median discrepancy is
   almost negligible. 
   However, with respect to the previous 
   case (subsection \ref{subsec:simplest_correct_parameterization}), 
-  where a Yule tree prior has been used, 
+  where a Yule tree prior was used, 
   the distributions here exhibit a greater difference.
 }
 \new{As we use only extant trees, it is reasonable that the method
@@ -922,10 +910,10 @@ that are rare, uncommon and common respectively.
 \new{
   Here the median errors are similar in the three settings and similar to 
   ones relative to the full dataset of \ref{subsec:distribution}. We can also 
-  notice that in the case of median likelihood, the twin median error appear 
-  to be lower than the true mean error. This usually is a sign that the number 
+  notice that in the case of median likelihood, the twin median error appears 
+  to be lower than the true mean error. This is usually a sign that the number 
   of replicates (in this case 10) is too low to allow us to draw precise 
-  conclusions from this test. We decided to not explore further in this 
+  conclusions from this test. We did not explore further in this 
   direction using more simulations because computational times turned to be 
   extremely high. 
   The entire run took 120 hours in total.
