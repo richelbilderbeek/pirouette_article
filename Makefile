@@ -3,6 +3,7 @@ tex_files = \
   pirouette_header.tex \
   pirouette_supplement.tex
 
+
 all: pirouette_article.pdf
 
 pirouette_article.pdf: $(tex_files)
