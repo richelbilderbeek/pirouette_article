@@ -519,24 +519,6 @@ compared to the 'twin tree' (top-right panel), using the nLTT statistic,
 resulting in the fourth error distribution in the bottom row
 of figure \ref{fig:pipeline}.
 
-To assess if the results of the inference are meaningful one important 
-parameter is the Effective Sample Size (ESS). This quantity describes how 
-many independent trees are sampled from the posterior distributions. 
-For reliable results it is good practice to have at 
-least $ESS = 200$ (see 
-\begin{sloppypar}
-  \url{https://beast.community/ess_tutorial}).
-\end{sloppypar}
-In the following we present the ESS for the posterior distributions of 
-the 4 cases shown in Fig. \ref{fig:example_30_full_pipeline}: 
-"true" pipeline with generative model (Table \ref{tab:esses_gen}), 
-"true" pipeline with best candidate model (Table \ref{tab:esses_best}), 
-"twin" pipeline with generative model (Table \ref{tab:esses_twin_gen}), 
-"twin" pipeline with best candidate model (Table \ref{tab:esses_twin_best}). 
-We also report the marginal likelihood (or evidence) data for model selection 
-performed both in the "true" (Table \ref{tab:evidence_true}) and 
-"twin" pipeline (Table \ref{tab:evidence_twin}).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
   \centering
@@ -616,27 +598,89 @@ performed both in the "true" (Table \ref{tab:evidence_true}) and
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newpage
+To assess if the results of the inference are meaningful one important 
+parameter is the Effective Sample Size (ESS). This quantity describes how 
+many independent trees are sampled from the posterior distributions. 
+For reliable results it is good practice to have at 
+least $ESS = 200$ (see 
+\begin{sloppypar}
+  \url{https://beast.community/ess_tutorial}).
+\end{sloppypar}
+In the following we present the ESS for the posterior distributions of 
+the 4 cases shown in Fig. \ref{fig:example_30_full_pipeline}.
+
+The ESSes of the 'true' pipeline for the generative model
+are shown in Table \ref{tab:esses_gen}.
+From the estimated parameters, one can deduce that
+the JC69 nucleotide substitution model was used (no
+estimated parameter needed), a strict clock model was 
+used (again, no parameter needed to be estimated)
+and a Yule tree prior is used ('Yule model' and 'birthRate' are estimated).
+Note that although the actual true tree is created by a DD process, 
+the default and standard Yule tree model is used as the closest
+standard tree model.
 
 \input{pirouette_example_30/example_30/esses_gen.latex}
 
 \newpage
 
-\input{pirouette_example_30/example_30/esses_best.latex}
-
-\newpage
+The ESSes of the 'twin' pipeline for the generative model
+are shown in Table \ref{tab:esses_twin_gen}.
+Note that the generative inference model is 
+re-used (which assumes a Yule tree model) in the inference, 
+where the twin tree is actually created using a BD process,
+which is the default.
 
 \input{pirouette_example_30/example_30/esses_twin_gen.latex}
 
 \newpage
 
+The ESSes of the 'true' pipeline for the best candidate model
+are shown in Table \ref{tab:esses_best}. 
+From the names of the estimated parameters, it is clear that
+the best candidate model has had a TN93 nucleotide substitution 
+model (due to 'kappa1', 'kappa2', 'freqParameter.1', 
+'freqParameter.2', 'freqParameter.3', 'freqParameter.4')
+a strict clock (no parameter needed to be estimated) and a BD 
+model ('BirthDeath', 'BDBirthRate' and 'BDDeathRate').
+
+\input{pirouette_example_30/example_30/esses_best.latex}
+
+\newpage
+
+The ESSes of the 'twin' pipeline for the best candidate model
+are shown in Table \ref{tab:esses_twin_best}.
+
+From the names of the estimated parameters, it is clear that
+the best candidate model for the twin tree
+is JC69 nucleotide substitution 
+model (no parameter needed to be estimated),
+a strict clock (no parameter needed to be estimated) and a BD 
+model ('BirthDate', 'BDBirthRate' and 'BDDeathRate').
+Note that this matches the actual process of how the twin tree
+and twin alignment are generated.
+
 \input{pirouette_example_30/example_30/esses_twin_best.latex}
 
 \newpage
 
+The marginal likelihood (or evidence) data for the model comparison
+performed in the 'true' pipeline is shown in Table \ref{tab:evidence_true}.
+The best (that is, the one with the highest model weight)
+candidate model assumes a TN93 nucleotide substitution model,
+a strict clock and a BD model.
+
 \input{pirouette_example_30/example_30/evidence_true.latex}
 
 \newpage
+
+The marginal likelihood (or evidence) data for model comparison
+performed in the 'twin' pipeline is shown in Table \ref{tab:evidence_twin}.
+The best (that is, the one with the highest model weight)
+candidate model assumes a JC69 nucleotide substitution model,
+a strict clock and a BD model.
+Note that this matches the actual process of how the twin tree
+and twin alignment are generated.
 
 \input{pirouette_example_30/example_30/evidence_twin.latex}
 
