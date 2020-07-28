@@ -23,4 +23,5 @@ posterior & 3848 \\
    \hline
 \end{tabular}
 \caption{ESSes for best candidate model} 
+  \label{tab:esses_best}
 \end{table}
