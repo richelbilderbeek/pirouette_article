@@ -17,7 +17,7 @@ install:
   # PDF creation
   - sudo apt install texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-extra-utils texlive-humanities texlive-full texlive-games texlive-pictures texlive-science texlive-xetex ktikz
   # R
-  - sudo apt install r-base-core r-cran-readr r-cran-stringr r-cran-testthat r-cran-devtools
+  - sudo apt install r-base-core r-cran-readr r-cran-stringr r-cran-testthat r-cran-devtools r-cran-ape
   - Rscript -e 'devtools::install_github("ropensci/beautier")'
 
 script:
