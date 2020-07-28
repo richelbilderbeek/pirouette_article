@@ -449,13 +449,13 @@ such that the expected number of species in a constant-rate BD model
 would be equal to the number of tips, which amounts to $\lambda_0 = 0.63$.
 
 From this 'true tree', a 'true alignment' is simulated, using
-the JC69 nucleotide substitution model and a strict clock model.
+the JC nucleotide substitution model and a strict clock model.
 The resulting alignment is shown at the center-left
 of figure \ref{fig:pipeline}.
 
 From the 'true alignment' the generative inference model is run.
 Of course, it cannot be the actual (DD) model. Instead, the
-default BEAST2 inference model is used, which assumes a JC69 nucleotide
+default BEAST2 inference model is used, which assumes a JC nucleotide
 substitution model, a strict clock model and a Yule tree model.
 The resulting posterior trees are shown in the
 center-left panel of figure \ref{fig:pipeline}.
@@ -468,12 +468,12 @@ of figure \ref{fig:pipeline}.
 Based on the 'true alignment' (center-left panel), the candidate model
 with the highest marginal likelihood is determined, from a set of 
 15 models. The set of models consists of all combinations
-of all 4 nucleotides substitution models (JC69, HKY, TN93, GTR),
+of all 4 nucleotides substitution models (JC, HKY, TN, GTR),
 all 2 clock models (strict and relaxed log-normal) and 2 birth-death
 models (Yule and Birth-Death), except the inference model used as the
-generative model (JC69, strict clock, Yule). The inference model that had the
+generative model (JC, strict clock, Yule). The inference model that had the
 highest evidence (as shown in Table \ref{tab:evidence_true}) was 
-the inference model with a JC69 nucleotide substitution model,
+the inference model with a JC nucleotide substitution model,
 a relaxed log-normal clock model and a Yule tree model.
 The resulting posterior trees are shown in the second panel
 of the third row of posteriors in figure \ref{fig:pipeline}.
@@ -486,13 +486,13 @@ of figure \ref{fig:pipeline}.
 From the 'true tree' (top-left) we generated a BD twin tree (top-right).
 
 From this 'twin tree', a 'twin alignment' was simulated, using
-the JC69 nucleotide substitution model and a strict clock model.
+the JC nucleotide substitution model and a strict clock model.
 The resulting alignment is shown in the center-right panel
 of figure \ref{fig:pipeline}.
 
 From the 'twin alignment' the generative inference model is run as well.
 Also here, the default BEAST2 inference model is used, 
-which assumes a JC69 nucleotide
+which assumes a JC nucleotide
 substitution model, a strict clock model and a Yule tree model.
 The resulting posterior trees are shown in the
 third panel of the third row of figure \ref{fig:pipeline}.
@@ -506,7 +506,7 @@ Based on the 'twin alignment' (center-right panel), the candidate model
 with the highest marginal likelihood is determined, from the same 
 set of 15 candidate models.The inference model that had the
 highest evidence (as shown in Table \ref{tab:evidence_twin}) was 
-the inference model with a JC69 nucleotide substitution model,
+the inference model with a JC nucleotide substitution model,
 a strict clock model and a BD tree model (note: this indeed matches how
 the twin tree and twin tree were simulated).
 From the 'twin alignment' this best candidate inference model is run.
@@ -612,7 +612,7 @@ the 4 cases shown in Fig. \ref{fig:example_30_full_pipeline}.
 The ESSes of the 'true' pipeline for the generative model
 are shown in Table \ref{tab:esses_gen}.
 From the estimated parameters, one can deduce that
-the JC69 nucleotide substitution model was used (no
+the JC nucleotide substitution model was used (no
 estimated parameter needed), a strict clock model was 
 used (again, no parameter needed to be estimated)
 and a Yule tree prior is used ('Yule model' and 'birthRate' are estimated).
@@ -638,7 +638,7 @@ which is the default.
 The ESSes of the 'true' pipeline for the best candidate model
 are shown in Table \ref{tab:esses_best}. 
 From the names of the estimated parameters, it is clear that
-the best candidate model has had a TN93 nucleotide substitution 
+the best candidate model has had a TN nucleotide substitution 
 model (due to 'kappa1', 'kappa2', 'freqParameter.1', 
 'freqParameter.2', 'freqParameter.3', 'freqParameter.4')
 a strict clock (no parameter needed to be estimated) and a BD 
@@ -653,7 +653,7 @@ are shown in Table \ref{tab:esses_twin_best}.
 
 From the names of the estimated parameters, it is clear that
 the best candidate model for the twin tree
-is JC69 nucleotide substitution 
+is JC nucleotide substitution 
 model (no parameter needed to be estimated),
 a strict clock (no parameter needed to be estimated) and a BD 
 model ('BirthDate', 'BDBirthRate' and 'BDDeathRate').
@@ -667,7 +667,7 @@ and twin alignment are generated.
 The marginal likelihood (or evidence) data for the model comparison
 performed in the 'true' pipeline is shown in Table \ref{tab:evidence_true}.
 The best (that is, the one with the highest model weight)
-candidate model assumes a TN93 nucleotide substitution model,
+candidate model assumes a TN nucleotide substitution model,
 a strict clock and a BD model.
 
 \input{pirouette_example_30/example_30/evidence_true.latex}
@@ -677,7 +677,7 @@ a strict clock and a BD model.
 The marginal likelihood (or evidence) data for model comparison
 performed in the 'twin' pipeline is shown in Table \ref{tab:evidence_twin}.
 The best (that is, the one with the highest model weight)
-candidate model assumes a JC69 nucleotide substitution model,
+candidate model assumes a JC nucleotide substitution model,
 a strict clock and a BD model.
 Note that this matches the actual process of how the twin tree
 and twin alignment are generated.

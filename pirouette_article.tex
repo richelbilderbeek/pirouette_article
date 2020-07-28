@@ -516,10 +516,23 @@ section \ref{subsec:nltt} for details regarding the nLTT statistic
 and its caveats).
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{pirouette_example_30/errors.png}
+  \includegraphics[width=0.9\textwidth]{pirouette_example_30/errors.png}
   \caption{
-    \new{The impact of the tree prior for the example tree in Figure \ref{fig:dd_tree}. The alignment for this true tree was generated using a JC69 substitution model and strict clock model. For inferring the tree from this alignment in the 'generative' scenario the same substitution and clock models were used, and a Yule tree prior (this is the assumed generative model because the real generative model is of course unknown). In the 'best' scenario the best-fitting candidate models (JC69 substitution model, relaxed log-normal clock model and Yule tree prior) were used. For the twin tree, the same models were chosen, except that BD was used to generate and infer the twin tree.
-    The twin distributions show the baseline inference error.}
+    \new{
+      The impact of the tree prior for 
+      the example tree in Figure \ref{fig:dd_tree}. 
+      The alignment for this true tree was generated using a JC substitution model 
+      and strict clock model. 
+      For inferring the tree from this alignment in the 'generative' scenario 
+      the same substitution and clock models were used, 
+      and a Yule tree prior (this is the assumed generative model,
+      because the real generative model is of course unknown). 
+      In the 'best' scenario the best-fitting candidate 
+      models (TN substitution model, strict clock model and Yule tree prior) 
+      were used. For the twin tree, the same models were chosen, 
+      except that BD was used to generate and infer the twin tree.
+      The twin distributions show the baseline inference error.
+    }
     Vertical dashed lines show the median error value per distribution.
   }
   \label{fig:example_30}
