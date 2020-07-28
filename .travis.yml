@@ -21,8 +21,6 @@ install:
   - Rscript -e 'devtools::install_github("ropensci/beautier")'
 
 script:
-  - mkdir ~/GitHubs
-  - git clone https://github.com/richelbilderbeek/pirouette_example_30 ~/GitHubs
   - make
   # proselint
   - proselint $(find | grep .*\.md) | egrep -v "curly_quotes" || true
