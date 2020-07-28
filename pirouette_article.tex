@@ -542,11 +542,18 @@ thereby showing that they cannot compensate
 for the true generative tree model not being among the inference models.
 
 The candidate model that had highest evidence given the simulated alignment,
-was JC69, RLN and Yule (see Table \ref{tab:options} for the meaning of these 
-abbreviations). JC69 was indeed the site model used when simulating the
-alignments. The RLN clock model is a surprising result: it assumes that mutation rates differ between lineages, whereas the
-alignment was simulated with equal mutation rates for all lineages \new{(strict clock)}.
-\new{The Yule model is not surprising as it is the standard tree prior that is probably closest to the true DD model because it shows no pull-of-the-present (but also no slowdown).}
+was TN, strict and BD (see Table \ref{tab:options} for the meaning of these 
+abbreviations). 
+The TN site model is a surprising result: it assumes nucleotide substitutions 
+occur at different rates between translations and transversions 
+and that nucleotides are available with different frequencies (that is,
+a nucleotide may be rare or overabundant).
+The strict clock model matches the model how the alignment is simulated.
+\new{
+  The Yule model is not surprising as it is the standard tree prior 
+  that is probably closest to the true DD model because it shows 
+  no pull-of-the-present (but also no slowdown).
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
