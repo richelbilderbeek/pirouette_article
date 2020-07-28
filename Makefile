@@ -10,6 +10,7 @@ pirouette_article.pdf: $(tex_files)
 	chmod +x edit.sh
 	chmod +x create_article.sh
 	chmod +x view.sh
+	Rscript scripts/create_figure_2.R
 	Rscript scripts/fix_tables.R
 	./create_article.sh
 

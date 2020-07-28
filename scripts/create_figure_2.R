@@ -5,7 +5,7 @@
 #
 #   Rscript scripts/create_figure_2.R
 
-newick_filename <- "pirouette_example_2/example_2_314/true_tree.newick"
+newick_filename <- "../pirouette_example_30/example_30/phylogeny.newick"
 
 library(testthat)
 expect_true(file.exists(newick_filename))
