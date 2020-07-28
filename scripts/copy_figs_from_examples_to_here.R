@@ -22,7 +22,7 @@ png_and_latex_files <- list.files(
 # Only pirouette examples
 files <- stringr::str_subset(
   string = png_and_latex_files,
-  pattern = ".*pirouette_example_.*(likilihoods|true|twin|errors|esses).*(png|latex|newick)$"
+  pattern = ".*pirouette_example_.*(likelihoods|true|twin|errors|esses).*$"
 )
 
 files <- stringr::str_subset(
