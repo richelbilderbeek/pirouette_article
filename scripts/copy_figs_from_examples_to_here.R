@@ -15,14 +15,14 @@ to_root <- "~/GitHubs/pirouette_article"
 # Rough search
 png_and_latex_files <- list.files(
   path = from_root,
-  pattern = "*.(png|latex)",
+  pattern = "*.(png|latex|newick)",
   recursive = TRUE
 )
 
 # Only pirouette examples
 files <- stringr::str_subset(
   string = png_and_latex_files,
-  pattern = ".*pirouette_example_.*(likilihoods|true|twin|errors|esses).*(png|latex)$"
+  pattern = ".*pirouette_example_.*(likilihoods|true|twin|errors|esses).*(png|latex|newick)$"
 )
 
 files <- stringr::str_subset(
