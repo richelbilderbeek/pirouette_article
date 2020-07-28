@@ -16,5 +16,4 @@ posterior & 9889 \\
    \hline
 \end{tabular}
 \caption{ESSes for generative model} 
-  \label{tab:esses_gen}
 \end{table}
