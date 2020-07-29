@@ -13,8 +13,8 @@ expect_true(file.exists(newick_filename))
 phylogeny <- ape::read.tree(file = newick_filename)
 cex <- 1.5
 edge.width <- 2
-x <- 0.3
-y <- 1.38
+x <- 0.5
+y <- 2.5
 lwd <- 2
 label.offset <- 0.25
 ape::plot.phylo(phylogeny, cex = cex, edge.width = edge.width, label.offset = label.offset)
