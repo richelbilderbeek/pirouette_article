@@ -523,14 +523,14 @@ and its caveats).
       the example tree in Figure \ref{fig:dd_tree}. 
       The alignment for this true tree was generated using a JC substitution model 
       and strict clock model. 
-      For inferring the tree from this alignment in the 'generative' scenario 
+      For inferring the tree from this alignment in the 'generative' scenario
       the same substitution and clock models were used, 
       and a Yule tree prior (this is the assumed generative model,
       because the real generative model is of course unknown). 
       In the 'best' scenario the best-fitting candidate 
       models (TN substitution model, strict clock model and Yule tree prior) 
       were used. For the twin tree, the same models were chosen, 
-      except that BD was used to generate and infer the twin tree.
+      except that BD was used to generate the twin tree.
       The twin distributions show the baseline inference error.
     }
     Vertical dashed lines show the median error value per distribution.
@@ -540,12 +540,12 @@ and its caveats).
 
 In the upper panel of Figure \ref{fig:example_30},
 we can see that the error distributions of the \new{ (assumed) generative model (i.e. the known generative substitution and clock models, and the tree model that is assumed in inference of the true tree, and the tree model that is used for generating and inferring the twin tree)}
-differ strongly between the true and twin tree. 
+differ substantially between the true and twin tree. 
 This difference shows the extent of the mismatch between
 the true tree model (which is DD) and the (Yule) tree prior used in inference.
 Because these distributions are distinctively different,
 the inference error made when using an 
-incorrect tree prior on a DD tree is profound.
+incorrect tree prior on a DD tree is quite profound.
 
 Comparing the upper and lower panel of Figure \ref{fig:example_30}, 
 we can see that the best
@@ -554,18 +554,15 @@ than the (assumed) generative model,
 thereby showing that they cannot compensate 
 for the true generative tree model not being among the inference models.
 
-The candidate model that had highest evidence given the simulated alignment,
+\new{The candidate model that had highest evidence given the simulated alignment,
 was TN, strict and BD (see Table \ref{tab:options} for the meaning of these 
 abbreviations). 
 The TN site model is a surprising result: it assumes nucleotide substitutions 
 occur at different rates between translations and transversions 
 and that nucleotides are available with different frequencies (that is,
 a nucleotide may be rare or overabundant).
-The strict clock model matches the model how the alignment is simulated.
-\new{
-  The Yule model is not surprising as it is the standard tree prior 
-  that is probably closest to the true DD model because it shows 
-  no pull-of-the-present (but also no slowdown).
+The strict clock model matches the model used to simulate the alignment.
+The BD model is perhaps somewhat surprising for the true tre because the other alteranative standard tree prior, Yule, is probably closest to the true DD model because it shows no pull-of-the-present (but also no slowdown).
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
