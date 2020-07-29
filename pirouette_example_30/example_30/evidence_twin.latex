@@ -24,4 +24,5 @@ GTR & RLN & BD & -5571.348 & 6.569 & 0.000 & 14.874 \\
    \hline
 \end{tabular}
 \caption{Evidences for twin phylogeny} 
+  \label{tab:evidence_twin}
 \end{table}

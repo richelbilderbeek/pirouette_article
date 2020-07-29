@@ -16,4 +16,5 @@ posterior & 9969 \\
    \hline
 \end{tabular}
 \caption{ESSes for generative model, twin tree} 
+  \label{tab:esses_twin_gen}
 \end{table}

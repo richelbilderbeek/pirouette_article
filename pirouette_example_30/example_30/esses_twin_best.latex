@@ -20,4 +20,5 @@ posterior & 9623 \\
    \hline
 \end{tabular}
 \caption{ESSes for best candidate model, twin tree} 
+  \label{tab:esses_twin_best}
 \end{table}

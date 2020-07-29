@@ -24,4 +24,5 @@ GTR & RLN & BD & -6661.105 & 5.895 & 0.000 & 11.422 \\
    \hline
 \end{tabular}
 \caption{Evidences for the true phylogeny} 
+  \label{tab:evidence_true}
 \end{table}
