@@ -448,8 +448,10 @@ The carrying-capacity is set to 6.
 The initial speciation rate $\lambda_0$ is chosen 
 such that the expected number of species in a constant-rate BD model 
 would be equal to the number of tips, which amounts to $\lambda_0 = 0.63$.
-Note that in the main example, a tree was generated with 5 tips, due
-to stochasticity in the tree generation algorithm.
+\new{
+  Note that in the main example, a tree was generated with 5 tips, due
+  to stochasticity in the tree generation algorithm.
+}
 
 From this 'true tree', a 'true alignment' is simulated, using
 the JC nucleotide substitution model and a strict clock model.
@@ -511,8 +513,14 @@ with the highest marginal likelihood is determined, from the same
 set of 15 candidate models.The inference model that had the
 highest evidence (as shown in Table \ref{tab:evidence_twin}) was 
 the inference model with a JC nucleotide substitution model,
-an RLN clock model and a Yule tree model (note: this indeed matches how
-the twin tree and twin tree were simulated).
+an RLN clock model and a Yule tree model 
+\new{
+  (note: this mismatches how
+  the twin tree and twin tree were simulated, as the twin tree
+  is generated using a BD process, where the alignment
+  is simulated using a JC substitution model and strict clock model
+  ).
+}
 From the 'twin alignment' this best candidate inference model is run.
 The resulting posterior trees are shown in the fourth panel
 of the third row of posteriors in figure \ref{fig:pipeline}.
