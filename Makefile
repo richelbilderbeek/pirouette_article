@@ -5,7 +5,7 @@ tex_files = \
 
 all: pirouette_article.pdf
 
-pirouette_article.pdf: $(tex_files) pirouette_header.bib
+pirouette_article.pdf: $(tex_files) pirouette_article.bib
 	chmod +x edit.sh
 	chmod +x create_article.sh
 	chmod +x view.sh
