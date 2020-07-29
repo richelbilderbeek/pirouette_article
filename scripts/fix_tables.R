@@ -1,5 +1,10 @@
 # Fix tables by adding the labels if these are absent
 
+# Copied from beautier::get_file_base_sans_ext
+get_file_base_sans_ext <- function(filename) {
+  basename(tools::file_path_sans_ext(filename))
+}
+
 
 tex_filenames <- list.files(
   "pirouette_example_30",
@@ -22,7 +27,7 @@ for (tex_filename in tex_filenames) {
 
   last_line <- tail(text, n = 1)
   label <- paste0(
-    "  \\label{tab:", beautier::get_file_base_sans_ext(tex_filename),"}"
+    "  \\label{tab:", get_file_base_sans_ext(tex_filename),"}"
   )
   text[length(text)] <- label
   text <- c(text, last_line)
