@@ -638,8 +638,7 @@ standard tree model.
 
 The ESSes of the 'twin' pipeline for the generative model
 are shown in Table \ref{tab:esses_twin_gen}.
-Note that the generative inference model is 
-re-used (which assumes a Yule tree model) in the inference, 
+Note that the generative inference model is re-used (which assumes a Yule tree model) in the inference, 
 where the twin tree is actually created using a BD process,
 which is the default.
 
@@ -650,10 +649,10 @@ which is the default.
 The ESSes of the 'true' pipeline for the best candidate model
 are shown in Table \ref{tab:esses_best}. 
 From the names of the estimated parameters, it is clear that
-the best candidate model has had a JC nucleotide substitution 
+the best candidate model has a JC nucleotide substitution 
 model (no parameter needed to be estimated)
 an RLN clock model (which can be inferred from the parameter 'rate.mean') 
-and a BD model ('BirthDeath', 'BDBirthRate' and 'BDDeathRate').
+and a BD tree prior ('BirthDeath', 'BDBirthRate' and 'BDDeathRate').
 
 \input{pirouette_example_30/example_30/esses_best.latex}
 
