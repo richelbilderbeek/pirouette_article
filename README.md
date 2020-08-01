@@ -9,6 +9,7 @@ Branch  |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
 Article about pirouette, by Bilderbeek, Laudanno and Etienne
 
  * [BioRxiv pre-print](https://biorxiv.org/cgi/content/short/2019.12.17.879098v1) (before processing feedback from reviewers)
+ * [v1.3](https://github.com/richelbilderbeek/pirouette_article/releases/download/v1.3/pirouette_article.pdf)
 
 ## FAQ
 
