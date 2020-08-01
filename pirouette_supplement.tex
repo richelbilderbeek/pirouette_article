@@ -79,7 +79,7 @@ Here is an overview of the various sections:
   \item{
     subsection \ref{subsec:different_n_mutations} shows the
     effect when the twin alignment is allowed to have a different
-    number of \new{substitution}s
+    number of substitutions
   }
   \item{
     subsection \ref{subsec:mutation_rate} shows the
@@ -117,10 +117,10 @@ the total runtime of these experiments is 'only' 19 days.
     The use of longer DNA sequences decreases the inference error.
   }
   \item{
-    When we do not impose the same number of \new{substitution}s 
+    When we do not impose the same number of substitutions 
     between true and twin alignment, we observe a difference in the error 
     distributions with respect to the standard case (presented in the main 
-    text) where they are forced to have the same number of \new{substitution}s.
+    text) where they are forced to have the same number of substitutions.
   }
   \item{
     Using a mutation rate less than 1.0 / crown age, decreases the
@@ -289,25 +289,18 @@ topology $\psi_{\mathit{G}}$:
   \tau_{\mathit{T}} = (\Vec{t}_{\mathit{T}}, \psi_{\mathit{G}})
 \end{align}
 
-\new{
-  We chose to preserve the original topology to 
-  increase the similarity between the twin to the original tree. 
-  This works well in the cases of BD or DD models 
-  we consider in our example, because all these models make the same
-  assumption about topology (all topologies are equally likely).
-  However, this might not be suitable for new models that assign different probabilities
-  to trees with the same branching times but different topologies.
-}
-\new{
-  The default option for the twin diversification model $p_T$ 
-  is the standard BD model.
-}
-\verb;pirouette;
-\new{
-   has a built-in function to use a Yule model as well.
-  Additionally, a user can specify a function to generate a twin tree
-  from any speciation model, such as, for example, a coalescent model.
-}
+We chose to preserve the original topology to 
+increase the similarity between the twin to the original tree. 
+This works well in the cases of BD or DD models 
+we consider in our example, because all these models make the same
+assumption about topology (all topologies are equally likely).
+However, this might not be suitable for new models that assign different probabilities
+to trees with the same branching times but different topologies.
+The default option for the twin diversification model $p_T$ 
+is the standard BD model.
+\verb;pirouette; has a built-in function to use a Yule model as well.
+Additionally, a user can specify a function to generate a twin tree
+from any speciation model, such as, for example, a coalescent model.
 
 It is then possible to use the likelihood function 
 $L_{\mathit{T}}$ for this diversification model to find 
@@ -325,10 +318,8 @@ $\tau_{\mathit{T}}$, under the process $p_{T}$,
 while preserving the topology. 
 We simulate the new branching times using the TESS 
 package [\cite{TESS}].
-\new{
-  For simplicity, when simulating phylogenies we assumed a sampling fraction 
-  of $100\%$. A different choice might have an effect on model performance.
-}
+For simplicity, when simulating phylogenies we assumed a sampling fraction 
+of $100\%$. A different choice might have an effect on model performance.
 
 The second step ($T_2$) of the twinning process simulates the twin alignment 
 with the same clock model, site model and mutation rate 
@@ -336,8 +327,8 @@ used to simulate the alignment on the true.
 The twin alignment can be simulated in any user-defined way.
 \verb;pirouette; provides the option simulate it with the same mutation rate as the true alignment. By default, however,
 not only the same mutation rate is used, but also the total number of 
-\new{substitution}s
-matches the true alignment. The total number of \new{substitution}s is defined
+substitutions
+matches the true alignment. The total number of substitutions is defined
 as the number of different nucleotides between the (known) root sequence
 compared to the sequences at the tips.
 
@@ -369,7 +360,7 @@ one must also consider the last source of stochasticity:
 the different phylogenies a tree model generates.
 A single phylogeny cannot be considered as fully representative of the model. 
 For this reason multiple phylogenies must be 
-considered \new{(at least 100 independent true and twin trees)}.
+considered (at least 100 independent true and twin trees).
 If the number of considered phylogenies is high enough, 
 the comparison between the main pipeline's aggregated error distribution 
 and its twin counterpart leads to a fair evaluation 
@@ -386,11 +377,9 @@ The nLTT statistic is chosen, as it can operate on any two trees (regardless
 of their crown ages and number of taxa) and its results have a clear range
 from zero to one. This normalized result makes it possible to compare trees 
 from a distribution of trees from any tree model.
-\new{
-  The nLTT statistic is not suitable, however, to distinguish
-  between a constant-rate BD model and a family of time-dependent 
-  models [\cite{louca2020extant}].
-}
+The nLTT statistic is not suitable, however, to distinguish
+between a constant-rate BD model and a family of time-dependent 
+models [\cite{louca2020extant}].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Main functions}
@@ -448,10 +437,8 @@ The carrying-capacity is set to 6.
 The initial speciation rate $\lambda_0$ is chosen 
 such that the expected number of species in a constant-rate BD model 
 would be equal to the number of tips, which amounts to $\lambda_0 = 0.63$.
-\new{
-  Note that in the main example, a tree was generated with 5 tips, due
-  to stochasticity in the tree generation algorithm.
-}
+Note that in the main example, a tree was generated with 5 tips, due
+to stochasticity in the tree generation algorithm.
 
 From this 'true tree', a 'true alignment' is simulated, using
 the JC nucleotide substitution model and a strict clock model.
@@ -514,11 +501,9 @@ set of 15 candidate models. The inference model that had the
 highest evidence (as shown in Table \ref{tab:evidence_twin}) was 
 the inference model with a JC nucleotide substitution model,
 an RLN clock model and a Yule tree model 
-\new{
-  (Note that this is different from how the twin tree was generated which was with a BD process and the alignment
-  was simulated with a JC substitution model and strict clock model
-  ). However, the extinction rate used in simulating the twin tree was practically 0, thus resembling a Yule process.
-}
+(Note that this is different from how the twin tree was generated which was with a BD process and the alignment
+was simulated with a JC substitution model and strict clock model). 
+However, the extinction rate used in simulating the twin tree was practically 0, thus resembling a Yule process.
 From the 'twin alignment' this best candidate inference model is run.
 The resulting posterior trees are shown in the fourth panel
 of the third row of posteriors in figure \ref{fig:pipeline}.
@@ -721,17 +706,15 @@ with the same parameters as the main example.
   \label{fig:replicate_trees}
 \end{figure}
 
-\new{
-  The resulting error distributions are shown in Fig. \ref{fig:replicate_trees}. 
-  We present results for cases where (1) the generative model has been used 
-  or (2) the model with highest evidence has been selected for the inference.
-  From the plots we can see that in both cases the two distributions 
-  (true and twin) are mostly overlapping, but not everywhere.
-  This suggests that the inference 
-  models that have been used can to a reasonable extent capture in an accurate way 
-  the features of the diversity-dependent tree prior used to simulate 
-  the original trees. 
-}
+The resulting error distributions are shown in Fig. \ref{fig:replicate_trees}. 
+We present results for cases where (1) the generative model has been used 
+or (2) the model with highest evidence has been selected for the inference.
+From the plots we can see that in both cases the two distributions 
+(true and twin) are mostly overlapping, but not everywhere.
+This suggests that the inference 
+models that have been used can to a reasonable extent capture in an accurate way 
+the features of the diversity-dependent tree prior used to simulate 
+the original trees. 
 
 The code to reproduce Fig. \ref{fig:replicate_trees} can be found at  
 \begin{sloppypar}
@@ -779,16 +762,14 @@ carrying capacity to the desired number of taxa.
   \label{fig:error_vs_ntaxa}
 \end{figure}
 
-\new{
-  We show in figures \ref{fig:replicate_trees}, \ref{fig:example_12_taxa}, 
-  \ref{fig:example_24_taxa}, \ref{fig:example_32_taxa} and 
-  \ref{fig:example_40_taxa} what are the errors obtained when starting from 
-  phylogenies with, respectively, 5, 12, 24, 32 and 40 taxa.
-  Again we can see 
-  that in each case errors tend to be greater in the true distribution than 
-  in the twin distribution, similar to the result of subsection \ref{subsec:distribution}.
-  Collecting all the data together we can see that errors tend to decrease as the number of taxa in the considered phylogenies increase (see Fig. \ref{fig:error_vs_ntaxa}). The data point for $40$ taxa not following the trend could be due to the limited amount of simulated trees taken in consideration due to time constraints.
-}
+We show in figures \ref{fig:replicate_trees}, \ref{fig:example_12_taxa}, 
+\ref{fig:example_24_taxa}, \ref{fig:example_32_taxa} and 
+\ref{fig:example_40_taxa} what are the errors obtained when starting from 
+phylogenies with, respectively, 5, 12, 24, 32 and 40 taxa.
+Again we can see 
+that in each case errors tend to be greater in the true distribution than 
+in the twin distribution, similar to the result of subsection \ref{subsec:distribution}.
+Collecting all the data together we can see that errors tend to decrease as the number of taxa in the considered phylogenies increase (see Fig. \ref{fig:error_vs_ntaxa}). The data point for $40$ taxa not following the trend could be due to the limited amount of simulated trees taken in consideration due to time constraints.
 
 The code to reproduce these figures can be found at  
 \begin{sloppypar}
@@ -840,15 +821,13 @@ except for a varying DNA alignment sequence length.
   \label{fig:error_vs_seqlength}
 \end{figure}
 
-\new{
-  From figures \ref{fig:example_500_nucleotides}, 
-  \ref{fig:example_1000_nucleotides} and \ref{fig:example_2000_nucleotides} 
-  we can observe that the discrepancy between the true and twin error 
-  distributions tends to become smaller as the number of nucleotides increase (see also Fig. \ref{fig:error_vs_seqlength}).
-  This occurred for both the generative and best candidate cases.
-  This follows the expectation that a prior becomes less important when
-  more information becomes available.
-}
+From figures \ref{fig:example_500_nucleotides}, 
+\ref{fig:example_1000_nucleotides} and \ref{fig:example_2000_nucleotides} 
+we can observe that the discrepancy between the true and twin error 
+distributions tends to become smaller as the number of nucleotides increase (see also Fig. \ref{fig:error_vs_seqlength}).
+This occurred for both the generative and best candidate cases.
+This follows the expectation that a prior becomes less important when
+more information becomes available.
 
 The code to reproduce these figures can be found at  
 \begin{sloppypar}
@@ -881,10 +860,8 @@ which we also assume as the (correct) tree prior.
 This example shows a parameterization at the correct level for the
 simplest case possible.
 
-\new{
-  As expected the twin and true distributions in Fig. \ref{fig:example_yule} 
-  are extremely similar for both the generative and the best candidate case.
-}
+As expected the twin and true distributions in Fig. \ref{fig:example_yule} 
+are extremely similar for both the generative and the best candidate case.
 
 The code to reproduce this figure can be found at  
 \begin{sloppypar}
@@ -912,20 +889,19 @@ This example thus shows the effect of underparameterization.
     This took 2.7 days (wall clock time) to compute.}
 \end{figure}
 
-\new{
-  Because the two models are very similar to each other (the BD model can be 
-  turned into a Yule model just by setting the extinction parameter to 
-  zero [\cite{nee1994reconstructed}]) the median discrepancy is
-  almost negligible. 
-  However, with respect to the previous 
-  case (subsection \ref{subsec:simplest_correct_parameterization}), 
-  where a Yule tree prior was used, 
-  the distributions here exhibit a greater difference.
-}
-\new{As we use only extant trees, it is reasonable that the method
-  is slightly weaker in distinguishing between the Yule and BD
-  models. It is unknown what the discriminatory power would be
-  when comparing trees with extinction events.}
+Because the two models are very similar to each other (the BD model can be 
+turned into a Yule model just by setting the extinction parameter to 
+zero [\cite{nee1994reconstructed}]) the median discrepancy is
+almost negligible. 
+However, with respect to the previous 
+case (subsection \ref{subsec:simplest_correct_parameterization}), 
+where a Yule tree prior was used, 
+the distributions here exhibit a greater difference.
+
+As we use only extant trees, it is reasonable that the method
+is slightly weaker in distinguishing between the Yule and BD
+models. It is unknown what the discriminatory power would be
+when comparing trees with extinction events.
 
 The code to reproduce this figure can be found at
 \begin{sloppypar}
@@ -963,17 +939,15 @@ that are rare, uncommon and common respectively.
   }
 \end{figure}
 
-\new{
-  Here the median errors are similar in the three settings and similar to 
-  ones relative to the full dataset of \ref{subsec:distribution}. We can also 
-  notice that in the case of median likelihood, the twin median error appears 
-  to be lower than the true mean error. This is usually a sign that the number 
-  of replicates (in this case 10) is too low to allow us to draw precise 
-  conclusions from this test. We did not explore further in this 
-  direction using more simulations because computational times turned to be 
-  extremely high. 
-  The entire run took 120 hours in total.
-}
+Here the median errors are similar in the three settings and similar to 
+ones relative to the full dataset of \ref{subsec:distribution}. We can also 
+notice that in the case of median likelihood, the twin median error appears 
+to be lower than the true mean error. This is usually a sign that the number 
+of replicates (in this case 10) is too low to allow us to draw precise 
+conclusions from this test. We did not explore further in this 
+direction using more simulations because computational times turned to be 
+extremely high. 
+The entire run took 120 hours in total.
 
 The code to reproduce these figure can be found at  
 \begin{sloppypar}
@@ -988,30 +962,28 @@ The code to reproduce these figure can be found at
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
 The main example uses a twin alignment that has the same number
-of \new{substitution}s (as measured from the ancestral sequence) as the true alignment. Here, we show the same results, with the difference that
+of substitutions (as measured from the ancestral sequence) as the true alignment. Here, we show the same results, with the difference that
 the twin alignment uses the same mutation rate, yet is not guaranteed
-to have the same number of \new{substitution}s.
+to have the same number of substitutions.
 
 \begin{figure}[H]
   %\includegraphics[width=0.98\textwidth]{pirouette_example_18/errors.png}
   \includegraphics[width=0.94\textwidth]{pirouette_example_18/errors.png}
   \caption{Aggregate error distributions for 100 replicates.
     similar to Fig. \ref{fig:replicate_trees}, 
-    but here the number of \new{substitution}s is not imposed 
+    but here the number of substitutions is not imposed 
     to be the same between true and twin alignment. 
     Instead, an equal mutation rate is used. 
     This took 3.3 days (wall clock time) to compute.}
   \label{fig:example_random_mutations}
 \end{figure}
 
-\new{
-  Comparing figures \ref{fig:example_random_mutations} 
-  and \ref{fig:replicate_trees} we can see that the discrepancy between 
-  true and twin distributions tend to increase. 
-  This is probably due to the fact that letting mutation rates 
-  induces a difference in the amount of information contained in the 
-  alignments and this is reflected in the error distributions.
-}
+Comparing figures \ref{fig:example_random_mutations} 
+and \ref{fig:replicate_trees} we can see that the discrepancy between 
+true and twin distributions tend to increase. 
+This is probably due to the fact that letting mutation rates 
+induces a difference in the amount of information contained in the 
+alignments and this is reflected in the error distributions.
 
 The code to reproduce this figure can be found at
 \begin{sloppypar}
@@ -1034,22 +1006,10 @@ In this way, the alignment is expected to contain the maximum
 amount of information.
 
 Here, we show the same results for different mutation rates.
-\new{
-\iffalse
-  We can observe that the error tends to increases for mutation rates above
-  `1.0 / crown age`. Below this value, the errors are the same.
-  For these lower mutation rates, however, the shape of the error
-  distribution changes for the baseline/generative models,
-  deviating more and more from the gamma-distribution-like shape
-  as is still present in the twin distributions.
-\fi
  The results for the different mutation rates are shown in Figs. \ref{fig:example_0.25_mutation_rate} (0.25 / crown age), \ref{fig:example_0.50_mutation_rate} (0.50 / crown age), \ref{fig:example_0.75_mutation_rate} (0.75 / crown age), \ref{fig:replicate_trees} (1.00 / crown age), \ref{fig:example_1.25_mutation_rate} (1.25 / crown age),
  \ref{fig:example_1.50_mutation_rate} (1.50 / crown age) and
  \ref{fig:example_2.00_mutation_rate} (2.00 / crown age).
- }
-\new{
- Fig. \ref{fig:error_vs_mutationrate} summarizes all the other figures showing on the y-axis, for each value of the mutation rate, the difference between the median of the true distribution and the median of the twin distribution. We can observe a general positive trend as the mutation rate increase, even though the value for 1.5 / crown age suggests to take this result with caution. It is possible, however, that a more regular trend could be observed increasing the number of simulations.
-}
+Fig. \ref{fig:error_vs_mutationrate} summarizes all the other figures showing on the y-axis, for each value of the mutation rate, the difference between the median of the true distribution and the median of the twin distribution. We can observe a general positive trend as the mutation rate increase, even though the value for 1.5 / crown age suggests to take this result with caution. It is possible, however, that a more regular trend could be observed increasing the number of simulations.
 
 The code to reproduce this figure can be found at
 \begin{sloppypar}
