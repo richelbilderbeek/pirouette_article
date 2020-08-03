@@ -18,7 +18,7 @@ Software              |DOI
 ----------------------|----------------
 pirouette v1.6.4      |[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3969839.svg)](https://doi.org/10.5281/zenodo.3969839)
 pirouette_article v1.3|[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3969845.svg)](https://doi.org/10.5281/zenodo.3969845)
-pirouette_examples    |.
+pirouette_examples    |[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3970000.svg)](https://doi.org/10.5281/zenodo.3970000)
 
 ## FAQ
 
