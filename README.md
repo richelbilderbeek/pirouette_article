@@ -8,9 +8,8 @@ Branch  |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
 
 Article about pirouette, by Bilderbeek, Laudanno and Etienne
 
- * [BioRxiv pre-print](https://biorxiv.org/cgi/content/short/2019.12.17.879098v1) (before processing feedback from reviewers)
+ * [BioRxiv pre-print v3](https://biorxiv.org/cgi/content/short/2019.12.17.879098v3)
  * [v1.3](https://github.com/richelbilderbeek/pirouette_article/releases/download/v1.3/pirouette_article.pdf)
-
 
 ## Data
 
@@ -19,6 +18,11 @@ Software              |DOI
 pirouette v1.6.4      |[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3969839.svg)](https://doi.org/10.5281/zenodo.3969839)
 pirouette_article v1.3|[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3969845.svg)](https://doi.org/10.5281/zenodo.3969845)
 pirouette_examples    |[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3970000.svg)](https://doi.org/10.5281/zenodo.3970000)
+
+## Older versions
+
+ * [BioRxiv pre-print v2](https://biorxiv.org/cgi/content/short/2019.12.17.879098v2)
+ * [BioRxiv pre-print v1](https://biorxiv.org/cgi/content/short/2019.12.17.879098v1)
 
 ## FAQ
 
