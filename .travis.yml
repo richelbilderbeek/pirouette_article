@@ -30,4 +30,11 @@ script:
   # Count words, must be below 3000 for 'Applications'
   - make count_words
 
+after_failure:
+  # Download thesis
+  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
+
+after_success:
+  # Download thesis
+  - Rscript -e 'download.file("https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf", tempfile())'
 
