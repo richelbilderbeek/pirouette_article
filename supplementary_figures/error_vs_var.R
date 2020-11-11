@@ -105,7 +105,7 @@ plot_error_vs_var = function(
   df = data.frame(matrix(NA, ncol = 3, nrow = length(models) * length(var_values)))
   for (model in models) {
     for (var_value in var_values) {
-      print(jj)
+      message(jj)
       df$median[jj] = median(errors2[errors2$model == model & errors2[[var]] == var_value, "value"])
       df$model[jj] = model
       df$var[jj] = var_value

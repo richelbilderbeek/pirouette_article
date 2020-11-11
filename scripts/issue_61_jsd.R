@@ -8,8 +8,8 @@ trees <- c(tree_1, tree_2)
 jsd <- RPANDA::JSDtree(phylo = trees)[1, 2]
 testthat::expect_false(is.nan(jsd))
 
-print(ape::write.tree(trees[1]))
-print(ape::write.tree(trees[2]))
+message(ape::write.tree(trees[1]))
+message(ape::write.tree(trees[2]))
 
 # Plot
 png("~/plot.png")
@@ -29,9 +29,9 @@ for (i in seq(1, 100000)) {
   )
   jsd <- RPANDA::JSDtree(phylo = trees)[1, 2]
   if (is.nan(jsd)) {
-    print(i)
-    print(ape::write.tree(trees[1]))
-    print(ape::write.tree(trees[2]))
+    message(i)
+    message(ape::write.tree(trees[1]))
+    message(ape::write.tree(trees[2]))
     stop("ERROR")
   }
   #if (jsd > max_jsd) {
