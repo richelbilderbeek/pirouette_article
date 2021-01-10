@@ -6,7 +6,12 @@ Branch  |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
 
 ![](pics/qr_biorxiv.png)
 
-Article about pirouette, by Bilderbeek, Laudanno and Etienne
+Article about pirouette, by Bilderbeek, Laudanno and Etienne.
+This is the proper reference:
+
+> Bilderbeek, RJC, Laudanno, G, Etienne, RS. Quantifying the impact of an inference model in Bayesian phylogenetics. Methods Ecol Evol. 2020; 00: 1– 8. https://doi.org/10.1111/2041-210X.13514
+
+## Older versions
 
  * [BioRxiv pre-print v3](https://biorxiv.org/cgi/content/short/2019.12.17.879098v3)
  * [v1.3](https://github.com/richelbilderbeek/pirouette_article/releases/download/v1.3/pirouette_article.pdf)
@@ -66,4 +71,8 @@ as `pirouette_article` is. That is, it expects the following folder structure:
  |
  +--- pirouette_example_x
 ```
+
+## References
+
+ *  Bilderbeek, RJC, Laudanno, G, Etienne, RS. Quantifying the impact of an inference model in Bayesian phylogenetics. Methods Ecol Evol. 2020; 00: 1– 8. https://doi.org/10.1111/2041-210X.13514
 
