@@ -139,18 +139,12 @@ plot_error_vs_var = function(
 
   # Plot data
   fillcolors <- linecolors <- c("red", "royalblue3")
-  plot = ggplot2::ggplot(data = df2) +
-    ggplot2::geom_point(
+  plot = ggplot2::ggplot(data = df2); ggplot2::geom_point(
       ggplot2::aes(x = var, y = diff, color = Model, fill = Model),
       alpha = 0.4, shape = 21, size = 6 # shape = 7
-    ) +
-    ggplot2::ylab("True Median - Twin Median") +
-    ggplot2::xlab(
+    ); ggplot2::ylab("True Median - Twin Median"); ggplot2::xlab(
       var2name(var)
-    ) +
-    ggplot2::theme_bw() +
-    ggplot2::scale_color_manual(values = linecolors) +
-    ggplot2::scale_fill_manual(values = fillcolors); plot
+    ); ggplot2::theme_bw(); ggplot2::scale_color_manual(values = linecolors); ggplot2::scale_fill_manual(values = fillcolors); plot
 
   ggplot2::ggsave(
     filename = paste0("plot_error_vs_", var, ".png"),
