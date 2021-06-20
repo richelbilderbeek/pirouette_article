@@ -1,8 +1,8 @@
 # pirouette_article
 
-Branch  |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
+Branch  |[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.com)
 --------|-------------------------------------------------------------------------------------------------------------------------------------------------------
-`master`|[![Build Status](https://travis-ci.org/richelbilderbeek/pirouette_article.svg?branch=master)](https://travis-ci.org/richelbilderbeek/pirouette_article)
+`master`|[![Build Status](https://travis-ci.com/richelbilderbeek/pirouette_article.svg?branch=master)](https://travis-ci.com/richelbilderbeek/pirouette_article)
 
 ![](pics/qr_biorxiv.png)
 
